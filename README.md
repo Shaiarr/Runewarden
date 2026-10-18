@@ -44,4 +44,4 @@ The retained [capability comparison](docs/hub-utility-audit.md) documents implem
 
 Runewarden is community maintained. Contributions and forks are welcome, with no guaranteed maintenance schedule or support response time. Reproducible bug reports and independent testing are welcome. See [CONTRIBUTING](CONTRIBUTING.md), the [release procedure](docs/release-process.md) and [Nederlandse uploadhandleiding](docs/github-upload-nl.md).
 
-Original code is **GPL-3.0-only**; retain [LICENSE](LICENSE) and the bundled third-party source/data notices. Runewarden is an independent community project and is not endorsed by Jagex or RuneLite.
+Original code is **BSD-2-Clause**; retain [LICENSE](LICENSE) and the bundled third-party source/data notices. Runewarden is an independent community project and is not endorsed by Jagex or RuneLite.

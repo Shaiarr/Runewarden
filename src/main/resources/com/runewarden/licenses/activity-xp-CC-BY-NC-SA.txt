@@ -35,12 +35,12 @@ Changes: extracted and normalised numerical facts, explicit level bands,
 equipment material equivalents, paste recipes and source references. Descriptive
 interface summaries are newly written. No quest walkthrough prose was copied.
 Data share-alike/noncommercial conditions apply to this separately attributed
-dataset. Java implementation remains under the repository's GPL-3.0-only licence.
+dataset. Java implementation remains under the repository's BSD-2-Clause licence.
 
 Training-plan expansion (17 October 2026): additional hourly reference facts
 from the current primary OSRS Wiki training pages. Exact page revisions are
 retained in activity-xp-methods.json planSources.revisions and each method's
 rateBasis URL. Conditions and throughput assumptions accompany the rates.
 Preparation, workflows and practice milestones are Runewarden-authored;
-shared guide text is licensed GPL-3.0-only. Exact recipe XP/action
+shared guide text is licensed BSD-2-Clause. Exact recipe XP/action
 continues to use the pinned RuneLite 1.13.2 banked-XP recipe source attribution.

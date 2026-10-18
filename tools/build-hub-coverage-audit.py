@@ -73,7 +73,7 @@ DOMAIN_FILES = {
     'ticks': ('SkillingCoach SkillingCoachOverlay HudSettingsTool', 'SkillingCoachTest HudCustomizationTest'),
     'effects': ('FieldCoach FieldStatusOverlay LoadoutReadiness', 'FieldCoachTest LoadoutReadinessTest'),
     'charges': ('SupplyAwarenessTool LoadoutReadiness LoadoutItemVariants', 'SupplyAwarenessToolTest LoadoutReadinessTest'),
-    'combat': ('DpsCalculator DpsSpecialAttack DpsTargetScenario CurrentMaxHit CombatCalculatorTool ConsumablePreviewOverlay', 'DpsCalculatorTest DpsSpecialAttackTest CurrentMaxHitTest'),
+    'combat': ('DpsCalculator CombatRollProbability DpsSpecialAttack DpsTargetScenario CurrentMaxHit CombatCalculatorTool ConsumablePreviewOverlay', 'DpsCalculatorTest CombatRollProbabilityTest DpsSpecialAttackTest CurrentMaxHitTest'),
     'accessibility': ('HudSettingsTool RunewardenSightOverlay', 'HudCustomizationTest'),
     'gathering': ('NodeTimerRules NodeTimerOverlay SkillingCoach RadialTimer ContextActions', 'ContextHudTest GatheringRadialTimerTest ContextActionsTest'),
     'farming': ('HarvestClockTool HarvestClockOverlay HarvestTimerWindows HarvestSelections FarmRunsTool FarmTravelPlan FarmPatchCatalog FarmGrowthTiming FarmPatchPlanner FarmGuideProgress TrainingGuideProgress GuideLiveProgress FarmPatchDestinations FarmRunNavigation FarmPatchScene FarmCompostEvidence FarmPatchOverlay', 'FarmRunsToolTest FarmTravelPlanTest FarmTravelRecommendationTest FarmPatchHudTest FarmCropPreparationTest HarvestRadialHudTest FarmPatchPlannerTest FarmGrowthTimingTest FarmGuideProgressTest TrainingGuideProgressTest GuideObjectiveLifecycleTest FarmRunWorkflowTest FarmRunNavigationTest'),

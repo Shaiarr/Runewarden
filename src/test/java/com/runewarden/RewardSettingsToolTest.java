@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only */
+/* SPDX-License-Identifier: BSD-2-Clause */
 package com.runewarden;
 
 import com.google.gson.Gson;
@@ -24,7 +24,7 @@ public class RewardSettingsToolTest
     {
         RewardSettings settings = new RewardSettings(mock(ConfigManager.class), new Gson());
         java.util.concurrent.ScheduledExecutorService executor = mock(java.util.concurrent.ScheduledExecutorService.class);
-        RewardSoundboard audio = new RewardSoundboard(executor);
+        RewardSoundboard audio = new RewardSoundboard(executor, mock(net.runelite.client.audio.AudioPlayer.class));
         RewardSettingsTool tool = new RewardSettingsTool(settings, audio); AtomicReference<RewardNotification> preview = new AtomicReference<>(); tool.setDemoAction(preview::set);
         SwingUtilities.invokeAndWait(() ->
         {
@@ -47,7 +47,7 @@ public class RewardSettingsToolTest
     @Test public void advancedMetricsHaveSeparateLabelsAndRejectInvalidOrdering() throws Exception
     {
         RewardSettings settings = new RewardSettings(mock(ConfigManager.class), new Gson());
-        RewardSettingsTool tool = new RewardSettingsTool(settings, new RewardSoundboard(mock(java.util.concurrent.ScheduledExecutorService.class)));
+        RewardSettingsTool tool = new RewardSettingsTool(settings, new RewardSoundboard(mock(java.util.concurrent.ScheduledExecutorService.class), mock(net.runelite.client.audio.AudioPlayer.class)));
         SwingUtilities.invokeAndWait(() ->
         {
             JPanel panel = tool.createPanel(); button(panel, "▸ Rarity thresholds").doClick(); narrow(panel);

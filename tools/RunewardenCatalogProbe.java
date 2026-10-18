@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only
+/* SPDX-License-Identifier: BSD-2-Clause
  * Standalone validation tool. Not part of the plugin/launcher source sets.
  * See docs/performance.md for the runtime classpath and measurement limits.
  */

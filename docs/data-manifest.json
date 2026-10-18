@@ -139,7 +139,7 @@
     {
       "file": "src/main/resources/com/runewarden/guides.json",
       "bytes": 2118143,
-      "sha256": "af198e768b7dca287daa4fbe83a5ed4dcec277b8d14a7e2d8e75fdd031b9fe6c",
+      "sha256": "1a48f098b4e7151723e78808e42ccbf41d526abbe92ada5c2b6e93d53eba0a75",
       "provenance": {
         "cutoff": "2026-10-16",
         "questSourceCommit": "5f791937a99a676f23c02aa48c4e4d5b50e7edad"
@@ -569,7 +569,7 @@
     {
       "file": "src/main/resources/com/runewarden/marker-packs.json",
       "bytes": 799667,
-      "sha256": "cc6a2af183540325c85c791a21f498cf1bf0c85ba8824d3b11c4cb0ff8fba1b9",
+      "sha256": "942671a8a3bd42963f7cbaa3c2095e337ecc456c267e9923652a8e0b38191d87",
       "provenance": {
         "commit": "063b553bce36522fb2af54555c5afa2737a1e55f",
         "sourceDate": "2026-10-15",

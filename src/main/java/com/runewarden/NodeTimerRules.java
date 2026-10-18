@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only
+/* SPDX-License-Identifier: BSD-2-Clause
  * Timing event/object/animation mappings adapted from RuneLite 1.13.2.
  * RuneLite BSD-2-Clause notices: resources/com/runewarden/licenses/runelite-skilling-BSD-2-Clause.txt.
  */

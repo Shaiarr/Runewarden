@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only
+/* SPDX-License-Identifier: BSD-2-Clause
  * Native facility/port data derived from pinned BSD Sailing and Port Tasks sources.
  * Full notices: com/runewarden/licenses/sailing-coach-BSD.txt.
  */

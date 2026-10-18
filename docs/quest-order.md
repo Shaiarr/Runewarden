@@ -8,4 +8,4 @@ The next-quest card offers the earliest unfinished ranked quest whose bundled pr
 
 Source: [OSRS Wiki optimal quest guide, revision 15358869](https://oldschool.runescape.wiki/w/Optimal_quest_guide?oldid=15358869), revision timestamp 2026-09-30T12:59:44Z, retrieved 2026-10-16 through the Wiki API. This is the regular-account route, intended to minimise direct skill training; it does not promise minimum travel time or cost. Only row order and titles are adapted. The website is not contacted by the plugin at runtime.
 
-Wiki contributors' order data is licensed **CC BY-NC-SA 3.0**. See `licenses/quest-order-CC-BY-NC-SA.txt`. Original Java code remains GPL-3.0-only.
+Wiki contributors' order data is licensed **CC BY-NC-SA 3.0**. See `licenses/quest-order-CC-BY-NC-SA.txt`. Original Java code remains BSD-2-Clause.

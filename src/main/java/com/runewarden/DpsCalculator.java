@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only */
+/* SPDX-License-Identifier: BSD-2-Clause */
 package com.runewarden;
 
 import java.util.ArrayList;
@@ -330,7 +330,7 @@ final class DpsCalculator
         boolean fangAccuracy = gear.weapon.contains("fang") && "stab".equals(mode.type);
         double chance = spec != null && spec.guaranteed ? 1 : fangAccuracy ? fangAccuracy(attackRoll, defenceRoll) : normalAccuracy(attackRoll, defenceRoll);
         if (mode.magic() && gear.has("confliction gauntlets") && !gear.twoHanded)
-        { double doubled = fangAccuracy(attackRoll, defenceRoll); chance = doubled / (1 + doubled - chance); mechanics.add("Confliction gauntlets accuracy"); }
+        { double doubled = fangAccuracy(attackRoll, defenceRoll); chance = CombatRollProbability.conflictionAccuracy(chance, doubled); mechanics.add("Confliction gauntlets accuracy"); }
         if (mode.magic() && gear.has("brimstone ring"))
         { double proc = normalAccuracy(attackRoll, factor(defenceRoll, 9, 10)); chance = chance * .75 + proc * .25; mechanics.add("Brimstone ring accuracy mixture"); }
         int armour = "magic".equals(defenceType) ? 0 : target.defenceBonuses.getOrDefault("flat_armour", 0);
@@ -422,23 +422,13 @@ final class DpsCalculator
 
     static double normalAccuracy(long attack, long defence)
     {
-        long a = attack < 0 ? Math.min(0, attack + 2) : attack;
-        long d = defence < 0 ? Math.min(0, defence + 2) : defence;
-        if (a >= 0 && d < 0) return 1 - 1.0 / (-d + 1) / (a + 1);
-        if (a < 0 && d >= 0) return 0;
-        if (a < 0) { long swap = a; a = -d; d = -swap; }
-        return a > d ? 1 - (d + 2.0) / (2 * (a + 1.0)) : a / (2 * (d + 1.0));
+        return CombatRollProbability.normalAccuracy(attack, defence);
     }
     static double fangAccuracy(long attack, long defence)
     {
-        long a = attack < 0 ? Math.min(0, attack + 2) : attack;
-        long d = defence < 0 ? Math.min(0, defence + 2) : defence;
-        if (a >= 0 && d < 0) return 1 - 1.0 / (-d + 1) / (a + 1);
-        if (a < 0 && d >= 0) return 0;
-        if (a < 0)
-        { double positiveAttack = -d, positiveDefence = -a; return positiveAttack < positiveDefence ? positiveAttack * (positiveDefence * 6 - 2 * positiveAttack + 5) / (6 * (positiveDefence + 1) * (positiveDefence + 1)) : 1 - (positiveDefence + 2) * (2 * positiveDefence + 3) / (6 * (positiveDefence + 1) * (positiveAttack + 1)); }
-        return a > d ? 1 - (d + 2.0) * (2 * d + 3.0) / ((a + 1.0) * (a + 1.0) * 6)
-            : a * (4 * a + 5.0) / (6 * (a + 1.0) * (d + 1.0));
+        // Retain the calculator's signed-roll policy pending native-mechanics verification.
+        if (attack > 0 && defence < -2) return normalAccuracy(attack, defence);
+        return CombatRollProbability.fangAccuracy(attack, defence);
     }
     static double[] hitDistribution(double accuracy, int minimum, int maximum, int armour)
     {

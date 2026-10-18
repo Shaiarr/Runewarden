@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# SPDX-License-Identifier: GPL-3.0-only
+# SPDX-License-Identifier: BSD-2-Clause
 """Rebuild the original Runewarden sound set with Python's standard library only.
 
 No sound recordings, instruments or game assets are sampled. All waveforms and note

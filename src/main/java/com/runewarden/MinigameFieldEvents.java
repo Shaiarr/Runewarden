@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only
+/* SPDX-License-Identifier: BSD-2-Clause
  * Native mappings and timing windows adapted from pinned BSD Hub helpers.
  * Full notices: com/runewarden/licenses/minigame-field-events-BSD.txt.
  */

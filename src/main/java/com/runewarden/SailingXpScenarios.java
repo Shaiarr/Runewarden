@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only */
+/* SPDX-License-Identifier: BSD-2-Clause */
 package com.runewarden;
 import com.google.gson.Gson;
 import java.io.InputStreamReader;

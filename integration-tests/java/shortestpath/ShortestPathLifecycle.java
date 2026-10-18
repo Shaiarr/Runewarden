@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only */
+/* SPDX-License-Identifier: BSD-2-Clause */
 package shortestpath;
 
 /** Test-only access to the upstream protected plugin lifecycle; no substituted plugin implementation. */

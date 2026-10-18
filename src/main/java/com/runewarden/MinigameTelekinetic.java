@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only
+/* SPDX-License-Identifier: BSD-2-Clause
  * Collision-aware pull model follows RuneLite's MTA TelekineticRoom semantics.
  * Upstream attribution: docs/licenses/runelite-telekinetic.txt.
  */

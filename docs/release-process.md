@@ -2,7 +2,7 @@
 
 Runewarden 0.9.6 is an experimental plugin source release. Publishing the source does not require prior Plugin Hub acceptance and does not make the plugin available in the live client's Hub. A local build or mechanical API check is not RuneLite/Jagex approval.
 
-Published by **Shai-arr**. Original Runewarden code is **GPL-3.0-only**; third-party code and datasets retain their own licenses, notices and provenance. Runewarden is community maintained. Contributions and forks are welcome, with no guaranteed maintenance schedule or support response time.
+Published by **Shai-arr**. Original Runewarden code is **BSD-2-Clause**; third-party code and datasets retain their own licenses, notices and provenance. Runewarden is community maintained. Contributions and forks are welcome, with no guaranteed maintenance schedule or support response time.
 
 1. Run the checks in `CONTRIBUTING.md` on the exact proposed source. Inspect sidebar rendering and the production JAR. Record this plugin-only export's results in `docs/plugin-only-evidence.json`; do not reuse the historical full-harness test counts.
 2. Record actual live checks in `docs/live-acceptance.json`, including version, date, scenario and evidence. Account/profile transitions, full activity journeys, long sessions and interoperability remain unverified until tested. Open checks may accompany an explicitly experimental source release; do not relabel them as passes.

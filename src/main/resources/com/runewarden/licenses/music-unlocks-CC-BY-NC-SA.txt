@@ -5,4 +5,4 @@ OSRS Wiki music unlock facts
 Copyright the respective OSRS Wiki contributors. Data licensed under Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported: https://creativecommons.org/licenses/by-nc-sa/3.0/
 
 Source: https://oldschool.runescape.wiki/w/Music
-Changes: numerical/factual extraction, Wiki markup removal, merge with separately BSD-licensed region and route metadata, native client track-name matching. No music audio files are included. Java implementation remains GPL-3.0-only.
+Changes: numerical/factual extraction, Wiki markup removal, merge with separately BSD-licensed region and route metadata, native client track-name matching. No music audio files are included. Java implementation remains BSD-2-Clause.

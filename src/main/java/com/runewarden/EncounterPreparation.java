@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only */
+/* SPDX-License-Identifier: BSD-2-Clause */
 package com.runewarden;
 
 /** Player-owned preparation and recovery acknowledgements, separate from observed game state. */

@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only */
+/* SPDX-License-Identifier: BSD-2-Clause */
 package net.runelite.client.plugins.timetracking.farming;
 
 /** Test-only bridge to compare message evidence with the exact pinned RuneLite implementation. */

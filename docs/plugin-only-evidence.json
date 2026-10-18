@@ -1,5 +1,5 @@
 {
-  "automatedTests": 1603,
+  "automatedTests": 1613,
   "automatedFailures": 0,
   "automatedSkipped": 0,
   "liveGatesPending": [
@@ -23,19 +23,21 @@
   "previousPrimarySettingsAutomaticallyMigrated": false,
   "preRenameBaselineCommit": "5c53d5e40b6304b3e9d672b96d5d9beb49b6cf42",
   "productionSourceMatchesCurrentDevelopmentTree": true,
-  "productionSourceFiles": 217,
+  "productionSourceFiles": 218,
   "productionResourceFiles": 154,
   "changesSinceBaseline": [
     "Java package and class prefix renamed to Runewarden.",
     "Configuration namespace, bundled resource paths and data format labels renamed.",
-    "Build metadata, documentation, tools and source evidence refreshed for0.9.6.",
-    "Original project code and guide arrangement license changed to GPL-3.0-only; third-party licenses retained.",
-    "Publisher metadata set to Shai-arr and community maintenance terms recorded."
+    "Build metadata, documentation, tools and source evidence refreshed for 0.9.6.",
+    "Original project code and guide arrangements licensed BSD-2-Clause; third-party licenses retained.",
+    "Publisher metadata is Shai-arr; community maintenance terms remain explicit.",
+    "Reward sounds use the injected RuneLite AudioPlayer with bounded, paced pending requests.",
+    "Combat probability helpers independently expressed from integer-roll distributions; signed-roll adapter policy retained."
   ],
   "javaSuites": {
     "test": {
-      "suites": 191,
-      "tests": 1603,
+      "suites": 192,
+      "tests": 1613,
       "failures": 0,
       "skipped": 0
     },
@@ -46,7 +48,7 @@
       "skipped": 0
     }
   },
-  "pythonTests": 32,
+  "pythonTests": 42,
   "optionalCompanion": {
     "version": "1.21.3",
     "upstreamCommit": "37abff3a3345185fc11fccecae04d8170de25a11",
@@ -57,8 +59,8 @@
   "bundledDatasetsVerified": 96,
   "productionJar": {
     "file": "runewarden-0.9.6.jar",
-    "sha256": "79eaa9b483e25b25b4f24ca122e3320ccd8f06e8af02dcd29e0e24264a627d45",
-    "bytes": 4059056,
+    "sha256": "7d89b70d645f52f0bf9a70616b238399534685ba46b6ebb7e64f888b8f379a92",
+    "bytes": 4048573,
     "javaRelease": 11,
     "classes": 771,
     "onlyCurrentProjectNamespace": true,
@@ -78,7 +80,9 @@
       "com/runewarden/WorldHopperTool$1.class",
       "com/runewarden/WorldHopperTool$2.class"
     ],
-    "scope": "Local compilation with pinned native API and unchanged official templates; not remote Hub CI or approval."
+    "scope": "Local compilation with pinned native API and unchanged official templates; not remote Hub CI or approval.",
+    "jarBytes": 4048515,
+    "jarSha256": "05ee969bb4bb32433e734738082f3c0cffda16482496dea8f2cf62d13eee75db"
   },
   "projectBrandReferencesRemaining": 0,
   "thirdPartyGameActionLabelsRetained": 6,
@@ -102,15 +106,24 @@
     "includedInProductionJar": false
   },
   "publisher": "Shai-arr",
-  "originalCodeLicense": "GPL-3.0-only",
+  "originalCodeLicense": "BSD-2-Clause",
   "licenseUpdateVerification": {
-    "productionClassesByteIdenticalToPreviousPackage": 771,
     "thirdPartyCodeAndLicenseTermsPreserved": true,
     "dataChangesLimitedToOriginalLicenseFields": true,
     "cc0RewardAudioUnchanged": true,
-    "ownGplTextMatchesRetainedUpstreamGplText": true,
+    "ownBsdLicenseCopiesMatch": true,
     "javaAndCompanionTestsRerun": true,
     "pythonTestsRerun": true,
     "pluginHubApprovalImplied": false
-  }
+  },
+  "hubReviewRevision": {
+    "pullRequest": "https://github.com/runelite/plugin-hub/pull/18857",
+    "previousSubmittedCommit": "e35f17404452ef9655c7caed71040748b755b6e0",
+    "scannerFindingAddressed": "Direct javax.sound replaced by native AudioPlayer",
+    "licenseFeedbackAddressed": "Original code now BSD-2-Clause",
+    "humanReviewStatus": "pending",
+    "sourceAndJarGuardsRejectDirectJavaSound": true
+  },
+  "gitHubCiScope": "This local record is generated before publication of this revision; current remote results are available from the repository Actions page.",
+  "developmentTreeParityScope": "Production Java/resources match the separate development tree byte-for-byte; full development-harness execution evidence is recorded separately."
 }

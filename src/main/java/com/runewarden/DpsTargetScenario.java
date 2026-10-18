@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only */
+/* SPDX-License-Identifier: BSD-2-Clause */
 package com.runewarden;
 
 import java.util.HashMap;
@@ -53,47 +53,152 @@ final class DpsTargetScenario
         }
         if(t.defenceLevel==null||t.magicLevel==null)return t;
         int baseDef=t.defenceLevel,def=baseDef,magic=t.magicLevel,floor=defenceFloor(t);
-        if(i.accursed){def=Math.max(floor,def*17/20);magic=magic*17/20;}
-        else if(i.vulnerability)def=Math.max(floor,def*9/10);
-        for(int n=0;n<i.maul;n++)def=Math.max(floor,def-def*35/100);
-        for(int n=0;n<i.warhammer;n++)def=Math.max(floor,def-def*3/10);
-        def=Math.max(floor,def-i.arclight*(baseDef*(t.has("demon")?2:1)/20+1));
-        def=Math.max(floor,def-i.emberlight*(baseDef*(t.has("demon")?3:1)/20+1));
-        for(int n=0;n<i.tonalztic;n++)def=Math.max(floor,def-magic/8);
-        magic=Math.max(0,magic-i.seercull);
+        if(i.accursed){def=retainFraction(def,17,20,floor);magic=retainFraction(magic,17,20,0);}
+        else if(i.vulnerability)def=retainFraction(def,9,10,floor);
+        def=drainCurrentFraction(def,i.maul,35,100,floor);
+        def=drainCurrentFraction(def,i.warhammer,3,10,floor);
+        int arclightDrain=baseDef*(t.has("demon")?2:1)/20+1;
+        int emberlightDrain=baseDef*(t.has("demon")?3:1)/20+1;
+        def=drainAmount(def,i.arclight*arclightDrain,floor);
+        def=drainAmount(def,i.emberlight*emberlightDrain,floor);
+        def=drainRepeatedAmount(def,i.tonalztic,magic/8,floor);
+        magic=drainAmount(magic,i.seercull,0);
         if(i.bgs>def&&floor==0)
         {
             // Full BGS propagation needs Strength/Attack levels, absent from the compact target catalogue.
             t.unsupportedReason="BGS overflow needs full target stats; clear the BGS scenario and enter final Defence/Magic levels manually";
         }
-        def=Math.max(floor,def-i.bgs);
+        def=drainAmount(def,i.bgs,floor);
         t.defenceLevel=def;t.magicLevel=magic;
         if(i.ayak>0&&t.defenceBonuses!=null)
-        {t.defenceBonuses=new HashMap<>(t.defenceBonuses);int bonus=t.defenceBonuses.getOrDefault("magic",0);if(bonus>0)t.defenceBonuses.put("magic",Math.max(0,bonus-i.ayak));}
+        {t.defenceBonuses=new HashMap<>(t.defenceBonuses);int bonus=t.defenceBonuses.getOrDefault("magic",0);if(bonus>0)t.defenceBonuses.put("magic",drainAmount(bonus,i.ayak,0));}
         if(i.maul+i.warhammer+i.arclight+i.emberlight+i.tonalztic+i.bgs+i.seercull+i.ayak>0||i.vulnerability||i.accursed)
             t.scenarioDescription=(t.scenarioDescription==null?"":t.scenarioDescription+"\n")+"Manual successful drains · Defence " + def + " (floor " + floor + ") · Magic " + magic;
         return t;
     }
     static int defenceFloor(DpsReferenceCatalog.Target t)
     {
-        switch(t.id)
+        int low=0,high=DEFENCE_RULES.length-1;
+        while(low<=high)
         {
-            case 12223:case 12224:case 12228:case 12425:case 12426:case 13656:return t.defenceLevel==null?0:t.defenceLevel;
-            case 10833:case 10834:case 10835:case 8372:case 8373:case 8374:case 10850:case 10851:case 10852:case 10830:case 10831:case 10832:case 8369:case 8370:case 8371:case 10847:case 10848:case 10849:return t.defenceLevel==null?0:t.defenceLevel;
-            case 8387:case 8388:case 10867:case 10868:return 100;
-            case 378:case 9425:case 9426:case 9427:case 9428:case 9429:case 9430:case 9431:case 9432:case 9433:case 9460:case 377:case 9423:case 9416:case 9417:case 9418:case 9419:case 9420:case 9421:case 9422:case 9424:case 11153:case 11154:case 11155:return 120;
-            case 11789:case 11790:case 11791:case 11792:case 11793:case 11794:case 11795:case 11796:return 70;
-            case 11778:case 11779:case 11780:return 60;
-            case 11721:return 60;
-            case 11719:return 60;
-            case 11730:case 11732:case 11733:return 50;
-            case 11761:case 11763:case 11762:case 11764:return 120;
-            case 11751:case 11750:case 11752:return 60;
-            case 11278:case 11279:case 11280:case 11281:case 11282:return 250;
-            case 13668:return 90;
-            case 14009:case 14010:case 14013:case 14017:case 14014:return 120;
-            case 14176:return 145;
-            default:return 0;
+            int middle=(low+high)>>>1;
+            int[] rule=DEFENCE_RULES[middle];
+            if(t.id<rule[0])high=middle-1;
+            else if(t.id>rule[0])low=middle+1;
+            else return rule[1]==DRAIN_IMMUNE?(t.defenceLevel==null?0:t.defenceLevel):rule[1];
         }
+        return 0;
     }
+
+    private static int drainAmount(int level,int amount,int floor)
+    {return Math.max(floor,level-amount);}
+
+    private static int retainFraction(int level,int numerator,int denominator,int floor)
+    {return Math.max(floor,level*numerator/denominator);}
+
+    private static int drainRepeatedAmount(int level,int successes,int amount,int floor)
+    {
+        for(int remaining=successes;remaining>0;--remaining)level=drainAmount(level,amount,floor);
+        return level;
+    }
+
+    private static int drainCurrentFraction(int level,int successes,int numerator,int denominator,int floor)
+    {
+        for(int remaining=successes;remaining>0;--remaining)
+            level=drainAmount(level,level*numerator/denominator,floor);
+        return level;
+    }
+
+    private static final int DRAIN_IMMUNE=-1;
+
+    /** Gameplay facts, sorted by NPC ID. Immunity keeps the scenario's starting Defence. */
+    private static final int[][] DEFENCE_RULES={
+        {377,120},
+        {378,120},
+        {8369,DRAIN_IMMUNE},
+        {8370,DRAIN_IMMUNE},
+        {8371,DRAIN_IMMUNE},
+        {8372,DRAIN_IMMUNE},
+        {8373,DRAIN_IMMUNE},
+        {8374,DRAIN_IMMUNE},
+        {8387,100},
+        {8388,100},
+        {9416,120},
+        {9417,120},
+        {9418,120},
+        {9419,120},
+        {9420,120},
+        {9421,120},
+        {9422,120},
+        {9423,120},
+        {9424,120},
+        {9425,120},
+        {9426,120},
+        {9427,120},
+        {9428,120},
+        {9429,120},
+        {9430,120},
+        {9431,120},
+        {9432,120},
+        {9433,120},
+        {9460,120},
+        {10830,DRAIN_IMMUNE},
+        {10831,DRAIN_IMMUNE},
+        {10832,DRAIN_IMMUNE},
+        {10833,DRAIN_IMMUNE},
+        {10834,DRAIN_IMMUNE},
+        {10835,DRAIN_IMMUNE},
+        {10847,DRAIN_IMMUNE},
+        {10848,DRAIN_IMMUNE},
+        {10849,DRAIN_IMMUNE},
+        {10850,DRAIN_IMMUNE},
+        {10851,DRAIN_IMMUNE},
+        {10852,DRAIN_IMMUNE},
+        {10867,100},
+        {10868,100},
+        {11153,120},
+        {11154,120},
+        {11155,120},
+        {11278,250},
+        {11279,250},
+        {11280,250},
+        {11281,250},
+        {11282,250},
+        {11719,60},
+        {11721,60},
+        {11730,50},
+        {11732,50},
+        {11733,50},
+        {11750,60},
+        {11751,60},
+        {11752,60},
+        {11761,120},
+        {11762,120},
+        {11763,120},
+        {11764,120},
+        {11778,60},
+        {11779,60},
+        {11780,60},
+        {11789,70},
+        {11790,70},
+        {11791,70},
+        {11792,70},
+        {11793,70},
+        {11794,70},
+        {11795,70},
+        {11796,70},
+        {12223,DRAIN_IMMUNE},
+        {12224,DRAIN_IMMUNE},
+        {12228,DRAIN_IMMUNE},
+        {12425,DRAIN_IMMUNE},
+        {12426,DRAIN_IMMUNE},
+        {13656,DRAIN_IMMUNE},
+        {13668,90},
+        {14009,120},
+        {14010,120},
+        {14013,120},
+        {14014,120},
+        {14017,120},
+        {14176,145}
+    };
 }

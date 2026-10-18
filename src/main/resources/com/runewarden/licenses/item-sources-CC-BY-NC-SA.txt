@@ -10,7 +10,7 @@ https://creativecommons.org/licenses/by-nc-sa/3.0/
 
 The derived JSON retains that license. Data has been reformatted into source, quantity,
 rarity and shop fields; prose walkthroughs and article text are not reproduced.
-This separate data license does not change the GPL-3.0-only license of plugin Java code.
+This separate data license does not change the BSD-2-Clause license of plugin Java code.
 
 Additional item-acquisition.json and item-acquisition/*.json facts:
 OSRS Wiki contributors, acquisition export snapshot 7 October 2026, CC BY-NC-SA 3.0.

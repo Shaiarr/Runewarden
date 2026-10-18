@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only
+/* SPDX-License-Identifier: BSD-2-Clause
  * Native mappings/logic adapted from pinned BSD sources.
  * Full notices: com/runewarden/licenses/sailing-coach-BSD.txt.
  */

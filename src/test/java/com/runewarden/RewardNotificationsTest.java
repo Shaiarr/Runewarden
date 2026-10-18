@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only */
+/* SPDX-License-Identifier: BSD-2-Clause */
 package com.runewarden;
 
 import com.google.gson.Gson;
@@ -247,7 +247,7 @@ public class RewardNotificationsTest
             doAnswer(call -> { ((Runnable) call.getArgument(0)).run(); return null; }).when(thread).invokeLater(any(Runnable.class));
             Gson gson = new Gson(); settings = new RewardSettings(config, gson);
             popup = new RewardPopupOverlay(client, items, clock::get, false, 6, 100);
-            RewardSoundboard sound = new RewardSoundboard(mock(ScheduledExecutorService.class));
+            RewardSoundboard sound = new RewardSoundboard(mock(ScheduledExecutorService.class), mock(net.runelite.client.audio.AudioPlayer.class));
             controller = new RewardNotifications(client, thread, config, items, new RarityCatalog(gson), settings, popup, sound);
             controller.start(); controller.onGameTick();
         }

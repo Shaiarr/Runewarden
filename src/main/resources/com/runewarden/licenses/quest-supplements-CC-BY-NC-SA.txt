@@ -3,6 +3,6 @@ Quest guide supplements
 Learning the Ropes / Tutorial Island and The Frozen Door: adapted from Old School RuneScape Wiki contributors under Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported. Learning the Ropes source accessed through Gleason's Gielinor Guide. Source URLs and pinned revision are stored with each guide. Adaptation: reordered and condensed as interactive checklists. The original authors do not endorse Runewarden.
 https://creativecommons.org/licenses/by-nc-sa/3.0/
 
-Into the Tombs: original Runewarden raid-objective checklist, GPL-3.0-only. See source URLs in that guide for the raid strategies.
+Into the Tombs: original Runewarden raid-objective checklist, BSD-2-Clause. See source URLs in that guide for the raid strategies.
 
 These data licenses are separate from the original application code license.

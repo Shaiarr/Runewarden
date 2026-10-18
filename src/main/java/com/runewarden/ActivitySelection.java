@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only */
+/* SPDX-License-Identifier: BSD-2-Clause */
 package com.runewarden;
 import java.util.function.Consumer;
 /** Guide following prepares a session without replacing a more precise linked training choice. */

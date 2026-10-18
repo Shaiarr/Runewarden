@@ -1,6 +1,6 @@
 MINIGAME COACH SOURCE NOTICES
 
-Original Runewarden observation/readout code is GPL-3.0-only.
+Original Runewarden observation/readout code is BSD-2-Clause.
 The following upstream data and native-state interpretations are used with attribution.
 
 Mahogany Homes: TheStonedTurtle/Mahogany-Homes @ 7ec419eed23dbd8f3970c40bbe0b03d5b951a0dd

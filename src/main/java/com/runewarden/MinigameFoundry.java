@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only
+/* SPDX-License-Identifier: BSD-2-Clause
  * Mould score data and observed tool constants derived from Easy Giants' Foundry.
  * Copyright (c) 2019 dillydill123 and project contributors; BSD-2-Clause.
  * Full upstream license: docs/licenses/easy-giants-foundry.txt.

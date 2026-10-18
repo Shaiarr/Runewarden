@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only
+/* SPDX-License-Identifier: BSD-2-Clause
  * Model/animation recolouring adapted from RuneLite 1.13.2 Lootbeam.java.
  * Copyright (c) 2021, Trevor <https://github.com/Trevor159>.
  * Full BSD-2-Clause notice: resources/com/runewarden/licenses/ground-loot-beams-BSD-2-Clause.txt.

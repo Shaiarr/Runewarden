@@ -2,7 +2,7 @@
 
 Published by **Shai-arr**. Runewarden is community maintained. Contributions and forks are welcome, with no guaranteed maintenance schedule or support response time. Independent testing is welcome. Propose a focused change with its purpose, relevant evidence and any remaining limitations.
 
-Use JDK 17 and Python 3. Production classes target Java 11; RuneLite and dependency lockfiles are pinned. This repository builds the plugin, without a launcher, client distribution or bundled companion plugins. Original code is GPL-3.0-only. Preserve third-party notices and data licenses; attribution alone does not permit redistribution of unrelated copyrighted text or sounds.
+Use JDK 17 and Python 3. Production classes target Java 11; RuneLite and dependency lockfiles are pinned. This repository builds the plugin, without a launcher, client distribution or bundled companion plugins. Original code is BSD-2-Clause. Preserve third-party notices and data licenses; attribution alone does not permit redistribution of unrelated copyrighted text or sounds.
 
 Run these checks before proposing a change:
 

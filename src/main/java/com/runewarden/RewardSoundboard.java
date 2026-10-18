@@ -1,24 +1,21 @@
-/* SPDX-License-Identifier: GPL-3.0-only */
+/* SPDX-License-Identifier: BSD-2-Clause */
 package com.runewarden;
 
-import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.LongSupplier;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+import net.runelite.client.audio.AudioPlayer;
 
-/** Original bundled reward sounds, one active clip and one replaceable pending request. */
+/** Bundled reward sounds through RuneLite's audio service, with one replaceable pending request. */
 @Singleton
 public final class RewardSoundboard
 {
@@ -51,29 +48,23 @@ public final class RewardSoundboard
         @Override public String toString() { return displayName; }
     }
 
-    @FunctionalInterface
-    interface ClipFactory
-    { Clip open(AudioFormat format, byte[] samples) throws Exception; }
-
     static final class Decoded
     {
-        final AudioFormat format;
-        final byte[] samples;
-        Decoded(AudioFormat format, byte[] samples) { this.format = format; this.samples = samples; }
+        final byte[] wave, samples;
+        Decoded(byte[] wave) { this.wave = wave; this.samples = Arrays.copyOfRange(wave, 44, wave.length); }
     }
 
     private static final int MAX_PCM_BYTES = 132_300; // Three seconds of mono 22,050 Hz, 16-bit PCM.
+    private static final long PLAYBACK_GUARD_MILLIS = 250;
     private static final long RETRY_DELAY_MILLIS = 30_000;
     private final ScheduledExecutorService executor;
-    private final ClipFactory clips;
+    private final AudioPlayer audio;
     private final LongSupplier clock;
     private final Map<SoundPreset, Decoded> decoded = new EnumMap<>(SoundPreset.class);
     private volatile Availability availability = Availability.UNKNOWN;
     private SoundRequest pending;
-    private Clip active;
-    private ScheduledFuture<?> cleanup;
-    private boolean workerScheduled;
-    private long generation, retryAfter;
+    private boolean workerScheduled, pacing;
+    private long generation, retryAfter, nextPlaybackAt;
 
     private static final class SoundRequest
     {
@@ -84,13 +75,13 @@ public final class RewardSoundboard
         { this.preset = preset; this.volume = volume; this.generation = generation; }
     }
 
-    @Inject public RewardSoundboard(ScheduledExecutorService executor)
-    { this(executor, RewardSoundboard::openClip, System::currentTimeMillis); }
+    @Inject public RewardSoundboard(ScheduledExecutorService executor, AudioPlayer audio)
+    { this(executor, audio, () -> TimeUnit.NANOSECONDS.toMillis(System.nanoTime())); }
 
-    RewardSoundboard(ScheduledExecutorService executor, ClipFactory clips, LongSupplier clock)
-    { this.executor = executor; this.clips = clips; this.clock = clock; }
+    RewardSoundboard(ScheduledExecutorService executor, AudioPlayer audio, LongSupplier clock)
+    { this.executor = executor; this.audio = audio; this.clock = clock; }
 
-    /** Never reads resources, opens a mixer or waits on the caller's thread. */
+    /** Never reads resources or calls the audio service on the caller's thread. */
     public void play(SoundPreset preset, int volume)
     {
         if (preset == null || preset == SoundPreset.SILENT || volume <= 0) { stop(); return; }
@@ -102,20 +93,27 @@ public final class RewardSoundboard
         }
     }
 
-    /** Cancels pending playback and closes the current clip on the audio worker. */
+    /**
+     * Cancels pending playback. RuneLite's public player has no stop handle:
+     * a sound already submitted finishes naturally. Bundled audio is at most 1.45 seconds long.
+     */
     public synchronized void stop()
     {
         ++generation; pending = null;
-        scheduleWorker();
     }
 
     public Availability availability() { return availability; }
 
     private void scheduleWorker()
     {
-        if (workerScheduled) return;
+        if (workerScheduled || pending == null) return;
         workerScheduled = true;
-        try { executor.execute(this::drain); }
+        long delay = pacing ? Math.max(0, nextPlaybackAt - clock.getAsLong()) : 0;
+        try
+        {
+            if (delay > 0) executor.schedule(this::drain, delay, TimeUnit.MILLISECONDS);
+            else executor.execute(this::drain);
+        }
         catch (java.util.concurrent.RejectedExecutionException ignored) { workerScheduled = false; pending = null; }
     }
 
@@ -124,108 +122,99 @@ public final class RewardSoundboard
         while (true)
         {
             SoundRequest request;
-            Clip previous;
-            long workGeneration;
             synchronized (this)
             {
+                if (pending == null) { workerScheduled = false; return; }
+                if (availability == Availability.UNAVAILABLE && clock.getAsLong() < retryAfter)
+                { pending = null; workerScheduled = false; return; }
+                if (pacing && clock.getAsLong() < nextPlaybackAt)
+                { workerScheduled = false; scheduleWorker(); return; }
+                pacing = false;
                 request = pending; pending = null;
-                workGeneration = generation;
-                previous = active; active = null;
-                if (cleanup != null) { cleanup.cancel(false); cleanup = null; }
             }
-            close(previous);
-            if (request != null)
+            try
             {
-                Clip opened = null;
-                try
+                Decoded sound = decoded.get(request.preset);
+                if (sound == null) { sound = load(request.preset); decoded.put(request.preset, sound); }
+                byte[] wave = waveAtVolume(sound, request.volume);
+                synchronized (this) { if (request.generation != generation) continue; }
+                // AudioPlayer owns the device and native playback lifetime. Software gain
+                // keeps our volume independent of device-specific native gain controls.
+                try (InputStream stream = new ByteArrayInputStream(wave)) { audio.play(stream, 0f); }
+                synchronized (this)
                 {
-                    Decoded sound = decoded.get(request.preset);
-                    if (sound == null) { sound = load(request.preset); decoded.put(request.preset, sound); }
-                    opened = clips.open(sound.format, scaleVolume(sound.samples, request.volume));
-                    boolean accepted;
-                    synchronized (this) { accepted = request.generation == generation; }
-                    if (accepted)
-                    {
-                        opened.start();
-                        synchronized (this)
-                        {
-                            if (request.generation == generation)
-                            {
-                                active = opened;
-                                availability = Availability.AVAILABLE; retryAfter = 0;
-                                Clip playing = opened;
-                                cleanup = executor.schedule(() -> finish(request.generation, playing),
-                                    request.preset.durationMillis() + 250L, TimeUnit.MILLISECONDS);
-                                opened = null; // Ownership moved to active/finish.
-                            }
-                        }
-                    }
+                    availability = Availability.AVAILABLE; retryAfter = 0;
+                    // The public service cannot cut off a previous sound. Serialize our
+                    // short presets by their duration plus a guard, retaining only the newest waiting request.
+                    pacing = true;
+                    nextPlaybackAt = clock.getAsLong() + request.preset.durationMillis() + PLAYBACK_GUARD_MILLIS;
+                    workerScheduled = false; scheduleWorker();
                 }
-                catch (Exception error)
-                {
-                    synchronized (this)
-                    {
-                        if (active == opened) active = null;
-                        availability = Availability.UNAVAILABLE; retryAfter = clock.getAsLong() + RETRY_DELAY_MILLIS;
-                    }
-                }
-                finally { close(opened); }
+                return;
             }
-            synchronized (this)
+            catch (Exception error)
             {
-                if (pending == null && generation == workGeneration) { workerScheduled = false; return; }
+                synchronized (this)
+                { availability = Availability.UNAVAILABLE; retryAfter = clock.getAsLong() + RETRY_DELAY_MILLIS; }
             }
         }
     }
 
-    private void finish(long expected, Clip playing)
-    {
-        synchronized (this)
-        {
-            if (generation != expected || active != playing) return;
-            active = null; cleanup = null;
-        }
-        close(playing);
-    }
-
-    private static Clip openClip(AudioFormat format, byte[] samples) throws Exception
-    {
-        Clip clip = AudioSystem.getClip();
-        try { clip.open(format, samples, 0, samples.length); return clip; }
-        catch (Exception error) { close(clip); throw error; }
-    }
-
-    private static void close(Clip clip)
-    {
-        if (clip == null) return;
-        try { clip.stop(); } catch (RuntimeException ignored) { }
-        try { clip.close(); } catch (RuntimeException ignored) { }
-    }
-
-    static Decoded load(SoundPreset preset) throws Exception
+    static Decoded load(SoundPreset preset) throws IOException
     {
         if (preset == SoundPreset.SILENT) throw new IllegalArgumentException("Silent has no audio resource");
         InputStream resource = RewardSoundboard.class.getResourceAsStream(preset.resourcePath());
         if (resource == null) throw new IOException("Missing bundled reward sound");
-        try (InputStream buffered = new BufferedInputStream(resource);
-             AudioInputStream audio = AudioSystem.getAudioInputStream(buffered))
+        try (InputStream input = resource)
         {
-            AudioFormat format = audio.getFormat();
-            if (format.getEncoding() != AudioFormat.Encoding.PCM_SIGNED || format.getSampleSizeInBits() != 16
-                || format.getChannels() != 1 || format.isBigEndian() || format.getSampleRate() != 22_050)
-                throw new IOException("Unexpected bundled sound format");
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             byte[] buffer = new byte[4096]; int read;
-            while ((read = audio.read(buffer)) != -1)
+            while ((read = input.read(buffer)) != -1)
             {
-                if (bytes.size() + read > MAX_PCM_BYTES) throw new IOException("Bundled sound exceeds size limit");
+                if (bytes.size() + read > MAX_PCM_BYTES + 44) throw new IOException("Bundled sound exceeds size limit");
                 bytes.write(buffer, 0, read);
             }
-            return new Decoded(format, bytes.toByteArray());
+            return decode(bytes.toByteArray());
         }
     }
 
-    /** Software gain also works when a native output provider has no MASTER_GAIN control. */
+    /** Accept only the deterministic PCM WAV format produced by our bundled generator. */
+    static Decoded decode(byte[] wave) throws IOException
+    {
+        if (wave.length < 44 || wave.length > MAX_PCM_BYTES + 44
+            || !tag(wave, 0, "RIFF") || !tag(wave, 8, "WAVE") || !tag(wave, 12, "fmt ") || !tag(wave, 36, "data")
+            || number(wave, 4, 4) != wave.length - 8 || number(wave, 16, 4) != 16
+            || number(wave, 20, 2) != 1 || number(wave, 22, 2) != 1
+            || number(wave, 24, 4) != 22_050 || number(wave, 28, 4) != 44_100
+            || number(wave, 32, 2) != 2 || number(wave, 34, 2) != 16
+            || number(wave, 40, 4) != wave.length - 44 || (wave.length - 44) % 2 != 0)
+            throw new IOException("Unexpected bundled sound format");
+        return new Decoded(wave);
+    }
+
+    private static boolean tag(byte[] bytes, int offset, String expected)
+    {
+        for (int i = 0; i < expected.length(); i++) if (bytes[offset + i] != expected.charAt(i)) return false;
+        return true;
+    }
+
+    private static long number(byte[] bytes, int offset, int count)
+    {
+        long value = 0;
+        for (int i = 0; i < count; i++) value |= (long) (bytes[offset + i] & 255) << (8 * i);
+        return value;
+    }
+
+    static byte[] waveAtVolume(Decoded sound, int volume)
+    {
+        if (volume >= 100) return sound.wave;
+        byte[] wave = sound.wave.clone();
+        byte[] scaled = scaleVolume(sound.samples, volume);
+        System.arraycopy(scaled, 0, wave, 44, scaled.length);
+        return wave;
+    }
+
+    /** Software gain does not depend on the native output provider's gain support. */
     static byte[] scaleVolume(byte[] source, int volume)
     {
         int bounded = Math.max(0, Math.min(100, volume));

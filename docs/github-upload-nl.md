@@ -2,7 +2,7 @@
 
 Dit pakket bevat de broncode voor de **plugin**. Er wordt geen aangepaste RuneLite-client of Java-runtime gepubliceerd. Het pakket heeft geen Git-geschiedenis of ingestelde remote; je maakt je eigen openbare repository. De bestaande `LICENSE`, auteursvermeldingen en bronvermeldingen blijven behouden. Versie **0.9.6** gebruikt de configuratienaam **runewarden**. Eerdere testinstellingen worden niet automatisch overgenomen; bewaar een geëxporteerde back-up voor een eventuele handmatige migratie. Import van oudere back-ups is niet gegarandeerd.
 
-Uitgever: **Shai-arr**. De oorspronkelijke Runewarden-code valt onder **GPL-3.0-only**; code en gegevens van derden behouden hun eigen licenties, auteursvermeldingen en bronvermeldingen. Runewarden wordt door de gemeenschap onderhouden. Bijdragen en forks zijn welkom; er is geen gegarandeerd onderhoudsschema of vaste reactietijd voor ondersteuning.
+Uitgever: **Shai-arr**. De oorspronkelijke Runewarden-code valt onder **BSD-2-Clause**; code en gegevens van derden behouden hun eigen licenties, auteursvermeldingen en bronvermeldingen. Runewarden wordt door de gemeenschap onderhouden. Bijdragen en forks zijn welkom; er is geen gegarandeerd onderhoudsschema of vaste reactietijd voor ondersteuning.
 
 ## Aanbevolen: GitHub Desktop
 

@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-3.0-only
+/* SPDX-License-Identifier: BSD-2-Clause
  * Customer bounds, material ranges and native message formats derived from
  * TheStonedTurtle/Mahogany-Homes (BSD-2-Clause). See docs/licenses/mahogany-homes.txt.
  */

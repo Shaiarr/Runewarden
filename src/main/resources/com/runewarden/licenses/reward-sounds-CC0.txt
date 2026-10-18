@@ -10,4 +10,4 @@ the public domain under CC0 1.0 Universal:
 https://creativecommons.org/publicdomain/zero/1.0/
 
 The deterministic generator is tools/generate-reward-sounds.py.
-The generator program and plugin Java code retain their GPL-3.0-only license.
+The generator program and plugin Java code retain their BSD-2-Clause license.

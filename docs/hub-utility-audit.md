@@ -1031,7 +1031,7 @@ Active installs: 103,951. [Pinned upstream documentation](https://raw.githubuser
 - **partial** — Current selected spell, prayers and boosted-level modifiers.
 - **partial** — Complete special-attack max-hit coverage.
 
-Inspected Runewarden files: `DpsCalculator.java`, `DpsSpecialAttack.java`, `DpsTargetScenario.java`, `CurrentMaxHit.java`, `CombatCalculatorTool.java`, `ConsumablePreviewOverlay.java`.
+Inspected Runewarden files: `DpsCalculator.java`, `CombatRollProbability.java`, `DpsSpecialAttack.java`, `DpsTargetScenario.java`, `CurrentMaxHit.java`, `CombatCalculatorTool.java`, `ConsumablePreviewOverlay.java`.
 
 ### 69. Larva Tracker
 
@@ -1263,7 +1263,7 @@ Active installs: 82,429. [Pinned upstream documentation](https://raw.githubuserc
 - **missing** — Party special-attack outcome synchronization.
 - **missing** — Live target-defence and vulnerability infobox.
 
-Inspected Runewarden files: `DpsCalculator.java`, `DpsSpecialAttack.java`, `DpsTargetScenario.java`, `CurrentMaxHit.java`, `CombatCalculatorTool.java`, `ConsumablePreviewOverlay.java`.
+Inspected Runewarden files: `DpsCalculator.java`, `CombatRollProbability.java`, `DpsSpecialAttack.java`, `DpsTargetScenario.java`, `CurrentMaxHit.java`, `CombatCalculatorTool.java`, `ConsumablePreviewOverlay.java`.
 
 ### 92. Time Tracking Reminder
 
@@ -1455,7 +1455,7 @@ Active installs: 69,419. [Pinned upstream documentation](https://raw.githubuserc
 
 ConsumablePreviewOverlay is an effect preview, not a live cooldown tracker.
 
-Inspected Runewarden files: `DpsCalculator.java`, `DpsSpecialAttack.java`, `DpsTargetScenario.java`, `CurrentMaxHit.java`, `CombatCalculatorTool.java`, `ConsumablePreviewOverlay.java`.
+Inspected Runewarden files: `DpsCalculator.java`, `CombatRollProbability.java`, `DpsSpecialAttack.java`, `DpsTargetScenario.java`, `CurrentMaxHit.java`, `CombatCalculatorTool.java`, `ConsumablePreviewOverlay.java`.
 
 ### 110. Loot Logger
 
@@ -1847,7 +1847,7 @@ Active installs: 51,085. [Pinned upstream documentation](https://raw.githubuserc
 
 Simulated loadout DPS is not an observed damage counter.
 
-Inspected Runewarden files: `DpsCalculator.java`, `DpsSpecialAttack.java`, `DpsTargetScenario.java`, `CurrentMaxHit.java`, `CombatCalculatorTool.java`, `ConsumablePreviewOverlay.java`.
+Inspected Runewarden files: `DpsCalculator.java`, `CombatRollProbability.java`, `DpsSpecialAttack.java`, `DpsTargetScenario.java`, `CurrentMaxHit.java`, `CombatCalculatorTool.java`, `ConsumablePreviewOverlay.java`.
 
 ### 149. Companion Pet Plugin
 

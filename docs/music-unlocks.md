@@ -80,7 +80,7 @@ The dataset records retrieval date, source revision/commit and hash in
 `music-unlocks.json`. Wiki facts retain their CC BY-NC-SA 3.0 attribution; route
 metadata retains its BSD 2-Clause notice. Both notices are bundled in
 `com/runewarden/licenses/`. No audio files are included. Java implementation is
-GPL-3.0-only.
+BSD-2-Clause.
 
 ## Validation
 

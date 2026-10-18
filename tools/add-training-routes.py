@@ -17,7 +17,7 @@ def add(key,title,sk,level,attention,page,revision,prepare,loop,milestones,needs
  req=[skill(sk,level)]+(needs or [])
  sections=[]
  for section,steps in [('prepare',prepare),('method',loop),('milestones',milestones)]:sections.append(dict(id=section,title=section.title(),steps=[dict(id=f'{section}:{i+1}',text=text) for i,text in enumerate(steps)]))
- entries.append(dict(id=mid,title=title,category='training',skill=sk,subtitle=attention,source=f'https://oldschool.runescape.wiki/w/{page}?oldid={revision}',sourceUrls=[f'https://oldschool.runescape.wiki/w/{page}?oldid={revision}'],license='GPL-3.0-only',requirements=[r['label'] for r in req],requirementDetails=req,optionalUnlocks=[],items=items or [],recommended=recommended or [],sections=sections))
+ entries.append(dict(id=mid,title=title,category='training',skill=sk,subtitle=attention,source=f'https://oldschool.runescape.wiki/w/{page}?oldid={revision}',sourceUrls=[f'https://oldschool.runescape.wiki/w/{page}?oldid={revision}'],license='BSD-2-Clause',requirements=[r['label'] for r in req],requirementDetails=req,optionalUnlocks=[],items=items or [],recommended=recommended or [],sections=sections))
  known.add(mid)
 H=15366559;M=15373229
 add('feldip-weasels','Feldip weasel tracking','hunter',9,'Feldip Hunter area · normal','Hunter_training',H,
