@@ -1,5 +1,11 @@
 # Changes
 
+## 0.10.3 — Separate farming timers
+
+- Group farming reminders by the actual patch type instead of RuneLite's combined Tree, Fruit Tree and Special tabs. Celastrus, Hespori, redwood, hardwood, spirit, calquat and crystal trees have independent timers and selections.
+- Preserve account-specific growth observations, native farming-clock alignment and the earliest/latest completion preference. A growing celastrus or redwood cannot replace the normal fruit-tree or tree timer.
+- Migrate existing timer selections once to the separate categories, preserving explicit empty selections and account isolation.
+
 ## 0.10.2 — Harvest runs and floating scene cards
 
 - Add a floating card and a pointer to the actual accessible Varlamore door.

@@ -1,4 +1,4 @@
-Runewarden HUD 0.10.2 - local test package
+Runewarden HUD 0.10.3 - local test package
 
 Extract the entire ZIP into a new folder. Keep lib/, the argument files and,
 when supplied, runtime/ together. Do not copy new JARs over an older package.
@@ -7,7 +7,7 @@ Windows: open Runewarden and double-click Start-Runewarden.bat.
 Verify-Runewarden.bat checks package hashes and required class/resources.
 The Windows x64 ZIP includes the unchanged pinned Temurin 17 runtime.
 Its matching source collection is delivered separately as
-runewarden-java-runtime-sources-0.10.2.zip. Keep both downloads available when
+runewarden-java-runtime-sources-0.10.3.zip. Keep both downloads available when
 redistributing the Windows package; the source ZIP is not needed to launch.
 The portable ZIP requires an installed Java 17 runtime.
 

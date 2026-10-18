@@ -13,8 +13,15 @@ import net.runelite.client.config.ConfigManager;
 /** Explicit profile-bound timer choices. A stale Swing action cannot change another account. */
 final class HarvestSelections
 {
-    static final String KEY = "harvestGroupsV1";
-    static final Set<String> GROUPS = Set.of("bird-house", "herb", "tree", "fruit-tree", "special", "flower", "allotment", "bush", "grape", "hops");
+    static final String KEY = "harvestGroupsV2", LEGACY_KEY = "harvestGroupsV1";
+    private static final Set<String> LEGACY_GROUPS=Set.of("bird-house","herb","tree","fruit-tree","special","flower","allotment","bush","grape","hops");
+    static final Set<String> GROUPS;
+    static
+    {
+        Set<String> groups=new LinkedHashSet<>(Set.of("bird-house","herb","flower","allotment","bush","grape","hops"));
+        for(FarmHarvestTimers.Group group:FarmHarvestTimers.GROUPS)groups.add(group.id);
+        GROUPS=Collections.unmodifiableSet(groups);
+    }
     private final ConfigManager config;
     private String profile;
     private long epoch,revision;
@@ -36,7 +43,20 @@ final class HarvestSelections
         {
             profile = nextProfile;
             epoch++; revision++;
-            chosen = parse(config.getConfiguration(RunewardenConfig.GROUP, nextProfile, KEY));
+            String value=config.getConfiguration(RunewardenConfig.GROUP,nextProfile,KEY);
+            chosen=parse(value,false);
+            if(value==null)
+            {
+                Set<String> previous=parse(config.getConfiguration(RunewardenConfig.GROUP,nextProfile,LEGACY_KEY),true);
+                if(previous!=null)
+                {
+                    Set<String> migrated=new LinkedHashSet<>(previous);migrated.remove("special");
+                    for(FarmHarvestTimers.Group group:FarmHarvestTimers.GROUPS)
+                        if(previous.contains(group.legacyGroup))migrated.add(group.id);
+                    chosen=Collections.unmodifiableSet(migrated);
+                    if(nextProfile.equals(config.getRSProfileKey()))save(migrated);
+                }
+            }
         }
         return session();
     }
@@ -50,7 +70,7 @@ final class HarvestSelections
         if (profile == null) return Collections.emptySet();
         if (chosen != null) return Collections.unmodifiableSet(new LinkedHashSet<>(chosen));
         Set<String> defaults = new LinkedHashSet<>();
-        for (HarvestClockTool.Harvest harvest : observations) if (harvest.observed()) defaults.add(harvest.id);
+        for (HarvestClockTool.Harvest harvest : observations) if (GROUPS.contains(harvest.id)&&harvest.observed()) defaults.add(harvest.id);
         return Collections.unmodifiableSet(defaults);
     }
 
@@ -98,7 +118,7 @@ final class HarvestSelections
         config.setConfiguration(RunewardenConfig.GROUP, profile, KEY, encoded.toString());
     }
 
-    private static Set<String> parse(String value)
+    private static Set<String> parse(String value,boolean legacy)
     {
         if (value == null) return null;
         try
@@ -108,7 +128,8 @@ final class HarvestSelections
             Set<String> result = new LinkedHashSet<>();
             JsonArray array = parsed.getAsJsonArray();
             for (JsonElement element : array)
-                if (element.isJsonPrimitive() && element.getAsJsonPrimitive().isString() && GROUPS.contains(element.getAsString()))
+                if (element.isJsonPrimitive() && element.getAsJsonPrimitive().isString() &&
+                    (legacy?LEGACY_GROUPS:GROUPS).contains(element.getAsString()))
                     result.add(element.getAsString());
             return Collections.unmodifiableSet(result);
         }

@@ -41,17 +41,19 @@ public class HarvestClockToolTest
         when(birds.getSummary()).thenReturn(SummaryState.COMPLETED);
         when(birds.getCompletionTime()).thenReturn(0L);
         HarvestClockTool.Reading reading = HarvestClockTool.readTrackers(farming, birds);
-        assertEquals(Tab.FARMING_TABS.length + 1, reading.harvests.size());
+        assertEquals(HarvestClockTool.PURE_TABS.length + 1, reading.harvests.size());
         assertEquals(1, reading.dueCount(1900));
         assertEquals("Bird houses", reading.firstDue(1900).name);
         assertEquals("Herb", reading.next(1900).name);
         assertEquals(2, reading.dueCount(2000));
         assertNull(reading.next(2000));
-        for (Tab tab : Tab.FARMING_TABS)
+        for (Tab tab : HarvestClockTool.PURE_TABS)
         {
             verify(farming).getSummary(tab);
             verify(farming).getCompletionTime(tab);
         }
+        for(Tab mixed:new Tab[]{Tab.TREE,Tab.FRUIT_TREE,Tab.SPECIAL})
+        {verify(farming,never()).getSummary(mixed);verify(farming,never()).getCompletionTime(mixed);}
         assertTrue(reading.harvests.get(1).estimated);
         assertFalse(reading.harvests.get(0).estimated);
         try { reading.harvests.clear(); fail("Harvest snapshots must be immutable"); }
@@ -90,16 +92,19 @@ public class HarvestClockToolTest
         assertEquals("Ready · observed", new HarvestClockTool.Harvest("Bird houses", SummaryState.COMPLETED, 0, false).status(4600));
     }
 
-    @Test public void harvestIconsUseTheSameItemIdsAsNativeTimeTrackingTabs()
+    @Test public void independentHarvestCategoriesUseActualNativeItemIcons()
     {
         HarvestClockTool tool = new HarvestClockTool(mock(Client.class), mock(ConfigManager.class),
             mock(PluginManager.class), mock(OverlayManager.class), mock(RunewardenConfig.class));
         ItemManager items = mock(ItemManager.class); tool.setItemManager(items);
         tool.icon("bird-house"); verify(items).getImage(Tab.BIRD_HOUSE.getItemID());
-        for (Tab tab : Tab.FARMING_TABS)
+        for (Tab tab : HarvestClockTool.PURE_TABS)
         {
-            tool.icon(HarvestClockTool.groupId(tab)); verify(items).getImage(tab.getItemID());
+            tool.icon(HarvestClockTool.groupId(tab)); verify(items,atLeastOnce()).getImage(tab.getItemID());
         }
+        for(FarmHarvestTimers.Group group:FarmHarvestTimers.GROUPS)
+        {tool.icon(group.id);verify(items,atLeastOnce()).getImage(group.iconId);}
+        assertNull(tool.icon("special"));
         assertNull(tool.icon("unrecognised-group"));
         verifyNoMoreInteractions(items);
     }

@@ -3,6 +3,6 @@ package com.runewarden;
 
 final class RunewardenVersion
 {
-    static final String VERSION = "0.10.2";
+    static final String VERSION = "0.10.3";
     private RunewardenVersion() { }
 }

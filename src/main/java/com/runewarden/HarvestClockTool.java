@@ -61,6 +61,8 @@ final class HarvestClockTool
     private final HarvestSelections selections;
     private final HarvestTimerWindows windows = new HarvestTimerWindows();
     private ItemManager items;
+    private FarmHarvestTimers farmTimers;
+    static final Tab[] PURE_TABS={Tab.HERB,Tab.FLOWER,Tab.ALLOTMENT,Tab.BUSH,Tab.GRAPE,Tab.HOPS};
     private volatile Observation observation = new Observation(Reading.empty("Log in to track harvests."), null);
     private static final class Observation
     {
@@ -92,6 +94,7 @@ final class HarvestClockTool
         overlay = new HarvestClockOverlay(this, config);
     }
     @Inject void setItemManager(ItemManager value) { items = value; }
+    @Inject void setFarmTimers(FarmHarvestTimers value) { farmTimers=value; }
     net.runelite.client.ui.overlay.Overlay overlay() { return overlay; }
     void setHudLocked(boolean locked) { overlay.setHudLocked(locked); }
     boolean started() { return started; }
@@ -259,8 +262,14 @@ final class HarvestClockTool
         Injector injector = nativePlugin.getInjector();
         if (injector == null) { observation = new Observation(Reading.empty("Time Tracking is starting."), null); return; }
         HarvestSelections.Session expected = selections.session();
-        Reading captured = readTrackers(injector.getInstance(FarmingTracker.class), injector.getInstance(BirdHouseTracker.class),
+        FarmingTracker nativeFarming=injector.getInstance(FarmingTracker.class);
+        Reading captured = readTrackers(nativeFarming, injector.getInstance(BirdHouseTracker.class),
             injector.getInstance(FarmingContractManager.class));
+        if(farmTimers!=null)
+        {
+            List<Harvest> groups=new ArrayList<>(captured.harvests);groups.addAll(farmTimers.read(nativeFarming,next));
+            captured=new Reading(captured.active,captured.canEnable,captured.message,groups,captured.contract);
+        }
         long now=Instant.now().getEpochSecond();
         List<BirdHouseReading> birds=readBirdHouses(manager,client,next,now);
         if (selections.isCurrent(expected))
@@ -271,22 +280,25 @@ final class HarvestClockTool
     {
         List<Harvest> result = new ArrayList<>();
         result.add(new Harvest("bird-house", "Bird houses", SummaryState.UNKNOWN, -1, false));
-        for (Tab tab : Tab.FARMING_TABS)
+        for (Tab tab : PURE_TABS)
             result.add(new Harvest(groupId(tab), tab.getName().replace(" Patches", ""), SummaryState.UNKNOWN, -1, true));
+        for(FarmHarvestTimers.Group group:FarmHarvestTimers.GROUPS)
+            result.add(new Harvest(group.id,group.name,SummaryState.UNKNOWN,-1,true));
         return result;
     }
     BufferedImage icon(String group)
     {
         if (items == null) return null;
         if ("bird-house".equals(group)) return items.getImage(Tab.BIRD_HOUSE.getItemID());
-        for (Tab tab : Tab.FARMING_TABS) if (groupId(tab).equals(group)) return items.getImage(tab.getItemID());
+        for (Tab tab : PURE_TABS) if (groupId(tab).equals(group)) return items.getImage(tab.getItemID());
+        for(FarmHarvestTimers.Group category:FarmHarvestTimers.GROUPS)if(category.id.equals(group))return items.getImage(category.iconId);
         return null;
     }
     static Reading readTrackers(FarmingTracker farming, BirdHouseTracker birds)
     {
         List<Harvest> result = new ArrayList<>();
         result.add(new Harvest("bird-house", "Bird houses", birds.getSummary(), birds.getCompletionTime(), false));
-        for (Tab tab : Tab.FARMING_TABS)
+        for (Tab tab : PURE_TABS)
             result.add(new Harvest(groupId(tab), tab.getName().replace(" Patches", ""), farming.getSummary(tab), farming.getCompletionTime(tab), true));
         return new Reading(true, false, "", result);
     }
