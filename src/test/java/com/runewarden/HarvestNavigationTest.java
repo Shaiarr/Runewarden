@@ -91,6 +91,52 @@ public class HarvestNavigationTest
         assertFalse(f.nav.routeAdvice("farm").answered);
     }
 
+    @Test public void anActiveFarmRouteCannotBeReplacedByAnAutomaticallyObservedHouse()
+    {
+        Fixture f=new Fixture();assertTrue(f.route());f.drain();long generation=f.nav.generation();
+        WorldPoint house=new WorldPoint(1668,3095,0);
+        for(int i=0;i<20;i++)
+        {
+            assertFalse(f.nav.routeAutomatic(HarvestNavigation.VARLAMORE,house,"Vacant house",f.nav.manualRevision()));
+            assertTrue(f.route());
+        }
+        assertEquals(generation,f.nav.generation());assertEquals(1,f.receiver.count("path"));
+        assertEquals(f.target,f.receiver.target);f.nav.clearOwned(HarvestNavigation.VARLAMORE);f.drain();
+        assertEquals(f.target,f.receiver.target);assertFalse(f.receiver.names().contains("clear"));
+    }
+
+    @Test public void stableHouseClaimDoesNotFloodAndReleaseLetsTheFarmResumeWithoutStaleCleanup()
+    {
+        Fixture f=new Fixture();WorldPoint house=new WorldPoint(1668,3095,0);long revision=f.nav.manualRevision();
+        assertTrue(f.nav.routeAutomatic(HarvestNavigation.VARLAMORE,house,"Vacant house",revision));f.drain();
+        long generation=f.nav.generation();
+        for(int i=0;i<20;i++)
+        {
+            assertTrue(f.nav.routeAutomatic(HarvestNavigation.VARLAMORE,house,"Vacant house",revision));
+            assertFalse(f.route());
+        }
+        assertEquals(generation,f.nav.generation());assertEquals(1,f.receiver.count("path"));
+        f.nav.clearOwned(HarvestNavigation.VARLAMORE);
+        assertTrue(f.route());f.drain();
+        assertEquals(f.target,f.receiver.target);assertEquals(2,f.receiver.count("path"));
+        assertFalse("Queued house cleanup must not clear the subsequent farm path",f.receiver.names().contains("clear"));
+        f.nav.clearOwned(HarvestNavigation.VARLAMORE);f.drain();assertEquals(f.target,f.receiver.target);
+    }
+
+    @Test public void aManualRouteAndWorldChangeInvalidateCapturedHouseRequests()
+    {
+        Fixture f=new Fixture();WorldPoint house=new WorldPoint(1668,3095,0);long revision=f.nav.manualRevision();
+        assertTrue(f.nav.routeAutomatic(HarvestNavigation.VARLAMORE,house,"Vacant house",revision));f.drain();
+        WorldPoint manual=new WorldPoint(3300,3300,0);
+        f.events.post(new PluginMessage("shortestpath","path",Map.of("target",manual)));
+        for(int i=0;i<20;i++)assertFalse(f.nav.routeAutomatic(HarvestNavigation.VARLAMORE,house,"Vacant house",revision));
+        f.nav.clearOwned(HarvestNavigation.VARLAMORE);f.drain();assertEquals(manual,f.receiver.target);
+        assertEquals(2,f.receiver.count("path"));assertFalse(f.receiver.names().contains("clear"));
+        long beforeHop=f.nav.manualRevision();f.nav.onGameStateChanged(GameState.HOPPING);
+        assertFalse(f.nav.routeAutomatic(HarvestNavigation.VARLAMORE,house,"Vacant house",beforeHop));
+        assertEquals(manual,f.receiver.target);
+    }
+
     @Test public void combatSuspendsAdviceAndResumesWithoutLeakingAnOldResult()
     {
         Fixture f=new Fixture();f.route();f.drain();String old=(String)f.receiver.first("query").getData().get("id");

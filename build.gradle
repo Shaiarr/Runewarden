@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'com.runewarden'
-version = '0.10.0'
+version = '0.10.1'
 
 repositories {
 	maven {
@@ -62,7 +62,7 @@ def suppliedRoutingJar = providers.gradleProperty('shortestPathJar')
 def suppliedRuntimeDir = providers.gradleProperty('runtimeDir')
 def suppliedRuntimeSources = providers.gradleProperty('runtimeSourceDir')
 def generatedLauncher = layout.buildDirectory.dir('generated/sources/launcher')
-def testPackageDir = layout.buildDirectory.dir('hud-test/Runewarden')
+def testPackageDir = layout.buildDirectory.dir("hud-test-${project.version}/Runewarden")
 
 sourceSets {
 	launcher {
@@ -175,8 +175,8 @@ tasks.register('prepareTestPackage', Sync) {
 	filteringCharset = 'UTF-8'
 	into testPackageDir
 	from(configurations.launcherRuntimeClasspath) { into 'lib' }
-	from(tasks.named('jar')) { into 'lib' }
-	from(tasks.named('launcherJar')) { into 'lib' }
+	from(tasks.named('jar').flatMap { it.archiveFile }) { into 'lib' }
+	from(tasks.named('launcherJar').flatMap { it.archiveFile }) { into 'lib' }
 	from('launcher-files')
 	from('README.md', 'icon.png', 'CONTRIBUTING.md', 'LICENSE', 'NOTICE')
 	from('DATA-SOURCES.md') {
@@ -256,12 +256,22 @@ tasks.register('verifyTestPackage', Exec) {
 }
 
 tasks.register('devTestZip', Zip) {
+	inputs.property('verifiedPackageFileSet', 1)
 	dependsOn tasks.named('verifyTestPackage')
 	if (suppliedRuntimeDir.isPresent()) dependsOn tasks.named('runtimeSourcesZip')
 	archiveFileName = "runewarden-hud-${project.version}-${suppliedRuntimeDir.isPresent() ? 'windows-x64' : 'portable'}.zip"
 	destinationDirectory = layout.buildDirectory.dir('distributions')
 	from(testPackageDir) { into 'Runewarden' }
-	eachFile { entry -> if (entry.name.endsWith('.sh')) entry.mode = 0755 }
+	Set<String> verifiedPaths
+	eachFile { entry ->
+		if (verifiedPaths == null) {
+			def metadata = new groovy.json.JsonSlurper().parse(new File(testPackageDir.get().asFile, 'package-manifest.json'))
+			verifiedPaths = metadata.files.collect { 'Runewarden/' + it.name }.toSet()
+			verifiedPaths.add('Runewarden/package-manifest.json')
+		}
+		if (!verifiedPaths.contains(entry.relativePath.pathString)) entry.exclude()
+		if (entry.name.endsWith('.sh')) entry.mode = 0755
+	}
 	preserveFileTimestamps = false
 	reproducibleFileOrder = true
 }

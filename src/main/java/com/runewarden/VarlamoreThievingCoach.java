@@ -56,8 +56,8 @@ final class VarlamoreThievingCoach
     static final class Preferences
     {
         int version=1,scalePercent=100;
-        boolean hud=true,radialTimers=true,labels=true,citizens=true,owners=true,doors=true,windows=true,furniture=true,bonus=true,compact;
-        Preferences copy(){Preferences p=new Preferences();p.scalePercent=scalePercent;p.hud=hud;p.radialTimers=radialTimers;p.labels=labels;p.citizens=citizens;p.owners=owners;p.doors=doors;p.windows=windows;p.furniture=furniture;p.bonus=bonus;p.compact=compact;return p;}
+        boolean hud=true,radialTimers=true,labels=true,citizens=true,owners=true,doors=true,windows=true,furniture=true,bonus=true,houseRoute=true,compact;
+        Preferences copy(){Preferences p=new Preferences();p.scalePercent=scalePercent;p.hud=hud;p.radialTimers=radialTimers;p.labels=labels;p.citizens=citizens;p.owners=owners;p.doors=doors;p.windows=windows;p.furniture=furniture;p.bonus=bonus;p.houseRoute=houseRoute;p.compact=compact;return p;}
     }
     static final class Target
     {
@@ -69,13 +69,20 @@ final class VarlamoreThievingCoach
         static final Snapshot EMPTY=new Snapshot(null,0,null,"","",List.of(),List.of(),List.of(),false,0,0,0);
         final String profile,title,objective;final int world,keys,valuables;final long tradeIn;
         final VarlamoreThievingState.House house;final List<String> facts;final List<VarlamoreThievingState.Window> timers;final List<Target> targets;final boolean active;
+        final VarlamoreThievingState.DistractionReading distraction;
+        final VarlamoreThievingState.House availableHouse;final String houseStatus;
         Snapshot(String profile,int world,VarlamoreThievingState.House house,String title,String objective,List<String> facts,List<VarlamoreThievingState.Window> timers,List<Target> targets,boolean active,int keys,int valuables,long tradeIn)
-        {this.profile=profile;this.world=world;this.house=house;this.title=title;this.objective=objective;this.facts=List.copyOf(facts);this.timers=List.copyOf(timers);this.targets=List.copyOf(targets);this.active=active;this.keys=keys;this.valuables=valuables;this.tradeIn=tradeIn;}
+        {this(profile,world,house,title,objective,facts,timers,targets,active,keys,valuables,tradeIn,VarlamoreThievingState.DistractionReading.EMPTY,null,"");}
+        Snapshot(String profile,int world,VarlamoreThievingState.House house,String title,String objective,List<String> facts,List<VarlamoreThievingState.Window> timers,List<Target> targets,boolean active,int keys,int valuables,long tradeIn,VarlamoreThievingState.DistractionReading distraction,VarlamoreThievingState.House availableHouse,String houseStatus)
+        {this.profile=profile;this.world=world;this.house=house;this.title=title;this.objective=objective;this.facts=List.copyOf(facts);this.timers=List.copyOf(timers);this.targets=List.copyOf(targets);this.active=active;this.keys=keys;this.valuables=valuables;this.tradeIn=tradeIn;this.distraction=distraction;this.availableHouse=availableHouse;this.houseStatus=houseStatus;}
     }
     private final Client client;private final ConfigManager config;private final RunewardenDataStore store;private final RunewardenConfig hudConfig;private final LongSupplier clock;
     private final VarlamoreThievingState state=new VarlamoreThievingState();
     private final Map<TileObject,WorldPoint> objects=new IdentityHashMap<>();
     private final Map<Integer,NPC> npcs=new LinkedHashMap<>();
+    private final Map<NPC,Boolean> citizenHistory=new IdentityHashMap<>();
+    private HarvestNavigation navigation;private volatile long routeRevision;
+    private VarlamoreThievingState.House routedHouse;
     private final VarlamoreThievingHudOverlay hud;private final VarlamoreThievingSceneOverlay scene;
     private volatile Preferences preferences=new Preferences();private volatile Snapshot reading=Snapshot.EMPTY;private volatile boolean started;
     private String profile;private int world=-1,previousValuables=-1;
@@ -86,16 +93,25 @@ final class VarlamoreThievingCoach
     VarlamoreThievingCoach(Client client,ConfigManager config,RunewardenDataStore store,RunewardenConfig hudConfig,LongSupplier clock)
     {this.client=client;this.config=config;this.store=store;this.hudConfig=hudConfig;this.clock=clock;hud=new VarlamoreThievingHudOverlay(client,this,hudConfig);scene=new VarlamoreThievingSceneOverlay(client,this);}
     void start(){started=true;clear();reloadPreferences();}
+    void setNavigation(HarvestNavigation navigation){this.navigation=navigation;}
     void reloadPreferences(){preferences=store.read(GROUP,null,KEY,1,Preferences.class,VarlamoreThievingCoach::validPreferences,Preferences::new);refreshLater();}
     void stop(){started=false;clear();}
-    void clear(){epoch++;reading=Snapshot.EMPTY;state.clear();objects.clear();npcs.clear();seeded=null;seededView=null;profile=null;world=-1;previousValuables=-1;refreshLater();}
+    void clear(){clearHouseRoute();epoch++;reading=Snapshot.EMPTY;state.clear();objects.clear();npcs.clear();citizenHistory.clear();seeded=null;seededView=null;profile=null;world=-1;previousValuables=-1;refreshLater();}
     void onSceneChanged(){clear();}
-    void onGameStateChanged(GameStateChanged event){if(event==null||event.getGameState()!=GameState.LOGGED_IN)clear();}
+    void onGameStateChanged(GameStateChanged event)
+    {
+        if(event!=null&&event.getGameState()==GameState.LOADING)resetScene();
+        else if(event==null||event.getGameState()!=GameState.LOGGED_IN)clear();
+    }
+    private void resetScene()
+    {clearHouseRoute();epoch++;reading=Snapshot.EMPTY;state.clearHouseObservations();objects.clear();npcs.clear();citizenHistory.clear();seeded=null;seededView=null;previousValuables=-1;}
+    private void clearHouseRoute(){if(navigation!=null)navigation.clearOwned(HarvestNavigation.VARLAMORE);routedHouse=null;}
     boolean started(){return started;}
     Preferences preferences(){return preferences;}
     Overlay hud(){return hud;}
     void setHudLocked(boolean locked){hud.setHudLocked(locked);}
     Overlay scene(){return scene;}
+    Overlay minimap(){return scene.minimap();}
     long now(){return clock.getAsLong();}
     Snapshot reading()
     {Snapshot current=reading;return started&&current.profile!=null&&client.getGameState()==GameState.LOGGED_IN&&Objects.equals(current.profile,config.getRSProfileKey())&&current.world==client.getWorld()?current:Snapshot.EMPTY;}
@@ -105,11 +121,12 @@ final class VarlamoreThievingCoach
     {
         String current=config.getRSProfileKey();int currentWorld=client.getWorld();
         if(!Objects.equals(profile,current)||world!=currentWorld)
-        {clear();profile=current;world=currentWorld;}
+        {clear();profile=current;world=currentWorld;routeRevision=navigation==null?0:navigation.manualRevision();}
     }
     void onGameTick()
     {
-        if(!ready()){if(reading.active||seeded!=null)clear();return;}
+        if(client.getGameState()==GameState.LOADING)return;
+        if(!ready()){if(profile!=null||reading.active||seeded!=null)clear();return;}
         scope();seedScene();long now=now();WorldPoint player=client.getLocalPlayer().getWorldLocation();
         VarlamoreThievingState.House house=VarlamoreThievingState.House.at(player);state.enter(house);
         EnumMap<VarlamoreThievingState.House,VarlamoreThievingState.DoorState> doorStates=new EnumMap<>(VarlamoreThievingState.House.class);
@@ -123,14 +140,20 @@ final class VarlamoreThievingCoach
         for(VarlamoreThievingState.House h:VarlamoreThievingState.House.values())state.observeDoor(h,doorStates.getOrDefault(h,VarlamoreThievingState.DoorState.UNKNOWN),now);
         refreshNpcs();int valuables=count(VALUABLES),keys=count(KEYS);if(previousValuables>=0)state.observeValuables(previousValuables,valuables,now);previousValuables=valuables;
         List<Target> targets=new ArrayList<>();List<String> lines=new ArrayList<>();List<VarlamoreThievingState.Window> timers=new ArrayList<>();
-        boolean distracted=false,ownerNear=false,ownerSeen=false;int citizens=0;
+        boolean distracted=false,ownerNear=false,ownerSeen=false,witnessedTransition=false;int citizens=0;
+        Map<NPC,Boolean> nextCitizens=new IdentityHashMap<>();
+        EnumMap<VarlamoreThievingState.House,Boolean> nearbyOwners=new EnumMap<>(VarlamoreThievingState.House.class);
         for(NPC npc:npcs.values())
         {
-            WorldPoint at=npc.getWorldLocation();if(at==null||player.distanceTo(at)>48)continue;
+            WorldPoint at=npc.getWorldLocation();if(at==null)continue;
+            VarlamoreThievingState.House loadedOwner=VarlamoreThievingState.House.owner(npc.getId());
+            if(loadedOwner!=null)nearbyOwners.merge(loadedOwner,at.distanceTo2D(loadedOwner.door)<5,(a,b)->a||b);
+            if(player.distanceTo(at)>48)continue;
             if(citizen(npc.getId()))
             {
                 citizens++;boolean isDistracted=distracted(npc);distracted|=isDistracted;
-                if(preferences.citizens)targets.add(new Target(null,npc,isDistracted?"DISTRACTED":"Wealthy citizen",isDistracted?READY:HudStyle.GOLD,isDistracted?state.distraction(now):null));
+                witnessedTransition|=isDistracted&&Boolean.FALSE.equals(citizenHistory.get(npc));
+                nextCitizens.put(npc,isDistracted);
             }
             VarlamoreThievingState.House owner=VarlamoreThievingState.House.owner(npc.getId());
             if(owner!=null)
@@ -140,6 +163,26 @@ final class VarlamoreThievingCoach
                 if(preferences.owners)targets.add(new Target(null,npc,owner.name+(close?" · near entrance":""),close?WARNING:HudStyle.GOLD,null));
             }
         }
+        state.observeDistraction(distracted,witnessedTransition,now);
+        citizenHistory.clear();citizenHistory.putAll(nextCitizens);
+        if(preferences.citizens)for(Map.Entry<NPC,Boolean> entry:nextCitizens.entrySet())
+            targets.add(new Target(null,entry.getKey(),entry.getValue()?"DISTRACTED":"Wealthy citizen",entry.getValue()?READY:HudStyle.GOLD,entry.getValue()?state.distraction(now):null));
+        VarlamoreThievingState.House locked=null;int lockedCount=0;
+        for(VarlamoreThievingState.House h:VarlamoreThievingState.House.values())
+            if(state.door(h)==VarlamoreThievingState.DoorState.LOCKED){locked=h;lockedCount++;}
+        VarlamoreThievingState.House availableHouse=lockedCount==1&&!nearbyOwners.getOrDefault(locked,false)?locked:null;
+        String houseStatus=lockedCount>1?"Checking house availability":locked==null?"No vacant house observed":availableHouse==null?locked.name+" · owner near entrance":availableHouse.name+"'s house · READY";
+        if(availableHouse!=null&&house==availableHouse)houseStatus="Inside "+availableHouse.name+"'s house";
+        else if(availableHouse!=null&&keys<1)houseStatus=availableHouse.name+"'s house · house key required";
+        else if(availableHouse!=null&&client.getRealSkillLevel(Skill.THIEVING)<50)houseStatus=availableHouse.name+"'s house · requires 50 Thieving";
+        if(routedHouse!=null&&routedHouse!=availableHouse)clearHouseRoute();
+        if(preferences.houseRoute&&house==null&&availableHouse!=null&&keys>0&&client.getRealSkillLevel(Skill.THIEVING)>=50&&navigation!=null)
+        {
+            boolean routed=navigation.routeAutomatic(HarvestNavigation.VARLAMORE,availableHouse.exterior,availableHouse.name+"'s house",routeRevision);
+            if(routed)routedHouse=availableHouse;
+            houseStatus+="\n"+(routed?"Shortest Path · entrance":"Route paused or unavailable");
+        }
+        else clearHouseRoute();
         WorldPoint nativeBonus=house!=null&&client.getHintArrowType()==HintArrowType.COORDINATE?client.getHintArrowPoint():null;
         boolean bonusFound=false,exitFound=false,anyFurniture=false;
         for(Map.Entry<TileObject,WorldPoint> entry:objects.entrySet())
@@ -147,7 +190,7 @@ final class VarlamoreThievingCoach
             TileObject object=entry.getKey();WorldPoint point=entry.getValue();if(player.distanceTo(point)>40)continue;
             int id=resolvedId(object);VarlamoreThievingState.House door=VarlamoreThievingState.House.doorAt(point);
             if(door!=null&&(id==51998||id==51999)&&preferences.doors)
-                targets.add(new Target(object,null,id==51998?(keys>0?"Locked · key available":"Locked · need house key"):"Owner's entrance",id==51998?READY:WARNING,null));
+                targets.add(new Target(object,null,door==availableHouse?(keys>0?"ENTER · "+door.name:door.name+" · key required"):id==51998?door.name+" · wait for owner":"Owner's entrance",door==availableHouse?READY:WARNING,null));
             if(house!=null&&house.near(point,4)&&(id==52000||id==52001||object.getId()==52998))
             {exitFound=true;if(preferences.windows)targets.add(new Target(object,null,"Exit window",state.returnWarning()||ownerNear?WARNING:READY,null));}
             if(house!=null&&house.contains(point)&&furniture(id))
@@ -178,12 +221,12 @@ final class VarlamoreThievingCoach
         else
         {
             objective=distracted?"DISTRACTED · pickpocket the highlighted citizen":keys>0?"Pickpocket citizens or find a vacant house":"Collect house keys from wealthy citizens";
-            VarlamoreThievingState.Window active=state.distraction(now),next=state.nextDistraction(now);
-            if(distracted){if(active!=null)timers.add(active);lines.add(active==null?"Distraction · remaining unknown":"Distraction · "+active.remaining(now));}
-            if(next!=null){timers.add(next);lines.add("Next distraction · "+next.remaining(now));}
+            VarlamoreThievingState.Window activeTimer=state.distraction(now),next=state.nextDistraction(now);
+            if(distracted&&activeTimer!=null)timers.add(activeTimer);
+            if(next!=null)timers.add(next);
         }
-        boolean active=house!=null||citizens>0||!targets.isEmpty();
-        reading=active?new Snapshot(profile,world,house,title,objective,lines,timers,targets,true,keys,valuables,value):Snapshot.EMPTY;
+        boolean active=house!=null||citizens>0||lockedCount>0||!targets.isEmpty();
+        reading=active?new Snapshot(profile,world,house,title,objective,lines,timers,targets,true,keys,valuables,value,state.distractionReading(now),availableHouse,houseStatus):Snapshot.EMPTY;
         hud.setHudLocked(hudConfig.hudLocked());if(panel!=null&&panel.isShowing())refreshLater();
     }
     static boolean citizen(int id){return id>=13302&&id<=13305;}
@@ -199,7 +242,7 @@ final class VarlamoreThievingCoach
     {
         WorldView view=client.getTopLevelWorldView();if(view==null||view.getScene()==null)return;Scene scene=view.getScene();
         if(view==seededView&&scene==seeded&&view.getBaseX()==baseX&&view.getBaseY()==baseY&&view.getPlane()==plane)return;
-        if(seeded!=null){state.clear();previousValuables=-1;}
+        if(seeded!=null){state.clearHouseObservations();citizenHistory.clear();previousValuables=-1;}
         objects.clear();seededView=view;seeded=scene;baseX=view.getBaseX();baseY=view.getBaseY();plane=view.getPlane();
         Tile[][][] tiles=scene.getTiles();if(tiles==null||plane<0||plane>=tiles.length||tiles[plane]==null)return;
         for(Tile[] row:tiles[plane])if(row!=null)for(Tile tile:row)if(tile!=null)
@@ -244,14 +287,14 @@ final class VarlamoreThievingCoach
     }
     private static boolean validPreferences(Preferences p){return p!=null&&p.version==1&&p.scalePercent>=70&&p.scalePercent<=150;}
     private void update(Consumer<Preferences> action)
-    {if(!started||refreshing)return;Preferences next=preferences.copy();action.accept(next);if(validPreferences(next)&&store.write(GROUP,null,KEY,1,next))preferences=next;refreshLater();}
+    {if(!started||refreshing)return;Preferences next=preferences.copy();action.accept(next);if(validPreferences(next)&&store.write(GROUP,null,KEY,1,next)){if(next.houseRoute&&!preferences.houseRoute&&navigation!=null)routeRevision=navigation.manualRevision();preferences=next;}refreshLater();}
     JPanel createPanel()
     {
         if(panel!=null)return panel;panel=SidebarUi.column();panel.add(SidebarUi.heading("VARLAMORE THIEVING"));
         status=SidebarUi.label("");facts=SidebarUi.label("");panel.add(status);panel.add(facts);
         JPanel options=SidebarUi.section("DISPLAY");panel.add(options);
         choice(options,"hud","Show activity HUD",p->p.hud);choice(options,"radialTimers","Circular timers",p->p.radialTimers);choice(options,"labels","Scene labels",p->p.labels);
-        choice(options,"citizens","Citizen highlights",p->p.citizens);choice(options,"owners","House owner highlights",p->p.owners);choice(options,"doors","House entrances",p->p.doors);choice(options,"windows","Escape windows",p->p.windows);choice(options,"furniture","Searchable furniture",p->p.furniture);choice(options,"bonus","Bonus furniture",p->p.bonus);choice(options,"compact","Compact HUD",p->p.compact);
+        choice(options,"citizens","Citizen highlights",p->p.citizens);choice(options,"owners","House owner highlights",p->p.owners);choice(options,"doors","House entrances",p->p.doors);choice(options,"houseRoute","Automatic house route",p->p.houseRoute);choice(options,"windows","Escape windows",p->p.windows);choice(options,"furniture","Searchable furniture",p->p.furniture);choice(options,"bonus","Bonus furniture",p->p.bonus);choice(options,"compact","Compact HUD",p->p.compact);
         options.add(SidebarUi.label("HUD scale"));scale=new JSlider(70,150,100);scale.setName("varlamoreThievingScale");scale.setOpaque(false);scale.setMaximumSize(new Dimension(Integer.MAX_VALUE,30));scale.addChangeListener(e->{if(!scale.getValueIsAdjusting())update(p->p.scalePercent=scale.getValue());});options.add(scale);
         refreshPanel();return panel;
     }
@@ -259,13 +302,13 @@ final class VarlamoreThievingCoach
     private void choice(JPanel parent,String key,String label,Flag flag)
     {
         JCheckBox box=new JCheckBox(label);box.setName("varlamoreThieving"+key);box.setOpaque(false);box.setForeground(SidebarUi.TEXT);box.setFont(GuideText.FONT);box.setBorder(javax.swing.BorderFactory.createEmptyBorder(4,0,4,0));
-        box.addActionListener(e->update(p->{boolean value=box.isSelected();switch(key){case "hud":p.hud=value;break;case "radialTimers":p.radialTimers=value;break;case "labels":p.labels=value;break;case "citizens":p.citizens=value;break;case "owners":p.owners=value;break;case "doors":p.doors=value;break;case "windows":p.windows=value;break;case "furniture":p.furniture=value;break;case "bonus":p.bonus=value;break;case "compact":p.compact=value;break;default:break;}}));
+        box.addActionListener(e->update(p->{boolean value=box.isSelected();switch(key){case "hud":p.hud=value;break;case "radialTimers":p.radialTimers=value;break;case "labels":p.labels=value;break;case "citizens":p.citizens=value;break;case "owners":p.owners=value;break;case "doors":p.doors=value;break;case "houseRoute":p.houseRoute=value;break;case "windows":p.windows=value;break;case "furniture":p.furniture=value;break;case "bonus":p.bonus=value;break;case "compact":p.compact=value;break;default:break;}}));
         box.putClientProperty("flag",flag);controls.put(key,box);parent.add(box);
     }
     private void refreshLater(){if(panel==null)return;long expected=epoch;SwingUtilities.invokeLater(()->{if(expected==epoch)refreshPanel();});}
     private void refreshPanel()
     {
-        if(panel==null)return;refreshing=true;try{Snapshot current=reading();status.setText(current.active?current.title+"\n"+current.objective:"No Varlamore thieving activity");facts.setText(String.join("\n",current.facts));
+        if(panel==null)return;refreshing=true;try{Snapshot current=reading();status.setText(current.active?current.title+"\n"+current.objective:"No Varlamore thieving activity");List<String> details=new ArrayList<>();if(current.active){long now=now();if(current.distraction.active){details.add("Distracted for · "+current.distraction.elapsed(now));details.add("Time left · "+current.distraction.left(now));}details.add("Next distraction · "+current.distraction.nextText(now));details.add(current.houseStatus);}details.addAll(current.facts);facts.setText(String.join("\n",details));
             for(JCheckBox control:controls.values()){control.setSelected(((Flag)control.getClientProperty("flag")).value(preferences));control.setEnabled(started);}scale.setValue(preferences.scalePercent);scale.setEnabled(started);panel.revalidate();panel.repaint();}finally{refreshing=false;}
     }
     int observedCount(){return objects.size();}

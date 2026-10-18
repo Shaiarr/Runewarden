@@ -20,3 +20,5 @@ Retained source-level facts also have explicit notices:
 The broader prototype's guide, quest, encounter, Slayer, DPS/monster/equipment, minigame, world-hopper and reward datasets/assets are absent. No executable reference code is downloaded by the running plugin.
 
 When changing data, retain source revisions, license terms and preparation notes. Inspect the source and data changes before regenerating `docs/data-manifest.json` with `python tools/validate_bundle.py --write`; validation consumes the checked-in resources directly. Unknown native observations must remain unknown rather than becoming invented completion or timing facts.
+
+Varlamore timing was rechecked against the Wiki raw pages on 2026-10-18. Distractions occur simultaneously at the three locations in randomized 84–99 second start-to-start cycles and last up to24 seconds. Native NPC transitions or the native game message anchor a witnessed start. Mid-cycle first sightings display lower/upper bounds; no exact start is inferred. House entrances derive from the pinned native house bounds and are checked against the supplied Shortest Path collision map in companion integration tests.

@@ -1,5 +1,11 @@
 # Changes
 
+## 0.10.1 — Varlamore timing and house routing
+
+- Show distracted elapsed time, bounded remaining time and a live range until the next distraction. Detect observed native transitions even when the chat message was missed.
+- Identify the unique observed vacant house, mark its entrance and minimap position, and automatically send its exterior destination to Shortest Path. Respect existing activity routes and manual destinations.
+- Keep the Windows rendering compatibility fix in the separate test launcher and enforce it in package verification.
+
 ## 0.10.0 — HUD core
 
 - Focus Runewarden on configurable live HUDs, timers and compact session tracking, with a black, white and gold style.

@@ -21,10 +21,11 @@ import net.runelite.client.events.PluginMessage;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginManager;
 
-/** Owned farm destinations over public events. The separately installed Shortest Path computes all routes. */
+/** Owned activity destinations over public events. The separately installed Shortest Path computes all routes. */
 @Singleton
 final class HarvestNavigation
 {
+    static final String VARLAMORE="varlamore";
     private static final String NAMESPACE="shortestpath",COMPANION="shortestpath.ShortestPathPlugin";
     private final Client client;private final EventBus events;private final PluginManager plugins;
     private final ClientThread thread;private final ConfigManager config;private final PohTravelCapabilities house;
@@ -97,6 +98,8 @@ final class HarvestNavigation
         bindProfile();
         if(expectedManualRev!=manualRevision||routeOwner==null||routeOwner.isBlank()||routeOwner.length()>120
             ||!valid(point)||!canTravel()||profile==null||!available())return false;
+        // Keep the current activity's claim until it releases it; farm and thieving ticks cannot steal each other's path.
+        if(owner!=null&&!Objects.equals(owner,routeOwner))return false;
         if(Objects.equals(owner,routeOwner)&&Objects.equals(target,point))return true;
         cancelCleanup();epoch++;owner=routeOwner;target=point;
         attempts=0;dirty=false;suspended=false;send();return true;

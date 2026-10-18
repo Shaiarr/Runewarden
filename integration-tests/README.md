@@ -4,7 +4,7 @@ The normal `./gradlew test` task tests Runewarden without downloading or buildin
 
 Two retained suites require the real, separately supplied Shortest Path implementation:
 
-- `HarvestShortestPathContractTest`: three contracts exercise native walking/tablet selection, a declared house plus carried Construction cape to Catherby, and preservation of a manually replaced route during farm cleanup.
+- `HarvestShortestPathContractTest`: five contracts exercise native walking/tablet selection, a declared house plus carried Construction cape to Catherby, preservation of a manually replaced route during farm cleanup, safe farm/house route arbitration, and real collision-map walking paths to all three Varlamore house entrances.
 - `PohTravelCapabilitiesTest`: seven contracts cover native declarations, observed house facilities, relevant inventory revisions, character isolation and the actual upstream portal enum/serialization.
 
 Run them separately with the recorded unmodified companion JAR:

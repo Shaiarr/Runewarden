@@ -1,8 +1,8 @@
 {
-  "version": "0.10.0",
+  "version": "0.10.1",
   "scope": "hud-core",
-  "unitTests": 343,
-  "realShortestPathIntegrationTests": 10,
+  "unitTests": 369,
+  "realShortestPathIntegrationTests": 12,
   "pythonGuardTests": 13,
   "failures": 0,
   "codeBudget": {
@@ -11,10 +11,10 @@
     "scope": "Production Java only, comments excluded; strings retained. Resources, tests and development launcher excluded.",
     "tokenizerVersion": "0.14.0",
     "files": 64,
-    "sourceBytes": 578019,
+    "sourceBytes": 592840,
     "tokens": {
-      "cl100k_base": 129092,
-      "o200k_base": 131681
+      "cl100k_base": 132357,
+      "o200k_base": 134997
     },
     "largestFiles": [
       {
@@ -31,9 +31,9 @@
       },
       {
         "file": "src/main/java/com/runewarden/VarlamoreThievingCoach.java",
-        "bytes": 22590,
-        "cl100k_base": 5339,
-        "o200k_base": 5477
+        "bytes": 27299,
+        "cl100k_base": 6417,
+        "o200k_base": 6576
       },
       {
         "file": "src/main/java/com/runewarden/HudSettingsTool.java",
@@ -85,28 +85,32 @@
   "packageVerifiedFiles": 465,
   "liveGameplayTested": false,
   "hubApproved": false,
-  "artifacts": [
-    {
-      "file": "runewarden-0.10.0.jar",
-      "bytes": 501829,
-      "sha256": "799b213f611c707d85b79b72369fba07adeca482f252f7e839396b32f372e91a"
-    },
-    {
-      "file": "runewarden-hud-0.10.0-windows-x64.zip",
-      "bytes": 73913469,
-      "sha256": "31f0165e94b4ac9e7ede474ba77b53a9edcc76306648e2929f8996d23d61f87b"
-    },
-    {
-      "file": "runewarden-java-runtime-sources-0.10.0.zip",
-      "bytes": 105582669,
-      "sha256": "953a002d9b6896000a8143bb4f115871a45441c0f8cfce67cba6420cf81b4749"
-    }
-  ],
+  "varlamore": {
+    "observedTransitionFallback": true,
+    "midCycleBounds": true,
+    "threeHouseEntrancesReachedInRealPathfinder": true,
+    "ownedRouteCleanupAndManualOverrideTested": true
+  },
   "windowsRenderingCompatibility": {
     "java2dDirect3d": false,
     "java2dOpenGl": false,
-    "launcherGuard": true,
-    "missingOptionRejected": true,
-    "hardwareVisualRetest": false
-  }
+    "launcherGuard": true
+  },
+  "artifacts": [
+    {
+      "file": "runewarden-0.10.1.jar",
+      "bytes": 510557,
+      "sha256": "fb30799f563c08baf2eb5391a3b83f81b15f46d26d00cda91a818924affde0df"
+    },
+    {
+      "file": "runewarden-hud-0.10.1-windows-x64.zip",
+      "bytes": 73922232,
+      "sha256": "08950b1b77d942cb991803b80f3e4da0787c18be8f3c40cab17aec2919ffadd0"
+    },
+    {
+      "file": "runewarden-java-runtime-sources-0.10.1.zip",
+      "bytes": 105582670,
+      "sha256": "52441105fd1de68ddb0f85806074a1ce58e8b373a339f1d6da3e0c5723c4597b"
+    }
+  ]
 }

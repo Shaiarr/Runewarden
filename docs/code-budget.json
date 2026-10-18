@@ -4,10 +4,10 @@
   "scope": "Production Java only, comments excluded; strings retained. Resources, tests and development launcher excluded.",
   "tokenizerVersion": "0.14.0",
   "files": 64,
-  "sourceBytes": 578019,
+  "sourceBytes": 592840,
   "tokens": {
-    "cl100k_base": 129092,
-    "o200k_base": 131681
+    "cl100k_base": 132357,
+    "o200k_base": 134997
   },
   "largestFiles": [
     {
@@ -24,9 +24,9 @@
     },
     {
       "file": "src/main/java/com/runewarden/VarlamoreThievingCoach.java",
-      "bytes": 22590,
-      "cl100k_base": 5339,
-      "o200k_base": 5477
+      "bytes": 27299,
+      "cl100k_base": 6417,
+      "o200k_base": 6576
     },
     {
       "file": "src/main/java/com/runewarden/HudSettingsTool.java",

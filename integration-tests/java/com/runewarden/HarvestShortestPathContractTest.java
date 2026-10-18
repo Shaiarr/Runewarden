@@ -100,6 +100,64 @@ public class HarvestShortestPathContractTest
         finally{f.close();}
     }
 
+    @Test public void farmAndHouseClaimsShareOneNativeSearchAndReleaseOnlyTheirOwnRoute() throws Exception
+    {
+        Fixture f=new Fixture();
+        try
+        {
+            f.start();long revision=f.nav.manualRevision();
+            assertTrue(f.nav.routeAutomatic("farm",f.destination,"Farm",revision));
+            f.until(()->f.nav.routeAdvice("farm").answered);ActiveSearch farm=f.receiver.getActiveSearch();
+            WorldPoint entrance=new WorldPoint(3223,3218,0);
+            for(int i=0;i<20;i++)assertFalse(f.nav.routeAutomatic(HarvestNavigation.VARLAMORE,entrance,"Vacant house",revision));
+            assertSame("An automatic house observation must leave the active farm search intact",farm,f.receiver.getActiveSearch());
+            f.nav.clearOwned("farm");f.drain();assertNull(f.receiver.getActiveSearch());
+            assertTrue(f.nav.routeAutomatic(HarvestNavigation.VARLAMORE,entrance,"Vacant house",revision));
+            f.until(()->f.nav.routeAdvice(HarvestNavigation.VARLAMORE).answered);ActiveSearch house=f.receiver.getActiveSearch();
+            assertTrue(house.getResult().isReached());
+            for(int i=0;i<20;i++)
+            {
+                assertTrue(f.nav.routeAutomatic(HarvestNavigation.VARLAMORE,entrance,"Vacant house",revision));
+                assertFalse(f.nav.routeAutomatic("farm",f.destination,"Farm",revision));
+            }
+            assertSame("A stable house must keep one native search",house,f.receiver.getActiveSearch());
+            f.nav.clearOwned("farm");f.drain();assertSame(house,f.receiver.getActiveSearch());
+            f.nav.clearOwned(HarvestNavigation.VARLAMORE);f.drain();assertNull(f.receiver.getActiveSearch());
+            assertTrue(f.nav.routeAutomatic("farm",f.destination,"Farm",revision));
+            f.until(()->f.nav.routeAdvice("farm").answered);assertTrue(f.receiver.getActiveSearch().getResult().isReached());
+            verify(f.config,never()).setConfiguration(eq("shortestpath"),anyString(),any(Object.class));
+        }
+        finally{f.close();}
+    }
+
+    @Test public void allThreeObservedVarlamoreHouseEntrancesAreReachableFromThePublicStreet() throws Exception
+    {
+        Fixture f=new Fixture();
+        try
+        {
+            WorldPoint street=new WorldPoint(1680,3105,0);
+            when(f.player.getWorldLocation()).thenReturn(street);f.start();
+            WorldPoint[] endpoints={new WorldPoint(1668,3095,0),new WorldPoint(1636,3104,0),new WorldPoint(1630,3121,0)};
+            VarlamoreThievingState.House[] houses=VarlamoreThievingState.House.values();
+            for(int i=0;i<houses.length;i++)
+            {
+                VarlamoreThievingState.House house=houses[i];WorldPoint entrance=endpoints[i];
+                assertEquals(house.name+" exterior tile",entrance,house.exterior);
+                assertTrue(f.nav.routeAutomatic(HarvestNavigation.VARLAMORE,entrance,house.name+" entrance",f.nav.manualRevision()));
+                f.until(()->f.nav.routeAdvice(HarvestNavigation.VARLAMORE).answered);
+                ActiveSearch route=f.receiver.getActiveSearch();assertNotNull(route);
+                assertTrue(house.name+" must be reachable using the companion's collision map",route.getResult().isReached());
+                assertEquals(street,WorldPointUtil.unpackWorldPoint(route.getStart()));
+                assertEquals(entrance,WorldPointUtil.unpackWorldPoint(route.getResult().getClosestReachedPoint()));
+                List<PathStep> steps=route.getPath();assertFalse(house.name+" walking path",steps.isEmpty());
+                assertEquals(entrance,WorldPointUtil.unpackWorldPoint(steps.get(steps.size()-1).getPackedPosition()));
+                assertTrue(house.name+" must use the public walking route",steps.stream().allMatch(step->step.getTransport()==null));
+            }
+            verify(f.config,never()).setConfiguration(eq("shortestpath"),anyString(),any(Object.class));
+        }
+        finally{f.close();}
+    }
+
     public static final class Subscriber
     {
         private final HarvestNavigation nav;Subscriber(HarvestNavigation nav){this.nav=nav;}

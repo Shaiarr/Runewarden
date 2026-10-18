@@ -3,3 +3,5 @@ https://oldschool.runescape.wiki/w/Stealing_valuables
 https://oldschool.runescape.wiki/w/Wealthy_citizen
 https://creativecommons.org/licenses/by-nc-sa/3.0/
 Raw wikitext retrieved 2026-10-17; retrieval-dated because API revision metadata was unavailable. Derived ranges: distraction84–99s cycles, up to24s active; container50–60s; bonus~7s; house owner return180–190s.
+
+Rechecked direct primary raw pages 2026-10-18: cycles are simultaneous at all three locations, randomized 84–99s start-to-start; active duration up to24s. Initial mid-cycle observations expose bounds, not a claimed exact start. Vacant house identification uses the observed locked door and excludes an owner within five tiles of that entrance.

@@ -89,11 +89,13 @@ public final class RunewardenPlugin extends Plugin
         FieldStatusOverlay effectHud = (FieldStatusOverlay) effects.overlays().get(0);
         register("field-effects", effectHud, effectHud::setHudLocked);
         overlays.add(thieving.scene());
+        overlays.add(thieving.minimap());
         overlays.add(effects.overlays().get(1));
         overlays.add(tooltips); overlays.add(hover);
         settings.prepareForOverlayRegistration();
         overlays.forEach(overlayManager::add);
         farms.setNavigation(travel);
+        thieving.setNavigation(travel);
         harvest.setOpenAction(() -> open("Timers"));
         harvest.setRunGroupSupport(FarmRunsTool::supportsGroup);
         harvest.setOpenRunAction(group -> { if (farms.openGroup(group)) open("Harvest runs"); });
