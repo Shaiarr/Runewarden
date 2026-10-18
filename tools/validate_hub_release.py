@@ -24,13 +24,13 @@ def validate(root):
     for path in production.rglob('*.java'):
         text = code(path)
         for label, pattern in rules.items():
-            if re.search(pattern, text): failures.append(f'{path.relative_to(root)}: {label}')
+            if re.search(pattern, text): failures.append(f'{path.relative_to(root).as_posix()}: {label}')
         # RuneLite exposes these APIs for an explicitly requested world change. Only
         # the manually operated hopper owns them; its intent/lifecycle guards have
         # producer regressions. Combat, activity and timer modules may never hop.
         if path != production / 'com/runewarden/WorldHopperTool.java' and re.search(
             r'\.(?:hopToWorld|changeWorld)\s*\(', text):
-            failures.append(f'{path.relative_to(root)}: world hopping outside the manual hopper')
+            failures.append(f'{path.relative_to(root).as_posix()}: world hopping outside the manual hopper')
 
     owned = production / 'com/runewarden'
     wave = code(owned / 'WaveExportTool.java')

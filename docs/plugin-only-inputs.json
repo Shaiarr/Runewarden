@@ -790,6 +790,6 @@
     "tools/test_quest_stage_parser.py": "7fca504bf0cfbd5c0f961782b7366d3c0665737c2f9ee91e107c22ea7be351a8",
     "tools/test_release_gate.py": "a966dc2ec1dc67dedc0fd8ac513dfef318b4be43ce267fbf502a95bf0cfba405",
     "tools/validate_bundle.py": "a88f639e1a83798ee7d6fbe459dffe5688c389b11e9d35871dd845f8eb26fdc6",
-    "tools/validate_hub_release.py": "9d0eb0e33691a9e8d124765ffdf8c8934d87bf8d54485c45ff99f653e8a1980b"
+    "tools/validate_hub_release.py": "704321531a5e0747040aa0fa1b3b6709945a6f8388e74934e0d8c816563f7f0b"
   }
 }
