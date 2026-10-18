@@ -43,10 +43,7 @@ final class HoverCardOverlay extends Overlay
 
     void submit(List<String> lines)
     {
-        List<Line> content = new ArrayList<>();
-        for (int i = 0; i < Math.min(40, lines.size()); i++)
-            if (lines.get(i) != null) content.add(new Line(lines.get(i), i == 0 ? GOLD : WHITE));
-        pending = content; pendingItemId = -1;
+        pending = colourLines(lines, 40); pendingItemId = -1;
     }
 
     void submitHtml(String html)
@@ -71,10 +68,15 @@ final class HoverCardOverlay extends Overlay
 
     void submitItemSupplement(int itemId, List<String> lines)
     {
+        supplement = colourLines(lines, 18); supplementItemId = itemId;
+    }
+
+    private static List<Line> colourLines(List<String> lines, int limit)
+    {
         List<Line> content = new ArrayList<>();
-        for (int i = 0; i < Math.min(18, lines.size()); i++)
+        for (int i = 0; i < Math.min(limit, lines.size()); i++)
             if (lines.get(i) != null) content.add(new Line(lines.get(i), i == 0 ? GOLD : WHITE));
-        supplement = content; supplementItemId = itemId;
+        return content;
     }
 
     void clear()
@@ -91,9 +93,7 @@ final class HoverCardOverlay extends Overlay
             { content = new ArrayList<>(pending); content.addAll(supplement); }
             else content = supplement;
         }
-        pending = Collections.emptyList();
-        supplement = Collections.emptyList(); pendingItemId = -1; supplementItemId = -1;
-        lastBounds = new Rectangle();
+        clear();
         Point mouse = client.getMouseCanvasPosition();
         int canvasWidth = client.getCanvasWidth(), canvasHeight = client.getCanvasHeight();
         if (content.isEmpty() || client.getGameState() != GameState.LOGGED_IN || client.isMenuOpen()

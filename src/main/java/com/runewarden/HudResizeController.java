@@ -215,9 +215,7 @@ final class HudResizeController implements MouseListener, KeyListener
         {
             if (valid(finished) && finished.scale != finished.style.scale)
             {
-                Map<String, HudPreferences.Style> styles = new LinkedHashMap<>();
-                try { styles.putAll(HudPreferences.decode(config.hudWidgetSettings())); }
-                catch (IllegalArgumentException ignored) { }
+                Map<String, HudPreferences.Style> styles = new LinkedHashMap<>(HudPreferences.safeDecode(config.hudWidgetSettings()));
                 styles.put(finished.hit.widget, finished.style.withScale(finished.scale));
                 String layout = HudPreferences.encode(styles);
                 manager.setConfiguration(RunewardenConfig.GROUP, "hudWidgetSettings", layout);

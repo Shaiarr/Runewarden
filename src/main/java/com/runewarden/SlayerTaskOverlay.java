@@ -31,9 +31,9 @@ final class SlayerTaskOverlay extends Overlay
             g.setFont(HudStyle.body(11));java.util.List<String> lines=wrap(g,view.itemNote,248);int height=126+lines.size()*14;
             g.clipRect(0,0,width,height);HudStyle.panel(g,width,height,style);g.setColor(style.accent);g.setFont(HudStyle.label(11));g.drawString("SLAYER",10,18);
             BufferedImage icon=items==null?null:items.getImage(view.iconId);if(icon!=null)g.drawImage(icon,10,26,30,28,null);
-            g.setColor(style.text);g.setFont(HudStyle.label(13));g.drawString(fit(g,view.name,210),46,39);
+            g.setColor(style.text);g.setFont(HudStyle.label(13));g.drawString(HudStyle.fit(g,view.name,210),46,39);
             g.setFont(HudStyle.body(12));g.drawString(view.counts(),46,56);
-            g.setColor(style.muted);g.setFont(HudStyle.body(11));g.drawString(fit(g,view.area(),248),10,76);
+            g.setColor(style.muted);g.setFont(HudStyle.body(11));g.drawString(HudStyle.fit(g,view.area(),248),10,76);
             g.drawString("Points balance "+view.points,10,95);String streak=view.streakLabel+" "+view.streak;
             g.drawString(streak,10,111);
             int y=134;for(String line:lines){g.drawString(line,10,y);y+=14;}
@@ -47,6 +47,4 @@ final class SlayerTaskOverlay extends Overlay
         for(String word:text.split(" ")){if(!line.isEmpty()&&g.getFontMetrics().stringWidth(line+" "+word)>width){lines.add(line);line=word;}else line+=line.isEmpty()?word:" "+word;}
         if(!line.isEmpty())lines.add(line);return lines;
     }
-    private static String fit(Graphics2D g,String text,int width)
-    {if(g.getFontMetrics().stringWidth(text)<=width)return text;while(text.length()>1&&g.getFontMetrics().stringWidth(text+"…")>width)text=text.substring(0,text.length()-1);return text+"…";}
 }

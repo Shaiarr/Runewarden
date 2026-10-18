@@ -4,17 +4,14 @@ package com.runewarden;
 import com.google.inject.Injector;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -50,8 +47,8 @@ import net.runelite.client.ui.overlay.OverlayManager;
 @Singleton
 final class HarvestClockTool
 {
-    static final Color GOLD = new Color(224, 190, 113), BACKGROUND = new Color(17, 18, 21),
-        WHITE = new Color(243, 240, 232), MUTED = new Color(185, 183, 175);
+    static final Color GOLD = HudStyle.GOLD, BACKGROUND = new Color(17, 18, 21),
+        WHITE = HudStyle.WHITE, MUTED = HudStyle.MUTED;
     private final Client client;
     private final ConfigManager manager;
     private final PluginManager plugins;
@@ -79,10 +76,15 @@ final class HarvestClockTool
     private String profile;
     private int warmup, ticks;
     private JPanel panel, dashboard;
-    private JLabel summary, dashboardSummary, dashboardStatus;
+    private JLabel summary, dashboardSummary, dashboardContract;
     private Timer panelTimer;
-    private final Map<String, JCheckBox> choices = new LinkedHashMap<>();
-    private final Map<String, JLabel> statuses = new LinkedHashMap<>();
+    private final List<GroupControl> controls = new ArrayList<>();
+    private static final class GroupControl
+    {
+        final Harvest group; final JCheckBox choice; final JLabel status;
+        GroupControl(Harvest group, JCheckBox choice, JLabel status)
+        { this.group = group; this.choice = choice; this.status = status; }
+    }
     private volatile DisplayCache displayCache;
 
     @Inject HarvestClockTool(Client client, ConfigManager manager, PluginManager plugins,
@@ -321,6 +323,11 @@ final class HarvestClockTool
         display.setToolTipText("Rings measure the remaining time since this session first observed the timer.");
         display.addActionListener(event -> manager.setConfiguration(RunewardenConfig.GROUP, "harvestTimerDisplay", display.getSelectedItem()));
         panel.add(display);
+        addGroupControls(panel);
+        refreshPanel(); return panel;
+    }
+    private void addGroupControls(JPanel parent)
+    {
         for (Harvest harvest : groupCatalog())
         {
             JPanel card = new JPanel(new BorderLayout(4, 2)); card.setOpaque(false);
@@ -337,16 +344,15 @@ final class HarvestClockTool
             card.add(choice, BorderLayout.NORTH); card.add(status, BorderLayout.CENTER);
             BufferedImage image = icon(harvest.id);
             if (image != null) card.add(new JLabel(new ImageIcon(image)), BorderLayout.WEST);
-            choices.put(harvest.id, choice); statuses.put(harvest.id, status); panel.add(card);
+            controls.add(new GroupControl(harvest, choice, status)); parent.add(card);
         }
-        refreshPanel(); return panel;
     }
     JPanel createDashboardPanel()
     {
         if (dashboard != null) return dashboard;
         dashboard = column(); dashboard.add(label("HARVEST STATUS", GOLD));
         dashboardSummary = label(" ", WHITE); dashboard.add(dashboardSummary);
-        dashboardStatus = label(" ", WHITE); dashboard.add(dashboardStatus);
+        dashboardContract = label(" ", WHITE); dashboard.add(dashboardContract);
         openRun = new JButton("Farm runs"); openRun.setForeground(GOLD); openRun.setBackground(BACKGROUND);
         openRun.addActionListener(event ->
         {
@@ -356,6 +362,7 @@ final class HarvestClockTool
             if (selections.isCurrent(expected) && runnable!=null) openRunAction.accept(runnable.id);
         });
         dashboard.add(openRun);
+        addGroupControls(dashboard);
         refreshPanel(); return dashboard;
     }
     private static JPanel column()
@@ -366,7 +373,7 @@ final class HarvestClockTool
     }
     private static JLabel label(String text, Color color)
     {
-        JLabel label = new JLabel(text); label.setForeground(color); label.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
+        JLabel label = new JLabel(text); label.setForeground(color); label.setFont(HudStyle.body(12));
         label.setBorder(BorderFactory.createEmptyBorder(3, 0, 3, 0)); return label;
     }
     private void refreshPanel()
@@ -375,31 +382,24 @@ final class HarvestClockTool
         Reading current = reading(); long now = Instant.now().getEpochSecond();
         Set<String> selected = selectedGroupIds(); List<Harvest> visible = displayHarvests(now);
         long due = visible.stream().filter(harvest -> harvest.due(now)).count();
-        if (summary != null)
+        if (summary != null) summary.setText(html(current.active ? selected.size() + " selected · " + due + " due" : current.message));
+        HarvestSelections.Session session = selections.session();
+        for (GroupControl control : controls)
         {
-            summary.setText(html(current.active ? selected.size() + " selected · " + due + " due" : current.message));
-            HarvestSelections.Session session = selections.session();
-            for (Harvest group : groupCatalog())
-            {
-                Harvest harvest = current.harvests.stream().filter(item -> item.id.equals(group.id)).findFirst().orElse(group);
-                JCheckBox choice = choices.get(group.id); choice.setSelected(selected.contains(group.id));
-                choice.setEnabled(selections.isCurrent(session)); choice.putClientProperty("harvestSession", session);
-                JLabel status = statuses.get(group.id); status.setText(harvest.status(now));
-                status.setForeground(harvest.due(now) && selected.contains(group.id) ? GOLD : MUTED);
-            }
-            panel.repaint();
+            Harvest harvest = current.harvests.stream().filter(item -> item.id.equals(control.group.id)).findFirst().orElse(control.group);
+            JCheckBox choice = control.choice; choice.setSelected(selected.contains(harvest.id));
+            choice.setEnabled(selections.isCurrent(session)); choice.putClientProperty("harvestSession", session);
+            control.status.setText(harvest.status(now));
+            control.status.setForeground(harvest.due(now) && selected.contains(harvest.id) ? GOLD : MUTED);
         }
+        if (panel != null) panel.repaint();
         if (dashboard == null) return;
         dashboardSummary.setText(html(!current.active ? current.message : visible.isEmpty()
             ? selected.isEmpty() ? "No timers selected" : "Awaiting observations" : due + " due · " + (visible.size() - due) + " growing"));
         Harvest runnable=visible.stream().filter(harvest->runGroupSupport.test(harvest.id)).findFirst().orElse(null);
         openRun.setEnabled(current.active&&runnable!=null);
         openRun.setText(runnable==null?"Reminder only":"Open "+runnable.name.toLowerCase(Locale.ROOT)+" run");
-        StringBuilder text = new StringBuilder("<html>");
-        for (Harvest harvest : visible)
-            text.append("<b>").append(escape(harvest.name)).append("</b><br>").append(escape(harvest.status(now))).append("<br><br>");
-        if (current.contract != null) text.append(escape(current.contract.name)).append(" · ").append(escape(current.contract.status(now)));
-        dashboardStatus.setText(text.append("</html>").toString());
+        dashboardContract.setText(current.contract == null ? " " : html(current.contract.name + " · " + current.contract.status(now)));
     }
     private static String html(String value) { return "<html><body style='width:168px'>" + escape(value) + "</body></html>"; }
     private static String escape(String value) { return value.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"); }

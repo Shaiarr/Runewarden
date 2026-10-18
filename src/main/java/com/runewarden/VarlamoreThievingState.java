@@ -21,7 +21,7 @@ final class VarlamoreThievingState
         final String name;final int owner,minX,minY,maxX,maxY;final WorldPoint door,exit,exterior;
         House(String name,int owner,int minX,int minY,int maxX,int maxY,int dx,int dy,int ex,int ey)
         {this.name=name;this.owner=owner;this.minX=minX;this.minY=minY;this.maxX=maxX;this.maxY=maxY;door=new WorldPoint(dx,dy,0);exit=new WorldPoint(ex,ey,0);exterior=new WorldPoint(dx==minX?dx-1:dx,dy==maxY?dy+1:dy,0);}
-        boolean contains(WorldPoint p){return p!=null&&p.getPlane()==0&&p.getX()>=minX&&p.getX()<=maxX&&p.getY()>=minY&&p.getY()<=maxY;}
+        boolean contains(WorldPoint p){return near(p,0);}
         boolean near(WorldPoint p,int margin){return p!=null&&p.getPlane()==0&&p.getX()>=minX-margin&&p.getX()<=maxX+margin&&p.getY()>=minY-margin&&p.getY()<=maxY+margin;}
         static House at(WorldPoint point){for(House h:values())if(h.contains(point))return h;return null;}
         static House doorAt(WorldPoint point){if(point!=null)for(House h:values())if(h.door.equals(point))return h;return null;}

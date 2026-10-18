@@ -97,6 +97,12 @@ public class RunLootAnalyticsTest
             assertEquals(2049, current.items.size()); assertEquals(409_800, current.value); assertEquals(1, current.unpricedItems);
             RunLootTool.LootItem extra = current.items.stream().filter(item -> item.aggregate).findFirst().get();
             assertEquals(4, extra.quantity); assertEquals(200, extra.value());
+            h.tool.newRun(current.profile, current.epoch);
+            RunLootTool.Reading reset = h.tool.reading();
+            assertTrue(reset.items.isEmpty()); assertTrue(reset.sources.isEmpty()); assertEquals(0, reset.unpricedItems);
+            h.loot(440, 3);
+            assertEquals(1, h.tool.reading().items.size()); assertEquals(300, h.tool.reading().value);
+            assertFalse(h.tool.reading().items.get(0).aggregate); assertEquals(0, h.tool.reading().unpricedItems);
         }
         finally { h.stop(); }
     }

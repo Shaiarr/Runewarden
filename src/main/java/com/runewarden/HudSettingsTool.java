@@ -4,7 +4,6 @@ package com.runewarden;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BooleanSupplier;
@@ -19,9 +18,9 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -40,6 +39,7 @@ final class HudSettingsTool
 {
     private static final Color GOLD = new Color(224, 190, 113);
     private static final Color TEXT = new Color(240, 238, 232);
+    private static final Color CONTROL_BACKGROUND = new Color(35, 34, 30);
     private final ConfigManager configManager;
     private final RunewardenConfig config;
     private final OverlayManager overlays;
@@ -60,7 +60,7 @@ final class HudSettingsTool
     private JTextField accent, text, background;
     private JPanel preview;
     private GuideText layoutStatus;
-    private final List<javax.swing.JComponent> editorControls = new ArrayList<>();
+    private final List<JComponent> editorControls = new ArrayList<>();
     private final List<Runnable> preferenceRefreshers = new ArrayList<>();
     private String positionProfile, lastPositions;
     private boolean reloadPositions;
@@ -152,7 +152,7 @@ final class HudSettingsTool
         reset.setName("resetHudPositions");
         reset.setFont(GuideText.FONT);
         reset.setForeground(GOLD);
-        reset.setBackground(new Color(35, 34, 30));
+        reset.setBackground(CONTROL_BACKGROUND);
         reset.setMaximumSize(new Dimension(Integer.MAX_VALUE, 34));
         align(reset);
         panel.add(reset);
@@ -249,7 +249,7 @@ final class HudSettingsTool
             opacity.setEnabled(started);
             opacityValue.setText("Background opacity · " + boundedOpacity() + "%");
             reset.setEnabled(started);
-            for (javax.swing.JComponent control : editorControls) control.setEnabled(started);
+            for (JComponent control : editorControls) control.setEnabled(started);
             for (Runnable refresher : preferenceRefreshers) refresher.run();
             if (widget != null) refreshEditor();
         }
@@ -349,8 +349,7 @@ final class HudSettingsTool
 
     private Map<String, HudPreferences.Style> safeStyles()
     {
-        try { return HudPreferences.decode(config.hudWidgetSettings()); }
-        catch (IllegalArgumentException ignored) { return java.util.Collections.emptyMap(); }
+        return HudPreferences.safeDecode(config.hudWidgetSettings());
     }
     private void saveLayout(String layout)
     {
@@ -370,9 +369,9 @@ final class HudSettingsTool
         if (widget == null || preview == null) return;
         HudPreferences.Style style = HudStyle.settings(config, (String) widget.getSelectedItem());
         scale.setValue(style.scale); font.setValue(style.font); widgetOpacity.setValue(style.opacity);
-        accent.setText(String.format("%06x", style.accent.getRGB() & 0xffffff));
-        text.setText(String.format("%06x", style.text.getRGB() & 0xffffff));
-        background.setText(String.format("%06x", style.background.getRGB() & 0xffffff));
+        accent.setText(HudPreferences.hex(style.accent));
+        text.setText(HudPreferences.hex(style.text));
+        background.setText(HudPreferences.hex(style.background));
         visibility.setSelectedItem(style.visibility); frame.setSelectedItem(style.frame); displayedValues.setSelectedItem(style.values);
         displayedValues.setEnabled(started && "resources".equals(widget.getSelectedItem()));
         preview.repaint();
@@ -384,20 +383,20 @@ final class HudSettingsTool
     }
     private <T> JComboBox<T> combo(String name, T[] options)
     {
-        JComboBox<T> result = new JComboBox<>(options); result.setName(name); result.setFont(GuideText.FONT);
-        result.setBackground(new Color(35, 34, 30)); result.setForeground(TEXT);
+        JComboBox<T> result = new JComboBox<>(options); result.setFont(GuideText.FONT);
+        result.setBackground(CONTROL_BACKGROUND); result.setForeground(TEXT);
         result.setRenderer(new DefaultListCellRenderer()
         {
             @Override public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean selected, boolean focus)
             {
                 super.getListCellRendererComponent(list, value, index, selected, focus);
                 setFont(GuideText.FONT); setText(displayName(value));
-                if (!selected) { setBackground(new Color(35, 34, 30)); setForeground(TEXT); }
+                if (!selected) { setBackground(CONTROL_BACKGROUND); setForeground(TEXT); }
                 return this;
             }
         });
         result.setMinimumSize(new Dimension(0, 28));
-        result.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30)); align(result); panel.add(result); editorControls.add(result); return result;
+        return editor(result, name, 30);
     }
     private <T> void enumChoice(String title, String key, T[] options, java.util.function.Supplier<T> value)
     {
@@ -412,8 +411,8 @@ final class HudSettingsTool
     {
         GuideText titleLabel = label(title + " · " + initial);
         JSlider result = new JSlider(min, max, HudPreferences.clamp(initial, min, max));
-        result.setName(key); result.setOpaque(false); result.setForeground(GOLD);
-        result.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30)); align(result); panel.add(result); editorControls.add(result);
+        result.setOpaque(false); result.setForeground(GOLD);
+        editor(result, key, 30);
         result.addChangeListener(event -> titleLabel.setText(title + " · " + result.getValue()));
         return result;
     }
@@ -429,9 +428,9 @@ final class HudSettingsTool
     }
     private JTextField field(String title, String name)
     {
-        label(title); JTextField result = new JTextField(6); result.setName(name); result.setFont(GuideText.FONT);
-        result.setBackground(new Color(35, 34, 30)); result.setForeground(TEXT);
-        result.setMaximumSize(new Dimension(Integer.MAX_VALUE, 28)); align(result); panel.add(result); editorControls.add(result); return result;
+        label(title); JTextField result = new JTextField(6); result.setFont(GuideText.FONT);
+        result.setBackground(CONTROL_BACKGROUND); result.setForeground(TEXT);
+        return editor(result, name, 28);
     }
     private interface EditorAction { void run() throws Exception; }
     private void button(String title, String name, EditorAction action)
@@ -443,8 +442,16 @@ final class HudSettingsTool
             catch (Exception exception) { layoutStatus.setText(exception instanceof IllegalArgumentException
                 ? exception.getMessage() : "Clipboard unavailable"); }
         });
-        button.setName(name); button.setMinimumSize(new Dimension(0, 30));
-        button.setMaximumSize(new Dimension(Integer.MAX_VALUE, 34)); align(button); panel.add(button); editorControls.add(button);
+        button.setMinimumSize(new Dimension(0, 30));
+        editor(button, name, 34);
+    }
+
+    private <T extends JComponent> T editor(T control, String name, int height)
+    {
+        control.setName(name);
+        control.setMaximumSize(new Dimension(Integer.MAX_VALUE, height));
+        align(control); panel.add(control); editorControls.add(control);
+        return control;
     }
 
     private Map<String, Overlay> owned()
@@ -511,7 +518,7 @@ final class HudSettingsTool
         panel.add(choice);
     }
 
-    private static void align(javax.swing.JComponent component) { component.setAlignmentX(Component.LEFT_ALIGNMENT); }
+    private static void align(JComponent component) { component.setAlignmentX(Component.LEFT_ALIGNMENT); }
 
     private static String displayName(Object value)
     {

@@ -106,6 +106,59 @@ public class HarvestSplitHudTest
         finally{f.close();}
     }
 
+    @Test public void overviewAlwaysKeepsAllCategoriesEditableAndSynchronizesWithTimers() throws Exception
+    {
+        Fixture f=new Fixture();
+        try
+        {
+            f.start();AtomicReference<JPanel> overview=new AtomicReference<>(),timers=new AtomicReference<>();
+            SwingUtilities.invokeAndWait(()->{overview.set(f.tool.createDashboardPanel());timers.set(f.tool.createPanel());});
+            assertEquals(24,checkboxes(overview.get()).size());
+            JCheckBox hardwood=checkbox(overview.get(),"hardwood");assertTrue(hardwood.isSelected());
+            SwingUtilities.invokeAndWait(hardwood::doClick);
+            assertFalse(f.tool.selectedGroupIds().contains("hardwood"));
+            assertSame("An unticked row must remain available to re-enable",hardwood,checkbox(overview.get(),"hardwood"));
+            assertFalse(checkbox(timers.get(),"hardwood").isSelected());
+            SwingUtilities.invokeAndWait(()->checkbox(timers.get(),"hardwood").doClick());
+            assertTrue(hardwood.isSelected());assertTrue(ids(f.tool.displayHarvests(f.now)).contains("hardwood"));
+            JCheckBox herb=checkbox(overview.get(),"herb");assertFalse(herb.isSelected());assertTrue(herb.isEnabled());
+            SwingUtilities.invokeAndWait(herb::doClick);
+            assertTrue("An unobserved category can be explicitly tracked",f.tool.selectedGroupIds().contains("herb"));
+            assertTrue(checkbox(timers.get(),"herb").isSelected());
+            assertFalse("Selecting an unobserved category cannot fabricate a timer",ids(f.tool.displayHarvests(f.now)).contains("herb"));
+        }
+        finally{f.close();}
+    }
+
+    @Test public void anEmptyOverviewKeepsItsControlsAndRejectsStaleAccountClicks() throws Exception
+    {
+        Fixture f=new Fixture();
+        try
+        {
+            f.start();AtomicReference<JPanel> overview=new AtomicReference<>();
+            SwingUtilities.invokeAndWait(()->overview.set(f.tool.createDashboardPanel()));
+            SwingUtilities.invokeAndWait(()->{for(JCheckBox box:checkboxes(overview.get()))if(box.isSelected())box.doClick();});
+            assertTrue(f.tool.selectedGroupIds().isEmpty());assertTrue(f.tool.displayHarvests(f.now).isEmpty());
+            assertEquals("[]",f.saved(RunewardenConfig.GROUP,f.owner,HarvestSelections.KEY));
+            assertEquals(24,checkboxes(overview.get()).size());
+            JCheckBox herb=checkbox(overview.get(),"herb");
+            SwingUtilities.invokeAndWait(herb::doClick);
+            assertEquals(Set.of("herb"),f.tool.selectedGroupIds());
+            String saved=f.saved(RunewardenConfig.GROUP,f.owner,HarvestSelections.KEY);
+            f.profile.set("rsprofile.other");SwingUtilities.invokeAndWait(herb::doClick);
+            assertEquals(saved,f.saved(RunewardenConfig.GROUP,f.owner,HarvestSelections.KEY));
+            assertNull(f.saved(RunewardenConfig.GROUP,"rsprofile.other",HarvestSelections.KEY));
+            for(int tick=0;tick<10;tick++)f.tool.onGameTick();
+            f.tool.setRunGroupSupport(group->false);
+            SwingUtilities.invokeAndWait(()->{});
+            assertEquals(24,checkboxes(overview.get()).size());assertFalse(herb.isSelected());
+            SwingUtilities.invokeAndWait(herb::doClick);
+            assertEquals("[\"herb\"]",f.saved(RunewardenConfig.GROUP,"rsprofile.other",HarvestSelections.KEY));
+            assertEquals("The previous account's selections remain unchanged",saved,f.saved(RunewardenConfig.GROUP,f.owner,HarvestSelections.KEY));
+        }
+        finally{f.close();}
+    }
+
     private static Set<String> ids(List<HarvestClockTool.Harvest> rows)
     {Set<String> ids=new java.util.LinkedHashSet<>();for(HarvestClockTool.Harvest row:rows)ids.add(row.id);return ids;}
     private static HarvestClockTool.Harvest row(List<HarvestClockTool.Harvest> rows,String id)

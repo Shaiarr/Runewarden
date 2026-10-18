@@ -73,7 +73,7 @@ final class CommandDashboardOverlay extends Overlay
                 ? (layout.compact ? 39 : 46) : layout.headerBottom - 8);
             canvas.setColor(HudStyle.muted(style));
             canvas.setFont(HudStyle.body(layout.compact ? 10 : 11));
-            canvas.drawString(fit(canvas, reading.worldDescription, layout.width - 2 * layout.margin),
+            canvas.drawString(HudStyle.fit(canvas, reading.worldDescription, layout.width - 2 * layout.margin),
                 layout.margin, layout.headerBottom - 8);
             divider(canvas, layout, layout.headerBottom, style);
             canvas.setFont(HudStyle.label(layout.compact ? 10 : 11));
@@ -85,7 +85,7 @@ final class CommandDashboardOverlay extends Overlay
                 layout.width - layout.margin, layout.headerBottom + (layout.compact ? 20 : 25));
             canvas.setColor(HudStyle.muted(style));
             canvas.setFont(HudStyle.body(layout.compact ? 9 : 10));
-            canvas.drawString(fit(canvas, reading.maxHit.scope, layout.width - 2 * layout.margin),
+            canvas.drawString(HudStyle.fit(canvas, reading.maxHit.scope, layout.width - 2 * layout.margin),
                 layout.margin, layout.metricsBottom - 9);
             if (config.dashboardEquipment())
             {
@@ -143,14 +143,6 @@ final class CommandDashboardOverlay extends Overlay
         canvas.drawString(text, x - canvas.getFontMetrics().stringWidth(text), y);
     }
 
-    private static String fit(Graphics2D graphics, String value, int width)
-    {
-        if (value == null) return "";
-        if (graphics.getFontMetrics().stringWidth(value) <= width) return value;
-        while (value.length() > 1 && graphics.getFontMetrics().stringWidth(value + "…") > width)
-            value = value.substring(0, value.length() - 1);
-        return value + "…";
-    }
 
     static final class Layout
     {

@@ -2,6 +2,7 @@
 package com.runewarden;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -62,9 +64,7 @@ final class FarmRunsTool
         if (summaryPanel != null) return summaryPanel;
         summaryPanel = SidebarUi.section("HARVEST RUN");
         summaryStatus = SidebarUi.label(""); summaryStatus.setName("runewarden.farm-summary.status"); summaryPanel.add(summaryStatus);
-        summaryProgress = new JProgressBar(); summaryProgress.setStringPainted(true);
-        summaryProgress.setForeground(SidebarUi.GOLD); summaryProgress.setBackground(SidebarUi.BACKGROUND);
-        summaryProgress.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, 20)); summaryPanel.add(summaryProgress);
+        summaryProgress = progressBar(); summaryPanel.add(summaryProgress);
         for (String[] entry : new String[][] {{"herb", "Herb"}, {"birdhouse", "Birdhouse"}, {"tree", "Tree"}, {"fruit", "Fruit tree"}})
         {
             String id = entry[0]; JButton button = SidebarUi.button(entry[1], () -> openPreparation(id));
@@ -92,8 +92,7 @@ final class FarmRunsTool
         summaryProgress.setVisible(next != null && next.active);
         if (next != null)
         {
-            summaryProgress.setMaximum(Math.max(1, next.totalStops)); summaryProgress.setValue(next.completedStops);
-            summaryProgress.setString(next.completedStops + " / " + next.totalStops + " locations");
+            refreshProgress(summaryProgress, next);
         }
         quickRuns.forEach((id, button) -> button.setEnabled(next != null && (!next.active || id.equals(next.runId))));
     }
@@ -123,57 +122,70 @@ final class FarmRunsTool
         if (panel != null) return panel;
         panel = SidebarUi.column(); panel.add(SidebarUi.heading("FARM RUNS"));
         icon = new JLabel(); panel.add(icon);
-        phase = SidebarUi.heading("PREPARE"); phase.setName("runewarden.farm-runs.phase"); panel.add(phase);
+        phase = named(SidebarUi.heading("PREPARE"), "phase"); panel.add(phase);
         status = SidebarUi.label(" "); panel.add(status);
-        progress = new JProgressBar(); progress.setName("runewarden.farm-runs.progress");
-        progress.setStringPainted(true); progress.setForeground(SidebarUi.GOLD); progress.setBackground(SidebarUi.BACKGROUND);
-        progress.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, 20)); panel.add(progress);
-        preparation = SidebarUi.section("PREPARATION"); preparation.setName("runewarden.farm-runs.preparation"); panel.add(preparation);
-        runs = new JComboBox<>(FarmPatchPlanner.runTypes().toArray(new FarmPatchPlanner.RunType[0]));
-        runs.setName("runewarden.farm-runs.selector");
+        progress = named(progressBar(), "progress"); panel.add(progress);
+        preparation = named(SidebarUi.section("PREPARATION"), "preparation"); panel.add(preparation);
+        runs = named(new JComboBox<>(FarmPatchPlanner.runTypes().toArray(new FarmPatchPlanner.RunType[0])), "selector");
         runs.addActionListener(event ->
         {
             FarmPatchPlanner.RunType selected = (FarmPatchPlanner.RunType) runs.getSelectedItem();
             if (selected != null) edit(() -> planner.selectRun(selected.id));
         });
         preparation.add(SidebarUi.field("Run", runs));
-        crops = new JComboBox<>(); crops.setName("runewarden.farm-runs.crop");
+        crops = named(new JComboBox<>(), "crop");
         crops.addActionListener(event ->
         {
             FarmPatchPlanner.CropChoice crop = (FarmPatchPlanner.CropChoice) crops.getSelectedItem();
             if (crop != null) edit(() -> planner.chooseSeed(crop.id));
         });
-        cropLabel = SidebarUi.label("Seed"); cropLabel.setName("runewarden.farm-runs.crop-label");
+        cropLabel = named(SidebarUi.label("Seed"), "crop-label");
         cropLabel.setForeground(SidebarUi.MUTED); preparation.add(cropLabel); preparation.add(crops);
-        quantity = new JSpinner(new SpinnerNumberModel(0, 0, 100, 1));
-        quantity.setName("runewarden.farm-runs.quantity");
+        quantity = named(new JSpinner(new SpinnerNumberModel(0, 0, 100, 1)), "quantity");
         quantity.addChangeListener(event ->
         { int selected = ((Number) quantity.getValue()).intValue(); edit(() -> planner.setQuantity(selected)); });
-        quantityLabel = SidebarUi.label("Seeds per patch"); quantityLabel.setName("runewarden.farm-runs.quantity-label");
+        quantityLabel = named(SidebarUi.label("Seeds per patch"), "quantity-label");
         quantityLabel.setForeground(SidebarUi.MUTED); preparation.add(quantityLabel); preparation.add(quantity);
-        compost = new JComboBox<>(Compost.values()); compost.setName("runewarden.farm-runs.compost");
+        compost = named(new JComboBox<>(Compost.values()), "compost");
         compost.addActionListener(event ->
         { Compost selected = (Compost) compost.getSelectedItem(); if (selected != null) edit(() -> planner.setCompost(selected.id)); });
         compostField = SidebarUi.field("Compost", compost); preparation.add(compostField);
-        currentStop = SidebarUi.section("CURRENT LOCATION"); currentStop.setName("runewarden.farm-runs.current-stop");
-        currentTitle = SidebarUi.heading(""); currentTitle.setName("runewarden.farm-runs.current-title");
-        currentState = SidebarUi.label(""); currentState.setName("runewarden.farm-runs.current-state");
-        route = SidebarUi.label(" "); route.setName("runewarden.farm-runs.route");
+        currentStop = named(SidebarUi.section("CURRENT LOCATION"), "current-stop");
+        currentTitle = named(SidebarUi.heading(""), "current-title");
+        currentState = named(SidebarUi.label(""), "current-state");
+        route = named(SidebarUi.label(" "), "route");
         currentStop.add(currentTitle); currentStop.add(currentState); currentStop.add(route);
-        done = SidebarUi.button("Done", () -> checkCurrent(false)); done.setName("runewarden.farm-runs.current-done");
-        skip = SidebarUi.button("Skip", () -> checkCurrent(true)); skip.setName("runewarden.farm-runs.current-skip");
+        done = named(SidebarUi.button("Done", () -> checkCurrent(false)), "current-done");
+        skip = named(SidebarUi.button("Skip", () -> checkCurrent(true)), "current-skip");
         currentStop.add(SidebarUi.row(done, skip)); panel.add(currentStop);
         start = SidebarUi.button("Start run", () -> edit(planner::startSelectedRun));
         end = SidebarUi.button("End run", () -> edit(planner::stopActiveRun));
         panel.add(SidebarUi.row(start, end));
-        JPanel supplyCard = SidebarUi.section("SUPPLIES"); stopCard = SidebarUi.section("LOCATIONS");
-        stopCard.setName("runewarden.farm-runs.locations");
-        locations = SidebarUi.button("Show all locations", () -> { allLocations = !allLocations; refresh(); });
-        locations.setName("runewarden.farm-runs.show-locations");
+        JPanel supplyCard = SidebarUi.section("SUPPLIES"); stopCard = named(SidebarUi.section("LOCATIONS"), "locations");
+        locations = named(SidebarUi.button("Show all locations", () -> { allLocations = !allLocations; refresh(); }), "show-locations");
         supplies = SidebarUi.column(); stops = SidebarUi.column(); supplyCard.add(supplies); stopCard.add(stops);
-        preparationNotes = SidebarUi.label(""); preparationNotes.setName("runewarden.farm-runs.preparation-notes");
+        preparationNotes = named(SidebarUi.label(""), "preparation-notes");
         preparationNotes.setForeground(SidebarUi.MUTED); supplyCard.add(preparationNotes);
         panel.add(supplyCard); panel.add(locations); panel.add(stopCard); refresh(); return panel;
+    }
+    private static <T extends JComponent> T named(T component, String suffix)
+    {
+        component.setName("runewarden.farm-runs." + suffix); return component;
+    }
+    private static JProgressBar progressBar()
+    {
+        JProgressBar bar = new JProgressBar(); bar.setStringPainted(true);
+        bar.setForeground(SidebarUi.GOLD); bar.setBackground(SidebarUi.BACKGROUND);
+        bar.setMaximumSize(new Dimension(Integer.MAX_VALUE, 20)); return bar;
+    }
+    private static void refreshProgress(JProgressBar bar, FarmPatchPlanner.RunReading run)
+    {
+        bar.setMaximum(Math.max(1, run.totalStops)); bar.setValue(run.completedStops);
+        bar.setString(run.completedStops + " / " + run.totalStops + " locations");
+    }
+    private static String stopStatus(FarmPatchPlanner.StopReading stop)
+    {
+        return stop.status + (stop.unlock == null || stop.unlock.isBlank() ? "" : "\n" + stop.unlock);
     }
     private void edit(Runnable action)
     {
@@ -224,8 +236,7 @@ final class FarmRunsTool
                 return;
             }
             status.setText(next.title + "\n" + next.status);
-            progress.setMaximum(Math.max(1, next.totalStops)); progress.setValue(next.completedStops);
-            progress.setString(next.completedStops + " / " + next.totalStops + " locations");
+            refreshProgress(progress, next);
             boolean birdhouse = "birdhouse".equals(next.runId);
             boolean tree = "tree".equals(next.runId) || "fruit".equals(next.runId) || "hardwood".equals(next.runId);
             cropLabel.setText(birdhouse ? "Birdhouse type" : tree ? "Sapling" : "Seed");
@@ -238,7 +249,7 @@ final class FarmRunsTool
             route.setText(next.routeAdvice == null ? "" : next.routeAdvice);
             FarmPatchPlanner.StopReading current = next.stops.stream().filter(stop -> stop.id.equals(next.nextStopId)).findFirst().orElse(null);
             currentTitle.setText(current == null ? "" : current.label);
-            currentState.setText(current == null ? "" : current.status + (current.unlock == null || current.unlock.isBlank() ? "" : "\n" + current.unlock));
+            currentState.setText(current == null ? "" : stopStatus(current));
             done.setEnabled(active && current != null && !current.done); skip.setEnabled(done.isEnabled());
             if (!runs.isPopupVisible())
                 for (int i = 0; i < runs.getItemCount(); i++) if (runs.getItemAt(i).id.equals(next.runId)) runs.setSelectedIndex(i);
@@ -284,7 +295,7 @@ final class FarmRunsTool
             row.include.setSelected(stop.selected); row.include.setEnabled(!next.active);
             row.up.setEnabled(!next.active); row.down.setEnabled(!next.active);
             row.order.setVisible(!next.active);
-            row.state.setText((stop.done ? "Done · " : "") + stop.status + (stop.unlock == null || stop.unlock.isBlank() ? "" : "\n" + stop.unlock));
+            row.state.setText((stop.done ? "Done · " : "") + stopStatus(stop));
         }
     }
     private final class StopRow

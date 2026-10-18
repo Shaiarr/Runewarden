@@ -43,7 +43,7 @@ public final class SkillingCoachOverlay extends Overlay
             g.setColor(style.accent); g.setFont(HudStyle.label(12));
             g.drawString(reminder.skill.getName().toUpperCase(java.util.Locale.ROOT) + " OUTFIT", 12, 20);
             g.setFont(HudStyle.body(12)); g.setColor(HudStyle.muted(style));
-            g.drawString(fit(g, reminder.outfit, width - 24), 12, 40);
+            g.drawString(HudStyle.fit(g, reminder.outfit, width - 24), 12, 40);
             int index = 0;
             for (SkillingOutfits.Piece piece : reminder.missing)
             {
@@ -51,7 +51,7 @@ public final class SkillingCoachOverlay extends Overlay
                 BufferedImage image = itemManager.getImage(piece.image);
                 if (image != null) { g.drawImage(image, x, y, 24, 24, null); }
                 g.setColor(style.text);
-                g.drawString(fit(g, piece.label, columns == 2 ? 84 : 208), x + 30, y + 17);
+                g.drawString(HudStyle.fit(g, piece.label, columns == 2 ? 84 : 208), x + 30, y + 17);
                 index++;
             }
         }
@@ -59,11 +59,4 @@ public final class SkillingCoachOverlay extends Overlay
         return HudStyle.dimension(style, width, height);
     }
 
-    private static String fit(Graphics2D graphics, String value, int width)
-    {
-        if (graphics.getFontMetrics().stringWidth(value) <= width) return value;
-        while (value.length() > 1 && graphics.getFontMetrics().stringWidth(value + "…") > width)
-            value = value.substring(0, value.length() - 1);
-        return value + "…";
-    }
 }

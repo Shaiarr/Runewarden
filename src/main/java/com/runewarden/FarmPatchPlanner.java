@@ -2,28 +2,45 @@
 package com.runewarden;
 
 import com.google.gson.Gson;
+import com.runewarden.FarmPatchCatalog.Patch;
+import com.runewarden.FarmPatchCatalog.Seed;
+import com.runewarden.FarmPatchCatalog.State;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
+import net.runelite.api.GameObject;
 import net.runelite.api.GameState;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
 import net.runelite.api.ItemContainer;
+import net.runelite.api.MenuAction;
+import net.runelite.api.ObjectComposition;
 import net.runelite.api.Quest;
 import net.runelite.api.QuestState;
+import net.runelite.api.Scene;
 import net.runelite.api.Skill;
+import net.runelite.api.Tile;
 import net.runelite.api.WidgetNode;
+import net.runelite.api.WorldType;
+import net.runelite.api.WorldView;
 import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.events.ChatMessage;
+import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.api.gameval.InterfaceID;
+import net.runelite.api.gameval.ItemID;
 import net.runelite.api.gameval.VarbitID;
+import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetModalMode;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
@@ -102,20 +119,20 @@ public final class FarmPatchPlanner
     }
     public static final class PatchReading
     {
-        public final FarmPatchCatalog.Patch patch;
-        public final FarmPatchCatalog.State state;
+        public final Patch patch;
+        public final State state;
         public final long observedAt;
         public final long growthObservedAt;
         public final boolean currentSession;
         public final String observedCompost; public final long compostObservedAt;
         private final FarmGrowthTiming.Window growth;
-        PatchReading(FarmPatchCatalog.Patch patch, FarmPatchCatalog.State state, long time, boolean current)
+        PatchReading(Patch patch, State state, long time, boolean current)
         { this(patch, state, time, time, current); }
-        PatchReading(FarmPatchCatalog.Patch patch, FarmPatchCatalog.State state, long time, long growthTime, boolean current)
+        PatchReading(Patch patch, State state, long time, long growthTime, boolean current)
         { this(patch,state,time,growthTime,current,null,0); }
-        PatchReading(FarmPatchCatalog.Patch patch,FarmPatchCatalog.State state,long time,long growthTime,boolean current,String compost,long compostAt)
+        PatchReading(Patch patch,State state,long time,long growthTime,boolean current,String compost,long compostAt)
         { this(patch,state,time,growthTime,current,compost,compostAt,null,null,false); }
-        PatchReading(FarmPatchCatalog.Patch patch,FarmPatchCatalog.State state,long time,long growthTime,boolean current,String compost,long compostAt,
+        PatchReading(Patch patch,State state,long time,long growthTime,boolean current,String compost,long compostAt,
             Integer precision,Integer offset,boolean leagues)
         { this.patch=patch;this.state=state;observedAt=time;growthObservedAt=growthTime;currentSession=current;observedCompost=compost;compostObservedAt=compostAt;
             growth=FarmGrowthTiming.predict(state,time,growthTime,precision,offset,leagues); }
@@ -129,7 +146,7 @@ public final class FarmPatchPlanner
                 long end = latestGrowthSecond();
                 return now >= end ? "Due to check · estimated" : "Growing · " + FarmPatchOverlay.timerLabel(this,now);
             }
-            return state.state.substring(0, 1) + state.state.substring(1).toLowerCase(java.util.Locale.ROOT);
+            return state.state.substring(0, 1) + state.state.substring(1).toLowerCase(Locale.ROOT);
         }
         public long latestGrowthSecond()
         { return growth.latest; }
@@ -150,7 +167,7 @@ public final class FarmPatchPlanner
         new CropChoice(22192,"Maple bird house",44,1),new CropChoice(22195,"Mahogany bird house",49,1),
         new CropChoice(22198,"Yew bird house",59,1),new CropChoice(22201,"Magic bird house",74,1),new CropChoice(22204,"Redwood bird house",89,1));
     // Space (birdhouse), OSRS Wiki revision 14063104; only the four native coordinates are reproduced.
-    private static final List<FarmPatchCatalog.Patch> BIRDHOUSES=List.of(
+    private static final List<Patch> BIRDHOUSES=List.of(
         birdhouse("birdhouse:0","Verdant Valley north-east"),
         birdhouse("birdhouse:1","Verdant Valley south-west"),
         birdhouse("birdhouse:2","Mushroom Meadow north"),
@@ -201,7 +218,7 @@ public final class FarmPatchPlanner
     public RunReading currentRun(){return validProfile()?run:null;}
     public Map<String,PatchReading> readings(){return validProfile()?readings:Map.of();}
     FarmPatchCatalog.Crop cropReference(String key){return catalog.crop(key);}
-    int cropIconId(FarmPatchCatalog.State state){return catalog.iconId(state);}
+    int cropIconId(State state){return catalog.iconId(state);}
     FarmPatchScene.Snapshot sceneReading(){return validProfile()?scene:FarmPatchScene.Snapshot.EMPTY;}
     HudOptions hudOptions(){return hudOptions;}
     private boolean validProfile(){return started&&activeSession&&client.getGameState()==GameState.LOGGED_IN&&client.getLocalPlayer()!=null&&profile!=null&&profile.equals(config.getRSProfileKey());}
@@ -273,41 +290,41 @@ public final class FarmPatchPlanner
     {edit(route->{if(route.active&&Objects.equals(expectedStop,nextStop(route))){route.completed.add(expectedStop);route.evidence.put(expectedStop,skip?"Skipped":"Checked");updateAutomaticRoute();}});}
     public void stopActiveRun(){edit(route->{stopInternal();epoch++;message="Stopped";});}
     private void stopInternal(){automaticRoute.stop();birdBaseline.clear();birdUnseeded.clear();for(Route route:saved.routes.values())route.active=false;}
-    static boolean clearsCompost(FarmPatchCatalog.State before,FarmPatchCatalog.State next,long previousObservation,long compostAt)
+    static boolean clearsCompost(State before,State next,long previousObservation,long compostAt)
     {
         if(before==null || next==null || compostAt<=0)return false;
         if("WEEDS".equals(next.crop) || "EMPTY".equals(next.state))return !"WEEDS".equals(before.crop) && !"EMPTY".equals(before.state);
-        return "GROWING".equals(next.state) && next.stage==0 && ("DEAD".equals(before.state)||"HARVESTABLE".equals(before.state)||!java.util.Objects.equals(before.crop,next.crop)) && compostAt<=previousObservation;
+        return "GROWING".equals(next.state) && next.stage==0 && ("DEAD".equals(before.state)||"HARVESTABLE".equals(before.state)||!Objects.equals(before.crop,next.crop)) && compostAt<=previousObservation;
     }
-    public void onMenuOptionClicked(net.runelite.api.events.MenuOptionClicked event)
+    public void onMenuOptionClicked(MenuOptionClicked event)
     {
         if(!validProfile() || client.getGameState()!=GameState.LOGGED_IN || client.getLocalPlayer()==null)return;
-        net.runelite.api.MenuAction action=event.getMenuAction();
-        boolean inspect="Inspect".equals(event.getMenuOption()) && List.of(net.runelite.api.MenuAction.GAME_OBJECT_FIRST_OPTION,net.runelite.api.MenuAction.GAME_OBJECT_SECOND_OPTION,net.runelite.api.MenuAction.GAME_OBJECT_THIRD_OPTION,net.runelite.api.MenuAction.GAME_OBJECT_FOURTH_OPTION,net.runelite.api.MenuAction.GAME_OBJECT_FIFTH_OPTION).contains(action);
-        boolean use=action==net.runelite.api.MenuAction.WIDGET_TARGET_ON_GAME_OBJECT;
+        MenuAction action=event.getMenuAction();
+        boolean inspect="Inspect".equals(event.getMenuOption()) && List.of(MenuAction.GAME_OBJECT_FIRST_OPTION,MenuAction.GAME_OBJECT_SECOND_OPTION,MenuAction.GAME_OBJECT_THIRD_OPTION,MenuAction.GAME_OBJECT_FOURTH_OPTION,MenuAction.GAME_OBJECT_FIFTH_OPTION).contains(action);
+        boolean use=action==MenuAction.WIDGET_TARGET_ON_GAME_OBJECT;
         if(!inspect && !use)return;
         if(use)
         {
-            net.runelite.api.widgets.Widget selected=client.getSelectedWidget();
-            if((selected==null || !Set.of(net.runelite.api.gameval.ItemID.BUCKET_COMPOST,net.runelite.api.gameval.ItemID.BUCKET_SUPERCOMPOST,net.runelite.api.gameval.ItemID.BUCKET_ULTRACOMPOST,net.runelite.api.gameval.ItemID.BOTTOMLESS_COMPOST_BUCKET_FILLED).contains(selected.getItemId())) && (selected==null || selected.getId()!=net.runelite.api.gameval.InterfaceID.MagicSpellbook.FERTILE_SOIL))return;
+            Widget selected=client.getSelectedWidget();
+            if((selected==null || !Set.of(ItemID.BUCKET_COMPOST,ItemID.BUCKET_SUPERCOMPOST,ItemID.BUCKET_ULTRACOMPOST,ItemID.BOTTOMLESS_COMPOST_BUCKET_FILLED).contains(selected.getItemId())) && (selected==null || selected.getId()!=InterfaceID.MagicSpellbook.FERTILE_SOIL))return;
         }
-        net.runelite.api.WorldView view=client.getTopLevelWorldView();
+        WorldView view=client.getTopLevelWorldView();
         if(view==null || view.isInstance() || event.getMenuEntry()!=null && event.getMenuEntry().getWorldViewId()!=view.getId())return;
-        int x=event.getParam0(),y=event.getParam1(),plane=view.getPlane();net.runelite.api.Scene nativeScene=view.getScene();
+        int x=event.getParam0(),y=event.getParam1(),plane=view.getPlane();Scene nativeScene=view.getScene();
         if(nativeScene==null || x<0 || y<0)return;
-        net.runelite.api.Tile[][][] tiles=nativeScene.getTiles();if(tiles==null || plane<0 || plane>=tiles.length || tiles[plane]==null || x>=tiles[plane].length || tiles[plane][x]==null || y>=tiles[plane][x].length || tiles[plane][x][y]==null)return;
-        net.runelite.api.GameObject target=null;net.runelite.api.GameObject[] objects=tiles[plane][x][y].getGameObjects();
-        if(objects!=null)for(net.runelite.api.GameObject object:objects)if(object!=null && object.getId()==event.getId() && object.getWorldView()==view){target=object;break;}
-        if(target==null)return;net.runelite.api.ObjectComposition definition=client.getObjectDefinition(target.getId());if(definition==null)return;
-        WorldPoint point=WorldPoint.fromScene(view,x,y,plane);FarmPatchCatalog.Patch match=null;
-        for(FarmPatchCatalog.Patch patch:catalog.patches())if(patch.varbit==definition.getVarbitId() && !patch.type.contains("COMPOST") && patch.sentAt(point)){if(match!=null)return;match=patch;}
+        Tile[][][] tiles=nativeScene.getTiles();if(tiles==null || plane<0 || plane>=tiles.length || tiles[plane]==null || x>=tiles[plane].length || tiles[plane][x]==null || y>=tiles[plane][x].length || tiles[plane][x][y]==null)return;
+        GameObject target=null;GameObject[] objects=tiles[plane][x][y].getGameObjects();
+        if(objects!=null)for(GameObject object:objects)if(object!=null && object.getId()==event.getId() && object.getWorldView()==view){target=object;break;}
+        if(target==null)return;ObjectComposition definition=client.getObjectDefinition(target.getId());if(definition==null)return;
+        WorldPoint point=WorldPoint.fromScene(view,x,y,plane);Patch match=null;
+        for(Patch patch:catalog.patches())if(patch.varbit==definition.getVarbitId() && !patch.type.contains("COMPOST") && patch.sentAt(point)){if(match!=null)return;match=patch;}
         if(match==null)return;
         PendingCompost pending=new PendingCompost();pending.patch=match.id;pending.profile=profile;pending.epoch=epoch;pending.at=System.currentTimeMillis();pending.point=point;pending.width=Math.max(1,target.sizeX());pending.height=Math.max(1,target.sizeY());
         pending.scene=new FarmPatchScene.Snapshot(view,nativeScene,List.of(),view.getBaseX(),view.getBaseY(),plane);pendingCompost=pending;
     }
-    public void onChatMessage(net.runelite.api.events.ChatMessage event)
+    public void onChatMessage(ChatMessage event)
     {
-        if(event.getType()!=net.runelite.api.ChatMessageType.GAMEMESSAGE && event.getType()!=net.runelite.api.ChatMessageType.SPAM)return;
+        if(event.getType()!=ChatMessageType.GAMEMESSAGE && event.getType()!=ChatMessageType.SPAM)return;
         String compost=FarmCompostEvidence.parse(event.getMessage());PendingCompost pending=pendingCompost;long now=System.currentTimeMillis();
         if(compost==null || pending==null)return;pendingCompost=null;
         if(!validProfile() || pending.epoch!=epoch || !pending.profile.equals(profile) || now-pending.at>30_000 || !pending.scene.matches(client.getTopLevelWorldView()) || client.getLocalPlayer()==null)return;
@@ -316,8 +333,8 @@ public final class FarmPatchPlanner
         Seen seen=saved.patches.get(pending.patch);if(seen==null || !current.contains(pending.patch))return;
         seen.compost=compost;seen.compostAt=now;dirty=true;publish();save();
     }
-    private static FarmPatchCatalog.Patch birdhouse(String id,String name)
-    {FarmPatchCatalog.Patch patch=new FarmPatchCatalog.Patch();patch.id=id;patch.name=name;patch.region="Fossil Island";patch.type="BIRDHOUSE";return patch;}
+    private static Patch birdhouse(String id,String name)
+    {Patch patch=new Patch();patch.id=id;patch.name=name;patch.region="Fossil Island";patch.type="BIRDHOUSE";return patch;}
     public void onGameTick()
     {
         if(!started)return;
@@ -334,8 +351,8 @@ public final class FarmPatchPlanner
         if(location==null||client.isInInstancedRegion())
         {settled=0;scene=FarmPatchScene.Snapshot.EMPTY;pendingCompost=null;publish();return;}
         if(location.getRegionID()!=region){region=location.getRegionID();settled=0;scene=FarmPatchScene.Snapshot.EMPTY;pendingCompost=null;}
-        List<FarmPatchCatalog.Patch> local=new ArrayList<>();Set<String> context=new LinkedHashSet<>();
-        for(FarmPatchCatalog.Patch patch:catalog.patches())if(patch.sentAt(location)){local.add(patch);context.add(patch.id);}
+        List<Patch> local=new ArrayList<>();Set<String> context=new LinkedHashSet<>();
+        for(Patch patch:catalog.patches())if(patch.sentAt(location)){local.add(patch);context.add(patch.id);}
         if(!context.equals(localContext)){localContext=context;settled=0;}
         boolean modal=false;
         if(client.getComponentTable()!=null)for(WidgetNode widget:client.getComponentTable())
@@ -344,7 +361,7 @@ public final class FarmPatchPlanner
         else if(++settled>=3)
         {
             long now=System.currentTimeMillis();
-            for(FarmPatchCatalog.Patch patch:local)
+            for(Patch patch:local)
             {
                 int value=client.getVarbitValue(patch.varbit);if(catalog.state(patch.type,value)==null)continue;
                 Seen before=saved.patches.get(patch.id);
@@ -369,8 +386,8 @@ public final class FarmPatchPlanner
             Quest.PRIEST_IN_PERIL,Quest.MOURNINGS_END_PART_I,Quest.THE_RIBBITING_TALE_OF_A_LILY_PAD_LABOUR_DISPUTE})
             try{quests.put(quest,quest.getState(client));}catch(RuntimeException loading){/* No unlock is assumed. */}
         int farming=client.getBoostedSkillLevel(Skill.FARMING);
-        List<FarmPatchCatalog.Patch> patches=new ArrayList<>(catalog.patches());patches.addAll(BIRDHOUSES);
-        for(FarmPatchCatalog.Patch patch:patches)
+        List<Patch> patches=new ArrayList<>(catalog.patches());patches.addAll(BIRDHOUSES);
+        for(Patch patch:patches)
         {
             String gate="";Quest quest=null;
             if("Fossil Island".equals(patch.region)||"Seaweed".equals(patch.region))quest=Quest.BONE_VOYAGE;
@@ -393,14 +410,14 @@ public final class FarmPatchPlanner
         }
         access=next;
     }
-    private void observeReplant(FarmPatchCatalog.Patch patch,Seen before,int value)
+    private void observeReplant(Patch patch,Seen before,int value)
     {
         if(before==null||!current.contains(patch.id))return;
-        FarmPatchCatalog.State previous=catalog.state(patch.type,before.value),next=catalog.state(patch.type,value);
+        State previous=catalog.state(patch.type,before.value),next=catalog.state(patch.type,value);
         if(previous==null||next==null||!"GROWING".equals(next.state)||next.stage!=0||"GROWING".equals(previous.state)&&Objects.equals(previous.crop,next.crop)&&previous.stage==0)return;
         for(Route route:saved.routes.values())
         {
-            FarmPatchCatalog.Seed seed=catalog.seed(route.seedItemId);
+            Seed seed=catalog.seed(route.seedItemId);
             if(route.active&&route.stops.contains(patch.id)&&!route.completed.contains(patch.id)&&seed!=null&&Objects.equals(seed.cropKey,next.crop))
             {route.planted.add(patch.id);route.evidence.put(patch.id,"Replant observed · compost unchecked");dirty=true;}
         }
@@ -421,7 +438,7 @@ public final class FarmPatchPlanner
     }
     private void observeBirdRefill(WorldPoint location)
     {
-        Route route=route();net.runelite.api.WorldView view=client.getTopLevelWorldView();
+        Route route=route();WorldView view=client.getTopLevelWorldView();
         if(!"birdhouse".equals(saved.selected)||!route.active||view==null||view.isInstance()||view.getPlane()!=0||location.getPlane()!=0)return;
         long now=System.currentTimeMillis()/1000;
         Map<String,HarvestClockTool.BirdHouseReading> records=new HashMap<>();
@@ -445,10 +462,10 @@ public final class FarmPatchPlanner
         if(!validProfile())return;Route route=route();if(!route.active)return;
         String next=nextStop(route);
         if(next==null){route.active=false;automaticRoute.stop();message="Run complete";dirty=true;return;}
-        FarmPatchCatalog.Patch patch=patch(next);
+        Patch patch=patch(next);
         automaticRoute.update(next,destination(patch),patch==null?"Farm run":patch.label(),ticks);
     }
-    private WorldPoint destination(FarmPatchCatalog.Patch patch)
+    private WorldPoint destination(Patch patch)
     {
         if(patch==null)return null;
         if("BIRDHOUSE".equals(patch.type)){int i=Integer.parseInt(patch.id.substring(10));return new WorldPoint(HOUSE_POINTS[i][0],HOUSE_POINTS[i][1],0);}
@@ -460,32 +477,32 @@ public final class FarmPatchPlanner
     private static String normalize(String id)
     {
         if(id==null)return "herb";
-        String word=id.toLowerCase(java.util.Locale.ROOT);
+        String word=id.toLowerCase(Locale.ROOT);
         if(word.contains("bird"))return "birdhouse";if(word.contains("hardwood"))return "hardwood";
         if(word.contains("fruit"))return "fruit";if(word.contains("tree"))return "tree";
         for(RunType type:TYPES)if(word.contains(type.id))return type.id;
         return "herb";
     }
-    private List<FarmPatchCatalog.Patch> available(RunType type)
+    private List<Patch> available(RunType type)
     {
         if("birdhouse".equals(type.id))return BIRDHOUSES;
-        List<FarmPatchCatalog.Patch> result=new ArrayList<>();
-        for(FarmPatchCatalog.Patch patch:catalog.forGuide(type.id))if(type.type.equals(patch.type))result.add(patch);
+        List<Patch> result=new ArrayList<>();
+        for(Patch patch:catalog.forGuide(type.id))if(type.type.equals(patch.type))result.add(patch);
         return result;
     }
-    private FarmPatchCatalog.Patch patch(String id)
-    {if(id==null)return null;for(FarmPatchCatalog.Patch house:BIRDHOUSES)if(house.id.equals(id))return house;return catalog.patch(id);}
+    private Patch patch(String id)
+    {if(id==null)return null;for(Patch house:BIRDHOUSES)if(house.id.equals(id))return house;return catalog.patch(id);}
     private List<CropChoice> cropChoices(RunType type)
     {
         if("birdhouse".equals(type.id))return HOUSES;
-        List<CropChoice> result=new ArrayList<>();for(FarmPatchCatalog.Seed seed:catalog.seeds(type.type))result.add(new CropChoice(seed.id,seed.name,seed.level,seed.quantity));
+        List<CropChoice> result=new ArrayList<>();for(Seed seed:catalog.seeds(type.type))result.add(new CropChoice(seed.id,seed.name,seed.level,seed.quantity));
         return result;
     }
     private Route route()
     {
         Route route=saved.routes.get(saved.selected);if(route!=null)
         {if("birdhouse".equals(saved.selected)&&route.quantity!=1){route.quantity=1;dirty=true;}return route;}
-        route=new Route();for(FarmPatchCatalog.Patch patch:available(type()))if(access.getOrDefault(patch.id,"Unlock not checked").isEmpty())route.stops.add(patch.id);
+        route=new Route();for(Patch patch:available(type()))if(access.getOrDefault(patch.id,"Unlock not checked").isEmpty())route.stops.add(patch.id);
         List<CropChoice> seeds=cropChoices(type());if(!seeds.isEmpty()){route.seedItemId=seeds.get(0).id;route.quantity=seeds.get(0).quantity==null?0:seeds.get(0).quantity;}
         if("birdhouse".equals(saved.selected))route.compostItemId=0;
         saved.routes.put(saved.selected,route);dirty=true;return route;
@@ -497,22 +514,22 @@ public final class FarmPatchPlanner
         if(!validProfile())return;
         Integer precision=config.getConfiguration(TimeTrackingConfig.CONFIG_GROUP,profile,TimeTrackingConfig.FARM_TICK_OFFSET_PRECISION,int.class);
         Integer offset=config.getConfiguration(TimeTrackingConfig.CONFIG_GROUP,profile,TimeTrackingConfig.FARM_TICK_OFFSET,int.class);
-        Set<net.runelite.api.WorldType> worlds=client.getWorldType();
-        boolean leagues=worlds!=null&&worlds.contains(net.runelite.api.WorldType.SEASONAL)&&!worlds.contains(net.runelite.api.WorldType.DEADMAN);
+        Set<WorldType> worlds=client.getWorldType();
+        boolean leagues=worlds!=null&&worlds.contains(WorldType.SEASONAL)&&!worlds.contains(WorldType.DEADMAN);
         Map<String,PatchReading> observed=new LinkedHashMap<>();
         for(Map.Entry<String,Seen> entry:saved.patches.entrySet())
         {
-            FarmPatchCatalog.Patch patch=catalog.patch(entry.getKey());Seen seen=entry.getValue();
+            Patch patch=catalog.patch(entry.getKey());Seen seen=entry.getValue();
             if(patch!=null)observed.put(patch.id,new PatchReading(patch,catalog.state(patch.type,seen.value),seen.at,seen.growthAt>0?seen.growthAt:seen.at,
                 current.contains(patch.id),seen.compost,seen.compostAt,precision,offset,leagues));
         }
         readings=Collections.unmodifiableMap(observed);
         HudOptions options=new HudOptions();options.enabled=saved.hud.enabled;options.compost=saved.hud.compost;options.style=saved.hud.style;hudOptions=options;
         RunType type=type();choices=Collections.unmodifiableList(cropChoices(type));Route route=route();
-        List<StopReading> stops=new ArrayList<>();Map<String,FarmPatchCatalog.Patch> remaining=new LinkedHashMap<>();
-        for(FarmPatchCatalog.Patch patch:available(type))remaining.put(patch.id,patch);
-        for(String id:route.stops){FarmPatchCatalog.Patch patch=remaining.remove(id);if(patch!=null)stops.add(stopReading(patch,route,true));}
-        for(FarmPatchCatalog.Patch patch:remaining.values())stops.add(stopReading(patch,route,false));
+        List<StopReading> stops=new ArrayList<>();Map<String,Patch> remaining=new LinkedHashMap<>();
+        for(Patch patch:available(type))remaining.put(patch.id,patch);
+        for(String id:route.stops){Patch patch=remaining.remove(id);if(patch!=null)stops.add(stopReading(patch,route,true));}
+        for(Patch patch:remaining.values())stops.add(stopReading(patch,route,false));
         Map<Integer,Long> carried=new LinkedHashMap<>();
         for(InventoryID container:new InventoryID[]{InventoryID.INVENTORY,InventoryID.EQUIPMENT})
         {
@@ -556,12 +573,12 @@ public final class FarmPatchPlanner
             {int weight=birdSeedUnits(item.getKey());if(weight>0){if(units==0)icon=item.getKey();units+=item.getValue()*weight;}}
             supplies.add(new SupplyReading(icon,"Bird-house seed units",10L*count,units,"10 units per house: most accepted seeds = 1; wildblood and Ranarr–Torstol = 2."));
         }
-        String next=nextStop(route);FarmPatchCatalog.Patch nextPatch=patch(next);String label=nextPatch==null?"":nextPatch.label();
+        String next=nextStop(route);Patch nextPatch=patch(next);String label=nextPatch==null?"":nextPatch.label();
         String advice=navigation==null?"":navigation.routeAdvice("farm").recommendation(profile,destination(nextPatch));
         String status=!message.isEmpty()?message:route.active?"Follow the next location":route.completed.size()>0&&next==null?"Run complete":"Ready to prepare";
         run=new RunReading(profile,epoch,type,route,next,label,status,advice,stops,supplies,preparation);
     }
-    private StopReading stopReading(FarmPatchCatalog.Patch patch,Route route,boolean selected)
+    private StopReading stopReading(Patch patch,Route route,boolean selected)
     {
         String status=route.evidence.get(patch.id);PatchReading observed=readings.get(patch.id);
         if(status==null)status=observed==null?"BIRDHOUSE".equals(patch.type)?"Check / skip after refilling":"Not observed":observed.status(System.currentTimeMillis()/1000);
@@ -590,7 +607,7 @@ public final class FarmPatchPlanner
             value.hud.style==null||!Set.of("Rings","Text","Hybrid").contains(value.hud.style)||value.patches==null||value.patches.size()>catalog.patches().size()||value.routes==null||value.routes.size()>TYPES.size())return false;
         for(Map.Entry<String,Seen> entry:value.patches.entrySet())
         {
-            FarmPatchCatalog.Patch patch=catalog.patch(entry.getKey());Seen seen=entry.getValue();
+            Patch patch=catalog.patch(entry.getKey());Seen seen=entry.getValue();
             if(patch==null||seen==null||catalog.state(patch.type,seen.value)==null||seen.at<0||seen.growthAt<0||seen.compostAt<0||seen.compost!=null&&!FarmCompostEvidence.valid(seen.compost))return false;
         }
         for(Map.Entry<String,Route> entry:value.routes.entrySet())
@@ -598,7 +615,7 @@ public final class FarmPatchPlanner
             RunType type=TYPES.stream().filter(t->t.id.equals(entry.getKey())).findFirst().orElse(null);Route route=entry.getValue();
             if(type==null||route==null||route.stops==null||route.stops.size()>40||route.completed==null||route.planted==null||route.evidence==null||
                 route.quantity<0||route.quantity>100||!Set.of(0,6032,6034,21483).contains(route.compostItemId)||route.startedAt<0)return false;
-            Set<String> ids=new LinkedHashSet<>();for(FarmPatchCatalog.Patch patch:available(type))ids.add(patch.id);
+            Set<String> ids=new LinkedHashSet<>();for(Patch patch:available(type))ids.add(patch.id);
             if(!ids.containsAll(route.stops)||new LinkedHashSet<>(route.stops).size()!=route.stops.size()||!route.stops.containsAll(route.completed)||
                 !route.stops.containsAll(route.planted)||!route.stops.containsAll(route.evidence.keySet()))return false;
             for(String evidence:route.evidence.values())if(!Set.of("Checked","Skipped","Replant observed","Replant observed · compost unchecked","Refill observed").contains(evidence))return false;

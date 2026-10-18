@@ -75,8 +75,8 @@ final class VarlamoreThievingHudOverlay extends Overlay
             y+=2;
             if(distracted)
             {
-                timingCard(g,12,y,127,"DISTRACTED FOR",distraction.elapsed(now),style.accent,style);
-                timingCard(g,145,y,127,"TIME LEFT",distraction.left(now),VarlamoreThievingCoach.READY,style);
+                row(g,12,y,127,50,"DISTRACTED FOR",distraction.elapsed(now),style.accent,style);
+                row(g,145,y,127,50,"TIME LEFT",distraction.left(now),VarlamoreThievingCoach.READY,style);
                 y+=56;
             }
             row(g,12,y,260,38,"NEXT DISTRACTION",distraction==null?"Awaiting start":distraction.nextText(now),style.accent,style);
@@ -115,10 +115,6 @@ final class VarlamoreThievingHudOverlay extends Overlay
         finally{g.dispose();}
     }
 
-    private static void timingCard(Graphics2D g,int x,int y,int width,String label,String value,Color color,HudPreferences.Style style)
-    {
-        row(g,x,y,width,50,label,value,color,style);
-    }
     private static void row(Graphics2D g,int x,int y,int width,int height,String label,String value,Color color,HudPreferences.Style style)
     {
         g.setColor(new Color(color.getRed(),color.getGreen(),color.getBlue(),24));

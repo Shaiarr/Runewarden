@@ -49,10 +49,19 @@ final class HudPreferences
             return scale + "," + font + "," + opacity + "," + hex(accent) + "," + hex(text) + "," + hex(background)
                 + "," + visibility + "," + frame + "," + values;
         }
-        private static String hex(Color c) { return String.format(java.util.Locale.ROOT, "%06x", c.getRGB() & 0xffffff); }
     }
 
     private HudPreferences() {}
+    static String hex(Color color) { return String.format(java.util.Locale.ROOT, "%06x", color.getRGB() & 0xffffff); }
+    static String encodeText(String value)
+    { return Base64.getUrlEncoder().withoutPadding().encodeToString(value.getBytes(StandardCharsets.UTF_8)); }
+    static String decodeText(String value)
+    { return new String(Base64.getUrlDecoder().decode(value), StandardCharsets.UTF_8); }
+    static Map<String, Style> safeDecode(String value)
+    {
+        try { return decode(value); }
+        catch (IllegalArgumentException ignored) { return Collections.emptyMap(); }
+    }
     static int clamp(int value, int min, int max) { return Math.max(min, Math.min(max, value)); }
     static boolean known(String key)
     {
@@ -93,13 +102,13 @@ final class HudPreferences
     static String share(String layout)
     {
         decode(layout);
-        return "RUNEWARDEN:" + Base64.getUrlEncoder().withoutPadding().encodeToString(layout.getBytes(StandardCharsets.UTF_8));
+        return "RUNEWARDEN:" + encodeText(layout);
     }
     static String unshare(String text)
     {
         if (text == null || text.length() > 12000 || !text.trim().startsWith("RUNEWARDEN:"))
             throw new IllegalArgumentException("Paste a Runewarden layout code");
-        String value = new String(Base64.getUrlDecoder().decode(text.trim().substring(11)), StandardCharsets.UTF_8);
+        String value = decodeText(text.trim().substring(11));
         return encode(decode(value));
     }
     static String preset(String name, int opacity)

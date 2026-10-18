@@ -159,11 +159,10 @@ final class RunLootTool
     private void discard()
     {
         configBound=false;configProfileId=null;
-        profile = null; epoch++; paused = false; totals.clear(); sources.clear(); seen.clear();
+        profile = null; epoch++; paused = false; clearLoot();
         runStarted = 0; pausedAt = 0; pausedMillis = 0; seenTick = -1;
         suspended = false; suspendedAt = 0; manualCost = 0;
-        overflowQuantity = overflowValue = 0; overflowUnpriced = 0;
-        lootDirty = true; lootRevision++; cached = Reading.empty();
+        cached = Reading.empty();
         reading = Reading.empty();
         activityRunId=activityTitle=null;checkpointTicks=0;
         SwingUtilities.invokeLater(this::refreshPanel);
@@ -319,10 +318,7 @@ final class RunLootTool
     void setPaused(String expected, long expectedEpoch, boolean value)
     {
         if (!accountCurrent(expected, expectedEpoch) || paused == value) return;
-        long now = clock.getAsLong();
-        if (value) pausedAt = now;
-        else { pausedMillis += Math.max(0, now - pausedAt); pausedAt = 0; }
-        paused = value; publish();
+        updatePaused(value); publish();
         if(activitySession!=null){if(value)activitySession.pause();else if(activitySession.snapshot().state==SharedActivitySession.State.FINISHED||!activitySession.snapshot().current())activitySession.begin();else activitySession.resume();}
         checkpoint();
     }
@@ -351,8 +347,7 @@ final class RunLootTool
 
     private void resetRun(boolean pauseAfter)
     {
-        epoch++; totals.clear(); sources.clear(); seen.clear(); paused = false;
-        overflowQuantity = overflowValue = 0; overflowUnpriced = 0; lootDirty = true; lootRevision++;
+        epoch++; clearLoot(); paused = false;
         manualCost = 0; runStarted = clock.getAsLong(); pausedAt = 0; pausedMillis = 0;
         if (pauseAfter) { paused = true; pausedAt = runStarted; }
         publish();
@@ -369,12 +364,22 @@ final class RunLootTool
             activityTitle=activity.context==null?null:activity.context.title;checkpoint();
         }
         boolean shouldPause=!activity.running();
-        if(paused!=shouldPause)
-        {
-            long now=clock.getAsLong();if(shouldPause)pausedAt=now;
-            else{pausedMillis+=Math.max(0,now-pausedAt);pausedAt=0;}
-            paused=shouldPause;
-        }
+        if(paused!=shouldPause) updatePaused(shouldPause);
+    }
+
+    private void updatePaused(boolean value)
+    {
+        long now = clock.getAsLong();
+        if (value) pausedAt = now;
+        else { pausedMillis += Math.max(0, now - pausedAt); pausedAt = 0; }
+        paused = value;
+    }
+
+    private void clearLoot()
+    {
+        totals.clear(); sources.clear(); seen.clear();
+        overflowQuantity = overflowValue = 0; overflowUnpriced = 0;
+        lootDirty = true; lootRevision++;
     }
     private static final class CheckpointItem { int id;String name;long quantity,price; }
     private static final class Checkpoint
@@ -479,8 +484,7 @@ final class RunLootTool
             if (pauseAction) setPaused(captured.profile, captured.epoch, !captured.paused);
             else if (clearOnly)
             {
-                totals.clear(); sources.clear(); seen.clear(); overflowQuantity = overflowValue = 0; overflowUnpriced = 0;
-                lootDirty = true; lootRevision++; epoch++; publish();checkpoint();
+                clearLoot(); epoch++; publish();checkpoint();
             }
             else newRun(captured.profile, captured.epoch);
             SwingUtilities.invokeLater(this::refreshPanel);

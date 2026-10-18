@@ -89,7 +89,9 @@ final class SlayerTaskHud
     @Inject SlayerTaskHud(Client client,ConfigManager config,Gson gson){this.client=client;this.config=config;tasks=loadTasks(gson);locations=loadLocations(gson);}
     void start(){started=true;clear();}
     void stop(){started=false;clear();}
-    void clear(){profile=null;configProfile=null;captured=Reading.EMPTY;observed=false;warmup=3;rewardBefore=-1;rewardTicks=0;lastReward=-1;areaTask=-1;observedPlaces="";refresh();}
+    void clear(){captureProfile(null,null);}
+    private void captureProfile(String nextProfile,Long nextConfig)
+    {captured=Reading.EMPTY;observed=false;profile=nextProfile;configProfile=nextConfig;warmup=3;rewardBefore=-1;rewardTicks=0;lastReward=-1;areaTask=-1;observedPlaces="";refresh();}
     Reading reading()
     {
         return started&&client.getGameState()==GameState.LOGGED_IN&&client.getLocalPlayer()!=null
@@ -103,7 +105,7 @@ final class SlayerTaskHud
         String nextProfile=config.getRSProfileKey();Long nextConfig=selectedConfig();
         if(nextProfile==null){if(profile!=null)clear();return;}
         if(!Objects.equals(profile,nextProfile)||!Objects.equals(configProfile,nextConfig))
-        {captured=Reading.EMPTY;observed=false;profile=nextProfile;configProfile=nextConfig;warmup=3;rewardBefore=-1;rewardTicks=0;lastReward=-1;areaTask=-1;observedPlaces="";refresh();}
+            captureProfile(nextProfile,nextConfig);
         if(warmup-->0)return;
         Reading next=readTask();
         if(captured.active()&&!next.active()&&client.getVarpValue(VarPlayerID.SLAYER_COUNT)==0)

@@ -38,6 +38,15 @@ final class HudStyle
         return fonts;
     }
 
+    static String fit(Graphics2D graphics, String value, int width)
+    {
+        if (value == null) return "";
+        if (graphics.getFontMetrics().stringWidth(value) <= width) return value;
+        while (value.length() > 1 && graphics.getFontMetrics().stringWidth(value + "…") > width)
+            value = value.substring(0, value.length() - 1);
+        return value + "…";
+    }
+
     static Font label(int size) { return LABELS[Math.max(8, Math.min(32, size))]; }
     static Font body(int size) { return BODIES[Math.max(8, Math.min(32, size))]; }
 
@@ -51,8 +60,7 @@ final class HudStyle
             {
                 if (!current.equals(encoded))
                 {
-                    try { styles = HudPreferences.decode(current); }
-                    catch (IllegalArgumentException ignored) { styles = Collections.emptyMap(); }
+                    styles = HudPreferences.safeDecode(current);
                     encoded = current;
                 }
             }
@@ -135,17 +143,25 @@ final class HudStyle
     }
     static void panel(Graphics2D graphics, int width, int height, HudPreferences.Style style)
     {
+        int radius = style.frame == HudPreferences.Frame.ROUNDED ? 9 : 0;
+        Color background = new Color(style.background.getRed(), style.background.getGreen(), style.background.getBlue(),
+            (int) Math.round(style.opacity * 2.55));
+        panel(graphics, width, height, radius, background,
+            style.frame == HudPreferences.Frame.BORDERLESS ? null : style.accent.darker(), style.accent);
+    }
+
+    private static void panel(Graphics2D graphics, int width, int height, int radius,
+        Color background, Color border, Color accent)
+    {
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        int radius = style.frame == HudPreferences.Frame.ROUNDED ? 9 : 0;
-        graphics.setColor(new Color(style.background.getRed(), style.background.getGreen(), style.background.getBlue(),
-            (int) Math.round(style.opacity * 2.55)));
+        graphics.setColor(background);
         graphics.fillRoundRect(0, 0, width, height, radius, radius);
-        if (style.frame != HudPreferences.Frame.BORDERLESS)
+        if (border != null)
         {
-            graphics.setColor(style.accent.darker());
+            graphics.setColor(border);
             graphics.drawRoundRect(0, 0, width - 1, height - 1, radius, radius);
-            graphics.setColor(style.accent);
+            graphics.setColor(accent);
             graphics.drawLine(10, 0, Math.min(width - 11, 42), 0);
         }
     }
@@ -158,13 +174,6 @@ final class HudStyle
 
     static void panel(Graphics2D graphics, int width, int height, RunewardenConfig config)
     {
-        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        graphics.setColor(background(config));
-        graphics.fillRoundRect(0, 0, width, height, 9, 9);
-        graphics.setColor(BORDER);
-        graphics.drawRoundRect(0, 0, width - 1, height - 1, 9, 9);
-        graphics.setColor(GOLD);
-        graphics.drawLine(10, 0, Math.min(width - 11, 42), 0);
+        panel(graphics, width, height, 9, background(config), BORDER, GOLD);
     }
 }

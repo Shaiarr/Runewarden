@@ -54,5 +54,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: runewarden-plugin-${{ matrix.os }}
-          path: build/libs/runewarden-0.10.4.jar
+          path: build/libs/runewarden-0.10.5.jar
           retention-days: 14

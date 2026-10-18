@@ -237,6 +237,33 @@ public class FarmRunsToolTest
         }
         finally { f.close(); }
     }
+    @Test public void summaryAndDetailedProgressRemainDistinctAndTrackTheSameRun() throws Exception
+    {
+        Fixture f = new Fixture(); f.start();
+        try
+        {
+            SwingUtilities.invokeAndWait(() ->
+            {
+                JPanel summary = f.tool.createSummaryPanel();
+                JProgressBar overview = controls(summary, JProgressBar.class).get(0);
+                JProgressBar detailed = named(f.panel, "runewarden.farm-runs.progress", JProgressBar.class);
+                assertNotSame(overview, detailed);
+                assertEquals(detailed.getForeground(), overview.getForeground());
+                assertEquals(detailed.getBackground(), overview.getBackground());
+                assertEquals(detailed.getMaximumSize(), overview.getMaximumSize());
+                assertTrue(overview.isStringPainted()); assertTrue(detailed.isStringPainted());
+                button(f.panel, "Start run").doClick(); f.tool.refresh();
+                assertTrue(overview.isVisible());
+                named(f.panel, "runewarden.farm-runs.current-done", JButton.class).doClick(); f.tool.refresh();
+                assertEquals(1, detailed.getValue()); assertEquals(detailed.getValue(), overview.getValue());
+                assertEquals(detailed.getMaximum(), overview.getMaximum());
+                assertEquals(detailed.getString(), overview.getString());
+                button(f.panel, "End run").doClick(); f.tool.refresh();
+                assertFalse(overview.isVisible()); assertTrue(detailed.isVisible());
+            });
+        }
+        finally { f.close(); }
+    }
     @Test public void retainedLocationControlsUseTheNewEpochAfterEndingARun() throws Exception
     {
         Fixture f = new Fixture(); f.start();

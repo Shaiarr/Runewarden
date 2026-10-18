@@ -5,8 +5,6 @@ import com.google.gson.Gson;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.EnumMap;
 import java.util.IdentityHashMap;
 import java.util.LinkedHashMap;
@@ -37,7 +35,6 @@ import net.runelite.api.Scene;
 import net.runelite.api.Skill;
 import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
-import net.runelite.api.WallObject;
 import net.runelite.api.WorldView;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.*;
@@ -96,7 +93,7 @@ final class VarlamoreThievingCoach
     void setNavigation(HarvestNavigation navigation){this.navigation=navigation;}
     void reloadPreferences(){preferences=store.read(GROUP,null,KEY,1,Preferences.class,VarlamoreThievingCoach::validPreferences,Preferences::new);refreshLater();}
     void stop(){started=false;clear();}
-    void clear(){clearHouseRoute();epoch++;reading=Snapshot.EMPTY;state.clear();objects.clear();npcs.clear();citizenHistory.clear();seeded=null;seededView=null;profile=null;world=-1;previousValuables=-1;refreshLater();}
+    void clear(){resetScene();state.clear();profile=null;world=-1;refreshLater();}
     void onSceneChanged(){clear();}
     void onGameStateChanged(GameStateChanged event)
     {
@@ -135,8 +132,8 @@ final class VarlamoreThievingCoach
         {
             VarlamoreThievingState.House door=VarlamoreThievingState.House.doorAt(entry.getValue());
             if(door==null)continue;int id=resolvedId(entry.getKey());
-            if(id==51998)doorStates.merge(door,VarlamoreThievingState.DoorState.LOCKED,(a,b)->a==b?a:VarlamoreThievingState.DoorState.UNKNOWN);
-            else if(id==51999)doorStates.merge(door,VarlamoreThievingState.DoorState.OPEN,(a,b)->a==b?a:VarlamoreThievingState.DoorState.UNKNOWN);
+            VarlamoreThievingState.DoorState observed=id==51998?VarlamoreThievingState.DoorState.LOCKED:id==51999?VarlamoreThievingState.DoorState.OPEN:null;
+            if(observed!=null)doorStates.merge(door,observed,(a,b)->a==b?a:VarlamoreThievingState.DoorState.UNKNOWN);
         }
         for(VarlamoreThievingState.House h:VarlamoreThievingState.House.values())state.observeDoor(h,doorStates.getOrDefault(h,VarlamoreThievingState.DoorState.UNKNOWN),now);
         refreshNpcs();int valuables=count(VALUABLES),keys=count(KEYS);if(previousValuables>=0)state.observeValuables(previousValuables,valuables,now);previousValuables=valuables;
@@ -147,8 +144,8 @@ final class VarlamoreThievingCoach
         for(NPC npc:npcs.values())
         {
             WorldPoint at=npc.getWorldLocation();if(at==null)continue;
-            VarlamoreThievingState.House loadedOwner=VarlamoreThievingState.House.owner(npc.getId());
-            if(loadedOwner!=null)nearbyOwners.merge(loadedOwner,at.distanceTo2D(loadedOwner.door)<5,(a,b)->a||b);
+            VarlamoreThievingState.House owner=VarlamoreThievingState.House.owner(npc.getId());
+            if(owner!=null)nearbyOwners.merge(owner,at.distanceTo2D(owner.door)<5,(a,b)->a||b);
             if(player.distanceTo(at)>48)continue;
             if(citizen(npc.getId()))
             {
@@ -156,7 +153,6 @@ final class VarlamoreThievingCoach
                 witnessedTransition|=isDistracted&&Boolean.FALSE.equals(citizenHistory.get(npc));
                 nextCitizens.put(npc,isDistracted);
             }
-            VarlamoreThievingState.House owner=VarlamoreThievingState.House.owner(npc.getId());
             if(owner!=null)
             {
                 boolean close=at.distanceTo2D(owner.door)<5;

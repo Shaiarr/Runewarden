@@ -69,6 +69,21 @@ public class RunLootCheckpointTest
             assertTrue(h.tool.reading().paused);assertEquals(200,h.tool.reading().value);
         }finally{h.stop();}
     }
+    @Test public void manualAndSharedPausesBothExcludeTheirEntirePausedDuration() throws Exception
+    {
+        Harness h=new Harness();try
+        {
+            h.f.now.addAndGet(6000);h.loot(1);RunLootTool.Reading running=h.tool.reading();
+            h.tool.setPaused(running.profile,running.epoch,true);h.f.now.addAndGet(90_000);
+            h.tool.setPaused(running.profile,running.epoch,false);
+            assertEquals(6000,h.tool.reading().elapsedMillis);
+            h.f.now.addAndGet(600);h.tool.onGameTick();assertEquals(6600,h.tool.reading().elapsedMillis);
+            h.f.session.pause();h.tool.onGameTick();h.f.now.addAndGet(30_000);h.tool.onGameTick();
+            assertEquals(6600,h.tool.reading().elapsedMillis);
+            h.f.session.resume();h.tool.onGameTick();h.f.now.addAndGet(600);h.tool.onGameTick();
+            assertEquals(7200,h.tool.reading().elapsedMillis);
+        }finally{h.stop();}
+    }
     @Test public void stoppingWhileSuspendedNeverCheckpointsOfflineTime() throws Exception
     {
         Harness h=new Harness();try

@@ -17,8 +17,8 @@ import net.runelite.api.ParamID;
 import net.runelite.api.Prayer;
 import net.runelite.api.Skill;
 import net.runelite.api.StructComposition;
-import net.runelite.api.gameval.VarPlayerID;
-import net.runelite.api.gameval.VarbitID;
+import static net.runelite.api.gameval.VarPlayerID.*;
+import static net.runelite.api.gameval.VarbitID.*;
 import net.runelite.client.game.ItemEquipmentStats;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.game.ItemStats;
@@ -54,7 +54,7 @@ final class CurrentMaxHit
             && client.getLocalPlayer() != null && client.getLocalPlayer().getPlayerComposition() != null
             && client.getLocalPlayer().getPlayerComposition().getEquipmentId(net.runelite.api.kit.KitType.WEAPON) > 0)
             return unknown("Worn equipment is updating");
-        int stanceIndex = client.getVarpValue(VarPlayerID.COM_MODE);
+        int stanceIndex = client.getVarpValue(COM_MODE);
         String style = style(client, stanceIndex);
         if (style == null) return unknown("Attack style is not available");
         return readEquipment(client, items, wornItems, style, stanceIndex);
@@ -113,7 +113,7 @@ final class CurrentMaxHit
         int stance = ranged ? (stanceIndex == 0 ? 3 : 0) : "aggressive".equals(style) ? 3 : "controlled".equals(style) ? 1 : 0;
         int effective = effectiveLevel(boosted, prayerPercent(client, ranged), stance);
         if (!ranged && weapon.contains("soulreaper"))
-            effective += boosted * Math.max(0, Math.min(5, client.getVarpValue(VarPlayerID.SOULREAPER_STACKS))) * 6 / 100;
+            effective += boosted * Math.max(0, Math.min(5, client.getVarpValue(SOULREAPER_STACKS))) * 6 / 100;
         if (fullVoid(names, ranged ? "void ranger helm" : "void melee helm"))
         {
             boolean elite = ranged && has(names, "elite void top") && has(names, "elite void robe");
@@ -124,8 +124,7 @@ final class CurrentMaxHit
         if (weapon.contains("twisted bow")) return unknown("Target Magic is not observed for Twisted bow");
         if (ranged)
         {
-            boolean selfAmmo = crystal || blowpipe || weapon.contains("dart") || weapon.contains("knife")
-                || weapon.contains("knives") || weapon.contains("thrownaxe");
+            boolean selfAmmo = crystal || blowpipe || containsAny(weapon, "dart", "knife", "knives", "thrownaxe");
             if (selfAmmo) rangedStrength -= ammoStrength;
             else if (!ammunition) return unknown("Ammunition is not equipped");
             if (blowpipe) return unknown("Loaded blowpipe darts are not observed");
@@ -155,15 +154,15 @@ final class CurrentMaxHit
         if (client.getRealSkillLevel(Skill.MAGIC) < 1) return unknown("Magic level is not available");
         int level = Math.max(0, client.getBoostedSkillLevel(Skill.MAGIC));
         CombatSpellCatalog.Spell spell = casting
-            ? CombatSpellCatalog.fromSpellObject(client.getVarpValue(VarPlayerID.AUTOCAST_SPELL_OBJ)) : null;
+            ? CombatSpellCatalog.fromSpellObject(client.getVarpValue(AUTOCAST_SPELL_OBJ)) : null;
         Integer base = spell == null ? poweredBase(weapon, level) : Integer.valueOf(spell.maxHit(level));
         if (base == null) return unknown("Autocast spell is not observed or supported");
-        if (weapon.contains("uncharged") || weapon.contains("(inactive)") || weapon.contains("(empty)"))
+        if (containsAny(weapon, "uncharged", "(inactive)", "(empty)"))
             return unknown("Weapon is uncharged");
         if (spell != null && spell.name.equals("Magic Dart") && weapon.startsWith("slayer's staff (e)"))
             return unknown("Enhanced Magic Dart needs verified Slayer task state");
         if (spell != null && spell.name.endsWith("Bolt") && has(names, "chaos gauntlets")) base += 3;
-        if (spell != null && isGodSpell(spell.name) && client.getVarpValue(VarPlayerID.MAGEARENA_CHARGE) > 0)
+        if (spell != null && isGodSpell(spell.name) && client.getVarpValue(MAGEARENA_CHARGE) > 0)
         {
             String deity = spell.name.equals("Claws of Guthix") ? "guthix" : spell.name.equals("Saradomin Strike") ? "saradomin" : "zamorak";
             for (String name : names) if (name.contains(deity) && name.endsWith("cape")) { base += 10; break; }
@@ -259,23 +258,25 @@ final class CurrentMaxHit
     private static boolean has(List<String> names, String prefix)
     { for (String name : names) if (name.startsWith(prefix)) return true; return false; }
 
+    private static boolean containsAny(String text, String... fragments)
+    {
+        for (String fragment : fragments) if (text.contains(fragment)) return true;
+        return false;
+    }
+
     static String unsupportedWeapon(String weapon, boolean ranged)
     {
-        if (weapon.contains("uncharged") || weapon.contains("(inactive)") || weapon.contains("(empty)")) return "Weapon is uncharged";
+        if (containsAny(weapon, "uncharged", "(inactive)", "(empty)")) return "Weapon is uncharged";
         if (ranged)
         {
-            if (weapon.contains("atlatl") || weapon.contains("salamander") || weapon.contains("lizard") || weapon.contains("tonalztics")
-                || weapon.contains("craw's") || weapon.contains("webweaver") || weapon.contains("ogre") || weapon.contains("chinchompa"))
+            if (containsAny(weapon, "atlatl", "salamander", "lizard", "tonalztics", "craw's", "webweaver", "ogre", "chinchompa"))
                 return "Weapon needs ammunition, target or damage-specific calculation";
-            if (!weapon.contains("shortbow") && !weapon.contains("longbow") && !weapon.contains("crossbow")
-                && !weapon.contains("dart") && !weapon.contains("knife") && !weapon.contains("knives")
-                && !weapon.contains("thrownaxe") && !weapon.contains("ballista") && !weapon.contains("twisted bow")
-                && !weapon.contains("blowpipe") && !weapon.contains("crystal bow") && !weapon.contains("faerdhinen"))
+            if (!containsAny(weapon, "shortbow", "longbow", "crossbow", "dart", "knife", "knives", "thrownaxe",
+                "ballista", "twisted bow", "blowpipe", "crystal bow", "faerdhinen"))
                 return "Ranged weapon formula is not supported";
         }
-        else if (weapon.contains("colossal blade") || weapon.contains("dharok's greataxe") || weapon.contains("torag's hammers")
-            || weapon.contains("macuahuitl") || weapon.contains("temotli") || weapon.contains("sulphur blades")
-            || weapon.contains("ivandis") || weapon.contains("blisterwood") || weapon.contains("salamander") || weapon.contains("lizard"))
+        else if (containsAny(weapon, "colossal blade", "dharok's greataxe", "torag's hammers", "macuahuitl", "temotli",
+            "sulphur blades", "ivandis", "blisterwood", "salamander", "lizard"))
             return "Weapon needs a dedicated damage formula";
         return null;
     }
@@ -286,13 +287,13 @@ final class CurrentMaxHit
         return worn != null ? worn : client.getItemContainer(InventoryID.EQUIPMENT);
     }
 
-    static String attackStyle(Client client) { return style(client, client.getVarpValue(VarPlayerID.COM_MODE)); }
+    static String attackStyle(Client client) { return style(client, client.getVarpValue(COM_MODE)); }
 
     private static String style(Client client, int index)
     {
         if (index < 0) return null;
-        if (index == 4) index += Math.max(0, Math.min(1, client.getVarbitValue(VarbitID.AUTOCAST_DEFMODE)));
-        int type = client.getVarbitValue(VarbitID.COMBAT_WEAPON_CATEGORY);
+        if (index == 4) index += Math.max(0, Math.min(1, client.getVarbitValue(AUTOCAST_DEFMODE)));
+        int type = client.getVarbitValue(COMBAT_WEAPON_CATEGORY);
         EnumComposition categories = client.getEnum(EnumID.WEAPON_STYLES);
         if (categories == null) return null;
         int styleEnum = categories.getIntValue(type);

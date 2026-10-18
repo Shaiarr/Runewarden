@@ -4,8 +4,12 @@ package com.runewarden;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
+import java.util.function.Supplier;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.swing.JCheckBox;
@@ -39,8 +43,8 @@ public final class FieldCoach
     private final ConsumablePreviewOverlay consumables;
     private final Map<String, NativeClock> clocks = new LinkedHashMap<>();
     private volatile Reading reading = Reading.EMPTY;
-    private volatile java.util.Set<String> activeEffectKeys=java.util.Collections.emptySet();
-    private java.util.function.Supplier<List<Row>> additionalRows=java.util.Collections::emptyList;
+    private volatile Set<String> activeEffectKeys=Collections.emptySet();
+    private Supplier<List<Row>> additionalRows=Collections::emptyList;
     private volatile boolean enabled = true, boosts = true, previews = true, alerts;
     private volatile int warningSeconds = 15;
     private volatile boolean running;
@@ -112,12 +116,13 @@ public final class FieldCoach
     public void stop() { running = false; clear(); }
     public void clear()
     {
-        profile = null; epoch++; clocks.clear(); activeEffectKeys=java.util.Collections.emptySet(); reading = Reading.EMPTY; consumables.clear(); refresh();
+        profile = null; epoch++; clocks.clear(); activeEffectKeys=Collections.emptySet(); reading = Reading.EMPTY; consumables.clear(); refresh();
     }
-    public Reading snapshot() { return running && profile != null && profile.equals(configs.getRSProfileKey()) ? reading : Reading.EMPTY; }
-    public void setAdditionalRows(java.util.function.Supplier<List<Row>> rows) { additionalRows=rows==null?java.util.Collections::emptyList:rows; }
-    public java.util.Set<String> activeEffectKeys() { return running&&enabled&&profile!=null&&profile.equals(configs.getRSProfileKey())?activeEffectKeys:java.util.Collections.emptySet(); }
-    public java.util.Set<String> knownEffectKeys() { if(!running||!enabled||profile==null||!profile.equals(configs.getRSProfileKey()))return java.util.Collections.emptySet();java.util.Set<String> keys=new java.util.LinkedHashSet<>();for(Spec s:SPECS)keys.add(s.key);keys.add("antipoison");keys.add("antivenom");return java.util.Collections.unmodifiableSet(keys); }
+    private boolean scoped() { return running && profile != null && profile.equals(configs.getRSProfileKey()); }
+    public Reading snapshot() { return scoped() ? reading : Reading.EMPTY; }
+    public void setAdditionalRows(Supplier<List<Row>> rows) { additionalRows=rows==null?Collections::emptyList:rows; }
+    public Set<String> activeEffectKeys() { return enabled&&scoped()?activeEffectKeys:Collections.emptySet(); }
+    public Set<String> knownEffectKeys() { if(!enabled||!scoped())return Collections.emptySet();Set<String> keys=new LinkedHashSet<>();for(Spec s:SPECS)keys.add(s.key);keys.add("antipoison");keys.add("antivenom");return Collections.unmodifiableSet(keys); }
     public boolean enabled() { return enabled; }
     public boolean previewsEnabled() { return running && previews; }
     public List<Overlay> overlays() { return List.of(overlay, consumables); }
@@ -134,10 +139,10 @@ public final class FieldCoach
             || current == null || current.isEmpty()) { if (profile != null) clear(); return; }
         if (!current.equals(profile))
         { clear(); profile = current; baselineTick = client.getTickCount(); }
-        if (!enabled && !boosts) { activeEffectKeys=java.util.Collections.emptySet();reading = Reading.EMPTY; return; }
+        if (!enabled && !boosts) { activeEffectKeys=Collections.emptySet();reading = Reading.EMPTY; return; }
         int tick = client.getTickCount();
         List<Row> effectRows = new ArrayList<>(), boostRows = new ArrayList<>();
-        java.util.Set<String> activeKeys=new java.util.LinkedHashSet<>();
+        Set<String> activeKeys=new LinkedHashSet<>();
         if (enabled)
         {
             int combat = client.getVarbitValue(VarbitID.DIVINECOMBAT_POTION_TIME);
@@ -169,7 +174,7 @@ public final class FieldCoach
             int change = boosted - base;
             boostRows.add(new Row(skill.getName(), boosted + "/" + base + " (" + (change > 0 ? "+" : "") + change + ")", change < 0));
         }
-        if(enabled)effectRows.addAll(additionalRows.get());activeEffectKeys=java.util.Collections.unmodifiableSet(activeKeys);
+        if(enabled)effectRows.addAll(additionalRows.get());activeEffectKeys=Collections.unmodifiableSet(activeKeys);
         reading = new Reading(effectRows, boostRows); refresh();
     }
 
@@ -221,7 +226,7 @@ public final class FieldCoach
         }
     }
     static String duration(long ticks)
-    { long seconds = (Math.max(0, ticks) * 600 + 999) / 1000; return seconds / 60 + ":" + String.format(java.util.Locale.ROOT, "%02d", seconds % 60); }
+    { long seconds = (Math.max(0, ticks) * 600 + 999) / 1000; return seconds / 60 + ":" + String.format(Locale.ROOT, "%02d", seconds % 60); }
 
     private void reload()
     {
@@ -266,7 +271,7 @@ public final class FieldCoach
     private void render(Reading captured)
     {
         values.removeAll();
-        if (!running || profile == null || !profile.equals(configs.getRSProfileKey())) values.add(SidebarUi.label("Log in to view effects."));
+        if (!scoped()) values.add(SidebarUi.label("Log in to view effects."));
         else if (captured.effects.isEmpty() && captured.boosts.isEmpty()) values.add(SidebarUi.label("No active effects or stat changes."));
         else
         {

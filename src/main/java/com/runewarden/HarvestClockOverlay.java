@@ -84,10 +84,9 @@ final class HarvestClockOverlay extends Overlay
                         RadialTimer.paint(g, WIDTH - reserve - 6, y - 4, 12, ready ? 0 : harvest.remainingFraction(now), style.accent, "", harvest.estimated);
                         reserve += 32;
                     }
-                    g.setFont(HudStyle.body(12)); g.setColor(ready ? style.accent : style.text); right(g, time, y);
+                    right(g, time, y);
                 }
-                g.setFont(HudStyle.body(12)); g.setColor(ready ? style.accent : style.text);
-                g.drawString(fit(g, harvest.name, WIDTH - left - reserve), left, y); y += rowHeight;
+                g.drawString(HudStyle.fit(g, harvest.name, WIDTH - left - reserve), left, y); y += rowHeight;
             }
             g.setColor(HudStyle.muted(style));
             if (estimated) g.drawString("~ Estimated", 12, height - 10);
@@ -105,11 +104,5 @@ final class HarvestClockOverlay extends Overlay
         if (seconds >= 3600) return (seconds + 3599) / 3600 + "h";
         if (seconds >= 60) return (seconds + 59) / 60 + "m";
         return seconds + "s";
-    }
-    private static String fit(Graphics2D g, String value, int width)
-    {
-        if (g.getFontMetrics().stringWidth(value) <= width) return value;
-        while (value.length() > 1 && g.getFontMetrics().stringWidth(value + "…") > width) value = value.substring(0, value.length() - 1);
-        return value + "…";
     }
 }

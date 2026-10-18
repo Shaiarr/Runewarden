@@ -68,13 +68,13 @@ public final class ActionProgressTool
     private final ActionProgressOverlay overlay;private final LongSupplier clock;
     private final ItemManager items;private final SpriteManager sprites;private final SkillIconManager skillIcons;
     private static final class ImageLookup { final BufferedImage image;final long retryAt;ImageLookup(BufferedImage image,long retryAt){this.image=image;this.retryAt=retryAt;} }
-    private final Map<String,ImageLookup> images=new LinkedHashMap<String,ImageLookup>()
-    {protected boolean removeEldestEntry(Map.Entry<String,ImageLookup> eldest){return size()>64;}};
+    private final Map<String,ImageLookup> images=boundedCache();
     private final ActionBatchProgress batch=new ActionBatchProgress();
     private final ActionRecipeDetector detector=new ActionRecipeDetector();
     private final Map<Skill,Integer> experience=new EnumMap<>(Skill.class);
-    private final Map<Integer,ActionProgressRules.Timing> timings=new LinkedHashMap<Integer,ActionProgressRules.Timing>()
-    {protected boolean removeEldestEntry(Map.Entry<Integer,ActionProgressRules.Timing> eldest){return size()>64;}};
+    private final Map<Integer,ActionProgressRules.Timing> timings=boundedCache();
+    private static <K,V> Map<K,V> boundedCache()
+    {return new LinkedHashMap<K,V>(){protected boolean removeEldestEntry(Map.Entry<K,V> eldest){return size()>64;}};}
     private volatile Preferences preferences=new Preferences();private volatile Snapshot snapshot=Snapshot.empty();private volatile boolean started;
     private String profile,contextMethod,cycleTitle="",cycleBasis="";private int menuItemId,cycleItemId,cycleSpriteId;private Skill menuSkill,cycleSkill;private long menuAt;private ActionRecipeCatalog.Recipe menuRecipe,confirmedRecipe;private boolean cleanOperation;private long confirmedAt;private int animation=-1,lastFrame=-1;private long cycleStart,cycleEnd,lastActivity;private boolean exactCycle;
     public ActionProgressTool(Client client,ConfigManager config,RunewardenDataStore store,RunewardenConfig hud,SharedActivitySession session)
@@ -155,11 +155,11 @@ public final class ActionProgressTool
         // Native idle events can arrive before a sourced action cooldown ends.
         // They end an animation bar, not an already observed cast/recipe cycle.
         if(id<0){if("Animation".equals(cycleBasis)||cycleEnd<=now)cycleStart=cycleEnd=0;return;}
-        if(label==null){cycleStart=cycleEnd=0;cycleTitle="";cycleItemId=cycleSpriteId=0;cycleSkill=null;return;}
+        if(label==null){clearCycle();return;}
         ActionRecipeCatalog.Recipe actionRecipe=cycleRecipe(id,now);
         if(actionRecipe!=null)label=actionRecipe.name;
         // Walking, emotes and unidentified animation loops are not production actions.
-        if(ActionProgressRules.animationItem(id)>0&&actionRecipe==null){cycleStart=cycleEnd=0;cycleTitle="";cycleItemId=cycleSpriteId=0;cycleSkill=null;return;}
+        if(ActionProgressRules.animationItem(id)>0&&actionRecipe==null){clearCycle();return;}
         cycleSpriteId=ActionProgressRules.spellSprite(id);cycleSkill=actionRecipe==null?ActionProgressRules.skill(id):actionRecipe.skill;
         cycleItemId=actionRecipe==null?0:actionRecipe.icon;
         if(cycleSpriteId==0&&cycleItemId==0&&menuRecipe==null&&menuItemId>0&&cycleSkill==menuSkill&&now-menuAt<=120_000)cycleItemId=menuItemId;
@@ -179,6 +179,7 @@ public final class ActionProgressTool
         if(timing==null){cycleStart=cycleEnd=0;return;}
         cycleStart=fresh?now:now-timing.elapsedAtFrame(Math.max(0,lastFrame));cycleEnd=cycleStart+timing.durationMillis;cycleTitle=label;cycleBasis="Animation";lastActivity=now;
     }
+    private void clearCycle() { cycleStart=cycleEnd=0;cycleTitle="";cycleItemId=cycleSpriteId=0;cycleSkill=null; }
     /** An animation name is only a hint: reused sequences never overrule a native item operation or transformation. */
     private ActionRecipeCatalog.Recipe cycleRecipe(int animation,long now)
     {

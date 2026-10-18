@@ -4,8 +4,6 @@ package com.runewarden;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import net.runelite.client.config.ConfigManager;
@@ -41,7 +39,7 @@ final class HudLayoutPositions
         return result.toString();
     }
     private static void append(StringBuilder result, String id, int field, String value)
-    { result.append(id).append(':').append(field).append('=').append(encode(value)).append('|'); }
+    { result.append(id).append(':').append(field).append('=').append(HudPreferences.encodeText(value)).append('|'); }
     static Map<String, String> decode(String encoded)
     {
         if (encoded == null || !encoded.startsWith("RWP1|") || encoded.length() > 8192)
@@ -54,7 +52,7 @@ final class HudLayoutPositions
             if (pair.length == 2 && key.length == 2 && HudPreferences.retired(key[0])) continue;
             if (pair.length != 2 || key.length != 2 || !HudPreferences.known(key[0]) || !key[1].matches("[0-4]"))
                 throw new IllegalArgumentException("Invalid position widget");
-            String value = new String(Base64.getUrlDecoder().decode(pair[1]), StandardCharsets.UTF_8);
+            String value = HudPreferences.decodeText(pair[1]);
             if (value.length() > 100 || !value.matches("[A-Za-z0-9_\\-:, .{}\"xy]+") || values.put(pair[0], value) != null)
                 throw new IllegalArgumentException("Invalid position value");
             if ("0".equals(key[1])) point(value);
@@ -125,7 +123,7 @@ final class HudLayoutPositions
     static String share(String style, String positions)
     {
         HudPreferences.decode(style); decode(positions);
-        return "RUNEWARDEN-LAYOUT:" + encode(style) + '.' + encode(positions);
+        return "RUNEWARDEN-LAYOUT:" + HudPreferences.encodeText(style) + '.' + HudPreferences.encodeText(positions);
     }
     static String[] unshare(String text)
     {
@@ -133,13 +131,9 @@ final class HudLayoutPositions
             throw new IllegalArgumentException("Paste a Runewarden layout code");
         String[] pieces = text.substring(18).split("\\.", -1);
         if (pieces.length != 2) throw new IllegalArgumentException("Invalid layout code");
-        String style = new String(Base64.getUrlDecoder().decode(pieces[0]), StandardCharsets.UTF_8);
-        String positions = new String(Base64.getUrlDecoder().decode(pieces[1]), StandardCharsets.UTF_8);
+        String style = HudPreferences.decodeText(pieces[0]);
+        String positions = HudPreferences.decodeText(pieces[1]);
         HudPreferences.decode(style); decode(positions);
         return new String[] {style, positions};
-    }
-    private static String encode(String text)
-    {
-        return Base64.getUrlEncoder().withoutPadding().encodeToString(text.getBytes(StandardCharsets.UTF_8));
     }
 }

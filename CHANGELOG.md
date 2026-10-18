@@ -1,5 +1,11 @@
 # Changes
 
+## 0.10.5 — Smaller implementation and persistent tracking controls
+
+- Share repeated animation facts, exact recipe evidence checks, HUD text/frame helpers, sidebar construction, loot bookkeeping and preference parsing without removing supported behavior or reference entries.
+- Keep all 24 harvest tracking checkboxes available on Overview and Timers, including untracked and unobserved categories, with account-specific selections.
+- Preserve existing growth clocks, distant scene labels, routing ownership, layouts, item identities and profile isolation.
+
 ## 0.10.4 — Distant scene labels
 
 - Discover farming patch cards across the loaded native plane instead of only within 16 tiles of the player. Resolve reused patch varbits using the actual object location.

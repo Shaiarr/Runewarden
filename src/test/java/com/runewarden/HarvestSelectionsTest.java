@@ -18,7 +18,6 @@ import java.util.concurrent.atomic.AtomicReference;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.imageio.ImageIO;
 import net.runelite.api.Client;
@@ -102,6 +101,24 @@ public class HarvestSelectionsTest
         assertFalse(choices.toggle(session, "bogus", true, Collections.emptyList()));
     }
 
+    @Test public void selectedSnapshotsRemainImmutableAndStableAcrossLaterEditsAndClear()
+    {
+        ConfigManager config = mock(ConfigManager.class);
+        when(config.getRSProfileKey()).thenReturn("account-a");
+        when(config.getConfiguration(RunewardenConfig.GROUP, "account-a", HarvestSelections.KEY)).thenReturn("[\"herb\"]");
+        HarvestSelections choices = new HarvestSelections(config);
+        HarvestSelections.Session session = choices.bind("account-a");
+        Set<String> before = choices.selected(Collections.emptyList());
+        assertThrows(UnsupportedOperationException.class, () -> before.add("hardwood"));
+        assertTrue(choices.toggle(session, "hardwood", true, Collections.emptyList()));
+        assertEquals(Set.of("herb"), before);
+        Set<String> after = choices.selected(Collections.emptyList());
+        assertEquals(Set.of("herb", "hardwood"), after);
+        assertThrows(UnsupportedOperationException.class, after::clear);
+        choices.clear();
+        assertEquals(Set.of("herb", "hardwood"), after);
+    }
+
     @Test public void timerCheckboxChangesNamedDashboardRowsAndOldButtonCannotOpenAnotherAccount() throws Exception
     {
         Client client = mock(Client.class);
@@ -151,8 +168,8 @@ public class HarvestSelectionsTest
             SwingUtilities.invokeAndWait(before.get(0)::doClick);assertNull(opened.get());
             SwingUtilities.invokeAndWait(()->tool.setRunGroupSupport(FarmRunsTool::supportsGroup));SwingUtilities.invokeAndWait(()->{});
             assertTrue(before.get(0).isEnabled());
-            assertTrue(components(dashboard.get(), JLabel.class).stream().anyMatch(label -> label.getText().contains("Bird houses")));
-            assertTrue(components(dashboard.get(), JLabel.class).stream().anyMatch(label -> label.getText().contains("Herb")));
+            assertTrue(components(dashboard.get(), JCheckBox.class).stream().anyMatch(label -> label.getText().contains("Bird houses")));
+            assertTrue(components(dashboard.get(), JCheckBox.class).stream().anyMatch(label -> label.getText().contains("Herb")));
             HarvestClockOverlay overlay = new HarvestClockOverlay(tool, hudConfig);
             BufferedImage preview = new BufferedImage(528, 196, BufferedImage.TYPE_INT_ARGB);
             Graphics2D graphics = preview.createGraphics();

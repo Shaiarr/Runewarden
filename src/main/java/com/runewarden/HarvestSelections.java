@@ -7,6 +7,7 @@ import com.google.gson.JsonParser;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import net.runelite.client.config.ConfigManager;
 
@@ -68,7 +69,7 @@ final class HarvestSelections
     synchronized Set<String> selected(Collection<HarvestClockTool.Harvest> observations)
     {
         if (profile == null) return Collections.emptySet();
-        if (chosen != null) return Collections.unmodifiableSet(new LinkedHashSet<>(chosen));
+        if (chosen != null) return chosen;
         Set<String> defaults = new LinkedHashSet<>();
         for (HarvestClockTool.Harvest harvest : observations) if (GROUPS.contains(harvest.id)&&harvest.observed()) defaults.add(harvest.id);
         return Collections.unmodifiableSet(defaults);
@@ -76,11 +77,7 @@ final class HarvestSelections
 
     synchronized boolean toggle(Session expected, String group, boolean enabled, Collection<HarvestClockTool.Harvest> observations)
     {
-        if (!current(expected) || !GROUPS.contains(group)) return false;
-        Set<String> next = new LinkedHashSet<>(selected(observations));
-        if (enabled) next.add(group); else next.remove(group);
-        save(next);
-        return true;
+        return GROUPS.contains(group) && update(expected, List.of(group), enabled, observations);
     }
 
     synchronized boolean add(Session expected, Collection<String> groups, Collection<HarvestClockTool.Harvest> observations)

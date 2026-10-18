@@ -1,0 +1,458 @@
+{
+  "format": "runewarden-token-optimization",
+  "baselineCommit": "70323afabdea92cfeb6f6ff184da94c07ab4ecc2",
+  "baselineVersion": "0.10.4",
+  "version": "0.10.5",
+  "scope": "Production Java only, comments excluded; strings retained. Resources, tests and development launcher excluded.",
+  "officialHubCount": false,
+  "measurementScriptChanged": false,
+  "referenceResourceChanges": false,
+  "before": {
+    "cl100k_base": 146641,
+    "o200k_base": 149598
+  },
+  "after": {
+    "cl100k_base": 143534,
+    "o200k_base": 146158
+  },
+  "saved": {
+    "cl100k_base": 3107,
+    "o200k_base": 3440
+  },
+  "localBudget": 160000,
+  "headroom": 13842,
+  "functionalChange": "All 24 harvest category controls remain available on Overview and Timers, including untracked/unobserved categories.",
+  "files": [
+    {
+      "file": "src/main/java/com/runewarden/ActionProgressRules.java",
+      "before": {
+        "cl100k_base": 3622,
+        "o200k_base": 3739
+      },
+      "after": {
+        "cl100k_base": 3183,
+        "o200k_base": 3229
+      },
+      "saved": {
+        "cl100k_base": 439,
+        "o200k_base": 510
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/ActionProgressTool.java",
+      "before": {
+        "cl100k_base": 4857,
+        "o200k_base": 4998
+      },
+      "after": {
+        "cl100k_base": 4831,
+        "o200k_base": 4968
+      },
+      "saved": {
+        "cl100k_base": 26,
+        "o200k_base": 30
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/ActionRecipeDetector.java",
+      "before": {
+        "cl100k_base": 843,
+        "o200k_base": 880
+      },
+      "after": {
+        "cl100k_base": 856,
+        "o200k_base": 885
+      },
+      "saved": {
+        "cl100k_base": -13,
+        "o200k_base": -5
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/ClaimableRoutineCatalog.java",
+      "before": {
+        "cl100k_base": 3282,
+        "o200k_base": 3324
+      },
+      "after": {
+        "cl100k_base": 3000,
+        "o200k_base": 3042
+      },
+      "saved": {
+        "cl100k_base": 282,
+        "o200k_base": 282
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/CommandDashboardOverlay.java",
+      "before": {
+        "cl100k_base": 1944,
+        "o200k_base": 1986
+      },
+      "after": {
+        "cl100k_base": 1856,
+        "o200k_base": 1896
+      },
+      "saved": {
+        "cl100k_base": 88,
+        "o200k_base": 90
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/CurrentMaxHit.java",
+      "before": {
+        "cl100k_base": 4461,
+        "o200k_base": 4506
+      },
+      "after": {
+        "cl100k_base": 4377,
+        "o200k_base": 4421
+      },
+      "saved": {
+        "cl100k_base": 84,
+        "o200k_base": 85
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/FarmPatchPlanner.java",
+      "before": {
+        "cl100k_base": 10122,
+        "o200k_base": 10405
+      },
+      "after": {
+        "cl100k_base": 9964,
+        "o200k_base": 10251
+      },
+      "saved": {
+        "cl100k_base": 158,
+        "o200k_base": 154
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/FarmRunsTool.java",
+      "before": {
+        "cl100k_base": 4364,
+        "o200k_base": 4505
+      },
+      "after": {
+        "cl100k_base": 4249,
+        "o200k_base": 4383
+      },
+      "saved": {
+        "cl100k_base": 115,
+        "o200k_base": 122
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/FieldCoach.java",
+      "before": {
+        "cl100k_base": 3747,
+        "o200k_base": 3785
+      },
+      "after": {
+        "cl100k_base": 3697,
+        "o200k_base": 3740
+      },
+      "saved": {
+        "cl100k_base": 50,
+        "o200k_base": 45
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/HarvestClockOverlay.java",
+      "before": {
+        "cl100k_base": 1444,
+        "o200k_base": 1455
+      },
+      "after": {
+        "cl100k_base": 1321,
+        "o200k_base": 1326
+      },
+      "saved": {
+        "cl100k_base": 123,
+        "o200k_base": 129
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/HarvestClockTool.java",
+      "before": {
+        "cl100k_base": 5478,
+        "o200k_base": 5535
+      },
+      "after": {
+        "cl100k_base": 5435,
+        "o200k_base": 5487
+      },
+      "saved": {
+        "cl100k_base": 43,
+        "o200k_base": 48
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/HarvestSelections.java",
+      "before": {
+        "cl100k_base": 1144,
+        "o200k_base": 1147
+      },
+      "after": {
+        "cl100k_base": 1108,
+        "o200k_base": 1109
+      },
+      "saved": {
+        "cl100k_base": 36,
+        "o200k_base": 38
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/HoverCardOverlay.java",
+      "before": {
+        "cl100k_base": 1817,
+        "o200k_base": 1882
+      },
+      "after": {
+        "cl100k_base": 1765,
+        "o200k_base": 1825
+      },
+      "saved": {
+        "cl100k_base": 52,
+        "o200k_base": 57
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/HudLayoutPositions.java",
+      "before": {
+        "cl100k_base": 1422,
+        "o200k_base": 1469
+      },
+      "after": {
+        "cl100k_base": 1355,
+        "o200k_base": 1397
+      },
+      "saved": {
+        "cl100k_base": 67,
+        "o200k_base": 72
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/HudPreferences.java",
+      "before": {
+        "cl100k_base": 1339,
+        "o200k_base": 1371
+      },
+      "after": {
+        "cl100k_base": 1407,
+        "o200k_base": 1441
+      },
+      "saved": {
+        "cl100k_base": -68,
+        "o200k_base": -70
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/HudResizeController.java",
+      "before": {
+        "cl100k_base": 2379,
+        "o200k_base": 2443
+      },
+      "after": {
+        "cl100k_base": 2365,
+        "o200k_base": 2426
+      },
+      "saved": {
+        "cl100k_base": 14,
+        "o200k_base": 17
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/HudSettingsTool.java",
+      "before": {
+        "cl100k_base": 5251,
+        "o200k_base": 5402
+      },
+      "after": {
+        "cl100k_base": 5159,
+        "o200k_base": 5306
+      },
+      "saved": {
+        "cl100k_base": 92,
+        "o200k_base": 96
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/HudStyle.java",
+      "before": {
+        "cl100k_base": 1763,
+        "o200k_base": 1802
+      },
+      "after": {
+        "cl100k_base": 1787,
+        "o200k_base": 1818
+      },
+      "saved": {
+        "cl100k_base": -24,
+        "o200k_base": -16
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/NodeTimerRules.java",
+      "before": {
+        "cl100k_base": 4479,
+        "o200k_base": 4550
+      },
+      "after": {
+        "cl100k_base": 3779,
+        "o200k_base": 3672
+      },
+      "saved": {
+        "cl100k_base": 700,
+        "o200k_base": 878
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/RecipeActionEvidence.java",
+      "before": {
+        "cl100k_base": 614,
+        "o200k_base": 656
+      },
+      "after": {
+        "cl100k_base": 368,
+        "o200k_base": 382
+      },
+      "saved": {
+        "cl100k_base": 246,
+        "o200k_base": 274
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/RunLootTool.java",
+      "before": {
+        "cl100k_base": 6759,
+        "o200k_base": 6854
+      },
+      "after": {
+        "cl100k_base": 6687,
+        "o200k_base": 6780
+      },
+      "saved": {
+        "cl100k_base": 72,
+        "o200k_base": 74
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/SkillingCoachOverlay.java",
+      "before": {
+        "cl100k_base": 728,
+        "o200k_base": 749
+      },
+      "after": {
+        "cl100k_base": 649,
+        "o200k_base": 668
+      },
+      "saved": {
+        "cl100k_base": 79,
+        "o200k_base": 81
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/SkillingOutfits.java",
+      "before": {
+        "cl100k_base": 2211,
+        "o200k_base": 2184
+      },
+      "after": {
+        "cl100k_base": 2020,
+        "o200k_base": 1997
+      },
+      "saved": {
+        "cl100k_base": 191,
+        "o200k_base": 187
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/SlayerTaskHud.java",
+      "before": {
+        "cl100k_base": 4435,
+        "o200k_base": 4562
+      },
+      "after": {
+        "cl100k_base": 4412,
+        "o200k_base": 4539
+      },
+      "saved": {
+        "cl100k_base": 23,
+        "o200k_base": 23
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/SlayerTaskOverlay.java",
+      "before": {
+        "cl100k_base": 730,
+        "o200k_base": 748
+      },
+      "after": {
+        "cl100k_base": 671,
+        "o200k_base": 687
+      },
+      "saved": {
+        "cl100k_base": 59,
+        "o200k_base": 61
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/VarlamoreThievingCoach.java",
+      "before": {
+        "cl100k_base": 6433,
+        "o200k_base": 6592
+      },
+      "after": {
+        "cl100k_base": 6338,
+        "o200k_base": 6496
+      },
+      "saved": {
+        "cl100k_base": 95,
+        "o200k_base": 96
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/VarlamoreThievingHudOverlay.java",
+      "before": {
+        "cl100k_base": 2006,
+        "o200k_base": 2069
+      },
+      "after": {
+        "cl100k_base": 1961,
+        "o200k_base": 2024
+      },
+      "saved": {
+        "cl100k_base": 45,
+        "o200k_base": 45
+      }
+    },
+    {
+      "file": "src/main/java/com/runewarden/VarlamoreThievingState.java",
+      "before": {
+        "cl100k_base": 2082,
+        "o200k_base": 2070
+      },
+      "after": {
+        "cl100k_base": 2049,
+        "o200k_base": 2033
+      },
+      "saved": {
+        "cl100k_base": 33,
+        "o200k_base": 37
+      }
+    }
+  ],
+  "validation": {
+    "unitTests": 451,
+    "routingIntegrationTests": 12,
+    "pythonGuardTests": 13,
+    "catalogEquivalenceComparisons": 556931,
+    "catalogOutputSha256": "36d48e7d29169bff61e12ecf1af44460bfa728e0806acbdef495678998bb3bb5",
+    "baselineJarSha256": "de085b9e626a5bd453b34d43c4df0bcf4795403ceebbffa951e4fe20b0c449f3",
+    "hudFramePixelParity": true,
+    "all24OverviewControlsAndStaleAccountActionsTested": true,
+    "liveGameplayTested": false
+  }
+}

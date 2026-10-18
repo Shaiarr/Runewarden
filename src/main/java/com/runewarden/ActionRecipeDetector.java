@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.EnumMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.IntToLongFunction;
 import net.runelite.api.Skill;
 
 /** Recognises an unselected recipe only after its exact transformation and XP agree. */
@@ -45,14 +46,16 @@ final class ActionRecipeDetector
         before=after=null;xp.clear();since=-1;return match;
     }
     static long matches(ActionRecipeCatalog.Recipe recipe,Map<Integer,Long> before,Map<Integer,Long> after,long xp)
+    {return matches(recipe,id->after.getOrDefault(id,0L)-before.getOrDefault(id,0L),xp);}
+    static long matches(ActionRecipeCatalog.Recipe recipe,IntToLongFunction changes,long xp)
     {
         if(recipe.xp<=0||recipe.products.isEmpty()||xp<=0)return 0;
         long count=Long.MAX_VALUE;Map<Integer,Long> inputs=amounts(recipe.ingredients),outputs=amounts(recipe.products);
-        for(Map.Entry<Integer,Long> item:inputs.entrySet())count=Math.min(count,Math.max(0,before.getOrDefault(item.getKey(),0L)-after.getOrDefault(item.getKey(),0L))/item.getValue());
-        for(Map.Entry<Integer,Long> item:outputs.entrySet())count=Math.min(count,Math.max(0,after.getOrDefault(item.getKey(),0L)-before.getOrDefault(item.getKey(),0L))/item.getValue());
+        for(Map.Entry<Integer,Long> item:inputs.entrySet())count=Math.min(count,Math.max(0,-changes.applyAsLong(item.getKey()))/item.getValue());
+        for(Map.Entry<Integer,Long> item:outputs.entrySet())count=Math.min(count,Math.max(0,changes.applyAsLong(item.getKey()))/item.getValue());
         if(count<=0||count==Long.MAX_VALUE||Math.abs(xp-count*recipe.xp)>=1.000001)return 0;
-        for(Map.Entry<Integer,Long> item:inputs.entrySet())if(before.getOrDefault(item.getKey(),0L)-after.getOrDefault(item.getKey(),0L)!=count*item.getValue())return 0;
-        for(Map.Entry<Integer,Long> item:outputs.entrySet())if(after.getOrDefault(item.getKey(),0L)-before.getOrDefault(item.getKey(),0L)!=count*item.getValue())return 0;
+        for(Map.Entry<Integer,Long> item:inputs.entrySet())if(changes.applyAsLong(item.getKey())!=-count*item.getValue())return 0;
+        for(Map.Entry<Integer,Long> item:outputs.entrySet())if(changes.applyAsLong(item.getKey())!=count*item.getValue())return 0;
         return count;
     }
     private static Map<Integer,Long> amounts(java.util.List<ActionRecipeCatalog.Ingredient> items)
