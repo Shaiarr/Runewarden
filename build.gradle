@@ -205,8 +205,10 @@ tasks.register('prepareTestPackage', Sync) {
 		if (libraries*.name.toSet().size() != libraries.size())
 			throw new GradleException('Duplicate test-package library names.')
 		['windows': ';', 'unix': ':'].each { platform, separator ->
+			def rendering = platform == 'windows'
+				? '-Dsun.java2d.d3d=false\n-Dsun.java2d.opengl=false\n' : ''
 			new File(destination, 'Runewarden-' + platform + '.args').setText(
-				'-ea\n-Xmx768m\n-cp\n"' + libraries.collect { 'lib/' + it.name }.join(separator)
+				rendering + '-ea\n-Xmx768m\n-cp\n"' + libraries.collect { 'lib/' + it.name }.join(separator)
 				+ '"\ncom.runewarden.RunewardenLauncher\n', 'UTF-8')
 		}
 		def coordinates = configurations.launcherRuntimeClasspath.resolvedConfiguration.resolvedArtifacts.collect { artifact ->

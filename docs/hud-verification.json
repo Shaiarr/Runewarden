@@ -93,13 +93,20 @@
     },
     {
       "file": "runewarden-hud-0.10.0-windows-x64.zip",
-      "bytes": 73912861,
-      "sha256": "11269f372e53bf91c2798a704405770a9e695c2f190a8deacd306fec3c62bcd4"
+      "bytes": 73913469,
+      "sha256": "31f0165e94b4ac9e7ede474ba77b53a9edcc76306648e2929f8996d23d61f87b"
     },
     {
       "file": "runewarden-java-runtime-sources-0.10.0.zip",
       "bytes": 105582669,
       "sha256": "953a002d9b6896000a8143bb4f115871a45441c0f8cfce67cba6420cf81b4749"
     }
-  ]
+  ],
+  "windowsRenderingCompatibility": {
+    "java2dDirect3d": false,
+    "java2dOpenGl": false,
+    "launcherGuard": true,
+    "missingOptionRejected": true,
+    "hardwareVisualRetest": false
+  }
 }

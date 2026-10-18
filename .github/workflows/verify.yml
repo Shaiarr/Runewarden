@@ -38,6 +38,8 @@ jobs:
         run: ./gradlew --no-daemon --no-parallel check jar --console=plain
       - name: Verify production JAR
         run: python tools/check_hub_jar.py
+      - name: Verify development launcher package
+        run: ./gradlew --no-daemon --no-parallel devTestZip --console=plain
       - name: Preserve tests, code budget and UI fixtures
         if: always()
         uses: actions/upload-artifact@v4

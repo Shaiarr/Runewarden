@@ -11,6 +11,10 @@ runewarden-java-runtime-sources-0.10.0.zip. Keep both downloads available when
 redistributing the Windows package; the source ZIP is not needed to launch.
 The portable ZIP requires an installed Java 17 runtime.
 
+Windows compatibility fix: the launcher restores software Java2D rendering
+for the startup window and sidebar to prevent the earlier colour corruption.
+The in-game GPU/HD plugin settings remain available.
+
 RuneLite itself is unchanged. The bootstrap registers Runewarden and, when the
 package includes it, Shortest Path through the official public development API.
 Enable the wanted plugins in RuneLite's normal plugin settings. The bootstrap

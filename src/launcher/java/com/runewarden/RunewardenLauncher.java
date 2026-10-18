@@ -25,6 +25,13 @@ public final class RunewardenLauncher
 
     public static void main(String[] args)
     {
+        // Apply before any Swing/AWT initialization, including direct Java starts.
+        // This preserves the Windows compatibility mode from earlier test packages.
+        if (System.getProperty("os.name", "").startsWith("Windows"))
+        {
+            System.setProperty("sun.java2d.d3d", "false");
+            System.setProperty("sun.java2d.opengl", "false");
+        }
         try
         {
             if (Runtime.version().feature() < 17)
@@ -59,6 +66,16 @@ public final class RunewardenLauncher
             || !RunewardenVersion.VERSION.equals(manifest.get("version").getAsString())
             || manifest.get("shortestPathBundled").getAsBoolean() != RunewardenBuiltinPlugins.hasShortestPath())
             throw new IOException("Package metadata and bootstrap do not match.");
+        java.util.List<String> windowsArguments = Files.readAllLines(
+            root.resolve("Runewarden-windows.args"), StandardCharsets.UTF_8);
+        for (String option : new String[]{"-Dsun.java2d.d3d=false", "-Dsun.java2d.opengl=false"})
+            if (!windowsArguments.contains(option)
+                || windowsArguments.indexOf(option) > windowsArguments.indexOf("com.runewarden.RunewardenLauncher"))
+                throw new IOException("Windows rendering compatibility option is missing: " + option);
+        if (System.getProperty("os.name", "").startsWith("Windows")
+            && (!"false".equals(System.getProperty("sun.java2d.d3d"))
+                || !"false".equals(System.getProperty("sun.java2d.opengl"))))
+            throw new IOException("Windows rendering compatibility mode is not active.");
         Set<Path> declaredLibraries = new HashSet<>();
         Set<String> declaredFiles = new HashSet<>();
         for (JsonElement value : manifest.getAsJsonArray("files"))
