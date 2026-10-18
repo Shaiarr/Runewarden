@@ -173,6 +173,18 @@ public class VarlamoreThievingCoachTest
         position.set(new WorldPoint(1670,3088,0));for(int i=0;i<300;i++)object(52008,1672,3090);assertEquals(192,coach.observedCount());
         when(client.getVarbitValue(9928)).thenReturn(1);when(client.getVarbitValue(9929)).thenReturn(37);assertArrayEquals(new int[]{1,37,0,0,0},coach.nativeActivityFields());
     }
+    @Test public void aLoadedAccessibleDoorKeepsItsFloatingCardFiftyThreeTilesAway()
+    {
+        position.set(new WorldPoint(1721,3105,0));when(view.getBaseX()).thenReturn(1648);
+        WallObject door=wall(51998,1668,3094);when(door.getCanvasLocation()).thenReturn(new Point(250,260));
+        when(door.getCanvasTextLocation(any(),anyString(),anyInt())).thenReturn(new Point(250,230));coach.onGameTick();
+        assertEquals(53,position.get().distanceTo(door.getWorldLocation()));
+        assertTrue("The loaded door must be a scene target beyond the former 40-tile cutoff",coach.reading().targets.stream().anyMatch(t->t.object==door));
+        BufferedImage image=new BufferedImage(500,330,BufferedImage.TYPE_INT_ARGB);Graphics2D g=image.createGraphics();coach.scene().render(g);g.dispose();
+        assertNotEquals("The actual distant door must retain its floating card and pointer",0,image.getRGB(250,260));
+        despawn(door);coach.onGameTick();image=new BufferedImage(500,330,BufferedImage.TYPE_INT_ARGB);g=image.createGraphics();coach.scene().render(g);g.dispose();
+        assertEquals("An unloaded door may not leave a distant marker behind",0,image.getRGB(250,260));
+    }
     @Test public void hudFitsCanvasAndEveryDisplayOptionIsEditable() throws Exception
     {
         NPC citizen=npc(13302,1690,3105),urchin=npc(13306,1691,3105);when(citizen.getInteracting()).thenReturn(urchin);chat(ChatMessageType.GAMEMESSAGE,"You notice an urchin distract a wealthy citizen nearby.");coach.onGameTick();

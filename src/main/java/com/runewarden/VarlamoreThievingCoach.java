@@ -188,7 +188,7 @@ final class VarlamoreThievingCoach
         boolean bonusFound=false,exitFound=false,anyFurniture=false;
         for(Map.Entry<TileObject,WorldPoint> entry:objects.entrySet())
         {
-            TileObject object=entry.getKey();WorldPoint point=entry.getValue();if(player.distanceTo(point)>40)continue;
+            TileObject object=entry.getKey();WorldPoint point=entry.getValue();
             int id=resolvedId(object);VarlamoreThievingState.House door=VarlamoreThievingState.House.doorAt(point);
             if(door!=null&&(id==51998||id==51999)&&preferences.doors)
                 targets.add(new Target(object,null,door==availableHouse?(keys>0?"ENTER · "+door.name:door.name+" · key required"):id==51998?door.name+" · wait for owner":"Owner's entrance",door==availableHouse?READY:WARNING,door==availableHouse?state.ownerReturn(door,now):null));

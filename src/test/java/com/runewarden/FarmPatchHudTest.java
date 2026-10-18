@@ -73,6 +73,37 @@ public class FarmPatchHudTest
         FarmPatchScene.Snapshot found=FarmPatchScene.scan(f.base.nativeState.client,f.view,f.base.location.get(),List.of(f.patch));assertEquals(1,found.anchors.size());verify(f.base.nativeState.client,times(1)).getObjectDefinition(1001);
         when(f.view.isInstance()).thenReturn(true);assertTrue(FarmPatchScene.scan(f.base.nativeState.client,f.view,f.base.location.get(),List.of(f.patch)).anchors.isEmpty());assertFalse(found.matches(f.view));
     }
+    @Test public void observedPatchCardIsDiscoveredAndDrawnThirtyTilesAway()
+    {
+        Fixture f=new Fixture();net.runelite.api.coords.WorldPoint patchPoint=f.object.getWorldLocation();
+        f.base.location.set(new net.runelite.api.coords.WorldPoint(patchPoint.getX()+30,patchPoint.getY(),0));f.base.tick(5);
+        assertEquals(30,patchPoint.distanceTo(f.base.location.get()));assertEquals(1,f.base.planner.sceneReading().anchors.size());
+        assertEquals(f.patch.id,f.base.planner.sceneReading().anchors.get(0).patchId);
+        FarmPatchOverlay overlay=new FarmPatchOverlay(f.base.nativeState.client,f.base.planner,mock(net.runelite.client.game.ItemManager.class));
+        BufferedImage image=new BufferedImage(400,400,BufferedImage.TYPE_INT_ARGB);java.awt.Graphics2D g=image.createGraphics();overlay.render(g);g.dispose();
+        assertNotEquals("A loaded, observed patch must keep its card beyond the former 16-tile radius",0,image.getRGB(200,150));
+        f.base.nativeState.profile.set("rsprofile.other");image=new BufferedImage(400,400,BufferedImage.TYPE_INT_ARGB);g=image.createGraphics();overlay.render(g);g.dispose();
+        assertEquals("Wider discovery must preserve immediate account isolation",0,countPainted(image));
+    }
+    @Test public void loadedSceneEdgesUseTheObjectsRegionForReusedVarbits()
+    {
+        Fixture f=new Fixture();net.runelite.api.coords.WorldPoint objectPoint=f.object.getWorldLocation();
+        net.runelite.api.coords.WorldPoint distantPlayer=new net.runelite.api.coords.WorldPoint(objectPoint.getX()-64,objectPoint.getY(),0);
+        FarmPatchCatalog.Patch other=new FarmPatchCatalog.Patch();other.id="another-site";other.type=f.patch.type;other.region="Elsewhere";other.varbit=f.patch.varbit;other.sentRegions=List.of(distantPlayer.getRegionID());
+        Tile[][][] loaded=new Tile[1][104][104];loaded[0][103][103]=f.tiles[0][32][32];when(f.scene.getTiles()).thenReturn(loaded);
+        when(f.view.getBaseX()).thenReturn(objectPoint.getX()-103);when(f.view.getBaseY()).thenReturn(objectPoint.getY()-103);
+        FarmPatchScene.Snapshot found=FarmPatchScene.scan(f.base.nativeState.client,f.view,distantPlayer,List.of(f.patch,other));
+        assertEquals("Native scene edges must be scanned, even across player-region boundaries",1,found.anchors.size());assertEquals(f.patch.id,found.anchors.get(0).patchId);
+        other.sentRegions=f.patch.sentRegions;
+        assertTrue("Ambiguous reused varbits must not attach the wrong patch's card",FarmPatchScene.scan(f.base.nativeState.client,f.view,distantPlayer,List.of(f.patch,other)).anchors.isEmpty());
+        when(f.object.getWorldView()).thenReturn(mock(WorldView.class));assertTrue(FarmPatchScene.scan(f.base.nativeState.client,f.view,distantPlayer,List.of(f.patch)).anchors.isEmpty());
+    }
+    @Test public void scenesOutsideEveryPatchTransmissionRegionSkipObjectDiscovery()
+    {
+        Fixture f=new Fixture();when(f.view.getBaseX()).thenReturn(0);when(f.view.getBaseY()).thenReturn(0);clearInvocations(f.base.nativeState.client);
+        assertTrue(FarmPatchScene.scan(f.base.nativeState.client,f.view,new net.runelite.api.coords.WorldPoint(32,32,0),f.base.catalog.patches()).anchors.isEmpty());
+        verify(f.base.nativeState.client,never()).getObjectDefinition(anyInt());
+    }
     @Test public void overlayDrawsAboveThePatchAndImmediatelyHidesOnProfileChange()
     {
         Fixture f=new Fixture();FarmPatchOverlay overlay=new FarmPatchOverlay(f.base.nativeState.client,f.base.planner,mock(net.runelite.client.game.ItemManager.class));BufferedImage image=new BufferedImage(400,400,BufferedImage.TYPE_INT_ARGB);java.awt.Graphics2D graphics=image.createGraphics();overlay.render(graphics);graphics.dispose();assertNotEquals(0,image.getRGB(200,150));assertEquals(0,image.getRGB(200,220));
@@ -154,7 +185,7 @@ public class FarmPatchHudTest
             when(base.nativeState.client.getVarbitValue(patch.varbit)).thenReturn(value);
             when(view.getScene()).thenReturn(scene);when(scene.getTiles()).thenReturn(tiles);when(view.getBaseX()).thenReturn(base.location.get().getX()-32);when(view.getBaseY()).thenReturn(base.location.get().getY()-32);
             when(base.nativeState.client.getTopLevelWorldView()).thenReturn(view);when(base.nativeState.client.getCanvasWidth()).thenReturn(400);when(base.nativeState.client.getCanvasHeight()).thenReturn(400);
-            when(object.getId()).thenReturn(1001);when(object.getWorldView()).thenReturn(view);when(object.sizeX()).thenReturn(3);when(object.sizeY()).thenReturn(3);when(object.getCanvasTextLocation(any(),anyString(),anyInt())).thenReturn(new net.runelite.api.Point(200,200));
+            when(object.getId()).thenReturn(1001);when(object.getWorldView()).thenReturn(view);when(object.getWorldLocation()).thenReturn(base.location.get());when(object.sizeX()).thenReturn(3);when(object.sizeY()).thenReturn(3);when(object.getCanvasTextLocation(any(),anyString(),anyInt())).thenReturn(new net.runelite.api.Point(200,200));
             ObjectComposition definition=mock(ObjectComposition.class);when(definition.getVarbitId()).thenReturn(patch.varbit);when(base.nativeState.client.getObjectDefinition(1001)).thenReturn(definition);
             tiles[0][32][32]=mock(Tile.class);when(tiles[0][32][32].getGameObjects()).thenReturn(new GameObject[]{object});base.planner.start();base.tick(7);
         }

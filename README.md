@@ -4,7 +4,7 @@
 
 A configurable black, white and gold HUD for Old School RuneScape on RuneLite, published by **Shai-arr**.
 
-**0.10.3 is an experimental HUD release on the `hud-core` branch.** It focuses on current activity information, timers and compact session tracking. It has not been approved for the Plugin Hub; package checks and headless tests do not establish live gameplay or performance.
+**0.10.4 is an experimental HUD release on the `hud-core` branch.** It focuses on current activity information, timers and compact session tracking. It has not been approved for the Plugin Hub; package checks and headless tests do not establish live gameplay or performance.
 
 ## HUD features
 
@@ -19,7 +19,7 @@ A configurable black, white and gold HUD for Old School RuneScape on RuneLite, p
 - A Slayer sidebar with native task counts, assigned location, selected target locations, equipment notes, points balance and observed completion rewards. Its optional floating card appears beside matching targets; restricted assignments also require a recognized area match.
 - Custom routines and supported native daily-claim reminders.
 
-HUD cards use shared style controls, **Alt-drag** movement and **Ctrl-drag** edge/corner resizing where supported. Scene-anchored cards retain their scene positions. Account observations and preferences remain character-bound; unknown states and estimates stay distinct from confirmed facts.
+HUD cards use shared style controls, **Alt-drag** movement and **Ctrl-drag** edge/corner resizing where supported. Scene-anchored cards retain their scene positions. Patch cards, birdhouse cards, observed node timers and Varlamore door labels can appear throughout the loaded scene when their native anchors are on screen. Account observations and preferences remain character-bound; unknown states and estimates stay distinct from confirmed facts.
 
 Farm and Varlamore house routing use **Shortest Path**, installed and enabled separately in a normal RuneLite setup. The test package can include the unchanged optional companion. The plugin displays routes and never performs walking, teleporting or other gameplay inputs.
 
@@ -46,6 +46,6 @@ python -m unittest discover -s tools -p 'test_*.py'
 python tools/check_hub_jar.py
 ```
 
-The Hub artifact is `build/libs/runewarden-0.10.3.jar`. Launcher/client/runtime classes are excluded from it. On Windows use `gradlew.bat` and UTF-8 Python mode (`python -X utf8 ...`). See [CONTRIBUTING](CONTRIBUTING.md) for optional test-package builds and [the release procedure](docs/release-process.md) for review.
+The Hub artifact is `build/libs/runewarden-0.10.4.jar`. Launcher/client/runtime classes are excluded from it. On Windows use `gradlew.bat` and UTF-8 Python mode (`python -X utf8 ...`). See [CONTRIBUTING](CONTRIBUTING.md) for optional test-package builds and [the release procedure](docs/release-process.md) for review.
 
 Original code is **BSD-2-Clause**; preserve [LICENSE](LICENSE), [NOTICE](NOTICE), [data attributions](DATA-SOURCES.md) and separate third-party terms. A future HUD submission will need its own size/budget assessment and review; the earlier broad submission does not cover this branch. Contributions and independent testing are welcome, without a guaranteed maintenance schedule or support response time. Runewarden is not endorsed by Jagex or RuneLite. Earlier prototype evidence does not certify this reduced HUD release.

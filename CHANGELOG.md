@@ -1,5 +1,10 @@
 # Changes
 
+## 0.10.4 — Distant scene labels
+
+- Discover farming patch cards across the loaded native plane instead of only within 16 tiles of the player. Resolve reused patch varbits using the actual object location.
+- Remove the 18-tile display cutoff for observed gathering-node timers and the 40-tile cutoff for loaded Varlamore doors. Keep native projection, current observations, profile isolation and scene bounds.
+
 ## 0.10.3 — Separate farming timers
 
 - Group farming reminders by the actual patch type instead of RuneLite's combined Tree, Fruit Tree and Special tabs. Celastrus, Hespori, redwood, hardwood, spirit, calquat and crystal trees have independent timers and selections.

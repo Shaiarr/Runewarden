@@ -1,7 +1,7 @@
 {
-  "version": "0.10.3",
+  "version": "0.10.4",
   "scope": "hud-core",
-  "unitTests": 435,
+  "unitTests": 442,
   "realShortestPathIntegrationTests": 12,
   "pythonGuardTests": 13,
   "failures": 0,
@@ -11,17 +11,17 @@
     "scope": "Production Java only, comments excluded; strings retained. Resources, tests and development launcher excluded.",
     "tokenizerVersion": "0.14.0",
     "files": 69,
-    "sourceBytes": 657498,
+    "sourceBytes": 658400,
     "tokens": {
-      "cl100k_base": 146508,
-      "o200k_base": 149454
+      "cl100k_base": 146641,
+      "o200k_base": 149598
     },
     "largestFiles": [
       {
         "file": "src/main/java/com/runewarden/FarmPatchPlanner.java",
-        "bytes": 43835,
-        "cl100k_base": 10120,
-        "o200k_base": 10402
+        "bytes": 43847,
+        "cl100k_base": 10122,
+        "o200k_base": 10405
       },
       {
         "file": "src/main/java/com/runewarden/RunLootTool.java",
@@ -31,9 +31,9 @@
       },
       {
         "file": "src/main/java/com/runewarden/VarlamoreThievingCoach.java",
-        "bytes": 27407,
-        "cl100k_base": 6443,
-        "o200k_base": 6602
+        "bytes": 27367,
+        "cl100k_base": 6433,
+        "o200k_base": 6592
       },
       {
         "file": "src/main/java/com/runewarden/HarvestClockTool.java",
@@ -96,7 +96,12 @@
     "patchObjectTethers": true,
     "individualNativeBirdHouseClocksAndTethers": true,
     "nativeProfileAndVarpIsolationTested": true,
-    "doorGeometryAndClippingTested": true
+    "doorGeometryAndClippingTested": true,
+    "fullLoadedPlanePatchDiscovery": true,
+    "patchObjectRegionDisambiguation": true,
+    "nodeTimerDrawn48TilesAway": true,
+    "doorCardDrawn53TilesAway": true,
+    "birdHouseLookupAtLoadedSceneEdge": true
   },
   "harvestTimerCategories": {
     "categoryCountIncludingBirdHouses": 24,
@@ -128,19 +133,19 @@
   },
   "artifacts": [
     {
-      "file": "runewarden-0.10.3.jar",
-      "bytes": 565236,
-      "sha256": "3c2ba5eb4caeee17bd18a3d4490c030c5185c43004a5877627eaeeaaf43a5f86"
+      "file": "runewarden-0.10.4.jar",
+      "bytes": 565761,
+      "sha256": "de085b9e626a5bd453b34d43c4df0bcf4795403ceebbffa951e4fe20b0c449f3"
     },
     {
-      "file": "runewarden-hud-0.10.3-windows-x64.zip",
-      "bytes": 73980926,
-      "sha256": "d900baa19fa637074ad4ed3322055cb87c99d9a04585332b4ac71efe95243419"
+      "file": "runewarden-hud-0.10.4-windows-x64.zip",
+      "bytes": 73981564,
+      "sha256": "652b29fe3f86c84d0bf89a97f74f6c79eaa1a42683b1c3317e3683e376d405ef"
     },
     {
-      "file": "runewarden-java-runtime-sources-0.10.3.zip",
+      "file": "runewarden-java-runtime-sources-0.10.4.zip",
       "bytes": 105582670,
-      "sha256": "df46e225ff4b98388969e05b444d0aa54b11490663ec9262e4333b8a39575921"
+      "sha256": "d0c47d7303182ee231154ff4bc367331a1db288eb6280782b4f1f70d90e26849"
     }
   ]
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import net.runelite.api.Client;
+import net.runelite.api.Constants;
 import net.runelite.api.GameObject;
 import net.runelite.api.ObjectComposition;
 import net.runelite.api.Tile;
@@ -33,30 +34,42 @@ final class FarmPatchScene
         boolean matches(WorldView current)
         { return current != null && current == view && !current.isInstance() && current.getScene() == scene && current.getBaseX()==baseX && current.getBaseY()==baseY && current.getPlane()==plane; }
     }
-    static Snapshot scan(Client client, WorldView view, WorldPoint player, List<FarmPatchCatalog.Patch> local)
+    static Snapshot scan(Client client, WorldView view, WorldPoint player, List<FarmPatchCatalog.Patch> patches)
     {
-        if (view==null || view.isInstance() || view.getScene()==null || player==null || local.isEmpty()) return Snapshot.EMPTY;
+        if (view==null || view.isInstance() || view.getScene()==null || player==null || patches.isEmpty()) return Snapshot.EMPTY;
         Tile[][][] tiles=view.getScene().getTiles();int plane=view.getPlane();
         if(tiles==null || plane<0 || plane>=tiles.length || tiles[plane]==null) return Snapshot.EMPTY;
-        Map<Integer,FarmPatchCatalog.Patch> byVarbit=new LinkedHashMap<>();
-        for(FarmPatchCatalog.Patch patch:local) if(!patch.type.contains("COMPOST") && patch.sentAt(player)) byVarbit.put(patch.varbit,patch);
+        Set<Integer> loadedRegions=new HashSet<>();
+        for(int x=view.getBaseX()>>6;x<=(view.getBaseX()+Constants.SCENE_SIZE-1)>>6;x++)
+            for(int y=view.getBaseY()>>6;y<=(view.getBaseY()+Constants.SCENE_SIZE-1)>>6;y++)loadedRegions.add((x<<8)|y);
+        Map<Integer,List<FarmPatchCatalog.Patch>> byVarbit=new LinkedHashMap<>();
+        for(FarmPatchCatalog.Patch patch:patches) if(!patch.type.contains("COMPOST") && patch.sentRegions!=null && !Collections.disjoint(patch.sentRegions,loadedRegions))
+            byVarbit.computeIfAbsent(patch.varbit,key->new ArrayList<>()).add(patch);
+        if(byVarbit.isEmpty())return Snapshot.EMPTY;
+        Map<Integer,ObjectComposition> definitions=new LinkedHashMap<>();
         List<Anchor> anchors=new ArrayList<>();Set<GameObject> seen=Collections.newSetFromMap(new IdentityHashMap<>());Set<String> found=new HashSet<>();
-        int centerX=player.getX()-view.getBaseX(),centerY=player.getY()-view.getBaseY(),visited=0;
-        for(int x=Math.max(0,centerX-16);x<=centerX+16 && x<tiles[plane].length;x++)
+        // Discovery covers the loaded native plane, independently of the player's distance.
+        // The object's own region disambiguates varbits reused at different patch sites.
+        for(int x=0;x<Math.min(Constants.SCENE_SIZE,tiles[plane].length);x++)
         {
             if(tiles[plane][x]==null)continue;
-            for(int y=Math.max(0,centerY-16);y<=centerY+16 && y<tiles[plane][x].length;y++)
+            for(int y=0;y<Math.min(Constants.SCENE_SIZE,tiles[plane][x].length);y++)
             {
-                if(++visited>1089 || anchors.size()>=24)break;Tile tile=tiles[plane][x][y];if(tile==null || tile.getGameObjects()==null)continue;
+                if(anchors.size()>=24)break;Tile tile=tiles[plane][x][y];if(tile==null || tile.getGameObjects()==null)continue;
                 for(GameObject object:tile.getGameObjects())
                 {
-                    if(object==null || object.getWorldView()!=view || !seen.add(object))continue;
-                    ObjectComposition definition=client.getObjectDefinition(object.getId());if(definition==null)continue;
-                    FarmPatchCatalog.Patch patch=byVarbit.get(definition.getVarbitId());
+                    if(object==null || object.getWorldView()!=view || object.getPlane()!=plane || !seen.add(object))continue;
+                    int id=object.getId();
+                    if(!definitions.containsKey(id))definitions.put(id,client.getObjectDefinition(id));
+                    ObjectComposition definition=definitions.get(id);if(definition==null)continue;
+                    List<FarmPatchCatalog.Patch> candidates=byVarbit.get(definition.getVarbitId());if(candidates==null)continue;
+                    FarmPatchCatalog.Patch patch=null;
+                    for(FarmPatchCatalog.Patch candidate:candidates)if(candidate.sentAt(object.getWorldLocation()))
+                    {if(patch!=null){patch=null;break;}patch=candidate;}
                     if(patch!=null && found.add(patch.id))anchors.add(new Anchor(patch.id,object));
                 }
             }
-            if(visited>1089 || anchors.size()>=24)break;
+            if(anchors.size()>=24)break;
         }
         return new Snapshot(view,view.getScene(),anchors,view.getBaseX(),view.getBaseY(),plane);
     }

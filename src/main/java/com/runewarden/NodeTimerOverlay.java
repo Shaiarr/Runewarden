@@ -46,8 +46,7 @@ public final class NodeTimerOverlay extends Overlay
             RunewardenConfig.TimerDisplay display=display(config.nodeTimerDisplay());
             for(SkillingCoach.Node node:coach.nodes())
             {
-                if(node.worldView!=view.getId()||node.point.getPlane()!=view.getPlane()
-                    ||node.point.distanceTo(client.getLocalPlayer().getWorldLocation())>18)continue;
+                if(node.worldView!=view.getId()||node.point.getPlane()!=view.getPlane())continue;
                 LocalPoint local=LocalPoint.fromWorld(view,node.point);if(local==null)continue;
                 if(node.motherlode&&(Perspective.getTileHeight(client,local,view.getPlane())< -500)
                     !=(Perspective.getTileHeight(client,client.getLocalPlayer().getLocalLocation(),view.getPlane())< -500))continue;

@@ -358,7 +358,7 @@ public final class FarmPatchPlanner
                 }
             }
         }
-        if(ticks%5==1)scene=settled>=3?FarmPatchScene.scan(client,client.getTopLevelWorldView(),location,local):FarmPatchScene.Snapshot.EMPTY;
+        if(ticks%5==1)scene=settled>=3?FarmPatchScene.scan(client,client.getTopLevelWorldView(),location,catalog.patches()):FarmPatchScene.Snapshot.EMPTY;
         completePlanted();if(settled>=3)observeBirdRefill(location);updateAutomaticRoute();publish();
         if(ticks%10==0)save();
     }
