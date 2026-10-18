@@ -39,7 +39,7 @@ import static org.mockito.Mockito.*;
 /** Visual QA only: all screenshots are labelled mocked-client fixtures, never live account claims. */
 public class UiPreviewTest
 {
-    @Test public void eightRealPagesAndNativeHudRenderOnTheEdt() throws Exception
+    @Test public void focusedPagesAndNativeHudRenderOnTheEdt() throws Exception
     {
         SwingUtilities.invokeAndWait(() -> {
             javax.swing.LookAndFeel previous=javax.swing.UIManager.getLookAndFeel();
@@ -50,7 +50,7 @@ public class UiPreviewTest
                 populateAccountFixture(fixture);
                 Map<String,JComponent> pages=SidebarLayoutTest.allModules(fixture);
                 assertEquals(Arrays.asList("Overview","Harvest runs","Timers","Gathering","Varlamore",
-                    "Session loot","Routines & dailies","HUD settings"),new java.util.ArrayList<>(pages.keySet()));
+                    "Session loot","Slayer","Routines & dailies","HUD settings"),new java.util.ArrayList<>(pages.keySet()));
                 RunewardenPanel host=new RunewardenPanel();
                 pages.forEach(host::addModule);
                 JComponent wrapped=host.getWrappedPanel();
@@ -168,7 +168,7 @@ public class UiPreviewTest
             new HarvestClockTool.Harvest("tree","Trees",net.runelite.client.plugins.timetracking.SummaryState.IN_PROGRESS,now+7200,true)));
         java.lang.reflect.Field observation=HarvestClockTool.class.getDeclaredField("observation");
         observation.setAccessible(true);
-        java.lang.reflect.Constructor<?> constructor=observation.getType().getDeclaredConstructors()[0];
+        java.lang.reflect.Constructor<?> constructor=observation.getType().getDeclaredConstructor(HarvestClockTool.Reading.class,HarvestSelections.Session.class);
         constructor.setAccessible(true); observation.set(harvest,constructor.newInstance(reading,session));
         assertEquals(3,harvest.selectedGroupIds().size());
 

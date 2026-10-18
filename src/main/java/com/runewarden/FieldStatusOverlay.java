@@ -57,7 +57,7 @@ public final class FieldStatusOverlay extends Overlay
                         row.warning?new Color(255,153,132):style.accent,center,row.estimated);
                 }
             }
-            if (shown < rows.size()) { graphics.setColor(style.muted); graphics.drawString("+" + (rows.size() - shown) + " in Effects & supplies", 10, height - 9); }
+            if (shown < rows.size()) { graphics.setColor(style.muted); graphics.drawString("+" + (rows.size() - shown) + " in Timers", 10, height - 9); }
             return HudStyle.dimension(style, width, height);
         }
         finally { graphics.dispose(); }

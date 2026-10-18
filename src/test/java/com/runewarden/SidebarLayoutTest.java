@@ -110,7 +110,10 @@ public class SidebarLayoutTest
     static Map<String,JComponent> allModules(Fixture f)
     {
         Map<String,JComponent> modules=new LinkedHashMap<>();
-        modules.put("Overview",f.get(HarvestClockTool.class).createDashboardPanel());
+        JPanel overview=SidebarUi.column();
+        overview.add(f.get(FarmRunsTool.class).createSummaryPanel());
+        overview.add(f.get(HarvestClockTool.class).createDashboardPanel());
+        modules.put("Overview",overview);
         modules.put("Harvest runs",f.get(FarmRunsTool.class).createPanel());
         JPanel timers=SidebarUi.column();
         timers.add(f.get(HarvestClockTool.class).createPanel());
@@ -122,6 +125,7 @@ public class SidebarLayoutTest
         modules.put("Gathering",gathering);
         modules.put("Varlamore",f.get(VarlamoreThievingCoach.class).createPanel());
         modules.put("Session loot",f.get(RunLootTool.class).createPanel());
+        modules.put("Slayer",f.get(SlayerTaskHud.class).createPanel());
         modules.put("Routines & dailies",f.get(RoutinePlannerTool.class).createPanel());
         modules.put("HUD settings",f.get(HudSettingsTool.class).createPanel());
         return modules;

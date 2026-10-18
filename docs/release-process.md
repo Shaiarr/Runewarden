@@ -1,6 +1,6 @@
 # HUD release procedure
 
-Runewarden HUD 0.10.1 is an experimental candidate on `hud-core`, published by Shai-arr. Its original code is BSD-2-Clause; third-party data, native libraries and optional Java runtime retain their own licenses. Successful local checks are not RuneLite/Jagex approval.
+Runewarden HUD 0.10.2 is an experimental candidate on `hud-core`, published by Shai-arr. Its original code is BSD-2-Clause; third-party data, native libraries and optional Java runtime retain their own licenses. Successful local checks are not RuneLite/Jagex approval.
 
 1. Run the plugin checks in `CONTRIBUTING.md` on the final source. Inspect HUD/sidebar rendering and the production JAR. Record results for this HUD tree, without copying the broader prototype's test totals.
 2. Check actual live scenarios: account/profile transitions, scene loading, overlay layout/resize, retained activities, module suspension and interoperability. Record what was tested and keep unverified behavior explicit. No relative RAM/FPS claim follows from a synthetic test or catalogue size.
@@ -19,4 +19,4 @@ Runewarden HUD 0.10.1 is an experimental candidate on `hud-core`, published by S
 
 The development bootstrap lives outside `src/main` and is excluded from the Hub JAR. Native RuneLite is not modified. The standard Hub builder controls its own build configuration; launcher packaging tasks are local testing tools, not part of that submission build.
 
-The earlier full prototype's readiness, CI and approval state must not be represented as acceptance of 0.10.1. Do not publish a stable-release claim until the relevant live and review evidence exists.
+The earlier full prototype's readiness, CI and approval state must not be represented as acceptance of 0.10.2. Do not publish a stable-release claim until the relevant live and review evidence exists.

@@ -1,0 +1,1219 @@
+{
+  "version": 1,
+  "runeLiteVersion": "1.13.2",
+  "source": "https://github.com/runelite/runelite/blob/runelite-parent-1.13.2/runelite-client/src/main/java/net/runelite/client/plugins/slayer/Task.java",
+  "tasks": [
+    {
+      "name": "Aberrant spectres",
+      "icon": 4144,
+      "aliases": [
+        "Spectre"
+      ],
+      "note": "Equip: Nose peg or Slayer helmet."
+    },
+    {
+      "name": "Abyssal demons",
+      "icon": 4149,
+      "aliases": [
+        "Abyssal Sire"
+      ],
+      "note": ""
+    },
+    {
+      "name": "The Abyssal Sire",
+      "icon": 13262,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "The Alchemical Hydra",
+      "icon": 22746,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Ankou",
+      "icon": 20095,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Aquanites",
+      "icon": 32885,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Araxxor",
+      "icon": 29836,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Araxytes",
+      "icon": 29788,
+      "aliases": [
+        "Araxxor"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Aviansies",
+      "icon": 13504,
+      "aliases": [
+        "Kree'arra",
+        "Flight Kilisa",
+        "Flockleader Geerin",
+        "Wingman Skree"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Bandits",
+      "icon": 4625,
+      "aliases": [
+        "Bandit",
+        "Black Heather",
+        "Donny the Lad",
+        "Speedy Keith"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Banshees",
+      "icon": 4135,
+      "aliases": [],
+      "note": "Equip: Earmuffs or Slayer helmet."
+    },
+    {
+      "name": "Barrows Brothers",
+      "icon": 4732,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Basilisks",
+      "icon": 4139,
+      "aliases": [],
+      "note": "Equip: Mirror shield or V's shield."
+    },
+    {
+      "name": "Bats",
+      "icon": 20875,
+      "aliases": [
+        "Death wing"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Bears",
+      "icon": 13462,
+      "aliases": [
+        "Callisto",
+        "Artio"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Birds",
+      "icon": 314,
+      "aliases": [
+        "Chicken",
+        "Rooster",
+        "Terrorbird",
+        "Seagull",
+        "Vulture",
+        "Duck",
+        "Penguin",
+        "Baby Roc"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Black demons",
+      "icon": 20026,
+      "aliases": [
+        "Demonic gorilla",
+        "Balfrug Kreeyath",
+        "Skotizo",
+        "Porazdir"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Black dragons",
+      "icon": 12524,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Black Knights",
+      "icon": 1165,
+      "aliases": [
+        "Black Knight"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Bloodveld",
+      "icon": 4141,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Blue dragons",
+      "icon": 12520,
+      "aliases": [
+        "Vorkath"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Brine rats",
+      "icon": 11047,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Callisto",
+      "icon": 13178,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Catablepon",
+      "icon": 9008,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Cave bugs",
+      "icon": 4521,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Cave crawlers",
+      "icon": 4134,
+      "aliases": [
+        "Chasm crawler"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Cave horrors",
+      "icon": 8900,
+      "aliases": [
+        "Cave abomination"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Cave kraken",
+      "icon": 3272,
+      "aliases": [
+        "Kraken"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Cave slimes",
+      "icon": 4520,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Cerberus",
+      "icon": 13247,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Chaos druids",
+      "icon": 20595,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "The Chaos Elemental",
+      "icon": 11995,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "The Chaos Fanatic",
+      "icon": 4675,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Cockatrice",
+      "icon": 4137,
+      "aliases": [
+        "Cockathrice"
+      ],
+      "note": "Equip: Mirror shield or V's shield."
+    },
+    {
+      "name": "Cows",
+      "icon": 11919,
+      "aliases": [
+        "Buffalo",
+        "Brutus"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Crabs",
+      "icon": 7537,
+      "aliases": [
+        "Ammonite Crab",
+        "Frost Crab",
+        "King Sand Crab",
+        "Rock Crab",
+        "Giant Rock Crab",
+        "Sand Crab",
+        "Swamp Crab"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Crawling hands",
+      "icon": 4133,
+      "aliases": [
+        "Crushing hand"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Crazy Archaeologists",
+      "icon": 11990,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Crocodiles",
+      "icon": 10149,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Custodian Stalkers",
+      "icon": 30994,
+      "aliases": [
+        "Ancient Custodian"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Dagannoth",
+      "icon": 8141,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Dagannoth Kings",
+      "icon": 12644,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Dark beasts",
+      "icon": 6637,
+      "aliases": [
+        "Night beast"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Dark warriors",
+      "icon": 1151,
+      "aliases": [
+        "Dark warrior"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Deranged Archaeologist",
+      "icon": 21629,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Dogs",
+      "icon": 8132,
+      "aliases": [
+        "Jackal",
+        "Temple Guardian"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Drakes",
+      "icon": 23041,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Duke Sucellus",
+      "icon": 28250,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Dust devils",
+      "icon": 4145,
+      "aliases": [
+        "Choke devil"
+      ],
+      "note": "Equip: Facemask or Slayer helmet."
+    },
+    {
+      "name": "Dwarves",
+      "icon": 11200,
+      "aliases": [
+        "Dwarf",
+        "Black Guard"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Earth warriors",
+      "icon": 12221,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Elves",
+      "icon": 6105,
+      "aliases": [
+        "Elf",
+        "Iorwerth Warrior",
+        "Iorwerth Archer"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Ents",
+      "icon": 8174,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Fever spiders",
+      "icon": 6709,
+      "aliases": [],
+      "note": "Protection: Slayer gloves if fighting within reach."
+    },
+    {
+      "name": "Fire giants",
+      "icon": 30622,
+      "aliases": [
+        "Branda the Fire Queen"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Fleshcrawlers",
+      "icon": 13459,
+      "aliases": [
+        "Flesh crawler"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Fossil island wyverns",
+      "icon": 21507,
+      "aliases": [
+        "Ancient wyvern",
+        "Long-tailed wyvern",
+        "Spitting wyvern",
+        "Taloned wyvern"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Frost dragons",
+      "icon": 31729,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Gargoyles",
+      "icon": 4147,
+      "aliases": [
+        "Dusk",
+        "Dawn"
+      ],
+      "note": "Bring: Rock hammer or equivalent."
+    },
+    {
+      "name": "General Graardor",
+      "icon": 12650,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Ghosts",
+      "icon": 552,
+      "aliases": [
+        "Death wing",
+        "Tortured soul",
+        "Forgotten Soul",
+        "Revenant"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Ghouls",
+      "icon": 6722,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "The Giant Mole",
+      "icon": 12646,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Goblins",
+      "icon": 13447,
+      "aliases": [
+        "Sergeant Strongstack",
+        "Sergeant Grimspike",
+        "Sergeant Steelwill"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Greater demons",
+      "icon": 20023,
+      "aliases": [
+        "K'ril Tsutsaroth",
+        "Tstanon Karlak",
+        "Skotizo",
+        "Tormented Demon"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Green dragons",
+      "icon": 12518,
+      "aliases": [
+        "Elvarg"
+      ],
+      "note": ""
+    },
+    {
+      "name": "The Grotesque Guardians",
+      "icon": 21750,
+      "aliases": [
+        "Dusk",
+        "Dawn"
+      ],
+      "note": "Bring: Rock hammer or equivalent."
+    },
+    {
+      "name": "Gryphons",
+      "icon": 32884,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Harpie bug swarms",
+      "icon": 7050,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Hellhounds",
+      "icon": 8137,
+      "aliases": [
+        "Cerberus"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Hill giants",
+      "icon": 13474,
+      "aliases": [
+        "Cyclops",
+        "Reanimated giant",
+        "Obor"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Hobgoblins",
+      "icon": 8133,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Hydras",
+      "icon": 23042,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Icefiends",
+      "icon": 4671,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Ice giants",
+      "icon": 30624,
+      "aliases": [
+        "Eldric the Ice King"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Ice warriors",
+      "icon": 12293,
+      "aliases": [
+        "Icelord"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Infernal mages",
+      "icon": 4140,
+      "aliases": [
+        "Malevolent mage"
+      ],
+      "note": ""
+    },
+    {
+      "name": "TzTok-Jad",
+      "icon": 13225,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Jellies",
+      "icon": 4142,
+      "aliases": [
+        "Jelly"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Jungle horrors",
+      "icon": 13486,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Kalphites",
+      "icon": 8139,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "The Kalphite Queen",
+      "icon": 12647,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Killerwatts",
+      "icon": 7160,
+      "aliases": [],
+      "note": "Protection: insulated boots when exposed to attacks."
+    },
+    {
+      "name": "The King Black Dragon",
+      "icon": 12653,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "The Cave Kraken Boss",
+      "icon": 12655,
+      "aliases": [
+        "Kraken"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Kree'arra",
+      "icon": 12649,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "K'ril Tsutsaroth",
+      "icon": 12652,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Kurask",
+      "icon": 4146,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Lava Dragons",
+      "icon": 11992,
+      "aliases": [
+        "Lava dragon"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Lesser demons",
+      "icon": 20020,
+      "aliases": [
+        "Zakl'n Gritch"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Lesser Nagua",
+      "icon": 28823,
+      "aliases": [
+        "Sulphur Nagua",
+        "Frost Nagua",
+        "Amoxliatl"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Lizardmen",
+      "icon": 13391,
+      "aliases": [
+        "Lizardman"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Lizards",
+      "icon": 6695,
+      "aliases": [],
+      "note": "Finishing: ice coolers for desert lizards."
+    },
+    {
+      "name": "The Maggot King",
+      "icon": 33642,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Magic axes",
+      "icon": 1363,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Mammoths",
+      "icon": 10516,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Metal dragons",
+      "icon": 8142,
+      "aliases": [
+        "Bronze dragon",
+        "Iron Dragon",
+        "Steel dragon",
+        "Mithril dragon",
+        "Adamant dragon",
+        "Rune dragon"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Minotaurs",
+      "icon": 13456,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Mogres",
+      "icon": 6661,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Molanisks",
+      "icon": 10997,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Monkeys",
+      "icon": 13450,
+      "aliases": [
+        "Tortured gorilla",
+        "Demonic gorilla",
+        "Padulah"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Moss giants",
+      "icon": 22374,
+      "aliases": [
+        "Bryophyta"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Mutated zygomites",
+      "icon": 7420,
+      "aliases": [
+        "Zygomite",
+        "Fungi"
+      ],
+      "note": "Finishing: charged fungicide spray."
+    },
+    {
+      "name": "Nechryael",
+      "icon": 4148,
+      "aliases": [
+        "Nechryarch"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Ogres",
+      "icon": 13477,
+      "aliases": [
+        "Enclave guard",
+        "Mogre",
+        "Ogress",
+        "Skogre",
+        "Zogre"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Otherworldly beings",
+      "icon": 6109,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "The Phantom Muspah",
+      "icon": 27590,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Pirates",
+      "icon": 8950,
+      "aliases": [
+        "Pirate"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Pyrefiends",
+      "icon": 4138,
+      "aliases": [
+        "Flaming pyrelord"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Rats",
+      "icon": 300,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Red dragons",
+      "icon": 8134,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Revenants",
+      "icon": 21816,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Rockslugs",
+      "icon": 4136,
+      "aliases": [],
+      "note": "Bring: Bag of salt or brine sabre."
+    },
+    {
+      "name": "Rogues",
+      "icon": 5554,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Sarachnis",
+      "icon": 23495,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Scabarites",
+      "icon": 9028,
+      "aliases": [
+        "Scarab swarm",
+        "Locust rider",
+        "Scarab mage",
+        "Small Scarab"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Scorpia",
+      "icon": 13181,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Scorpions",
+      "icon": 13459,
+      "aliases": [
+        "Scorpia",
+        "Lobstrosity"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Sea snakes",
+      "icon": 7576,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Shades",
+      "icon": 546,
+      "aliases": [
+        "Loar",
+        "Phrin",
+        "Riyl",
+        "Asyn",
+        "Fiyr",
+        "Urium"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Shadow warriors",
+      "icon": 1165,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "The Shellbane Gryphon",
+      "icon": 31287,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Skeletal wyverns",
+      "icon": 6811,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Skeletons",
+      "icon": 8131,
+      "aliases": [
+        "Vet'ion",
+        "Calvar'ion",
+        "Skeletal Mystic"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Smoke devils",
+      "icon": 5349,
+      "aliases": [],
+      "note": "Equip: Facemask or Slayer helmet."
+    },
+    {
+      "name": "Sourhogs",
+      "icon": 24944,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Spiders",
+      "icon": 8135,
+      "aliases": [
+        "Kalrag",
+        "Sarachnis",
+        "Venenatis",
+        "Spindel",
+        "Araxxor",
+        "Araxyte"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Spiritual creatures",
+      "icon": 11840,
+      "aliases": [
+        "Spiritual ranger",
+        "Spiritual mage",
+        "Spiritual warrior"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Suqahs",
+      "icon": 9079,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Terror dogs",
+      "icon": 10591,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "The Leviathan",
+      "icon": 28252,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "The Whisperer",
+      "icon": 28246,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "The Thermonuclear Smoke Devil",
+      "icon": 12648,
+      "aliases": [],
+      "note": "Equip: Facemask or Slayer helmet."
+    },
+    {
+      "name": "Trolls",
+      "icon": 8136,
+      "aliases": [
+        "Dad",
+        "Arrg",
+        "Stick",
+        "Kraka",
+        "Pee Hat",
+        "Rock",
+        "Twig",
+        "Berry"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Turoth",
+      "icon": 4143,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Tzhaar",
+      "icon": 13498,
+      "aliases": [
+        "TzTok-Jad",
+        "TzKal-Zuk"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Vampyres",
+      "icon": 1549,
+      "aliases": [
+        "Vyrewatch"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Vardorvis",
+      "icon": 28248,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Venators",
+      "icon": 33826,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Venenatis",
+      "icon": 13177,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Vet'ion",
+      "icon": 13179,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Vorkath",
+      "icon": 21992,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Wall beasts",
+      "icon": 4519,
+      "aliases": [],
+      "note": "Equip: Spiny helmet or Slayer helmet."
+    },
+    {
+      "name": "Warped Creatures",
+      "icon": 28582,
+      "aliases": [
+        "Warped terrorbird",
+        "Warped tortoise",
+        "Mutated terrorbird",
+        "Mutated tortoise"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Waterfiends",
+      "icon": 571,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Werewolves",
+      "icon": 2952,
+      "aliases": [
+        "Werewolf"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Wolves",
+      "icon": 958,
+      "aliases": [
+        "Wolf"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Wyrms",
+      "icon": 23040,
+      "aliases": [
+        "Wyrmling",
+        "Strykewyrm"
+      ],
+      "note": ""
+    },
+    {
+      "name": "Commander Zilyana",
+      "icon": 12651,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Zombies",
+      "icon": 6722,
+      "aliases": [
+        "Undead",
+        "Vorkath",
+        "Zogre"
+      ],
+      "note": ""
+    },
+    {
+      "name": "TzKal-Zuk",
+      "icon": 22319,
+      "aliases": [],
+      "note": ""
+    },
+    {
+      "name": "Zulrah",
+      "icon": 12921,
+      "aliases": [],
+      "note": ""
+    }
+  ],
+  "wikiSources": [
+    {
+      "title": "Aberrant spectre",
+      "revision": 15371564,
+      "source": "https://oldschool.runescape.wiki/w/Aberrant_spectre?oldid=15371564"
+    },
+    {
+      "title": "Banshee",
+      "revision": 15373192,
+      "source": "https://oldschool.runescape.wiki/w/Banshee?oldid=15373192"
+    },
+    {
+      "title": "Basilisk",
+      "revision": 15338302,
+      "source": "https://oldschool.runescape.wiki/w/Basilisk?oldid=15338302"
+    },
+    {
+      "title": "Cave horror",
+      "revision": 15372165,
+      "source": "https://oldschool.runescape.wiki/w/Cave_horror?oldid=15372165"
+    },
+    {
+      "title": "Cockatrice",
+      "revision": 15372506,
+      "source": "https://oldschool.runescape.wiki/w/Cockatrice?oldid=15372506"
+    },
+    {
+      "title": "Desert lizard",
+      "revision": 669702,
+      "source": "https://oldschool.runescape.wiki/w/Desert_lizard?oldid=669702"
+    },
+    {
+      "title": "Dust devil",
+      "revision": 15339619,
+      "source": "https://oldschool.runescape.wiki/w/Dust_devil?oldid=15339619"
+    },
+    {
+      "title": "Fever spider",
+      "revision": 15275482,
+      "source": "https://oldschool.runescape.wiki/w/Fever_spider?oldid=15275482"
+    },
+    {
+      "title": "Gargoyle",
+      "revision": 15339578,
+      "source": "https://oldschool.runescape.wiki/w/Gargoyle?oldid=15339578"
+    },
+    {
+      "title": "Killerwatt",
+      "revision": 15373866,
+      "source": "https://oldschool.runescape.wiki/w/Killerwatt?oldid=15373866"
+    },
+    {
+      "title": "Mutated zygomite",
+      "revision": 227055,
+      "source": "https://oldschool.runescape.wiki/w/Mutated_zygomite?oldid=227055"
+    },
+    {
+      "title": "Rockslug",
+      "revision": 15339655,
+      "source": "https://oldschool.runescape.wiki/w/Rockslug?oldid=15339655"
+    },
+    {
+      "title": "Slayer helmet",
+      "revision": 15364980,
+      "source": "https://oldschool.runescape.wiki/w/Slayer_helmet?oldid=15364980"
+    },
+    {
+      "title": "Smoke devil",
+      "revision": 15357607,
+      "source": "https://oldschool.runescape.wiki/w/Smoke_devil?oldid=15357607"
+    },
+    {
+      "title": "Wall beast",
+      "revision": 15341845,
+      "source": "https://oldschool.runescape.wiki/w/Wall_beast?oldid=15341845"
+    }
+  ]
+}

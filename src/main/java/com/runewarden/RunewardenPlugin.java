@@ -56,6 +56,10 @@ public final class RunewardenPlugin extends Plugin
     @Inject private HarvestClockTool harvest;
     @Inject private FarmRunsTool farms;
     @Inject private FarmPatchOverlay patches;
+    @Inject private BirdHouseSceneOverlay birdHouses;
+    @Inject private FarmRunOverlay farmRun;
+    @Inject private SlayerTaskHud slayer;
+    @Inject private SlayerTaskOverlay slayerOverlay;
     @Inject private HarvestNavigation travel;
     @Inject private PohTravelCapabilities poh;
     @Inject private SharedActivitySession session;
@@ -82,6 +86,8 @@ public final class RunewardenPlugin extends Plugin
         register("inventory", inventory, inventory::setHudLocked);
         register("outfit", outfit, outfit::setHudLocked);
         register("harvest", harvest.overlay(), harvest::setHudLocked);
+        register("harvest-run", farmRun, farmRun::setHudLocked);
+        register("slayer-task", slayerOverlay, slayerOverlay::setHudLocked);
         register("action-progress", actions.overlay(), actions::setHudLocked);
         register("thieving", thieving.hud(), thieving::setHudLocked);
         register("farm-patches", patches, locked -> {});
@@ -90,11 +96,14 @@ public final class RunewardenPlugin extends Plugin
         register("field-effects", effectHud, effectHud::setHudLocked);
         overlays.add(thieving.scene());
         overlays.add(thieving.minimap());
+        overlays.add(birdHouses);
         overlays.add(effects.overlays().get(1));
         overlays.add(tooltips); overlays.add(hover);
         settings.prepareForOverlayRegistration();
         overlays.forEach(overlayManager::add);
         farms.setNavigation(travel);
+        farms.setOpenAction(() -> open("Harvest runs"));
+        farmRun.setOpenAction(() -> open("Harvest runs"));
         thieving.setNavigation(travel);
         harvest.setOpenAction(() -> open("Timers"));
         harvest.setRunGroupSupport(FarmRunsTool::supportsGroup);
@@ -102,7 +111,7 @@ public final class RunewardenPlugin extends Plugin
         clientThread.invokeLater(() ->
         {
             if (!running || ticket != epoch) return;
-            session.start(); loot.start(); routines.start();
+            session.start(); loot.start(); routines.start(); slayer.start();
             gathering.startUp(); actions.start(); thieving.start(); effects.start();
             harvest.start(); farms.start(); poh.start(); travel.start();
             dashboard.start(); hud.start(); settings.start();
@@ -122,7 +131,9 @@ public final class RunewardenPlugin extends Plugin
     RunewardenPanel createPanel()
     {
         RunewardenPanel result = new RunewardenPanel();
-        result.addModule("Overview", harvest.createDashboardPanel());
+        JPanel overview = SidebarUi.column();
+        overview.add(farms.createSummaryPanel()); overview.add(harvest.createDashboardPanel());
+        result.addModule("Overview", overview);
         result.addModule("Harvest runs", farms.createPanel());
         JPanel timers = SidebarUi.column();
         timers.add(harvest.createPanel()); timers.add(effects.createPanel());
@@ -132,6 +143,7 @@ public final class RunewardenPlugin extends Plugin
         result.addModule("Gathering", skilling);
         result.addModule("Varlamore", thieving.createPanel());
         result.addModule("Session loot", loot.createPanel());
+        result.addModule("Slayer", slayer.createPanel());
         result.addModule("Routines & dailies", routines.createPanel());
         result.addModule("HUD settings", settings.createPanel());
         result.selectModule("Overview");
@@ -155,7 +167,7 @@ public final class RunewardenPlugin extends Plugin
         {
             travel.stop(); poh.stop(); farms.stop(); harvest.stop();
             actions.stop(); thieving.stop(); effects.stop(); gathering.shutDown();
-            loot.stop(); session.stop(); routines.stop();
+            loot.stop(); session.stop(); routines.stop(); slayer.stop();
             dashboard.stop(); inventory.clear(); hud.stop(); hover.clear();
         });
         overlays.forEach(overlayManager::remove); overlays.clear();
@@ -170,7 +182,7 @@ public final class RunewardenPlugin extends Plugin
         session.onGameTick(); hud.onGameTick(); inventory.onGameTick(); dashboard.onGameTick();
         gathering.onGameTick(event); actions.onGameTick(); thieving.onGameTick(); effects.onGameTick();
         poh.onGameTick(); travel.onGameTick(); farms.onGameTick(); harvest.onGameTick();
-        loot.onGameTick(); routines.onGameTick();
+        loot.onGameTick(); routines.onGameTick(); slayer.onGameTick();
     }
     @Subscribe public void onPostClientTick(PostClientTick event)
     { if (running) actions.onClientTick(); }
@@ -180,13 +192,13 @@ public final class RunewardenPlugin extends Plugin
         gathering.onGameStateChanged(event); thieving.onGameStateChanged(event); effects.onGameStateChanged(event);
         travel.onGameStateChanged(event.getGameState()); actions.clear();
         if (event.getGameState() != GameState.LOGGED_IN)
-        { inventory.clear(); dashboard.clear(); hover.clear(); session.suspend(); loot.suspend(); }
+        { inventory.clear(); dashboard.clear(); hover.clear(); session.suspend(); loot.suspend(); slayer.clear(); }
     }
     @Subscribe public void onRuneScapeProfileChanged(RuneScapeProfileChanged event)
     {
         if (!running) return;
         data.reload(); farms.clear(); harvest.clear(); actions.clear(); thieving.clear(); effects.clear();
-        loot.clear(); session.clear(); routines.clear(); dashboard.clear(); inventory.clear(); hover.clear();
+        loot.clear(); session.clear(); routines.clear(); slayer.clear(); dashboard.clear(); inventory.clear(); hover.clear();
         travel.onGameStateChanged(GameState.LOGIN_SCREEN);
         if (panel != null) panel.resetNavigation();
     }
@@ -197,7 +209,7 @@ public final class RunewardenPlugin extends Plugin
         clientThread.invokeLater(() ->
         {
             if (!running || epoch != ticket) return;
-            data.reload(); session.onConfigProfileChanged(); loot.onConfigProfileChanged(); routines.onConfigProfileChanged();
+            data.reload(); session.onConfigProfileChanged(); loot.onConfigProfileChanged(); routines.onConfigProfileChanged(); slayer.clear();
             farms.clear(); harvest.clear(); actions.start(); thieving.clear(); thieving.reloadPreferences(); effects.start();
             GameStateChanged reset = new GameStateChanged(); reset.setGameState(GameState.LOGIN_SCREEN);
             gathering.onGameStateChanged(reset);

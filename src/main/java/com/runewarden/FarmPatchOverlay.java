@@ -49,6 +49,8 @@ public final class FarmPatchOverlay extends Overlay
         Graphics2D g=(Graphics2D)graphics.create();
         try
         {
+            int canvasWidth=client.getCanvasWidth(),canvasHeight=client.getCanvasHeight();
+            g.clipRect(0,0,canvasWidth,canvasHeight);
             g.setFont(new Font(Font.SANS_SERIF,Font.BOLD,11));int shown=0;
             for(FarmPatchScene.Anchor anchor:snapshot.anchors)
             {
@@ -63,9 +65,11 @@ public final class FarmPatchOverlay extends Overlay
                 int width=Math.min(260,Math.max(110,Math.max(g.getFontMetrics().stringWidth(title),Math.max(g.getFontMetrics().stringWidth(timer),options.compost?g.getFontMetrics().stringWidth(compost):0))+inset+10));
                 int heightBox=options.compost?53:39,scaledWidth=(int)Math.ceil(width*scale),scaledHeight=(int)Math.ceil(heightBox*scale);
                 int x=point.getX()-scaledWidth/2,y=point.getY()-scaledHeight-5;
-                if(client.getCanvasWidth()<scaledWidth || point.getY()<0 || point.getX()<0 || point.getX()>client.getCanvasWidth())continue;
-                x=Math.max(0,Math.min(x,client.getCanvasWidth()-scaledWidth));y=Math.max(0,y);
-                if(resize!=null)resize.sceneBounds("farm-patches",new java.awt.Rectangle(x,y,scaledWidth,scaledHeight));
+                if(canvasWidth<scaledWidth || canvasHeight<scaledHeight || point.getY()<0 || point.getY()>=canvasHeight || point.getX()<0 || point.getX()>=canvasWidth)continue;
+                x=Math.max(0,Math.min(x,canvasWidth-scaledWidth));y=Math.max(0,Math.min(y,canvasHeight-scaledHeight));
+                java.awt.Rectangle bounds=new java.awt.Rectangle(x,y,scaledWidth,scaledHeight);
+                if(resize!=null)resize.sceneBounds("farm-patches",bounds);
+                HudStyle.tether(g,bounds,anchor.object.getCanvasLocation(),style.accent,canvasWidth,canvasHeight);
                 Graphics2D card=(Graphics2D)g.create();
                 try
                 {

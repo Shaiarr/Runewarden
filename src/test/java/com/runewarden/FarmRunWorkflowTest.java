@@ -48,7 +48,7 @@ public class FarmRunWorkflowTest
         f.base.planner.stop();f.base.planner.start();f.base.tick(1);FarmPatchPlanner.RunReading run=f.base.planner.currentRun();
         assertFalse(run.active);assertEquals(1,run.completedStops);assertEquals(f.second.id,run.nextStopId);
     }
-    @Test public void birdhouseChoicesUseFourExplicitSpacesAndNeverClaimPerHouseNativeCompletion()
+    @Test public void birdhouseChoicesUseFourExplicitSpacesAndRequireObservationsForCompletion()
     {
         FarmPatchPlannerTest.Fixture f=new FarmPatchPlannerTest.Fixture();f.planner.start();f.tick(6);f.planner.selectRun("birdhouse");
         FarmPatchPlanner.RunReading run=f.planner.currentRun();assertEquals(4,run.stops.size());assertEquals(9,f.planner.cropChoices().size());

@@ -86,7 +86,7 @@ public class HudSettingsToolTest
         verifyNoInteractions(fixture.manager);
     }
 
-    @Test public void widgetSelectorContainsOnlyTheTenRetainedWidgets() throws Exception
+    @Test public void widgetSelectorContainsTheFocusedWidgetsAndHarvestRun() throws Exception
     {
         Fixture fixture = new Fixture();
         SwingUtilities.invokeAndWait(() -> {
@@ -95,7 +95,7 @@ public class HudSettingsToolTest
             java.util.List<Object> keys=new java.util.ArrayList<>();
             for(int i=0;i<widget.getItemCount();i++)keys.add(widget.getItemAt(i));
             assertEquals(java.util.Arrays.asList(HudPreferences.WIDGETS),keys);
-            assertEquals(10,keys.size());
+            assertEquals(12,keys.size()); assertTrue(keys.contains("harvest-run")); assertTrue(keys.contains("slayer-task"));
             assertNull(find(panel,"waveEntryCoach",JCheckBox.class));
             assertFalse(keys.contains("guide")); assertFalse(keys.contains("entrance"));
             fixture.tool.stop();

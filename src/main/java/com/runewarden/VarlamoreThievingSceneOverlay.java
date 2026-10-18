@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
+import java.awt.Rectangle;
 import net.runelite.api.Client;
 import net.runelite.api.NPC;
 import net.runelite.api.Point;
@@ -58,6 +59,19 @@ final class VarlamoreThievingSceneOverlay extends Overlay
                 polygon=target.object.getCanvasTilePoly();text=target.object.getCanvasTextLocation(graphics,target.label,30);
             }
             if(polygon!=null)OverlayUtil.renderPolygon(graphics,polygon,target.color);
+            if(prefs.labels&&prefs.doors&&state.house==null&&state.availableHouse!=null&&target.object!=null
+                &&state.availableHouse.door.equals(target.object.getWorldLocation()))
+            {
+                Point anchor=target.object.getCanvasLocation();
+                HudPreferences.Style style=HudStyle.settings(coach.hudConfiguration(),"thieving");
+                if(!HudStyle.visible(style))continue;
+                double scale=style.scale/100d*style.font/12d*prefs.scalePercent/100d;
+                if(doorCardBounds(anchor,client.getCanvasWidth(),client.getCanvasHeight(),scale)!=null)
+                    paintDoorCard(graphics,anchor,client.getCanvasWidth(),client.getCanvasHeight(),scale,state.availableHouse.name,
+                        state.keys>0?"ACCESSIBLE · Keys "+state.keys:"House key required",target.timer,coach.now(),style);
+                else if(text!=null)badge(graphics,text,target.label);
+                continue;
+            }
             if(text==null)continue;
             if(prefs.radialTimers&&target.timer!=null)
             {
@@ -73,6 +87,32 @@ final class VarlamoreThievingSceneOverlay extends Overlay
             }
         }
         return null;
+    }
+
+    static Rectangle doorCardBounds(Point anchor,int canvasWidth,int canvasHeight,double scale)
+    {
+        if(anchor==null||!Double.isFinite(scale)||scale<.25||scale>6||anchor.getX()<0||anchor.getY()<0
+            ||anchor.getX()>=canvasWidth||anchor.getY()>=canvasHeight)return null;
+        int width=(int)Math.ceil(210*scale),height=(int)Math.ceil(64*scale),gap=(int)Math.ceil(28*scale);
+        if(canvasWidth<width+8||anchor.getY()<height+gap+4)return null;
+        int x=Math.max(4,Math.min(anchor.getX()-width/2,canvasWidth-width-4));
+        return new Rectangle(x,anchor.getY()-height-gap,width,height);
+    }
+
+    static void paintDoorCard(Graphics2D graphics,Point anchor,int canvasWidth,int canvasHeight,double scale,
+        String houseName,String status,VarlamoreThievingState.Window ownerTimer,long now,HudPreferences.Style style)
+    {
+        Rectangle bounds=doorCardBounds(anchor,canvasWidth,canvasHeight,scale);if(bounds==null)return;
+        HudStyle.tether(graphics,bounds,anchor,style.accent,canvasWidth,canvasHeight);
+        Graphics2D g=(Graphics2D)graphics.create();
+        try
+        {
+            g.clipRect(0,0,canvasWidth,canvasHeight);g.translate(bounds.x,bounds.y);g.scale(scale,scale);
+            HudStyle.panel(g,210,64,style);g.setFont(HudStyle.label(12));g.setColor(style.text);g.drawString(houseName+"'s house",12,17);
+            g.setFont(HudStyle.label(11));g.setColor(status.startsWith("House key")?VarlamoreThievingCoach.WARNING:VarlamoreThievingCoach.READY);g.drawString(status,12,35);
+            g.setFont(HudStyle.body(10));g.setColor(style.muted);g.drawString(ownerTimer==null?"Owner away":now>=ownerTimer.latest?"Owner return due":"Owner back · "+ownerTimer.remaining(now),12,52);
+        }
+        finally{g.dispose();}
     }
 
     private void renderMinimap(Graphics2D graphics)

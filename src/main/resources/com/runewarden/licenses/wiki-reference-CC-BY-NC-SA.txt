@@ -11,6 +11,8 @@ farming-stage and payment facts; supported outfit and daily-claim facts; and
 normal combat/spell factual references. Per-entry source URLs and any available
 revision IDs remain in the resources. Exact action-timing and Varlamore sources
 are also listed in action-progress-attribution.txt and varlamore-thieving-Wiki.txt.
+Harvesting preparation, accepted birdhouse seeds and selected optional tree
+protection payments are identified separately in harvest-run-reference.txt.
 
 Changes: selected factual fields and compact original summaries, normalized item
 identifiers and quantities, and separately represented native observations.

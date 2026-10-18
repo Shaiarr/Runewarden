@@ -44,9 +44,9 @@ public class SidebarThemeTest
                     .filter(component -> "runewarden.module.selector".equals(component.getName())).findFirst().get();
                 Container cards = (Container) descendants(panel).stream()
                     .filter(component -> "runewarden.module.cards".equals(component.getName())).findFirst().get();
-                assertEquals(8,modules.getItemCount());
+                assertEquals(9,modules.getItemCount());
                 assertEquals("Overview",modules.getItemAt(0));
-                assertEquals("HUD settings",modules.getItemAt(7));
+                assertEquals("HUD settings",modules.getItemAt(8));
                 JComponent root = panel.getWrappedPanel();
                 root.setSize(300, 900);
                 for (int index = 0; index < modules.getItemCount(); index++)

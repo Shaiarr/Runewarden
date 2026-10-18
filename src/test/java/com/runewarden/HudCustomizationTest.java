@@ -58,7 +58,7 @@ public class HudCustomizationTest
         String known="dashboard=100,12,85,e0be71,f3f0e8,0c0d10,ALWAYS,ROUNDED,CURRENT_MAX|";
         assertEquals(java.util.Set.of("dashboard"),HudPreferences.decode("RW1|guide=legacy|reward-popup=legacy|"+known).keySet());
         assertTrue(HudLayoutPositions.decode("RWP1|guide:0=legacy|entrance:0=legacy|").isEmpty());
-        assertEquals(10,HudPreferences.WIDGETS.length);
+        assertEquals(12,HudPreferences.WIDGETS.length);
     }
 
     @Test public void independentWidgetStyleChangesActualRenderingBoundsAndColour()

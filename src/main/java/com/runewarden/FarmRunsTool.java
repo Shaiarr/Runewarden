@@ -15,6 +15,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
@@ -32,22 +33,70 @@ final class FarmRunsTool
     private volatile boolean started;
     private boolean refreshing;
     private Timer timer;
-    private JPanel panel, stops, supplies;
-    private GuideText status, route;
+    private JPanel panel, preparation, currentStop, stopCard, stops, supplies, compostField;
+    private GuideText phase, status, route, cropLabel, quantityLabel, currentTitle, currentState, preparationNotes;
+    private JProgressBar progress;
+    private boolean allLocations;
     private JLabel icon;
     private int shownIcon;
     private JComboBox<FarmPatchPlanner.RunType> runs;
     private JComboBox<FarmPatchPlanner.CropChoice> crops;
     private JComboBox<Compost> compost;
     private JSpinner quantity;
-    private JButton start, end;
-    private FarmPatchPlanner.RunReading view;
+    private JButton start, end, done, skip, locations;
+    private FarmPatchPlanner.RunReading view, currentStopView;
     private final Map<String, StopRow> stopRows = new LinkedHashMap<>();
     private List<String> stopOrder = new ArrayList<>();
     private List<Integer> cropIds = new ArrayList<>(), supplyIds = new ArrayList<>();
     private final List<GuideText> supplyText = new ArrayList<>();
+    private JPanel summaryPanel;
+    private GuideText summaryStatus;
+    private JProgressBar summaryProgress;
+    private final Map<String, JButton> quickRuns = new LinkedHashMap<>();
+    private Runnable openAction = () -> {};
 
     @Inject FarmRunsTool(FarmPatchPlanner planner, ItemManager items) { this.planner = planner; this.items = items; }
+    void setOpenAction(Runnable action) { openAction = action == null ? () -> {} : action; }
+    JPanel createSummaryPanel()
+    {
+        if (summaryPanel != null) return summaryPanel;
+        summaryPanel = SidebarUi.section("HARVEST RUN");
+        summaryStatus = SidebarUi.label(""); summaryStatus.setName("runewarden.farm-summary.status"); summaryPanel.add(summaryStatus);
+        summaryProgress = new JProgressBar(); summaryProgress.setStringPainted(true);
+        summaryProgress.setForeground(SidebarUi.GOLD); summaryProgress.setBackground(SidebarUi.BACKGROUND);
+        summaryProgress.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, 20)); summaryPanel.add(summaryProgress);
+        for (String[] entry : new String[][] {{"herb", "Herb"}, {"birdhouse", "Birdhouse"}, {"tree", "Tree"}, {"fruit", "Fruit tree"}})
+        {
+            String id = entry[0]; JButton button = SidebarUi.button(entry[1], () -> openPreparation(id));
+            button.setName("runewarden.farm-summary." + id); quickRuns.put(id, button);
+        }
+        summaryPanel.add(SidebarUi.row(quickRuns.get("herb"), quickRuns.get("birdhouse")));
+        summaryPanel.add(SidebarUi.row(quickRuns.get("tree"), quickRuns.get("fruit")));
+        refresh(); return summaryPanel;
+    }
+    private void openPreparation(String id)
+    {
+        FarmPatchPlanner.RunReading expected = planner.currentRun();
+        if (expected == null || expected.active && !id.equals(expected.runId)) return;
+        planner.withView(expected, () ->
+        {
+            if (!expected.active) planner.selectRun(id);
+            SwingUtilities.invokeLater(() -> { if (started) { refresh(); openAction.run(); } });
+        });
+    }
+    private void refreshSummary(FarmPatchPlanner.RunReading next)
+    {
+        if (summaryPanel == null) return;
+        summaryStatus.setText(next == null ? "Log in to prepare a run" : next.active
+            ? next.title + "\nNext · " + next.nextStopLabel : "Prepare herb, birdhouse or tree runs");
+        summaryProgress.setVisible(next != null && next.active);
+        if (next != null)
+        {
+            summaryProgress.setMaximum(Math.max(1, next.totalStops)); summaryProgress.setValue(next.completedStops);
+            summaryProgress.setString(next.completedStops + " / " + next.totalStops + " locations");
+        }
+        quickRuns.forEach((id, button) -> button.setEnabled(next != null && (!next.active || id.equals(next.runId))));
+    }
     void setNavigation(HarvestNavigation navigation) { planner.setNavigation(navigation); }
     void onMenuOptionClicked(MenuOptionClicked event) { if (started) planner.onMenuOptionClicked(event); }
     void onChatMessage(ChatMessage event) { if (started) planner.onChatMessage(event); }
@@ -74,6 +123,12 @@ final class FarmRunsTool
         if (panel != null) return panel;
         panel = SidebarUi.column(); panel.add(SidebarUi.heading("FARM RUNS"));
         icon = new JLabel(); panel.add(icon);
+        phase = SidebarUi.heading("PREPARE"); phase.setName("runewarden.farm-runs.phase"); panel.add(phase);
+        status = SidebarUi.label(" "); panel.add(status);
+        progress = new JProgressBar(); progress.setName("runewarden.farm-runs.progress");
+        progress.setStringPainted(true); progress.setForeground(SidebarUi.GOLD); progress.setBackground(SidebarUi.BACKGROUND);
+        progress.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, 20)); panel.add(progress);
+        preparation = SidebarUi.section("PREPARATION"); preparation.setName("runewarden.farm-runs.preparation"); panel.add(preparation);
         runs = new JComboBox<>(FarmPatchPlanner.runTypes().toArray(new FarmPatchPlanner.RunType[0]));
         runs.setName("runewarden.farm-runs.selector");
         runs.addActionListener(event ->
@@ -81,30 +136,44 @@ final class FarmRunsTool
             FarmPatchPlanner.RunType selected = (FarmPatchPlanner.RunType) runs.getSelectedItem();
             if (selected != null) edit(() -> planner.selectRun(selected.id));
         });
-        panel.add(SidebarUi.field("Run", runs));
+        preparation.add(SidebarUi.field("Run", runs));
         crops = new JComboBox<>(); crops.setName("runewarden.farm-runs.crop");
         crops.addActionListener(event ->
         {
             FarmPatchPlanner.CropChoice crop = (FarmPatchPlanner.CropChoice) crops.getSelectedItem();
             if (crop != null) edit(() -> planner.chooseSeed(crop.id));
         });
-        panel.add(SidebarUi.field("Crop", crops));
+        cropLabel = SidebarUi.label("Seed"); cropLabel.setName("runewarden.farm-runs.crop-label");
+        cropLabel.setForeground(SidebarUi.MUTED); preparation.add(cropLabel); preparation.add(crops);
         quantity = new JSpinner(new SpinnerNumberModel(0, 0, 100, 1));
         quantity.setName("runewarden.farm-runs.quantity");
         quantity.addChangeListener(event ->
         { int selected = ((Number) quantity.getValue()).intValue(); edit(() -> planner.setQuantity(selected)); });
-        panel.add(SidebarUi.field("Per location", quantity));
+        quantityLabel = SidebarUi.label("Seeds per patch"); quantityLabel.setName("runewarden.farm-runs.quantity-label");
+        quantityLabel.setForeground(SidebarUi.MUTED); preparation.add(quantityLabel); preparation.add(quantity);
         compost = new JComboBox<>(Compost.values()); compost.setName("runewarden.farm-runs.compost");
         compost.addActionListener(event ->
         { Compost selected = (Compost) compost.getSelectedItem(); if (selected != null) edit(() -> planner.setCompost(selected.id)); });
-        panel.add(SidebarUi.field("Compost", compost));
-        status = SidebarUi.label(" "); route = SidebarUi.label(" "); panel.add(status); panel.add(route);
+        compostField = SidebarUi.field("Compost", compost); preparation.add(compostField);
+        currentStop = SidebarUi.section("CURRENT LOCATION"); currentStop.setName("runewarden.farm-runs.current-stop");
+        currentTitle = SidebarUi.heading(""); currentTitle.setName("runewarden.farm-runs.current-title");
+        currentState = SidebarUi.label(""); currentState.setName("runewarden.farm-runs.current-state");
+        route = SidebarUi.label(" "); route.setName("runewarden.farm-runs.route");
+        currentStop.add(currentTitle); currentStop.add(currentState); currentStop.add(route);
+        done = SidebarUi.button("Done", () -> checkCurrent(false)); done.setName("runewarden.farm-runs.current-done");
+        skip = SidebarUi.button("Skip", () -> checkCurrent(true)); skip.setName("runewarden.farm-runs.current-skip");
+        currentStop.add(SidebarUi.row(done, skip)); panel.add(currentStop);
         start = SidebarUi.button("Start run", () -> edit(planner::startSelectedRun));
         end = SidebarUi.button("End run", () -> edit(planner::stopActiveRun));
         panel.add(SidebarUi.row(start, end));
-        JPanel supplyCard = SidebarUi.section("SUPPLIES"), stopCard = SidebarUi.section("LOCATIONS");
+        JPanel supplyCard = SidebarUi.section("SUPPLIES"); stopCard = SidebarUi.section("LOCATIONS");
+        stopCard.setName("runewarden.farm-runs.locations");
+        locations = SidebarUi.button("Show all locations", () -> { allLocations = !allLocations; refresh(); });
+        locations.setName("runewarden.farm-runs.show-locations");
         supplies = SidebarUi.column(); stops = SidebarUi.column(); supplyCard.add(supplies); stopCard.add(stops);
-        panel.add(supplyCard); panel.add(stopCard); refresh(); return panel;
+        preparationNotes = SidebarUi.label(""); preparationNotes.setName("runewarden.farm-runs.preparation-notes");
+        preparationNotes.setForeground(SidebarUi.MUTED); supplyCard.add(preparationNotes);
+        panel.add(supplyCard); panel.add(locations); panel.add(stopCard); refresh(); return panel;
     }
     private void edit(Runnable action)
     {
@@ -115,30 +184,62 @@ final class FarmRunsTool
     {
         planner.withView(expected, () -> { action.run(); SwingUtilities.invokeLater(this::refresh); });
     }
+    private void checkCurrent(boolean skipped)
+    {
+        FarmPatchPlanner.RunReading expected = currentStopView;
+        if (expected != null && expected.active && expected.nextStopId != null)
+            apply(expected, () -> planner.checkNext(expected.nextStopId, skipped));
+    }
     private static boolean same(FarmPatchPlanner.RunReading first, FarmPatchPlanner.RunReading second)
     {
-        return first != null && second != null && first.epoch == second.epoch
-            && Objects.equals(first.profile, second.profile) && Objects.equals(first.runId, second.runId);
+        return first != null && second != null && Objects.equals(first.profile, second.profile)
+            && Objects.equals(first.runId, second.runId);
     }
     void refresh()
     {
-        if (panel == null) return;
+        if (panel == null && summaryPanel == null) return;
         FarmPatchPlanner.RunReading next = planner.currentRun();
-        boolean changed = !same(view, next); view = next;
+        refreshSummary(next);
+        if (panel == null) return;
+        boolean changed = !same(view, next);
+        if (changed || next != null && next.active && (view == null || !view.active)) allLocations = false;
+        view = next;
         refreshing = true;
         try
         {
             boolean editing = next != null && !next.active;
+            boolean active = next != null && next.active;
             runs.setEnabled(editing); crops.setEnabled(editing); quantity.setEnabled(editing); compost.setEnabled(editing);
             start.setEnabled(editing && next.totalStops > 0); end.setEnabled(next != null && next.active);
+            preparation.setVisible(!active); currentStop.setVisible(active); start.setVisible(!active); end.setVisible(active);
+            locations.setVisible(active); locations.setText(allLocations ? "Hide all locations" : "Show all locations");
+            stopCard.setVisible(!active || allLocations); progress.setVisible(next != null);
+            phase.setText(active ? "ON THE RUN" : "PREPARE");
+            currentStopView = active ? next : null;
             if (next == null)
             {
                 status.setText("Log in to prepare a farm run."); route.setText(""); icon.setIcon(null); shownIcon = 0;
+                preparationNotes.setText("");
                 if (changed) { stops.removeAll(); supplies.removeAll(); stopRows.clear(); stopOrder.clear(); supplyIds.clear(); }
                 return;
             }
-            status.setText(next.title + " · " + next.completedStops + " / " + next.totalStops + " stops\n" + next.status);
+            status.setText(next.title + "\n" + next.status);
+            progress.setMaximum(Math.max(1, next.totalStops)); progress.setValue(next.completedStops);
+            progress.setString(next.completedStops + " / " + next.totalStops + " locations");
+            boolean birdhouse = "birdhouse".equals(next.runId);
+            boolean tree = "tree".equals(next.runId) || "fruit".equals(next.runId) || "hardwood".equals(next.runId);
+            cropLabel.setText(birdhouse ? "Birdhouse type" : tree ? "Sapling" : "Seed");
+            quantityLabel.setText(birdhouse ? "Birdhouses per location" : tree ? "Saplings per patch" : "Seeds per patch");
+            quantityLabel.setVisible(!birdhouse && !tree); quantity.setVisible(!birdhouse && !tree);
+            crops.getAccessibleContext().setAccessibleName(cropLabel.getText());
+            quantity.getAccessibleContext().setAccessibleName(quantityLabel.getText());
+            compostField.setVisible(!birdhouse);
+            preparationNotes.setText(String.join("\n", next.preparationNotes));
             route.setText(next.routeAdvice == null ? "" : next.routeAdvice);
+            FarmPatchPlanner.StopReading current = next.stops.stream().filter(stop -> stop.id.equals(next.nextStopId)).findFirst().orElse(null);
+            currentTitle.setText(current == null ? "" : current.label);
+            currentState.setText(current == null ? "" : current.status + (current.unlock == null || current.unlock.isBlank() ? "" : "\n" + current.unlock));
+            done.setEnabled(active && current != null && !current.done); skip.setEnabled(done.isEnabled());
             if (!runs.isPopupVisible())
                 for (int i = 0; i < runs.getItemCount(); i++) if (runs.getItemAt(i).id.equals(next.runId)) runs.setSelectedIndex(i);
             List<FarmPatchPlanner.CropChoice> choices = planner.cropChoices();
@@ -179,30 +280,29 @@ final class FarmRunsTool
         for (FarmPatchPlanner.StopReading stop : next.stops)
         {
             StopRow row = stopRows.get(stop.id);
+            row.expected = next; row.panel.setVisible(!next.active || stop.selected);
             row.include.setSelected(stop.selected); row.include.setEnabled(!next.active);
-            row.done.setSelected(stop.done); row.done.setEnabled(next.active && stop.id.equals(next.nextStopId) && !stop.done);
-            row.skip.setEnabled(next.active && stop.id.equals(next.nextStopId) && !stop.done);
             row.up.setEnabled(!next.active); row.down.setEnabled(!next.active);
-            row.state.setText(stop.status + (stop.unlock == null || stop.unlock.isBlank() ? "" : "\n" + stop.unlock));
+            row.order.setVisible(!next.active);
+            row.state.setText((stop.done ? "Done · " : "") + stop.status + (stop.unlock == null || stop.unlock.isBlank() ? "" : "\n" + stop.unlock));
         }
     }
     private final class StopRow
     {
-        final JPanel panel = SidebarUi.column(); final JCheckBox include, done = new JCheckBox("Done");
-        final GuideText state = SidebarUi.label(""); final JButton up, down, skip;
+        final JPanel panel = SidebarUi.column(); final JCheckBox include;
+        final GuideText state = SidebarUi.label(""); final JButton up, down;
+        final JPanel order;
+        FarmPatchPlanner.RunReading expected;
         StopRow(FarmPatchPlanner.StopReading stop, FarmPatchPlanner.RunReading expected)
         {
+            this.expected = expected;
             include = new JCheckBox(stop.label); include.setOpaque(false); include.setForeground(SidebarUi.TEXT);
             include.addActionListener(event ->
-            { boolean selected = include.isSelected(); if (!refreshing) apply(expected, () -> planner.includeStop(stop.id, selected)); });
-            done.setOpaque(false); done.setForeground(SidebarUi.TEXT);
-            done.addActionListener(event -> { if (!refreshing) apply(expected, () -> planner.checkNext(stop.id, false)); });
-            up = SidebarUi.button("↑", () -> apply(expected, () -> planner.moveStop(stop.id, -1)));
-            down = SidebarUi.button("↓", () -> apply(expected, () -> planner.moveStop(stop.id, 1)));
-            skip = SidebarUi.button("Skip", () -> apply(expected, () -> planner.checkNext(stop.id, true)));
+            { boolean selected = include.isSelected(); if (!refreshing) apply(this.expected, () -> planner.includeStop(stop.id, selected)); });
+            up = SidebarUi.button("↑", () -> apply(this.expected, () -> planner.moveStop(stop.id, -1)));
+            down = SidebarUi.button("↓", () -> apply(this.expected, () -> planner.moveStop(stop.id, 1)));
             panel.add(include); panel.add(state);
-            panel.add(SidebarUi.row(up, down));
-            panel.add(SidebarUi.row(done, skip));
+            order = SidebarUi.row(up, down); panel.add(order);
         }
     }
     private void refreshSupplies(FarmPatchPlanner.RunReading next, boolean changed)
@@ -222,7 +322,8 @@ final class FarmRunsTool
         for (int i = 0; i < next.supplies.size(); i++)
         {
             FarmPatchPlanner.SupplyReading supply = next.supplies.get(i);
-            supplyText.get(i).setText(supply.name + "\n" + supply.carried + " / " + supply.required + " carried" + (supply.missing > 0 ? " · need " + supply.missing : ""));
+            supplyText.get(i).setText(supply.name + "\n" + supply.carried + " / " + supply.required + " carried"
+                + (supply.missing > 0 ? " · need " + supply.missing : "") + (supply.note.isEmpty() ? "" : "\n" + supply.note));
         }
     }
     private static String runGroup(String group)

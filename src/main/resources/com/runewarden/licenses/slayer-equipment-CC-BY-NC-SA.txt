@@ -1,0 +1,4 @@
+Slayer equipment reference
+
+Equipment requirements and alternatives are factual adaptations of the OSRS Wiki pages listed with revision IDs and URLs in slayer-native-tasks.json under wikiSources. Retrieved on 16 October 2026. Named location examples and their source URLs are retained separately in slayer-task-locations.json, checked on 17 October 2026. Original authors: OSRS Wiki contributors. License: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported, https://creativecommons.org/licenses/by-nc-sa/3.0/.
+Adaptation: condensed equipment checks for selected task families; original images and walkthrough text are omitted. This separate data license does not change the application code license. The original authors do not endorse Runewarden.

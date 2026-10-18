@@ -32,6 +32,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
+import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.gameval.VarPlayerID;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
@@ -62,8 +64,10 @@ final class HarvestClockTool
     private volatile Observation observation = new Observation(Reading.empty("Log in to track harvests."), null);
     private static final class Observation
     {
-        final Reading reading; final HarvestSelections.Session session;
-        Observation(Reading reading, HarvestSelections.Session session) { this.reading = reading; this.session = session; }
+        final Reading reading; final HarvestSelections.Session session; final List<BirdHouseReading> birds;
+        Observation(Reading reading, HarvestSelections.Session session) { this(reading,session,Collections.emptyList()); }
+        Observation(Reading reading, HarvestSelections.Session session,List<BirdHouseReading> birds)
+        { this.reading=reading;this.session=session;this.birds=birds; }
     }
     private volatile boolean started;
     private volatile Runnable openAction = () -> {};
@@ -157,6 +161,53 @@ final class HarvestClockTool
         for (Harvest harvest : current.harvests) if (ids.contains(harvest.id)) result.add(harvest);
         return selections.isCurrent(captured.session) ? Collections.unmodifiableList(result) : Collections.emptyList();
     }
+    List<BirdHouseReading> birdHouses()
+    {
+        Observation captured=observation;
+        return started&&captured.reading.active&&selections.isCurrent(captured.session)&&isGroupSelected("bird-house")
+            ? captured.birds:Collections.emptyList();
+    }
+
+    /** Read-only native Time Tracking records: individual varp:observed-second, never the aggregate clock. */
+    static List<BirdHouseReading> readBirdHouses(ConfigManager manager,Client client,String profile,long now)
+    {
+        List<BirdHouseReading> result=new ArrayList<>();
+        for(BirdHouseSite site:BIRD_SITES)
+        {
+            String value=manager.getConfiguration("timetracking",profile,"birdhouse."+site.varp);
+            if(value==null)continue;String[] parts=value.split(":");if(parts.length!=2)continue;
+            try
+            {
+                int state=Integer.parseInt(parts[0]);long observed=Long.parseLong(parts[1]);
+                if(state<0||state>27||state!=client.getVarpValue(site.varp)||observed<=0||observed>now)continue;
+                result.add(new BirdHouseReading(site,state,observed));
+            }
+            catch(NumberFormatException ignored){ }
+        }
+        return Collections.unmodifiableList(result);
+    }
+    static final class BirdHouseSite
+    {
+        final String name;final int varp;final WorldPoint point;
+        BirdHouseSite(String name,int varp,int x,int y){this.name=name;this.varp=varp;this.point=new WorldPoint(x,y,0);}
+    }
+    // Native Time Tracking identities; four object positions are the same verified points used by the farm-run planner.
+    static final List<BirdHouseSite> BIRD_SITES=List.of(
+        new BirdHouseSite("Meadow north",VarPlayerID.BIRDHOUSE_TRANSMIT_A,3677,3882),
+        new BirdHouseSite("Meadow south",VarPlayerID.BIRDHOUSE_TRANSMIT_B,3678,3815),
+        new BirdHouseSite("Valley north-east",VarPlayerID.BIRDHOUSE_TRANSMIT_C,3768,3761),
+        new BirdHouseSite("Valley south-west",VarPlayerID.BIRDHOUSE_TRANSMIT_D,3763,3755));
+    static final class BirdHouseReading
+    {
+        private static final int[] ICONS={21512,21515,21518,21521,22192,22195,22198,22201,22204};
+        static final long DURATION=50*60;
+        final BirdHouseSite site;final int state;final long observed;
+        BirdHouseReading(BirdHouseSite site,int state,long observed){this.site=site;this.state=state;this.observed=observed;}
+        int itemId(){return state==0?314:ICONS[(state-1)/3];}
+        boolean seeded(){return state>0&&state%3==0;}
+        long remaining(long now){return Math.max(0,observed+DURATION-now);}
+        String status(long now){return state==0?"Empty":!seeded()?"Add seeds":remaining(now)==0?"Ready":countdown(remaining(now));}
+    }
     List<Harvest> displayHarvests(long now)
     {
         Observation captured = observation;
@@ -210,8 +261,10 @@ final class HarvestClockTool
         HarvestSelections.Session expected = selections.session();
         Reading captured = readTrackers(injector.getInstance(FarmingTracker.class), injector.getInstance(BirdHouseTracker.class),
             injector.getInstance(FarmingContractManager.class));
+        long now=Instant.now().getEpochSecond();
+        List<BirdHouseReading> birds=readBirdHouses(manager,client,next,now);
         if (selections.isCurrent(expected))
-        { observation = new Observation(windows.observe(captured, Instant.now().getEpochSecond()), expected); }
+        { observation = new Observation(windows.observe(captured,now), expected,birds); }
     }
     static String groupId(Tab tab) { return tab.name().toLowerCase(Locale.ROOT).replace('_', '-'); }
     private static List<Harvest> groupCatalog()

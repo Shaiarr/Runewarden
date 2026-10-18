@@ -114,6 +114,25 @@ final class HudStyle
     {
         return style.muted;
     }
+    /** Connect a scene card to its real projected target, without moving the endpoint. */
+    static void tether(Graphics2D graphics,java.awt.Rectangle card,net.runelite.api.Point anchor,
+        Color accent,int canvasWidth,int canvasHeight)
+    {
+        if(card==null||anchor==null||anchor.getX()<0||anchor.getY()<0
+            ||anchor.getX()>=canvasWidth||anchor.getY()>=canvasHeight||card.contains(anchor.getX(),anchor.getY()))return;
+        Graphics2D g=(Graphics2D)graphics.create();
+        try
+        {
+            g.clipRect(0,0,canvasWidth,canvasHeight);g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+            int x=Math.max(card.x+3,Math.min(anchor.getX(),card.x+card.width-3));
+            int y=anchor.getY()>=card.y+card.height?card.y+card.height:card.y;
+            g.setStroke(new java.awt.BasicStroke(3.5f));g.setColor(new Color(6,8,10,220));g.drawLine(x,y,anchor.getX(),anchor.getY());
+            g.fillOval(anchor.getX()-3,anchor.getY()-3,7,7);
+            g.setStroke(new java.awt.BasicStroke(1.4f));g.setColor(accent==null?GOLD:accent);g.drawLine(x,y,anchor.getX(),anchor.getY());
+            g.fillOval(anchor.getX()-2,anchor.getY()-2,5,5);
+        }
+        finally{g.dispose();}
+    }
     static void panel(Graphics2D graphics, int width, int height, HudPreferences.Style style)
     {
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

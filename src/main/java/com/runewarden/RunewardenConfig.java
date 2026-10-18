@@ -51,6 +51,14 @@ public interface RunewardenConfig extends Config
         description = "Show selected farming and bird-house timers from Time Tracking.")
     default boolean harvestHud() { return true; }
 
+    @ConfigItem(keyName = "farmRunHud", name = "Active harvest run", position = 37,
+        description = "Show the current location and observed progress while a harvest run is active.")
+    default boolean farmRunHud() { return true; }
+
+    @ConfigItem(keyName = "slayerTaskHud", name = "Slayer task card", position = 38,
+        description = "Show current Slayer task details at a recognized task location.")
+    default boolean slayerTaskHud() { return true; }
+
     @ConfigItem(keyName = "nodeTimers", name = "Node timers", position = 9,
         description = "Show supported depletion estimates and observed respawn timers above nodes.")
     default boolean nodeTimers() { return true; }

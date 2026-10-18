@@ -73,9 +73,11 @@ public final class FarmPatchPlanner
     }
     public static final class SupplyReading
     {
-        public final int itemId; public final String name; public final long required,carried,missing;
+        public final int itemId; public final String name,note; public final long required,carried,missing;
         SupplyReading(int id,String name,long required,long carried)
-        {itemId=id;this.name=name;this.required=required;this.carried=carried;missing=Math.max(0,required-carried);}
+        {this(id,name,required,carried,"");}
+        SupplyReading(int id,String name,long required,long carried,String note)
+        {itemId=id;this.name=name;this.required=required;this.carried=carried;this.note=note;missing=Math.max(0,required-carried);}
     }
     public static final class RunReading
     {
@@ -83,14 +85,19 @@ public final class FarmPatchPlanner
         public final long epoch,startedAt; public final boolean active;
         public final int totalStops,completedStops,seedItemId,quantity,compostItemId;
         public final List<StopReading> stops; public final List<SupplyReading> supplies;
+        public final List<String> preparationNotes;
         RunReading(String profile,long epoch,RunType type,Route route,String next,String label,String status,String advice,
             List<StopReading> stops,List<SupplyReading> supplies)
+        {this(profile,epoch,type,route,next,label,status,advice,stops,supplies,List.of());}
+        RunReading(String profile,long epoch,RunType type,Route route,String next,String label,String status,String advice,
+            List<StopReading> stops,List<SupplyReading> supplies,List<String> notes)
         {
             this.profile=profile;this.epoch=epoch;runId=type.id;title=type.title;nextStopId=next;nextStopLabel=label;
             this.status=status;routeAdvice=advice;startedAt=route.startedAt;active=route.active;
             totalStops=route.stops.size();completedStops=route.completed.size();seedItemId=route.seedItemId;
             quantity=route.quantity;compostItemId=route.compostItemId;
             this.stops=Collections.unmodifiableList(stops);this.supplies=Collections.unmodifiableList(supplies);
+            preparationNotes=List.copyOf(notes);
         }
     }
     public static final class PatchReading
@@ -149,6 +156,19 @@ public final class FarmPatchPlanner
         birdhouse("birdhouse:2","Mushroom Meadow north"),
         birdhouse("birdhouse:3","Mushroom Meadow south"));
     private static final int[][] HOUSE_POINTS={{3768,3761},{3763,3755},{3677,3882},{3678,3815}};
+    private static final Map<Integer,Integer> HOUSE_LOGS=Map.of(21512,1511,21515,1521,21518,1519,21521,6333,
+        22192,1517,22195,6332,22198,1515,22201,1513,22204,19669);
+    // Verified bird-house bait: low-tier seeds count one unit; wildblood and Ranarr–Torstol count two.
+    private static int birdSeedUnits(int id)
+    {
+        if(id==5311||id>=5295&&id<=5304)return 2;
+        return id>=5305&&id<=5310||id>=5291&&id<=5294||id>=5096&&id<=5106||id>=5318&&id<=5324||id==22887||id==22879?1:0;
+    }
+    private static final String[] TREE_PROTECTION={
+        "5370|1|basket of tomatoes (5)","5371|1|basket of apples (5)","5372|1|basket of oranges (5)",
+        "5373|10|cactus spines","5374|25|coconuts","5496|9|sweetcorn","5497|4|baskets of apples (5)",
+        "5498|3|baskets of strawberries (5)","5499|5|baskets of bananas (5)","5500|10|watermelons",
+        "5501|10|pineapples","5502|15|papayas","22866|15|coconuts"};
     private final Client client; private final ClientThread thread; private final ConfigManager config;
     private final Gson gson; private final FarmPatchCatalog catalog;
     private final FarmRunNavigation automaticRoute=new FarmRunNavigation();
@@ -158,6 +178,8 @@ public final class FarmPatchPlanner
     private volatile long epoch;
     private Saved saved=new Saved();
     private final Set<String> current=new LinkedHashSet<>();
+    private final Map<String,Long> birdBaseline=new HashMap<>();
+    private final Set<String> birdUnseeded=new LinkedHashSet<>();
     private volatile Map<String,PatchReading> readings=Collections.emptyMap();
     private volatile List<CropChoice> choices=Collections.emptyList();
     private volatile RunReading run;
@@ -182,7 +204,7 @@ public final class FarmPatchPlanner
     int cropIconId(FarmPatchCatalog.State state){return catalog.iconId(state);}
     FarmPatchScene.Snapshot sceneReading(){return validProfile()?scene:FarmPatchScene.Snapshot.EMPTY;}
     HudOptions hudOptions(){return hudOptions;}
-    private boolean validProfile(){return started&&activeSession&&profile!=null&&profile.equals(config.getRSProfileKey());}
+    private boolean validProfile(){return started&&activeSession&&client.getGameState()==GameState.LOGGED_IN&&client.getLocalPlayer()!=null&&profile!=null&&profile.equals(config.getRSProfileKey());}
     public void setNavigation(HarvestNavigation value)
     {
         navigation=value;
@@ -198,7 +220,7 @@ public final class FarmPatchPlanner
     public void stop(){clear();started=false;}
     public void clear()
     {
-        save();automaticRoute.stop();activeSession=false;profile=null;epoch++;saved=new Saved();current.clear();
+        save();automaticRoute.stop();birdBaseline.clear();birdUnseeded.clear();activeSession=false;profile=null;epoch++;saved=new Saved();current.clear();
         readings=Map.of();choices=List.of();run=null;access=Map.of();localContext=Set.of();scene=FarmPatchScene.Snapshot.EMPTY;
         hudOptions=new HudOptions();pendingCompost=null;region=-1;settled=ticks=0;dirty=false;message="";
     }
@@ -228,7 +250,7 @@ public final class FarmPatchPlanner
     {edit(route->{if(route.active)return;int from=route.stops.indexOf(id),to=from+Integer.signum(direction);if(from>=0&&to>=0&&to<route.stops.size())Collections.swap(route.stops,from,to);});}
     public void chooseSeed(int id)
     {edit(route->{if(route.active)return;for(CropChoice choice:cropChoices(type()))if(choice.id==id){route.seedItemId=id;route.quantity=choice.quantity==null?0:choice.quantity;break;}});}
-    public void setQuantity(int amount){edit(route->{if(!route.active&&amount>=1&&amount<=100)route.quantity=amount;});}
+    public void setQuantity(int amount){edit(route->{if(!route.active&&!"birdhouse".equals(saved.selected)&&amount>=1&&amount<=100)route.quantity=amount;});}
     public void setCompost(int id){edit(route->{if(!route.active&&Set.of(0,6032,6034,21483).contains(id))route.compostItemId="birdhouse".equals(saved.selected)?0:id;});}
     public void setHudOptions(boolean enabled,boolean compost,String style)
     {edit(route->{saved.hud.enabled=enabled;saved.hud.compost=compost;if(Set.of("Rings","Text","Hybrid").contains(style))saved.hud.style=style;});}
@@ -242,13 +264,15 @@ public final class FarmPatchPlanner
             if(crop.level!=null&&client.getBoostedSkillLevel(skill)<crop.level){message=crop.level+" "+skill.getName()+" required";return;}
             if(route.stops.stream().anyMatch(id->!access.getOrDefault(id,"Unlock not checked").isEmpty())){message="Check the selected location unlocks";return;}
             stopInternal();route.completed.clear();route.planted.clear();route.evidence.clear();route.startedAt=System.currentTimeMillis();
+            if("birdhouse".equals(saved.selected))for(HarvestClockTool.BirdHouseReading bird:HarvestClockTool.readBirdHouses(config,client,profile,route.startedAt/1000))
+                birdBaseline.put(birdStop(bird.site),bird.observed);
             route.active=true;epoch++;message="";automaticRoute.begin();updateAutomaticRoute();
         });
     }
     public void checkNext(String expectedStop,boolean skip)
     {edit(route->{if(route.active&&Objects.equals(expectedStop,nextStop(route))){route.completed.add(expectedStop);route.evidence.put(expectedStop,skip?"Skipped":"Checked");updateAutomaticRoute();}});}
     public void stopActiveRun(){edit(route->{stopInternal();epoch++;message="Stopped";});}
-    private void stopInternal(){automaticRoute.stop();for(Route route:saved.routes.values())route.active=false;}
+    private void stopInternal(){automaticRoute.stop();birdBaseline.clear();birdUnseeded.clear();for(Route route:saved.routes.values())route.active=false;}
     static boolean clearsCompost(FarmPatchCatalog.State before,FarmPatchCatalog.State next,long previousObservation,long compostAt)
     {
         if(before==null || next==null || compostAt<=0)return false;
@@ -297,6 +321,8 @@ public final class FarmPatchPlanner
     public void onGameTick()
     {
         if(!started)return;
+        if(client.getGameState()==GameState.LOADING)
+        {settled=0;scene=FarmPatchScene.Snapshot.EMPTY;pendingCompost=null;return;}
         if(client.getGameState()!=GameState.LOGGED_IN||client.getLocalPlayer()==null)
         {if(activeSession)clear();return;}
         String owner=config.getRSProfileKey();
@@ -333,7 +359,7 @@ public final class FarmPatchPlanner
             }
         }
         if(ticks%5==1)scene=settled>=3?FarmPatchScene.scan(client,client.getTopLevelWorldView(),location,local):FarmPatchScene.Snapshot.EMPTY;
-        completePlanted();updateAutomaticRoute();publish();
+        completePlanted();if(settled>=3)observeBirdRefill(location);updateAutomaticRoute();publish();
         if(ticks%10==0)save();
     }
     private void readAccess()
@@ -388,6 +414,30 @@ public final class FarmPatchPlanner
             {route.completed.add(id);route.evidence.put(id,"Replant observed");dirty=true;}
         }
     }
+    private static String birdStop(HarvestClockTool.BirdHouseSite site)
+    {
+        for(int i=0;i<HOUSE_POINTS.length;i++)if(site.point.getX()==HOUSE_POINTS[i][0]&&site.point.getY()==HOUSE_POINTS[i][1])return "birdhouse:"+i;
+        return "";
+    }
+    private void observeBirdRefill(WorldPoint location)
+    {
+        Route route=route();net.runelite.api.WorldView view=client.getTopLevelWorldView();
+        if(!"birdhouse".equals(saved.selected)||!route.active||view==null||view.isInstance()||view.getPlane()!=0||location.getPlane()!=0)return;
+        long now=System.currentTimeMillis()/1000;
+        Map<String,HarvestClockTool.BirdHouseReading> records=new HashMap<>();
+        for(HarvestClockTool.BirdHouseReading bird:HarvestClockTool.readBirdHouses(config,client,profile,now))records.put(birdStop(bird.site),bird);
+        for(HarvestClockTool.BirdHouseSite site:HarvestClockTool.BIRD_SITES)
+        {
+            String id=birdStop(site);if(!route.stops.contains(id)||route.completed.contains(id)||location.distanceTo(site.point)>8)continue;
+            int state=client.getVarpValue(site.varp);if(state<0||state>27)continue;
+            HarvestClockTool.BirdHouseReading record=records.get(id);
+            if(state==0||state%3!=0)
+            {birdUnseeded.add(id);birdBaseline.putIfAbsent(id,record==null?Math.max(0,route.startedAt/1000-1):record.observed);continue;}
+            if(record!=null)birdBaseline.putIfAbsent(id,record.observed);
+            if(!birdUnseeded.contains(id)||record==null||record.itemId()!=route.seedItemId||record.observed<route.startedAt/1000||record.observed<birdBaseline.getOrDefault(id,-1L))continue;
+            route.completed.add(id);route.evidence.put(id,"Refill observed");birdUnseeded.remove(id);dirty=true;
+        }
+    }
     private static int compostRank(int id){return id==21483?3:id==6034?2:id==6032?1:0;}
     private static int compostRank(String name){return "Ultracompost".equalsIgnoreCase(name)?3:"Supercompost".equalsIgnoreCase(name)?2:"Compost".equalsIgnoreCase(name)?1:0;}
     private void updateAutomaticRoute()
@@ -433,7 +483,8 @@ public final class FarmPatchPlanner
     }
     private Route route()
     {
-        Route route=saved.routes.get(saved.selected);if(route!=null)return route;
+        Route route=saved.routes.get(saved.selected);if(route!=null)
+        {if("birdhouse".equals(saved.selected)&&route.quantity!=1){route.quantity=1;dirty=true;}return route;}
         route=new Route();for(FarmPatchCatalog.Patch patch:available(type()))if(access.getOrDefault(patch.id,"Unlock not checked").isEmpty())route.stops.add(patch.id);
         List<CropChoice> seeds=cropChoices(type());if(!seeds.isEmpty()){route.seedItemId=seeds.get(0).id;route.quantity=seeds.get(0).quantity==null?0:seeds.get(0).quantity;}
         if("birdhouse".equals(saved.selected))route.compostItemId=0;
@@ -462,30 +513,53 @@ public final class FarmPatchPlanner
         for(FarmPatchCatalog.Patch patch:available(type))remaining.put(patch.id,patch);
         for(String id:route.stops){FarmPatchCatalog.Patch patch=remaining.remove(id);if(patch!=null)stops.add(stopReading(patch,route,true));}
         for(FarmPatchCatalog.Patch patch:remaining.values())stops.add(stopReading(patch,route,false));
-        Map<Integer,Long> needed=new LinkedHashMap<>();int count=route.stops.size()-route.completed.size();
-        if(count>0)
-        {
-            if(route.seedItemId>0&&route.quantity>0)needed.put(route.seedItemId,(long)route.quantity*count);
-            if("birdhouse".equals(type.id))needed.put(5305,10L*count);
-            else
-            {
-                needed.put(952,1L);if(!type.type.contains("TREE"))needed.put(5343,1L);
-                if(route.compostItemId>0)needed.put(route.compostItemId,(long)count);
-            }
-        }
         Map<Integer,Long> carried=new LinkedHashMap<>();
         for(InventoryID container:new InventoryID[]{InventoryID.INVENTORY,InventoryID.EQUIPMENT})
         {
             ItemContainer inventory=client.getItemContainer(container);if(inventory==null||inventory.getItems()==null)continue;
             for(Item item:inventory.getItems())if(item!=null&&item.getId()>0&&item.getQuantity()>0)carried.merge(item.getId(),(long)item.getQuantity(),Long::sum);
         }
+        Map<Integer,Long> needed=new LinkedHashMap<>();List<String> preparation=new ArrayList<>();int count=route.stops.size()-route.completed.size();
+        if(count>0)
+        {
+            if("birdhouse".equals(type.id))
+            {
+                long prebuilt=Math.min(count,carried.getOrDefault(route.seedItemId,0L));int log=HOUSE_LOGS.getOrDefault(route.seedItemId,1511);
+                if(prebuilt>0)needed.put(route.seedItemId,prebuilt);
+                if(prebuilt<count)
+                {needed.put(log,count-prebuilt);needed.put(1755,1L);needed.put(carried.getOrDefault(25644,0L)>0?25644:2347,1L);}
+                preparation.add("Bring "+count+" prebuilt houses, or one matching log per remaining stop with a hammer and chisel. Mixed supplies work.");
+                preparation.add("Collection returns the clockwork. New empty spaces need a clockwork each; leave room for it and nests.");
+            }
+            else
+            {
+                if(route.seedItemId>0&&route.quantity>0)needed.put(route.seedItemId,(long)route.quantity*count);
+                needed.put(952,1L);if(!type.type.contains("TREE"))needed.put(5343,1L);
+                if(route.compostItemId>0)needed.put(route.compostItemId,(long)count);
+                if("tree".equals(type.id)||"fruit".equals(type.id))
+                {
+                    preparation.add("Ready saplings: one per patch. No watering can needed for planting; check health and clear the old tree first.");
+                    for(String payment:TREE_PROTECTION)
+                    {
+                        String[] parts=payment.split("\\|");if(Integer.parseInt(parts[0])!=route.seedItemId)continue;
+                        int per=Integer.parseInt(parts[1]);preparation.add("Optional protection: "+per+" "+parts[2]+" per patch ("+(long)per*count+" for this run). Noted payments accepted; baskets must be full.");break;
+                    }
+                }
+            }
+        }
         List<SupplyReading> supplies=new ArrayList<>();
         needed.forEach((id,amount)->{String name="Item "+id;net.runelite.api.ItemComposition item=client.getItemDefinition(id);
             if(item!=null&&item.getName()!=null)name=item.getName();supplies.add(new SupplyReading(id,name,amount,carried.getOrDefault(id,0L)));});
+        if(count>0&&"birdhouse".equals(type.id))
+        {
+            long units=0;int icon=5305;for(Map.Entry<Integer,Long> item:carried.entrySet())
+            {int weight=birdSeedUnits(item.getKey());if(weight>0){if(units==0)icon=item.getKey();units+=item.getValue()*weight;}}
+            supplies.add(new SupplyReading(icon,"Bird-house seed units",10L*count,units,"10 units per house: most accepted seeds = 1; wildblood and Ranarr–Torstol = 2."));
+        }
         String next=nextStop(route);FarmPatchCatalog.Patch nextPatch=patch(next);String label=nextPatch==null?"":nextPatch.label();
         String advice=navigation==null?"":navigation.routeAdvice("farm").recommendation(profile,destination(nextPatch));
         String status=!message.isEmpty()?message:route.active?"Follow the next location":route.completed.size()>0&&next==null?"Run complete":"Ready to prepare";
-        run=new RunReading(profile,epoch,type,route,next,label,status,advice,stops,supplies);
+        run=new RunReading(profile,epoch,type,route,next,label,status,advice,stops,supplies,preparation);
     }
     private StopReading stopReading(FarmPatchCatalog.Patch patch,Route route,boolean selected)
     {
@@ -527,7 +601,7 @@ public final class FarmPatchPlanner
             Set<String> ids=new LinkedHashSet<>();for(FarmPatchCatalog.Patch patch:available(type))ids.add(patch.id);
             if(!ids.containsAll(route.stops)||new LinkedHashSet<>(route.stops).size()!=route.stops.size()||!route.stops.containsAll(route.completed)||
                 !route.stops.containsAll(route.planted)||!route.stops.containsAll(route.evidence.keySet()))return false;
-            for(String evidence:route.evidence.values())if(!Set.of("Checked","Skipped","Replant observed","Replant observed · compost unchecked").contains(evidence))return false;
+            for(String evidence:route.evidence.values())if(!Set.of("Checked","Skipped","Replant observed","Replant observed · compost unchecked","Refill observed").contains(evidence))return false;
             if(route.seedItemId!=0&&cropChoices(type).stream().noneMatch(c->c.id==route.seedItemId))return false;
             if("birdhouse".equals(type.id)&&route.compostItemId!=0)return false;
         }

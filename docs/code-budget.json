@@ -3,18 +3,18 @@
   "officialHubCount": false,
   "scope": "Production Java only, comments excluded; strings retained. Resources, tests and development launcher excluded.",
   "tokenizerVersion": "0.14.0",
-  "files": 64,
-  "sourceBytes": 592840,
+  "files": 68,
+  "sourceBytes": 649114,
   "tokens": {
-    "cl100k_base": 132357,
-    "o200k_base": 134997
+    "cl100k_base": 144919,
+    "o200k_base": 147880
   },
   "largestFiles": [
     {
       "file": "src/main/java/com/runewarden/FarmPatchPlanner.java",
-      "bytes": 37825,
-      "cl100k_base": 8631,
-      "o200k_base": 8883
+      "bytes": 43835,
+      "cl100k_base": 10120,
+      "o200k_base": 10402
     },
     {
       "file": "src/main/java/com/runewarden/RunLootTool.java",
@@ -24,15 +24,21 @@
     },
     {
       "file": "src/main/java/com/runewarden/VarlamoreThievingCoach.java",
-      "bytes": 27299,
-      "cl100k_base": 6417,
-      "o200k_base": 6576
+      "bytes": 27407,
+      "cl100k_base": 6443,
+      "o200k_base": 6602
     },
     {
       "file": "src/main/java/com/runewarden/HudSettingsTool.java",
-      "bytes": 25826,
-      "cl100k_base": 5208,
-      "o200k_base": 5363
+      "bytes": 25974,
+      "cl100k_base": 5251,
+      "o200k_base": 5402
+    },
+    {
+      "file": "src/main/java/com/runewarden/HarvestClockTool.java",
+      "bytes": 25105,
+      "cl100k_base": 5272,
+      "o200k_base": 5347
     },
     {
       "file": "src/main/java/com/runewarden/ActionProgressTool.java",
@@ -41,10 +47,10 @@
       "o200k_base": 4998
     },
     {
-      "file": "src/main/java/com/runewarden/HarvestClockTool.java",
-      "bytes": 21982,
-      "cl100k_base": 4549,
-      "o200k_base": 4620
+      "file": "src/main/java/com/runewarden/SlayerTaskHud.java",
+      "bytes": 20950,
+      "cl100k_base": 4435,
+      "o200k_base": 4562
     },
     {
       "file": "src/main/java/com/runewarden/NodeTimerRules.java",
@@ -59,16 +65,10 @@
       "o200k_base": 4506
     },
     {
-      "file": "src/main/java/com/runewarden/SkillingCoach.java",
-      "bytes": 17559,
-      "cl100k_base": 3966,
-      "o200k_base": 4079
-    },
-    {
-      "file": "src/main/java/com/runewarden/FieldCoach.java",
-      "bytes": 16337,
-      "cl100k_base": 3747,
-      "o200k_base": 3785
+      "file": "src/main/java/com/runewarden/FarmRunsTool.java",
+      "bytes": 20485,
+      "cl100k_base": 4364,
+      "o200k_base": 4505
     }
   ],
   "localBudget": 160000,

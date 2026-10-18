@@ -108,6 +108,7 @@ final class VarlamoreThievingCoach
     private void clearHouseRoute(){if(navigation!=null)navigation.clearOwned(HarvestNavigation.VARLAMORE);routedHouse=null;}
     boolean started(){return started;}
     Preferences preferences(){return preferences;}
+    RunewardenConfig hudConfiguration(){return hudConfig;}
     Overlay hud(){return hud;}
     void setHudLocked(boolean locked){hud.setHudLocked(locked);}
     Overlay scene(){return scene;}
@@ -190,7 +191,7 @@ final class VarlamoreThievingCoach
             TileObject object=entry.getKey();WorldPoint point=entry.getValue();if(player.distanceTo(point)>40)continue;
             int id=resolvedId(object);VarlamoreThievingState.House door=VarlamoreThievingState.House.doorAt(point);
             if(door!=null&&(id==51998||id==51999)&&preferences.doors)
-                targets.add(new Target(object,null,door==availableHouse?(keys>0?"ENTER · "+door.name:door.name+" · key required"):id==51998?door.name+" · wait for owner":"Owner's entrance",door==availableHouse?READY:WARNING,null));
+                targets.add(new Target(object,null,door==availableHouse?(keys>0?"ENTER · "+door.name:door.name+" · key required"):id==51998?door.name+" · wait for owner":"Owner's entrance",door==availableHouse?READY:WARNING,door==availableHouse?state.ownerReturn(door,now):null));
             if(house!=null&&house.near(point,4)&&(id==52000||id==52001||object.getId()==52998))
             {exitFound=true;if(preferences.windows)targets.add(new Target(object,null,"Exit window",state.returnWarning()||ownerNear?WARNING:READY,null));}
             if(house!=null&&house.contains(point)&&furniture(id))

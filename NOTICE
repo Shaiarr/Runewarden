@@ -16,8 +16,11 @@ reference facts retain their Creative Commons Attribution-NonCommercial-
 ShareAlike 3.0 attribution and terms, separately from the original code license.
 The 42 numeric spell facts record their Wiki DPS reference source and its full
 upstream GPL-3.0 license text. That reference provenance does not relicense the
-original HUD code; no upstream calculator implementation, equipment/monster
+original HUD code; no upstream calculator implementation, DPS monster/equipment
 catalogue, guide catalogue or reward audio is bundled in this HUD release.
+The compact Slayer task reference preserves native RuneLite facts and selected
+Wiki equipment/location notices. Recognized area bounds preserve 117HD's BSD
+notice; no 117HD renderer, texture or executable implementation is included.
 See the scoped source notices for the exact retained material and changes.
 
 The optional local test distribution also retains its native RuneLite,

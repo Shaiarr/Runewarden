@@ -1,0 +1,220 @@
+{
+  "version": 1,
+  "checked": "2026-10-17",
+  "source": "https://oldschool.runescape.wiki/w/Slayer_training",
+  "retrieved": "2026-10-17",
+  "license": "CC-BY-NC-SA-3.0",
+  "sourcePin": "https://github.com/Shaiarr/Runewarden/blob/61d86ab9957b09fff68443a235ce72e318fd9f50/src/main/resources/com/runewarden/slayer-planning-methods.json",
+  "sourcePolicy": "Named location examples extracted from the previously checked Wiki references. This is not an exhaustive spawn catalog and does not grant permission for location-restricted assignments. Generic area descriptions were omitted; no coordinates or requirements were inferred.",
+  "tasks": [
+    {
+      "name": "Abyssal demons",
+      "locations": [
+        {
+          "name": "Catacombs of Kourend",
+          "source": "https://oldschool.runescape.wiki/w/Slayer_task/Abyssal_demons"
+        },
+        {
+          "name": "Abyssal Nexus",
+          "source": "https://oldschool.runescape.wiki/w/Abyssal_Sire/Strategies"
+        }
+      ]
+    },
+    {
+      "name": "Black demons",
+      "locations": [
+        {
+          "name": "Crash Site Cavern",
+          "source": "https://oldschool.runescape.wiki/w/Demonic_gorilla"
+        }
+      ]
+    },
+    {
+      "name": "Black dragons",
+      "locations": [
+        {
+          "name": "Taverley Dungeon",
+          "source": "https://oldschool.runescape.wiki/w/Slayer_task/Black_dragons"
+        },
+        {
+          "name": "Catacombs of Kourend",
+          "source": "https://oldschool.runescape.wiki/w/Slayer_task/Black_dragons"
+        }
+      ]
+    },
+    {
+      "name": "Bloodveld",
+      "locations": [
+        {
+          "name": "Meiyerditch Laboratories",
+          "source": "https://oldschool.runescape.wiki/w/Slayer_task/Bloodveld"
+        },
+        {
+          "name": "Slayer Tower",
+          "source": "https://oldschool.runescape.wiki/w/Slayer_task/Bloodveld"
+        }
+      ]
+    },
+    {
+      "name": "Bloodvelds",
+      "locations": [
+        {
+          "name": "Meiyerditch Laboratories",
+          "source": "https://oldschool.runescape.wiki/w/Slayer_task/Bloodveld"
+        },
+        {
+          "name": "Slayer Tower",
+          "source": "https://oldschool.runescape.wiki/w/Slayer_task/Bloodveld"
+        }
+      ]
+    },
+    {
+      "name": "Blue dragons",
+      "locations": [
+        {
+          "name": "Ungael",
+          "source": "https://oldschool.runescape.wiki/w/Slayer_task/Blue_dragons"
+        }
+      ]
+    },
+    {
+      "name": "Cave kraken",
+      "locations": [
+        {
+          "name": "Kraken Cove",
+          "source": "https://oldschool.runescape.wiki/w/Kraken/Strategies"
+        }
+      ]
+    },
+    {
+      "name": "Cave krakens",
+      "locations": [
+        {
+          "name": "Kraken Cove",
+          "source": "https://oldschool.runescape.wiki/w/Kraken/Strategies"
+        }
+      ]
+    },
+    {
+      "name": "Dagannoth",
+      "locations": [
+        {
+          "name": "Lighthouse basement",
+          "source": "https://oldschool.runescape.wiki/w/Slayer_task/Dagannoth"
+        }
+      ]
+    },
+    {
+      "name": "Dagannoths",
+      "locations": [
+        {
+          "name": "Lighthouse basement",
+          "source": "https://oldschool.runescape.wiki/w/Slayer_task/Dagannoth"
+        }
+      ]
+    },
+    {
+      "name": "Drakes",
+      "locations": [
+        {
+          "name": "Karuulm Slayer Dungeon",
+          "source": "https://oldschool.runescape.wiki/w/Slayer_training"
+        }
+      ]
+    },
+    {
+      "name": "Gargoyles",
+      "locations": [
+        {
+          "name": "Slayer Tower",
+          "source": "https://oldschool.runescape.wiki/w/Pay-to-play_melee_training#Gargoyles"
+        },
+        {
+          "name": "Slayer Tower rooftop",
+          "source": "https://oldschool.runescape.wiki/w/Grotesque_Guardians/Strategies"
+        }
+      ]
+    },
+    {
+      "name": "Greater demons",
+      "locations": [
+        {
+          "name": "Ancient Guthixian Temple",
+          "source": "https://oldschool.runescape.wiki/w/Tormented_Demon"
+        }
+      ]
+    },
+    {
+      "name": "Hellhounds",
+      "locations": [
+        {
+          "name": "Cerberus Lair",
+          "source": "https://oldschool.runescape.wiki/w/Cerberus/Strategies"
+        }
+      ]
+    },
+    {
+      "name": "Hydra",
+      "locations": [
+        {
+          "name": "Karuulm Slayer Dungeon",
+          "source": "https://oldschool.runescape.wiki/w/Alchemical_Hydra/Strategies"
+        }
+      ]
+    },
+    {
+      "name": "Hydras",
+      "locations": [
+        {
+          "name": "Karuulm Slayer Dungeon",
+          "source": "https://oldschool.runescape.wiki/w/Alchemical_Hydra/Strategies"
+        }
+      ]
+    },
+    {
+      "name": "Iron dragons",
+      "locations": [
+        {
+          "name": "Catacombs of Kourend",
+          "source": "https://oldschool.runescape.wiki/w/Slayer_task/Iron_dragon"
+        }
+      ]
+    },
+    {
+      "name": "Kalphites",
+      "locations": [
+        {
+          "name": "Kalphite Cave",
+          "source": "https://oldschool.runescape.wiki/w/Slayer_task/Kalphites"
+        }
+      ]
+    },
+    {
+      "name": "Nechryael",
+      "locations": [
+        {
+          "name": "Slayer Tower",
+          "source": "https://oldschool.runescape.wiki/w/Slayer_task/Nechryael"
+        }
+      ]
+    },
+    {
+      "name": "Smoke devils",
+      "locations": [
+        {
+          "name": "Smoke Devil Dungeon",
+          "source": "https://oldschool.runescape.wiki/w/Thermonuclear_smoke_devil/Strategies"
+        }
+      ]
+    },
+    {
+      "name": "Suqah",
+      "locations": [
+        {
+          "name": "Lunar Isle",
+          "source": "https://oldschool.runescape.wiki/w/Slayer_task/Suqah"
+        }
+      ]
+    }
+  ]
+}

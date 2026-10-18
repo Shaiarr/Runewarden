@@ -1,0 +1,36 @@
+Harvest run preparation facts
+
+Copyright the respective Old School RuneScape Wiki contributors.
+Wiki-derived factual references retain Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported:
+https://creativecommons.org/licenses/by-nc-sa/3.0/
+These facts are separate from the original BSD-2-Clause HUD implementation.
+
+Birdhouse logs, prebuilt alternatives, returned clockworks and accepted seed types:
+https://oldschool.runescape.wiki/w/Bird_house_trapping?oldid=15355920
+The original page blocked retrieval; the attributed saved revision was checked at
+https://danielpgleason.com/osrs/reference/bird-house-trapping-ca01b88d/
+Corroborating Wiki pages retrieved through their indexed redirect content on 2026-10-18:
+https://oldschool.runescape.wiki/w/Hunter_training
+https://oldschool.runescape.wiki/w/Farming_training
+https://oldschool.runescape.wiki/w/Farming
+Ready saplings and seedling watering are distinct:
+https://oldschool.runescape.wiki/w/Watering_can?oldid=14758109
+
+Selected tree/fruit-tree payment facts, retained from the earlier verified reference snapshot:
+5370: 1 Tomatoes(5); https://oldschool.runescape.wiki/w/Oak_tree_(Farming)?oldid=15372640
+5371: 1 Apples(5); https://oldschool.runescape.wiki/w/Willow_tree_(Farming)?oldid=15287151
+5372: 1 Oranges(5); https://oldschool.runescape.wiki/w/Maple_tree_(Farming)?oldid=15315471
+5373: 10 Cactus spine; https://oldschool.runescape.wiki/w/Yew_tree_(Farming)?oldid=15287156
+5374: 25 Coconut; https://oldschool.runescape.wiki/w/Magic_tree_(Farming)?oldid=15315472
+5496: 9 Sweetcorn; https://oldschool.runescape.wiki/w/Apple_tree?oldid=15369803
+5497: 4 Apples(5); https://oldschool.runescape.wiki/w/Banana_tree_(Farming)?oldid=15287185
+5498: 3 Strawberries(5); https://oldschool.runescape.wiki/w/Orange_tree?oldid=15287186
+5499: 5 Bananas(5); https://oldschool.runescape.wiki/w/Curry_tree?oldid=15287187
+5500: 10 Watermelon; https://oldschool.runescape.wiki/w/Pineapple_plant?oldid=15315473
+5501: 10 Pineapple; https://oldschool.runescape.wiki/w/Papaya_tree?oldid=15287189
+5502: 15 Papaya fruit; https://oldschool.runescape.wiki/w/Palm_tree?oldid=15287190
+22866: 15 Coconut; https://oldschool.runescape.wiki/w/Dragonfruit_tree?oldid=15287191
+
+Native RuneLite 1.13.2 ItemID and CraftingAction corroborate item identities and birdhouse tiers.
+The complete applicable native BSD notices are in runelite-hud-reference-BSD-2-Clause.txt.
+Changes: selected numeric/item facts, compact original preparation notes and native account observations; no walkthrough text copied.

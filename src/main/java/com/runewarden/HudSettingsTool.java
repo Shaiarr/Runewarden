@@ -123,6 +123,8 @@ final class HudSettingsTool
         choice("Inventory preview", "inventoryPreview", config::inventoryPreview);
         choice("Character dashboard", "dashboardHud", config::dashboardHud);
         choice("Harvest reminders", "harvestHud", config::harvestHud);
+        choice("Active harvest run", "farmRunHud", config::farmRunHud);
+        choice("Slayer task card", "slayerTaskHud", config::slayerTaskHud);
         choice("Node timers", "nodeTimers", config::nodeTimers);
         enumChoice("Node countdowns", "nodeTimerDisplay", RunewardenConfig.TimerDisplay.values(), config::nodeTimerDisplay);
         enumChoice("Harvest countdowns", "harvestTimerDisplay", RunewardenConfig.TimerDisplay.values(), config::harvestTimerDisplay);

@@ -78,6 +78,32 @@ public class FarmPatchHudTest
         Fixture f=new Fixture();FarmPatchOverlay overlay=new FarmPatchOverlay(f.base.nativeState.client,f.base.planner,mock(net.runelite.client.game.ItemManager.class));BufferedImage image=new BufferedImage(400,400,BufferedImage.TYPE_INT_ARGB);java.awt.Graphics2D graphics=image.createGraphics();overlay.render(graphics);graphics.dispose();assertNotEquals(0,image.getRGB(200,150));assertEquals(0,image.getRGB(200,220));
         f.base.nativeState.profile.set("rsprofile.other");BufferedImage blank=new BufferedImage(400,400,BufferedImage.TYPE_INT_ARGB);graphics=blank.createGraphics();overlay.render(graphics);graphics.dispose();assertEquals(0,blank.getRGB(200,150));
     }
+    @Test public void patchCardConnectsToTheActualObjectAndClearsWithItsProfile()
+    {
+        Fixture f=new Fixture();when(f.object.getCanvasLocation()).thenReturn(new net.runelite.api.Point(235,300));
+        FarmPatchOverlay overlay=new FarmPatchOverlay(f.base.nativeState.client,f.base.planner,mock(net.runelite.client.game.ItemManager.class));
+        BufferedImage image=new BufferedImage(400,400,BufferedImage.TYPE_INT_ARGB);java.awt.Graphics2D g=image.createGraphics();overlay.render(g);g.dispose();
+        assertNotEquals("Leader must terminate at the real patch, even when offset from the card",0,image.getRGB(235,300));
+        assertNotEquals(0,image.getRGB(235,250));assertEquals(0,image.getRGB(200,300));
+        f.base.nativeState.profile.set("rsprofile.other");BufferedImage blank=new BufferedImage(400,400,BufferedImage.TYPE_INT_ARGB);g=blank.createGraphics();overlay.render(g);g.dispose();assertEquals(0,blank.getRGB(235,300));
+    }
+    @Test public void offCanvasPatchCardsDoNotEscapeThroughTheBottomOfTheGameCanvas()
+    {
+        Fixture f=new Fixture();FarmPatchOverlay overlay=new FarmPatchOverlay(f.base.nativeState.client,f.base.planner,mock(net.runelite.client.game.ItemManager.class));
+        when(f.object.getCanvasTextLocation(any(),anyString(),anyInt())).thenReturn(new net.runelite.api.Point(200,430));
+        when(f.object.getCanvasLocation()).thenReturn(new net.runelite.api.Point(200,450));
+        BufferedImage image=new BufferedImage(500,500,BufferedImage.TYPE_INT_ARGB);java.awt.Graphics2D g=image.createGraphics();overlay.render(g);g.dispose();
+        assertEquals("An off-canvas top anchor must not leave a detached visible card",0,countPainted(image));
+        when(f.object.getCanvasTextLocation(any(),anyString(),anyInt())).thenReturn(new net.runelite.api.Point(200,399));
+        when(f.object.getCanvasLocation()).thenReturn(new net.runelite.api.Point(200,399));
+        image=new BufferedImage(500,500,BufferedImage.TYPE_INT_ARGB);g=image.createGraphics();overlay.render(g);g.dispose();
+        assertTrue("Visible edge anchor retains its card",countPainted(image)>0);
+        for(int y=400;y<500;y++)for(int x=0;x<500;x++)assertEquals("Card and endpoint are clipped to the native game canvas",0,image.getRGB(x,y));
+        when(f.base.nativeState.client.getCanvasHeight()).thenReturn(20);
+        image=new BufferedImage(500,500,BufferedImage.TYPE_INT_ARGB);g=image.createGraphics();overlay.render(g);g.dispose();assertEquals("No card fits a canvas shorter than the card",0,countPainted(image));
+    }
+    private static int countPainted(BufferedImage image)
+    {int count=0;for(int y=0;y<image.getHeight();y++)for(int x=0;x<image.getWidth();x++)if((image.getRGB(x,y)>>>24)!=0)count++;return count;}
     @Test public void palmAndCurryCardsRenderTheirOwnNativeSaplingIconsInTheCountdownRing()
     {
         for(int[] crop:new int[][]{{200,net.runelite.api.gameval.ItemID.PLANTPOT_PALM_SAPLING},{99,net.runelite.api.gameval.ItemID.PLANTPOT_CURRY_SAPLING}})

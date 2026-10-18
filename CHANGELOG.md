@@ -1,5 +1,14 @@
 # Changes
 
+## 0.10.2 — Harvest runs and floating scene cards
+
+- Add a floating card and a pointer to the actual accessible Varlamore door.
+- Connect patch cards and individual birdhouse cards to their actual scene objects with the same pointer renderer. Birdhouse timers use separate native character records rather than the aggregate harvest clock.
+- Separate harvest preparation from the active location, add herb/birdhouse/tree/fruit-tree shortcuts to Overview, and show the current stop in a configurable on-screen run card. Ended and completed runs remove the card.
+- Tailor harvesting supplies to the selected run and recognize observed birdhouse refilling without marking already seeded houses complete.
+- Add compact native Slayer task reporting, sourced location/equipment references and a contextual task card. Distinguish the current points balance from completion rewards actually observed.
+- Keep the local production-code guard at 160,000 tokens, below the Hub reviewer's stated 200,000-token size limit.
+
 ## 0.10.1 — Varlamore timing and house routing
 
 - Show distracted elapsed time, bounded remaining time and a live range until the next distraction. Detect observed native transitions even when the chat message was missed.

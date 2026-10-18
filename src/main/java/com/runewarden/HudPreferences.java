@@ -11,7 +11,7 @@ import java.util.Map;
 /** Bounded, versioned layout data. Shared layouts contain presentation only. */
 final class HudPreferences
 {
-    static final String[] WIDGETS = {"resources", "dashboard", "harvest", "outfit", "inventory", "field-effects", "action-progress", "thieving", "farm-patches", "node-timers"};
+    static final String[] WIDGETS = {"resources", "dashboard", "harvest", "outfit", "inventory", "field-effects", "action-progress", "thieving", "farm-patches", "node-timers", "harvest-run", "slayer-task"};
     private static final java.util.Set<String> RETIRED = java.util.Set.of("guide", "entrance", "training", "agility", "minigame", "equipment-inspector", "hunter-rumours", "sailing", "skill-progress", "clue-timers", "container-hud", "reward-popup", "world-ping");
     static boolean retired(String key) { return RETIRED.contains(key); }
 

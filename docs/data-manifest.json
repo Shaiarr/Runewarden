@@ -29,6 +29,26 @@
       "bytes": 77730,
       "sha256": "debe706ccb0b0ebf221146a0a5208784afe94c497a6b0aac9d9c7ba3f38bb658",
       "provenance": {}
+    },
+    {
+      "file": "src/main/resources/com/runewarden/slayer-native-tasks.json",
+      "bytes": 22147,
+      "sha256": "d984314331d6976973b969a4dc76e789dc052ffb8cf37e870bd53ca510ea4cd6",
+      "provenance": {
+        "source": "https://github.com/runelite/runelite/blob/runelite-parent-1.13.2/runelite-client/src/main/java/net/runelite/client/plugins/slayer/Task.java"
+      }
+    },
+    {
+      "file": "src/main/resources/com/runewarden/slayer-task-locations.json",
+      "bytes": 5740,
+      "sha256": "00bc6fca0d7520f23e3ddd6b5e25e71f8ab708a3b8bde81e87c381ffdbf40151",
+      "provenance": {
+        "source": "https://oldschool.runescape.wiki/w/Slayer_training",
+        "retrieved": "2026-10-17",
+        "license": "CC-BY-NC-SA-3.0",
+        "sourcePin": "https://github.com/Shaiarr/Runewarden/blob/61d86ab9957b09fff68443a235ce72e318fd9f50/src/main/resources/com/runewarden/slayer-planning-methods.json",
+        "sourcePolicy": "Named location examples extracted from the previously checked Wiki references. This is not an exhaustive spawn catalog and does not grant permission for location-restricted assignments. Generic area descriptions were omitted; no coordinates or requirements were inferred."
+      }
     }
   ]
 }
