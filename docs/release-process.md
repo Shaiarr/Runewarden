@@ -1,28 +1,22 @@
-# Release procedure
+# HUD release procedure
 
-Runewarden 0.9.6 is an experimental plugin source release. Publishing the source does not require prior Plugin Hub acceptance and does not make the plugin available in the live client's Hub. A local build or mechanical API check is not RuneLite/Jagex approval.
+Runewarden HUD 0.10.0 is an experimental candidate on `hud-core`, published by Shai-arr. Its original code is BSD-2-Clause; third-party data, native libraries and optional Java runtime retain their own licenses. Successful local checks are not RuneLite/Jagex approval.
 
-Published by **Shai-arr**. Original Runewarden code is **BSD-2-Clause**; third-party code and datasets retain their own licenses, notices and provenance. Runewarden is community maintained. Contributions and forks are welcome, with no guaranteed maintenance schedule or support response time.
-
-1. Run the checks in `CONTRIBUTING.md` on the exact proposed source. Inspect sidebar rendering and the production JAR. Record this plugin-only export's results in `docs/plugin-only-evidence.json`; do not reuse the historical full-harness test counts.
-2. Record actual live checks in `docs/live-acceptance.json`, including version, date, scenario and evidence. Account/profile transitions, full activity journeys, long sessions and interoperability remain unverified until tested. Open checks may accompany an explicitly experimental source release; do not relabel them as passes.
-3. Keep `build.gradle`, `runelite-plugin.properties` and `RunewardenVersion.java` versions equal. Preserve `build=standard`. Update the changelog, source notices and dataset fingerprints. This export packages production Java/resources only; external Quest Helper and Shortest Path are not bundled. The entry point is `com.runewarden.RunewardenPlugin` and the configuration namespace is `runewarden`. Earlier test settings are not automatically migrated; preserve exported backups for a possible manual migration without claiming compatibility.
-4. Commit and push the reviewed source to a dedicated **public GitHub repository**. From its clean checkout run:
-
-   ```sh
-   python tools/prepare_hub_submission.py https://github.com/OWNER/REPOSITORY
-   ```
-
-   The tool writes `build/hub-submission/plugins/runewarden` and `build/hub-submission/pull-request.md`. It does not publish or send anything. Inspect the review text and confirm that the marker contains the real public repository URL and the exact **40-character commit SHA** already available there:
+1. Run the plugin checks in `CONTRIBUTING.md` on the final source. Inspect HUD/sidebar rendering and the production JAR. Record results for this HUD tree, without copying the broader prototype's test totals.
+2. Check actual live scenarios: account/profile transitions, scene loading, overlay layout/resize, retained activities, module suspension and interoperability. Record what was tested and keep unverified behavior explicit. No relative RAM/FPS claim follows from a synthetic test or catalogue size.
+3. Keep the version in `build.gradle`, `runelite-plugin.properties` and `RunewardenVersion.java` equal. Preserve `build=standard`. The production JAR contains only the HUD plugin's Java/resources.
+4. For a test download, build `devTestZip`. An external `shortestPathJar` may include the recorded unchanged routing companion. A supplied pinned `runtimeDir` also requires the matching `runtimeSourceDir`; distribute the resulting Java source ZIP alongside the Windows test ZIP. Retain native runtime legal files, dependency notices, hashes and corresponding plugin source. Run `verifyTestPackage` and inspect the actual archive before distribution.
+5. Before considering a new HUD submission, verify the current source/bytecode budget with the applicable Hub tooling and record the HUD-specific results. The former broad prototype submission is separate; it does not automatically receive this branch. Publish reviewed source/artifacts only when authorized. Create the future `plugins/runewarden` marker in the Hub fork using these two lines:
 
    ```text
-   repository=https://github.com/OWNER/REPOSITORY.git
-   commit=THE_EXACT_40_CHARACTER_COMMIT_SHA
+   repository=https://github.com/Shaiarr/Runewarden.git
+   commit=EXACT_PUBLIC_40_CHARACTER_HUD_COMMIT_SHA
    ```
 
-5. Fork [runelite/plugin-hub](https://github.com/runelite/plugin-hub) and open a pull request adding that marker as **plugins/runewarden**. The plugin source stays in your dedicated repository. Follow the official repository's current submission instructions. Its standard builder controls the Hub build configuration and packages `src/main`; a successful local custom build is not a substitute for that build or review.
-6. Address concrete reviewer findings. Source changes require a new public commit and an updated marker. A documented feature precedent supports investigation of that behavior; it does not certify the complete plugin. Record the actual Hub decision when it exists.
+   Use the exact committed and pushed HUD revision, not an earlier prototype SHA or the branch name.
 
-The marker identifies one immutable source revision, not a branch or version label. Never invent its SHA or copy one from the old development repository. Keep corresponding source and third-party notices available with any distributed plugin binary.
+6. If a future HUD submission is authorized after that assessment, follow the current [official Plugin Hub instructions](https://github.com/runelite/plugin-hub) for its fork, marker and review PR. Do not assume the earlier broad submission is still active or approved. Address concrete build/scanner/reviewer findings and preserve third-party notices. A successful build, a clean scanner and human acceptance are separate results.
 
-`release_gate.py` prevents a public 1.x claim while required acceptance gates remain open. Experimental source publication, submitting for review and acceptance into the live Hub are separate steps. Earlier readiness/evidence and client-package documents are retained as historical records; use the current plugin-only evidence for this repository.
+The development bootstrap lives outside `src/main` and is excluded from the Hub JAR. Native RuneLite is not modified. The standard Hub builder controls its own build configuration; launcher packaging tasks are local testing tools, not part of that submission build.
+
+The earlier full prototype's readiness, CI and approval state must not be represented as acceptance of 0.10.0. Do not publish a stable-release claim until the relevant live and review evidence exists.

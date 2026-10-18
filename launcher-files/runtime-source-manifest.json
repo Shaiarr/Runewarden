@@ -1,0 +1,28 @@
+{
+  "format": "runewarden-java-runtime-sources",
+  "runtimeVersion": "17.0.20.1+1",
+  "openJdkCommit": "79597447bd94ff9f8216e2e3a573d5261ee49f2e",
+  "temurinBuildCommit": "e6ba7dec3d07654074559310376a3ae89da5f4ac",
+  "files": [
+    {
+      "name": "jdk17u-79597447bd94ff9f8216e2e3a573d5261ee49f2e.tar.gz",
+      "bytes": 108360224,
+      "sha256": "9e4fbd5915dc625eb41385e126a5440947b895826b0a409736afedbf83feeec0"
+    },
+    {
+      "name": "jdk17u-commit.json",
+      "bytes": 58616,
+      "sha256": "08a40678aeec9e90f3cc01fb631f477ba2ae159c9f8df7d7f3b1b6e224c632bb"
+    },
+    {
+      "name": "temurin-build-commit.json",
+      "bytes": 40259,
+      "sha256": "85202891f04ff3167b2b24a26b8987adbd5cc482290f63fb66b844e5e3eb6212"
+    },
+    {
+      "name": "temurin-build-e6ba7dec3d07654074559310376a3ae89da5f4ac.tar.gz",
+      "bytes": 584568,
+      "sha256": "b1340378b9ed62b32acfacd012dd069ec2b9d940fc39d3c73f32142d64e89713"
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: BSD-2-Clause */
 package com.runewarden;
 
 import java.awt.BorderLayout;
@@ -20,13 +21,11 @@ final class RunewardenPanel extends PluginPanel
 {
     private static final Color GOLD = new Color(224, 190, 113);
     private static final Color BACKGROUND = new Color(20, 20, 21);
-    private ModuleRuntime runtime;
     private final java.util.Map<String,JPanel> moduleFrames=new java.util.LinkedHashMap<>();
     private final JComboBox<String> modules = new JComboBox<>();
     private final ModuleNavigation history = new ModuleNavigation();
     private final java.util.Map<String,Integer> scrollPositions = new java.util.LinkedHashMap<>();
     private JButton back, forward, home;
-    private Runnable endRunAction=()->{};
     private boolean traversing;
     private String shownModule;
     private long navigationEpoch;
@@ -40,7 +39,7 @@ final class RunewardenPanel extends PluginPanel
         }
     };
 
-    RunewardenPanel(RunewardenGuides guides, RunewardenSightTool sightTool, WaveExportTool waveExport)
+    RunewardenPanel()
     {
         setLayout(new BorderLayout(0, 10));
         setBackground(BACKGROUND);
@@ -98,31 +97,23 @@ final class RunewardenPanel extends PluginPanel
         navigation.add(modules, BorderLayout.CENTER);
         back = SidebarUi.button("← Back", () -> traverse(false));
         forward = SidebarUi.button("Next →", () -> traverse(true));
-        home = SidebarUi.button("Home", () -> selectModule("Command dashboard"));
+        home = SidebarUi.button("Home", () -> selectModule("Overview"));
         back.setName("runewarden.navigation.back");
         forward.setName("runewarden.navigation.forward");
         home.setName("runewarden.navigation.home");
         back.getAccessibleContext().setAccessibleName("Previous module");
         forward.getAccessibleContext().setAccessibleName("Next module in history");
-        home.getAccessibleContext().setAccessibleName("Command dashboard");
+        home.getAccessibleContext().setAccessibleName("Overview");
         JPanel controls=SidebarUi.column();
         controls.add(SidebarUi.row(back, home, forward));
-        JButton endRun=SidebarUi.button("End run",()->endRunAction.run());
-        endRun.setName("runewarden.activity.end");
-        endRun.setToolTipText("Finish the current run and dismiss its guide and route");
-        controls.add(endRun);
         navigation.add(controls, BorderLayout.SOUTH);
         refreshNavigation();
         add(navigation, BorderLayout.NORTH);
         cards.setName("runewarden.module.cards");
         cards.setBackground(BACKGROUND);
         add(cards, BorderLayout.CENTER);
-        addModule("Guides", guides.createPanel());
-        addModule("Visibility", sightTool.createPanel());
-        addModule("Wave references", waveExport.createPanel());
     }
 
-    void setEndRunAction(Runnable action){endRunAction=action==null?()->{}:action;}
 
     void addModule(String title, JComponent module)
     {
@@ -134,7 +125,7 @@ final class RunewardenPanel extends PluginPanel
         readable(module);
         SidebarUi.install(module);
         JPanel frame=new JPanel(new CardLayout());frame.setOpaque(false);frame.add(module,"content");
-        JPanel paused=SidebarUi.section(title);paused.add(SidebarUi.label("Module paused"));paused.add(SidebarUi.button("Enable module",()->{if(runtime!=null)runtime.enable(title);}));frame.add(paused,"paused");moduleFrames.put(title,frame);
+        moduleFrames.put(title,frame);
         cards.add(frame, title);
         modules.insertItemAt(title, index);
         refreshNavigation();
@@ -159,7 +150,7 @@ final class RunewardenPanel extends PluginPanel
     {
         if (back != null) back.setEnabled(history.canBack());
         if (forward != null) forward.setEnabled(history.canForward());
-        if (home != null) home.setEnabled(moduleFrames.containsKey("Command dashboard"));
+        if (home != null) home.setEnabled(moduleFrames.containsKey("Overview"));
     }
 
     void resetNavigation()
@@ -167,10 +158,6 @@ final class RunewardenPanel extends PluginPanel
         Runnable reset = () -> { navigationEpoch++; scrollPositions.clear(); history.reset(shownModule); refreshNavigation(); };
         if (SwingUtilities.isEventDispatchThread()) reset.run(); else SwingUtilities.invokeLater(reset);
     }
-
-    void setRuntime(ModuleRuntime runtime){this.runtime=runtime;refreshModules();}
-    void refreshModules()
-    { if(runtime==null)return;for(java.util.Map.Entry<String,JPanel> entry:moduleFrames.entrySet())((CardLayout)entry.getValue().getLayout()).show(entry.getValue(),runtime.enabled(entry.getKey())?"content":"paused");cards.revalidate();cards.repaint(); }
 
     private static void readable(Component component)
     {

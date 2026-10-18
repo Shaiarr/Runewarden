@@ -1,0 +1,19 @@
+Old School RuneScape Wiki reference facts
+
+Copyright the respective Old School RuneScape Wiki contributors.
+https://oldschool.runescape.wiki/
+Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported:
+https://creativecommons.org/licenses/by-nc-sa/3.0/
+
+Scope: the Wiki-sourced portions of action-recipes.json and
+skilling-resource-details.json, including ingredient/output, use, level, XP,
+farming-stage and payment facts; supported outfit and daily-claim facts; and
+normal combat/spell factual references. Per-entry source URLs and any available
+revision IDs remain in the resources. Exact action-timing and Varlamore sources
+are also listed in action-progress-attribution.txt and varlamore-thieving-Wiki.txt.
+
+Changes: selected factual fields and compact original summaries, normalized item
+identifiers and quantities, and separately represented native observations.
+No quest walkthrough or guide catalogue is bundled. Reference data retain their
+source terms; the original HUD implementation has its separate BSD-2-Clause
+license. This notice does not relicense Wiki-derived material as BSD.

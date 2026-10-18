@@ -1,27 +1,22 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 package com.runewarden;
-
 import com.google.gson.Gson;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
-import javax.imageio.ImageIO;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+import net.runelite.api.Client;
+import net.runelite.api.Player;
 import net.runelite.api.GameState;
 import net.runelite.api.Skill;
 import net.runelite.api.coords.WorldPoint;
+import net.runelite.client.callback.ClientThread;
+import net.runelite.client.config.ConfigManager;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
-
 public class FarmPatchPlannerTest
 {
     @Test public void pinnedSnapshotHasAll107NativePatchesAndExactHerbSeeds()
@@ -61,70 +56,56 @@ public class FarmPatchPlannerTest
         assertFalse(fixture.planner.readings().isEmpty()); for (FarmPatchPlanner.PatchReading reading : fixture.planner.readings().values()) assertFalse(reading.currentSession);
         fixture.nativeState.profile.set("rsprofile.other"); assertTrue(fixture.planner.readings().isEmpty()); fixture.tick(1); assertTrue(fixture.planner.readings().isEmpty());
     }
-    @Test public void customPatchSequenceAndCropPreparationPersistAndFit206Pixels() throws Exception
+
+    @Test public void queuedOldProfileEditsAndStaleRunViewsAreDiscarded()
     {
-        Fixture fixture = new Fixture(); fixture.planner.start(); fixture.tick(6); fixture.planner.selectGuide("training:herb-runs");
-        JPanel[] panel = new JPanel[1]; SwingUtilities.invokeAndWait(() -> panel[0] = fixture.planner.createPanel()); flush();
-        SwingUtilities.invokeAndWait(() -> {
-            JComboBox<?> seeds = descendants(panel[0]).stream().filter(component -> component instanceof JComboBox && component.getName()!=null && component.getName().startsWith("farm-patch.seed.")).map(component -> (JComboBox<?>) component).findFirst().get();
-            assertTrue(seeds.getItemCount() > 4); seeds.setSelectedIndex(1);
-        }); flush();
-        AtomicReference<java.util.Set<Integer>> focus = new AtomicReference<>(); fixture.planner.setBankFocusAction(focus::set);
-        SwingUtilities.invokeAndWait(() -> button(panel[0], "Focus run supplies in bank").doClick()); flush();
-        assertNotNull(focus.get()); assertTrue(focus.get().contains(952)); assertTrue(focus.get().contains(21483)); assertTrue(focus.get().size() >= 3);
-        assertTrue(fixture.nativeState.settings.containsKey("runewarden|rsprofile.characterA|" + FarmPatchPlanner.KEY));
-        SwingUtilities.invokeAndWait(() -> {
-            panel[0].setSize(206, 12000); for (int i = 0; i < 8; i++) layout(panel[0]);
-            for (Component component : descendants(panel[0]))
-                if (visibleWithin(component, panel[0]) && (component instanceof GuideText || component instanceof JButton || component instanceof JComboBox))
-                    assertTrue(component.getClass() + " outside parent", component.getX() >= 0 && component.getX() + component.getWidth() <= component.getParent().getWidth());
-            try
-            {
-                BufferedImage image = new BufferedImage(206, 1500, BufferedImage.TYPE_INT_ARGB); java.awt.Graphics2D graphics = image.createGraphics(); graphics.setColor(SidebarUi.BACKGROUND); graphics.fillRect(0, 0, 206, 1500); panel[0].paint(graphics); graphics.dispose();
-                File output = new File("build/reports/farm-patch-planner-206px.png"); output.getParentFile().mkdirs(); ImageIO.write(image, "png", output);
-            }
-            catch (java.io.IOException failure) { throw new AssertionError(failure); }
-        });
+        Fixture f=new Fixture();f.planner.start();f.tick(6);FarmPatchPlanner.RunReading view=f.planner.currentRun();
+        List<Runnable> queued=new ArrayList<>();doAnswer(call->{queued.add(call.getArgument(0));return null;}).when(f.thread).invokeLater(any(Runnable.class));
+        f.planner.withView(view,()->f.planner.setCompost(0));f.nativeState.profile.set("rsprofile.other");f.tick(1);
+        queued.forEach(Runnable::run);assertEquals(21483,f.planner.currentRun().compostItemId);
+        assertFalse(f.nativeState.settings.containsKey("runewarden|rsprofile.other|"+FarmPatchPlanner.KEY));
     }
-    @Test public void queuedOldProfileRouteEditsAreDiscarded() throws Exception
+    @Test public void corruptSavedRoutesCannotImportRemoteIdsOrResumeRuns()
     {
-        Fixture fixture = new Fixture(); fixture.planner.start(); fixture.tick(6); fixture.planner.selectGuide("training:herb-runs");
-        JPanel[] panel = new JPanel[1]; SwingUtilities.invokeAndWait(() -> panel[0] = fixture.planner.createPanel()); flush();
-        List<Runnable> work = new ArrayList<>(); doAnswer(call -> { work.add(call.getArgument(0)); return null; }).when(fixture.thread).invokeLater(any(Runnable.class));
-        SwingUtilities.invokeAndWait(() -> button(panel[0], "Mark stop checked").doClick());
-        fixture.nativeState.profile.set("rsprofile.other"); fixture.tick(1); work.forEach(Runnable::run); flush();
-        assertFalse(fixture.nativeState.settings.containsKey("runewarden|rsprofile.other|" + FarmPatchPlanner.KEY));
+        Fixture f=new Fixture();FarmPatchPlanner.Saved saved=new FarmPatchPlanner.Saved();FarmPatchPlanner.Route route=new FarmPatchPlanner.Route();
+        route.stops.add("not-a-native-patch");route.active=true;saved.routes.put("herb",route);
+        f.nativeState.settings.put("runewarden|rsprofile.characterA|"+FarmPatchPlanner.KEY,new Gson().toJson(saved));
+        f.planner.start();f.tick(1);assertFalse(f.planner.currentRun().active);
+        assertFalse(f.planner.currentRun().stops.stream().anyMatch(s->s.id.equals("not-a-native-patch")));
+        assertTrue(f.planner.currentRun().status.contains("could not be read"));
     }
-    @Test public void queuedTravelPreparationCannotWriteToAnotherCharacter() throws Exception
+    @Test public void newSeedFactsKeepNativeSaplingsAndUnknownQuantitiesExplicit()
     {
-        Fixture fixture=new Fixture(); fixture.planner.start(); fixture.tick(6); fixture.planner.selectGuide("training:herb-runs");
-        JPanel[] panel=new JPanel[1]; SwingUtilities.invokeAndWait(()->panel[0]=fixture.planner.createPanel()); flush();
-        List<Runnable> work=new ArrayList<>(); doAnswer(call->{work.add(call.getArgument(0));return null;}).when(fixture.thread).invokeLater(any(Runnable.class));
-        SwingUtilities.invokeAndWait(()->button(panel[0],"Save travel preparation").doClick()); assertFalse(work.isEmpty());
-        fixture.nativeState.profile.set("rsprofile.other"); fixture.tick(1); work.forEach(Runnable::run); flush();
-        assertFalse(fixture.nativeState.settings.containsKey("runewarden|rsprofile.other|"+FarmPatchPlanner.KEY));
+        FarmPatchCatalog c=new FarmPatchCatalog(new Gson());assertEquals("Palm sapling",c.seed(5502).name);
+        assertEquals(Integer.valueOf(1),c.seed(5502).quantity);assertEquals(Integer.valueOf(68),c.seed(5502).level);
+        assertEquals(6055,c.iconId(c.state("HERB",0)));assertNull(c.seed(31545).quantity);assertEquals(5502,c.iconId(c.state("FRUIT_TREE",200)));
+    }
+    static final class NativeState
+    {
+        final Client client=mock(Client.class);final ConfigManager config=mock(ConfigManager.class);
+        final AtomicReference<String> profile=new AtomicReference<>("rsprofile.characterA");final Map<String,String> settings=new HashMap<>();
+        NativeState()
+        {
+            when(client.getGameState()).thenReturn(GameState.LOGGED_IN);when(client.getLocalPlayer()).thenReturn(mock(Player.class));
+            when(client.getBoostedSkillLevel(any(Skill.class))).thenReturn(99);when(client.getRealSkillLevel(any(Skill.class))).thenReturn(99);
+            when(config.getRSProfileKey()).thenAnswer(call->profile.get());
+            when(config.getConfiguration(anyString(),anyString(),anyString())).thenAnswer(call->settings.get(call.getArgument(0)+"|"+call.getArgument(1)+"|"+call.getArgument(2)));
+            doAnswer(call->{settings.put(call.getArgument(0)+"|"+call.getArgument(1)+"|"+call.getArgument(2),call.getArgument(3));return null;})
+                .when(config).setConfiguration(anyString(),anyString(),anyString(),anyString());
+        }
     }
     static final class Fixture
     {
-        final OwnershipLedgerTest.Fixture nativeState = new OwnershipLedgerTest.Fixture();
-        final net.runelite.client.callback.ClientThread thread = mock(net.runelite.client.callback.ClientThread.class);
-        final AtomicReference<WorldPoint> location = new AtomicReference<>();
-        final FarmPatchCatalog catalog = new FarmPatchCatalog(new Gson());
-        final FarmPatchPlanner planner;
+        final NativeState nativeState=new NativeState();final ClientThread thread=mock(ClientThread.class);
+        final AtomicReference<WorldPoint> location=new AtomicReference<>();final FarmPatchCatalog catalog=new FarmPatchCatalog(new Gson());final FarmPatchPlanner planner;
         Fixture()
         {
-            FarmPatchCatalog.Patch patch = catalog.forGuide("training:herb-runs").stream().filter(value -> value.region.equals("Ardougne")).findFirst().get();
-            location.set(new WorldPoint((patch.regionId >> 8) * 64 + 32, (patch.regionId & 255) * 64 + 32, 0));
-            when(nativeState.client.getLocalPlayer().getWorldLocation()).thenAnswer(call -> location.get());
-            when(nativeState.client.getBoostedSkillLevel(Skill.FARMING)).thenReturn(99);
-            doAnswer(call -> { ((Runnable) call.getArgument(0)).run(); return null; }).when(thread).invokeLater(any(Runnable.class));
-            planner = new FarmPatchPlanner(nativeState.client, thread, nativeState.config, new RunewardenDataStore(nativeState.config, new Gson()), catalog, nativeState.ledger);
+            FarmPatchCatalog.Patch patch=catalog.forGuide("herb").stream().filter(p->p.region.equals("Ardougne")).findFirst().get();
+            location.set(new WorldPoint((patch.regionId>>8)*64+32,(patch.regionId&255)*64+32,0));
+            when(nativeState.client.getLocalPlayer().getWorldLocation()).thenAnswer(call->location.get());
+            doAnswer(call->{((Runnable)call.getArgument(0)).run();return null;}).when(thread).invokeLater(any(Runnable.class));
+            planner=new FarmPatchPlanner(nativeState.client,thread,nativeState.config,new Gson(),catalog);
         }
-        void tick(int count) { for (int i = 0; i < count; i++) { nativeState.ledger.onGameTick(); planner.onGameTick(); } }
+        void tick(int count){for(int i=0;i<count;i++)planner.onGameTick();}
     }
-    private static void flush() throws Exception { SwingUtilities.invokeAndWait(() -> {}); SwingUtilities.invokeAndWait(() -> {}); }
-    private static JButton button(Container root, String text) { for (Component child : descendants(root)) if (child instanceof JButton && text.equals(((JButton) child).getText())) return (JButton) child; throw new AssertionError(text); }
-    private static List<Component> descendants(Container root) { List<Component> result = new ArrayList<>(); for (Component child : root.getComponents()) { result.add(child); if (child instanceof Container) result.addAll(descendants((Container) child)); } return result; }
-    private static void layout(Container root) { root.doLayout(); for (Component child : root.getComponents()) if (child instanceof Container) layout((Container) child); }
-    private static boolean visibleWithin(Component child, Component root) { for (Component now = child; now != null && now != root; now = now.getParent()) if (!now.isVisible()) return false; return true; }
 }

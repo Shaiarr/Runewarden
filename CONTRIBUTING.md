@@ -1,30 +1,48 @@
-# Contributing to Runewarden
+# Contributing to Runewarden HUD
 
-Published by **Shai-arr**. Runewarden is community maintained. Contributions and forks are welcome, with no guaranteed maintenance schedule or support response time. Independent testing is welcome. Propose a focused change with its purpose, relevant evidence and any remaining limitations.
+Published by **Shai-arr**. Contributions, forks and independent testing are welcome. This community release has no guaranteed maintenance schedule or support response time. Keep changes focused on the HUD's documented scope and explain the observed behavior, relevant verification and remaining limits.
 
-Use JDK 17 and Python 3. Production classes target Java 11; RuneLite and dependency lockfiles are pinned. This repository builds the plugin, without a launcher, client distribution or bundled companion plugins. Original code is BSD-2-Clause. Preserve third-party notices and data licenses; attribution alone does not permit redistribution of unrelated copyrighted text or sounds.
+Use JDK 17 and Python 3. Production classes target Java 11. Preserve BSD-2-Clause and all third-party source/data notices. Keep character observations separate from immutable references, retain profile/generation guards, and keep network/resource loading out of overlay rendering.
 
-Run these checks before proposing a change:
+## Plugin checks
 
 ```sh
+python -m pip install -r tools/requirements.txt
 python tools/validate_bundle.py
 python tools/validate_hub_release.py
 python -m unittest discover -s tools -p 'test_*.py'
 ./gradlew clean check jar
 python tools/check_hub_jar.py
-python tools/release_gate.py
 ```
 
-On Windows, use `gradlew.bat`. The release gate reports pending live/review checks for experimental versions; it does not approve the plugin. Version 0.9.6 uses the `com.runewarden` package and `runewarden` configuration namespace. Earlier test settings are not automatically migrated; do not promise old-backup compatibility without a tested migration. Current export results belong in `docs/plugin-only-evidence.json`. Historical harness reports must retain their original scope and counts.
+On Windows use `gradlew.bat` and `python -X utf8`. Inspect actual rendered HUD/sidebar evidence when changing layout. Test logout, profile changes, loading scenes, disable/re-enable and stretched/scaled display behavior before claiming those live cases passed. Use the current HUD release's results; the larger prototype's test counts are historical.
 
-New datasets need the original URL, pinned revision or commit, license, reproducible builder and accurate support boundary. After inspecting changed data, regenerate fingerprints with `python tools/validate_bundle.py --write`. Unknown account observations and unsupported formulas must stay unknown. Separate account state from immutable references, preserve profile/epoch guards, and keep network requests out of rendering and native game hooks.
+New factual data needs its source revision, license and accurate support boundary. Inspect changes before regenerating fingerprints with `python tools/validate_bundle.py --write`. Unknown or stale native states must not become invented timers, item identities, max hits or completion.
 
-Use focused regression tests for concrete failures and meaningful integrated workflows. Inspect generated sidebar PNGs when changing layout. Test login, logout, profile changes, suspension and re-entry before claiming a live workflow passed. Mocked or headless tests remain labelled as such.
+## Local test package
 
-Plugins may show guides and supported native observations. Do not add movement/combat input automation, packet actions, reactive future-attack/prayer/standing solvers, live arena exports, private reflective access, automatic foreign-plugin activation or executable downloads. The manual World Hopper alone owns native world-change calls: explicit player intent, fresh account/target checks and native confirmations must precede execution. It must never choose emergency or activity-triggered hops.
+The launcher is a separate source set and never enters the production Hub JAR. It only registers Runewarden and an optional external Shortest Path through the public development bootstrap, then starts native RuneLite. It must not activate foreign plugins, rewrite their configuration or contain a guide engine.
 
-Optional route summaries may read fixed public getters on a completed Shortest Path result; do not access private members or retain its graph. The explicit **Use my POH for routing** action may apply its documented whitelist of native house settings with profile ownership checks. Ordinary routing must not rewrite them. Preserve the exact documented Hub precedents and review new behavior on its own merits; a similar plugin's existence is not approval.
+Build a portable test package:
 
-Report reproducible bugs with the client version, module, steps, expected and actual result. Remove names, chat, credentials and other personal account details from screenshots and diagnostics. Performance claims need comparable measured sessions; the standalone catalogue probe does not establish in-game performance.
+```sh
+./gradlew devTestZip
+```
 
-See [the release procedure](docs/release-process.md) for source publication and Hub submission.
+To include the recorded unchanged Shortest Path companion:
+
+```sh
+./gradlew devTestZip -PshortestPathJar=/path/to/shortest-path-1.21.3.jar
+```
+
+To bundle the pinned Windows Temurin runtime, also supply `-PruntimeDir=/path/to/pinned-jre` and `-PruntimeSourceDir=/path/to/matching-runtime-sources`. These inputs are checked against the retained manifests. `devTestZip` then also produces the separate matching Java source ZIP; distribute both together. The runtime's full legal directory and notices remain intact. No runtime or companion is downloaded by the running plugin.
+
+`launcherJar`, `prepareTestPackage` and `verifyTestPackage` are available separately. Verification checks the actual release classpath, file hashes and native resources without starting gameplay. It does not establish Windows execution, logged-in behavior or Hub approval.
+
+## Behavioral boundaries
+
+Read supported native observations and display HUD information. Do not add gameplay input/packet automation, reactive prayer/standing solvers, live arena exports, private reflective access, executable downloads or automatic foreign-plugin configuration. Tick teaching remains a generic metronome, independent of enemies and their attacks. Resource sounds use RuneLite's injected AudioPlayer rather than direct Java Sound ownership.
+
+Report bugs with the RuneLite version, module, reproduction steps, expected and actual result. Remove credentials and personal account/chat details from attached diagnostics. Performance claims need comparable live measurements.
+
+See [the release procedure](docs/release-process.md) for publication and review.

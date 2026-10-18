@@ -53,11 +53,11 @@ public class RoutineNativeTest
     {
         final Client client=mock(Client.class);final ConfigManager config=mock(ConfigManager.class);final AtomicReference<String> profile=new AtomicReference<>("rsprofile.a");
         final Map<String,String> saved=new HashMap<>();final RoutinePlannerTool tool;
-        Fixture(){Gson gson=new Gson();DiaryCatalog diaries=new DiaryCatalog(gson);when(config.getRSProfileKey()).thenAnswer(call->profile.get());when(client.getGameState()).thenReturn(GameState.LOGGED_IN);when(client.getLocalPlayer()).thenReturn(mock(Player.class));when(client.getVarcIntValue(VarClientID.PLAYERMEMBER)).thenReturn(1);when(client.getVarbitValue(VarbitID.HANDSAND_QUEST)).thenReturn(160);
-            when(client.getVarbitValue(diaries.find("varrock_elite").claimedVariable)).thenReturn(1);
+        Fixture(){Gson gson=new Gson();when(config.getRSProfileKey()).thenAnswer(call->profile.get());when(client.getGameState()).thenReturn(GameState.LOGGED_IN);when(client.getLocalPlayer()).thenReturn(mock(Player.class));when(client.getVarcIntValue(VarClientID.PLAYERMEMBER)).thenReturn(1);when(client.getVarbitValue(VarbitID.HANDSAND_QUEST)).thenReturn(160);
+            when(client.getVarbitValue(VarbitID.VARROCK_ELITE_REWARD)).thenReturn(1);
             when(config.getConfiguration(anyString(),anyString(),anyString())).thenAnswer(call->saved.get(call.getArgument(0)+":"+call.getArgument(1)+":"+call.getArgument(2)));
             doAnswer(call->{saved.put(call.getArgument(0)+":"+call.getArgument(1)+":"+call.getArgument(2),call.getArgument(3));return null;}).when(config).setConfiguration(anyString(),anyString(),anyString(),anyString());
-            tool=new RoutinePlannerTool(config,new RunewardenDataStore(config,gson),client,diaries);tool.start();}
+            tool=new RoutinePlannerTool(config,new RunewardenDataStore(config,gson),client,mock(net.runelite.client.game.ItemManager.class));tool.start();}
         void tick(int n){for(int i=0;i<n;i++)tool.onGameTick();}
     }
 }

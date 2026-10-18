@@ -12,9 +12,9 @@ final class ActionRecipeDetector
 {
     static final class Match
     {
-        final BankedExperienceCalculator.Recipe recipe;final Map<Integer,Long> after;
+        final ActionRecipeCatalog.Recipe recipe;final Map<Integer,Long> after;
         final long count,startedAt;
-        Match(BankedExperienceCalculator.Recipe recipe,Map<Integer,Long> after,long count,long startedAt)
+        Match(ActionRecipeCatalog.Recipe recipe,Map<Integer,Long> after,long count,long startedAt)
         {this.recipe=recipe;this.after=after;this.count=count;this.startedAt=startedAt;}
     }
     private Map<Integer,Long> previous,before,after;
@@ -37,14 +37,14 @@ final class ActionRecipeDetector
     Match confirm(int tick)
     {
         if(since<0||tick-since<3)return null;Match match=null;
-        if(before!=null&&after!=null)for(BankedExperienceCalculator.Recipe recipe:BankedExperienceCalculator.recipes())
+        if(before!=null&&after!=null)for(ActionRecipeCatalog.Recipe recipe:ActionRecipeCatalog.recipes())
         {
             long count=matches(recipe,before,after,xp.getOrDefault(recipe.skill,0L));
             if(count>0){if(match!=null){match=null;break;}match=new Match(recipe,after,count,startedAt);}
         }
         before=after=null;xp.clear();since=-1;return match;
     }
-    static long matches(BankedExperienceCalculator.Recipe recipe,Map<Integer,Long> before,Map<Integer,Long> after,long xp)
+    static long matches(ActionRecipeCatalog.Recipe recipe,Map<Integer,Long> before,Map<Integer,Long> after,long xp)
     {
         if(recipe.xp<=0||recipe.products.isEmpty()||xp<=0)return 0;
         long count=Long.MAX_VALUE;Map<Integer,Long> inputs=amounts(recipe.ingredients),outputs=amounts(recipe.products);
@@ -55,6 +55,6 @@ final class ActionRecipeDetector
         for(Map.Entry<Integer,Long> item:outputs.entrySet())if(after.getOrDefault(item.getKey(),0L)-before.getOrDefault(item.getKey(),0L)!=count*item.getValue())return 0;
         return count;
     }
-    private static Map<Integer,Long> amounts(java.util.List<BankedExperienceCalculator.Ingredient> items)
-    {Map<Integer,Long> result=new LinkedHashMap<>();for(BankedExperienceCalculator.Ingredient item:items)result.merge(item.itemId,(long)item.quantity,Long::sum);return result;}
+    private static Map<Integer,Long> amounts(java.util.List<ActionRecipeCatalog.Ingredient> items)
+    {Map<Integer,Long> result=new LinkedHashMap<>();for(ActionRecipeCatalog.Ingredient item:items)result.merge(item.itemId,(long)item.quantity,Long::sum);return result;}
 }

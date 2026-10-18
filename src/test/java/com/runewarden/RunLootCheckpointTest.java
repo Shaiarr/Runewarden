@@ -17,6 +17,10 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 public class RunLootCheckpointTest
 {
+    @Test public void loginAutomaticallyStartsPlainSessionWithoutASelectedGuide() throws Exception
+    {
+        Harness h=new Harness();try{assertTrue(h.f.session.snapshot().running());assertNull(h.f.session.snapshot().context.guideId);h.loot(1);assertEquals(100,h.tool.reading().value);assertEquals(100,h.f.session.currentRecord().grossLoot);}finally{h.stop();}
+    }
     @Test public void restartRestoresCheckpointPausedWithStoredPricesAndCosts() throws Exception
     {
         Harness h=new Harness();try
@@ -35,8 +39,7 @@ public class RunLootCheckpointTest
             SharedActivitySession.Context first=context("one","First activity"),second=context("two","Second activity");
             h.f.session.startActivity(first);h.tool.onGameTick();h.loot(10);h.f.session.pause();h.tool.onGameTick();assertTrue(h.tool.reading().paused);
             h.loot(5);assertEquals(1000,h.tool.reading().value);h.f.session.resume();h.tool.onGameTick();h.loot(1);assertEquals(1100,h.tool.reading().value);
-            h.f.session.startActivity(second);h.tool.onGameTick();assertEquals(0,h.tool.reading().value);assertEquals(1,h.tool.reading().history.size());
-            assertEquals("First activity",h.tool.reading().history.get(0).activityTitle);
+            h.f.session.startActivity(second);h.tool.onGameTick();assertEquals(0,h.tool.reading().value);
             h.f.session.finish();h.tool.onGameTick();assertTrue(h.tool.reading().paused);
         }finally{h.stop();}
     }
@@ -61,9 +64,7 @@ public class RunLootCheckpointTest
             assertTrue(h.tool.reading().paused);assertEquals(1000,h.tool.reading().value);
             h.f.session.resume();h.loot(1);assertEquals(1100,h.tool.reading().value);
             h.f.session.startActivity(context("two","Second activity"));h.loot(2);
-            assertEquals(200,h.tool.reading().value);assertEquals(1,h.tool.reading().history.size());
-            assertEquals(1100,h.tool.reading().history.get(0).lootValue);
-            assertEquals("First activity",h.tool.reading().history.get(0).activityTitle);
+            assertEquals(200,h.tool.reading().value);
             h.f.session.finish();h.loot(3);
             assertTrue(h.tool.reading().paused);assertEquals(200,h.tool.reading().value);
         }finally{h.stop();}
@@ -92,14 +93,14 @@ public class RunLootCheckpointTest
             assertEquals(6000,h.tool.reading().elapsedMillis);
         }finally{h.stop();}
     }
-    @Test public void sharedHistoryKeepsFinalLootAndCostsWhenLootButtonsFinishOrRestart() throws Exception
+    @Test public void sharedCurrentReportKeepsFinalLootAndCostsUntilExplicitReset() throws Exception
     {
         Harness h=new Harness();try
         {
             h.f.session.startActivity(context("one","First activity"));h.loot(10);RunLootTool.Reading before=h.tool.reading();h.tool.setManualCost(before.profile,before.epoch,300);
-            h.tool.finishRun(before.profile,before.epoch);assertEquals(700,h.f.session.history().get(0).netLoot());assertEquals(1000,h.f.session.history().get(0).grossLoot);
+            h.tool.finishRun(before.profile,before.epoch);assertEquals(700,h.f.session.currentRecord().netLoot());assertEquals(1000,h.f.session.currentRecord().grossLoot);assertEquals(1000,h.tool.reading().value);
             h.f.session.startActivity(context("two","Second activity"));h.loot(5);RunLootTool.Reading second=h.tool.reading();h.tool.setManualCost(second.profile,second.epoch,100);
-            h.tool.newRun(second.profile,second.epoch);assertEquals(400,h.f.session.history().get(0).netLoot());assertEquals(0,h.f.session.currentRecord().grossLoot);
+            h.tool.newRun(second.profile,second.epoch);assertEquals(0,h.f.session.currentRecord().grossLoot);assertEquals(0,h.tool.reading().value);
         }finally{h.stop();}
     }
     private static SharedActivitySession.Context context(String id,String title)

@@ -81,15 +81,15 @@ public final class SkillingResourceCatalog
                 fact.actions.add(new Action(stage.name, Skill.FARMING, stage.level, stage.xp, 1,
                     stage.note, fact.farmingSource, ""));
         }
-        for (BankedExperienceCalculator.Recipe recipe : BankedExperienceCalculator.recipes())
+        for (ActionRecipeCatalog.Recipe recipe : ActionRecipeCatalog.recipes())
         {
             StringBuilder ingredients = new StringBuilder();
-            for (BankedExperienceCalculator.Ingredient ingredient : recipe.ingredients)
+            for (ActionRecipeCatalog.Ingredient ingredient : recipe.ingredients)
             {
                 if (ingredients.length() > 0) ingredients.append(" + ");
                 ingredients.append(ingredient.quantity).append(" × ").append(ingredient.name);
             }
-            for (BankedExperienceCalculator.Ingredient ingredient : recipe.ingredients)
+            for (ActionRecipeCatalog.Ingredient ingredient : recipe.ingredients)
             {
                 Resource resource = result.computeIfAbsent(ingredient.itemId, id -> resource(id, ingredient.name));
                 resource.actions.add(new Action(recipe.name, recipe.skill, recipe.level, recipe.xp,

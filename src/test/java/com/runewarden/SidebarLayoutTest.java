@@ -35,8 +35,7 @@ public class SidebarLayoutTest
             try
             {
                 assertTrue(RuneLiteLAF.setup());
-                RunewardenPanel host = new RunewardenPanel(fixtures.get(RunewardenGuides.class),
-                    fixtures.get(RunewardenSightTool.class), fixtures.get(WaveExportTool.class));
+                RunewardenPanel host = new RunewardenPanel();
                 Map<String,JComponent> modules=allModules(fixtures);
                 for (Map.Entry<String, JComponent> entry : modules.entrySet()) host.addModule(entry.getKey(), entry.getValue());
                 JComponent wrapped = host.getWrappedPanel();
@@ -50,8 +49,6 @@ public class SidebarLayoutTest
                         assertLayout(entry.getKey(), entry.getValue());
                         if (width == 242) render(entry.getKey(), wrapped);
                     }
-                    for (String title : new String[]{"Guides", "Visibility", "Wave references"})
-                    { host.selectModule(title); layout(wrapped); assertLayout(title, host); }
                 }
             }
             catch (Exception error) { throw new RuntimeException(error); }
@@ -112,55 +109,25 @@ public class SidebarLayoutTest
 
     static Map<String,JComponent> allModules(Fixture f)
     {
-        Map<String, JComponent> modules = new LinkedHashMap<>();
-        modules.put("Goals", f.get(GoalPlannerTool.class).createPanel());
-        modules.put("Slayer", f.get(SlayerCoachTool.class).createPanel());
-        modules.put("Boss academy", f.get(EncounterPracticeTool.class).createPanel());
-        modules.put("Farm runs", f.get(FarmRunsTool.class).createPanel());
-        modules.put("Run loot", f.get(RunLootTool.class).createPanel());
-        modules.put("Tile markers", f.get(TileMarkersTool.class).createPanel());
-        modules.put("Bank & XP", f.get(BankedExperience.class).createPanel());
-        modules.put("Bank supplies", f.get(GuideBankFilter.class).createPanel());
-        modules.put("Skilling", f.get(SkillingCoach.class).createPanel());
-        modules.put("Timers", f.get(HarvestClockTool.class).createPanel());
-        modules.put("Dashboard", f.get(HarvestClockTool.class).createDashboardPanel());
-        modules.put("Item database", f.get(ItemKnowledgeTool.class).createPanel());
-        modules.put("Max hit", f.get(CombatCalculatorTool.class).createPanel());
-        modules.put("HUD", f.get(HudSettingsTool.class).createPanel());
-        modules.put("Rewards", f.get(RewardSettingsTool.class).createPanel());
-        modules.put("Music unlocks", f.get(MusicUnlockTool.class).createPanel());
-        modules.put("Combat achievements", f.get(CombatAchievementsTool.class).createPanel());
-        modules.put("Minigames", f.get(MinigameCoach.class).createPanel());
-        modules.putAll(expandedModules(f));
+        Map<String,JComponent> modules=new LinkedHashMap<>();
+        modules.put("Overview",f.get(HarvestClockTool.class).createDashboardPanel());
+        modules.put("Harvest runs",f.get(FarmRunsTool.class).createPanel());
+        JPanel timers=SidebarUi.column();
+        timers.add(f.get(HarvestClockTool.class).createPanel());
+        timers.add(f.get(FieldCoach.class).createPanel());
+        modules.put("Timers",timers);
+        JPanel gathering=SidebarUi.column();
+        gathering.add(f.get(SkillingCoach.class).createPanel());
+        gathering.add(f.get(ActionProgressTool.class).createPanel());
+        modules.put("Gathering",gathering);
+        modules.put("Varlamore",f.get(VarlamoreThievingCoach.class).createPanel());
+        modules.put("Session loot",f.get(RunLootTool.class).createPanel());
+        modules.put("Routines & dailies",f.get(RoutinePlannerTool.class).createPanel());
+        modules.put("HUD settings",f.get(HudSettingsTool.class).createPanel());
         return modules;
     }
 
-    static Map<String,JComponent> expandedModules(Fixture f)
-    {
-        Map<String,JComponent> result=new LinkedHashMap<>();
-        result.put("Command center",f.get(CommandCenterTool.class).createPanel());
-        result.put("Find a plan",f.get(OpportunityPlannerTool.class).createPanel());
-        result.put("Plans",f.get(WorkflowPlansTool.class).createPanel());
-        result.put("Activity hub",f.get(ActivityHubTool.class).createPanel());
-        result.put("Supplies",f.get(SupplyAwarenessTool.class).createPanel());
-        result.put("Loadouts",f.get(LoadoutReadinessTool.class).createPanel());
-        result.put("Effects & supplies",f.get(FieldCoach.class).createPanel());
-        result.put("Recovery",f.get(DeathRecoveryTool.class).createPanel());
-        result.put("Ground loot",f.get(GroundLootTool.class).createPanel());
-        result.put("Account progress",f.get(AccountProgressTool.class).createPanel());
-        result.put("Achievement diaries",f.get(DiaryPlannerTool.class).createPanel());
-        result.put("Clues & STASH",f.get(ClueCoachTool.class).createPanel());
-        result.put("Travel",f.get(GuideNavigation.class).createPanel());
-        result.put("World hopper",f.get(WorldHopperPanel.class).createPanel());
-        result.put("DPS comparison",f.get(DpsComparisonTool.class).createPanel());
-        result.put("Training session",f.get(TrainingProgressTool.class).createPanel());
-        result.put("My routines",f.get(RoutinePlannerTool.class).createPanel());
-        result.put("Search",f.get(DiscoverTool.class).createPanel());
-        result.put("Backup & recovery",f.get(RecoveryTool.class).createPanel());
-        result.put("Modules & diagnostics",f.get(ModuleRuntime.class).createPanel());return result;
-    }
-
-    /** Real local catalogues and controls, mocked game services; no game login or HTTP requests. */
+    /** Real retained controls with mocked game services; fixture data is not a live account reading. */
     static final class Fixture
     {
         private final Map<Class<?>, Object> values = new HashMap<>();

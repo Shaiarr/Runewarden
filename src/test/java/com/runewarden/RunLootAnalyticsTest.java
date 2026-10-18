@@ -68,17 +68,17 @@ public class RunLootAnalyticsTest
         try { javax.imageio.ImageIO.write(image, "png", file); } catch (java.io.IOException error) { throw new AssertionError(error); }
     }
 
-    @Test public void heartbeatReusesImmutableLootAndHistorySnapshots() throws Exception
+    @Test public void heartbeatReusesImmutableLootAndSourceSnapshots() throws Exception
     {
         Harness h = new Harness();
         try
         {
             h.loot(440, 10); RunLootTool.Reading first = h.tool.reading();
             h.tool.onGameTick(); RunLootTool.Reading second = h.tool.reading();
-            assertSame(first.items, second.items); assertSame(first.sources, second.sources); assertSame(first.history, second.history);
+            assertSame(first.items, second.items); assertSame(first.sources, second.sources);
             h.tool.newRun(second.profile, second.epoch); RunLootTool.Reading saved = h.tool.reading();
             h.loot(440, 1); RunLootTool.Reading nextDrop = h.tool.reading();
-            assertSame(saved.history, nextDrop.history); assertNotSame(saved.items, nextDrop.items);
+            assertNotSame(saved.items, nextDrop.items);
         }
         finally { h.stop(); }
     }
@@ -105,7 +105,7 @@ public class RunLootAnalyticsTest
     {
         RunLootTool.Reading reading = new RunLootTool.Reading(true, "a", 1, false, 1_800_000,
             Collections.singletonList(new RunLootTool.LootItem(440, "Iron ore", 100, 100, null)),
-            Collections.emptyMap(), 3000, Collections.emptyList());
+            Collections.emptyMap(), 3000);
         assertEquals(10_000, reading.value); assertEquals(7000, reading.netValue);
         assertEquals(20_000, reading.gpPerHour); assertEquals(14_000, reading.netPerHour);
         assertEquals(-4000, RunLootTool.perHour(-2000, 1_800_000));
@@ -113,79 +113,23 @@ public class RunLootAnalyticsTest
         assertEquals(Long.MAX_VALUE, RunLootTool.perHour(Long.MAX_VALUE, 1));
     }
 
-    @Test public void finishSavesObservedGrossCostAndUnpricedTotalsThenPausesFreshRun() throws Exception
+    @Test public void finishPreservesCurrentReportAndResetRejectsStaleControls() throws Exception
     {
-        Harness h = new Harness();
-        try
+        Harness h=new Harness();try
         {
-            h.loot(440, 10); when(h.items.getItemPrice(100)).thenReturn(0L); h.loot(100, 1);
-            RunLootTool.Reading before = h.tool.reading(); h.tool.setManualCost(before.profile, before.epoch, 300);
-            h.tool.finishRun(before.profile, before.epoch);
-            RunLootTool.Reading after = h.tool.reading();
-            assertEquals(0, after.value); assertEquals(0, after.manualCost); assertTrue(after.paused);
-            assertEquals(1, after.history.size());
-            RunLootTool.RunSummary run = after.history.get(0);
-            assertEquals(1000, run.lootValue); assertEquals(300, run.manualCost); assertEquals(700, run.net());
-            assertEquals(1, run.unpricedItems); assertEquals(Long.valueOf(2), run.sources.get("NPC · Goblin"));
-            assertNotNull(h.values.get("a"));
-            h.tool.setManualCost(before.profile, before.epoch, 9000);
-            assertEquals(0, h.tool.reading().manualCost);
-            h.tool.finishRun(after.profile, after.epoch); assertEquals(1, h.tool.reading().history.size());
-        }
-        finally { h.stop(); }
+            h.loot(440,10);RunLootTool.Reading before=h.tool.reading();h.tool.setManualCost(before.profile,before.epoch,300);h.tool.finishRun(before.profile,before.epoch);
+            RunLootTool.Reading finished=h.tool.reading();assertTrue(finished.paused);assertEquals(1000,finished.value);assertEquals(700,finished.netValue);
+            h.loot(440,2);assertEquals(1000,h.tool.reading().value);h.tool.newRun(finished.profile,finished.epoch);assertEquals(0,h.tool.reading().value);assertEquals(0,h.tool.reading().manualCost);
+            h.tool.setManualCost(finished.profile,finished.epoch,9000);assertEquals(0,h.tool.reading().manualCost);
+        }finally{h.stop();}
     }
-
-    @Test public void newRunArchivesAndHistoryIsBoundedAndRestoredOnlyForMatchingCharacter() throws Exception
+    @Test public void staleCostsCannotWriteAnotherCharacterAndNoInventoryExpenseIsInvented() throws Exception
     {
-        Harness h = new Harness();
-        try
+        Harness h=new Harness();try
         {
-            for (int i = 0; i < 55; i++)
-            { h.loot(440, i + 1); RunLootTool.Reading run = h.tool.reading(); h.tool.newRun(run.profile, run.epoch); }
-            assertEquals(50, h.tool.reading().history.size());
-            assertEquals(5500, h.tool.reading().history.get(0).lootValue);
-            assertEquals(600, h.tool.reading().history.get(49).lootValue);
-            h.profile.set("b"); h.tool.onGameTick(); assertTrue(h.tool.reading().history.isEmpty());
-            h.profile.set("a"); h.tool.onGameTick(); assertEquals(50, h.tool.reading().history.size());
-            h.tool.stop(); h.tool.start(); h.tool.onGameTick(); assertEquals(50, h.tool.reading().history.size());
-        }
-        finally { h.stop(); }
-    }
-
-    @Test public void staleCostFinishAndHistoryRemovalActionsCannotWriteAnotherCharacter() throws Exception
-    {
-        Harness h = new Harness();
-        try
-        {
-            h.loot(440, 10); RunLootTool.Reading run = h.tool.reading(); h.tool.newRun(run.profile, run.epoch);
-            RunLootTool.Reading old = h.tool.reading(); String oldId = old.history.get(0).id;
-            h.profile.set("b");
-            h.tool.setManualCost(old.profile, old.epoch, 1000); h.tool.finishRun(old.profile, old.epoch);
-            h.tool.removeSavedRun(old.profile, old.epoch, oldId);
-            h.tool.onGameTick(); assertEquals(0, h.tool.reading().manualCost); assertTrue(h.tool.reading().history.isEmpty());
-            assertNull(h.values.get("b"));
-            h.profile.set("a"); h.tool.onGameTick(); assertEquals(1, h.tool.reading().history.size());
-            RunLootTool.Reading current = h.tool.reading(); h.tool.removeSavedRun(current.profile, current.epoch, oldId);
-            assertTrue(h.tool.reading().history.isEmpty());
-            h.tool.stop(); h.tool.start(); h.tool.onGameTick(); assertTrue(h.tool.reading().history.isEmpty());
-        }
-        finally { h.stop(); }
-    }
-
-    @Test public void manualFeesCanProduceLossWithoutInventedInventoryExpensesAndMalformedHistoryIsIgnored() throws Exception
-    {
-        Harness h = new Harness();
-        try
-        {
-            RunLootTool.Reading run = h.tool.reading(); h.tool.setManualCost(run.profile, run.epoch, -1);
-            assertEquals(0, h.tool.reading().manualCost);
-            h.tool.setManualCost(run.profile, run.epoch, 1000); h.tool.finishRun(run.profile, run.epoch);
-            assertEquals(-1000, h.tool.reading().history.get(0).net());
-            h.tool.onGameTick(); verify(h.client, never()).getItemContainer(anyInt());
-            h.values.put("a", "{invalid"); h.tool.stop(); h.tool.start(); h.tool.onGameTick();
-            assertTrue(h.tool.reading().history.isEmpty());
-        }
-        finally { h.stop(); }
+            h.loot(440,1);RunLootTool.Reading old=h.tool.reading();h.profile.set("b");h.tool.setManualCost(old.profile,old.epoch,1000);h.tool.onGameTick();
+            assertEquals(0,h.tool.reading().manualCost);assertEquals(0,h.tool.reading().value);verify(h.client,never()).getItemContainer(anyInt());
+        }finally{h.stop();}
     }
 
     private static final class Harness
@@ -197,10 +141,6 @@ public class RunLootAnalyticsTest
         {
             when(client.getGameState()).thenReturn(GameState.LOGGED_IN); when(client.getLocalPlayer()).thenReturn(mock(Player.class));
             when(config.getRSProfileKey()).thenAnswer(call -> profile.get());
-            when(config.getConfiguration(eq(RunewardenConfig.GROUP), anyString(), eq("runLootHistoryV1")))
-                .thenAnswer(call -> values.get(call.getArgument(1)));
-            doAnswer(call -> { values.put(call.getArgument(1), call.getArgument(3)); return null; })
-                .when(config).setConfiguration(eq(RunewardenConfig.GROUP), anyString(), eq("runLootHistoryV1"), anyString());
             when(items.canonicalize(anyInt())).thenAnswer(call -> call.getArgument(0)); when(items.getItemPrice(anyInt())).thenReturn(100L);
             tool = new RunLootTool(client, mock(ClientThread.class), config, items, mock(LootManager.class), gson);
             tool.start(); tool.onGameTick();

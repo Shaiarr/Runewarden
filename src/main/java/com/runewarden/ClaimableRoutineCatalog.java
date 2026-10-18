@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import net.runelite.api.gameval.VarbitID;
+import net.runelite.api.gameval.ItemID;
 import net.runelite.api.gameval.VarPlayerID;
 
 /** Pure projection of native daily-claim state. Time never changes a claim bit. */
@@ -19,12 +20,12 @@ final class ClaimableRoutineCatalog
     static final class Claim
     {
         final String id, title, destination, detail, source, diaryId;
-        final Status status; final int allowance, remaining; final long price; final Set<Integer> supplies;
+        final Status status; final int allowance, remaining, iconId; final long price; final Set<Integer> supplies;
         Claim(String id, String title, String destination, String detail, String source, String diaryId,
             Status status, int allowance, int remaining, long price, Set<Integer> supplies)
         {
             this.id=id;this.title=title;this.destination=destination;this.detail=detail;this.source=source;this.diaryId=diaryId;
-            this.status=status;this.allowance=allowance;this.remaining=remaining;this.price=price;
+            this.status=status;this.allowance=allowance;this.remaining=remaining;this.price=price;this.iconId=icon(id);
             this.supplies=Collections.unmodifiableSet(new LinkedHashSet<>(supplies));
         }
         String statusText() { return status==Status.AVAILABLE?"Ready to collect":status==Status.NEEDS_PAYMENT?"Payment needed":status==Status.CLAIMED?"Collected today":status==Status.CLAIM_REWARD?"Claim diary reward":status==Status.AUTOMATIC?"Automatic delivery":status==Status.LOCKED?"Unlock needed":"Not observed"; }
@@ -46,6 +47,21 @@ final class ClaimableRoutineCatalog
         {VarbitID.MORYTANIA_DIARY_EASY_COMPLETE,VarbitID.MORYTANIA_DIARY_MEDIUM_COMPLETE,VarbitID.MORYTANIA_DIARY_HARD_COMPLETE,VarbitID.MORYTANIA_DIARY_ELITE_COMPLETE},
         {VarbitID.KOUREND_DIARY_EASY_COMPLETE,VarbitID.KOUREND_DIARY_MEDIUM_COMPLETE,VarbitID.KOUREND_DIARY_HARD_COMPLETE,VarbitID.KOUREND_DIARY_ELITE_COMPLETE}
     };
+    /** Reward receipt bits, distinct from completing the diary tasks. */
+    static Map<String,Integer> rewardVariables()
+    {
+        Map<String,Integer> result=new LinkedHashMap<>();
+        rewards(result,"varrock",VarbitID.VARROCK_EASY_REWARD,VarbitID.VARROCK_MEDIUM_REWARD,VarbitID.VARROCK_HARD_REWARD,VarbitID.VARROCK_ELITE_REWARD);
+        rewards(result,"ardougne",VarbitID.ARDOUGNE_EASY_REWARD,VarbitID.ARDOUGNE_MEDIUM_REWARD,VarbitID.ARDOUGNE_HARD_REWARD,VarbitID.ARDOUGNE_ELITE_REWARD);
+        rewards(result,"wilderness",VarbitID.WILDERNESS_EASY_REWARD,VarbitID.WILDERNESS_MEDIUM_REWARD,VarbitID.WILDERNESS_HARD_REWARD,VarbitID.WILDERNESS_ELITE_REWARD);
+        rewards(result,"kandarin",VarbitID.KANDARIN_EASY_REWARD,VarbitID.KANDARIN_MEDIUM_REWARD,VarbitID.KANDARIN_HARD_REWARD,VarbitID.KANDARIN_ELITE_REWARD);
+        rewards(result,"western",VarbitID.WESTERN_EASY_REWARD,VarbitID.WESTERN_MEDIUM_REWARD,VarbitID.WESTERN_HARD_REWARD,VarbitID.WESTERN_ELITE_REWARD);
+        rewards(result,"morytania",VarbitID.MORYTANIA_EASY_REWARD,VarbitID.MORYTANIA_MEDIUM_REWARD,VarbitID.MORYTANIA_HARD_REWARD,VarbitID.MORYTANIA_ELITE_REWARD);
+        rewards(result,"kourend",VarbitID.KOUREND_EASY_REWARD,VarbitID.KOUREND_MEDIUM_REWARD,VarbitID.KOUREND_HARD_REWARD,VarbitID.KOUREND_ELITE_REWARD);
+        return Collections.unmodifiableMap(result);
+    }
+    private static void rewards(Map<String,Integer> result,String region,int... bits)
+    {for(int tier=0;tier<bits.length;tier++)result.put(region+"_"+TIER_NAMES[tier],bits[tier]);}
     static final int[] CLAIM_BITS={VarbitID.ZAFF_LAST_CLAIMED,VarbitID.ARDOUGNE_FREE_ESSENCE,VarbitID.LUNDAIL_LAST_CLAIMED,
         VarbitID.SEERS_FREE_FLAX,VarbitID.WESTERN_RANTZ_ARROWS,VarbitID.MORYTANIA_SLIME_CLAIMED,VarbitID.KOUREND_FREE_DYNAMITE,
         VarbitID.YANILLE_SAND_CLAIMED,VarbitID.NZONE_HERBBOXES_PURCHASED,VarbitID.IRONMAN,VarbitID.HANDSAND_QUEST};
@@ -107,6 +123,8 @@ final class ClaimableRoutineCatalog
         return new Claim("herb-boxes","NMZ herb boxes","Rewards chest · Nightmare Zone",detail,"https://oldschool.runescape.wiki/w/Herb_box",null,status,15,remaining,9500,Set.of());
     }
     private static Set<Integer> resolve(String name)
-    {return name==null?Set.of():GuideItemResolver.resolveName(name);}
+    {return "Coins".equals(name)?Set.of(ItemID.COINS):"Flax".equals(name)?Set.of(ItemID.FLAX):"Bones".equals(name)?Set.of(ItemID.BONES):Set.of();}
+    private static int icon(String id)
+    {switch(id){case "battlestaves":return ItemID.BATTLESTAFF;case "essence":return ItemID.BLANKRUNE_HIGH;case "runes":return ItemID.AIRRUNE;case "flax":return ItemID.BOW_STRING;case "arrows":return ItemID.OGRE_ARROW;case "bonemeal":return ItemID.POT_BONEMEAL;case "dynamite":return ItemID.LOVAKENGJ_DYNAMITE_FUSED;case "sand":return ItemID.BUCKET_SAND;default:return ItemID.NZONE_HERBBOX;}}
     static Instant nextReset(Instant now){return now.atZone(java.time.ZoneOffset.UTC).toLocalDate().plusDays(1).atStartOfDay(java.time.ZoneOffset.UTC).toInstant();}
 }

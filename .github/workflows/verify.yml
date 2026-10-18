@@ -1,4 +1,4 @@
-name: Verify Runewarden plugin
+name: Verify Runewarden HUD
 on: [push, pull_request, workflow_dispatch]
 env:
   PYTHONUTF8: "1"
@@ -24,33 +24,33 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Ensure Gradle wrapper is executable
-        run: chmod +x gradlew
-      - name: Validate bundled data and capability evidence
+      - name: Prepare local verification tools
+        run: |
+          chmod +x gradlew
+          python -m pip install -r tools/requirements.txt
+      - name: Validate bundled data and production API surface
         run: |
           python tools/validate_bundle.py
-          python tools/build-hub-coverage-audit.py --check-evidence
           python tools/validate_hub_release.py
-      - name: Python regression checks
-        run: python -m unittest discover -s tools -p 'test_*.py'
-      - name: Build and test only the plugin
-        run: ./gradlew --no-daemon --no-parallel clean check jar --console=plain
-      - name: Verify production JAR and release gates
-        run: |
-          python tools/check_hub_jar.py
-          python tools/release_gate.py --output build/reports/release-gate.json
-      - name: Preserve checks and sidebar evidence
+          python -m unittest discover -s tools -p 'test_*.py'
+          python tools/measure_code_tokens.py --output build/reports/code-budget.json
+      - name: Build and test the plugin
+        run: ./gradlew --no-daemon --no-parallel check jar --console=plain
+      - name: Verify production JAR
+        run: python tools/check_hub_jar.py
+      - name: Preserve tests, code budget and UI fixtures
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: plugin-verification-${{ matrix.os }}
+          name: hud-verification-${{ matrix.os }}
           path: |
             build/reports/
             build/test-results/
+            build/previews/
           retention-days: 14
       - name: Preserve the plugin JAR
         uses: actions/upload-artifact@v4
         with:
           name: runewarden-plugin-${{ matrix.os }}
-          path: build/libs/runewarden-0.9.6.jar
+          path: build/libs/runewarden-0.10.0.jar
           retention-days: 14

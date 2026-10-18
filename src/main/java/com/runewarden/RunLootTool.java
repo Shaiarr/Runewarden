@@ -14,13 +14,12 @@ import java.util.IdentityHashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
-import java.util.UUID;
 import java.util.function.LongSupplier;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -33,6 +32,7 @@ import net.runelite.api.GameState;
 import net.runelite.api.ItemComposition;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
+import net.runelite.client.config.ConfigProfile;
 import net.runelite.client.events.PlayerLootReceived;
 import net.runelite.client.events.ServerNpcLoot;
 import net.runelite.client.game.ItemManager;
@@ -53,16 +53,12 @@ final class RunLootTool
     private final ClientThread clientThread;
     private final ConfigManager config;
     private final ItemManager items;
-    private final Gson gson;
     private final RunewardenDataStore store;
     private final SharedActivitySession activitySession;
     private final LongSupplier clock;
     private static final String CHECKPOINT_KEY = "runLootCheckpointV1";
     private String activityRunId,activityTitle;
     private int checkpointTicks;
-    private static final String HISTORY_KEY = "runLootHistoryV1";
-    private static final int HISTORY_LIMIT = 50;
-    private final List<RunSummary> history = new ArrayList<>();
     private long manualCost;
     // Injecting RuneLite's independent service ensures its event producer is available even
     // with the native Loot Tracker plugin disabled. Never starts or configures that plugin.
@@ -71,15 +67,16 @@ final class RunLootTool
     private static final int ITEM_LIMIT = 2048;
     private long overflowQuantity, overflowValue;
     private int overflowUnpriced;
-    private boolean lootDirty = true, historyDirty = true;
-    private long lootRevision, historyRevision;
+    private boolean lootDirty = true;
+    private long lootRevision;
     private Reading cached = Reading.empty();
-    private List<RunSummary> cachedHistory = Collections.emptyList();
     private final Map<String, Long> sources = new LinkedHashMap<>();
     private final Set<Object> seen = Collections.newSetFromMap(new IdentityHashMap<>());
     private volatile Reading reading = Reading.empty();
     private volatile boolean started;
     private String profile;
+    private volatile Long configProfileId;
+    private volatile boolean configBound;
     private long epoch;
     private boolean paused;
     private long runStarted;
@@ -96,22 +93,18 @@ final class RunLootTool
     private JButton pause;
     private JButton fresh;
     private JButton reset;
-    private JButton finish, applyCost;
+    private JButton applyCost;
     private JTextField costInput;
     private GuideText analytics, costStatus;
-    private JPanel historyRows;
-    private int historyPage;
     private String costProfile;
     private long costEpoch = -1;
     private JPanel lootNavigation;
     private JButton previousLoot, nextLoot;
     private JLabel lootPageLabel;
     private int lootPage;
-    private long renderedLoot = -1, renderedHistory = -1, renderedEpoch = -1;
-    private int renderedLootPage = -1, renderedHistoryPage = -1;
+    private long renderedLoot = -1, renderedEpoch = -1;
+    private int renderedLootPage = -1;
     private boolean renderedActive;
-    private boolean renderedComparison;
-    private final Map<String, GuideText> comparisonLabels = new LinkedHashMap<>();
     private Timer timer;
 
     RunLootTool(Client client, ClientThread clientThread, ConfigManager config,
@@ -131,7 +124,7 @@ final class RunLootTool
         LongSupplier clock)
     {
         this.client = client; this.clientThread = clientThread; this.config = config;
-        this.items = items; this.lootManager = lootManager; this.gson = gson;this.store=store;this.activitySession=activitySession;this.clock=clock;
+        this.items = items; this.lootManager = lootManager; this.store=store;this.activitySession=activitySession;this.clock=clock;
     }
 
     void start()
@@ -157,11 +150,20 @@ final class RunLootTool
     void clear()
     {
         checkpoint();
+        discard();
+    }
+
+    /** The native config has already switched; never save the previous owner here. */
+    void onConfigProfileChanged() { discard(); }
+
+    private void discard()
+    {
+        configBound=false;configProfileId=null;
         profile = null; epoch++; paused = false; totals.clear(); sources.clear(); seen.clear();
         runStarted = 0; pausedAt = 0; pausedMillis = 0; seenTick = -1;
-        suspended = false; suspendedAt = 0; manualCost = 0; history.clear();
+        suspended = false; suspendedAt = 0; manualCost = 0;
         overflowQuantity = overflowValue = 0; overflowUnpriced = 0;
-        lootDirty = historyDirty = true; lootRevision++; historyRevision++; cached = Reading.empty(); cachedHistory = Collections.emptyList();
+        lootDirty = true; lootRevision++; cached = Reading.empty();
         reading = Reading.empty();
         activityRunId=activityTitle=null;checkpointTicks=0;
         SwingUtilities.invokeLater(this::refreshPanel);
@@ -182,6 +184,7 @@ final class RunLootTool
     void onGameTick()
     {
         if (!started) return;
+        if (!configCurrent()) discard();
         if (client.getGameState() != GameState.LOGGED_IN || client.getLocalPlayer() == null)
         {
             suspend();
@@ -191,7 +194,18 @@ final class RunLootTool
         if (current == null || current.isEmpty()) { suspend(); return; }
         if (!current.equals(profile))
         {
-            clear(); profile = current; runStarted = clock.getAsLong(); loadHistory(); restoreCheckpoint(); publish();
+            clear(); profile = current; configProfileId=nativeConfigProfileId();configBound=true;runStarted = clock.getAsLong(); restoreCheckpoint();
+            if(activitySession!=null)
+            {
+                SharedActivitySession.Snapshot session=activitySession.snapshot();
+                if(paused&&Objects.equals(profile,session.profile)&&Objects.equals(activityRunId,session.runId))activitySession.pause();
+                if(Objects.equals(profile,session.profile)&&!session.current())
+                {
+                    activitySession.begin();if(paused)activitySession.pause();
+                    session=activitySession.snapshot();activityRunId=session.runId;activityTitle=session.context==null?null:session.context.title;
+                }
+            }
+            publish();
         }
         if (suspended)
         {
@@ -227,7 +241,7 @@ final class RunLootTool
 
     private boolean accountCurrent(String expected, long expectedEpoch)
     {
-        return started && !suspended && expected != null && expectedEpoch == epoch && expected.equals(profile)
+        return started && configCurrent() && !suspended && expected != null && expectedEpoch == epoch && expected.equals(profile)
             && expected.equals(config.getRSProfileKey()) && client.getGameState() == GameState.LOGGED_IN
             && client.getLocalPlayer() != null;
     }
@@ -272,26 +286,16 @@ final class RunLootTool
 
     private void publish()
     {
-        if (lootDirty || historyDirty)
+        if (lootDirty)
         {
-            if (historyDirty)
-            {
-                List<RunSummary> copies = new ArrayList<>(); for (RunSummary run : history) copies.add(run.copy());
-                cachedHistory = Collections.unmodifiableList(copies);
-            }
-            List<LootItem> values = cached.items;
-            Map<String, Long> sourceValues = cached.sources;
-            if (lootDirty)
-            {
-                values = new ArrayList<>(totals.values());
-                if (overflowQuantity > 0) values.add(new LootItem(overflowQuantity, overflowValue, overflowUnpriced));
-                values.sort(Comparator.comparingLong(LootItem::value).reversed().thenComparing(item -> item.name));
-                sourceValues = new LinkedHashMap<>(sources);
-            }
+            List<LootItem> values = new ArrayList<>(totals.values());
+            if (overflowQuantity > 0) values.add(new LootItem(overflowQuantity, overflowValue, overflowUnpriced));
+            values.sort(Comparator.comparingLong(LootItem::value).reversed().thenComparing(item -> item.name));
+            Map<String, Long> sourceValues = new LinkedHashMap<>(sources);
             cached = new Reading(profile != null && !suspended, profile, epoch, paused, elapsed(clock.getAsLong()),
-                values, sourceValues, manualCost, cachedHistory, true);
-            cached.lootRevision = lootRevision; cached.historyRevision = historyRevision;
-            lootDirty = historyDirty = false;
+                values, sourceValues, manualCost);
+            cached.lootRevision = lootRevision;
+            lootDirty = false;
         }
         else cached = new Reading(cached, profile != null && !suspended, profile, epoch, paused,
             elapsed(clock.getAsLong()), manualCost);
@@ -308,7 +312,7 @@ final class RunLootTool
     Reading reading()
     {
         Reading current = reading;
-        return current.active && !current.profile.equals(config.getRSProfileKey()) ? Reading.empty() : current;
+        return !configCurrent() || current.active && !current.profile.equals(config.getRSProfileKey()) ? Reading.empty() : current;
     }
 
     /** Client-thread operations, guarded by the exact session captured by the visible button. */
@@ -319,24 +323,24 @@ final class RunLootTool
         if (value) pausedAt = now;
         else { pausedMillis += Math.max(0, now - pausedAt); pausedAt = 0; }
         paused = value; publish();
-        if(activitySession!=null){if(value)activitySession.pause();else if(activitySession.snapshot().state==SharedActivitySession.State.FINISHED)activitySession.startSelected();else activitySession.resume();}
+        if(activitySession!=null){if(value)activitySession.pause();else if(activitySession.snapshot().state==SharedActivitySession.State.FINISHED||!activitySession.snapshot().current())activitySession.begin();else activitySession.resume();}
         checkpoint();
     }
 
     void newRun(String expected, long expectedEpoch)
     {
         if (!accountCurrent(expected, expectedEpoch)) return;
-        archiveCurrent();
-        if(activitySession!=null&&activitySession.snapshot().context!=null)
-        {activitySession.startActivity(activitySession.snapshot().context);activityRunId=activitySession.snapshot().runId;activityTitle=activitySession.snapshot().context.title;}
+        if(activitySession!=null)
+        {activitySession.resetCurrent();activityRunId=activitySession.snapshot().runId;activityTitle=activitySession.snapshot().context==null?null:activitySession.snapshot().context.title;}
         resetRun(false);checkpoint();
     }
 
-    /** Save the observed run and stop earning until the player explicitly resumes or starts another. */
+    /** Stop earning while preserving the current report. */
     void finishRun(String expected, long expectedEpoch)
     {
         if (!accountCurrent(expected, expectedEpoch)) return;
-        archiveCurrent();if(activitySession!=null)activitySession.finish();resetRun(true);checkpoint();
+        if(!paused){paused=true;pausedAt=clock.getAsLong();}
+        if(activitySession!=null)activitySession.finish();publish();checkpoint();
     }
 
     void setManualCost(String expected, long expectedEpoch, long value)
@@ -354,74 +358,6 @@ final class RunLootTool
         publish();
     }
 
-    private void archiveCurrent()
-    {
-        if (totals.isEmpty() && overflowQuantity == 0 && manualCost == 0) return;
-        Reading current = reading();
-        RunSummary saved = new RunSummary(); saved.id = UUID.randomUUID().toString();
-        saved.startedAt = runStarted; saved.finishedAt = clock.getAsLong();
-        saved.elapsedMillis = elapsed(saved.finishedAt); saved.lootValue = current.value;
-        saved.manualCost = manualCost; saved.unpricedItems = current.unpricedItems;
-        saved.activityTitle=activityTitle;
-        saved.sources = new LinkedHashMap<>();
-        for (Map.Entry<String, Long> source : sources.entrySet())
-        {
-            if (saved.sources.size() >= 64) break;
-            String name = source.getKey().length() > 250 ? source.getKey().substring(0, 247) + "…" : source.getKey();
-            saved.sources.put(name, source.getValue());
-        }
-        history.add(0, saved);
-        while (history.size() > HISTORY_LIMIT) history.remove(history.size() - 1);
-        historyDirty = true; historyRevision++;
-        saveHistory();
-    }
-
-    private void loadHistory()
-    {
-        history.clear();
-        historyDirty = true; historyRevision++;
-        if (gson == null || profile == null) return;
-        if(store!=null)
-        {
-            HistoryData saved=store.read(RunewardenConfig.GROUP,profile,HISTORY_KEY,1,HistoryData.class,RunLootTool::validHistory,HistoryData::new);
-            history.addAll(saved.runs);return;
-        }
-        String json = config.getConfiguration(RunewardenConfig.GROUP, profile, HISTORY_KEY);
-        if (json == null || json.length() > 1_000_000) return;
-        try
-        {
-            HistoryData data = gson.fromJson(json, HistoryData.class);
-            if (data == null || data.version != 1 || data.runs == null) return;
-            Set<String> ids = new java.util.HashSet<>();
-            for (RunSummary run : data.runs)
-            {
-                if (run == null || run.id == null || run.id.length() > 100 || !ids.add(run.id)
-                    || run.lootValue < 0 || run.manualCost < 0 || run.elapsedMillis < 0 || run.startedAt < 0
-                    || run.finishedAt < run.startedAt || run.unpricedItems < 0 || run.sources == null || run.sources.size() > 64) continue;
-                boolean valid = true;
-                for (Map.Entry<String, Long> source : run.sources.entrySet())
-                    if (source.getKey() == null || source.getKey().length() > 250 || source.getValue() == null || source.getValue() < 0) { valid = false; break; }
-                if (valid) history.add(run);
-                if (history.size() == HISTORY_LIMIT) break;
-            }
-        }
-        catch (RuntimeException ignored) { history.clear(); }
-    }
-
-    private void saveHistory()
-    {
-        if (gson == null || profile == null || !profile.equals(config.getRSProfileKey())) return;
-        HistoryData data = new HistoryData(); data.runs = history;
-        if(store!=null)store.write(RunewardenConfig.GROUP,profile,HISTORY_KEY,1,data);
-        else config.setConfiguration(RunewardenConfig.GROUP, profile, HISTORY_KEY, gson.toJson(data));
-    }
-
-    void removeSavedRun(String expected, long expectedEpoch, String id)
-    {
-        if (!accountCurrent(expected, expectedEpoch)) return;
-        if (history.removeIf(run -> run.id.equals(id))) { historyDirty = true; historyRevision++; saveHistory(); publish(); }
-    }
-
     private void syncActivity()
     {
         if(activitySession==null)return;
@@ -429,7 +365,7 @@ final class RunLootTool
         if(activity.profile==null||!activity.profile.equals(profile)||activity.runId==null)return;
         if(!activity.runId.equals(activityRunId))
         {
-            archiveCurrent();resetRun(!activity.running());activityRunId=activity.runId;
+            resetRun(!activity.running());activityRunId=activity.runId;
             activityTitle=activity.context==null?null:activity.context.title;checkpoint();
         }
         boolean shouldPause=!activity.running();
@@ -457,22 +393,9 @@ final class RunLootTool
             return true;
         }
     }
-    private static boolean validHistory(HistoryData data)
-    {
-        if(data==null||data.version!=1||data.runs==null||data.runs.size()>HISTORY_LIMIT)return false;
-        Set<String> ids=new java.util.HashSet<>();
-        for(RunSummary run:data.runs)
-        {
-            if(run==null||run.id==null||run.id.length()>100||!ids.add(run.id)||run.lootValue<0||run.manualCost<0
-                ||run.elapsedMillis<0||run.startedAt<0||run.finishedAt<run.startedAt||run.unpricedItems<0||run.sources==null||run.sources.size()>64
-                ||run.activityTitle!=null&&run.activityTitle.length()>180)return false;
-            for(Map.Entry<String,Long> source:run.sources.entrySet())if(source.getKey()==null||source.getKey().length()>250||source.getValue()==null||source.getValue()<0)return false;
-        }
-        return true;
-    }
     private void checkpoint()
     {
-        if(store==null||profile==null||runStarted==0)return;
+        if(!configCurrent()||store==null||profile==null||runStarted==0)return;
         Checkpoint saved=new Checkpoint();saved.elapsed=elapsed(clock.getAsLong());saved.cost=manualCost;
         saved.activityRunId=activityRunId;saved.activityTitle=activityTitle;saved.overflowQuantity=overflowQuantity;saved.overflowValue=overflowValue;saved.unpriced=overflowUnpriced;
         for(LootItem item:totals.values())
@@ -481,6 +404,8 @@ final class RunLootTool
         {String name=source.getKey().length()>250?source.getKey().substring(0,250):source.getKey();saved.sources.merge(name,source.getValue(),RunLootTool::add);}
         store.write(RunewardenConfig.GROUP,profile,CHECKPOINT_KEY,1,saved);
     }
+    private Long nativeConfigProfileId(){ConfigProfile selected=config.getProfile();return selected==null?null:selected.getId();}
+    private boolean configCurrent(){return !configBound||Objects.equals(configProfileId,nativeConfigProfileId());}
     private void restoreCheckpoint()
     {
         if(store==null||profile==null)return;
@@ -500,23 +425,18 @@ final class RunLootTool
         {
             if ((event.getChangeFlags() & java.awt.event.HierarchyEvent.SHOWING_CHANGED) != 0 && panel.isShowing()) refreshPanel(true);
         });
-        JPanel header = SidebarUi.section("Loot this run");
+        JPanel header = SidebarUi.section("Loot this session");
         summary = label("0 GP", GOLD); summary.setFont(summary.getFont().deriveFont(Font.BOLD, 20f));
         summary.setToolTipText("Estimated gross loot using RuneLite item prices.");
         status = label("Log in to start a run.", WHITE); unpriced = label("", WHITE);
         analytics = wrap("", WHITE); header.add(summary); header.add(status); header.add(analytics); header.add(unpriced);
         panel.add(header);
-        fresh = uiButton("New run"); pause = uiButton("Pause"); reset = uiButton("Clear loot");
-        finish = uiButton("Save run"); JButton costsToggle = uiButton("Costs ▸");
-        fresh.setToolTipText("Save this run and start a new one."); finish.setToolTipText("Save this run and pause tracking.");
+        fresh = uiButton("Reset"); pause = uiButton("Pause"); reset = uiButton("Clear loot");
+        JButton costsToggle = uiButton("Costs ▸");
+        fresh.setToolTipText("Reset this session and start tracking.");
         fresh.addActionListener(event -> action(false, false)); pause.addActionListener(event -> action(true, false));
         reset.addActionListener(event -> action(false, true));
-        finish.addActionListener(event ->
-        {
-            Reading captured = reading(); if (!captured.active) return;
-            clientThread.invoke(() -> { finishRun(captured.profile, captured.epoch); SwingUtilities.invokeLater(this::refreshPanel); });
-        });
-        panel.add(SidebarUi.row(pause, fresh)); panel.add(SidebarUi.row(finish, costsToggle));
+        panel.add(SidebarUi.row(pause, fresh)); panel.add(costsToggle);
         JPanel costs = SidebarUi.section("Supplies and fees");
         costInput = new JTextField("0"); costInput.setBackground(new Color(35, 34, 30)); costInput.setForeground(WHITE); costInput.setFont(GuideText.FONT);
         costInput.setToolTipText("Total estimated food, potion, ammunition, rune, charge and entry-fee spending.");
@@ -541,7 +461,6 @@ final class RunLootTool
         previousLoot.addActionListener(event -> { lootPage--; refreshPanel(true); }); nextLoot.addActionListener(event -> { lootPage++; refreshPanel(true); });
         lootNavigation.add(previousLoot); lootNavigation.add(lootPageLabel); lootNavigation.add(nextLoot); drops.add(lootNavigation);
         rows = SidebarUi.column(); drops.add(rows);
-        historyRows = SidebarUi.column(); panel.add(historyRows);
         SidebarUi.install(panel); refreshPanel(true); return panel;
     }
 
@@ -561,7 +480,7 @@ final class RunLootTool
             else if (clearOnly)
             {
                 totals.clear(); sources.clear(); seen.clear(); overflowQuantity = overflowValue = 0; overflowUnpriced = 0;
-                lootDirty = true; lootRevision++; epoch++; publish();
+                lootDirty = true; lootRevision++; epoch++; publish();checkpoint();
             }
             else newRun(captured.profile, captured.epoch);
             SwingUtilities.invokeLater(this::refreshPanel);
@@ -588,9 +507,9 @@ final class RunLootTool
             grossRate, current.manualCost, current.netValue, netRate));
         analytics.setToolTipText("Hourly rates appear after one active minute. Net subtracts your entered expense total.");
         fresh.setEnabled(current.active); pause.setEnabled(current.active); reset.setEnabled(current.active);
-        finish.setEnabled(current.active); applyCost.setEnabled(current.active); costInput.setEnabled(current.active);
+        applyCost.setEnabled(current.active); costInput.setEnabled(current.active);
         if (!java.util.Objects.equals(costProfile, current.profile) || costEpoch != current.epoch)
-        { costProfile = current.profile; costEpoch = current.epoch; costInput.setText(Long.toString(current.manualCost)); historyPage = lootPage = 0; costStatus.setText(""); }
+        { costProfile = current.profile; costEpoch = current.epoch; costInput.setText(Long.toString(current.manualCost)); lootPage = 0; costStatus.setText(""); }
         pause.setText(current.paused ? "Resume" : "Pause");
         int pages = Math.max(1, Math.max((current.items.size() + 11) / 12, (current.sources.size() + 7) / 8));
         lootPage = Math.max(0, Math.min(lootPage, pages - 1));
@@ -621,56 +540,7 @@ final class RunLootTool
             renderedLoot = current.lootRevision; renderedLootPage = lootPage;
             rows.revalidate(); rows.repaint();
         }
-        boolean comparison = current.elapsedMillis >= 60_000;
-        if (force || sessionChanged || renderedHistory != current.historyRevision || renderedHistoryPage != historyPage || renderedComparison != comparison)
-        { refreshHistory(current); renderedHistory = current.historyRevision; renderedHistoryPage = historyPage; renderedComparison = comparison; }
-        else for (GuideText label : comparisonLabels.values())
-            label.setText(String.format(java.util.Locale.ROOT, "Current rate vs this run: %+,d GP/hour", difference(current.netPerHour, (Long) label.getClientProperty("runRate"))));
         renderedEpoch = current.epoch; renderedActive = current.active;
-    }
-
-    private void refreshHistory(Reading current)
-    {
-        historyRows.removeAll();
-        comparisonLabels.clear();
-        if (!current.active || current.history.isEmpty()) return;
-        historyRows.add(wrap("Saved runs · " + current.history.size(), GOLD));
-        double totalNet = 0, totalTime = 0;
-        for (RunSummary run : current.history) { totalNet += run.net(); totalTime += run.elapsedMillis; }
-        long average = totalTime <= 0 ? 0 : Math.round(totalNet * 3_600_000 / totalTime);
-        historyRows.add(wrap(String.format(java.util.Locale.ROOT, "History average · %,d net GP/hour", average), WHITE));
-        int pages = (current.history.size() + 4) / 5; historyPage = Math.max(0, Math.min(historyPage, pages - 1));
-        for (int i = historyPage * 5; i < Math.min(current.history.size(), historyPage * 5 + 5); i++)
-        {
-            RunSummary run = current.history.get(i);
-            String when = java.time.Instant.ofEpochMilli(run.finishedAt).atZone(java.time.ZoneId.systemDefault())
-                .format(java.time.format.DateTimeFormatter.ofPattern("dd MMM HH:mm"));
-            String source = run.activityTitle!=null?run.activityTitle:run.sources.isEmpty() ? "Run" : run.sources.keySet().iterator().next();
-            historyRows.add(wrap(when + " · " + source, GOLD));
-            historyRows.add(wrap(String.format(java.util.Locale.ROOT, "Loot %,d · Expenses %,d\nNet %,d GP · %,d GP/hour\n%d:%02d active · %d unpriced",
-                run.lootValue, run.manualCost, run.net(), run.netPerHour(), run.elapsedMillis / 60000,
-                run.elapsedMillis / 1000 % 60, run.unpricedItems), WHITE));
-            if (current.elapsedMillis >= 60_000)
-            {
-                GuideText comparison = wrap(String.format(java.util.Locale.ROOT, "Current rate vs this run: %+,d GP/hour", difference(current.netPerHour, run.netPerHour())), WHITE);
-                comparison.putClientProperty("runRate", run.netPerHour()); comparisonLabels.put(run.id, comparison); historyRows.add(comparison);
-            }
-            JButton remove = uiButton("Remove saved run");
-            remove.addActionListener(event -> clientThread.invoke(() ->
-            { removeSavedRun(current.profile, current.epoch, run.id); SwingUtilities.invokeLater(this::refreshPanel); }));
-            historyRows.add(remove);
-        }
-        if (pages > 1)
-        {
-            JPanel navigation = new JPanel(new java.awt.GridLayout(1, 2, 4, 0)); navigation.setOpaque(false);
-            JButton previous = uiButton("‹"), next = uiButton("›");
-            for (JButton button : new JButton[]{previous, next})
-            { button.setBackground(new Color(35, 34, 30)); button.setForeground(GOLD); button.setFont(GuideText.FONT); navigation.add(button); }
-            previous.setEnabled(historyPage > 0); next.setEnabled(historyPage + 1 < pages);
-            previous.addActionListener(event -> { historyPage--; refreshPanel(); }); next.addActionListener(event -> { historyPage++; refreshPanel(); });
-            historyRows.add(navigation); historyRows.add(label((historyPage + 1) + " / " + pages, GOLD));
-        }
-        historyRows.revalidate(); historyRows.repaint();
     }
 
     private static JLabel label(String text, Color color) { JLabel label = new JLabel(text); label.setForeground(color); label.setFont(GuideText.FONT); return label; }
@@ -678,32 +548,11 @@ final class RunLootTool
     {
         GuideText result = SidebarUi.label(text); result.setForeground(color); return result;
     }
-    private static String escape(String text) { return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"); }
     private static String clean(String text) { return text == null || text.isEmpty() ? "Unknown source" : Text.removeTags(text); }
     static long add(long first, long second) { return Long.MAX_VALUE - first < second ? Long.MAX_VALUE : first + second; }
     static long multiply(long quantity, long price) { return price > 0 && quantity > Long.MAX_VALUE / price ? Long.MAX_VALUE : quantity * price; }
     static long perHour(long value, long elapsedMillis)
     { return elapsedMillis <= 0 ? 0 : Math.round(value * 3_600_000.0 / elapsedMillis); }
-    private static long difference(long first, long second)
-    { try { return Math.subtractExact(first, second); } catch (ArithmeticException overflow) { return first < second ? Long.MIN_VALUE : Long.MAX_VALUE; } }
-
-    private static final class HistoryData { int version = 1; List<RunSummary> runs = new ArrayList<>(); }
-    static final class RunSummary
-    {
-        String id,activityTitle;
-        long startedAt, finishedAt, elapsedMillis, lootValue, manualCost;
-        int unpricedItems;
-        Map<String, Long> sources = Collections.emptyMap();
-        long net() { return lootValue - manualCost; }
-        long netPerHour() { return perHour(net(), elapsedMillis); }
-        RunSummary copy()
-        {
-            RunSummary result = new RunSummary(); result.id = id; result.startedAt = startedAt; result.finishedAt = finishedAt;
-            result.elapsedMillis = elapsedMillis; result.lootValue = lootValue; result.manualCost = manualCost; result.unpricedItems = unpricedItems;
-            result.activityTitle=activityTitle;result.sources = Collections.unmodifiableMap(new LinkedHashMap<>(sources)); return result;
-        }
-    }
-
     static final class LootItem
     {
         final int id; final String name; final long quantity; final long unitPrice; final BufferedImage image;
@@ -728,16 +577,12 @@ final class RunLootTool
         final boolean active; final String profile; final long epoch; final boolean paused; final long elapsedMillis;
         final List<LootItem> items; final Map<String, Long> sources; final long value; final int unpricedItems;
         final long manualCost, netValue, gpPerHour, netPerHour;
-        final List<RunSummary> history;
-        long lootRevision, historyRevision;
+        long lootRevision;
         Reading(boolean active, String profile, long epoch, boolean paused, long elapsedMillis,
             List<LootItem> items, Map<String, Long> sources)
-        { this(active, profile, epoch, paused, elapsedMillis, items, sources, 0, Collections.emptyList()); }
+        { this(active, profile, epoch, paused, elapsedMillis, items, sources, 0); }
         Reading(boolean active, String profile, long epoch, boolean paused, long elapsedMillis,
-            List<LootItem> items, Map<String, Long> sources, long manualCost, List<RunSummary> history)
-        { this(active, profile, epoch, paused, elapsedMillis, items, sources, manualCost, history, false); }
-        private Reading(boolean active, String profile, long epoch, boolean paused, long elapsedMillis,
-            List<LootItem> items, Map<String, Long> sources, long manualCost, List<RunSummary> history, boolean historyShared)
+            List<LootItem> items, Map<String, Long> sources, long manualCost)
         {
             this.active = active; this.profile = profile; this.epoch = epoch; this.paused = paused; this.elapsedMillis = elapsedMillis;
             this.items = Collections.unmodifiableList(new ArrayList<>(items));
@@ -752,21 +597,15 @@ final class RunLootTool
             this.value = total; this.unpricedItems = unpriced;
             this.manualCost = Math.max(0, manualCost); this.netValue = total - this.manualCost;
             this.gpPerHour = perHour(total, elapsedMillis); this.netPerHour = perHour(netValue, elapsedMillis);
-            if (historyShared) this.history = history;
-            else
-            {
-                List<RunSummary> copies = new ArrayList<>(); for (RunSummary run : history) copies.add(run.copy());
-                this.history = Collections.unmodifiableList(copies);
-            }
         }
-        /** Reuses immutable data on heartbeat ticks; no sort, source copy, item scan or history copy. */
+        /** Reuses immutable data on heartbeat ticks; no sort, source copy or item scan. */
         private Reading(Reading data, boolean active, String profile, long epoch, boolean paused, long elapsedMillis, long manualCost)
         {
             this.active = active; this.profile = profile; this.epoch = epoch; this.paused = paused; this.elapsedMillis = elapsedMillis;
-            items = data.items; sources = data.sources; history = data.history; value = data.value; unpricedItems = data.unpricedItems;
+            items = data.items; sources = data.sources; value = data.value; unpricedItems = data.unpricedItems;
             this.manualCost = Math.max(0, manualCost); netValue = value - this.manualCost;
             gpPerHour = perHour(value, elapsedMillis); netPerHour = perHour(netValue, elapsedMillis);
-            lootRevision = data.lootRevision; historyRevision = data.historyRevision;
+            lootRevision = data.lootRevision;
         }
         static Reading empty() { return new Reading(false, null, 0, false, 0, Collections.emptyList(), Collections.emptyMap()); }
     }

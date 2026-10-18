@@ -14,6 +14,7 @@ import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.Player;
 import net.runelite.client.config.ConfigManager;
+import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.PluginManager;
 import net.runelite.client.plugins.timetracking.SummaryState;
 import net.runelite.client.plugins.timetracking.Tab;
@@ -79,6 +80,28 @@ public class HarvestClockToolTest
         HarvestClockTool.Reading reading = new HarvestClockTool.Reading(true, false, "", Arrays.asList(crop, growing));
         assertEquals(1, reading.dueCount(1000));
         assertSame(growing, reading.next(1000));
+    }
+
+    @Test public void nativeBirdHouseDeadlineDoesNotClaimAnEstimatedCropTimer()
+    {
+        HarvestClockTool.Harvest birds = new HarvestClockTool.Harvest("bird-house", "Bird houses", SummaryState.IN_PROGRESS, 4600, false);
+        assertEquals("In 1h 0m", birds.status(1000));
+        assertEquals("Due to check · estimated", birds.status(4600));
+        assertEquals("Ready · observed", new HarvestClockTool.Harvest("Bird houses", SummaryState.COMPLETED, 0, false).status(4600));
+    }
+
+    @Test public void harvestIconsUseTheSameItemIdsAsNativeTimeTrackingTabs()
+    {
+        HarvestClockTool tool = new HarvestClockTool(mock(Client.class), mock(ConfigManager.class),
+            mock(PluginManager.class), mock(OverlayManager.class), mock(RunewardenConfig.class));
+        ItemManager items = mock(ItemManager.class); tool.setItemManager(items);
+        tool.icon("bird-house"); verify(items).getImage(Tab.BIRD_HOUSE.getItemID());
+        for (Tab tab : Tab.FARMING_TABS)
+        {
+            tool.icon(HarvestClockTool.groupId(tab)); verify(items).getImage(tab.getItemID());
+        }
+        assertNull(tool.icon("unrecognised-group"));
+        verifyNoMoreInteractions(items);
     }
 
     @Test public void clockUsesRealSelectedTimezoneIncludingDaylightSaving()

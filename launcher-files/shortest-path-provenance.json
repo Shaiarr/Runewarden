@@ -1,0 +1,10 @@
+{
+  "name": "Shortest Path",
+  "version": "1.21.3",
+  "plugin": "shortestpath.ShortestPathPlugin",
+  "upstreamCommit": "37abff3a3345185fc11fccecae04d8170de25a11",
+  "source": "https://github.com/Skretzo/shortest-path/tree/37abff3a3345185fc11fccecae04d8170de25a11",
+  "bytes": 1878318,
+  "sha256": "69e489222196ef9370f71feb2abb34a41dbbb87f95c9969d7e5fc47ed80d2841",
+  "scope": "Optional unchanged external development companion; no automatic activation or foreign-plugin configuration."
+}

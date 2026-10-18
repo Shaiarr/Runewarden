@@ -11,7 +11,10 @@ import java.util.Map;
 /** Bounded, versioned layout data. Shared layouts contain presentation only. */
 final class HudPreferences
 {
-    static final String[] WIDGETS = {"resources", "dashboard", "guide", "harvest", "outfit", "entrance", "inventory", "field-effects", "training", "action-progress", "agility", "thieving", "minigame", "equipment-inspector", "hunter-rumours", "sailing", "skill-progress", "clue-timers", "container-hud", "farm-patches", "node-timers", "reward-popup", "world-ping"};
+    static final String[] WIDGETS = {"resources", "dashboard", "harvest", "outfit", "inventory", "field-effects", "action-progress", "thieving", "farm-patches", "node-timers"};
+    private static final java.util.Set<String> RETIRED = java.util.Set.of("guide", "entrance", "training", "agility", "minigame", "equipment-inspector", "hunter-rumours", "sailing", "skill-progress", "clue-timers", "container-hud", "reward-popup", "world-ping");
+    static boolean retired(String key) { return RETIRED.contains(key); }
+
     enum Visibility { ALWAYS, COMBAT, OUT_OF_COMBAT }
     enum Frame { ROUNDED, SQUARE, BORDERLESS }
     enum Values { CURRENT_MAX, CURRENT, PERCENT }
@@ -66,6 +69,7 @@ final class HudPreferences
         {
             if (record.isEmpty()) continue;
             String[] pair = record.split("=", -1);
+            if (pair.length == 2 && retired(pair[0])) continue;
             if (pair.length != 2 || !known(pair[0]) || styles.containsKey(pair[0])) throw new IllegalArgumentException("Invalid widget");
             String[] p = pair[1].split(",", -1);
             if (p.length != 9) throw new IllegalArgumentException("Invalid style");

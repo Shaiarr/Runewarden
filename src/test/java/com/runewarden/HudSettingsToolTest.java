@@ -66,7 +66,7 @@ public class HudSettingsToolTest
         verifyNoMoreInteractions(fixture.manager);
     }
 
-    @Test public void resetAffectsExactlyTheSixOwnedHudOverlaysAndPreservesMovementLock() throws Exception
+    @Test public void resetAffectsExactlyTheRegisteredHudOverlaysAndPreservesMovementLock() throws Exception
     {
         Fixture fixture = new Fixture();
         fixture.config.locked = true;
@@ -86,18 +86,18 @@ public class HudSettingsToolTest
         verifyNoInteractions(fixture.manager);
     }
 
-    @Test public void fightCavesEntranceIsConfigurableWithoutOtherArenaAutoControls() throws Exception
+    @Test public void widgetSelectorContainsOnlyTheTenRetainedWidgets() throws Exception
     {
         Fixture fixture = new Fixture();
         SwingUtilities.invokeAndWait(() -> {
-            fixture.tool.start(); JPanel panel = fixture.tool.createPanel();
-            assertNotNull(find(panel, "waveEntryCoach", JCheckBox.class));
-            for (String key : new String[]{"infernoOpeningOnEntry", "colosseumOpeningOnEntry"})
-                assertNull(find(panel, key, JCheckBox.class));
-            javax.swing.JComboBox<?> widget = find(panel, "hudWidget", javax.swing.JComboBox.class);
-            java.util.List<Object> widgets = new java.util.ArrayList<>();
-            for (int i = 0; i < widget.getItemCount(); i++) widgets.add(widget.getItemAt(i));
-            assertTrue(widgets.contains("entrance"));
+            fixture.tool.start(); JPanel panel=fixture.tool.createPanel();
+            javax.swing.JComboBox<?> widget=find(panel,"hudWidget",javax.swing.JComboBox.class);
+            java.util.List<Object> keys=new java.util.ArrayList<>();
+            for(int i=0;i<widget.getItemCount();i++)keys.add(widget.getItemAt(i));
+            assertEquals(java.util.Arrays.asList(HudPreferences.WIDGETS),keys);
+            assertEquals(10,keys.size());
+            assertNull(find(panel,"waveEntryCoach",JCheckBox.class));
+            assertFalse(keys.contains("guide")); assertFalse(keys.contains("entrance"));
             fixture.tool.stop();
         });
     }
@@ -108,7 +108,7 @@ public class HudSettingsToolTest
         java.util.Map<String,HudPreferences.Style> styles=new java.util.LinkedHashMap<>();
         HudPreferences.Style custom=new HudPreferences.Style(160,14,70,java.awt.Color.RED,java.awt.Color.WHITE,java.awt.Color.BLACK,
             HudPreferences.Visibility.ALWAYS,HudPreferences.Frame.SQUARE,HudPreferences.Values.CURRENT);
-        styles.put("guide",custom);styles.put("farm-patches",custom);styles.put("node-timers",custom);styles.put("reward-popup",custom);
+        styles.put("dashboard",custom);styles.put("farm-patches",custom);styles.put("node-timers",custom);styles.put("inventory",custom);
         fixture.config.layout=HudPreferences.encode(styles);
         SwingUtilities.invokeAndWait(()->
         {
@@ -216,23 +216,27 @@ public class HudSettingsToolTest
         @Override public String hudWidgetSettings() { return layout; }
     }
 
+    private static final class TestCard extends Overlay
+    {
+        void lock(boolean locked) { setMovable(!locked); }
+        @Override public java.awt.Dimension render(java.awt.Graphics2D graphics) { return null; }
+    }
+
     private static final class Fixture
     {
         final ConfigManager manager = mock(ConfigManager.class);
         final OverlayManager overlays = mock(OverlayManager.class);
         final Preferences config = new Preferences();
-        final Client client = mock(Client.class);
-        final ItemManager items = mock(ItemManager.class);
-        final RunewardenResourceOverlay resources = new RunewardenResourceOverlay(client, config, mock(SpriteManager.class));
-        final GuideCoachOverlay guide = new GuideCoachOverlay(client, config);
-        final SkillingCoachOverlay skilling = new SkillingCoachOverlay(client, config,
-            new SkillingCoach(client, items, manager, config), items);
-        final CommandDashboardTool dashboard = new CommandDashboardTool(client, items, overlays, config);
-        final HarvestClockTool harvest = new HarvestClockTool(client, manager, mock(PluginManager.class), overlays, config);
-        final WaveEntryOverlay entry = new WaveEntryOverlay(client, new WaveEntryCoach(client,
-            new GuideCatalog(new com.google.gson.Gson()), new GuideMarkerOverlay(client), config,
-            Runnable::run, System::nanoTime), config);
-        final Overlay[] owned = {resources, guide, skilling, dashboard.overlay(), harvest.overlay(), entry};
-        final HudSettingsTool tool = new HudSettingsTool(manager, config, overlays, resources, guide, skilling, dashboard, harvest, entry);
+        final Overlay[] owned=new Overlay[HudPreferences.WIDGETS.length];
+        final HudSettingsTool tool=new HudSettingsTool(manager,config,overlays);
+        Fixture()
+        {
+            for(int i=0;i<owned.length;i++)
+            {
+                TestCard card=new TestCard();
+                owned[i]=card;
+                tool.registerWidget(HudPreferences.WIDGETS[i],card,card::lock);
+            }
+        }
     }
 }

@@ -1,0 +1,105 @@
+{
+  "version": "0.10.0",
+  "scope": "hud-core",
+  "unitTests": 343,
+  "realShortestPathIntegrationTests": 10,
+  "pythonGuardTests": 13,
+  "failures": 0,
+  "codeBudget": {
+    "format": "runewarden-local-token-budget",
+    "officialHubCount": false,
+    "scope": "Production Java only, comments excluded; strings retained. Resources, tests and development launcher excluded.",
+    "tokenizerVersion": "0.14.0",
+    "files": 64,
+    "sourceBytes": 578019,
+    "tokens": {
+      "cl100k_base": 129092,
+      "o200k_base": 131681
+    },
+    "largestFiles": [
+      {
+        "file": "src/main/java/com/runewarden/FarmPatchPlanner.java",
+        "bytes": 37825,
+        "cl100k_base": 8631,
+        "o200k_base": 8883
+      },
+      {
+        "file": "src/main/java/com/runewarden/RunLootTool.java",
+        "bytes": 32267,
+        "cl100k_base": 6759,
+        "o200k_base": 6854
+      },
+      {
+        "file": "src/main/java/com/runewarden/VarlamoreThievingCoach.java",
+        "bytes": 22590,
+        "cl100k_base": 5339,
+        "o200k_base": 5477
+      },
+      {
+        "file": "src/main/java/com/runewarden/HudSettingsTool.java",
+        "bytes": 25826,
+        "cl100k_base": 5208,
+        "o200k_base": 5363
+      },
+      {
+        "file": "src/main/java/com/runewarden/ActionProgressTool.java",
+        "bytes": 22709,
+        "cl100k_base": 4857,
+        "o200k_base": 4998
+      },
+      {
+        "file": "src/main/java/com/runewarden/HarvestClockTool.java",
+        "bytes": 21982,
+        "cl100k_base": 4549,
+        "o200k_base": 4620
+      },
+      {
+        "file": "src/main/java/com/runewarden/NodeTimerRules.java",
+        "bytes": 15705,
+        "cl100k_base": 4479,
+        "o200k_base": 4550
+      },
+      {
+        "file": "src/main/java/com/runewarden/CurrentMaxHit.java",
+        "bytes": 18879,
+        "cl100k_base": 4461,
+        "o200k_base": 4506
+      },
+      {
+        "file": "src/main/java/com/runewarden/SkillingCoach.java",
+        "bytes": 17559,
+        "cl100k_base": 3966,
+        "o200k_base": 4079
+      },
+      {
+        "file": "src/main/java/com/runewarden/FieldCoach.java",
+        "bytes": 16337,
+        "cl100k_base": 3747,
+        "o200k_base": 3785
+      }
+    ],
+    "localBudget": 160000,
+    "withinLocalBudget": true
+  },
+  "javaBytecodeRelease": 11,
+  "packageVerifiedFiles": 465,
+  "liveGameplayTested": false,
+  "hubApproved": false,
+  "artifacts": [
+    {
+      "file": "runewarden-0.10.0.jar",
+      "bytes": 501829,
+      "sha256": "799b213f611c707d85b79b72369fba07adeca482f252f7e839396b32f372e91a"
+    },
+    {
+      "file": "runewarden-hud-0.10.0-windows-x64.zip",
+      "bytes": 73912861,
+      "sha256": "11269f372e53bf91c2798a704405770a9e695c2f190a8deacd306fec3c62bcd4"
+    },
+    {
+      "file": "runewarden-java-runtime-sources-0.10.0.zip",
+      "bytes": 105582669,
+      "sha256": "953a002d9b6896000a8143bb4f115871a45441c0f8cfce67cba6420cf81b4749"
+    }
+  ]
+}

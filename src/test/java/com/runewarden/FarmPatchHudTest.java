@@ -34,6 +34,17 @@ public class FarmPatchHudTest
     { Fixture f=new Fixture();assertNull(f.reading().observedCompost);f.click();assertNull(f.reading().observedCompost);assertEquals(4774,f.patch.varbit); }
     @Test public void confirmedNearbyServerResponseAttachesOnlyToTheExactPatchVarbit()
     { Fixture f=new Fixture();f.click();f.message(ChatMessageType.GAMEMESSAGE,"You treat the herb patch with ultracompost.");assertEquals("ULTRACOMPOST",f.reading().observedCompost);assertTrue(f.reading().compostObservedAt>0); }
+    @Test public void runAdvancesOnlyWhenReplantAndConfirmedCompostBothExist()
+    {
+        Fixture f=new Fixture();
+        for(FarmPatchPlanner.StopReading stop:f.base.planner.currentRun().stops)
+            if(stop.selected&&!stop.id.equals(f.patch.id))f.base.planner.includeStop(stop.id,false);
+        f.base.planner.chooseSeed(5295);f.base.planner.startSelectedRun();assertTrue(f.base.planner.currentRun().active);
+        when(f.base.nativeState.client.getVarbitValue(f.patch.varbit)).thenReturn(32);f.base.tick(2);
+        assertEquals(0,f.base.planner.currentRun().completedStops);
+        f.click();f.message(ChatMessageType.GAMEMESSAGE,"You treat the herb patch with ultracompost.");f.base.tick(1);
+        assertEquals(1,f.base.planner.currentRun().completedStops);assertFalse(f.base.planner.currentRun().active);
+    }
     @Test public void playerChatAndUnmatchedServerMessagesCannotClaimCompost()
     { Fixture f=new Fixture();f.message(ChatMessageType.GAMEMESSAGE,"You treat the herb patch with ultracompost.");assertNull(f.reading().observedCompost);f.click();f.message(ChatMessageType.PUBLICCHAT,"You treat the herb patch with ultracompost.");assertNull(f.reading().observedCompost); }
     @Test public void pendingEvidenceCannotCrossACharacterOrSceneChange()

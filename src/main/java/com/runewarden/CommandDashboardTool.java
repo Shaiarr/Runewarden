@@ -27,21 +27,15 @@ final class CommandDashboardTool
     private final ItemManager itemManager;
     private final OverlayManager overlays;
     private final CommandDashboardOverlay overlay;
-    private final CombatCalculatorTool calculator;
     private final RunewardenConfig config;
     private volatile boolean started;
     private volatile Dashboard reading = Dashboard.empty();
 
-    CommandDashboardTool(Client client, ItemManager itemManager, OverlayManager overlays, RunewardenConfig config)
-    { this(client, itemManager, overlays, config, null); }
-
-    @Inject CommandDashboardTool(Client client, ItemManager itemManager, OverlayManager overlays, RunewardenConfig config,
-        CombatCalculatorTool calculator)
+    @Inject CommandDashboardTool(Client client, ItemManager itemManager, OverlayManager overlays, RunewardenConfig config)
     {
         this.client = client;
         this.itemManager = itemManager;
         this.overlays = overlays;
-        this.calculator = calculator;
         this.config = config;
         this.overlay = new CommandDashboardOverlay(this, config);
     }
@@ -107,18 +101,9 @@ final class CommandDashboardTool
             }
         }
         EnumSet<WorldType> types = client.getWorldType();
-        CurrentMaxHit.Reading maxHit = calculator == null ? CurrentMaxHit.read(client, itemManager) : calculator.read();
+        CurrentMaxHit.Reading maxHit = CurrentMaxHit.read(client, itemManager);
         reading = new Dashboard(true, client.getWorld(), worldLabel(types), equipment,
             new MaxHitReading(maxHit.maxHit, maxHit.maxHit == null ? maxHit.reason : maxHit.scope));
-    }
-
-    /** The calculator may publish a scoped theoretical normal-attack value; observed hitsplats are never accepted. */
-    void setMaxHit(MaxHitReading maxHit)
-    {
-        Dashboard current = reading;
-        if (!current.loggedIn) return;
-        reading = new Dashboard(true, current.world, current.worldDescription, current.equipment,
-            maxHit == null ? MaxHitReading.unavailable("Combat calculation unavailable") : maxHit);
     }
 
     static String worldLabel(EnumSet<WorldType> types)

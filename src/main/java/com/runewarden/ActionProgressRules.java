@@ -123,14 +123,14 @@ final class ActionProgressRules
         }
         return 0;
     }
-    static BankedExperienceCalculator.Recipe menuRecipe(String option,int clickedItem)
+    static ActionRecipeCatalog.Recipe menuRecipe(String option,int clickedItem)
     {
         if(clickedItem<=0||option==null)return null;String verb=normal(option);
         Skill skill=verb.startsWith("clean")||verb.startsWith("mix")?Skill.HERBLORE:verb.startsWith("cook")?Skill.COOKING:verb.startsWith("fletch")||verb.startsWith("string")?Skill.FLETCHING:null;
         boolean supported=skill!=null||verb.startsWith("make")||verb.startsWith("craft")||verb.startsWith("cut")||verb.startsWith("smelt")||verb.startsWith("smith");
         if(!supported)return null;
-        BankedExperienceCalculator.Recipe match=null;
-        for(BankedExperienceCalculator.Recipe recipe:BankedExperienceCalculator.recipes())
+        ActionRecipeCatalog.Recipe match=null;
+        for(ActionRecipeCatalog.Recipe recipe:ActionRecipeCatalog.recipes())
         {
             if(skill!=null&&skill!=recipe.skill)continue;
             boolean exact=recipe.icon==clickedItem;
@@ -139,7 +139,7 @@ final class ActionProgressRules
         }
         return match;
     }
-    static boolean cleaning(BankedExperienceCalculator.Recipe recipe)
+    static boolean cleaning(ActionRecipeCatalog.Recipe recipe)
     {return recipe!=null&&recipe.skill==Skill.HERBLORE&&recipe.name.startsWith("Clean ")&&recipe.ingredients.size()==1&&!recipe.products.isEmpty();}
     static boolean handWork(int animation)
     {return GEMS.contains(animation)||STRINGING.contains(animation)||animation==AnimationID.HUMAN_FLETCHING||animation==AnimationID.HUMAN_FLETCHING_HUNTINGBOLTS||animation==AnimationID.HUMAN_HERBING_VIAL||animation==AnimationID.HUMAN_HERBING_GRIND;}
@@ -153,7 +153,7 @@ final class ActionProgressRules
         return 0;
     }
     /** Normal-mode source cycles only. Special tools and variable/instant operations are excluded. */
-    static long recipeCycle(BankedExperienceCalculator.Recipe recipe,int animation,Set<Integer> carried,boolean first)
+    static long recipeCycle(ActionRecipeCatalog.Recipe recipe,int animation,Set<Integer> carried,boolean first)
     {
         if(recipe==null)return 0;String id=recipe.id;
         if(id.startsWith("herblore:")&&id.endsWith("_3")&&animation==AnimationID.HUMAN_HERBING_VIAL)return 2*600L;

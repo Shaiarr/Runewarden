@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'com.runewarden'
-version = '0.9.6'
+version = '0.10.0'
 
 repositories {
 	maven {
@@ -52,6 +52,214 @@ jar {
 		attributes('Implementation-Title': 'Runewarden', 'Implementation-Version': project.version,
 			'RuneLite-Version': runeLiteVersion)
 	}
+	preserveFileTimestamps = false
+	reproducibleFileOrder = true
+}
+
+// Separate native RuneLite test bootstrap. None of this source set or its
+// runtime dependencies is part of the production Plugin Hub JAR.
+def suppliedRoutingJar = providers.gradleProperty('shortestPathJar')
+def suppliedRuntimeDir = providers.gradleProperty('runtimeDir')
+def suppliedRuntimeSources = providers.gradleProperty('runtimeSourceDir')
+def generatedLauncher = layout.buildDirectory.dir('generated/sources/launcher')
+def testPackageDir = layout.buildDirectory.dir('hud-test/Runewarden')
+
+sourceSets {
+	launcher {
+		java.srcDir generatedLauncher
+		compileClasspath += sourceSets.main.output
+		runtimeClasspath += sourceSets.main.output
+	}
+}
+
+dependencies {
+	launcherImplementation "net.runelite:client:${runeLiteVersion}"
+	if (suppliedRoutingJar.isPresent()) launcherImplementation files(suppliedRoutingJar.get())
+}
+
+tasks.register('generateLauncherRegistration') {
+	inputs.property('withShortestPath', suppliedRoutingJar.isPresent())
+	outputs.dir generatedLauncher
+	doLast {
+		def source = new File(generatedLauncher.get().asFile, 'com/runewarden/RunewardenBuiltinPlugins.java')
+		source.parentFile.mkdirs()
+		def classes = suppliedRoutingJar.isPresent()
+			? 'shortestpath.ShortestPathPlugin.class, RunewardenPlugin.class' : 'RunewardenPlugin.class'
+		def companionCheck = suppliedRoutingJar.isPresent()
+			? 'if (shortestpath.ShortestPathPlugin.class.getResource("/collision-map.zip") == null) throw new IllegalStateException("Shortest Path resources are missing.");'
+			: ''
+		source.setText("""/* SPDX-License-Identifier: BSD-2-Clause */
+package com.runewarden;
+final class RunewardenBuiltinPlugins {
+    static void register() { net.runelite.client.externalplugins.ExternalPluginManager.loadBuiltin(${classes}); }
+    static void verifyResources() { ${companionCheck} }
+    static boolean hasShortestPath() { return ${suppliedRoutingJar.isPresent()}; }
+}
+""", 'UTF-8')
+	}
+}
+tasks.named('compileLauncherJava') { dependsOn tasks.named('generateLauncherRegistration') }
+
+tasks.register('launcherJar', Jar) {
+	dependsOn tasks.named('launcherClasses')
+	archiveClassifier = 'launcher'
+	from sourceSets.launcher.output
+	manifest { attributes('Main-Class': 'com.runewarden.RunewardenLauncher') }
+	preserveFileTimestamps = false
+	reproducibleFileOrder = true
+}
+
+def digestFile = { File input ->
+	def digest = java.security.MessageDigest.getInstance('SHA-256')
+	input.withInputStream { stream ->
+		byte[] buffer = new byte[65536]
+		int size
+		while ((size = stream.read(buffer)) != -1) digest.update(buffer, 0, size)
+	}
+	digest.digest().encodeHex().toString()
+}
+
+tasks.register('verifyTestRuntime') {
+	onlyIf { suppliedRuntimeDir.isPresent() }
+	doLast {
+		def runtime = file(suppliedRuntimeDir.get())
+		def pins = new groovy.json.JsonSlurper().parse(file('launcher-files/runtime-file-manifest.json'))
+		def provenance = new groovy.json.JsonSlurper().parse(file('launcher-files/runtime-provenance.json'))
+		if (pins.originalArchiveSha256 != provenance.verifiedSha256)
+			throw new GradleException('Runtime source provenance and file pins differ.')
+		def actual = fileTree(runtime).files.collect {
+			'runtime/' + runtime.toPath().relativize(it.toPath()).toString().replace('\\', '/')
+		}.toSet()
+		if (actual != pins.files.collect { it.name }.toSet())
+			throw new GradleException('The supplied runtime is not the complete pinned Windows Temurin 17 distribution.')
+		pins.files.each { entry ->
+			def input = new File(runtime, entry.name.substring('runtime/'.length()))
+			if (input.length() != entry.bytes || digestFile(input) != entry.sha256)
+				throw new GradleException('Runtime differs from its verified pin: ' + entry.name)
+		}
+		if (new File(runtime, 'release').text.replace('\r\n', '\n') != provenance.releaseMetadata.replace('\r\n', '\n'))
+			throw new GradleException('Runtime release metadata differs from the verified distribution.')
+	}
+}
+
+tasks.register('verifyRuntimeSources') {
+	doLast {
+		if (!suppliedRuntimeSources.isPresent())
+			throw new GradleException('Supply -PruntimeSourceDir to package the matching OpenJDK/Temurin source collection.')
+		def source = file(suppliedRuntimeSources.get())
+		def manifest = new groovy.json.JsonSlurper().parse(file('launcher-files/runtime-source-manifest.json'))
+		manifest.files.each { entry ->
+			def input = new File(source, entry.name)
+			if (!input.isFile() || input.length() != entry.bytes || digestFile(input) != entry.sha256)
+				throw new GradleException('Runtime source differs from its pin: ' + entry.name)
+		}
+	}
+}
+
+tasks.register('runtimeSourcesZip', Zip) {
+	dependsOn tasks.named('verifyRuntimeSources')
+	archiveFileName = "runewarden-java-runtime-sources-${project.version}.zip"
+	destinationDirectory = layout.buildDirectory.dir('distributions')
+	from({ suppliedRuntimeSources.isPresent() ? file(suppliedRuntimeSources.get()) : file('missing-runtime-sources') }) {
+		include 'jdk17u-79597447bd94ff9f8216e2e3a573d5261ee49f2e.tar.gz', 'jdk17u-commit.json',
+			'temurin-build-e6ba7dec3d07654074559310376a3ae89da5f4ac.tar.gz', 'temurin-build-commit.json'
+	}
+	from('launcher-files/runtime-source-manifest.json')
+	from('launcher-files/licenses/Temurin-runtime-sources.txt') { rename { 'SOURCE-NOTICE.txt' } }
+	preserveFileTimestamps = false
+	reproducibleFileOrder = true
+}
+
+tasks.register('prepareTestPackage', Sync) {
+	dependsOn tasks.named('jar'), tasks.named('launcherJar'), tasks.named('verifyTestRuntime')
+	filteringCharset = 'UTF-8'
+	into testPackageDir
+	from(configurations.launcherRuntimeClasspath) { into 'lib' }
+	from(tasks.named('jar')) { into 'lib' }
+	from(tasks.named('launcherJar')) { into 'lib' }
+	from('launcher-files')
+	from('README.md', 'icon.png', 'CONTRIBUTING.md', 'LICENSE', 'NOTICE')
+	from('DATA-SOURCES.md') {
+		filter { line -> line.replace('(src/main/resources/com/runewarden/licenses/)', '(licenses/plugin/)') }
+	}
+	from('docs/release-process.md') { into 'docs' }
+	from('LICENSE') { into 'licenses'; rename { 'Runewarden-BSD-2-Clause.txt' } }
+	from('NOTICE') { into 'licenses' }
+	from('src/main/resources/com/runewarden/licenses') { into 'licenses/plugin' }
+	if (suppliedRuntimeDir.isPresent()) from(file(suppliedRuntimeDir.get())) { into 'runtime' }
+	doFirst {
+		if (suppliedRoutingJar.isPresent()) {
+			def supplied = file(suppliedRoutingJar.get())
+			def expected = new groovy.json.JsonSlurper().parse(file('launcher-files/shortest-path-provenance.json'))
+			if (digestFile(supplied) != expected.sha256)
+				throw new GradleException('The supplied Shortest Path JAR differs from the recorded unchanged companion.')
+		}
+	}
+	doLast {
+		def destination = destinationDir
+		def runtimeProvenance = new groovy.json.JsonSlurper().parse(file('launcher-files/runtime-provenance.json'))
+		runtimeProvenance.bundled = suppliedRuntimeDir.isPresent()
+		new File(destination, 'runtime-provenance.json').setText(
+			groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(runtimeProvenance)) + '\n', 'UTF-8')
+		def libraries = fileTree(new File(destination, 'lib')).matching { include '*.jar' }.files.sort { it.name }
+		if (libraries*.name.toSet().size() != libraries.size())
+			throw new GradleException('Duplicate test-package library names.')
+		['windows': ';', 'unix': ':'].each { platform, separator ->
+			new File(destination, 'Runewarden-' + platform + '.args').setText(
+				'-ea\n-Xmx768m\n-cp\n"' + libraries.collect { 'lib/' + it.name }.join(separator)
+				+ '"\ncom.runewarden.RunewardenLauncher\n', 'UTF-8')
+		}
+		def coordinates = configurations.launcherRuntimeClasspath.resolvedConfiguration.resolvedArtifacts.collect { artifact ->
+			[group: artifact.moduleVersion.id.group, name: artifact.name, version: artifact.moduleVersion.id.version,
+				classifier: artifact.classifier, file: 'lib/' + artifact.file.name]
+		}.sort { it.file }
+		new File(destination, 'dependency-versions.json').setText(
+			groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(coordinates)) + '\n', 'UTF-8')
+		configurations.launcherRuntimeClasspath.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+			def notices = new File(destination, 'licenses/dependencies/' + artifact.file.name)
+			notices.mkdirs()
+			def archive = new java.util.zip.ZipFile(artifact.file)
+			try {
+				archive.entries().each { entry ->
+					if (!entry.directory && entry.size < 1048576 && entry.name.toUpperCase(java.util.Locale.ROOT)
+						.matches('META-INF/(.*[/])?(LICENSE|NOTICE|COPYING)([.][^/]*)?'))
+						new File(notices, entry.name.replace('/', '__')).bytes = archive.getInputStream(entry).bytes
+				}
+			} finally { archive.close() }
+			fileTree(artifact.file.parentFile.parentFile).matching { include '**/*.pom' }.files.each { pom ->
+				new File(notices, pom.name).bytes = pom.bytes
+			}
+		}
+		def allFiles = fileTree(destination).files.findAll { it.name != 'package-manifest.json' }.sort {
+			destination.toPath().relativize(it.toPath()).toString()
+		}
+		def manifest = [format: 'runewarden-hud-test-package', formatVersion: 1, version: project.version.toString(),
+			runeLiteVersion: runeLiteVersion, java: 17, plugin: 'com.runewarden.RunewardenPlugin',
+			runtimeBundled: suppliedRuntimeDir.isPresent(), shortestPathBundled: suppliedRoutingJar.isPresent(),
+			files: allFiles.collect { input ->
+				[name: destination.toPath().relativize(input.toPath()).toString().replace('\\', '/'),
+					bytes: input.length(), sha256: digestFile(input)]
+			}]
+		new File(destination, 'package-manifest.json').setText(
+			groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(manifest)) + '\n', 'UTF-8')
+	}
+}
+
+tasks.register('verifyTestPackage', Exec) {
+	dependsOn tasks.named('prepareTestPackage')
+	workingDir testPackageDir
+	def windows = System.getProperty('os.name').startsWith('Windows')
+	commandLine new File(System.getProperty('java.home'), windows ? 'bin/java.exe' : 'bin/java').absolutePath,
+		'-Djava.awt.headless=true', '@Runewarden-' + (windows ? 'windows' : 'unix') + '.args', '--verify-package'
+}
+
+tasks.register('devTestZip', Zip) {
+	dependsOn tasks.named('verifyTestPackage')
+	if (suppliedRuntimeDir.isPresent()) dependsOn tasks.named('runtimeSourcesZip')
+	archiveFileName = "runewarden-hud-${project.version}-${suppliedRuntimeDir.isPresent() ? 'windows-x64' : 'portable'}.zip"
+	destinationDirectory = layout.buildDirectory.dir('distributions')
+	from(testPackageDir) { into 'Runewarden' }
+	eachFile { entry -> if (entry.name.endsWith('.sh')) entry.mode = 0755 }
 	preserveFileTimestamps = false
 	reproducibleFileOrder = true
 }

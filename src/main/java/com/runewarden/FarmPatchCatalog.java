@@ -9,20 +9,17 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.api.Skill;
-import net.runelite.api.gameval.ItemID;
 import net.runelite.client.plugins.skillcalculator.skills.FarmingAction;
 
-/** Owned immutable data decoded from the pinned native farming definitions, with their BSD notice. */
+/** Immutable native patch states and a bounded seed index; no training or account planner. */
 @Singleton
 public final class FarmPatchCatalog
 {
     static final class Data
-    { int version; String runeLiteVersion; List<Patch> patches; Map<String, List<State>> states; Map<String, Crop> crops; }
+    { int version; String runeLiteVersion; List<Patch> patches; Map<String,List<State>> states; Map<String,Crop> crops; }
     public static final class Patch
     {
         public String id, name, region, type, group;
@@ -50,171 +47,170 @@ public final class FarmPatchCatalog
         }
     }
     public static final class State
-    { public String crop, state; public int stage, stages, tickMinutes; }
+    { public String crop,state; public int stage,stages,tickMinutes; }
     public static final class Crop
-    { public String name, type; public int itemId; }
+    { public String name,type; public int itemId; }
     public static final class Seed
     {
-        public final int id;
-        public final String name, type;
-        public final Integer level;
-        public final Integer quantity;
-        public final String levelSource;
-        public final String cropKey;
-        public final int produceId, growthMinutes;
-        public final Double plantingXp, healthXp, harvestXp;
-        public final boolean plantingOnFirstHarvest;
-        public final String xpSource;
-        Seed(int id, String name, String type, Integer level, Integer quantity, String source, String key,
-            int produce, int minutes, Double planting, Double health, Double harvest, boolean deferredPlanting, String xpSource)
-        { this.id = id; this.name = name; this.type = type; this.level = level; this.quantity = quantity; levelSource = source;
-            cropKey = key; produceId = produce; growthMinutes = minutes; plantingXp = planting; healthXp = health; harvestXp = harvest; plantingOnFirstHarvest = deferredPlanting; this.xpSource = xpSource; }
-        @Override public String toString() { return name + (level == null ? "" : " · " + level); }
-    }
-    public static final class PaymentItem
-    {
-        public final int itemId;
-        public final long quantity;
-        public final String name;
-        public final boolean notesAllowed;
-        PaymentItem(RawItem raw) { itemId = raw.itemId; quantity = raw.quantity; name = raw.name; notesAllowed = raw.notesAllowed; }
-    }
-    public static final class Payment
-    {
-        public final int seedId;
-        public final boolean available;
-        public final String source;
-        public final String reason;
-        public final List<PaymentItem> items;
-        Payment(RawPayment raw)
-        { seedId = raw.seedId; available = raw.available; source = raw.source; reason = raw.reason == null ? "" : raw.reason; List<PaymentItem> next = new ArrayList<>(); for (RawItem item : raw.items) next.add(new PaymentItem(item)); items = Collections.unmodifiableList(next); }
-    }
-    private static final class PaymentData { int version; List<RawPayment> payments; List<SeedFact> seedFacts; }
-    private static final class SeedFact { int seedId; Integer level, quantity; String source; }
-    private static final class RawPayment { int seedId; boolean available; String source, reason; List<RawItem> items; }
-    private static final class RawItem { int itemId; long quantity; String name; boolean notesAllowed; }
-    private final Map<String, Patch> patches;
-    private final Map<String, List<State>> states;
-    private final Map<String, Crop> crops;
-    private final Map<String, List<Seed>> seeds;
-    private final Map<Integer, Seed> seedIndex;
-    private final Map<Integer, Payment> payments;
-    public FarmPatchCatalog(Gson gson) { this(gson, new SkillingResourceCatalog(gson)); }
-    @Inject public FarmPatchCatalog(Gson gson, SkillingResourceCatalog resources)
-    {
-        Data data = gson.fromJson(new InputStreamReader(FarmPatchCatalog.class.getResourceAsStream("/com/runewarden/farming-native-snapshot.json"), StandardCharsets.UTF_8), Data.class);
-        if (data == null || data.version != 1 || !"1.13.2".equals(data.runeLiteVersion) || data.patches == null || data.patches.size() > 250 || data.states == null || data.crops == null) throw new IllegalStateException("Invalid native farming snapshot");
-        Map<String, Patch> next = new LinkedHashMap<>(); for (Patch patch : data.patches) next.put(patch.id, patch);
-        patches = Collections.unmodifiableMap(next); states = Collections.unmodifiableMap(data.states); crops = Collections.unmodifiableMap(data.crops);
-        PaymentData paymentData = gson.fromJson(new InputStreamReader(FarmPatchCatalog.class.getResourceAsStream("/com/runewarden/farming-protection-payments.json"), StandardCharsets.UTF_8), PaymentData.class);
-        if (paymentData == null || paymentData.version != 1 || paymentData.payments == null || paymentData.payments.size() > 150) throw new IllegalStateException("Invalid farming payment snapshot");
-        Map<Integer, SeedFact> extra = new LinkedHashMap<>();
-        if (paymentData.seedFacts != null) for (SeedFact fact : paymentData.seedFacts)
+        public final int id,growthMinutes;
+        public final String name,type,cropKey;
+        public final Integer level,quantity;
+        Seed(int id,String key,Crop crop,int level,int quantity,int minutes)
         {
-            if (fact == null || fact.seedId <= 0 || fact.level != null && (fact.level < 1 || fact.level > 99) || fact.quantity != null && (fact.quantity < 1 || fact.quantity > 100) || fact.source == null || !fact.source.startsWith("https://oldschool.runescape.wiki/w/")) throw new IllegalStateException("Invalid farming seed fact");
-            extra.put(fact.seedId, fact);
+            this.id=id;cropKey=key;type=crop.type;this.level=level>0?level:null;
+            this.quantity=quantity>0?quantity:null;growthMinutes=minutes;
+            name="SEAWEED".equals(type)?"Seaweed spore":"MUSHROOM".equals(type)?"Mushroom spore":
+                "Goutweed".equals(crop.name)?"Gout tuber":isTree(type)?crop.name.replace(" tree","")+" sapling":crop.name+" seed";
         }
-        Map<String, List<Seed>> choices = new LinkedHashMap<>();
-        for (Map.Entry<String, Crop> entry : crops.entrySet())
-        {
-            Crop crop = entry.getValue();
-            if (crop.type == null || crop.name == null || crop.name.startsWith("Any ")) continue;
-            String seedName;
-            if ("SEAWEED".equals(crop.type)) seedName = "Seaweed spore";
-            else if ("MUSHROOM".equals(crop.type)) seedName = "Mushroom spore";
-            else if ("Goutweed".equals(crop.name)) seedName = "Gout tuber";
-            else if (crop.type.contains("TREE") || "CALQUAT".equals(crop.type) || "CELASTRUS".equals(crop.type) || "REDWOOD".equals(crop.type)) seedName = crop.name.replace(" tree", "") + " sapling";
-            else seedName = crop.name + " seed";
-            Set<Integer> ids = GuideItemResolver.resolveName(seedName);
-            // Quest variants have the same display names as these ordinary allotment seeds.
-            if ("Potato seed".equals(seedName)) ids = Collections.singleton(ItemID.POTATO_SEED);
-            else if ("Onion seed".equals(seedName)) ids = Collections.singleton(ItemID.ONION_SEED);
-            else if ("Tomato seed".equals(seedName)) ids = Collections.singleton(ItemID.TOMATO_SEED);
-            if (ids.size() == 1)
-            {
-                int id = ids.iterator().next(); Integer level = null; String source = ""; Double planting = null, health = null, harvest = null; String xpSource = ""; boolean deferredPlanting = false;
-                SkillingResourceCatalog.Resource resource = resources.find(id);
-                if (resource != null) for (SkillingResourceCatalog.Action action : resource.actions())
-                    if (action.skill == Skill.FARMING)
-                    {
-                        if ("Plant crop".equals(action.name) && action.level > 0 && action.level <= 99) { level = action.level; source = action.source; planting = action.xp; xpSource = action.source; deferredPlanting = action.note != null && action.note.contains("first harvest"); }
-                        if ("Check health".equals(action.name)) { health = action.xp; xpSource = action.source; }
-                        if ("Harvest crop".equals(action.name)) { harvest = action.xp; xpSource = action.source; }
-                    }
-                if (level == null) for (FarmingAction action : FarmingAction.values()) if (action.getIcon() == crop.itemId)
-                { level = action.getLevel(); source = "RuneLite 1.13.2 FarmingAction." + action.name(); break; }
-                Integer quantity = "ALLOTMENT".equals(crop.type) ? 3 : 1;
-                if ("HOPS".equals(crop.type))
-                {
-                    quantity = null;
-                    if ("Jute".equals(crop.name)) quantity = 3;
-                    else if (java.util.Arrays.asList("Barley", "Hammerstone", "Asgarnian", "Yanillian", "Krandorian", "Wildblood").contains(crop.name)) quantity = 4;
-                }
-                SeedFact fact = extra.get(id);
-                if (fact != null) { if (level == null && fact.level != null) { level = fact.level; source = fact.source; } if (fact.quantity != null) quantity = fact.quantity; }
-                int growthMinutes = 0;
-                for (State state : states.getOrDefault(crop.type, Collections.emptyList()))
-                    if (state != null && entry.getKey().equals(state.crop) && "GROWING".equals(state.state) && state.tickMinutes > 0)
-                        growthMinutes = Math.max(growthMinutes, (state.stages - 1) * state.tickMinutes);
-                // Native herb Produce icons are clean herbs; harvests are the exact grimy counterpart.
-                int produce = crop.itemId;
-                if ("HERB".equals(crop.type))
-                { String suffix = "Guam".equals(crop.name) || "Irit".equals(crop.name) ? " leaf" : "Ranarr".equals(crop.name) ? " weed" : "";
-                    Set<Integer> grimy = GuideItemResolver.resolveName("Grimy " + crop.name + suffix); if (grimy.size() == 1) produce = grimy.iterator().next(); else produce = 0; }
-                choices.computeIfAbsent(crop.type, ignored -> new ArrayList<>()).add(new Seed(id, seedName, crop.type, level, quantity, source,
-                    entry.getKey(), produce, growthMinutes, planting, health, harvest, deferredPlanting, xpSource));
-            }
-        }
-        choices.values().forEach(values -> values.sort(java.util.Comparator.comparing(value -> value.name)));
-        Map<String, List<Seed>> frozen = new LinkedHashMap<>(); choices.forEach((type, values) -> frozen.put(type, Collections.unmodifiableList(values))); seeds = Collections.unmodifiableMap(frozen);
-        Map<Integer, Seed> byId = new LinkedHashMap<>(); seeds.values().forEach(values -> values.forEach(seed -> byId.put(seed.id, seed))); seedIndex = Collections.unmodifiableMap(byId);
-        Map<Integer, Payment> paymentIndex = new LinkedHashMap<>();
-        for (RawPayment payment : paymentData.payments)
-        {
-            if (payment == null || payment.seedId <= 0 || payment.source == null || !payment.source.startsWith("https://oldschool.runescape.wiki/w/") || payment.items == null || payment.items.size() > 8) throw new IllegalStateException("Invalid farming payment");
-            for (RawItem item : payment.items) if (item == null || item.itemId <= 0 || item.quantity < 1 || item.quantity > 1_000 || item.name == null || item.name.length() > 80) throw new IllegalStateException("Invalid protection item");
-            paymentIndex.put(payment.seedId, new Payment(payment));
-        }
-        payments = Collections.unmodifiableMap(paymentIndex);
+        @Override public String toString(){return name+(level==null?"":" · "+level);}
     }
-    public List<Patch> patches() { return Collections.unmodifiableList(new ArrayList<>(patches.values())); }
-    public Patch patch(String id) { return patches.get(id); }
-    public Crop crop(String key) { return crops.get(key); }
-    /** Tree labels describe the tree, so display its own sapling rather than a generic tree or fruit. */
+    // Exact IDs and verified quantities retained from the existing pinned native/Wiki snapshots.
+    // Zero is an unknown level/quantity, never a guessed account requirement.
+    private static final String[] SEED_FACTS = {
+        "5496:APPLE:27:1",
+        "5308:ASGARNIAN:0:4",
+        "22881:ATTAS:0:1",
+        "5298:AVANTOE:50:1",
+        "5497:BANANA:33:1",
+        "5305:BARLEY:0:4",
+        "5281:BELLADONNA:0:1",
+        "5324:CABBAGE:0:3",
+        "5280:CACTUS:55:1",
+        "5301:CADANTINE:67:1",
+        "5102:CADAVABERRIES:22:1",
+        "5503:CALQUAT:72:1",
+        "31502:CAMPHOR:0:1",
+        "22856:CELASTRUS:85:1",
+        "31545:COTTON:0:0",
+        "23659:CRYSTAL_TREE:0:1",
+        "5499:CURRY:42:1",
+        "22866:DRAGONFRUIT:81:1",
+        "5303:DWARF_WEED:79:1",
+        "5103:DWELLBERRIES:36:1",
+        "31541:FLAX:0:0",
+        "6311:GOUTWEED:0:1",
+        "13657:GRAPE:0:1",
+        "5291:GUAM:9:1",
+        "5307:HAMMERSTONE:0:4",
+        "5294:HARRALANDER:26:1",
+        "31543:HEMP:0:0",
+        "22875:HESPORI:0:1",
+        "30088:HUASCA:65:1",
+        "22883:IASOR:0:1",
+        "5297:IRIT:44:1",
+        "31505:IRONWOOD:0:1",
+        "5104:JANGERBERRIES:48:1",
+        "5306:JUTE:0:3",
+        "5310:KRANDORIAN:0:4",
+        "22885:KRONOS:0:1",
+        "5299:KWUARM:56:1",
+        "5302:LANTADYME:73:1",
+        "5100:LIMPWURT:0:1",
+        "5374:MAGIC:75:1",
+        "21480:MAHOGANY:55:1",
+        "5372:MAPLE:45:1",
+        "5096:MARIGOLD:0:1",
+        "5292:MARRENTILL:14:1",
+        "5282:MUSHROOM:53:1",
+        "5098:NASTURTIUM:0:1",
+        "5370:OAK:15:1",
+        "5319:ONION:0:3",
+        "5498:ORANGE:39:1",
+        "5502:PALM:68:1",
+        "5501:PAPAYA:57:1",
+        "5500:PINEAPPLE:51:1",
+        "5106:POISON_IVY:70:1",
+        "5318:POTATO:0:3",
+        "22873:POTATO_CACTUS:64:1",
+        "5295:RANARR:32:1",
+        "5101:REDBERRIES:10:1",
+        "22859:REDWOOD:90:1",
+        "5097:ROSEMARY:0:1",
+        "31508:ROSEWOOD:0:1",
+        "21490:SEAWEED:0:1",
+        "5300:SNAPDRAGON:62:1",
+        "22879:SNAPE_GRASS:0:3",
+        "5375:SPIRIT_TREE:83:1",
+        "5323:STRAWBERRY:0:3",
+        "5320:SWEETCORN:0:3",
+        "5293:TARROMIN:19:1",
+        "21477:TEAK:35:1",
+        "5296:TOADFLAX:38:1",
+        "5322:TOMATO:0:3",
+        "5304:TORSTOL:85:1",
+        "5321:WATERMELON:0:3",
+        "5105:WHITEBERRIES:59:1",
+        "22887:WHITE_LILY:0:1",
+        "5311:WILDBLOOD:0:4",
+        "5371:WILLOW:30:1",
+        "5099:WOAD:0:1",
+        "5309:YANILLIAN:16:4",
+        "5373:YEW:60:1",
+    };
+    private final Map<String,Patch> patches;
+    private final Map<String,List<State>> states;
+    private final Map<String,Crop> crops;
+    private final Map<String,List<Seed>> seeds=new LinkedHashMap<>();
+    private final Map<Integer,Seed> seedIndex=new LinkedHashMap<>();
+
+    @Inject public FarmPatchCatalog(Gson gson)
+    {
+        Data data=gson.fromJson(new InputStreamReader(FarmPatchCatalog.class.getResourceAsStream(
+            "/com/runewarden/farming-native-snapshot.json"),StandardCharsets.UTF_8),Data.class);
+        if(data==null||data.version!=1||!"1.13.2".equals(data.runeLiteVersion)||data.patches==null||data.patches.size()>250||data.states==null||data.crops==null)
+            throw new IllegalStateException("Invalid native farming snapshot");
+        Map<String,Patch> index=new LinkedHashMap<>();for(Patch value:data.patches)index.put(value.id,value);
+        patches=Collections.unmodifiableMap(index);states=Collections.unmodifiableMap(data.states);crops=Collections.unmodifiableMap(data.crops);
+        for(String row:SEED_FACTS)
+        {
+            String[] fields=row.split(":");Crop crop=crops.get(fields[1]);if(crop==null)continue;
+            int level=Integer.parseInt(fields[2]),minutes=0;
+            if(level==0)for(FarmingAction action:FarmingAction.values())if(action.getIcon()==crop.itemId){level=action.getLevel();break;}
+            for(State state:states.getOrDefault(crop.type,List.of()))
+                if(state!=null&&fields[1].equals(state.crop)&&"GROWING".equals(state.state)&&state.tickMinutes>0)
+                    minutes=Math.max(minutes,(state.stages-1)*state.tickMinutes);
+            Seed seed=new Seed(Integer.parseInt(fields[0]),fields[1],crop,level,Integer.parseInt(fields[3]),minutes);
+            seedIndex.put(seed.id,seed);seeds.computeIfAbsent(seed.type,key->new ArrayList<>()).add(seed);
+        }
+        seeds.replaceAll((type,values)->{values.sort(java.util.Comparator.comparing(seed->seed.name));return Collections.unmodifiableList(values);});
+    }
+    private static boolean isTree(String type)
+    {return type!=null&&(type.contains("TREE")||List.of("CALQUAT","CELASTRUS","REDWOOD").contains(type));}
+    public List<Patch> patches(){return List.copyOf(patches.values());}
+    public Patch patch(String id){return patches.get(id);}
+    public Crop crop(String key){return crops.get(key);}
+    public State state(String type,int value)
+    {List<State> values=states.get(type);return values==null||value<0||value>=values.size()?null:values.get(value);}
+    public List<Seed> seeds(String type){return seeds.getOrDefault(type,List.of());}
+    public Seed seed(int id){return seedIndex.get(id);}
     int iconId(State state)
     {
         Crop crop=state==null?null:crops.get(state.crop);if(crop==null)return 0;
-        if(crop.type!=null && (crop.type.contains("TREE") || "CALQUAT".equals(crop.type) || "CELASTRUS".equals(crop.type) || "REDWOOD".equals(crop.type)))
-            for(Seed seed:seeds(crop.type))if(java.util.Objects.equals(seed.cropKey,state.crop))return seed.id;
+        if(isTree(crop.type))for(Seed seed:seeds(crop.type))if(seed.cropKey.equals(state.crop))return seed.id;
         return crop.itemId;
     }
-    public State state(String type, int value)
-    { List<State> values = states.get(type); return values == null || value < 0 || value >= values.size() ? null : values.get(value); }
-    public List<Seed> seeds(String type) { return seeds.getOrDefault(type, Collections.emptyList()); }
-    public Seed seed(int id) { return seedIndex.get(id); }
-    public Payment payment(int seedId) { return payments.get(seedId); }
-    public List<Payment> payments() { return Collections.unmodifiableList(new ArrayList<>(payments.values())); }
-    public List<Patch> forGuide(String guideId)
+    public List<Patch> forGuide(String id)
     {
-        String types;
-        switch (guideId == null ? "" : guideId)
+        String type;
+        switch(id==null?"":id)
         {
-            case "training:herb-runs": types = "HERB"; break;
-            case "training:allotment-runs": types = "ALLOTMENT,FLOWER"; break;
-            case "training:tree-runs": types = "TREE"; break;
-            case "training:fruit-tree-runs": types = "FRUIT_TREE"; break;
-            case "training:hardwood-runs": types = "HARDWOOD_TREE"; break;
-            case "training:giant-seaweed": types = "SEAWEED"; break;
-            case "training:calquat-runs": types = "CALQUAT"; break;
-            case "training:crystal-tree-runs": types = "CRYSTAL_TREE"; break;
-            case "training:celastrus-runs": types = "CELASTRUS"; break;
-            case "training:redwood-farming": types = "REDWOOD"; break;
-            case "training:hespori": types = "HESPORI"; break;
-            case "training:farming-contracts": types = "GUILD"; break;
-            default: return Collections.emptyList();
+            case "herb":case "training:herb-runs":type="HERB";break;
+            case "allotment":case "training:allotment-runs":type="ALLOTMENT,FLOWER";break;
+            case "tree":case "training:tree-runs":type="TREE";break;
+            case "fruit":case "training:fruit-tree-runs":type="FRUIT_TREE";break;
+            case "hardwood":case "training:hardwood-runs":type="HARDWOOD_TREE";break;
+            case "hops":type="HOPS";break;
+            case "bush":type="BUSH";break;
+            case "seaweed":case "training:giant-seaweed":type="SEAWEED";break;
+            case "training:calquat-runs":type="CALQUAT";break;
+            case "training:crystal-tree-runs":type="CRYSTAL_TREE";break;
+            case "training:celastrus-runs":type="CELASTRUS";break;
+            case "training:redwood-farming":type="REDWOOD";break;
+            case "training:hespori":type="HESPORI";break;
+            default:return List.of();
         }
-        List<Patch> result = new ArrayList<>();
-        for (Patch patch : patches.values()) if ("GUILD".equals(types) ? "Farming Guild".equals(patch.region) && !patch.type.contains("COMPOST") : ("," + types + ",").contains("," + patch.type + ",")) result.add(patch);
-        result.sort(java.util.Comparator.comparing(Patch::label).thenComparing(value -> value.type)); return Collections.unmodifiableList(result);
+        List<Patch> result=new ArrayList<>();
+        for(Patch patch:patches.values())if((","+type+",").contains(","+patch.type+","))result.add(patch);
+        result.sort(java.util.Comparator.comparing(Patch::label).thenComparing(value->value.type));return Collections.unmodifiableList(result);
     }
 }

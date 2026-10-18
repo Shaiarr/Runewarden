@@ -12,25 +12,24 @@ import static org.junit.Assert.*;
 
 public class RunewardenPanelNavigationTest
 {
-    @Test public void guideItemAndHomeJourneyUsesRealSelectorAndResetsForAccountChanges() throws Exception
+    @Test public void retainedPagesUseRealHistoryAndResetForAccountChanges() throws Exception
     {
-        SidebarLayoutTest.Fixture fixtures = new SidebarLayoutTest.Fixture();
         SwingUtilities.invokeAndWait(() -> {
-            RunewardenPanel host = new RunewardenPanel(fixtures.get(RunewardenGuides.class),
-                fixtures.get(RunewardenSightTool.class), fixtures.get(WaveExportTool.class));
-            host.addModule("Command dashboard", new JPanel(), 0);
-            host.addModule("Item database", new JPanel());
+            RunewardenPanel host = new RunewardenPanel();
+            host.addModule("Overview",new JPanel());
+            host.addModule("Harvest runs",new JPanel());
+            host.addModule("HUD settings",new JPanel());
             JComboBox<?> selector = (JComboBox<?>) named(host, "runewarden.module.selector");
             JButton back = (JButton) named(host, "runewarden.navigation.back");
             JButton next = (JButton) named(host, "runewarden.navigation.forward");
             JButton home = (JButton) named(host, "runewarden.navigation.home");
-            host.selectModule("Guides"); host.selectModule("Item database");
-            back.doClick(); assertEquals("Guides", selector.getSelectedItem());
-            next.doClick(); assertEquals("Item database", selector.getSelectedItem());
-            home.doClick(); assertEquals("Command dashboard", selector.getSelectedItem());
-            back.doClick(); assertEquals("Item database", selector.getSelectedItem());
+            host.selectModule("Harvest runs"); host.selectModule("HUD settings");
+            back.doClick(); assertEquals("Harvest runs", selector.getSelectedItem());
+            next.doClick(); assertEquals("HUD settings", selector.getSelectedItem());
+            home.doClick(); assertEquals("Overview", selector.getSelectedItem());
+            back.doClick(); assertEquals("HUD settings", selector.getSelectedItem());
             host.resetNavigation(); assertFalse(back.isEnabled()); assertFalse(next.isEnabled());
-            home.doClick(); assertEquals("Command dashboard", selector.getSelectedItem());
+            home.doClick(); assertEquals("Overview", selector.getSelectedItem());
         });
     }
 

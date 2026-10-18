@@ -3,6 +3,8 @@ package com.runewarden;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.FontMetrics;
+import java.util.ArrayList;
 import java.util.List;
 import net.runelite.api.Client;
 import net.runelite.client.ui.overlay.Overlay;
@@ -22,7 +24,7 @@ final class VarlamoreThievingHudOverlay extends Overlay
         Graphics2D g=HudStyle.canvas(graphics,style);int width=284;
         try
         {
-            g.setFont(HudStyle.body(12));List<String> objective=GuideCoachOverlay.wrap(g.getFontMetrics(),state.objective,width-24,prefs.compact?2:3);
+            g.setFont(HudStyle.body(12));List<String> objective=wrap(g.getFontMetrics(),state.objective,width-24,prefs.compact?2:3);
             int factCount=Math.min(prefs.compact?2:5,state.facts.size()),timers=prefs.radialTimers?Math.min(3,state.timers.size()):0;
             int height=59+objective.size()*16+factCount*16+(timers>0?70:0);
             double fit=Math.min(prefs.scalePercent/100d,Math.min(client.getCanvasWidth()>0?(client.getCanvasWidth()-16)/(double)width:1,client.getCanvasHeight()>0?(client.getCanvasHeight()-20)/(double)height:1));
@@ -45,4 +47,30 @@ final class VarlamoreThievingHudOverlay extends Overlay
         }
         finally{g.dispose();}
     }
+
+    private static List<String> wrap(FontMetrics metrics, String text, int width, int maximum)
+    {
+        List<String> lines = new ArrayList<>();
+        String remaining = text == null ? "" : text.replaceAll("\\s+", " ").trim();
+        if (width <= 0 || maximum <= 0) return lines;
+        while (!remaining.isEmpty() && lines.size() < maximum)
+        {
+            if (metrics.stringWidth(remaining) <= width) { lines.add(remaining); remaining = ""; break; }
+            int end = 1;
+            while (end < remaining.length() && metrics.stringWidth(remaining.substring(0, end + 1)) <= width) end++;
+            int space = remaining.lastIndexOf(' ', end);
+            if (space > 0) end = space;
+            lines.add(remaining.substring(0, end).trim());
+            remaining = remaining.substring(end).trim();
+        }
+        if (!remaining.isEmpty() && !lines.isEmpty())
+        {
+            int last = lines.size() - 1;
+            String line = lines.get(last);
+            while (!line.isEmpty() && metrics.stringWidth(line + "…") > width) line = line.substring(0, line.length() - 1);
+            lines.set(last, line.stripTrailing() + "…");
+        }
+        return lines;
+    }
+
 }

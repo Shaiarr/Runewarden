@@ -82,7 +82,7 @@ public class ActionProgressTest
     }
     @Test public void cleaningCountsOnlyConfirmedTransformationsAndDoesNotInventAnInitialEta()
     {
-        BankedExperienceCalculator.Recipe recipe=recipe("herblore:ranarr_weed");ActionBatchProgress batch=new ActionBatchProgress();batch.select(recipe);
+        ActionRecipeCatalog.Recipe recipe=recipe("herblore:ranarr_weed");ActionBatchProgress batch=new ActionBatchProgress();batch.select(recipe);
         Map<Integer,Long> before=inputs(recipe,10),after=after(recipe,before,3);
         batch.inventory(before,1,true);batch.arm(1000);assertEquals(-1,batch.estimatedMillis());
         batch.inventory(after,1,true);batch.experience(Math.round(recipe.xp*3),1,true);assertEquals(0,batch.confirm(3,2200));
@@ -92,7 +92,7 @@ public class ActionProgressTest
     }
     @Test public void wrongXpDroppingAndBankTransfersNeverCountAsCompletedActions()
     {
-        BankedExperienceCalculator.Recipe recipe=recipe("herblore:ranarr_weed");Map<Integer,Long> before=inputs(recipe,5),after=after(recipe,before,1);
+        ActionRecipeCatalog.Recipe recipe=recipe("herblore:ranarr_weed");Map<Integer,Long> before=inputs(recipe,5),after=after(recipe,before,1);
         ActionBatchProgress batch=new ActionBatchProgress();batch.select(recipe);batch.inventory(before,1,true);batch.arm(1000);
         batch.inventory(after,1,true);batch.experience(100,1,true);assertEquals(0,batch.confirm(4,2800));
         batch.select(recipe);batch.inventory(before,5,true);batch.inventory(Map.of(),5,true);batch.experience(Math.round(recipe.xp*5),5,true);assertEquals(0,batch.confirm(8,5200));
@@ -100,14 +100,14 @@ public class ActionProgressTest
     }
     @Test public void discardedMaterialsDoNotTurnAPartlyFinishedBatchIntoACompletedOne()
     {
-        BankedExperienceCalculator.Recipe recipe=recipe("herblore:ranarr_weed");Map<Integer,Long> before=inputs(recipe,10),partial=after(recipe,before,3);
+        ActionRecipeCatalog.Recipe recipe=recipe("herblore:ranarr_weed");Map<Integer,Long> before=inputs(recipe,10),partial=after(recipe,before,3);
         ActionBatchProgress batch=new ActionBatchProgress();batch.select(recipe);batch.inventory(before,1,true);batch.arm(1000);batch.inventory(partial,1,true);batch.experience(Math.round(recipe.xp*3),1,true);batch.confirm(4,2800);
         Map<Integer,Long> dropped=new LinkedHashMap<>(partial);dropped.remove(recipe.ingredients.get(0).itemId);batch.inventory(dropped,5,true);
         assertEquals(10,batch.total());assertEquals(0.3,batch.fraction(),0.00001);assertEquals(-1,batch.estimatedMillis());
     }
     @Test public void automaticRecipeRecognitionAcceptsEitherEventOrderAndRejectsXpOnly()
     {
-        BankedExperienceCalculator.Recipe recipe=recipe("crafting:diamond");Map<Integer,Long> before=inputs(recipe,10),after=after(recipe,before,2);
+        ActionRecipeCatalog.Recipe recipe=recipe("crafting:diamond");Map<Integer,Long> before=inputs(recipe,10),after=after(recipe,before,2);
         for(boolean xpFirst:new boolean[]{true,false})
         {
             ActionRecipeDetector detector=new ActionRecipeDetector();detector.inventory(before,1,1000);
@@ -148,7 +148,7 @@ public class ActionProgressTest
     }
     @Test public void nativeCookingChoiceUsesSourcedCyclesWithoutInventingCompletedOutput()
     {
-        Fixture f=new Fixture();BankedExperienceCalculator.Recipe shark=recipe("cooking:shark");f.inventory(inputs(shark,10));
+        Fixture f=new Fixture();ActionRecipeCatalog.Recipe shark=recipe("cooking:shark");f.inventory(inputs(shark,10));
         f.f.session.startActivity(new SharedActivitySession.Context(SharedActivitySession.Kind.TRAINING,shark.id,shark.name,null,shark.id,Skill.COOKING,0));
         f.tool.onGameTick();f.choose("Cook",shark.ingredients.get(0).itemId);f.setAnimation(AnimationID.HUMAN_COOKING);f.event();
         assertEquals("Standard cycle",f.tool.snapshot().basis);assertEquals(1800,f.tool.snapshot().cycleEnd-f.tool.snapshot().cycleStart);assertEquals(0,f.tool.snapshot().completed);
@@ -156,12 +156,12 @@ public class ActionProgressTest
     }
     @Test public void cleanClickArmsBatchAndAutomaticRecognitionWorksWithoutAnySelectedGuide()
     {
-        Fixture f=new Fixture();BankedExperienceCalculator.Recipe recipe=recipe("herblore:ranarr_weed");Map<Integer,Long> before=inputs(recipe,10);f.inventory(before);f.tool.onGameTick();
+        Fixture f=new Fixture();ActionRecipeCatalog.Recipe recipe=recipe("herblore:ranarr_weed");Map<Integer,Long> before=inputs(recipe,10);f.inventory(before);f.tool.onGameTick();
         MenuOptionClicked clean=mock(MenuOptionClicked.class);when(clean.isItemOp()).thenReturn(true);when(clean.getMenuOption()).thenReturn("Clean");when(clean.getItemId()).thenReturn(recipe.ingredients.get(0).itemId);f.tool.onMenuOptionClicked(clean);
         assertTrue(f.tool.snapshot().batch());assertEquals(-1,f.tool.snapshot().batchEta);assertFalse(f.tool.snapshot().cycle());
         f.inventory(after(recipe,before,3));f.inventoryEvent();f.xp(recipe.skill,(int)Math.round(recipe.xp*3));f.tick(3);
         assertEquals(3,f.tool.snapshot().completed);assertEquals(7,f.tool.snapshot().remaining);assertFalse(f.tool.snapshot().cycle());
-        Fixture automatic=new Fixture();BankedExperienceCalculator.Recipe diamond=recipe("crafting:diamond");before=inputs(diamond,10);automatic.inventory(before);automatic.tool.onGameTick();automatic.inventory(after(diamond,before,2));automatic.inventoryEvent();automatic.xp(diamond.skill,215);automatic.tick(3);
+        Fixture automatic=new Fixture();ActionRecipeCatalog.Recipe diamond=recipe("crafting:diamond");before=inputs(diamond,10);automatic.inventory(before);automatic.tool.onGameTick();automatic.inventory(after(diamond,before,2));automatic.inventoryEvent();automatic.xp(diamond.skill,215);automatic.tick(3);
         assertEquals(diamond.name,automatic.tool.snapshot().batchTitle);assertEquals(2,automatic.tool.snapshot().completed);assertEquals(8,automatic.tool.snapshot().remaining);
     }
     @Test public void bankCombatProfileSwitchAndLogoutClearThePreviousAccountsDisplay()
@@ -222,7 +222,7 @@ public class ActionProgressTest
     }
     @Test public void nativeCleanMenuDoesNotRequireTheOptionalItemOperationFlag()
     {
-        Fixture f=new Fixture();BankedExperienceCalculator.Recipe recipe=recipe("herblore:ranarr_weed");f.inventory(inputs(recipe,10));f.tool.onGameTick();
+        Fixture f=new Fixture();ActionRecipeCatalog.Recipe recipe=recipe("herblore:ranarr_weed");f.inventory(inputs(recipe,10));f.tool.onGameTick();
         MenuOptionClicked clean=mock(MenuOptionClicked.class);Widget slot=mock(Widget.class);when(slot.getItemId()).thenReturn(recipe.ingredients.get(0).itemId);
         when(clean.getMenuOption()).thenReturn("<col=ffffff>Clean</col>");when(clean.getItemId()).thenReturn(-1);when(clean.getWidget()).thenReturn(slot);
         f.tool.onMenuOptionClicked(clean);assertTrue(f.tool.snapshot().batch());assertEquals(10,f.tool.snapshot().remaining);
@@ -239,7 +239,7 @@ public class ActionProgressTest
     }
     @Test public void cleaningBarUsesTheActualCleanHerbIconRatherThanTheGrimyInput() throws Exception
     {
-        Fixture f=new Fixture();BankedExperienceCalculator.Recipe ranarr=recipe("herblore:ranarr_weed");f.inventory(inputs(ranarr,10));f.tool.onGameTick();
+        Fixture f=new Fixture();ActionRecipeCatalog.Recipe ranarr=recipe("herblore:ranarr_weed");f.inventory(inputs(ranarr,10));f.tool.onGameTick();
         AsyncBufferedImage icon=itemImage(0xff38b658);when(f.items.getImage(ItemID.RANARR_WEED)).thenReturn(icon);
         MenuOptionClicked clean=mock(MenuOptionClicked.class);when(clean.getMenuOption()).thenReturn("Clean");when(clean.getItemId()).thenReturn(207);f.tool.onMenuOptionClicked(clean);
         assertEquals(257,f.tool.snapshot().batchItemId);assertSame(icon,f.tool.snapshot().batchIcon);verify(f.items).getImage(257);verify(f.items,never()).getImage(207);
@@ -276,13 +276,13 @@ public class ActionProgressTest
     }
     @Test public void nativeProductReplacesAnOlderSelectedRecipeCaptionAsWellAsItsIcon()
     {
-        Fixture f=new Fixture();BankedExperienceCalculator.Recipe magic=recipe("fletching:magic_longbow");
+        Fixture f=new Fixture();ActionRecipeCatalog.Recipe magic=recipe("fletching:magic_longbow");
         f.f.session.startActivity(new SharedActivitySession.Context(SharedActivitySession.Kind.TRAINING,magic.id,magic.name,null,magic.id,Skill.FLETCHING,0));f.tool.onGameTick();
         f.inventory(inputs(recipe("fletching:yew_longbow"),2));f.setAnimation(AnimationID.STRINGING_YEW_LONGBOW);f.event();assertEquals(ItemID.YEW_LONGBOW,f.tool.snapshot().cycleItemId);assertEquals(recipe("fletching:yew_longbow").name,f.tool.snapshot().title);
     }
     @Test public void cleaningUsesOneActualIdentityEvenWhenTheSequenceIsNamedEmeraldCutting()
     {
-        Fixture f=new Fixture();BankedExperienceCalculator.Recipe herb=recipe("herblore:toadflax"),emerald=recipe("crafting:emerald");
+        Fixture f=new Fixture();ActionRecipeCatalog.Recipe herb=recipe("herblore:toadflax"),emerald=recipe("crafting:emerald");
         f.f.session.startActivity(new SharedActivitySession.Context(SharedActivitySession.Kind.TRAINING,emerald.id,emerald.name,null,emerald.id,Skill.CRAFTING,0));
         Map<Integer,Long> before=inputs(herb,8);f.inventory(before);f.tool.onGameTick();
         AsyncBufferedImage icon=itemImage(0xff50af48);when(f.items.getImage(herb.icon)).thenReturn(icon);
@@ -298,7 +298,7 @@ public class ActionProgressTest
     }
     @Test public void actualInventoryAndXpReplaceAnOlderNativeRecipeDespiteASelectedMethod()
     {
-        Fixture f=new Fixture();BankedExperienceCalculator.Recipe emerald=recipe("crafting:emerald"),herb=recipe("herblore:toadflax");
+        Fixture f=new Fixture();ActionRecipeCatalog.Recipe emerald=recipe("crafting:emerald"),herb=recipe("herblore:toadflax");
         Animation animation=mock(Animation.class);when(animation.getFrameLengths()).thenReturn(new int[]{10,10,10});
         when(f.f.client.loadAnimation(AnimationID.HUMAN_EMERALDCUTTING)).thenReturn(animation);
         f.f.session.startActivity(new SharedActivitySession.Context(SharedActivitySession.Kind.TRAINING,emerald.id,emerald.name,null,emerald.id,Skill.CRAFTING,0));
@@ -313,14 +313,14 @@ public class ActionProgressTest
     }
     @Test public void selectedMethodAndGemAnimationAliasWithoutItemProofNeverInventEmeraldWork()
     {
-        Fixture f=new Fixture();BankedExperienceCalculator.Recipe emerald=recipe("crafting:emerald");
+        Fixture f=new Fixture();ActionRecipeCatalog.Recipe emerald=recipe("crafting:emerald");
         f.f.session.startActivity(new SharedActivitySession.Context(SharedActivitySession.Kind.TRAINING,emerald.id,emerald.name,null,emerald.id,Skill.CRAFTING,0));
         f.inventory(inputs(emerald,8));f.tool.onGameTick();f.setAnimation(AnimationID.HUMAN_EMERALDCUTTING);f.event();
         assertFalse(f.tool.snapshot().cycle());assertFalse(f.tool.snapshot().batch());assertEquals(0,f.tool.snapshot().cycleItemId);
     }
     @Test public void completedHerbBatchDisappearsAndFreshMaterialsStartNewCounts()
     {
-        Fixture f=new Fixture();BankedExperienceCalculator.Recipe herb=recipe("herblore:toadflax");Map<Integer,Long> before=inputs(herb,8);
+        Fixture f=new Fixture();ActionRecipeCatalog.Recipe herb=recipe("herblore:toadflax");Map<Integer,Long> before=inputs(herb,8);
         f.inventory(before);f.tool.onGameTick();f.choose("Clean",herb.ingredients.get(0).itemId);
         Animation animation=mock(Animation.class);when(animation.getFrameLengths()).thenReturn(new int[]{100,100});
         when(f.f.client.loadAnimation(AnimationID.HUMAN_EMERALDCUTTING)).thenReturn(animation);f.setAnimation(AnimationID.HUMAN_EMERALDCUTTING);f.event();
@@ -336,15 +336,15 @@ public class ActionProgressTest
     private static AsyncBufferedImage itemImage(int color)
     {AsyncBufferedImage image=new AsyncBufferedImage(mock(ClientThread.class),36,32,BufferedImage.TYPE_INT_ARGB);Graphics2D g=image.createGraphics();try{g.setColor(new java.awt.Color(color,true));g.fillRect(0,0,36,32);}finally{g.dispose();}image.loaded();return image;}
     private static long cycle(String id,int animation,boolean first){return ActionProgressRules.recipeCycle(recipe(id),animation,Set.of(),first);}
-    private static BankedExperienceCalculator.Recipe recipe(String id){return BankedExperienceCalculator.recipes().stream().filter(recipe->id.equals(recipe.id)).findFirst().orElseThrow(()->new AssertionError(id));}
-    private static Map<Integer,Long> inputs(BankedExperienceCalculator.Recipe recipe,long count)
-    {Map<Integer,Long> items=new LinkedHashMap<>();for(BankedExperienceCalculator.Ingredient input:recipe.ingredients)items.merge(input.itemId,count*input.quantity,Long::sum);return items;}
-    private static Map<Integer,Long> after(BankedExperienceCalculator.Recipe recipe,Map<Integer,Long> before,long count)
-    {Map<Integer,Long> items=new LinkedHashMap<>(before);for(BankedExperienceCalculator.Ingredient input:recipe.ingredients)items.merge(input.itemId,-count*input.quantity,Long::sum);for(BankedExperienceCalculator.Ingredient output:recipe.products)items.merge(output.itemId,count*output.quantity,Long::sum);items.entrySet().removeIf(entry->entry.getValue()<=0);return items;}
+    private static ActionRecipeCatalog.Recipe recipe(String id){return ActionRecipeCatalog.recipes().stream().filter(recipe->id.equals(recipe.id)).findFirst().orElseThrow(()->new AssertionError(id));}
+    private static Map<Integer,Long> inputs(ActionRecipeCatalog.Recipe recipe,long count)
+    {Map<Integer,Long> items=new LinkedHashMap<>();for(ActionRecipeCatalog.Ingredient input:recipe.ingredients)items.merge(input.itemId,count*input.quantity,Long::sum);return items;}
+    private static Map<Integer,Long> after(ActionRecipeCatalog.Recipe recipe,Map<Integer,Long> before,long count)
+    {Map<Integer,Long> items=new LinkedHashMap<>(before);for(ActionRecipeCatalog.Ingredient input:recipe.ingredients)items.merge(input.itemId,-count*input.quantity,Long::sum);for(ActionRecipeCatalog.Ingredient output:recipe.products)items.merge(output.itemId,count*output.quantity,Long::sum);items.entrySet().removeIf(entry->entry.getValue()<=0);return items;}
     private static final class Fixture
     {
         final ActivitySessionTest.Fixture f=new ActivitySessionTest.Fixture();final ItemContainer bag=mock(ItemContainer.class);final ActionProgressTool tool;final ItemManager items=mock(ItemManager.class);final SpriteManager sprites=mock(SpriteManager.class);final SkillIconManager skillIcons=mock(SkillIconManager.class);
-        Fixture(){when(bag.getItems()).thenReturn(new Item[0]);when(f.client.getItemContainer(InventoryID.INVENTORY)).thenReturn(bag);tool=new ActionProgressTool(f.client,f.config,f.store,mock(RunewardenConfig.class),f.session,null,f.now::get,items,sprites,skillIcons);tool.start();tool.onGameTick();}
+        Fixture(){when(bag.getItems()).thenReturn(new Item[0]);when(f.client.getItemContainer(InventoryID.INVENTORY)).thenReturn(bag);tool=new ActionProgressTool(f.client,f.config,f.store,mock(RunewardenConfig.class),f.session,f.now::get,items,sprites,skillIcons);tool.start();tool.onGameTick();}
         void setAnimation(int animation){f.animation.set(animation);}
         void choose(String option,int item){MenuOptionClicked event=mock(MenuOptionClicked.class);when(event.getMenuOption()).thenReturn(option);when(event.getItemId()).thenReturn(item);tool.onMenuOptionClicked(event);}
         void inventory(Map<Integer,Long> items){when(bag.getItems()).thenReturn(items.entrySet().stream().map(item->new Item(item.getKey(),item.getValue().intValue())).toArray(Item[]::new));}

@@ -22,8 +22,8 @@ public class SkillingResourceCatalogTest
     private static final SkillingResourceCatalog CATALOG = new SkillingResourceCatalog(new com.google.gson.Gson());
     @Test public void everyBankedXpIngredientHasSourcesAndNamedActions()
     {
-        for (BankedExperienceCalculator.Recipe recipe : BankedExperienceCalculator.recipes())
-            for (BankedExperienceCalculator.Ingredient ingredient : recipe.ingredients)
+        for (ActionRecipeCatalog.Recipe recipe : ActionRecipeCatalog.recipes())
+            for (ActionRecipeCatalog.Ingredient ingredient : recipe.ingredients)
             {
                 SkillingResourceCatalog.Resource resource = CATALOG.find(ingredient.itemId);
                 assertNotNull(ingredient.name, resource);

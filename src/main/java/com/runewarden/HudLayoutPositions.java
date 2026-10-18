@@ -51,6 +51,7 @@ final class HudLayoutPositions
         {
             if (record.isEmpty()) continue;
             String[] pair = record.split("=", -1), key = pair[0].split(":", -1);
+            if (pair.length == 2 && key.length == 2 && HudPreferences.retired(key[0])) continue;
             if (pair.length != 2 || key.length != 2 || !HudPreferences.known(key[0]) || !key[1].matches("[0-4]"))
                 throw new IllegalArgumentException("Invalid position widget");
             String value = new String(Base64.getUrlDecoder().decode(pair[1]), StandardCharsets.UTF_8);

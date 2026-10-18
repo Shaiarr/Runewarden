@@ -38,26 +38,15 @@ public class SidebarThemeTest
             try
             {
                 assertTrue("RuneLite's dark look and feel must load", RuneLiteLAF.setup());
-                Client client = mock(Client.class);
-                ClientThread clientThread = mock(ClientThread.class);
-                ConfigManager configs = mock(ConfigManager.class);
-                EventBus events = mock(EventBus.class);
-                OverlayManager overlays = mock(OverlayManager.class);
-                RunewardenGuides guides = new RunewardenGuides(client, clientThread, configs,
-                    new GuideCatalog(new Gson()), new GuideNavigation(client, events, mock(PluginManager.class)),
-                    new GuideMarkerOverlay(client), new GuideCoachOverlay(client), overlays);
-                RunewardenPanel panel = new RunewardenPanel(guides,
-                    new RunewardenSightTool(client, clientThread, overlays, events, mock(RunewardenConfig.class)),
-                    new WaveExportTool(client, clientThread));
+                RunewardenPanel panel = new RunewardenPanel();
                 for(java.util.Map.Entry<String,JComponent> entry:SidebarLayoutTest.allModules(new SidebarLayoutTest.Fixture()).entrySet())panel.addModule(entry.getKey(),entry.getValue());
                 JComboBox<?> modules = (JComboBox<?>) descendants(panel).stream()
                     .filter(component -> "runewarden.module.selector".equals(component.getName())).findFirst().get();
                 Container cards = (Container) descendants(panel).stream()
                     .filter(component -> "runewarden.module.cards".equals(component.getName())).findFirst().get();
-                assertTrue(modules.getItemCount()>=35);
-                assertEquals("Guides", modules.getItemAt(0));
-                assertEquals("Visibility", modules.getItemAt(1));
-                assertEquals("Wave references", modules.getItemAt(2));
+                assertEquals(8,modules.getItemCount());
+                assertEquals("Overview",modules.getItemAt(0));
+                assertEquals("HUD settings",modules.getItemAt(7));
                 JComponent root = panel.getWrappedPanel();
                 root.setSize(300, 900);
                 for (int index = 0; index < modules.getItemCount(); index++)
@@ -69,8 +58,7 @@ public class SidebarThemeTest
                     for (Component child : cards.getComponents()) if (child.isVisible()) active = (Container) child;
                     assertNotNull(active);
                     List<Component> visible = visibleDescendants(active);
-                    assertTrue(tab + " must contain actual controls", visible.stream()
-                        .anyMatch(component -> component instanceof AbstractButton || component instanceof javax.swing.JTextField || component instanceof JComboBox) || visible.stream().anyMatch(component -> component instanceof GuideText && ((GuideText)component).getText().startsWith("Log in")));
+                    assertTrue(tab+" must contain actual text or controls",visible.stream().anyMatch(component -> hasText(component)));
                     for (Component component : visible)
                     {
                         if (component instanceof JComponent && ((JComponent) component).isOpaque())
@@ -99,12 +87,6 @@ public class SidebarThemeTest
                     assertTrue(tab + " rendered a light panel instead of a dark sidebar", dark > 300 * 900 * 0.85);
                     assertTrue(tab + " rendered without visible light text or accents", light > 100);
                 }
-                // The list uses renderer components; exercise both its selected and ordinary text colors too.
-                JList<?> results = (JList<?>) descendants(panel).stream()
-                    .filter(component -> component instanceof JList).findFirst().get();
-                assertTrue(results.getModel().getSize() > 0);
-                assertListTextContrast(results, false);
-                assertListTextContrast(results, true);
             }
             catch (Exception error) { throw new AssertionError(error); }
             finally

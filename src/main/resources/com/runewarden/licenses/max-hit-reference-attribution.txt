@@ -1,0 +1,24 @@
+Supported normal base-max-hit factual references
+
+CurrentMaxHit is an original Java implementation using current RuneLite item
+stats, equipment, levels, prayer and attack-style observations. It exposes only
+supported normal base-hit estimates, not a target DPS or equipment comparison.
+The removed dps-reference.json/equipment/monster catalogues are not bundled.
+
+The previous factual formula review used the OSRS Wiki team's reference project:
+https://github.com/weirdgloop/osrs-dps-calc
+Commit: 462054e6c0686ce318a051288ab91b9bfa1e91b5
+Reviewed formula references included PlayerVsNPCCalc.ts, BaseCalc.ts,
+Equipment.ts and constants.ts. These are reference provenance, not imported
+calculator runtime implementations. The source project's full GPL-3.0 license
+is retained in mob-knowledge-upstream-GPL-3.0.txt. Original Runewarden code is
+not relicensed by this reference notice.
+
+Spell name/level facts also referenced:
+https://oldschool.runescape.wiki/w/List_of_spells?oldid=15343816
+The 42 numeric autocast spell records have their separate exact source commit
+in combat-spells-attribution.txt. Wiki content attribution and terms are in
+wiki-reference-CC-BY-NC-SA.txt.
+
+Native equipment/stat/style observations use the RuneLite 1.13.2 public API.
+Unsupported or unobserved weapon/target multipliers are not fabricated.

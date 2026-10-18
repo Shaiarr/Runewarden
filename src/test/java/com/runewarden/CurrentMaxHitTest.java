@@ -1,6 +1,5 @@
 package com.runewarden;
 
-import com.google.gson.Gson;
 import net.runelite.api.Client;
 import net.runelite.api.EnumComposition;
 import net.runelite.api.EnumID;
@@ -188,16 +187,13 @@ public class CurrentMaxHitTest
         assertEquals(Integer.valueOf(ordinary * 46 / 40), f.read().maxHit);
     }
 
-    @Test public void blowpipeRequiresExplicitDartAndIgnoresAmmoSlot()
+    @Test public void hiddenBlowpipeDartsRemainUnknownDespiteUnrelatedAmmo()
     {
         Fixture f = new Fixture("Ranging", 1);
         f.gear(3, 1, "Toxic blowpipe", 0, 20);
         f.gear(13, 2, "Dragon arrow", 0, 60);
         assertNull(f.read().maxHit);
-        CurrentMaxHit.Reading supplied = CurrentMaxHit.read(f.client, f.manager,
-            new CurrentMaxHit.Inputs(null, 35, false, false, null));
-        assertEquals(Integer.valueOf(CurrentMaxHit.baseHit(107, 55)), supplied.maxHit);
-        assertEquals("INPUT RANGED", supplied.scope);
+        assertEquals("Loaded blowpipe darts are not observed", f.read().reason);
     }
 
     @Test public void soulreaperStacksAreAdditiveWithPrayerBeforeVoid()
@@ -231,62 +227,56 @@ public class CurrentMaxHitTest
         assertEquals(Integer.valueOf(1), CurrentMaxHit.poweredBase("trident of the seas", 1));
     }
 
-    @Test public void shadowMultiplierCapsGearBeforeAddingPrayerAndIsExplicitAboutToa()
+    @Test public void shadowRemainsUnknownWithoutVerifiedRaidContext()
     {
         Fixture f = new Fixture("Accurate", 0);
         f.gear(3, 1, "Tumeken's shadow", 0, 0);
-        when(f.manager.getItemStats(1)).thenReturn(new ItemStats(true, 0, 0,
-            ItemEquipmentStats.builder().mdmg(30f).build()));
-        when(f.client.isPrayerActive(Prayer.AUGURY)).thenReturn(true);
-        assertEquals(Integer.valueOf(65), f.read().maxHit); // floor(34 * 1.94)
-        CurrentMaxHit.Reading toa = CurrentMaxHit.read(f.client, f.manager,
-            new CurrentMaxHit.Inputs(null, null, false, true, null));
-        assertEquals(Integer.valueOf(69), toa.maxHit); // gear caps at100%; augury4% afterward
-        assertTrue(toa.reason.contains("ToA multiplier selected"));
+        assertNull(f.read().maxHit);
+        assertEquals("Shadow damage needs verified raid context", f.read().reason);
     }
 
-    @Test public void explicitAncientSpellAddsVirtusAndManualScope()
+    @Test public void nativeAutocastSpellAddsVirtusWithoutManualInput()
     {
         Fixture f = new Fixture("Casting", 4);
         f.gear(3, 1, "Kodai wand", 0, 0);
         when(f.manager.getItemStats(1)).thenReturn(new ItemStats(true, 0, 0,
             ItemEquipmentStats.builder().mdmg(5f).build()));
         f.gear(4, 2, "Virtus robe top", 0, 0);
-        CombatSpellCatalog catalog = new CombatSpellCatalog(new Gson());
-        CombatSpellCatalog.Spell ice = catalog.named("Ice Barrage");
-        assertNotNull(ice);
-        CurrentMaxHit.Reading result = CurrentMaxHit.read(f.client, f.manager,
-            new CurrentMaxHit.Inputs(ice, null, true, false, null));
+        when(f.client.getVarpValue(VarPlayerID.AUTOCAST_SPELL_OBJ)).thenReturn(4651);
+        CurrentMaxHit.Reading result = f.read();
         assertEquals(Integer.valueOf(32), result.maxHit);
-        assertEquals("INPUT MAGIC", result.scope);
+        assertEquals("BASE MAGIC", result.scope);
+        assertTrue(result.reason.startsWith("Ice Barrage"));
     }
 
     @Test public void elementalSpellDamageScalesAtPublishedMagicThresholds()
     {
-        CombatSpellCatalog catalog = new CombatSpellCatalog(new Gson());
-        assertEquals(2, catalog.named("Wind Strike").maxHit(1));
-        assertEquals(4, catalog.named("Wind Strike").maxHit(5));
-        assertEquals(8, catalog.named("Wind Strike").maxHit(13));
-        assertEquals(21, catalog.named("Wind Surge").maxHit(84));
-        assertEquals(24, catalog.named("Wind Surge").maxHit(95));
-        assertEquals(19, catalog.named("Magic Dart").maxHit(99));
+        assertEquals(2, CombatSpellCatalog.fromSpellObject(3273).maxHit(1));
+        assertEquals(4, CombatSpellCatalog.fromSpellObject(3273).maxHit(5));
+        assertEquals(8, CombatSpellCatalog.fromSpellObject(3273).maxHit(13));
+        assertEquals(21, CombatSpellCatalog.fromSpellObject(21876).maxHit(84));
+        assertEquals(24, CombatSpellCatalog.fromSpellObject(21876).maxHit(95));
+        assertEquals(19, CombatSpellCatalog.fromSpellObject(4176).maxHit(99));
+        assertNull(CombatSpellCatalog.fromSpellObject(0));
+        assertNull(CombatSpellCatalog.fromSpellObject(999999));
     }
 
-    @Test public void twistedBowReferenceUsesMagicAttackBonusAndXericianCap()
+    @Test public void twistedBowRemainsUnknownWithoutObservedTargetMagic()
     {
         Fixture f = new Fixture("Ranging", 0);
         f.gear(3, 1, "Twisted bow", 0, 20);
         f.gear(13, 2, "Dragon arrow", 0, 60);
-        MobKnowledgeCatalog.Entry target = new MobKnowledgeCatalog.Entry();
-        target.magicLevel = 1; target.magicAttackBonus = 350;
-        target.attributes = java.util.Collections.singletonList("xerician");
-        CurrentMaxHit.Reading result = CurrentMaxHit.read(f.client, f.manager,
-            new CurrentMaxHit.Inputs(null, null, false, false, target));
-        assertEquals(Integer.valueOf(CurrentMaxHit.twistedBowHit(CurrentMaxHit.baseHit(110, 80), 350, 350)), result.maxHit);
-        assertEquals("REF TBOW", result.scope);
-        assertTrue(result.reason.contains("live drains"));
-        assertEquals(248, CurrentMaxHit.twistedBowHit(100, 1000, 350));
-        assertEquals(CurrentMaxHit.twistedBowHit(100, 250, 250), CurrentMaxHit.twistedBowHit(100, 350, 250));
+        assertNull(f.read().maxHit);
+        assertEquals("Target Magic is not observed for Twisted bow", f.read().reason);
+    }
+
+    @Test public void staleAutocastSelectionDoesNotReplaceCurrentMeleeStyle()
+    {
+        Fixture f = new Fixture("Aggressive", 1);
+        f.gear(3, 1, "Dragon axe", 42, 0);
+        when(f.client.getVarpValue(VarPlayerID.AUTOCAST_SPELL_OBJ)).thenReturn(4651);
+        assertEquals(Integer.valueOf(18), f.read().maxHit);
+        assertEquals("BASE MELEE", f.read().scope);
     }
 
     @Test public void unchargedWeaponsAndUnknownSpellDoNotProduceNumbers()
@@ -296,6 +286,8 @@ public class CurrentMaxHitTest
         assertNull(f.read().maxHit);
         Fixture spell = new Fixture("Casting", 4);
         spell.gear(3, 1, "Ancient staff", 0, 0);
+        assertNull(spell.read().maxHit);
+        when(spell.client.getVarpValue(VarPlayerID.AUTOCAST_SPELL_OBJ)).thenReturn(999999);
         assertNull(spell.read().maxHit);
     }
 

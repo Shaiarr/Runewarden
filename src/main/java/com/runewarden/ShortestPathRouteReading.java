@@ -1,59 +1,47 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 package com.runewarden;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.client.plugins.Plugin;
 
-/** Reads only the companion's public, completed result; never creates another search. */
+/** Validates a correlated result from Shortest Path's public PluginMessage API. */
 final class ShortestPathRouteReading
 {
-    final WorldPoint start,target;
-    final Set<WorldPoint> targets;
-    final boolean reached,bankVisited;
-    final int cost;
-    final String reason,itemStatus;
+    final boolean reached;
     final List<String> transports;
-    ShortestPathRouteReading(WorldPoint start,WorldPoint target,Set<WorldPoint> targets,
-        boolean reached,boolean bankVisited,int cost,String reason,String itemStatus,List<String> transports)
-    {this.start=start;this.target=target;this.targets=Collections.unmodifiableSet(new LinkedHashSet<>(targets));this.reached=reached;
-        this.bankVisited=bankVisited;this.cost=cost;this.reason=reason;this.itemStatus=itemStatus;this.transports=Collections.unmodifiableList(new ArrayList<>(transports));}
+    private ShortestPathRouteReading(boolean reached,List<String> transports)
+    {this.reached=reached;this.transports=Collections.unmodifiableList(transports);}
 
-    static ShortestPathRouteReading read(Plugin plugin)
+    static ShortestPathRouteReading read(Map<String,Object> data,String id,WorldPoint start,WorldPoint target)
     {
-        try
+        if(data==null||!Objects.equals(id,data.get("id"))||!Objects.equals(start,data.get("start"))
+            ||!Objects.equals(target,data.get("target"))||!(data.get("reached") instanceof Boolean))return null;
+        Object rows=data.get("transports");if(!(rows instanceof List<?>)||((List<?>)rows).size()>512)return null;
+        List<String> descriptions=new ArrayList<>();
+        for(Object row:(List<?>)rows)
         {
-            Object search=get(plugin,"getActiveSearch");
-            if(search==null||!Boolean.TRUE.equals(get(search,"isDone")))return null;
-            Object result=get(search,"getResult");if(result==null)return null;
-            WorldPoint start=point(get(result,"getStart"));
-            if(start==null||!Objects.equals(start,point(get(search,"getStart"))))return null;
-            Object destinations=get(get(search,"getTargets"),"points");if(!(destinations instanceof Collection<?>))return null;
-            Set<WorldPoint> targets=new LinkedHashSet<>();for(Object value:(Collection<?>)destinations)
-            {WorldPoint point=point(value);if(point==null||targets.size()>=64)return null;targets.add(point);}
-            boolean reached=Boolean.TRUE.equals(get(result,"isReached"));WorldPoint target=point(get(result,"getTarget"));
-            if(reached&&(target==null||!targets.contains(target)))return null;
-            Object path=get(result,"getPathSteps");if(!(path instanceof List<?>))return null;
-            List<String> transports=new ArrayList<>();boolean bank=false;
-            for(Object step:(List<?>)path)
-            {
-                bank=Boolean.TRUE.equals(get(step,"isBankVisited"));
-                Object transport=get(step,"getTransport");
-                if(transport!=null&&transports.size()<12)
-                {Object display=get(transport,"getDisplayInfo");if(display instanceof String)transports.add(GuideNavigation.safe((String)display));}
-            }
-            Object arrival=get(result,"getArrival");String status=arrival==null?"":GuideNavigation.safe(String.valueOf(get(arrival,"getStatus")));
-            return new ShortestPathRouteReading(start,target,targets,reached,bank,((Number)get(result,"getPathCost")).intValue(),
-                GuideNavigation.safe(String.valueOf(get(result,"getTerminationReason"))),status,transports);
+            if(!(row instanceof Map<?,?>))return null;
+            Object text=((Map<?,?>)row).get("displayInfo");if(!(text instanceof String))return null;
+            if(descriptions.size()<12){String clean=safe((String)text);if(!clean.isEmpty())descriptions.add(clean);}
         }
-        catch(ReflectiveOperationException|RuntimeException unsupported){return null;}
+        return new ShortestPathRouteReading(Boolean.TRUE.equals(data.get("reached")),descriptions);
     }
-    private static Object get(Object object,String method) throws ReflectiveOperationException
-    {return object.getClass().getMethod(method).invoke(object);}
-    private static WorldPoint point(Object value)
+    static boolean sameTarget(WorldPoint expected,Object actual)
     {
-        if(!(value instanceof Number)||((Number)value).intValue()==-1)return null;int packed=((Number)value).intValue();
-        WorldPoint point=new WorldPoint(packed&0x7fff,(packed>>>15)&0x7fff,(packed>>>30)&3);
-        return GuideNavigation.valid(point)?point:null;
+        if(expected==null)return false;
+        if(actual instanceof List<?>){List<?> points=(List<?>)actual;return points.size()==1&&expected.equals(points.get(0));}
+        return expected.equals(actual);
+    }
+    static boolean valid(WorldPoint point)
+    {return point!=null&&point.getX()>0&&point.getY()>0&&point.getX()<16384&&point.getY()<16384&&point.getPlane()>=0&&point.getPlane()<=3;}
+    static String safe(String value)
+    {
+        if(value==null)return "";
+        String text=value.substring(0,Math.min(value.length(),1200)).replaceAll("<[^>]*>","").replace('\n',' ').replace('\r',' ');
+        return text.substring(0,Math.min(text.length(),400));
     }
 }

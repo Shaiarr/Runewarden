@@ -52,7 +52,7 @@ class HubReleaseSourceTests(unittest.TestCase):
         self.root = pathlib.Path(self.temporary.name)
         self.production = self.root / 'src/main/java/com/runewarden'
         self.production.mkdir(parents=True)
-        for name in ('WaveExportTool', 'HudLayoutPositions'):
+        for name in ('HudLayoutPositions',):
             (self.production / (name + '.java')).write_text('class ' + name + ' {}')
 
     def scan(self, source):

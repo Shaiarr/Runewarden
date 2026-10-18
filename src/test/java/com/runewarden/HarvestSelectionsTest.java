@@ -18,6 +18,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.imageio.ImageIO;
 import net.runelite.api.Client;
@@ -133,6 +134,7 @@ public class HarvestSelectionsTest
         tool.start();
         AtomicReference<String> opened = new AtomicReference<>();
         tool.setOpenRunAction(opened::set);
+        tool.setRunGroupSupport(FarmRunsTool::supportsGroup);
         try
         {
             for (int i = 0; i < 10; i++) tool.onGameTick();
@@ -142,9 +144,15 @@ public class HarvestSelectionsTest
             AtomicReference<JPanel> dashboard = new AtomicReference<>();
             SwingUtilities.invokeAndWait(() -> { timers.set(tool.createPanel()); dashboard.set(tool.createDashboardPanel()); });
             List<JButton> before = components(dashboard.get(), JButton.class);
-            assertEquals(2, before.size());
-            assertTrue(before.stream().anyMatch(button -> button.getText().contains("Bird houses")));
-            assertTrue(before.stream().anyMatch(button -> button.getText().contains("Herb")));
+            assertEquals(1, before.size());
+            assertTrue(before.get(0).isEnabled());
+            SwingUtilities.invokeAndWait(()->tool.setRunGroupSupport(group->false));SwingUtilities.invokeAndWait(()->{});
+            assertFalse("Reminder-only groups must not offer an unrelated farm run",before.get(0).isEnabled());
+            SwingUtilities.invokeAndWait(before.get(0)::doClick);assertNull(opened.get());
+            SwingUtilities.invokeAndWait(()->tool.setRunGroupSupport(FarmRunsTool::supportsGroup));SwingUtilities.invokeAndWait(()->{});
+            assertTrue(before.get(0).isEnabled());
+            assertTrue(components(dashboard.get(), JLabel.class).stream().anyMatch(label -> label.getText().contains("Bird houses")));
+            assertTrue(components(dashboard.get(), JLabel.class).stream().anyMatch(label -> label.getText().contains("Herb")));
             HarvestClockOverlay overlay = new HarvestClockOverlay(tool, hudConfig);
             BufferedImage preview = new BufferedImage(528, 196, BufferedImage.TYPE_INT_ARGB);
             Graphics2D graphics = preview.createGraphics();

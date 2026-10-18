@@ -1,30 +1,41 @@
-# Runewarden
+# Runewarden HUD
 
 ![Runewarden](icon.png)
 
-Runewarden is a free, local OSRS activity companion for RuneLite. It connects account goals, preparation, guides, bank focus, travel and run tracking through a configurable HUD.
+A configurable black, white and gold HUD for Old School RuneScape on RuneLite, published by **Shai-arr**.
 
-Published by **Shai-arr**.
+**0.10.0 is an experimental HUD release on the `hud-core` branch.** It focuses on current activity information, timers and compact session tracking. It has not been approved for the Plugin Hub; package checks and headless tests do not establish live gameplay or performance.
 
-**0.9.6 is an experimental source release, targeting RuneLite 1.13.2.** This repository contains the plugin and its development checks. It does not include a custom client, launcher, Java runtime or bundled Quest Helper/Shortest Path plugins. Plugin Hub review and logged-in acceptance remain pending.
+## HUD features
 
-## What it does
+- Health, prayer, special attack and run energy, plus an optional generic tick teacher with CLICK, dot and audio modes.
+- A movable clock/world/worn-equipment dashboard with supported automatic base max hit, and an inventory preview while another game tab is open.
+- Actual action icons, progress, quantities and remaining time; supported buffs and cooldowns.
+- Supported gathering-node lifetime/respawn timers, outfit reminders and resource hover information.
+- Observed farming growth, compost and ready timers, harvest reminders and compact herb/tree/fruit-tree/hardwood/allotment/hop/bush/seaweed/birdhouse run stops with locations and quantities.
+- Varlamore thieving information, and session loot with item quantities, native value estimates, sources, duration, rates, pause and reset.
+- Custom routines and supported native daily-claim reminders.
 
-- Connects training plans, banked XP, loadouts and item sources to account goals and tracked activities.
-- Provides supported native minigame objectives and explicitly opened guides, with current-step updates and dismissal controls. Boss practice uses written lessons and manually selected marker packs.
-- Tracks farming runs, observed crop/compost states, harvest estimates, gathering nodes, action batches and skill progress.
-- Shares run loot, Slayer planning, collection/music/Combat Achievement progress, reward notifications and configurable HUD cards.
-- Includes a manual World Hopper with search, filters, favourites, native entry checks and optional measured latency HUD.
+HUD cards use shared style controls, **Alt-drag** movement and **Ctrl-drag** edge/corner resizing where supported. Scene-anchored cards retain their scene positions. Account observations and preferences remain character-bound; unknown states and estimates stay distinct from confirmed facts.
 
-Hold **Alt** to move supported HUD cards and **Ctrl** to resize them. Settings are saved per character under the **runewarden** configuration namespace. Earlier test settings are not imported automatically. Keep an exported backup if you want to attempt a manual migration; compatibility with older backups is not guaranteed. Unsupported observations and estimates remain distinct from confirmed account state.
+Farm routing uses **Shortest Path**, installed and enabled separately in a normal RuneLite setup. The test package can include the unchanged optional companion. The plugin displays routes and never performs walking, teleporting or other gameplay inputs.
 
-Navigation requires **Shortest Path**, installed and enabled separately. Runewarden supplies supported destinations and account-aware options; the external plugin computes the route. Quest status, requirements and ordering remain available here; use the separately installed **Quest Helper** for walkthroughs. This export does not include the former launcher-only Quest Helper handoff adapter.
+The broader prototype's quest/minigame/boss guides, Slayer and training planners, DPS and banked-XP calculators, world hopper, reward system and loot beams are outside this release.
 
-## Build and check
+## Run the test download
 
-Use **JDK 17**, **Python 3** and the included Gradle wrapper. Production bytecode targets **Java 11**. Dependency resolution requires access to RuneLite's Maven repository and Maven Central.
+Extract the full Windows x64 test ZIP into a new folder, open **Runewarden** and double-click **Start-Runewarden.bat**. Keep `lib`, argument files and the bundled `runtime` together. **Verify-Runewarden.bat** checks hashes and required package resources.
+
+The package uses unmodified native RuneLite and the pinned Eclipse Temurin 17 runtime. The separate launcher registers the test plugins through RuneLite's public development API; it does not enable or configure foreign plugins. Choose the wanted plugins in RuneLite's normal settings. Jagex accounts use RuneLite's [development-client account setup](https://github.com/runelite/runelite/wiki/Using-Jagex-Accounts).
+
+The portable ZIP requires an installed Java 17. The Windows runtime's matching source collection and complete legal notices accompany its distribution.
+
+## Build
+
+Use **JDK 17**, **Python 3** and the Gradle wrapper. Production bytecode targets **Java 11**.
 
 ```sh
+python -m pip install -r tools/requirements.txt
 python tools/validate_bundle.py
 python tools/validate_hub_release.py
 python -m unittest discover -s tools -p 'test_*.py'
@@ -32,16 +43,6 @@ python -m unittest discover -s tools -p 'test_*.py'
 python tools/check_hub_jar.py
 ```
 
-On Windows, use `gradlew.bat` instead of `./gradlew` and run Python checks as `python -X utf8 ...`. The production artifact is `build/libs/runewarden-0.9.6.jar`. Building a JAR does not install it through the live Plugin Hub; normal Hub publication requires review.
+The Hub artifact is `build/libs/runewarden-0.10.0.jar`. Launcher/client/runtime classes are excluded from it. On Windows use `gradlew.bat` and UTF-8 Python mode (`python -X utf8 ...`). See [CONTRIBUTING](CONTRIBUTING.md) for optional test-package builds and [the release procedure](docs/release-process.md) for review.
 
-## Status and evidence
-
-[Plugin-only verification](docs/plugin-only-evidence.json) records checks for this exported repository. Earlier readiness reports, benchmark records and `automated-evidence-0.9.5.json` describe the original development harness: its 1,620-test result must not be attributed to this smaller export. Historical client-package instructions do not describe artifacts included here.
-
-The retained [capability comparison](docs/hub-utility-audit.md) documents implemented, partial and missing specialist features. Runewarden does not replace every plugin. Long-session stability, live interoperability and Hub acceptance remain unverified; no comparative RAM/FPS advantage is established.
-
-## Contribute or publish
-
-Runewarden is community maintained. Contributions and forks are welcome, with no guaranteed maintenance schedule or support response time. Reproducible bug reports and independent testing are welcome. See [CONTRIBUTING](CONTRIBUTING.md), the [release procedure](docs/release-process.md) and [Nederlandse uploadhandleiding](docs/github-upload-nl.md).
-
-Original code is **BSD-2-Clause**; retain [LICENSE](LICENSE) and the bundled third-party source/data notices. Runewarden is an independent community project and is not endorsed by Jagex or RuneLite.
+Original code is **BSD-2-Clause**; preserve [LICENSE](LICENSE), [NOTICE](NOTICE), [data attributions](DATA-SOURCES.md) and separate third-party terms. A future HUD submission will need its own size/budget assessment and review; the earlier broad submission does not cover this branch. Contributions and independent testing are welcome, without a guaranteed maintenance schedule or support response time. Runewarden is not endorsed by Jagex or RuneLite. Earlier prototype evidence does not certify this reduced HUD release.

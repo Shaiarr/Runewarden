@@ -47,7 +47,7 @@ public class HudResizeControllerTest
             nativeMouse.processMouseReleased(up);assertTrue(up.isConsumed());
             MouseEvent click=f.event(MouseEvent.MOUSE_CLICKED,495,140,0,MouseEvent.BUTTON1);
             nativeMouse.processMouseClicked(click);assertTrue(click.isConsumed());
-            assertEquals(150,HudPreferences.decode(f.layout).get("guide").scale);
+            assertEquals(150,HudPreferences.decode(f.layout).get("dashboard").scale);
             MouseEvent normal=f.event(MouseEvent.MOUSE_PRESSED,200,200,0,MouseEvent.BUTTON1);
             nativeMouse.processMousePressed(normal);assertFalse(normal.isConsumed());
         }
@@ -70,7 +70,7 @@ public class HudResizeControllerTest
             assertTrue(nativeMouse.processMousePressed(f.event(MouseEvent.MOUSE_PRESSED,726,280,InputEvent.CTRL_DOWN_MASK,MouseEvent.BUTTON1)).isConsumed());
             assertTrue(nativeMouse.processMouseDragged(f.event(MouseEvent.MOUSE_DRAGGED,990,280,InputEvent.CTRL_DOWN_MASK|InputEvent.BUTTON1_DOWN_MASK,MouseEvent.NOBUTTON)).isConsumed());
             assertTrue(nativeMouse.processMouseReleased(f.event(MouseEvent.MOUSE_RELEASED,990,280,0,MouseEvent.BUTTON1)).isConsumed());
-            assertEquals(150,HudPreferences.decode(f.layout).get("guide").scale);
+            assertEquals(150,HudPreferences.decode(f.layout).get("dashboard").scale);
         }
         finally {f.controller.stop();}
     }
@@ -89,7 +89,7 @@ public class HudResizeControllerTest
                 f.controller.mousePressed(down);assertTrue(down.isConsumed());
                 MouseEvent move=f.event(MouseEvent.MOUSE_DRAGGED,495,140,InputEvent.CTRL_DOWN_MASK|InputEvent.BUTTON1_DOWN_MASK,MouseEvent.NOBUTTON);
                 f.controller.mouseDragged(move);assertTrue(move.isConsumed());
-                assertEquals(150,HudStyle.settings(f.config,"guide").scale);
+                assertEquals(150,HudStyle.settings(f.config,"dashboard").scale);
                 verify(f.manager,never()).setConfiguration(anyString(),anyString(),any());
                 BufferedImage during=new BufferedImage(600,400,BufferedImage.TYPE_INT_ARGB);
                 Dimension enlarged=f.paint(during);
@@ -97,7 +97,7 @@ public class HudResizeControllerTest
                 assertEquals(0,before.getRGB(300,35));assertNotEquals(0,during.getRGB(300,35));
                 MouseEvent up=f.event(MouseEvent.MOUSE_RELEASED,495,140,0,MouseEvent.BUTTON1);
                 f.controller.mouseReleased(up);assertTrue(up.isConsumed());
-                assertEquals(150,HudPreferences.decode(f.layout).get("guide").scale);
+                assertEquals(150,HudPreferences.decode(f.layout).get("dashboard").scale);
                 assertEquals(f.layout,f.profiles.get("A"));
                 assertEquals(enlarged,f.paint(new BufferedImage(600,400,BufferedImage.TYPE_INT_ARGB)));
                 MouseEvent click=f.event(MouseEvent.MOUSE_CLICKED,495,140,0,MouseEvent.BUTTON1);
@@ -137,9 +137,9 @@ public class HudResizeControllerTest
         Fixture f=new Fixture();
         try
         {
-            f.drag(363,140,2000,140);assertEquals(180,HudPreferences.decode(f.layout).get("guide").scale);
-            f.drag(101,101,2000,1000);assertEquals(60,HudPreferences.decode(f.layout).get("guide").scale);
-            assertEquals(159,HudStyle.dimension(HudStyle.settings(f.config,"guide"),264,100).width);
+            f.drag(363,140,2000,140);assertEquals(180,HudPreferences.decode(f.layout).get("dashboard").scale);
+            f.drag(101,101,2000,1000);assertEquals(60,HudPreferences.decode(f.layout).get("dashboard").scale);
+            assertEquals(159,HudStyle.dimension(HudStyle.settings(f.config,"dashboard"),264,100).width);
         }
         finally { f.controller.stop(); }
     }
@@ -166,9 +166,9 @@ public class HudResizeControllerTest
         {
             assertTrue(f.press(363,140).isConsumed());
             f.controller.mouseDragged(f.event(MouseEvent.MOUSE_DRAGGED,495,140,InputEvent.CTRL_DOWN_MASK,MouseEvent.NOBUTTON));
-            assertEquals(150,HudStyle.settings(f.config,"guide").scale);
+            assertEquals(150,HudStyle.settings(f.config,"dashboard").scale);
             f.profile="B";f.controller.validateProfile();
-            assertEquals(100,HudStyle.settings(f.config,"guide").scale);
+            assertEquals(100,HudStyle.settings(f.config,"dashboard").scale);
             MouseEvent up=f.event(MouseEvent.MOUSE_RELEASED,495,140,0,MouseEvent.BUTTON1);
             f.controller.mouseReleased(up);assertTrue(up.isConsumed());
             verify(f.manager,never()).setConfiguration(anyString(),anyString(),any());
@@ -188,7 +188,7 @@ public class HudResizeControllerTest
             f.controller.mouseDragged(move);assertTrue(move.isConsumed());
             MouseEvent up=f.event(MouseEvent.MOUSE_RELEASED,495,140,0,MouseEvent.BUTTON1);
             f.controller.mouseReleased(up);assertTrue(up.isConsumed());
-            assertEquals(100,HudStyle.settings(f.config,"guide").scale);
+            assertEquals(100,HudStyle.settings(f.config,"dashboard").scale);
             verify(f.manager,never()).setConfiguration(anyString(),anyString(),any());
         }
         finally { f.controller.stop(); }
@@ -213,6 +213,24 @@ public class HudResizeControllerTest
         finally { f.controller.stop(); }
     }
 
+    private static final class TestCard extends Overlay
+    {
+        private final RunewardenConfig config;
+        TestCard(RunewardenConfig config) { this.config=config; setMovable(true); }
+        @Override public Dimension render(Graphics2D graphics)
+        {
+            HudPreferences.Style style=HudStyle.settings(config,"dashboard");
+            Graphics2D canvas=HudStyle.canvas(graphics,style);
+            try
+            {
+                HudStyle.panel(canvas,264,100,style);
+                canvas.setColor(style.text); canvas.drawString("Resize fixture",12,24);
+                return HudStyle.dimension(style,264,100);
+            }
+            finally { canvas.dispose(); }
+        }
+    }
+
     private static final class Fixture
     {
         final Client client=mock(Client.class);
@@ -230,7 +248,7 @@ public class HudResizeControllerTest
             @Override public String hudWidgetSettings(){return layout;}
             @Override public boolean hudLocked(){return locked;}
         };
-        final GuideCoachOverlay card=new GuideCoachOverlay(client,config);
+        final TestCard card=new TestCard(config);
         final HudResizeController controller;
         Fixture() {this(mock(MouseManager.class));}
         Fixture(MouseManager mouse)
@@ -242,8 +260,8 @@ public class HudResizeControllerTest
             when(manager.getRSProfileKey()).thenAnswer(call->profile);
             doAnswer(call->{layout=call.getArgument(2);return null;}).when(manager).setConfiguration(eq(RunewardenConfig.GROUP),eq("hudWidgetSettings"),any());
             doAnswer(call->{profiles.put(profile,call.getArgument(2));return null;}).when(manager).setRSProfileConfiguration(eq(RunewardenConfig.GROUP),eq("hudCharacterLayout"),any());
-            card.select("Activity","Current task","Prepare supplies",1,3);card.getBounds().setBounds(100,100,264,100);
-            Map<String,Overlay> widgets=new LinkedHashMap<>();widgets.put("guide",card);controller.start(widgets);
+            card.getBounds().setBounds(100,100,264,100);
+            Map<String,Overlay> widgets=new LinkedHashMap<>();widgets.put("dashboard",card);controller.start(widgets);
         }
         MouseEvent event(int id,int x,int y,int modifiers,int button)
         {return new MouseEvent(canvas,id,1,modifiers,x,y,1,false,button);}

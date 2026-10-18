@@ -1,0 +1,76 @@
+{
+  "format": "runewarden-local-token-budget",
+  "officialHubCount": false,
+  "scope": "Production Java only, comments excluded; strings retained. Resources, tests and development launcher excluded.",
+  "tokenizerVersion": "0.14.0",
+  "files": 64,
+  "sourceBytes": 578019,
+  "tokens": {
+    "cl100k_base": 129092,
+    "o200k_base": 131681
+  },
+  "largestFiles": [
+    {
+      "file": "src/main/java/com/runewarden/FarmPatchPlanner.java",
+      "bytes": 37825,
+      "cl100k_base": 8631,
+      "o200k_base": 8883
+    },
+    {
+      "file": "src/main/java/com/runewarden/RunLootTool.java",
+      "bytes": 32267,
+      "cl100k_base": 6759,
+      "o200k_base": 6854
+    },
+    {
+      "file": "src/main/java/com/runewarden/VarlamoreThievingCoach.java",
+      "bytes": 22590,
+      "cl100k_base": 5339,
+      "o200k_base": 5477
+    },
+    {
+      "file": "src/main/java/com/runewarden/HudSettingsTool.java",
+      "bytes": 25826,
+      "cl100k_base": 5208,
+      "o200k_base": 5363
+    },
+    {
+      "file": "src/main/java/com/runewarden/ActionProgressTool.java",
+      "bytes": 22709,
+      "cl100k_base": 4857,
+      "o200k_base": 4998
+    },
+    {
+      "file": "src/main/java/com/runewarden/HarvestClockTool.java",
+      "bytes": 21982,
+      "cl100k_base": 4549,
+      "o200k_base": 4620
+    },
+    {
+      "file": "src/main/java/com/runewarden/NodeTimerRules.java",
+      "bytes": 15705,
+      "cl100k_base": 4479,
+      "o200k_base": 4550
+    },
+    {
+      "file": "src/main/java/com/runewarden/CurrentMaxHit.java",
+      "bytes": 18879,
+      "cl100k_base": 4461,
+      "o200k_base": 4506
+    },
+    {
+      "file": "src/main/java/com/runewarden/SkillingCoach.java",
+      "bytes": 17559,
+      "cl100k_base": 3966,
+      "o200k_base": 4079
+    },
+    {
+      "file": "src/main/java/com/runewarden/FieldCoach.java",
+      "bytes": 16337,
+      "cl100k_base": 3747,
+      "o200k_base": 3785
+    }
+  ],
+  "localBudget": 160000,
+  "withinLocalBudget": true
+}

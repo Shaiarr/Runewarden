@@ -1,24 +1,27 @@
-Runewarden
+Runewarden HUD
 Publisher: Shai-arr
 
-Original Runewarden code and original guide/checklist arrangements are licensed
-under the BSD 2-Clause License (BSD-2-Clause).
-The complete license is in LICENSE and, in the plugin resources, in
+Original Runewarden code is licensed under the BSD 2-Clause License
+(BSD-2-Clause). The complete license is in LICENSE and, in the plugin resources,
 com/runewarden/licenses/runewarden-BSD-2-Clause.txt.
 
 This license does not replace the terms of third-party code, data or assets.
-Retain the copyright, license and source notices in individual source files,
-GUIDE-DATA.md and com/runewarden/licenses/. In the source repository those
-resource notices are under src/main/resources/.
+Retain copyright, license and source notices in individual source files,
+DATA-SOURCES.md and com/runewarden/licenses/. Source resource notices are under
+src/main/resources/.
 
-BSD- and MIT-licensed source/data keep their original notices. OSRS Wiki
-reference datasets retain their Creative Commons Attribution-NonCommercial-
-ShareAlike 3.0 terms. Data extracted from the Wiki DPS reference project retain
-its separately documented source provenance and notices; no upstream calculator
-runtime is bundled. The retained upstream GPL license document records that
-reference project's license and does not relicense original Runewarden code.
-The six original synthesized reward sounds remain CC0 1.0 Universal.
-The project code license does not relicense any of these materials.
+Retained RuneLite and Shortest Path source/data keep their full BSD notices.
+Varlamore reference material keeps its MIT and Wiki notices. Wiki-derived
+reference facts retain their Creative Commons Attribution-NonCommercial-
+ShareAlike 3.0 attribution and terms, separately from the original code license.
+The 42 numeric spell facts record their Wiki DPS reference source and its full
+upstream GPL-3.0 license text. That reference provenance does not relicense the
+original HUD code; no upstream calculator implementation, equipment/monster
+catalogue, guide catalogue or reward audio is bundled in this HUD release.
+See the scoped source notices for the exact retained material and changes.
+
+The optional local test distribution also retains its native RuneLite,
+Shortest Path and Java-runtime notices. They are not part of the Hub plugin JAR.
 
 Runewarden is a community source release. Forks and contributions are welcome.
 No maintenance schedule, support response time or future update is guaranteed.

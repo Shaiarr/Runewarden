@@ -23,11 +23,11 @@ public class HudPositionLifecycleTest
     @Test public void lockedCardsKeepTheirNativeLocationsAcrossPluginRestart()
     {
         Fixture f = new Fixture();
-        f.tool.prepareForOverlayRegistration(); f.registerCards(); f.tool.start();
+        f.prepare(); f.registerCards(); f.tool.start();
         f.putLocations("111:222"); f.tool.profileTick(f.profile[0]);
         String saved = f.saved.get(f.profile[0]);
         f.tool.stop();
-        f.tool.prepareForOverlayRegistration();
+        f.prepare();
         for (Overlay overlay : f.owned.values()) assertTrue(overlay.isMovable());
         f.registerCards(); f.tool.start(); f.tool.profileTick(f.profile[0]);
         assertEquals(saved, f.saved.get(f.profile[0]));
@@ -42,14 +42,14 @@ public class HudPositionLifecycleTest
     @Test public void restartingSameCharacterAppliesRestoredPositionBackup()
     {
         Fixture f = new Fixture();
-        f.tool.prepareForOverlayRegistration(); f.tool.start();
+        f.prepare(); f.tool.start();
         f.putLocations("111:222"); f.tool.profileTick(f.profile[0]); f.tool.stop();
         f.putLocations("333:444");
         String restored = HudLayoutPositions.capture(f.manager, f.owned);
         f.saved.put(f.profile[0], restored);
         // Backup restore changes character settings, not RuneLite's global positions.
         f.putLocations("111:222");
-        f.tool.prepareForOverlayRegistration(); f.registerCards(); f.tool.start();
+        f.prepare(); f.registerCards(); f.tool.start();
         f.tool.profileTick(f.profile[0]);
         assertEquals(restored, f.saved.get(f.profile[0]));
         for (Overlay overlay : f.owned.values())
@@ -62,7 +62,7 @@ public class HudPositionLifecycleTest
         Fixture f = new Fixture(); f.tool.start(); f.putLocations("111:222");
         f.tool.profileTick(f.profile[0]); String first = f.saved.get(f.profile[0]); f.tool.stop();
         f.profile[0] = "rsprofileB";
-        f.tool.prepareForOverlayRegistration(); f.tool.start(); f.tool.profileTick(f.profile[0]);
+        f.prepare(); f.tool.start(); f.tool.profileTick(f.profile[0]);
         assertEquals("RWP1|", f.saved.get("rsprofileB"));
         assertEquals(first, f.saved.get("rsprofileA"));
         for (Overlay overlay : f.owned.values())
@@ -103,29 +103,16 @@ public class HudPositionLifecycleTest
         final Client client = mock(Client.class);
         final ItemManager items = mock(ItemManager.class);
         final RunewardenResourceOverlay resources = new RunewardenResourceOverlay(client, config, mock(SpriteManager.class));
-        final GuideCoachOverlay guide = new GuideCoachOverlay(client, config);
-        final SkillingCoachOverlay skilling = new SkillingCoachOverlay(client, config,
-            new SkillingCoach(client, items, manager, config), items);
         final CommandDashboardTool dashboard = new CommandDashboardTool(client, items, overlays, config);
         final HarvestClockTool harvest = new HarvestClockTool(client, manager, mock(PluginManager.class), overlays, config);
-        final WaveEntryOverlay entry = new WaveEntryOverlay(client, new WaveEntryCoach(client,
-            new GuideCatalog(new com.google.gson.Gson()), new GuideMarkerOverlay(client), config,
-            Runnable::run, System::nanoTime), config);
-        final InventoryPreviewOverlay inventory = new InventoryPreviewOverlay(client, config, items);
-        final EffectsCard effects = new EffectsCard();
-        final TrainingCard training = new TrainingCard();
         final Map<String, Overlay> owned = new LinkedHashMap<>();
-        final HudSettingsTool tool = new HudSettingsTool(manager, config, overlays, resources, guide, skilling,
-            dashboard, harvest, entry, inventory);
+        final HudSettingsTool tool = new HudSettingsTool(manager, config, overlays);
 
         Fixture()
         {
-            owned.put("resources", resources); owned.put("dashboard", dashboard.overlay()); owned.put("guide", guide);
-            owned.put("harvest", harvest.overlay()); owned.put("outfit", skilling); owned.put("entrance", entry);
-            owned.put("inventory", inventory); owned.put("field-effects", effects); owned.put("training", training);
-            effects.lock(false); training.lock(false);
-            tool.registerWidget("field-effects", effects, effects::lock);
-            tool.registerWidget("training", training, training::lock);
+            for(String key:HudPreferences.WIDGETS)owned.put(key,new EffectsCard());
+            owned.put("resources",resources); owned.put("dashboard",dashboard.overlay()); owned.put("harvest",harvest.overlay());
+            registerWidgets();
             when(manager.getRSProfileKey()).thenAnswer(call -> profile[0]);
             when(manager.getConfiguration(eq("runelite"), anyString())).thenAnswer(call -> global.get(call.getArgument(1)));
             doAnswer(call -> { global.put(call.getArgument(1), call.getArgument(2).toString()); return null; })
@@ -170,6 +157,19 @@ public class HudPositionLifecycleTest
                 return true;
             });
         }
+        void registerWidgets()
+        {
+            owned.forEach((key,card)->tool.registerWidget(key,card,locked->lock(card,locked)));
+        }
+        void lock(Overlay card,boolean locked)
+        {
+            if(card instanceof EffectsCard)((EffectsCard)card).lock(locked);
+            else if(card==resources)resources.setHudLocked(locked);
+            else if(card==dashboard.overlay())dashboard.setHudLocked(locked);
+            else if(card==harvest.overlay())harvest.setHudLocked(locked);
+            else throw new AssertionError("Unregistered card type");
+        }
+        void prepare() { registerWidgets(); tool.prepareForOverlayRegistration(); }
         void registerCards() { owned.values().forEach(overlays::add); }
         void putLocations(String location)
         {

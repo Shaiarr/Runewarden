@@ -5,10 +5,10 @@ import com.google.gson.Gson;
 import java.awt.Component;
 import java.awt.Container;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -17,201 +17,119 @@ import javax.swing.SwingUtilities;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.Player;
+import net.runelite.api.Skill;
+import net.runelite.api.coords.WorldPoint;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
-import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.plugins.PluginManager;
-import net.runelite.client.plugins.timetracking.SummaryState;
-import net.runelite.client.ui.overlay.OverlayManager;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class FarmRunsToolTest
 {
-    @Test public void everyRunOpensTheRealGuideUsedByTheBankFilter() throws Exception
+    @Test public void pickerUsesStandaloneRunTypesAndNativeTimerGroupsOpenCorrespondingRuns() throws Exception
     {
-        Fixture fixture = new Fixture();
-        fixture.tool.start();
-        fixture.tool.onGameTick();
-        SwingUtilities.invokeAndWait(() -> {});
+        Fixture f = new Fixture(); f.start();
         try
         {
-            SwingUtilities.invokeAndWait(() -> {
-                JPanel panel = fixture.tool.createPanel();
-                JComboBox<?> picker = picker(panel);
-                assertEquals(15, picker.getItemCount());
-                assertNull(fixture.guides.selectedGuide());
-                for (FarmRunsTool.Run run : FarmRunsTool.RUNS)
-                {
-                    assertNotNull(fixture.catalog.entry(run.guideId));
-                    picker.setSelectedItem(run);
-                    assertEquals(run.guideId, fixture.guides.selectedGuide().id);
-                    assertNotNull(fixture.guides.currentStep());
-                    assertTrue(descendants(panel).stream().anyMatch(item -> item instanceof GuideText
-                        && fixture.guides.currentStep().text.equals(((GuideText) item).getText())));
-                }
+            SwingUtilities.invokeAndWait(() ->
+            {
+                assertEquals(FarmPatchPlanner.runTypes().size(), f.picker().getItemCount());
+                assertFalse(f.tool.openGroup("special"));assertFalse(f.tool.openGroup("grape"));assertFalse(f.tool.openGroup("contract"));
+                assertEquals("herb",f.planner.currentRun().runId);
+                f.tool.openGroup("fruit-tree"); f.tool.refresh(); assertEquals("fruit", f.planner.currentRun().runId);
+                f.tool.openGroup("bird-house"); f.tool.refresh(); assertEquals("birdhouse", f.planner.currentRun().runId);
+                f.tool.openGroup("flower"); f.tool.refresh(); assertEquals("allotment", f.planner.currentRun().runId);
             });
         }
-        finally { fixture.tool.stop(); SwingUtilities.invokeAndWait(() -> {}); }
+        finally { f.close(); }
     }
-
-    @Test public void runChecklistNavigationPreservesTheSelectedGuide() throws Exception
+    @Test public void refreshKeepsPickerAndStopControlsWhileRunActionsStayExplicit() throws Exception
     {
-        Fixture fixture = new Fixture();
-        AtomicInteger opened = new AtomicInteger();
-        fixture.tool.setOpenGuideAction(opened::incrementAndGet);
-        fixture.tool.start(); fixture.tool.onGameTick();
-        SwingUtilities.invokeAndWait(() -> {});
+        Fixture f = new Fixture(); f.start();
         try
         {
-            SwingUtilities.invokeAndWait(() -> {
-                JPanel panel = fixture.tool.createPanel();
-                picker(panel).setSelectedItem(FarmRunsTool.find("training:herb-runs"));
-                GuideCatalog.Entry before = fixture.guides.selectedGuide();
-                JButton open = (JButton) descendants(panel).stream().filter(item -> item instanceof JButton
-                    && "Open run checklist".equals(((JButton) item).getText())).findFirst().get();
-                open.doClick();
-                assertSame(before, fixture.guides.selectedGuide());
-                assertEquals(1, opened.get());
+            SwingUtilities.invokeAndWait(() ->
+            {
+                JComboBox<?> crops = named(f.panel, "runewarden.farm-runs.crop", JComboBox.class);
+                JCheckBox include = controls(f.panel, JCheckBox.class).stream().filter(box -> !"Done".equals(box.getText())).findFirst().get();
+                f.tool.refresh();
+                assertSame(crops, named(f.panel, "runewarden.farm-runs.crop", JComboBox.class));
+                assertSame(include, controls(f.panel, JCheckBox.class).stream().filter(box -> !"Done".equals(box.getText())).findFirst().get());
+                assertFalse(f.planner.currentRun().active);
+                button(f.panel, "Start run").doClick(); f.tool.refresh();
+                assertTrue(f.planner.currentRun().active); assertFalse(crops.isEnabled()); assertFalse(f.picker().isEnabled());
+                button(f.panel, "End run").doClick(); f.tool.refresh();
+                assertFalse(f.planner.currentRun().active); assertTrue(crops.isEnabled());
             });
         }
-        finally { fixture.tool.stop(); SwingUtilities.invokeAndWait(() -> {}); }
+        finally { f.close(); }
     }
-
-    @Test public void nativeTimerScopeMatchesPinnedPatchImplementations()
+    @Test public void oldLocationCheckboxCannotEditNextAccountsPlan() throws Exception
     {
-        assertEquals(Collections.singletonList("tree"), FarmRunsTool.find("training:hardwood-runs").groups);
-        assertEquals(Collections.singletonList("tree"), FarmRunsTool.find("training:redwood-farming").groups);
-        assertEquals(Collections.singletonList("fruit-tree"), FarmRunsTool.find("training:calquat-runs").groups);
-        assertEquals(Collections.singletonList("fruit-tree"), FarmRunsTool.find("training:celastrus-runs").groups);
-        assertEquals(Collections.singletonList("fruit-tree"), FarmRunsTool.find("training:crystal-tree-runs").groups);
-        assertEquals(Collections.singletonList("special"), FarmRunsTool.find("training:giant-seaweed").groups);
-        assertTrue(FarmRunsTool.find("training:farming-contracts").groups.isEmpty());
-        assertTrue(FarmRunsTool.find("training:tithe-farm").groups.isEmpty());
-        assertNull("A generic special-patch timer cannot identify which crop is due", FarmRunsTool.primaryRun("special"));
-    }
-
-    @Test public void runStatusNeverClaimsAnIndividualCropIsReadyFromAGroupedTimer()
-    {
-        HarvestClockTool.Harvest herbs = new HarvestClockTool.Harvest("herb", "Herb", SummaryState.COMPLETED, 0, true);
-        HarvestClockTool.Harvest trees = new HarvestClockTool.Harvest("tree", "Tree", SummaryState.IN_PROGRESS, 5000, true);
-        HarvestClockTool.Harvest special = new HarvestClockTool.Harvest("special", "Special", SummaryState.UNKNOWN, -1, true);
-        HarvestClockTool.Reading reading = new HarvestClockTool.Reading(true, false, "", Arrays.asList(herbs, trees, special));
-        assertEquals("Herb · Due to check · estimated", FarmRunsTool.status(FarmRunsTool.find("training:herb-runs"), reading, 1000));
-        assertEquals("Tree · In 1h 6m · estimated", FarmRunsTool.status(FarmRunsTool.find("training:hardwood-runs"), reading, 1000));
-        assertEquals("Special · Not observed", FarmRunsTool.status(FarmRunsTool.find("training:giant-seaweed"), reading, 1000));
-        assertEquals("No growth timer", FarmRunsTool.status(FarmRunsTool.find("training:tithe-farm"), reading, 1000));
-        assertEquals("Log in to track harvests.", FarmRunsTool.status(FarmRunsTool.find("training:herb-runs"),
-            HarvestClockTool.Reading.empty("Log in to track harvests."), 1000));
-    }
-
-    @Test public void trackRunTogglesOnlyItsOwnNativeGroups() throws Exception
-    {
-        Fixture fixture = new Fixture();
-        fixture.harvests.start();
-        fixture.tool.start();
+        Fixture f = new Fixture(); f.start();
         try
         {
-            fixture.harvests.onGameTick();
-            fixture.tool.onGameTick();
-            SwingUtilities.invokeAndWait(() -> {
-                JPanel panel = fixture.tool.createPanel();
-                picker(panel).setSelectedItem(FarmRunsTool.find("training:allotment-runs"));
-                JCheckBox track = (JCheckBox) descendants(panel).stream().filter(item -> item instanceof JCheckBox).findFirst().get();
-                assertTrue(track.isEnabled());
-                track.doClick();
-                assertTrue(fixture.harvests.isGroupSelected("allotment"));
-                assertTrue(fixture.harvests.isGroupSelected("flower"));
-                assertFalse(fixture.harvests.isGroupSelected("tree"));
-                verify(fixture.config).setConfiguration("runewarden", "test-profile", HarvestSelections.KEY,
-                    "[\"allotment\",\"flower\"]");
+            SwingUtilities.invokeAndWait(() ->
+            {
+                JCheckBox old = controls(f.panel, JCheckBox.class).stream().filter(box -> !"Done".equals(box.getText())).findFirst().get();
+                f.profile.set("account-b"); for (int i = 0; i < 6; i++) f.tool.onGameTick();
+                FarmPatchPlanner.RunReading before = f.planner.currentRun();
+                long selected = before.stops.stream().filter(stop -> stop.selected).count();
+                old.doClick();
+                assertEquals(selected, f.planner.currentRun().stops.stream().filter(stop -> stop.selected).count());
+                assertEquals("account-b", f.planner.currentRun().profile);
             });
         }
-        finally { fixture.tool.stop(); fixture.harvests.stop(); SwingUtilities.invokeAndWait(() -> {}); }
+        finally { f.close(); }
     }
-
-    @Test public void restoringAPerCharacterPickerDoesNotReplaceAnActiveBossGuide() throws Exception
+    private static JButton button(Container root, String text)
+    { return controls(root, JButton.class).stream().filter(button -> text.equals(button.getText())).findFirst().get(); }
+    private static <T extends Component> T named(Container root, String name, Class<T> type)
+    { return controls(root, type).stream().filter(component -> name.equals(component.getName())).findFirst().get(); }
+    private static <T> List<T> controls(Container root, Class<T> type)
     {
-        Fixture fixture = new Fixture();
-        when(fixture.config.getConfiguration("runewarden", "test-profile", "farmRun")).thenReturn("training:herb-runs");
-        SwingUtilities.invokeAndWait(() -> {
-            fixture.tool.createPanel();
-            fixture.guides.openGuide("boss:hueycoatl");
-        });
-        fixture.tool.start();
-        try
+        List<T> found = new ArrayList<>();
+        for (Component component : root.getComponents())
         {
-            fixture.tool.onGameTick();
-            SwingUtilities.invokeAndWait(() -> {
-                assertEquals("training:herb-runs", fixture.tool.selectedRun().guideId);
-                assertEquals("boss:hueycoatl", fixture.guides.selectedGuide().id);
-            });
-            fixture.tool.clear();
-            SwingUtilities.invokeAndWait(() -> assertNull(fixture.tool.selectedRun()));
+            if (type.isInstance(component)) found.add(type.cast(component));
+            if (component instanceof Container) found.addAll(controls((Container) component, type));
         }
-        finally { fixture.tool.stop(); SwingUtilities.invokeAndWait(() -> {}); }
+        return found;
     }
-
-    @Test public void staleCharacterPickerCannotActivateItsGuideOnAnotherProfile() throws Exception
-    {
-        Fixture fixture = new Fixture();
-        fixture.tool.start(); fixture.tool.onGameTick();
-        SwingUtilities.invokeAndWait(() -> {});
-        try
-        {
-            SwingUtilities.invokeAndWait(() -> {
-                JPanel panel = fixture.tool.createPanel();
-                fixture.guides.openGuide("boss:hueycoatl");
-                when(fixture.config.getRSProfileKey()).thenReturn("different-profile");
-                picker(panel).setSelectedItem(FarmRunsTool.find("training:herb-runs"));
-                assertEquals("boss:hueycoatl", fixture.guides.selectedGuide().id);
-                JButton start = (JButton) descendants(panel).stream().filter(item -> item instanceof JButton
-                    && "Start run".equals(((JButton) item).getText())).findFirst().get();
-                assertFalse(start.isEnabled());
-                start.doClick();
-                assertEquals("boss:hueycoatl", fixture.guides.selectedGuide().id);
-            });
-            verify(fixture.config, never()).setConfiguration(eq("runewarden"), anyString(), eq("farmRun"), anyString());
-        }
-        finally { fixture.tool.stop(); SwingUtilities.invokeAndWait(() -> {}); }
-    }
-
-    private static JComboBox<?> picker(Container panel)
-    {
-        return (JComboBox<?>) descendants(panel).stream().filter(item -> "runewarden.farm-runs.selector".equals(item.getName())).findFirst().get();
-    }
-
-    private static List<Component> descendants(Container root)
-    {
-        List<Component> result = new ArrayList<>();
-        for (Component child : root.getComponents())
-        {
-            result.add(child);
-            if (child instanceof Container) result.addAll(descendants((Container) child));
-        }
-        return result;
-    }
-
     private static final class Fixture
     {
+        final AtomicReference<String> profile = new AtomicReference<>("account-a");
         final Client client = mock(Client.class);
+        final ClientThread thread = mock(ClientThread.class);
         final ConfigManager config = mock(ConfigManager.class);
-        final GuideCatalog catalog = new GuideCatalog(new Gson());
-        final HarvestClockTool harvests;
-        final RunewardenGuides guides;
+        final Map<String, String> values = new HashMap<>();
+        final FarmPatchPlanner planner;
         final FarmRunsTool tool;
+        JPanel panel;
         Fixture()
         {
-            when(client.getGameState()).thenReturn(GameState.LOGGED_IN);
-            when(client.getLocalPlayer()).thenReturn(mock(Player.class));
-            when(config.getRSProfileKey()).thenReturn("test-profile");
-            harvests = new HarvestClockTool(client, config, mock(PluginManager.class), mock(OverlayManager.class), mock(RunewardenConfig.class));
-            ClientThread thread = mock(ClientThread.class);
-            guides = new RunewardenGuides(client, thread, config, catalog,
-                new GuideNavigation(client, mock(EventBus.class), mock(PluginManager.class)),
-                new GuideMarkerOverlay(client), new GuideCoachOverlay(client), mock(OverlayManager.class));
-            tool = new FarmRunsTool(client, thread, config, catalog, guides, harvests, null);
+            Player player = mock(Player.class);
+            when(client.getGameState()).thenReturn(GameState.LOGGED_IN); when(client.getLocalPlayer()).thenReturn(player);
+            when(player.getWorldLocation()).thenReturn(new WorldPoint(2809, 3463, 0));
+            when(client.getRealSkillLevel(Skill.FARMING)).thenReturn(99);
+            when(client.getBoostedSkillLevel(Skill.FARMING)).thenReturn(99);
+            when(client.getBoostedSkillLevel(Skill.HUNTER)).thenReturn(99);
+            when(config.getRSProfileKey()).thenAnswer(call -> profile.get());
+            when(config.getConfiguration(anyString(), anyString(), anyString()))
+                .thenAnswer(call -> values.get(call.getArgument(1) + ":" + call.getArgument(2)));
+            doAnswer(call -> { values.put(call.getArgument(1) + ":" + call.getArgument(2), call.getArgument(3).toString()); return null; })
+                .when(config).setConfiguration(anyString(), anyString(), anyString(), anyString());
+            doAnswer(call -> { ((Runnable) call.getArgument(0)).run(); return null; }).when(thread).invokeLater(any(Runnable.class));
+            planner = new FarmPatchPlanner(client, thread, config, new Gson(), new FarmPatchCatalog(new Gson()));
+            tool = new FarmRunsTool(planner, null);
         }
+        void start() throws Exception
+        {
+            tool.start(); for (int i = 0; i < 6; i++) tool.onGameTick();
+            SwingUtilities.invokeAndWait(() -> panel = tool.createPanel());
+        }
+        JComboBox<?> picker() { return named(panel, "runewarden.farm-runs.selector", JComboBox.class); }
+        void close() throws Exception { tool.stop(); SwingUtilities.invokeAndWait(() -> {}); }
     }
 }

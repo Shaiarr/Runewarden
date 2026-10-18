@@ -98,21 +98,24 @@ public class CommandDashboardToolTest
         when(client.getGameState()).thenReturn(GameState.LOGGED_IN);
         when(client.getLocalPlayer()).thenReturn(mock(Player.class));
         when(client.getWorldType()).thenReturn(EnumSet.of(WorldType.MEMBERS));
-        CommandDashboardTool tool = new CommandDashboardTool(client, mock(ItemManager.class), mock(OverlayManager.class), new RunewardenConfig() {});
+        ItemManager items=mock(ItemManager.class);
+        observeMeleeEquipment(client,items);
+        CommandDashboardTool tool = new CommandDashboardTool(client, items, mock(OverlayManager.class), new RunewardenConfig() {});
         tool.start();
         try
         {
             tool.onGameTick();
             assertTrue(tool.reading().loggedIn);
-            tool.setMaxHit(new CommandDashboardTool.MaxHitReading(42, "Normal melee · base"));
-            assertEquals(Integer.valueOf(42), tool.reading().maxHit.value);
+            assertEquals(Integer.valueOf(18), tool.reading().maxHit.value);
+            when(client.getBoostedSkillLevel(net.runelite.api.Skill.STRENGTH)).thenReturn(118);
+            when(client.isPrayerActive(net.runelite.api.Prayer.PIETY)).thenReturn(true);
+            tool.onGameTick();
+            assertEquals(Integer.valueOf(26), tool.reading().maxHit.value);
             when(client.getGameState()).thenReturn(GameState.LOGIN_SCREEN);
             tool.onGameTick();
             assertFalse(tool.reading().loggedIn);
             assertEquals(0, tool.reading().world);
             assertTrue(tool.reading().equipment.isEmpty());
-            assertNull(tool.reading().maxHit.value);
-            tool.setMaxHit(new CommandDashboardTool.MaxHitReading(99, "Late previous-account calculation"));
             assertNull(tool.reading().maxHit.value);
         }
         finally { tool.stop(); }
@@ -141,7 +144,6 @@ public class CommandDashboardToolTest
         {
             assertNull("No empty or stale equipment block while logged out", overlay.render(graphics));
             tool.onGameTick();
-            tool.setMaxHit(new CommandDashboardTool.MaxHitReading(42, "Normal melee · base"));
             assertEquals(new Dimension(184, 304), overlay.render(graphics));
             assertTrue(overlay.isMovable());
             assertFalse(overlay.isResizable());
@@ -231,6 +233,33 @@ public class CommandDashboardToolTest
         assertEquals("18:18:14", CommandDashboardOverlay.clockText(Instant.parse("2026-12-16T17:18:14Z"), false, ZoneId.of("Europe/Brussels")));
     }
 
+    private static void observeMeleeEquipment(Client client,ItemManager items)
+    {
+        ItemContainer worn=mock(ItemContainer.class);
+        Item[] equipment=new Item[14];
+        equipment[EquipmentInventorySlot.WEAPON.getSlotIdx()]=new Item(6739,1);
+        when(client.getItemContainer(InventoryID.WORN)).thenReturn(worn);
+        when(worn.getItems()).thenReturn(equipment);
+        when(worn.getItem(EquipmentInventorySlot.WEAPON.getSlotIdx())).thenReturn(equipment[3]);
+        ItemComposition axe=mock(ItemComposition.class);
+        when(axe.getName()).thenReturn("Dragon axe");
+        when(items.getItemComposition(6739)).thenReturn(axe);
+        when(items.getItemStats(6739)).thenReturn(new net.runelite.client.game.ItemStats(true,0,0,
+            net.runelite.client.game.ItemEquipmentStats.builder().str(42).build()));
+        when(client.getRealSkillLevel(net.runelite.api.Skill.STRENGTH)).thenReturn(99);
+        when(client.getBoostedSkillLevel(net.runelite.api.Skill.STRENGTH)).thenReturn(99);
+        when(client.getVarpValue(net.runelite.api.gameval.VarPlayerID.COM_MODE)).thenReturn(1);
+        net.runelite.api.EnumComposition categories=mock(net.runelite.api.EnumComposition.class);
+        net.runelite.api.EnumComposition styles=mock(net.runelite.api.EnumComposition.class);
+        net.runelite.api.StructComposition stance=mock(net.runelite.api.StructComposition.class);
+        when(client.getEnum(net.runelite.api.EnumID.WEAPON_STYLES)).thenReturn(categories);
+        when(categories.getIntValue(anyInt())).thenReturn(1000);
+        when(client.getEnum(1000)).thenReturn(styles);
+        when(styles.getIntVals()).thenReturn(new int[]{2000,2001});
+        when(client.getStructComposition(2001)).thenReturn(stance);
+        when(stance.getStringValue(net.runelite.api.ParamID.ATTACK_STYLE_NAME)).thenReturn("Aggressive");
+    }
+
     private static Client loggedInClient()
     {
         Client client = mock(Client.class);
@@ -248,7 +277,6 @@ public class CommandDashboardToolTest
         try
         {
             tool.onGameTick();
-            tool.setMaxHit(new CommandDashboardTool.MaxHitReading(42, "Normal melee · base"));
             BufferedImage image = new BufferedImage(expected == null ? 1 : expected.width * 2,
                 expected == null ? 1 : expected.height * 2, BufferedImage.TYPE_INT_ARGB);
             Graphics2D graphics = image.createGraphics();

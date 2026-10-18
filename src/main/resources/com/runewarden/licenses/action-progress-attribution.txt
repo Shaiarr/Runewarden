@@ -13,5 +13,5 @@ this file identifies the factual sources, their revisions and the changes made.
 No prose walkthrough or combat attack-speed table is reproduced.
 
 Native animation identifiers/durations use RuneLite 1.13.2 public APIs and the
-already attributed RuneLite API dependency. Existing banked recipe provenance is
-retained in banked-xp-recipes.json.
+already attributed RuneLite API dependency. The retained exact item transformations and their per-entry native provenance are
+in action-recipes.json; bank XP planning is not part of this release.

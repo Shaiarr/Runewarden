@@ -64,7 +64,7 @@ public final class ActionProgressTool
         double batchFraction(){return batchTotal<=0?0:completed/(double)batchTotal;}
         static Snapshot empty(){return new Snapshot(null,"","",0,0,0,false,null,0,0,-1);}
     }
-    private final Client client;private final ConfigManager config;private final RunewardenDataStore store;private final SharedActivitySession session;private final ActivityXpCatalog catalog;
+    private final Client client;private final ConfigManager config;private final RunewardenDataStore store;private final SharedActivitySession session;
     private final ActionProgressOverlay overlay;private final LongSupplier clock;
     private final ItemManager items;private final SpriteManager sprites;private final SkillIconManager skillIcons;
     private static final class ImageLookup { final BufferedImage image;final long retryAt;ImageLookup(BufferedImage image,long retryAt){this.image=image;this.retryAt=retryAt;} }
@@ -76,15 +76,15 @@ public final class ActionProgressTool
     private final Map<Integer,ActionProgressRules.Timing> timings=new LinkedHashMap<Integer,ActionProgressRules.Timing>()
     {protected boolean removeEldestEntry(Map.Entry<Integer,ActionProgressRules.Timing> eldest){return size()>64;}};
     private volatile Preferences preferences=new Preferences();private volatile Snapshot snapshot=Snapshot.empty();private volatile boolean started;
-    private String profile,contextMethod,cycleTitle="",cycleBasis="";private int menuItemId,cycleItemId,cycleSpriteId;private Skill menuSkill,cycleSkill;private long menuAt;private BankedExperienceCalculator.Recipe menuRecipe,confirmedRecipe;private boolean cleanOperation;private long confirmedAt;private int animation=-1,lastFrame=-1;private long cycleStart,cycleEnd,lastActivity;private boolean exactCycle;
-    public ActionProgressTool(Client client,ConfigManager config,RunewardenDataStore store,RunewardenConfig hud,SharedActivitySession session,ActivityXpCatalog catalog)
-    {this(client,config,store,hud,session,catalog,System::currentTimeMillis);}
-    @Inject public ActionProgressTool(Client client,ConfigManager config,RunewardenDataStore store,RunewardenConfig hud,SharedActivitySession session,ActivityXpCatalog catalog,ItemManager items,SpriteManager sprites,SkillIconManager skillIcons)
-    {this(client,config,store,hud,session,catalog,System::currentTimeMillis,items,sprites,skillIcons);}
-    ActionProgressTool(Client client,ConfigManager config,RunewardenDataStore store,RunewardenConfig hud,SharedActivitySession session,ActivityXpCatalog catalog,LongSupplier clock)
-    {this(client,config,store,hud,session,catalog,clock,null,null,null);}
-    ActionProgressTool(Client client,ConfigManager config,RunewardenDataStore store,RunewardenConfig hud,SharedActivitySession session,ActivityXpCatalog catalog,LongSupplier clock,ItemManager items,SpriteManager sprites,SkillIconManager skillIcons)
-    {this.client=client;this.config=config;this.store=store;this.session=session;this.catalog=catalog;this.clock=clock;this.items=items;this.sprites=sprites;this.skillIcons=skillIcons;overlay=new ActionProgressOverlay(this,hud);}
+    private String profile,contextMethod,cycleTitle="",cycleBasis="";private int menuItemId,cycleItemId,cycleSpriteId;private Skill menuSkill,cycleSkill;private long menuAt;private ActionRecipeCatalog.Recipe menuRecipe,confirmedRecipe;private boolean cleanOperation;private long confirmedAt;private int animation=-1,lastFrame=-1;private long cycleStart,cycleEnd,lastActivity;private boolean exactCycle;
+    public ActionProgressTool(Client client,ConfigManager config,RunewardenDataStore store,RunewardenConfig hud,SharedActivitySession session)
+    {this(client,config,store,hud,session,System::currentTimeMillis);}
+    @Inject public ActionProgressTool(Client client,ConfigManager config,RunewardenDataStore store,RunewardenConfig hud,SharedActivitySession session,ItemManager items,SpriteManager sprites,SkillIconManager skillIcons)
+    {this(client,config,store,hud,session,System::currentTimeMillis,items,sprites,skillIcons);}
+    ActionProgressTool(Client client,ConfigManager config,RunewardenDataStore store,RunewardenConfig hud,SharedActivitySession session,LongSupplier clock)
+    {this(client,config,store,hud,session,clock,null,null,null);}
+    ActionProgressTool(Client client,ConfigManager config,RunewardenDataStore store,RunewardenConfig hud,SharedActivitySession session,LongSupplier clock,ItemManager items,SpriteManager sprites,SkillIconManager skillIcons)
+    {this.client=client;this.config=config;this.store=store;this.session=session;this.clock=clock;this.items=items;this.sprites=sprites;this.skillIcons=skillIcons;overlay=new ActionProgressOverlay(this,hud);}
     public void start(){preferences=store.read(GROUP,null,"preferencesV1",1,Preferences.class,Preferences::valid,Preferences::new);started=true;clear();}
     public void stop(){started=false;clear();}
     public void clear(){profile=contextMethod=null;animation=lastFrame=-1;cycleStart=cycleEnd=lastActivity=0;cycleTitle=cycleBasis="";exactCycle=false;batch.select(null);detector.clear();experience.clear();timings.clear();images.clear();menuItemId=cycleItemId=cycleSpriteId=0;menuSkill=cycleSkill=null;menuAt=confirmedAt=0;menuRecipe=confirmedRecipe=null;cleanOperation=false;snapshot=Snapshot.empty();}
@@ -104,8 +104,6 @@ public final class ActionProgressTool
         if(!Objects.equals(contextMethod,selected))
         {contextMethod=selected;detector.clear();}
     }
-    private BankedExperienceCalculator.Recipe recipe(String id)
-    {if(id==null)return null;for(BankedExperienceCalculator.Recipe recipe:BankedExperienceCalculator.recipes())if(id.equals(recipe.id)&&recipe.xp>0)return recipe;return null;}
     private Map<Integer,Long> inventory()
     {
         ItemContainer inventory=client.getItemContainer(InventoryID.INVENTORY);if(inventory==null)return Collections.emptyMap();Map<Integer,Long> items=new LinkedHashMap<>();
@@ -158,7 +156,7 @@ public final class ActionProgressTool
         // They end an animation bar, not an already observed cast/recipe cycle.
         if(id<0){if("Animation".equals(cycleBasis)||cycleEnd<=now)cycleStart=cycleEnd=0;return;}
         if(label==null){cycleStart=cycleEnd=0;cycleTitle="";cycleItemId=cycleSpriteId=0;cycleSkill=null;return;}
-        BankedExperienceCalculator.Recipe actionRecipe=cycleRecipe(id,now);
+        ActionRecipeCatalog.Recipe actionRecipe=cycleRecipe(id,now);
         if(actionRecipe!=null)label=actionRecipe.name;
         // Walking, emotes and unidentified animation loops are not production actions.
         if(ActionProgressRules.animationItem(id)>0&&actionRecipe==null){cycleStart=cycleEnd=0;cycleTitle="";cycleItemId=cycleSpriteId=0;cycleSkill=null;return;}
@@ -182,7 +180,7 @@ public final class ActionProgressTool
         cycleStart=fresh?now:now-timing.elapsedAtFrame(Math.max(0,lastFrame));cycleEnd=cycleStart+timing.durationMillis;cycleTitle=label;cycleBasis="Animation";lastActivity=now;
     }
     /** An animation name is only a hint: reused sequences never overrule a native item operation or transformation. */
-    private BankedExperienceCalculator.Recipe cycleRecipe(int animation,long now)
+    private ActionRecipeCatalog.Recipe cycleRecipe(int animation,long now)
     {
         int item=ActionProgressRules.animationItem(animation);Skill skill=ActionProgressRules.skill(animation);
         Map<Integer,Long> carried=inventory();
@@ -190,15 +188,15 @@ public final class ActionProgressTool
         // Cleaning shares hand-work sequences with other skills. The actual Clean item
         // operation and carried grimy input identify this action, not a sequence alias.
         if(recentMenu&&cleanOperation&&ActionProgressRules.handWork(animation)&&(now-menuAt<=3000||confirmedRecipe==menuRecipe&&now-confirmedAt<=3000)
-            &&(BankedExperienceCalculator.availableActions(menuRecipe,carried)>0||batch.completed()>0))return menuRecipe;
+            &&(ActionRecipeCatalog.availableActions(menuRecipe,carried)>0||batch.completed()>0))return menuRecipe;
         if(item>0)
         {
-            for(BankedExperienceCalculator.Recipe recipe:BankedExperienceCalculator.recipes())if(recipe.icon==item&&(skill==null||recipe.skill==skill)
+            for(ActionRecipeCatalog.Recipe recipe:ActionRecipeCatalog.recipes())if(recipe.icon==item&&(skill==null||recipe.skill==skill)
                 &&(!ActionProgressRules.ambiguousItem(animation)||recentMenu&&menuRecipe==recipe||confirmedRecipe==recipe&&now-confirmedAt<=3000)
-                &&(BankedExperienceCalculator.availableActions(recipe,carried)>0||confirmedRecipe==recipe&&now-confirmedAt<=3000))return recipe;
+                &&(ActionRecipeCatalog.availableActions(recipe,carried)>0||confirmedRecipe==recipe&&now-confirmedAt<=3000))return recipe;
         }
         boolean compatible=recentMenu&&(skill==menuSkill||animation==AnimationID.HUMAN_FURNACE&&(menuSkill==Skill.CRAFTING||menuSkill==Skill.SMITHING));
-        if(compatible&&(BankedExperienceCalculator.availableActions(menuRecipe,carried)>0||confirmedRecipe==menuRecipe&&now-confirmedAt<=3000))return menuRecipe;
+        if(compatible&&(ActionRecipeCatalog.availableActions(menuRecipe,carried)>0||confirmedRecipe==menuRecipe&&now-confirmedAt<=3000))return menuRecipe;
         if(confirmedRecipe!=null&&now-confirmedAt<=3000&&(skill==confirmedRecipe.skill||ActionProgressRules.cleaning(confirmedRecipe)&&ActionProgressRules.handWork(animation)))return confirmedRecipe;
         return null;
     }
@@ -228,7 +226,7 @@ public final class ActionProgressTool
         else
         {
             int clicked=event.getItemId();if(clicked<=0&&event.getWidget()!=null)clicked=event.getWidget().getItemId();
-            BankedExperienceCalculator.Recipe selected=ActionProgressRules.menuRecipe(option,clicked);
+            ActionRecipeCatalog.Recipe selected=ActionProgressRules.menuRecipe(option,clicked);
             if(selected!=null){menuRecipe=selected;cleanOperation="Clean".equalsIgnoreCase(option);menuItemId=selected.icon;menuSkill=selected.skill;menuAt=clock.getAsLong();
                 if(batch.recipe()!=selected){batch.select(selected);batch.inventory(inventory(),client.getTickCount(),true);}}
             else if(!"Walk here".equals(option)){menuItemId=0;menuSkill=null;menuRecipe=null;cleanOperation=false;}
@@ -236,7 +234,7 @@ public final class ActionProgressTool
         if(event.getMenuOption()!=null&&"Clean".equals(net.runelite.client.util.Text.removeTags(event.getMenuOption())))
         {
             int clickedItem=event.getItemId();if(clickedItem<=0&&event.getWidget()!=null)clickedItem=event.getWidget().getItemId();
-            for(BankedExperienceCalculator.Recipe recipe:BankedExperienceCalculator.recipes())
+            for(ActionRecipeCatalog.Recipe recipe:ActionRecipeCatalog.recipes())
                 if(recipe.id.startsWith("herblore:")&&!recipe.id.contains("unfinished")&&recipe.ingredients.size()==1&&recipe.ingredients.get(0).itemId==clickedItem&&!recipe.products.isEmpty())
                 {if(batch.recipe()==null||!recipe.id.equals(batch.recipe().id)){batch.select(recipe);batch.inventory(inventory(),client.getTickCount(),true);}batch.arm(clock.getAsLong());lastActivity=clock.getAsLong();break;}
         }

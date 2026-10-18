@@ -1,0 +1,18 @@
+The optional Windows x64 package includes the unchanged Eclipse Temurin
+17.0.20.1+1 JRE. Its complete legal/, NOTICE and release files stay in runtime/.
+Runtime binaries retain their upstream GPLv2-with-Classpath-Exception and
+component terms; they are not relicensed under Runewarden's BSD license.
+
+Distribute the matching runewarden-java-runtime-sources-0.10.0.zip alongside
+the Windows package. It contains the pinned OpenJDK source archive, Temurin
+build scripts and source revision metadata listed in runtime-source-manifest.json.
+The Gradle runtimeSourcesZip task verifies and packages that collection.
+
+Official binary release:
+https://github.com/adoptium/temurin17-binaries/releases/tag/jdk-17.0.20.1%2B1
+OpenJDK source:
+https://github.com/adoptium/jdk17u/tree/79597447bd94ff9f8216e2e3a573d5261ee49f2e
+Temurin build scripts:
+https://github.com/adoptium/temurin-build/tree/e6ba7dec3d07654074559310376a3ae89da5f4ac
+
+The portable package contains no Java runtime.

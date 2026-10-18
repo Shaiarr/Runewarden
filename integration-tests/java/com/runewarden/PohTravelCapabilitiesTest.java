@@ -2,10 +2,8 @@
 package com.runewarden;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import javax.swing.SwingUtilities;
 import net.runelite.api.*;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.client.callback.ClientThread;
@@ -17,59 +15,60 @@ import static org.mockito.Mockito.*;
 
 public class PohTravelCapabilitiesTest
 {
-    @Test public void carriedConsumablesUseTheActualPublicStringContractWithoutEnablingAnUnknownHouse()
+    @Test public void aCapeAndConstructionLevelNeverProveUnobservedHouseFacilities()
     {
-        Fixture f=new Fixture();assertEquals("Inventory",f.cap.routeOptions().get("useTeleportationItems"));assertEquals(false,f.cap.routeOptions().get("usePoh"));
+        Fixture f=new Fixture();assertEquals("Inventory",f.cap.routeOptions().get("useTeleportationItems"));
         when(f.client.getRealSkillLevel(Skill.CONSTRUCTION)).thenReturn(99);f.items(new Item(9789,1));f.cap.onGameTick();
-        assertTrue(f.cap.snapshot().constructionCape);assertEquals("A cape never proves the house contains Catherby",false,f.cap.routeOptions().get("usePoh"));assertTrue(f.foreignWrites.isEmpty());
+        assertTrue(f.cap.snapshot().constructionCape);assertEquals(false,f.cap.routeOptions().get("usePoh"));assertTrue(f.foreignWrites.isEmpty());
     }
-    @Test public void explicitHouseSelectionSerializesNativeEnumNamesAndIsolatedProfilesCannotBorrowIt()
+    @Test public void explicitNativeDeclarationsAreReadWithoutChangingNativeConfiguration()
     {
-        Fixture f=new Fixture();PohTravelCapabilities.Saved selection=new PohTravelCapabilities.Saved();selection.portals.add("CATHERBY");assertTrue(f.cap.apply("rsprofile.a",selection));
-        assertEquals(true,f.cap.routeOptions().get("usePoh"));assertEquals(Set.of(PohNexusPortal.CATHERBY),f.gson.fromJson(f.raw.get("shortestpath::pohNexusPortals"),new TypeToken<Set<PohNexusPortal>>(){}.getType()));
-        assertEquals("NONE",f.raw.get("shortestpath::pohJewelleryBoxTier"));assertEquals("[]",f.raw.get("shortestpath::pohMountedItems"));
-        int writes=f.foreignWrites.size();f.profile.set("rsprofile.b");f.cap.onGameTick();assertEquals(false,f.cap.routeOptions().get("usePoh"));assertTrue(f.cap.snapshot().portals.isEmpty());
-        assertFalse(f.cap.apply("rsprofile.a",selection));assertEquals(writes,f.foreignWrites.size());
-        f.profile.set("rsprofile.a");f.cap.onGameTick();assertEquals(true,f.cap.routeOptions().get("usePoh"));assertEquals(Set.of("CATHERBY"),f.cap.snapshot().portals);
+        Fixture f=new Fixture();f.raw.put("shortestpath::usePoh","true");f.raw.put("shortestpath::pohNexusPortals","[\"CATHERBY\"]");f.cap.onGameTick();
+        assertEquals(true,f.cap.routeOptions().get("usePoh"));assertEquals(Set.of("CATHERBY"),f.cap.snapshot().portals);assertTrue(f.foreignWrites.isEmpty());
+        f.raw.put("shortestpath::usePoh","false");f.cap.onGameTick();assertEquals(false,f.cap.routeOptions().get("usePoh"));
     }
-    @Test public void existingNativeHouseDeclarationsRemainEffectiveAndMenuCacheIsOnlyAnUnconfirmedSuggestion()
+    @Test public void menuCachesAndMalformedDeclarationsCannotInventKnownFacilities()
     {
-        Fixture f=new Fixture(false);f.raw.put("shortestpath::usePoh","true");f.raw.put("shortestpath::pohNexusPortals","[\"CATHERBY\"]");f.raw.put("shortestpath:rsprofile.a:portalNexusKeybinds","2|catherby=1|barrows=A|unknown=2");f.start();
-        assertEquals(true,f.cap.routeOptions().get("usePoh"));assertEquals(Set.of("CATHERBY"),f.cap.snapshot().portals);assertEquals(Set.of("CATHERBY","BARROWS"),f.cap.snapshot().suggestions);assertTrue(f.cap.snapshot().observed.isEmpty());
-        assertFalse(f.cap.scanOwnHouse());assertTrue(f.cap.snapshot().observed.isEmpty());assertTrue(f.foreignWrites.isEmpty());
+        Fixture f=new Fixture();f.raw.put("shortestpath::usePoh","true");f.raw.put("shortestpath:rsprofile.a:portalNexusKeybinds","2|catherby=1");
+        f.raw.put("shortestpath::pohNexusPortals","[\"INVENTED\"]");f.cap.onGameTick();assertEquals(false,f.cap.routeOptions().get("usePoh"));
+        f.raw.put("shortestpath::pohNexusPortals","broken JSON");f.cap.onGameTick();assertEquals(false,f.cap.routeOptions().get("usePoh"));assertTrue(f.foreignWrites.isEmpty());
     }
-    @Test public void transportRevisionIgnoresOrdinaryHerbProductsButChangesForCapeRunesAndNativeHouse()
+    @Test public void revisionsIgnoreOrdinaryHarvestProductsButTrackTravelSupplies()
     {
-        Fixture f=new Fixture();f.items(new Item(249,10));f.cap.onGameTick();long before=f.cap.revision();f.items(new Item(249,9),new Item(91,1));f.cap.onGameTick();assertEquals(before,f.cap.revision());
+        Fixture f=new Fixture();f.items(new Item(249,10));f.cap.onGameTick();long before=f.cap.revision();
+        f.items(new Item(249,9),new Item(91,1));f.cap.onGameTick();assertEquals(before,f.cap.revision());
         f.items(new Item(9789,1));f.cap.onGameTick();assertTrue(f.cap.revision()>before);before=f.cap.revision();
-        f.items(new Item(9789,1),new Item(563,2));f.cap.onGameTick();assertTrue(f.cap.revision()>before);before=f.cap.revision();
         when(f.client.getVarbitValue(VarbitID.RUNE_POUCH_QUANTITY_1)).thenReturn(2);f.cap.onGameTick();assertTrue(f.cap.revision()>before);before=f.cap.revision();
         f.raw.put("shortestpath::pohNexusPortals","[\"CATHERBY\"]");f.cap.onGameTick();assertTrue(f.cap.revision()>before);
     }
-    @Test public void futureProfileRecordAndInvalidSelectionNeverMutateNativeConfiguration()
+    @Test public void legacyGlobalDeclarationsCannotLeakIntoAnotherCharacter()
     {
-        Fixture f=new Fixture(false);String future="{\"version\":99,\"portals\":[],\"observed\":[],\"mounted\":[],\"jewellery\":\"NONE\"}";f.raw.put("runewarden:rsprofile.a:"+PohTravelCapabilities.KEY,future);f.start();
-        PohTravelCapabilities.Saved selection=new PohTravelCapabilities.Saved();selection.portals.add("CATHERBY");assertFalse(f.cap.apply("rsprofile.a",selection));assertEquals(future,f.raw.get("runewarden:rsprofile.a:"+PohTravelCapabilities.KEY));assertTrue(f.foreignWrites.isEmpty());
-        Fixture invalid=new Fixture();selection.portals.add("INVENTED");assertFalse(invalid.cap.apply("rsprofile.a",selection));assertTrue(invalid.foreignWrites.isEmpty());
+        Fixture f=new Fixture(false);f.raw.put("shortestpath::usePoh","true");f.raw.put("shortestpath::pohNexusPortals","[\"CATHERBY\"]");
+        StringBuilder fingerprint=new StringBuilder();for(String key:PohTravelCapabilities.CONFIG_KEYS)fingerprint.append(key).append('=').append(f.raw.get("shortestpath::"+key)).append(';');
+        Map<String,Object> applied=Map.of("version",1,"profile","rsprofile.a","fingerprint",fingerprint.toString());
+        f.raw.put("runewarden::"+PohTravelCapabilities.LEASE_KEY,f.gson.toJson(applied));f.start();assertEquals(true,f.cap.routeOptions().get("usePoh"));
+        f.profile.set("rsprofile.b");f.cap.onGameTick();assertEquals(false,f.cap.routeOptions().get("usePoh"));assertTrue(f.foreignWrites.isEmpty());
     }
-    @Test public void onlyAnActualOwnedHouseTemplateInBuildingModeCanLearnSceneAndNexusDestinations()
+    @Test public void onlyAnOwnedBuildingModeHouseCanLearnVisiblePortalDestinations()
     {
         Fixture f=new Fixture();WorldView view=mock(WorldView.class);Scene scene=mock(Scene.class);Player player=mock(Player.class);
         when(f.client.getTopLevelWorldView()).thenReturn(view);when(f.client.getWorldView(anyInt())).thenReturn(view);when(view.isInstance()).thenReturn(true);when(view.getScene()).thenReturn(scene);when(f.client.getLocalPlayer()).thenReturn(player);
         when(player.getLocalLocation()).thenReturn(new net.runelite.api.coords.LocalPoint(64,64));int[][][] chunks=new int[4][13][13];chunks[0][0][0]=((1856/8)<<14)|((7040/8)<<3);when(view.getInstanceTemplateChunks()).thenReturn(chunks);
         Tile tile=mock(Tile.class);GameObject portal=mock(GameObject.class);when(portal.getId()).thenReturn(33432);when(tile.getGameObjects()).thenReturn(new GameObject[]{portal});when(scene.getTiles()).thenReturn(new Tile[][][]{{{tile}}});
         net.runelite.api.widgets.Widget menu=mock(net.runelite.api.widgets.Widget.class);when(menu.getText()).thenReturn("1 : Barrows");when(f.client.getWidget(net.runelite.api.gameval.InterfaceID.TelenexusTeleport.TEXT1)).thenReturn(menu);
-        assertFalse("A guest house must never be learned",f.cap.scanOwnHouse());when(f.client.getVarbitValue(VarbitID.POH_BUILDING_MODE)).thenReturn(1);assertTrue(f.cap.scanOwnHouse());f.cap.onGameTick();
-        assertEquals(Set.of("CATHERBY","BARROWS"),f.cap.snapshot().observed);assertEquals(false,f.cap.routeOptions().get("usePoh"));assertTrue(f.foreignWrites.isEmpty());
-        when(f.client.getVarbitValue(VarbitID.POH_BUILDING_MODE)).thenReturn(0);f.cap.onGameTick();assertEquals(Set.of("CATHERBY","BARROWS"),f.cap.snapshot().observed);
+        assertFalse(f.cap.scanOwnHouse());assertNull(f.cap.ownHouseOrigin());when(f.client.getVarbitValue(VarbitID.POH_BUILDING_MODE)).thenReturn(1);
+        when(view.getInstanceTemplateChunks()).thenReturn(null);assertNull("A loading house has no verified origin",f.cap.ownHouseOrigin());assertFalse(f.cap.scanOwnHouse());
+        when(view.getInstanceTemplateChunks()).thenReturn(chunks);assertTrue(f.cap.scanOwnHouse());f.cap.onGameTick();
+        assertEquals(new net.runelite.api.coords.WorldPoint(1858,7051,0),f.cap.ownHouseOrigin());assertEquals(Set.of("CATHERBY","BARROWS"),f.cap.snapshot().observed);
+        assertEquals("Observations do not silently rewrite Shortest Path's facilities",false,f.cap.routeOptions().get("usePoh"));assertTrue(f.foreignWrites.isEmpty());
         f.profile.set("rsprofile.b");f.cap.onGameTick();assertTrue(f.cap.snapshot().observed.isEmpty());
     }
-    @Test public void publicPortalCatalogMatchesEveryNativeEnumAndExactCatherbySceneObjects() throws Exception
+    @Test public void portalCatalogMatchesTheRealCompanionEnumAndStopDisablesOverrides()
     {
-        Fixture f=new Fixture();assertEquals(PohNexusPortal.values().length,f.cap.portals().size());for(PohTravelCapabilities.Portal portal:f.cap.portals()){assertEquals(portal.label,PohNexusPortal.valueOf(portal.key).toString());assertEquals(portal.names,PohNexusPortal.valueOf(portal.key).getDisplayInfos());}
-        assertEquals(List.of(33432,33435,33438),f.cap.portals().stream().filter(p->p.key.equals("CATHERBY")).findFirst().get().objectIds);
+        Fixture f=new Fixture();assertEquals(PohNexusPortal.values().length,f.cap.portals().size());
+        for(PohTravelCapabilities.Portal portal:f.cap.portals()){assertEquals(portal.label,PohNexusPortal.valueOf(portal.key).toString());assertEquals(portal.names,PohNexusPortal.valueOf(portal.key).getDisplayInfos());}
         assertEquals("CATHERBY",f.cap.keyForName("<col=ffffff>1 : Catherby"));assertEquals("SENNTISTEN",f.cap.keyForName("Exam Centre"));assertNull(f.cap.keyForName("Catherby costs 1,000 runes"));
-        SwingUtilities.invokeAndWait(()->assertNotNull(f.cap.createPanel()));f.cap.stop();assertEquals(false,f.cap.routeOptions().get("usePoh"));
+        f.cap.stop();assertEquals(false,f.cap.routeOptions().get("usePoh"));assertTrue(f.foreignWrites.isEmpty());
     }
     static final class Fixture
     {

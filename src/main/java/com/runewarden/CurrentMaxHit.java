@@ -23,7 +23,7 @@ import net.runelite.client.game.ItemEquipmentStats;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.game.ItemStats;
 
-/** Ordinary attacks only; target reference stats and explicit hidden inputs are labelled separately. */
+/** Base normal-attack maximum from current native equipment, levels, style and known autocast spell. */
 final class CurrentMaxHit
 {
     static final class Reading
@@ -39,32 +39,9 @@ final class CurrentMaxHit
         public String text() { return maxHit == null ? "—" : Integer.toString(maxHit); }
     }
 
-    static final class Inputs
-    {
-        final CombatSpellCatalog.Spell spell;
-        final Integer dartStrength;
-        final boolean manualSpell;
-        final boolean tombsOfAmascut;
-        final MobKnowledgeCatalog.Entry target;
-        final boolean observedDart;
-        final boolean observedTombs;
-        Inputs(CombatSpellCatalog.Spell spell, Integer dartStrength, boolean manualSpell,
-            boolean tombsOfAmascut, MobKnowledgeCatalog.Entry target)
-        { this(spell, dartStrength, manualSpell, tombsOfAmascut, target, false, false); }
-        Inputs(CombatSpellCatalog.Spell spell, Integer dartStrength, boolean manualSpell,
-            boolean tombsOfAmascut, MobKnowledgeCatalog.Entry target, boolean observedDart, boolean observedTombs)
-        {
-            this.spell = spell; this.dartStrength = dartStrength; this.manualSpell = manualSpell;
-            this.tombsOfAmascut = tombsOfAmascut; this.target = target;
-            this.observedDart = observedDart; this.observedTombs = observedTombs;
-        }
-    }
-
     private CurrentMaxHit() { }
 
-    static Reading read(Client client, ItemManager items) { return read(client, items, null); }
-
-    static Reading read(Client client, ItemManager items, Inputs inputs)
+    static Reading read(Client client, ItemManager items)
     {
         if (client == null || items == null || client.getGameState() != GameState.LOGGED_IN)
             return unknown("Log in to read equipment");
@@ -80,11 +57,10 @@ final class CurrentMaxHit
         int stanceIndex = client.getVarpValue(VarPlayerID.COM_MODE);
         String style = style(client, stanceIndex);
         if (style == null) return unknown("Attack style is not available");
-        return readEquipment(client, items, inputs, wornItems, style, stanceIndex);
+        return readEquipment(client, items, wornItems, style, stanceIndex);
     }
 
-    /** Explicit comparison input. It never changes the game's equipment or selected combat style. */
-    static Reading readEquipment(Client client, ItemManager items, Inputs inputs, Item[] equipment, String style, int stanceIndex)
+    private static Reading readEquipment(Client client, ItemManager items, Item[] equipment, String style, int stanceIndex)
     {
         if (client == null || items == null || client.getGameState() != GameState.LOGGED_IN)
             return unknown("Log in to read combat levels");
@@ -119,9 +95,8 @@ final class CurrentMaxHit
         }
         boolean casting = style.contains("casting") || (stanceIndex >= 4 && "defensive".equals(style));
         boolean powered = poweredBase(weapon, Math.max(0, client.getBoostedSkillLevel(Skill.MAGIC))) != null;
-        boolean manualSpell = inputs != null && inputs.manualSpell && inputs.spell != null;
-        if (casting || powered || manualSpell)
-            return magic(client, weapon, names, magicDamage, inputs, casting);
+        if (casting || powered)
+            return magic(client, weapon, names, magicDamage, casting);
 
         boolean ranged = "ranging".equals(style) || "longrange".equals(style);
         if (!ranged && !"accurate".equals(style) && !"aggressive".equals(style)
@@ -146,18 +121,14 @@ final class CurrentMaxHit
         }
         boolean crystal = weapon.contains("crystal bow") || weapon.contains("faerdhinen");
         boolean blowpipe = weapon.contains("blowpipe");
-        boolean twisted = weapon.contains("twisted bow");
+        if (weapon.contains("twisted bow")) return unknown("Target Magic is not observed for Twisted bow");
         if (ranged)
         {
             boolean selfAmmo = crystal || blowpipe || weapon.contains("dart") || weapon.contains("knife")
                 || weapon.contains("knives") || weapon.contains("thrownaxe");
             if (selfAmmo) rangedStrength -= ammoStrength;
             else if (!ammunition) return unknown("Ammunition is not equipped");
-            if (blowpipe)
-            {
-                if (inputs == null || inputs.dartStrength == null) return unknown("Choose the loaded dart in Max hit");
-                rangedStrength += inputs.dartStrength;
-            }
+            if (blowpipe) return unknown("Loaded blowpipe darts are not observed");
         }
         else if (weapon.contains("bulwark"))
         {
@@ -170,16 +141,6 @@ final class CurrentMaxHit
         if (!ranged && weapon.contains("fang")) { minimum = hit * 3 / 20; hit -= minimum; }
         String scope = ranged ? "BASE RANGED" : "BASE MELEE";
         String reason = "Normal attack before target bonuses, special attacks and ammunition procs";
-        if (blowpipe) { scope = inputs.observedDart ? "BASE RANGED" : "INPUT RANGED"; reason += inputs.observedDart ? "; dart observed from equipped blowpipe check" : "; loaded dart set manually"; }
-        if (twisted)
-        {
-            if (inputs == null || inputs.target == null) return unknown("Attack a catalogued NPC for Twisted bow reference damage");
-            MobKnowledgeCatalog.Entry target = inputs.target;
-            int cap = target.attributes != null && target.attributes.contains("xerician") ? 350 : 250;
-            hit = twistedBowHit(hit, Math.max(target.magicLevel, target.magicAttackBonus), cap);
-            scope = "REF TBOW";
-            reason = "Target Wiki base Magic/attack bonus; excludes live drains, raid scaling and other target bonuses";
-        }
         if (!ranged && weapon.contains("scythe"))
         {
             scope = "BASE FIRST HIT";
@@ -189,13 +150,14 @@ final class CurrentMaxHit
         return new Reading(hit, minimum, scope, reason);
     }
 
-    private static Reading magic(Client client, String weapon, List<String> names, int damage, Inputs inputs, boolean casting)
+    private static Reading magic(Client client, String weapon, List<String> names, int damage, boolean casting)
     {
         if (client.getRealSkillLevel(Skill.MAGIC) < 1) return unknown("Magic level is not available");
         int level = Math.max(0, client.getBoostedSkillLevel(Skill.MAGIC));
-        CombatSpellCatalog.Spell spell = inputs != null && (casting || inputs.manualSpell) ? inputs.spell : null;
+        CombatSpellCatalog.Spell spell = casting
+            ? CombatSpellCatalog.fromSpellObject(client.getVarpValue(VarPlayerID.AUTOCAST_SPELL_OBJ)) : null;
         Integer base = spell == null ? poweredBase(weapon, level) : Integer.valueOf(spell.maxHit(level));
-        if (base == null) return unknown("Choose the spell in Max hit, or select a supported powered staff");
+        if (base == null) return unknown("Autocast spell is not observed or supported");
         if (weapon.contains("uncharged") || weapon.contains("(inactive)") || weapon.contains("(empty)"))
             return unknown("Weapon is uncharged");
         if (spell != null && spell.name.equals("Magic Dart") && weapon.startsWith("slayer's staff (e)"))
@@ -210,7 +172,7 @@ final class CurrentMaxHit
             return unknown("Twinflame secondary hit requires a dedicated formula");
         if (spell != null && spell.element != null && (has(names, "elemental amulet") || has(names, "amulet of " + spell.element))) base += 2;
         boolean shadow = spell == null && weapon.contains("tumeken's shadow");
-        if (shadow) damage = Math.min(1000, damage * (inputs != null && inputs.tombsOfAmascut ? 4 : 3));
+        if (shadow) return unknown("Shadow damage needs verified raid context");
         if (fullVoid(names, "void mage helm") && has(names, "elite void top") && has(names, "elite void robe")) damage += 50;
         if (spell != null && "ancient".equals(spell.spellbook))
             for (String name : names) if (name.startsWith("virtus ")) damage += 30;
@@ -222,10 +184,9 @@ final class CurrentMaxHit
         if (weapon.equals("dawnbringer") && spell == null) hit = Math.max(2, hit / 2);
         boolean sanguinesti = weapon.contains("sanguinesti staff");
         if (sanguinesti) hit += 8;
-        String scope = inputs != null && (inputs.manualSpell || (shadow && inputs.tombsOfAmascut && !inputs.observedTombs)) ? "INPUT MAGIC" : "BASE MAGIC";
+        String scope = "BASE MAGIC";
         String reason = spell != null ? spell.name : weapon;
         reason += "; before elemental weakness, Slayer, salve, special attacks and target multipliers";
-        if (shadow) reason += inputs != null && inputs.tombsOfAmascut ? (inputs.observedTombs ? "; ToA target observed" : "; ToA multiplier selected") : "; outside-ToA multiplier";
         if (sanguinesti) reason += "; includes maximum of the 20% normal +8 damage proc";
         return new Reading(hit, scope, reason);
     }
@@ -262,14 +223,6 @@ final class CurrentMaxHit
     { return Math.max(0, (int) (((long) effective * (strengthBonus + 64) + 320) / 640)); }
 
     static int bulwarkStrength(int defenceSum) { return Math.max(0, (defenceSum - 800) / 12 - 38); }
-
-    static int twistedBowHit(int base, int targetMagic, int cap)
-    {
-        int magic = Math.max(0, Math.min(cap, targetMagic));
-        int term = 3 * magic / 10 - 140;
-        int percent = Math.max(0, Math.min(250, 250 + (3 * magic - 14) / 100 - term * term / 100));
-        return base * percent / 100;
-    }
 
     private static int prayerPercent(Client client, boolean ranged)
     {

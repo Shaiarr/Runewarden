@@ -43,13 +43,6 @@ final class HudSettingsTool
     private final ConfigManager configManager;
     private final RunewardenConfig config;
     private final OverlayManager overlays;
-    private final RunewardenResourceOverlay resources;
-    private final GuideCoachOverlay guide;
-    private final SkillingCoachOverlay skilling;
-    private final CommandDashboardTool dashboard;
-    private final HarvestClockTool harvest;
-    private final WaveEntryOverlay waveEntry;
-    private final InventoryPreviewOverlay inventory;
     private final Map<String, JCheckBox> choices = new LinkedHashMap<>();
     private final Map<String, BooleanSupplier> values = new LinkedHashMap<>();
     private volatile boolean started;
@@ -78,34 +71,11 @@ final class HudSettingsTool
     void registerWidget(String key,Overlay overlay,java.util.function.Consumer<Boolean> lock)
     { if(!HudPreferences.known(key)||overlay==null)throw new IllegalArgumentException("Unknown HUD widget");extraWidgets.put(key,overlay);extraLocks.put(key,lock);if(started){lock.accept(config.hudLocked());if(resize!=null)resize.register(key,overlay);} }
 
-    HudSettingsTool(ConfigManager configManager, RunewardenConfig config, OverlayManager overlays,
-        RunewardenResourceOverlay resources, GuideCoachOverlay guide, SkillingCoachOverlay skilling,
-        CommandDashboardTool dashboard, HarvestClockTool harvest)
-    {
-        this(configManager, config, overlays, resources, guide, skilling, dashboard, harvest, null);
-    }
-
-    HudSettingsTool(ConfigManager configManager, RunewardenConfig config, OverlayManager overlays,
-        RunewardenResourceOverlay resources, GuideCoachOverlay guide, SkillingCoachOverlay skilling,
-        CommandDashboardTool dashboard, HarvestClockTool harvest, WaveEntryOverlay waveEntry)
-    {
-        this(configManager, config, overlays, resources, guide, skilling, dashboard, harvest, waveEntry, null);
-    }
-
-    @Inject HudSettingsTool(ConfigManager configManager, RunewardenConfig config, OverlayManager overlays,
-        RunewardenResourceOverlay resources, GuideCoachOverlay guide, SkillingCoachOverlay skilling,
-        CommandDashboardTool dashboard, HarvestClockTool harvest, WaveEntryOverlay waveEntry, InventoryPreviewOverlay inventory)
+    @Inject HudSettingsTool(ConfigManager configManager, RunewardenConfig config, OverlayManager overlays)
     {
         this.configManager = configManager;
         this.config = config;
         this.overlays = overlays;
-        this.resources = resources;
-        this.guide = guide;
-        this.skilling = skilling;
-        this.dashboard = dashboard;
-        this.harvest = harvest;
-        this.waveEntry = waveEntry;
-        this.inventory = inventory;
     }
 
     JPanel createPanel()
@@ -152,22 +122,13 @@ final class HudSettingsTool
         choice("Resource bars", "resourceHud", config::resourceHud);
         choice("Inventory preview", "inventoryPreview", config::inventoryPreview);
         choice("Character dashboard", "dashboardHud", config::dashboardHud);
-        choice("Current world ping", "worldHopDisplayPing", config::worldHopDisplayPing);
-        choice("Guide coach", "guideHud", config::guideHud);
         choice("Harvest reminders", "harvestHud", config::harvestHud);
         choice("Node timers", "nodeTimers", config::nodeTimers);
         enumChoice("Node countdowns", "nodeTimerDisplay", RunewardenConfig.TimerDisplay.values(), config::nodeTimerDisplay);
         enumChoice("Harvest countdowns", "harvestTimerDisplay", RunewardenConfig.TimerDisplay.values(), config::harvestTimerDisplay);
         enumChoice("Effect countdowns", "effectTimerDisplay", RunewardenConfig.TimerDisplay.values(), config::effectTimerDisplay);
-        enumChoice("Activity countdowns", "minigameTimerDisplay", RunewardenConfig.TimerDisplay.values(), config::minigameTimerDisplay);
-        choice("Shift context menus", "contextActions", config::contextActions);
         choice("Outfit reminders", "skillingOutfitReminder", config::skillingOutfitReminder);
         choice("Skilling resource hover", "resourceTooltips", config::resourceTooltips);
-        choice("Mob hover sight", "hoverNpcSight", config::hoverNpcSight);
-        choice("Always show mob hover", "hoverNpcSightAlways", config::hoverNpcSightAlways);
-        choice("Mob combat reference", "hoverMobFacts", config::hoverMobFacts);
-        choice("Fight Caves entrance", "waveEntryCoach", config::waveEntryCoach);
-        numberChoice("Fight Caves target rotation", "fightCavesTargetRotation", 1, 15, config.fightCavesTargetRotation());
         heading("CHARACTER DASHBOARD");
         choice("Worn equipment", "dashboardEquipment", config::dashboardEquipment);
         choice("Clock", "clockHud", config::clockHud);
@@ -218,7 +179,14 @@ final class HudSettingsTool
         started = false;
         if (resize != null) resize.stop();
         generation++;
+        extraWidgets.clear(); extraLocks.clear();
         refreshLater();
+    }
+
+    void onProfileChanged()
+    {
+        positionProfile = ""; lastPositions = null; reloadPositions = true;
+        onConfigChanged();
     }
 
     void onConfigChanged()
@@ -238,13 +206,6 @@ final class HudSettingsTool
     }
     private void applyMovementLock(boolean locked)
     {
-        resources.setHudLocked(locked);
-        guide.setHudLocked(locked);
-        skilling.setHudLocked(locked);
-        dashboard.setHudLocked(locked);
-        harvest.setHudLocked(locked);
-        if (waveEntry != null) waveEntry.setHudLocked(locked);
-        if (inventory != null) inventory.setHudLocked(locked);
         extraLocks.values().forEach(action->action.accept(locked));
     }
 
@@ -252,10 +213,6 @@ final class HudSettingsTool
     {
         if (!started) return;
         if (resize != null) resize.cancel();
-        for (Overlay overlay : new Overlay[] { resources, guide, skilling, dashboard.overlay(), harvest.overlay(), waveEntry, inventory })
-        {
-            if (overlay != null) overlays.resetOverlay(overlay);
-        }
         extraWidgets.values().forEach(overlays::resetOverlay);
         Map<String, HudPreferences.Style> styles = new LinkedHashMap<>(safeStyles());
         boolean changed = false;
@@ -490,11 +447,7 @@ final class HudSettingsTool
 
     private Map<String, Overlay> owned()
     {
-        Map<String, Overlay> result = new LinkedHashMap<>();
-        result.put("resources", resources); result.put("dashboard", dashboard.overlay()); result.put("guide", guide);
-        result.put("harvest", harvest.overlay()); result.put("outfit", skilling); result.put("entrance", waveEntry); result.put("inventory", inventory);
-        result.putAll(extraWidgets);
-        return result;
+        return new LinkedHashMap<>(extraWidgets);
     }
     private void applyPositions(String encoded)
     {

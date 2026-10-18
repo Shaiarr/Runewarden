@@ -1,0 +1,25 @@
+Runewarden HUD 0.10.0 - local test package
+
+Extract the entire ZIP into a new folder. Keep lib/, the argument files and,
+when supplied, runtime/ together. Do not copy new JARs over an older package.
+
+Windows: open Runewarden and double-click Start-Runewarden.bat.
+Verify-Runewarden.bat checks package hashes and required class/resources.
+The Windows x64 ZIP includes the unchanged pinned Temurin 17 runtime.
+Its matching source collection is delivered separately as
+runewarden-java-runtime-sources-0.10.0.zip. Keep both downloads available when
+redistributing the Windows package; the source ZIP is not needed to launch.
+The portable ZIP requires an installed Java 17 runtime.
+
+RuneLite itself is unchanged. The bootstrap registers Runewarden and, when the
+package includes it, Shortest Path through the official public development API.
+Enable the wanted plugins in RuneLite's normal plugin settings. The bootstrap
+does not rewrite another plugin's settings or enable it automatically.
+
+Jagex accounts use RuneLite's normal development-client account setup:
+https://github.com/runelite/runelite/wiki/Using-Jagex-Accounts
+
+This is an experimental test package, not Plugin Hub approval or a custom client.
+A successful package check does not establish logged-in gameplay or performance.
+Plugin source: https://github.com/Shaiarr/Runewarden/tree/hud-core
+Preserve the included third-party notices when distributing the binary.

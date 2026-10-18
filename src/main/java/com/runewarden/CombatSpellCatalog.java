@@ -1,26 +1,18 @@
 /* SPDX-License-Identifier: BSD-2-Clause */
 package com.runewarden;
 
-import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collections;
-import java.util.List;
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
-/** Numeric Wiki spell facts used for an explicit calculator input. */
-@Singleton
+/** Small numeric spell facts indexed by the native AUTOCAST_SPELL_OBJ value. */
 final class CombatSpellCatalog
 {
     static final class Spell
     {
-        String name;
-        @SerializedName("max_hit") int base;
-        String spellbook;
-        String element;
+        final int objectId, base;
+        final String name, spellbook, element;
+        private Spell(int objectId, String name, int base, String spellbook, String element)
+        {
+            this.objectId = objectId; this.name = name; this.base = base;
+            this.spellbook = spellbook; this.element = element;
+        }
         int maxHit(int level)
         {
             if ("Magic Dart".equals(name)) return 10 + level / 10;
@@ -34,78 +26,62 @@ final class CombatSpellCatalog
         }
         private static int tier(int level, int water, int earth, int fire, int airHit, int waterHit, int earthHit, int fireHit)
         { return level >= fire ? fireHit : level >= earth ? earthHit : level >= water ? waterHit : airHit; }
-        @Override public String toString() { return name; }
-    }
-    private static final class Data { List<Spell> spells; }
-    private final List<Spell> spells;
-    @Inject CombatSpellCatalog(Gson gson)
-    {
-        try (InputStream stream = getClass().getResourceAsStream("/com/runewarden/combat-spells.json"))
-        {
-            if (stream == null) throw new IllegalStateException("Missing spell facts");
-            Data data = gson.fromJson(new InputStreamReader(stream, StandardCharsets.UTF_8), Data.class);
-            if (data == null || data.spells == null || data.spells.isEmpty()) throw new IllegalStateException("Invalid spell facts");
-            spells = Collections.unmodifiableList(data.spells);
-        }
-        catch (java.io.IOException error) { throw new IllegalStateException("Could not read spell facts", error); }
-    }
-    /** Public gameval spell objects used by AUTOCAST_SPELL_OBJ. */
-    Spell fromSpellObject(int itemId)
-    {
-        String name;
-        switch (itemId)
-        {
-            case 3273: name = "Wind Strike"; break;
-            case 3275: name = "Water Strike"; break;
-            case 3277: name = "Earth Strike"; break;
-            case 3279: name = "Fire Strike"; break;
-            case 3281: name = "Wind Bolt"; break;
-            case 3285: name = "Water Bolt"; break;
-            case 3288: name = "Earth Bolt"; break;
-            case 3291: name = "Fire Bolt"; break;
-            case 3294: name = "Wind Blast"; break;
-            case 3297: name = "Water Blast"; break;
-            case 3302: name = "Earth Blast"; break;
-            case 3307: name = "Fire Blast"; break;
-            case 3313: name = "Wind Wave"; break;
-            case 3315: name = "Water Wave"; break;
-            case 3319: name = "Earth Wave"; break;
-            case 3321: name = "Fire Wave"; break;
-            case 21876: name = "Wind Surge"; break;
-            case 21877: name = "Water Surge"; break;
-            case 21878: name = "Earth Surge"; break;
-            case 21879: name = "Fire Surge"; break;
-            case 4629: name = "Smoke Rush"; break;
-            case 4630: name = "Shadow Rush"; break;
-            case 4632: name = "Blood Rush"; break;
-            case 4633: name = "Ice Rush"; break;
-            case 4635: name = "Smoke Burst"; break;
-            case 4636: name = "Shadow Burst"; break;
-            case 4638: name = "Blood Burst"; break;
-            case 4639: name = "Ice Burst"; break;
-            case 4641: name = "Smoke Blitz"; break;
-            case 4642: name = "Shadow Blitz"; break;
-            case 4644: name = "Blood Blitz"; break;
-            case 4645: name = "Ice Blitz"; break;
-            case 4647: name = "Smoke Barrage"; break;
-            case 4648: name = "Shadow Barrage"; break;
-            case 4650: name = "Blood Barrage"; break;
-            case 4651: name = "Ice Barrage"; break;
-            case 3309: name = "Claws of Guthix"; break;
-            case 3310: name = "Flames of Zamorak"; break;
-            case 3311: name = "Saradomin Strike"; break;
-            case 4176: case 5000: name = "Magic Dart"; break;
-            case 3293: name = "Crumble Undead"; break;
-            default: return null;
-        }
-        return named(name);
     }
 
-    List<Spell> spells() { return spells; }
-    Spell named(String name)
+    private CombatSpellCatalog() { }
+
+    static Spell fromSpellObject(int objectId)
     {
-        if (name == null) return null;
-        for (Spell spell : spells) if (spell.name.equalsIgnoreCase(name.trim())) return spell;
+        for (Spell spell : AUTOCAST_SPELLS)
+        {
+            if (spell.objectId == objectId) return spell;
+        }
         return null;
     }
+
+    // Spell objects and normal maximums are gameplay facts; no monster or DPS catalogue is loaded.
+    private static final Spell[] AUTOCAST_SPELLS = {
+        new Spell(3273, "Wind Strike", 2, "standard", "air"),
+        new Spell(3275, "Water Strike", 4, "standard", "water"),
+        new Spell(3277, "Earth Strike", 6, "standard", "earth"),
+        new Spell(3279, "Fire Strike", 8, "standard", "fire"),
+        new Spell(3281, "Wind Bolt", 9, "standard", "air"),
+        new Spell(3285, "Water Bolt", 10, "standard", "water"),
+        new Spell(3288, "Earth Bolt", 11, "standard", "earth"),
+        new Spell(3291, "Fire Bolt", 12, "standard", "fire"),
+        new Spell(3293, "Crumble Undead", 15, "standard", null),
+        new Spell(3294, "Wind Blast", 13, "standard", "air"),
+        new Spell(3297, "Water Blast", 14, "standard", "water"),
+        new Spell(3302, "Earth Blast", 15, "standard", "earth"),
+        new Spell(3307, "Fire Blast", 16, "standard", "fire"),
+        new Spell(3309, "Claws of Guthix", 20, "standard", null),
+        new Spell(3310, "Flames of Zamorak", 20, "standard", null),
+        new Spell(3311, "Saradomin Strike", 20, "standard", null),
+        new Spell(3313, "Wind Wave", 17, "standard", "air"),
+        new Spell(3315, "Water Wave", 18, "standard", "water"),
+        new Spell(3319, "Earth Wave", 19, "standard", "earth"),
+        new Spell(3321, "Fire Wave", 20, "standard", "fire"),
+        new Spell(4176, "Magic Dart", 0, "standard", null),
+        new Spell(4629, "Smoke Rush", 13, "ancient", null),
+        new Spell(4630, "Shadow Rush", 14, "ancient", null),
+        new Spell(4632, "Blood Rush", 15, "ancient", null),
+        new Spell(4633, "Ice Rush", 16, "ancient", null),
+        new Spell(4635, "Smoke Burst", 17, "ancient", null),
+        new Spell(4636, "Shadow Burst", 18, "ancient", null),
+        new Spell(4638, "Blood Burst", 21, "ancient", null),
+        new Spell(4639, "Ice Burst", 22, "ancient", null),
+        new Spell(4641, "Smoke Blitz", 23, "ancient", null),
+        new Spell(4642, "Shadow Blitz", 24, "ancient", null),
+        new Spell(4644, "Blood Blitz", 25, "ancient", null),
+        new Spell(4645, "Ice Blitz", 26, "ancient", null),
+        new Spell(4647, "Smoke Barrage", 27, "ancient", null),
+        new Spell(4648, "Shadow Barrage", 28, "ancient", null),
+        new Spell(4650, "Blood Barrage", 29, "ancient", null),
+        new Spell(4651, "Ice Barrage", 30, "ancient", null),
+        new Spell(5000, "Magic Dart", 0, "standard", null),
+        new Spell(21876, "Wind Surge", 21, "standard", "air"),
+        new Spell(21877, "Water Surge", 22, "standard", "water"),
+        new Spell(21878, "Earth Surge", 23, "standard", "earth"),
+        new Spell(21879, "Fire Surge", 24, "standard", "fire")
+    };
 }

@@ -75,11 +75,10 @@ public class SidebarScrollTest
         RunewardenPanel host;JTextField bottom;JPanel tall;
         Fixture()throws Exception
         {
-            SidebarLayoutTest.Fixture modules=new SidebarLayoutTest.Fixture();
             SwingUtilities.invokeAndWait(()->{
-                host=new RunewardenPanel(modules.get(RunewardenGuides.class),modules.get(RunewardenSightTool.class),modules.get(WaveExportTool.class));
+                host=new RunewardenPanel();
                 tall=SidebarUi.column();
-                for(int i=0;i<50;i++)tall.add(SidebarUi.label("Long guide row "+i+" with several words to wrap within the native sidebar width."));
+                for(int i=0;i<50;i++)tall.add(SidebarUi.label("Long equipment row "+i+" with several words to wrap within the native sidebar width."));
                 bottom=new JTextField("Initial value");tall.add(bottom);
                 host.addModule("Tall page",tall);host.addModule("Short page",SidebarUi.column());
             });

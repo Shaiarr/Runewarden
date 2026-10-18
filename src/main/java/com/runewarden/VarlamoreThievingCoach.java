@@ -81,7 +81,6 @@ final class VarlamoreThievingCoach
     private String profile;private int world=-1,previousValuables=-1;
     private Scene seeded;private WorldView seededView;private int baseX,baseY,plane;private long epoch;
     private JPanel panel;private GuideText status,facts;private boolean refreshing;private final Map<String,JCheckBox> controls=new LinkedHashMap<>();private JSlider scale;
-    private volatile Consumer<String> openGuide;
     @Inject VarlamoreThievingCoach(Client client,ConfigManager config,Gson gson,RunewardenDataStore store,RunewardenConfig hudConfig)
     {this(client,config,store,hudConfig,System::currentTimeMillis);}
     VarlamoreThievingCoach(Client client,ConfigManager config,RunewardenDataStore store,RunewardenConfig hudConfig,LongSupplier clock)
@@ -100,7 +99,6 @@ final class VarlamoreThievingCoach
     long now(){return clock.getAsLong();}
     Snapshot reading()
     {Snapshot current=reading;return started&&current.profile!=null&&client.getGameState()==GameState.LOGGED_IN&&Objects.equals(current.profile,config.getRSProfileKey())&&current.world==client.getWorld()?current:Snapshot.EMPTY;}
-    void setOpenGuideAction(Consumer<String> action){openGuide=action;}
     private boolean ready()
     {return started&&client.getGameState()==GameState.LOGGED_IN&&client.getLocalPlayer()!=null&&VarlamoreThievingState.activityArea(client.getLocalPlayer().getWorldLocation());}
     private void scope()
@@ -251,7 +249,6 @@ final class VarlamoreThievingCoach
     {
         if(panel!=null)return panel;panel=SidebarUi.column();panel.add(SidebarUi.heading("VARLAMORE THIEVING"));
         status=SidebarUi.label("");facts=SidebarUi.label("");panel.add(status);panel.add(facts);
-        panel.add(SidebarUi.button("Open current training guide",()->{Snapshot current=reading();Consumer<String> action=openGuide;if(started&&current.active&&action!=null)action.accept(current.house==null?"training:wealthy-citizens":"training:stealing-valuables");}));
         JPanel options=SidebarUi.section("DISPLAY");panel.add(options);
         choice(options,"hud","Show activity HUD",p->p.hud);choice(options,"radialTimers","Circular timers",p->p.radialTimers);choice(options,"labels","Scene labels",p->p.labels);
         choice(options,"citizens","Citizen highlights",p->p.citizens);choice(options,"owners","House owner highlights",p->p.owners);choice(options,"doors","House entrances",p->p.doors);choice(options,"windows","Escape windows",p->p.windows);choice(options,"furniture","Searchable furniture",p->p.furniture);choice(options,"bonus","Bonus furniture",p->p.bonus);choice(options,"compact","Compact HUD",p->p.compact);

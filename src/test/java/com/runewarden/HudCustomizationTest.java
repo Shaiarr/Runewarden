@@ -42,7 +42,7 @@ public class HudCustomizationTest
     @Test public void unsupportedAndUnknownSharedSettingsAreRejected()
     {
         for (String value : new String[] {"RW2|", "RW1|foreign=100,12,85,000000,ffffff,000000,ALWAYS,SQUARE,CURRENT|",
-            "RW1|guide=100,12,85,javascript,ffffff,000000,ALWAYS,SQUARE,CURRENT|"})
+            "RW1|inventory=100,12,85,javascript,ffffff,000000,ALWAYS,SQUARE,CURRENT|"})
         {
             try { HudPreferences.decode(value); fail(value); }
             catch (IllegalArgumentException expected) { }
@@ -53,6 +53,14 @@ public class HudCustomizationTest
         catch (IllegalArgumentException expected) { }
     }
 
+    @Test public void retiredStylesAndPositionsAreIgnoredDuringMigration()
+    {
+        String known="dashboard=100,12,85,e0be71,f3f0e8,0c0d10,ALWAYS,ROUNDED,CURRENT_MAX|";
+        assertEquals(java.util.Set.of("dashboard"),HudPreferences.decode("RW1|guide=legacy|reward-popup=legacy|"+known).keySet());
+        assertTrue(HudLayoutPositions.decode("RWP1|guide:0=legacy|entrance:0=legacy|").isEmpty());
+        assertEquals(10,HudPreferences.WIDGETS.length);
+    }
+
     @Test public void independentWidgetStyleChangesActualRenderingBoundsAndColour()
     {
         Map<String, HudPreferences.Style> styles = new LinkedHashMap<>();
@@ -60,9 +68,9 @@ public class HudCustomizationTest
             HudPreferences.Visibility.ALWAYS, HudPreferences.Frame.SQUARE, HudPreferences.Values.CURRENT));
         String encoded = HudPreferences.encode(styles);
         RunewardenConfig config = new RunewardenConfig() { @Override public String hudWidgetSettings() { return encoded; } };
-        HudPreferences.Style inventory = HudStyle.settings(config, "inventory"), guide = HudStyle.settings(config, "guide");
+        HudPreferences.Style inventory = HudStyle.settings(config, "inventory"), dashboard = HudStyle.settings(config, "dashboard");
         assertEquals(new Dimension(220, 340), HudStyle.dimension(inventory, 176, 272));
-        assertEquals(100, guide.scale);
+        assertEquals(100, dashboard.scale);
         BufferedImage image = new BufferedImage(300, 400, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = HudStyle.canvas(image.createGraphics(), inventory);
         try { HudStyle.panel(g, 176, 272, inventory); }

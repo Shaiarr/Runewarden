@@ -1,52 +1,42 @@
-# Runewarden op GitHub zetten
+# Runewarden HUD testen en indienen
 
-Dit pakket bevat de broncode voor de **plugin**. Er wordt geen aangepaste RuneLite-client of Java-runtime gepubliceerd. Het pakket heeft geen Git-geschiedenis of ingestelde remote; je maakt je eigen openbare repository. De bestaande `LICENSE`, auteursvermeldingen en bronvermeldingen blijven behouden. Versie **0.9.6** gebruikt de configuratienaam **runewarden**. Eerdere testinstellingen worden niet automatisch overgenomen; bewaar een geëxporteerde back-up voor een eventuele handmatige migratie. Import van oudere back-ups is niet gegarandeerd.
+Versie **0.10.0** staat op de ontwikkelingstak **hud-core**. Deze versie beperkt zich tot de HUD, timers en compacte sessietracking in de README. Uitgever: **Shai-arr**. Oorspronkelijke code is **BSD-2-Clause**; bronvermeldingen en licenties van derden blijven behouden.
 
-Uitgever: **Shai-arr**. De oorspronkelijke Runewarden-code valt onder **BSD-2-Clause**; code en gegevens van derden behouden hun eigen licenties, auteursvermeldingen en bronvermeldingen. Runewarden wordt door de gemeenschap onderhouden. Bijdragen en forks zijn welkom; er is geen gegarandeerd onderhoudsschema of vaste reactietijd voor ondersteuning.
+## De Windows-testdownload starten
 
-## Aanbevolen: GitHub Desktop
+1. Pak de volledige Windows x64-ZIP uit in een nieuwe map.
+2. Open **Runewarden** en dubbelklik **Start-Runewarden.bat**. Laat `lib`, de argumentbestanden en `runtime` bij elkaar.
+3. Kies Runewarden en eventueel Shortest Path in de normale plugininstellingen van RuneLite. De starter registreert de testplugins, maar zet geen andere plugins automatisch aan en verandert hun instellingen niet.
+4. Gebruik **Verify-Runewarden.bat** als je het pakket wilt controleren. Een geslaagde controle bewijst bestandshashes en aanwezige klassen/resources, geen ingelogde gameplay of Hub-goedkeuring.
 
-1. Pak de ZIP volledig uit. Open de map **runewarden** waarin `build.gradle`, `runelite-plugin.properties`, `README.md` en `src` direct staan. Dit is de repository-root; kies niet de bovenliggende pakketmap.
-2. Installeer [GitHub Desktop](https://desktop.github.com/) en meld je aan. Kies **File → Add local repository → Choose** en selecteer die map.
-3. Omdat het pakket nog geen Git-repository is, kies je **create a repository here**. Gebruik **Name: runewarden**. Bij een instelbare **Local path** kies je de bovenliggende map: Desktop voegt de naam eraan toe. Het resultaat moet de bestaande `runewarden` zijn, zonder extra `runewarden/runewarden`. Laat README-initialisatie uit en kies geen nieuwe license of gitignore. Die bestanden zitten al in het pakket.
-4. Maak de repository. Controleer of je de bestaande bronbestanden ziet. Commit eventuele wijzigingen met bijvoorbeeld **Initial Runewarden 0.9.6 source release**. Er mogen daarna geen niet-gecommitte bronbestanden overblijven.
-5. Klik **Publish repository**, gebruik **runewarden** als naam en zet **Keep this code private** uit. Kies je eigen account en klik **Publish repository**. Desktop maakt de openbare GitHub-repository aan; vooraf een lege website-repository maken is bij deze route niet nodig.
-6. Kies **Repository → View on GitHub**. Controleer of `README.md`, `LICENSE`, `src` en de buildbestanden rechtstreeks in de repository staan.
+RuneLite en de meegeleverde Temurin 17-runtime blijven ongewijzigd. Bij de Windows-runtime hoort de afzonderlijke Java-broncode-ZIP met dezelfde versie. De portable testdownload bevat geen Java-runtime en gebruikt een geïnstalleerde Java 17. Jagex-accounts volgen de normale [RuneLite-ontwikkelclientinstructies](https://github.com/runelite/runelite/wiki/Using-Jagex-Accounts).
 
-Kom je door het padvenster in een lege submap terecht? Gebruik dan onderstaande terminalroute op de oorspronkelijke bronmap. De officiële uitleg staat bij [een lokale repository toevoegen](https://docs.github.com/en/desktop/adding-and-cloning-repositories/adding-a-repository-from-your-local-computer-to-github-desktop) en [aanmaken/publiceren met Desktop](https://docs.github.com/en/desktop/overview/creating-your-first-repository-using-github-desktop).
+## Broncode en build
 
-## Alternatief: Git in een terminal
+Open de repository in GitHub Desktop en kies **hud-core**. Controleer dat `build.gradle`, `runelite-plugin.properties`, `README.md` en `src` direct in de projectmap staan. Voor een bronarchief zonder Git-geschiedenis kun je via **File → Add local repository** de bestaande map toevoegen en daarin een repository aanmaken. Vervang de meegeleverde README, LICENSE en gitignore niet.
 
-Open een terminal in de uitgepakte bronmap. Maak op [github.com/new](https://github.com/new) een **public** repository `runewarden`, zonder automatisch README, license of `.gitignore` toe te voegen. Vervang `JOUWACCOUNT` hieronder door je GitHub-account. Gebruik je eigen ingestelde Git-identiteit.
+Met JDK 17 en Python 3:
 
 ```sh
-git init -b main
-git add .
-git commit -m "Initial Runewarden 0.9.6 source release"
-git remote add origin https://github.com/JOUWACCOUNT/runewarden.git
-git remote -v
-git push -u origin main
+python -m pip install -r tools/requirements.txt
+python tools/validate_bundle.py
+python tools/validate_hub_release.py
+python -m unittest discover -s tools -p 'test_*.py'
+./gradlew clean check jar
+python tools/check_hub_jar.py
 ```
 
-Dit alternatief is bedoeld voor de bronmap zonder bestaande Git-repository. De officiële [importhandleiding](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github) beschrijft ook authenticatie.
+Op Windows gebruik je `gradlew.bat` en desgewenst `python -X utf8`. `devTestZip` bouwt het aparte testpakket; de optionele runtime- en routingparameters staan in `CONTRIBUTING.md`. De echte Hub-plugin is `build/libs/runewarden-0.10.0.jar`, zonder de starter, client of runtime.
 
-De webknop **Upload files** is voor dit project onhandig: GitHub accepteert daar maximaal **100 bestanden per upload** en **25 MiB per bestand**. Deze bronboom vereist dus meerdere uploads, inclusief bestanden in puntmappen. Upload de ZIP niet als vervanging voor uitgepakte broncode. Zie de [officiële uploadlimieten](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository).
+## Een mogelijke latere HUD-inzending
 
-## Later: indienen bij de RuneLite Plugin Hub
-
-De code openbaar zetten installeert de plugin nog niet in RuneLite. **Runewarden is nog niet door de Plugin Hub goedgekeurd.** De huidige exportchecks staan in `docs/plugin-only-evidence.json`; de procedure staat in `docs/release-process.md`. De oudere `docs/release-readiness-0.9.5.md` en het resultaat van 1.620 tests horen bij de historische ontwikkelomgeving. Ze bewijzen geen livegoedkeuring of dezelfde testdekking van deze pluginexport.
-
-Na de checks, vanuit een volledig gecommitte en gepushte repository, voer je met Python 3 uit:
-
-```sh
-python tools/prepare_hub_submission.py https://github.com/JOUWACCOUNT/runewarden
-```
-
-Dit maakt lokaal `build/hub-submission/plugins/runewarden` en `build/hub-submission/pull-request.md`. Het publiceert of verstuurt niets. De marker bevat de echte repository-URL en de **exacte 40 tekens lange commit-SHA** van je huidige commit:
+Deze handleiding voert geen publicatie uit. De eerdere brede inzending staat los van deze kleinere HUD-versie. Controleer eerst de actuele broncode-/bytecodebegroting met de geldende Hub-tools en leg de resultaten vast. Pas na een besluit om deze HUD in te dienen, push je de gecontroleerde broncode en gebruik je de exacte nieuwe commit. Maak bij die latere inzending het bestand `plugins/runewarden` in je Plugin Hub-fork met de volgende inhoud:
 
 ```text
-repository=https://github.com/JOUWACCOUNT/runewarden.git
+repository=https://github.com/Shaiarr/Runewarden.git
 commit=DE_EXACTE_40_TEKENS_LANGE_COMMIT_SHA
 ```
 
-Controleer beide gegenereerde bestanden. Dien vervolgens via een fork en pull request bij [runelite/plugin-hub](https://github.com/runelite/plugin-hub) het markerbestand in als **plugins/runewarden**. De broncode blijft in je eigen repository. Gebruik voor de beschrijving de gecontroleerde reviewtekst. Nieuwe bronwijzigingen vereisen een nieuwe gepushte commit en bijgewerkte marker. RuneLite beoordeelt de inzending daarna volgens zijn eigen procedure.
+Volg voor een eventuele nieuwe HUD-inzending de actuele instructies van [runelite/plugin-hub](https://github.com/runelite/plugin-hub): een fork, de marker **plugins/runewarden** en een review-PR. Ga er niet van uit dat de eerdere brede PR actief blijft of deze versie al dekt. De pluginbroncode blijft in je eigen repository. Verwerk concrete CI/scanner/reviewfeedback voor de nieuwe scope.
+
+Openbare broncode, een groen buildresultaat en toelating tot de live Plugin Hub zijn verschillende stappen. Oudere prototypechecks gelden niet automatisch voor deze HUD-versie. Bijdragen en testen zijn welkom; er is geen gegarandeerd onderhoudsschema of vaste reactietijd voor ondersteuning.

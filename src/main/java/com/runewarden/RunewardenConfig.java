@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: BSD-2-Clause */
 package com.runewarden;
 
 import net.runelite.client.config.Config;
@@ -12,12 +13,6 @@ public interface RunewardenConfig extends Config
     enum TickDisplay { PULSE, BAR, DOTS, NUMBER }
     enum TimerDisplay { TEXT, RADIAL, BOTH }
     String GROUP = "runewarden";
-    String THIRD_PARTY_WARNING = "This feature submits your IP address to a 3rd-party server not controlled or verified by RuneLite developers";
-
-    @ConfigItem(keyName = "wikiItemSources", name = "Live Wiki item sources", position = 33,
-        description = "Fetch sources from oldschool.runescape.wiki for the item you select. Sends the selected item title and your IP address; bundled sources remain available with this disabled.",
-        warning = THIRD_PARTY_WARNING)
-    default boolean wikiItemSources() { return false; }
 
     @ConfigItem(keyName = "hudCompact", name = "Compact HUD", position = 0,
         description = "Use compact spacing and prioritise ready harvests and the next timer.")
@@ -52,10 +47,6 @@ public interface RunewardenConfig extends Config
         description = "Use UTC instead of your computer's local time.")
     default boolean clockUtc() { return false; }
 
-    @ConfigItem(keyName = "guideHud", name = "Guide coach HUD", position = 7,
-        description = "Show the current locally selected guide step on screen.")
-    default boolean guideHud() { return true; }
-
     @ConfigItem(keyName = "harvestHud", name = "Harvest reminder HUD", position = 8,
         description = "Show selected farming and bird-house timers from Time Tracking.")
     default boolean harvestHud() { return true; }
@@ -76,14 +67,6 @@ public interface RunewardenConfig extends Config
         description = "Choose text, radial countdowns or both for observed buffs and cooldowns.")
     default TimerDisplay effectTimerDisplay() { return TimerDisplay.BOTH; }
 
-    @ConfigItem(keyName = "minigameTimerDisplay", name = "Activity countdown style", position = 38,
-        description = "Choose native clock text, radial countdowns or both in activity HUDs.")
-    default TimerDisplay minigameTimerDisplay() { return TimerDisplay.BOTH; }
-
-    @ConfigItem(keyName = "contextActions", name = "Contextual Runewarden menus", position = 37,
-        description = "Add Runewarden references and preparation to right-click menus while holding Shift.")
-    default boolean contextActions() { return true; }
-
     @ConfigItem(keyName = "skillingOutfitReminder", name = "Skilling outfit reminder", position = 10,
         description = "Show missing outfit pieces for the skill you are training.")
     default boolean skillingOutfitReminder() { return true; }
@@ -91,31 +74,6 @@ public interface RunewardenConfig extends Config
     @ConfigItem(keyName = "resourceTooltips", name = "Skilling resource hover", position = 12,
         description = "Show uses, action XP and sources when hovering skilling resources in inventory or bank.")
     default boolean resourceTooltips() { return true; }
-
-    @ConfigItem(keyName = "hoverNpcSight", name = "Mob hover sight", position = 13,
-        description = "Check line of sight in both directions for the NPC under the mouse.")
-    default boolean hoverNpcSight() { return true; }
-
-    @ConfigItem(keyName = "hoverNpcSightAlways", name = "Always show mob hover", position = 32,
-        description = "Show mob sight and combat cards without holding Shift. Otherwise hold Shift while hovering.")
-    default boolean hoverNpcSightAlways() { return false; }
-
-    @ConfigItem(keyName = "waveEntryCoach", name = "Fight Caves entrance", position = 14,
-        description = "Show the Fight Caves rotation countdown and first-wave NPC spawn origins on entry.")
-    default boolean waveEntryCoach() { return true; }
-
-    @Range(min = 1, max = 15)
-    @ConfigItem(keyName = "fightCavesTargetRotation", name = "Fight Caves target rotation", position = 15,
-        description = "The rotation to wait for outside the Fight Caves.")
-    default int fightCavesTargetRotation() { return 1; }
-
-    @ConfigItem(keyName = "infernoOpeningOnEntry", name = "Inferno opening on entry", position = 16, hidden = true,
-        description = "Restore the opening pack selected in Tile markers when entering the Inferno.")
-    default boolean infernoOpeningOnEntry() { return false; }
-
-    @ConfigItem(keyName = "colosseumOpeningOnEntry", name = "Colosseum opening on entry", position = 17, hidden = true,
-        description = "Restore the opening pack selected in Tile markers when entering the Colosseum.")
-    default boolean colosseumOpeningOnEntry() { return false; }
 
     @ConfigItem(keyName = "inventoryPreview", name = "Inventory preview", position = 18,
         description = "Show an actual 28-slot inventory preview while using other game tabs.")
@@ -164,45 +122,7 @@ public interface RunewardenConfig extends Config
         description = "Runewarden presentation settings managed by the HUD editor.")
     default String hudWidgetSettings() { return ""; }
 
-    @ConfigItem(keyName = "hoverMobFacts", name = "Mob combat reference", position = 28,
-        description = "Show usual attack styles, protection reference and weaknesses on mob hover.")
-    default boolean hoverMobFacts() { return true; }
-
     @ConfigItem(keyName = "clickTrainingCue", name = "Click training cue", position = 29,
         description = "Flash CLICK on each received game tick for rhythm practice.")
     default boolean clickTrainingCue() { return true; }
-    @ConfigItem(keyName="trainingPauseKey",name="Training start / pause key",position=30,
-        description="Start the prepared training session, or pause/resume its timer.")
-    default net.runelite.client.config.Keybind trainingPauseKey(){return net.runelite.client.config.Keybind.NOT_SET;}
-    @ConfigItem(keyName="trainingRestartKey",name="Training restart key",position=31,
-        description="Start a fresh run for the prepared activity.")
-    default net.runelite.client.config.Keybind trainingRestartKey(){return net.runelite.client.config.Keybind.NOT_SET;}
-
-    @ConfigItem(keyName="worldHopPreviousKey",name="World hopper: previous key",position=32,
-        description="Manually hop to the previous eligible world using the world hopper filters.")
-    default net.runelite.client.config.Keybind worldHopPreviousKey(){return net.runelite.client.config.Keybind.NOT_SET;}
-
-    @ConfigItem(keyName="worldHopNextKey",name="World hopper: next key",position=33,
-        description="Manually hop to the next eligible world using the world hopper filters.")
-    default net.runelite.client.config.Keybind worldHopNextKey(){return net.runelite.client.config.Keybind.NOT_SET;}
-
-    @ConfigItem(keyName="worldHopOutOfDanger",name="World hopper: safe quick hop",position=34,
-        description="Exclude PvP and high-risk worlds when using the next/previous world controls.")
-    default boolean worldHopOutOfDanger(){return true;}
-
-    @ConfigItem(keyName="worldHopMessage",name="World hopper: chat messages",position=35,
-        description="Show the chosen world and failed world-switch attempts in chat.")
-    default boolean worldHopMessage(){return true;}
-
-    @ConfigItem(keyName="worldHopMenu",name="World hopper: Hop-to menu",position=36,
-        description="Add Hop-to (Runewarden) to online friends and clan members.")
-    default boolean worldHopMenu(){return true;}
-
-    @ConfigItem(keyName="worldHopPing",name="World hopper: world pings",position=37,
-        description="Measure world latency while the world hopper is open.")
-    default boolean worldHopPing(){return true;}
-
-    @ConfigItem(keyName="worldHopDisplayPing",name="World hopper: ping HUD",position=38,
-        description="Show the current world's measured latency in a movable Runewarden HUD.")
-    default boolean worldHopDisplayPing(){return false;}
 }

@@ -6,4 +6,4 @@ The spell name, numeric base maximum, spellbook and element fields are retained.
 Image fields and non-damaging spells were omitted. Scaling arithmetic is original Java.
 The upstream repository is GPL-3.0; the full license is bundled as
 mob-knowledge-upstream-GPL-3.0.txt. OSRS Wiki factual content is also attributed
-under the project's existing Wiki CC BY-NC-SA notice.
+under wiki-reference-CC-BY-NC-SA.txt.

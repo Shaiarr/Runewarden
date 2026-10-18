@@ -69,6 +69,14 @@ public class ClaimableRoutineCatalogTest
         assertEquals(Instant.parse("2027-01-01T00:00:00Z"),ClaimableRoutineCatalog.nextReset(Instant.parse("2026-12-31T23:59:59Z")));
         assertEquals(Instant.parse("2028-02-29T00:00:00Z"),ClaimableRoutineCatalog.nextReset(Instant.parse("2028-02-28T12:00:00Z")));
     }
+    @Test public void rewardMapUsesOnlyTheNativeReceiptBitsAndFixedCanonicalSupplies()
+    {
+        Map<String,Integer> rewards=ClaimableRoutineCatalog.rewardVariables();assertEquals(28,rewards.size());assertEquals(Integer.valueOf(VarbitID.VARROCK_ELITE_REWARD),rewards.get("varrock_elite"));assertEquals(Integer.valueOf(VarbitID.ARDOUGNE_ELITE_REWARD),rewards.get("ardougne_elite"));
+        Fixture f=new Fixture();f.claimed.put("varrock_easy",1);assertEquals(Set.of(net.runelite.api.gameval.ItemID.COINS),f.get("battlestaves").supplies);
+        f.claimed.put("kandarin_easy",1);assertEquals(Set.of(net.runelite.api.gameval.ItemID.FLAX),f.get("flax").supplies);
+        f.claimed.put("morytania_medium",1);assertEquals(Set.of(net.runelite.api.gameval.ItemID.BONES),f.get("bonemeal").supplies);
+        assertEquals(net.runelite.api.gameval.ItemID.NZONE_HERBBOX,f.get("herb-boxes").iconId);
+    }
     private static final class Fixture
     {
         final Map<Integer,Integer> bits=new LinkedHashMap<>(),points=new LinkedHashMap<>();final Map<String,Integer> claimed=new LinkedHashMap<>();boolean member=true;long time=1;
