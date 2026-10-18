@@ -1,0 +1,3209 @@
+{
+  "format": 1,
+  "methods": {
+    "training:wooden-chairs": [
+      {
+        "name": "Plank",
+        "itemIds": [
+          960
+        ],
+        "evidence": "Bring [[Plank]], [[Hammer]] and [[Saw]] and enough nails."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Plank]], [[Hammer]] and [[Saw]] and enough nails."
+      },
+      {
+        "name": "Saw",
+        "itemIds": [
+          8794
+        ],
+        "evidence": "Bring [[Plank]], [[Hammer]] and [[Saw]] and enough nails."
+      }
+    ],
+    "training:oak-larders": [
+      {
+        "name": "Oak plank",
+        "itemIds": [
+          8778
+        ],
+        "evidence": "Bring [[Oak plank]], [[Hammer]] and [[Saw]]."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Oak plank]], [[Hammer]] and [[Saw]]."
+      },
+      {
+        "name": "Saw",
+        "itemIds": [
+          8794
+        ],
+        "evidence": "Bring [[Oak plank]], [[Hammer]] and [[Saw]]."
+      }
+    ],
+    "training:teak-benches": [
+      {
+        "name": "Teak plank",
+        "itemIds": [
+          8780
+        ],
+        "evidence": "Bring [[Teak plank]], [[Hammer]] and [[Saw]]."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Teak plank]], [[Hammer]] and [[Saw]]."
+      },
+      {
+        "name": "Saw",
+        "itemIds": [
+          8794
+        ],
+        "evidence": "Bring [[Teak plank]], [[Hammer]] and [[Saw]]."
+      }
+    ],
+    "training:mahogany-tables": [
+      {
+        "name": "Mahogany plank",
+        "itemIds": [
+          8782
+        ],
+        "evidence": "Bring [[Mahogany plank]], [[Hammer]] and [[Saw]]."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Mahogany plank]], [[Hammer]] and [[Saw]]."
+      },
+      {
+        "name": "Saw",
+        "itemIds": [
+          8794
+        ],
+        "evidence": "Bring [[Mahogany plank]], [[Hammer]] and [[Saw]]."
+      }
+    ],
+    "training:gnome-benches": [
+      {
+        "name": "Mahogany plank",
+        "itemIds": [
+          8782
+        ],
+        "evidence": "Bring [[Mahogany plank]], [[Hammer]] and [[Saw]]."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Mahogany plank]], [[Hammer]] and [[Saw]]."
+      },
+      {
+        "name": "Saw",
+        "itemIds": [
+          8794
+        ],
+        "evidence": "Bring [[Mahogany plank]], [[Hammer]] and [[Saw]]."
+      }
+    ],
+    "training:oak-dungeon-doors": [
+      {
+        "name": "Oak plank",
+        "itemIds": [
+          8778
+        ],
+        "evidence": "Bring [[Oak plank]], [[Hammer]] and [[Saw]]."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Oak plank]], [[Hammer]] and [[Saw]]."
+      },
+      {
+        "name": "Saw",
+        "itemIds": [
+          8794
+        ],
+        "evidence": "Bring [[Oak plank]], [[Hammer]] and [[Saw]]."
+      }
+    ],
+    "training:mythical-capes": [
+      {
+        "name": "Teak plank",
+        "itemIds": [
+          8780
+        ],
+        "evidence": "Bring [[Teak plank]], [[Hammer]] and [[Saw]]."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Teak plank]], [[Hammer]] and [[Saw]]."
+      },
+      {
+        "name": "Saw",
+        "itemIds": [
+          8794
+        ],
+        "evidence": "Bring [[Teak plank]], [[Hammer]] and [[Saw]]."
+      }
+    ],
+    "training:homes-beginner": [
+      {
+        "name": "Plank",
+        "itemIds": [
+          960
+        ],
+        "evidence": "Bring [[Plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      },
+      {
+        "name": "Steel bar",
+        "itemIds": [
+          2353
+        ],
+        "evidence": "Bring [[Plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      },
+      {
+        "name": "Saw",
+        "itemIds": [
+          8794
+        ],
+        "evidence": "Bring [[Plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      }
+    ],
+    "training:homes-novice": [
+      {
+        "name": "Oak plank",
+        "itemIds": [
+          8778
+        ],
+        "evidence": "Bring [[Oak plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      },
+      {
+        "name": "Steel bar",
+        "itemIds": [
+          2353
+        ],
+        "evidence": "Bring [[Oak plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Oak plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      },
+      {
+        "name": "Saw",
+        "itemIds": [
+          8794
+        ],
+        "evidence": "Bring [[Oak plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      }
+    ],
+    "training:homes-adept": [
+      {
+        "name": "Teak plank",
+        "itemIds": [
+          8780
+        ],
+        "evidence": "Bring [[Teak plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      },
+      {
+        "name": "Steel bar",
+        "itemIds": [
+          2353
+        ],
+        "evidence": "Bring [[Teak plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Teak plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      },
+      {
+        "name": "Saw",
+        "itemIds": [
+          8794
+        ],
+        "evidence": "Bring [[Teak plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      }
+    ],
+    "training:homes-expert": [
+      {
+        "name": "Mahogany plank",
+        "itemIds": [
+          8782
+        ],
+        "evidence": "Bring [[Mahogany plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      },
+      {
+        "name": "Steel bar",
+        "itemIds": [
+          2353
+        ],
+        "evidence": "Bring [[Mahogany plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Mahogany plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      },
+      {
+        "name": "Saw",
+        "itemIds": [
+          8794
+        ],
+        "evidence": "Bring [[Mahogany plank]], [[Steel bar]], [[Hammer]], [[Saw]] and teleports."
+      }
+    ],
+    "training:glass-lanterns": [
+      {
+        "name": "Molten glass",
+        "itemIds": [
+          1775
+        ],
+        "evidence": "Bring [[Molten glass]] and a [[Glassblowing pipe]]."
+      },
+      {
+        "name": "Glassblowing pipe",
+        "itemIds": [
+          1785
+        ],
+        "evidence": "Bring [[Molten glass]] and a [[Glassblowing pipe]]."
+      }
+    ],
+    "training:glass-orbs": [
+      {
+        "name": "Molten glass",
+        "itemIds": [
+          1775
+        ],
+        "evidence": "Bring [[Molten glass]] and a [[Glassblowing pipe]]."
+      },
+      {
+        "name": "Glassblowing pipe",
+        "itemIds": [
+          1785
+        ],
+        "evidence": "Bring [[Molten glass]] and a [[Glassblowing pipe]]."
+      }
+    ],
+    "training:glass-light-orbs": [
+      {
+        "name": "Molten glass",
+        "itemIds": [
+          1775
+        ],
+        "evidence": "Bring [[Molten glass]] and a [[Glassblowing pipe]]."
+      },
+      {
+        "name": "Glassblowing pipe",
+        "itemIds": [
+          1785
+        ],
+        "evidence": "Bring [[Molten glass]] and a [[Glassblowing pipe]]."
+      }
+    ],
+    "training:cut-sapphires": [
+      {
+        "name": "Chisel",
+        "itemIds": [
+          1755
+        ],
+        "evidence": "Bring [[Chisel]] and uncut sapphire gems."
+      }
+    ],
+    "training:cut-emeralds": [
+      {
+        "name": "Chisel",
+        "itemIds": [
+          1755
+        ],
+        "evidence": "Bring [[Chisel]] and uncut emerald gems."
+      }
+    ],
+    "training:cut-rubies": [
+      {
+        "name": "Chisel",
+        "itemIds": [
+          1755
+        ],
+        "evidence": "Bring [[Chisel]] and uncut ruby gems."
+      }
+    ],
+    "training:cut-diamonds": [
+      {
+        "name": "Chisel",
+        "itemIds": [
+          1755
+        ],
+        "evidence": "Bring [[Chisel]] and uncut diamond gems."
+      }
+    ],
+    "training:cut-dragonstones": [
+      {
+        "name": "Chisel",
+        "itemIds": [
+          1755
+        ],
+        "evidence": "Bring [[Chisel]] and uncut dragonstone gems."
+      }
+    ],
+    "training:gold-bracelets": [
+      {
+        "name": "Gold bar",
+        "itemIds": [
+          2357
+        ],
+        "evidence": "Bring [[Gold bar]], [[Bracelet mould]]."
+      },
+      {
+        "name": "Bracelet mould",
+        "itemIds": [
+          11065
+        ],
+        "evidence": "Bring [[Gold bar]], [[Bracelet mould]]."
+      }
+    ],
+    "training:sapphire-necklaces": [
+      {
+        "name": "Gold bar",
+        "itemIds": [
+          2357
+        ],
+        "evidence": "Bring [[Gold bar]], [[Necklace mould]] and [[Sapphire]]."
+      },
+      {
+        "name": "Necklace mould",
+        "itemIds": [
+          1597
+        ],
+        "evidence": "Bring [[Gold bar]], [[Necklace mould]] and [[Sapphire]]."
+      },
+      {
+        "name": "Sapphire",
+        "itemIds": [
+          1607
+        ],
+        "evidence": "Bring [[Gold bar]], [[Necklace mould]] and [[Sapphire]]."
+      }
+    ],
+    "training:emerald-bracelets": [
+      {
+        "name": "Gold bar",
+        "itemIds": [
+          2357
+        ],
+        "evidence": "Bring [[Gold bar]], [[Bracelet mould]] and [[Emerald]]."
+      },
+      {
+        "name": "Bracelet mould",
+        "itemIds": [
+          11065
+        ],
+        "evidence": "Bring [[Gold bar]], [[Bracelet mould]] and [[Emerald]]."
+      },
+      {
+        "name": "Emerald",
+        "itemIds": [
+          1605,
+          6896
+        ],
+        "evidence": "Bring [[Gold bar]], [[Bracelet mould]] and [[Emerald]]."
+      }
+    ],
+    "training:ruby-bracelets": [
+      {
+        "name": "Gold bar",
+        "itemIds": [
+          2357
+        ],
+        "evidence": "Bring [[Gold bar]], [[Bracelet mould]] and [[Ruby]]."
+      },
+      {
+        "name": "Bracelet mould",
+        "itemIds": [
+          11065
+        ],
+        "evidence": "Bring [[Gold bar]], [[Bracelet mould]] and [[Ruby]]."
+      },
+      {
+        "name": "Ruby",
+        "itemIds": [
+          1603
+        ],
+        "evidence": "Bring [[Gold bar]], [[Bracelet mould]] and [[Ruby]]."
+      }
+    ],
+    "training:diamond-bracelets": [
+      {
+        "name": "Gold bar",
+        "itemIds": [
+          2357
+        ],
+        "evidence": "Bring [[Gold bar]], [[Bracelet mould]] and [[Diamond]]."
+      },
+      {
+        "name": "Bracelet mould",
+        "itemIds": [
+          11065
+        ],
+        "evidence": "Bring [[Gold bar]], [[Bracelet mould]] and [[Diamond]]."
+      },
+      {
+        "name": "Diamond",
+        "itemIds": [
+          1601
+        ],
+        "evidence": "Bring [[Gold bar]], [[Bracelet mould]] and [[Diamond]]."
+      }
+    ],
+    "training:diamond-amulets": [
+      {
+        "name": "Gold bar",
+        "itemIds": [
+          2357
+        ],
+        "evidence": "Bring [[Gold bar]], [[Amulet mould]] and [[Diamond]]."
+      },
+      {
+        "name": "Amulet mould",
+        "itemIds": [
+          1595
+        ],
+        "evidence": "Bring [[Gold bar]], [[Amulet mould]] and [[Diamond]]."
+      },
+      {
+        "name": "Diamond",
+        "itemIds": [
+          1601
+        ],
+        "evidence": "Bring [[Gold bar]], [[Amulet mould]] and [[Diamond]]."
+      }
+    ],
+    "training:water-battlestaves": [
+      {
+        "name": "Battlestaff",
+        "itemIds": [
+          1391
+        ],
+        "evidence": "Bring [[Battlestaff]] and [[Water orb]]."
+      },
+      {
+        "name": "Water orb",
+        "itemIds": [
+          571
+        ],
+        "evidence": "Bring [[Battlestaff]] and [[Water orb]]."
+      }
+    ],
+    "training:earth-battlestaves": [
+      {
+        "name": "Battlestaff",
+        "itemIds": [
+          1391
+        ],
+        "evidence": "Bring [[Battlestaff]] and [[Earth orb]]."
+      },
+      {
+        "name": "Earth orb",
+        "itemIds": [
+          575
+        ],
+        "evidence": "Bring [[Battlestaff]] and [[Earth orb]]."
+      }
+    ],
+    "training:fire-battlestaves": [
+      {
+        "name": "Battlestaff",
+        "itemIds": [
+          1391
+        ],
+        "evidence": "Bring [[Battlestaff]] and [[Fire orb]]."
+      },
+      {
+        "name": "Fire orb",
+        "itemIds": [
+          569
+        ],
+        "evidence": "Bring [[Battlestaff]] and [[Fire orb]]."
+      }
+    ],
+    "training:air-battlestaves": [
+      {
+        "name": "Battlestaff",
+        "itemIds": [
+          1391
+        ],
+        "evidence": "Bring [[Battlestaff]] and [[Air orb]]."
+      },
+      {
+        "name": "Air orb",
+        "itemIds": [
+          573
+        ],
+        "evidence": "Bring [[Battlestaff]] and [[Air orb]]."
+      }
+    ],
+    "training:green-dhide": [
+      {
+        "name": "Green dragon leather",
+        "itemIds": [
+          1745
+        ],
+        "evidence": "Bring [[Green dragon leather]], [[Needle]] and [[Thread]]."
+      },
+      {
+        "name": "Needle",
+        "itemIds": [
+          1733
+        ],
+        "evidence": "Bring [[Green dragon leather]], [[Needle]] and [[Thread]]."
+      },
+      {
+        "name": "Thread",
+        "itemIds": [
+          1734
+        ],
+        "evidence": "Bring [[Green dragon leather]], [[Needle]] and [[Thread]]."
+      }
+    ],
+    "training:blue-dhide": [
+      {
+        "name": "Blue dragon leather",
+        "itemIds": [
+          2505
+        ],
+        "evidence": "Bring [[Blue dragon leather]], [[Needle]] and [[Thread]]."
+      },
+      {
+        "name": "Needle",
+        "itemIds": [
+          1733
+        ],
+        "evidence": "Bring [[Blue dragon leather]], [[Needle]] and [[Thread]]."
+      },
+      {
+        "name": "Thread",
+        "itemIds": [
+          1734
+        ],
+        "evidence": "Bring [[Blue dragon leather]], [[Needle]] and [[Thread]]."
+      }
+    ],
+    "training:red-dhide": [
+      {
+        "name": "Red dragon leather",
+        "itemIds": [
+          2507
+        ],
+        "evidence": "Bring [[Red dragon leather]], [[Needle]] and [[Thread]]."
+      },
+      {
+        "name": "Needle",
+        "itemIds": [
+          1733
+        ],
+        "evidence": "Bring [[Red dragon leather]], [[Needle]] and [[Thread]]."
+      },
+      {
+        "name": "Thread",
+        "itemIds": [
+          1734
+        ],
+        "evidence": "Bring [[Red dragon leather]], [[Needle]] and [[Thread]]."
+      }
+    ],
+    "training:black-dhide": [
+      {
+        "name": "Black dragon leather",
+        "itemIds": [
+          2509
+        ],
+        "evidence": "Bring [[Black dragon leather]], [[Needle]] and [[Thread]]."
+      },
+      {
+        "name": "Needle",
+        "itemIds": [
+          1733
+        ],
+        "evidence": "Bring [[Black dragon leather]], [[Needle]] and [[Thread]]."
+      },
+      {
+        "name": "Thread",
+        "itemIds": [
+          1734
+        ],
+        "evidence": "Bring [[Black dragon leather]], [[Needle]] and [[Thread]]."
+      }
+    ],
+    "training:spin-flax-wheel": [
+      {
+        "name": "Flax",
+        "itemIds": [
+          1779
+        ],
+        "evidence": "Bring [[Flax]]."
+      }
+    ],
+    "training:headless-arrows": [
+      {
+        "name": "Arrow shaft",
+        "itemIds": [
+          52
+        ],
+        "evidence": "Bring [[Arrow shaft]] and [[Feather]]."
+      },
+      {
+        "name": "Feather",
+        "itemIds": [
+          314,
+          11525
+        ],
+        "evidence": "Bring [[Arrow shaft]] and [[Feather]]."
+      }
+    ],
+    "training:oak-longbows": [
+      {
+        "name": "Oak logs",
+        "itemIds": [
+          1521
+        ],
+        "evidence": "Bring [[Oak logs]] and [[Knife]]."
+      },
+      {
+        "name": "Knife",
+        "itemIds": [
+          946
+        ],
+        "evidence": "Bring [[Oak logs]] and [[Knife]]."
+      }
+    ],
+    "training:willow-longbows": [
+      {
+        "name": "Willow logs",
+        "itemIds": [
+          1519
+        ],
+        "evidence": "Bring [[Willow logs]] and [[Knife]]."
+      },
+      {
+        "name": "Knife",
+        "itemIds": [
+          946
+        ],
+        "evidence": "Bring [[Willow logs]] and [[Knife]]."
+      }
+    ],
+    "training:maple-longbows": [
+      {
+        "name": "Maple logs",
+        "itemIds": [
+          1517
+        ],
+        "evidence": "Bring [[Maple logs]] and [[Knife]]."
+      },
+      {
+        "name": "Knife",
+        "itemIds": [
+          946
+        ],
+        "evidence": "Bring [[Maple logs]] and [[Knife]]."
+      }
+    ],
+    "training:yew-longbows": [
+      {
+        "name": "Yew logs",
+        "itemIds": [
+          1515
+        ],
+        "evidence": "Bring [[Yew logs]] and [[Knife]]."
+      },
+      {
+        "name": "Knife",
+        "itemIds": [
+          946
+        ],
+        "evidence": "Bring [[Yew logs]] and [[Knife]]."
+      }
+    ],
+    "training:magic-longbows": [
+      {
+        "name": "Magic logs",
+        "itemIds": [
+          1513
+        ],
+        "evidence": "Bring [[Magic logs]] and [[Knife]]."
+      },
+      {
+        "name": "Knife",
+        "itemIds": [
+          946
+        ],
+        "evidence": "Bring [[Magic logs]] and [[Knife]]."
+      }
+    ],
+    "training:mithril-darts": [
+      {
+        "name": "Mithril dart tip",
+        "itemIds": [
+          822
+        ],
+        "evidence": "Bring [[Mithril dart tip]] and [[Feather]]."
+      },
+      {
+        "name": "Feather",
+        "itemIds": [
+          314,
+          11525
+        ],
+        "evidence": "Bring [[Mithril dart tip]] and [[Feather]]."
+      }
+    ],
+    "training:adamant-darts": [
+      {
+        "name": "Adamant dart tip",
+        "itemIds": [
+          823
+        ],
+        "evidence": "Bring [[Adamant dart tip]] and [[Feather]]."
+      },
+      {
+        "name": "Feather",
+        "itemIds": [
+          314,
+          11525
+        ],
+        "evidence": "Bring [[Adamant dart tip]] and [[Feather]]."
+      }
+    ],
+    "training:rune-darts": [
+      {
+        "name": "Rune dart tip",
+        "itemIds": [
+          824
+        ],
+        "evidence": "Bring [[Rune dart tip]] and [[Feather]]."
+      },
+      {
+        "name": "Feather",
+        "itemIds": [
+          314,
+          11525
+        ],
+        "evidence": "Bring [[Rune dart tip]] and [[Feather]]."
+      }
+    ],
+    "training:amethyst-darts": [
+      {
+        "name": "Amethyst dart tip",
+        "itemIds": [
+          25853
+        ],
+        "evidence": "Bring [[Amethyst dart tip]] and [[Feather]]."
+      },
+      {
+        "name": "Feather",
+        "itemIds": [
+          314,
+          11525
+        ],
+        "evidence": "Bring [[Amethyst dart tip]] and [[Feather]]."
+      }
+    ],
+    "training:dragon-darts": [
+      {
+        "name": "Dragon dart tip",
+        "itemIds": [
+          11232
+        ],
+        "evidence": "Bring [[Dragon dart tip]] and [[Feather]]."
+      },
+      {
+        "name": "Feather",
+        "itemIds": [
+          314,
+          11525
+        ],
+        "evidence": "Bring [[Dragon dart tip]] and [[Feather]]."
+      }
+    ],
+    "training:broad-arrows": [
+      {
+        "name": "Headless arrow",
+        "itemIds": [
+          53
+        ],
+        "evidence": "Bring [[Headless arrow]] and [[Broad arrowhead]]."
+      }
+    ],
+    "training:broad-bolts": [
+      {
+        "name": "Unfinished broad bolts",
+        "itemIds": [
+          11876
+        ],
+        "evidence": "Bring [[Unfinished broad bolts]] and [[Feather]]."
+      },
+      {
+        "name": "Feather",
+        "itemIds": [
+          314,
+          11525
+        ],
+        "evidence": "Bring [[Unfinished broad bolts]] and [[Feather]]."
+      }
+    ],
+    "training:gem-bolt-tips": [
+      {
+        "name": "Chisel",
+        "itemIds": [
+          1755
+        ],
+        "evidence": "Bring [[Chisel]] and a gem that your Fletching level can turn into tips."
+      }
+    ],
+    "training:smith-bronze": [
+      {
+        "name": "Bronze bar",
+        "itemIds": [
+          2349
+        ],
+        "evidence": "Bring [[Bronze bar]] and [[Hammer]]."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Bronze bar]] and [[Hammer]]."
+      }
+    ],
+    "training:smith-iron": [
+      {
+        "name": "Iron bar",
+        "itemIds": [
+          2351
+        ],
+        "evidence": "Bring [[Iron bar]] and [[Hammer]]."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Iron bar]] and [[Hammer]]."
+      }
+    ],
+    "training:smith-steel": [
+      {
+        "name": "Steel bar",
+        "itemIds": [
+          2353
+        ],
+        "evidence": "Bring [[Steel bar]] and [[Hammer]]."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Steel bar]] and [[Hammer]]."
+      }
+    ],
+    "training:smith-mithril": [
+      {
+        "name": "Mithril bar",
+        "itemIds": [
+          2359
+        ],
+        "evidence": "Bring [[Mithril bar]] and [[Hammer]]."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Mithril bar]] and [[Hammer]]."
+      }
+    ],
+    "training:smith-adamant": [
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Adamant bar]] and [[Hammer]]."
+      }
+    ],
+    "training:smith-rune": [
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring [[Rune bar]] and [[Hammer]]."
+      }
+    ],
+    "training:blast-gold": [
+      {
+        "name": "Gold ore",
+        "itemIds": [
+          444
+        ],
+        "evidence": "Bring [[Gold ore]] and goldsmith gauntlets if unlocked."
+      }
+    ],
+    "training:blast-steel": [
+      {
+        "name": "Iron ore",
+        "itemIds": [
+          440
+        ],
+        "evidence": "Bring [[Iron ore]], [[Coal]] and a coal bag if unlocked."
+      },
+      {
+        "name": "Coal",
+        "itemIds": [
+          453
+        ],
+        "evidence": "Bring [[Iron ore]], [[Coal]] and a coal bag if unlocked."
+      }
+    ],
+    "training:blast-mithril": [
+      {
+        "name": "Mithril ore",
+        "itemIds": [
+          447
+        ],
+        "evidence": "Bring [[Mithril ore]], [[Coal]] and a coal bag if unlocked."
+      },
+      {
+        "name": "Coal",
+        "itemIds": [
+          453
+        ],
+        "evidence": "Bring [[Mithril ore]], [[Coal]] and a coal bag if unlocked."
+      }
+    ],
+    "training:blast-adamant": [
+      {
+        "name": "Adamantite ore",
+        "itemIds": [
+          449
+        ],
+        "evidence": "Bring [[Adamantite ore]], [[Coal]] and a coal bag if unlocked."
+      },
+      {
+        "name": "Coal",
+        "itemIds": [
+          453
+        ],
+        "evidence": "Bring [[Adamantite ore]], [[Coal]] and a coal bag if unlocked."
+      }
+    ],
+    "training:blast-rune": [
+      {
+        "name": "Runite ore",
+        "itemIds": [
+          451
+        ],
+        "evidence": "Bring [[Runite ore]], [[Coal]] and a coal bag if unlocked."
+      },
+      {
+        "name": "Coal",
+        "itemIds": [
+          453
+        ],
+        "evidence": "Bring [[Runite ore]], [[Coal]] and a coal bag if unlocked."
+      }
+    ],
+    "training:cannonballs": [
+      {
+        "name": "Steel bar",
+        "itemIds": [
+          2353
+        ],
+        "evidence": "Bring [[Steel bar]] and [[Ammo mould]]."
+      },
+      {
+        "name": "Ammo mould",
+        "itemIds": [
+          4
+        ],
+        "evidence": "Bring [[Steel bar]] and [[Ammo mould]]."
+      }
+    ],
+    "training:shrimp-fishing": [
+      {
+        "name": "Small fishing net",
+        "itemIds": [
+          303,
+          6209
+        ],
+        "evidence": "Bring [[Small fishing net]]."
+      }
+    ],
+    "training:bait-fishing": [
+      {
+        "name": "Fishing rod",
+        "itemIds": [
+          307
+        ],
+        "evidence": "Bring [[Fishing rod]] and [[Fishing bait]]."
+      },
+      {
+        "name": "Fishing bait",
+        "itemIds": [
+          313
+        ],
+        "evidence": "Bring [[Fishing rod]] and [[Fishing bait]]."
+      }
+    ],
+    "training:fly-fishing": [
+      {
+        "name": "Fly fishing rod",
+        "itemIds": [
+          309
+        ],
+        "evidence": "Bring [[Fly fishing rod]] and [[Feather]]."
+      },
+      {
+        "name": "Feather",
+        "itemIds": [
+          314,
+          11525
+        ],
+        "evidence": "Bring [[Fly fishing rod]] and [[Feather]]."
+      }
+    ],
+    "training:lobster-fishing": [
+      {
+        "name": "Lobster pot",
+        "itemIds": [
+          301
+        ],
+        "evidence": "Bring [[Lobster pot]]."
+      }
+    ],
+    "training:tuna-swordfish": [
+      {
+        "name": "Harpoon",
+        "itemIds": [
+          311
+        ],
+        "evidence": "Bring [[Harpoon]]."
+      }
+    ],
+    "training:monkfish": [
+      {
+        "name": "Small fishing net",
+        "itemIds": [
+          303,
+          6209
+        ],
+        "evidence": "Bring [[Small fishing net]]."
+      }
+    ],
+    "training:shark-fishing": [
+      {
+        "name": "Harpoon",
+        "itemIds": [
+          311
+        ],
+        "evidence": "Bring [[Harpoon]]."
+      }
+    ],
+    "training:anglerfish": [
+      {
+        "name": "Fishing rod",
+        "itemIds": [
+          307
+        ],
+        "evidence": "Bring [[Fishing rod]] and [[Sandworms]]."
+      },
+      {
+        "name": "Sandworms",
+        "itemIds": [
+          13431
+        ],
+        "evidence": "Bring [[Fishing rod]] and [[Sandworms]]."
+      }
+    ],
+    "training:dark-crabs": [
+      {
+        "name": "Lobster pot",
+        "itemIds": [
+          301
+        ],
+        "evidence": "Bring [[Lobster pot]] and [[Dark fishing bait]]."
+      },
+      {
+        "name": "Dark fishing bait",
+        "itemIds": [
+          11940
+        ],
+        "evidence": "Bring [[Lobster pot]] and [[Dark fishing bait]]."
+      }
+    ],
+    "training:cook-trout": [
+      {
+        "name": "Raw trout",
+        "itemIds": [
+          335
+        ],
+        "evidence": "Bring [[Raw trout]]."
+      }
+    ],
+    "training:cook-salmon": [
+      {
+        "name": "Raw salmon",
+        "itemIds": [
+          331
+        ],
+        "evidence": "Bring [[Raw salmon]]."
+      }
+    ],
+    "training:cook-lobster": [
+      {
+        "name": "Raw lobster",
+        "itemIds": [
+          377
+        ],
+        "evidence": "Bring [[Raw lobster]]."
+      }
+    ],
+    "training:cook-swordfish": [
+      {
+        "name": "Raw swordfish",
+        "itemIds": [
+          371
+        ],
+        "evidence": "Bring [[Raw swordfish]]."
+      }
+    ],
+    "training:cook-monkfish": [
+      {
+        "name": "Raw monkfish",
+        "itemIds": [
+          7944
+        ],
+        "evidence": "Bring [[Raw monkfish]]."
+      }
+    ],
+    "training:cook-sharks": [
+      {
+        "name": "Raw shark",
+        "itemIds": [
+          383
+        ],
+        "evidence": "Bring [[Raw shark]]."
+      }
+    ],
+    "training:cook-anglers": [
+      {
+        "name": "Raw anglerfish",
+        "itemIds": [
+          13439
+        ],
+        "evidence": "Bring [[Raw anglerfish]]."
+      }
+    ],
+    "training:wines": [
+      {
+        "name": "Grapes",
+        "itemIds": [
+          1987
+        ],
+        "evidence": "Bring [[Grapes]] and [[Jug of water]]."
+      },
+      {
+        "name": "Jug of water",
+        "itemIds": [
+          1937
+        ],
+        "evidence": "Bring [[Grapes]] and [[Jug of water]]."
+      }
+    ],
+    "training:karambwan-cooking": [
+      {
+        "name": "Raw karambwan",
+        "itemIds": [
+          3142
+        ],
+        "evidence": "Bring [[Raw karambwan]]."
+      }
+    ],
+    "training:burn-logs": [
+      {
+        "name": "Logs",
+        "itemIds": [
+          1511,
+          2511,
+          24650
+        ],
+        "evidence": "Bring [[Logs]] and [[Tinderbox]]."
+      },
+      {
+        "name": "Tinderbox",
+        "itemIds": [
+          590,
+          7156
+        ],
+        "evidence": "Bring [[Logs]] and [[Tinderbox]]."
+      }
+    ],
+    "training:burn-oak": [
+      {
+        "name": "Oak logs",
+        "itemIds": [
+          1521
+        ],
+        "evidence": "Bring [[Oak logs]] and [[Tinderbox]]."
+      },
+      {
+        "name": "Tinderbox",
+        "itemIds": [
+          590,
+          7156
+        ],
+        "evidence": "Bring [[Oak logs]] and [[Tinderbox]]."
+      }
+    ],
+    "training:burn-willow": [
+      {
+        "name": "Willow logs",
+        "itemIds": [
+          1519
+        ],
+        "evidence": "Bring [[Willow logs]] and [[Tinderbox]]."
+      },
+      {
+        "name": "Tinderbox",
+        "itemIds": [
+          590,
+          7156
+        ],
+        "evidence": "Bring [[Willow logs]] and [[Tinderbox]]."
+      }
+    ],
+    "training:burn-maple": [
+      {
+        "name": "Maple logs",
+        "itemIds": [
+          1517
+        ],
+        "evidence": "Bring [[Maple logs]] and [[Tinderbox]]."
+      },
+      {
+        "name": "Tinderbox",
+        "itemIds": [
+          590,
+          7156
+        ],
+        "evidence": "Bring [[Maple logs]] and [[Tinderbox]]."
+      }
+    ],
+    "training:burn-yew": [
+      {
+        "name": "Yew logs",
+        "itemIds": [
+          1515
+        ],
+        "evidence": "Bring [[Yew logs]] and [[Tinderbox]]."
+      },
+      {
+        "name": "Tinderbox",
+        "itemIds": [
+          590,
+          7156
+        ],
+        "evidence": "Bring [[Yew logs]] and [[Tinderbox]]."
+      }
+    ],
+    "training:burn-magic": [
+      {
+        "name": "Magic logs",
+        "itemIds": [
+          1513
+        ],
+        "evidence": "Bring [[Magic logs]] and [[Tinderbox]]."
+      },
+      {
+        "name": "Tinderbox",
+        "itemIds": [
+          590,
+          7156
+        ],
+        "evidence": "Bring [[Magic logs]] and [[Tinderbox]]."
+      }
+    ],
+    "training:burn-redwood": [
+      {
+        "name": "Redwood logs",
+        "itemIds": [
+          19669
+        ],
+        "evidence": "Bring [[Redwood logs]] and [[Tinderbox]]."
+      },
+      {
+        "name": "Tinderbox",
+        "itemIds": [
+          590,
+          7156
+        ],
+        "evidence": "Bring [[Redwood logs]] and [[Tinderbox]]."
+      }
+    ],
+    "training:leather-gloves-intro": [
+      {
+        "name": "Leather",
+        "itemIds": [
+          1741
+        ],
+        "evidence": "Bring [[Leather]], [[Needle]] and [[Thread]]."
+      },
+      {
+        "name": "Needle",
+        "itemIds": [
+          1733
+        ],
+        "evidence": "Bring [[Leather]], [[Needle]] and [[Thread]]."
+      },
+      {
+        "name": "Thread",
+        "itemIds": [
+          1734
+        ],
+        "evidence": "Bring [[Leather]], [[Needle]] and [[Thread]]."
+      }
+    ],
+    "training:wool-spinning-intro": [
+      {
+        "name": "Wool",
+        "itemIds": [
+          1737
+        ],
+        "evidence": "Bring [[Wool]] and choose a bank-to-wheel route."
+      }
+    ],
+    "training:shrimp-cooking-intro": [
+      {
+        "name": "Raw shrimps",
+        "itemIds": [
+          317,
+          2514,
+          24652
+        ],
+        "evidence": "Bring [[Raw shrimps]]."
+      }
+    ],
+    "training:karambwan": [
+      {
+        "name": "Karambwan vessel",
+        "itemIds": [
+          3157,
+          3159
+        ],
+        "evidence": "Bring a karambwan vessel and raw karambwanji bait. | Unlock a suitable transport and banking route; a fish barrel helps if owned."
+      },
+      {
+        "name": "Raw karambwanji",
+        "itemIds": [
+          3150
+        ],
+        "evidence": "Bring a karambwan vessel and raw karambwanji bait. | Unlock a suitable transport and banking route; a fish barrel helps if owned."
+      }
+    ],
+    "training:barbarian-fishing": [
+      {
+        "name": "Barbarian rod",
+        "itemIds": [
+          11323
+        ],
+        "evidence": "Bring a barbarian rod and suitable bait. | Learn heavy-rod fishing from Otto."
+      },
+      {
+        "name": "Feather",
+        "itemIds": [
+          314,
+          11525
+        ],
+        "evidence": "Bring a barbarian rod and suitable bait. | Learn heavy-rod fishing from Otto."
+      },
+      {
+        "name": "Fishing bait",
+        "itemIds": [
+          313
+        ],
+        "evidence": "Bring a barbarian rod and suitable bait. | Learn heavy-rod fishing from Otto."
+      }
+    ],
+    "training:barbarian-3tick": [
+      {
+        "name": "Barbarian rod",
+        "itemIds": [
+          11323
+        ],
+        "evidence": "Bring a barbarian rod, bait and a supported three-tick action setup. | Practise without carrying expensive gear."
+      },
+      {
+        "name": "Feather",
+        "itemIds": [
+          314,
+          11525
+        ],
+        "evidence": "Bring a barbarian rod, bait and a supported three-tick action setup. | Practise without carrying expensive gear."
+      },
+      {
+        "name": "Fishing bait",
+        "itemIds": [
+          313
+        ],
+        "evidence": "Bring a barbarian rod, bait and a supported three-tick action setup. | Practise without carrying expensive gear."
+      }
+    ],
+    "training:drift-net": [
+      {
+        "name": "Drift net",
+        "itemIds": [
+          21652
+        ],
+        "evidence": "Bring drift nets and a weapon suitable for herding fish. | Use diving equipment and check underwater inventory restrictions."
+      }
+    ],
+    "training:minnows": [
+      {
+        "name": "Small fishing net",
+        "itemIds": [
+          303,
+          6209
+        ],
+        "evidence": "Wear the complete angler outfit to access Kylie Minnow's platform. | Bring a small fishing net."
+      }
+    ],
+    "training:infernal-eels": [
+      {
+        "name": "Oily fishing rod",
+        "itemIds": [
+          1585
+        ],
+        "evidence": "Bring an oily fishing rod, bait and equipped ice gloves for infernal eels, or a fishing rod and bait for sacred eels. | Bring a hammer for infernal eels or knife for sacred eels."
+      },
+      {
+        "name": "Fishing bait",
+        "itemIds": [
+          313
+        ],
+        "evidence": "Bring an oily fishing rod, bait and equipped ice gloves for infernal eels, or a fishing rod and bait for sacred eels. | Bring a hammer for infernal eels or knife for sacred eels."
+      },
+      {
+        "name": "Ice gloves",
+        "itemIds": [
+          1580
+        ],
+        "evidence": "Bring an oily fishing rod, bait and equipped ice gloves for infernal eels, or a fishing rod and bait for sacred eels. | Bring a hammer for infernal eels or knife for sacred eels."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring an oily fishing rod, bait and equipped ice gloves for infernal eels, or a fishing rod and bait for sacred eels. | Bring a hammer for infernal eels or knife for sacred eels."
+      }
+    ],
+    "training:sacred-eels": [
+      {
+        "name": "Fishing rod",
+        "itemIds": [
+          307
+        ],
+        "evidence": "Bring an oily fishing rod, bait and equipped ice gloves for infernal eels, or a fishing rod and bait for sacred eels. | Bring a hammer for infernal eels or knife for sacred eels."
+      },
+      {
+        "name": "Fishing bait",
+        "itemIds": [
+          313
+        ],
+        "evidence": "Bring an oily fishing rod, bait and equipped ice gloves for infernal eels, or a fishing rod and bait for sacred eels. | Bring a hammer for infernal eels or knife for sacred eels."
+      },
+      {
+        "name": "Knife",
+        "itemIds": [
+          946
+        ],
+        "evidence": "Bring an oily fishing rod, bait and equipped ice gloves for infernal eels, or a fishing rod and bait for sacred eels. | Bring a hammer for infernal eels or knife for sacred eels."
+      }
+    ],
+    "training:two-tick-tuna": [
+      {
+        "name": "Harpoon",
+        "itemIds": [
+          311
+        ],
+        "evidence": "Bring a harpoon and a supported alternate-tick setup. | Learn the setup and safe damage management before attempting a long session."
+      }
+    ],
+    "training:leechfin-fishing": [
+      {
+        "name": "Big fishing net",
+        "itemIds": [
+          305
+        ],
+        "evidence": "Bring a big fishing net."
+      }
+    ],
+    "training:hunter-birds": [
+      {
+        "name": "Bird snare",
+        "itemIds": [
+          10006
+        ],
+        "evidence": "Bring the snares, noose wand or other equipment for the selected creature. | Leave room for the catch and check the creature's exact hunting setup."
+      }
+    ],
+    "training:hunter-kebbits": [
+      {
+        "name": "Noose wand",
+        "itemIds": [
+          10150
+        ],
+        "evidence": "Bring the snares, noose wand or other equipment for the selected creature. | Leave room for the catch and check the creature's exact hunting setup."
+      }
+    ],
+    "training:falconry": [
+      {
+        "name": "Coins",
+        "itemIds": [
+          995
+        ],
+        "evidence": "Bring coins and leave weapon, shield and glove slots empty. | Leave room for the catch and check the creature's exact hunting setup."
+      }
+    ],
+    "training:swamp-lizards": [
+      {
+        "name": "Rope",
+        "itemIds": [
+          954
+        ],
+        "evidence": "Bring ropes and small fishing nets for tree traps. | Leave room for the catch and check the creature's exact hunting setup."
+      },
+      {
+        "name": "Small fishing net",
+        "itemIds": [
+          303,
+          6209
+        ],
+        "evidence": "Bring ropes and small fishing nets for tree traps. | Leave room for the catch and check the creature's exact hunting setup."
+      }
+    ],
+    "training:orange-salamanders": [
+      {
+        "name": "Rope",
+        "itemIds": [
+          954
+        ],
+        "evidence": "Bring ropes and small fishing nets for tree traps. | Leave room for the catch and check the creature's exact hunting setup."
+      },
+      {
+        "name": "Small fishing net",
+        "itemIds": [
+          303,
+          6209
+        ],
+        "evidence": "Bring ropes and small fishing nets for tree traps. | Leave room for the catch and check the creature's exact hunting setup."
+      }
+    ],
+    "training:red-salamanders": [
+      {
+        "name": "Rope",
+        "itemIds": [
+          954
+        ],
+        "evidence": "Bring ropes and small fishing nets for tree traps. | Leave room for the catch and check the creature's exact hunting setup."
+      },
+      {
+        "name": "Small fishing net",
+        "itemIds": [
+          303,
+          6209
+        ],
+        "evidence": "Bring ropes and small fishing nets for tree traps. | Leave room for the catch and check the creature's exact hunting setup."
+      }
+    ],
+    "training:black-salamanders": [
+      {
+        "name": "Rope",
+        "itemIds": [
+          954
+        ],
+        "evidence": "Bring ropes and small fishing nets for tree traps. | Leave room for the catch and check the creature's exact hunting setup."
+      },
+      {
+        "name": "Small fishing net",
+        "itemIds": [
+          303,
+          6209
+        ],
+        "evidence": "Bring ropes and small fishing nets for tree traps. | Leave room for the catch and check the creature's exact hunting setup."
+      }
+    ],
+    "training:red-chinchompas": [
+      {
+        "name": "Box trap",
+        "itemIds": [
+          10008
+        ],
+        "evidence": "Bring box traps; protect your catch if hunting in the Wilderness. | Leave room for the catch and check the creature's exact hunting setup."
+      }
+    ],
+    "training:black-chinchompas": [
+      {
+        "name": "Box trap",
+        "itemIds": [
+          10008
+        ],
+        "evidence": "Bring box traps; protect your catch if hunting in the Wilderness. | Leave room for the catch and check the creature's exact hunting setup."
+      }
+    ],
+    "training:letvek-hunting": [
+      {
+        "name": "Box trap",
+        "itemIds": [
+          10008
+        ],
+        "evidence": "Bring box traps."
+      }
+    ],
+    "training:maniacal-monkey-hunter": [
+      {
+        "name": "Banana",
+        "itemIds": [
+          1963
+        ],
+        "evidence": "Bring bananas and a Kruk monkey greegree. | Leave room for the catch and check the creature's exact hunting setup."
+      },
+      {
+        "name": "Kruk monkey greegree",
+        "itemIds": [
+          19525
+        ],
+        "evidence": "Bring bananas and a Kruk monkey greegree. | Leave room for the catch and check the creature's exact hunting setup."
+      }
+    ],
+    "training:herbiboar": [
+      {
+        "name": "Secateurs",
+        "itemIds": [
+          5329
+        ],
+        "evidence": "Bring secateurs, stamina restoration and inventory space for herbs. | Leave room for the catch and check the creature's exact hunting setup."
+      },
+      {
+        "name": "Magic secateurs",
+        "itemIds": [
+          7409
+        ],
+        "evidence": "Bring secateurs, stamina restoration and inventory space for herbs. | Leave room for the catch and check the creature's exact hunting setup."
+      }
+    ],
+    "training:bird-house-runs": [
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Bring four bird houses or logs and clockworks, a hammer and chisel, and suitable seeds. | Your Crafting level must support making the selected bird house unless bought ready-made."
+      },
+      {
+        "name": "Chisel",
+        "itemIds": [
+          1755
+        ],
+        "evidence": "Bring four bird houses or logs and clockworks, a hammer and chisel, and suitable seeds. | Your Crafting level must support making the selected bird house unless bought ready-made."
+      },
+      {
+        "name": "Clockwork",
+        "itemIds": [
+          8792
+        ],
+        "evidence": "Bring four bird houses or logs and clockworks, a hammer and chisel, and suitable seeds. | Your Crafting level must support making the selected bird house unless bought ready-made."
+      }
+    ],
+    "training:aerial-fishing-hunter": [
+      {
+        "name": "Knife",
+        "itemIds": [
+          946
+        ],
+        "evidence": "Leave both hands empty and obtain a cormorant from Alry the Angler. | Bring bait from the activity and a knife for processing fish."
+      }
+    ],
+    "training:wyrmscraig-goats": [
+      {
+        "name": "Cattleprod",
+        "itemIds": [
+          278
+        ],
+        "evidence": "Bring a cattleprod and unlock the island."
+      }
+    ],
+    "training:stymphike-hunting": [
+      {
+        "name": "Letvek",
+        "itemIds": [
+          33625,
+          33825
+        ],
+        "evidence": "Bring letveks as bait."
+      }
+    ],
+    "training:wintertodt": [
+      {
+        "name": "Tinderbox",
+        "itemIds": [
+          590,
+          7156
+        ],
+        "evidence": "Wear warm clothing and bring an axe, tinderbox and hammer. | Keep rejuvenation supplies ready and choose whether to fletch kindling."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Wear warm clothing and bring an axe, tinderbox and hammer. | Keep rejuvenation supplies ready and choose whether to fletch kindling."
+      },
+      {
+        "name": "Knife",
+        "itemIds": [
+          946
+        ],
+        "evidence": "Wear warm clothing and bring an axe, tinderbox and hammer. | Keep rejuvenation supplies ready and choose whether to fletch kindling."
+      },
+      {
+        "name": "Bruma torch",
+        "itemIds": [
+          20720
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      }
+    ],
+    "training:allotment-runs": [
+      {
+        "name": "Spade",
+        "itemIds": [
+          952
+        ],
+        "evidence": "Bring seeds, compost, spade, rake, seed dibber and watering can. | Plan a short route through patches you can reach."
+      },
+      {
+        "name": "Rake",
+        "itemIds": [
+          5341
+        ],
+        "evidence": "Bring seeds, compost, spade, rake, seed dibber and watering can. | Plan a short route through patches you can reach."
+      },
+      {
+        "name": "Seed dibber",
+        "itemIds": [
+          5343
+        ],
+        "evidence": "Bring seeds, compost, spade, rake, seed dibber and watering can. | Plan a short route through patches you can reach."
+      }
+    ],
+    "training:herb-runs": [
+      {
+        "name": "Spade",
+        "itemIds": [
+          952
+        ],
+        "evidence": "Bring herb seeds, ultracompost, a spade, seed dibber and transport. | Use magic secateurs and disease-free patches if unlocked."
+      },
+      {
+        "name": "Seed dibber",
+        "itemIds": [
+          5343
+        ],
+        "evidence": "Bring herb seeds, ultracompost, a spade, seed dibber and transport. | Use magic secateurs and disease-free patches if unlocked."
+      },
+      {
+        "name": "Magic secateurs",
+        "itemIds": [
+          7409
+        ],
+        "evidence": "Bring herb seeds, ultracompost, a spade, seed dibber and transport. | Use magic secateurs and disease-free patches if unlocked."
+      }
+    ],
+    "training:tree-runs": [
+      {
+        "name": "Spade",
+        "itemIds": [
+          952
+        ],
+        "evidence": "Bring eligible saplings, payment supplies or disease protection, spade and transport. | Choose a sapling tier that fits your budget."
+      }
+    ],
+    "training:hardwood-runs": [
+      {
+        "name": "Teak sapling",
+        "itemIds": [
+          21477
+        ],
+        "evidence": "Bring teak or mahogany saplings, protection payments and transport. | Use a separate reminder because hardwoods grow over longer intervals."
+      },
+      {
+        "name": "Mahogany sapling",
+        "itemIds": [
+          21480
+        ],
+        "evidence": "Bring teak or mahogany saplings, protection payments and transport. | Use a separate reminder because hardwoods grow over longer intervals."
+      }
+    ],
+    "training:giant-seaweed": [
+      {
+        "name": "Seaweed spore",
+        "itemIds": [
+          21490
+        ],
+        "evidence": "Bring seaweed spores, ultracompost, spade and transport. | Use diving equipment if convenient; keep weight suitable for the underwater area."
+      },
+      {
+        "name": "Ultracompost",
+        "itemIds": [
+          21483
+        ],
+        "evidence": "Bring seaweed spores, ultracompost, spade and transport. | Use diving equipment if convenient; keep weight suitable for the underwater area."
+      },
+      {
+        "name": "Spade",
+        "itemIds": [
+          952
+        ],
+        "evidence": "Bring seaweed spores, ultracompost, spade and transport. | Use diving equipment if convenient; keep weight suitable for the underwater area."
+      }
+    ],
+    "training:tithe-farm": [
+      {
+        "name": "Spade",
+        "itemIds": [
+          952
+        ],
+        "evidence": "Bring a spade, seed dibber and enough watering cans or Gricoller's can. | Take the seed tier matching your level."
+      },
+      {
+        "name": "Seed dibber",
+        "itemIds": [
+          5343
+        ],
+        "evidence": "Bring a spade, seed dibber and enough watering cans or Gricoller's can. | Take the seed tier matching your level."
+      },
+      {
+        "name": "Gricoller's can",
+        "itemIds": [
+          13353
+        ],
+        "evidence": "Bring a spade, seed dibber and enough watering cans or Gricoller's can. | Take the seed tier matching your level."
+      }
+    ],
+    "training:hespori": [
+      {
+        "name": "Hespori seed",
+        "itemIds": [
+          22875
+        ],
+        "evidence": "Bring a Hespori seed, combat equipment, food and poison protection. | Prepare a fast method for killing the flowers."
+      }
+    ],
+    "training:calquat-runs": [
+      {
+        "name": "Calquat sapling",
+        "itemIds": [
+          5503
+        ],
+        "evidence": "Bring the matching sapling, spade and transport. | Use the crop's appropriate protection or compost plan."
+      },
+      {
+        "name": "Spade",
+        "itemIds": [
+          952
+        ],
+        "evidence": "Bring the matching sapling, spade and transport. | Use the crop's appropriate protection or compost plan."
+      }
+    ],
+    "training:crystal-tree-runs": [
+      {
+        "name": "Crystal sapling",
+        "itemIds": [
+          23659
+        ],
+        "evidence": "Bring the matching sapling, spade and transport. | Use the crop's appropriate protection or compost plan."
+      },
+      {
+        "name": "Spade",
+        "itemIds": [
+          952
+        ],
+        "evidence": "Bring the matching sapling, spade and transport. | Use the crop's appropriate protection or compost plan."
+      }
+    ],
+    "training:celastrus-runs": [
+      {
+        "name": "Celastrus sapling",
+        "itemIds": [
+          22856
+        ],
+        "evidence": "Bring the matching sapling, spade and transport. | Use the crop's appropriate protection or compost plan."
+      },
+      {
+        "name": "Spade",
+        "itemIds": [
+          952
+        ],
+        "evidence": "Bring the matching sapling, spade and transport. | Use the crop's appropriate protection or compost plan."
+      }
+    ],
+    "training:redwood-farming": [
+      {
+        "name": "Redwood sapling",
+        "itemIds": [
+          22859
+        ],
+        "evidence": "Bring the matching sapling, spade and transport. | Use the crop's appropriate protection or compost plan."
+      },
+      {
+        "name": "Spade",
+        "itemIds": [
+          952
+        ],
+        "evidence": "Bring the matching sapling, spade and transport. | Use the crop's appropriate protection or compost plan."
+      }
+    ],
+    "minigame:fishing-trawler": [
+      {
+        "name": "bailing bucket",
+        "itemIds": [
+          583,
+          585
+        ],
+        "evidence": "Board Murphy's trawler from Port Khazard; take bailing buckets, swamp paste and rope for your chosen role."
+      },
+      {
+        "name": "swamp paste",
+        "itemIds": [
+          1941
+        ],
+        "evidence": "Board Murphy's trawler from Port Khazard; take bailing buckets, swamp paste and rope for your chosen role."
+      },
+      {
+        "name": "rope",
+        "itemIds": [
+          954
+        ],
+        "evidence": "Board Murphy's trawler from Port Khazard; take bailing buckets, swamp paste and rope for your chosen role."
+      }
+    ],
+    "training:attack-potions": [
+      {
+        "name": "Guam potion (unf)",
+        "itemIds": [
+          91
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.ATTACK_POTION_3; exact unfinished-potion and secondary recipe."
+      },
+      {
+        "name": "Eye of newt",
+        "itemIds": [
+          221
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.ATTACK_POTION_3; exact unfinished-potion and secondary recipe."
+      }
+    ],
+    "training:antipoisons": [
+      {
+        "name": "Marrentill potion (unf)",
+        "itemIds": [
+          93
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.ANTIPOISON_3; exact unfinished-potion and secondary recipe."
+      },
+      {
+        "name": "Unicorn horn dust",
+        "itemIds": [
+          235
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.ANTIPOISON_3; exact unfinished-potion and secondary recipe."
+      }
+    ],
+    "training:strength-potions": [
+      {
+        "name": "Tarromin potion (unf)",
+        "itemIds": [
+          95
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.STRENGTH_POTION_3; exact unfinished-potion and secondary recipe."
+      },
+      {
+        "name": "Limpwurt root",
+        "itemIds": [
+          225
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.STRENGTH_POTION_3; exact unfinished-potion and secondary recipe."
+      }
+    ],
+    "training:energy-potions": [
+      {
+        "name": "Harralander potion (unf)",
+        "itemIds": [
+          97
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.ENERGY_POTION_3; exact unfinished-potion and secondary recipe."
+      },
+      {
+        "name": "Chocolate dust",
+        "itemIds": [
+          1975
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.ENERGY_POTION_3; exact unfinished-potion and secondary recipe."
+      }
+    ],
+    "training:prayer-potions": [
+      {
+        "name": "Ranarr potion (unf)",
+        "itemIds": [
+          99
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.PRAYER_POTION_3; exact unfinished-potion and secondary recipe."
+      },
+      {
+        "name": "Snape grass",
+        "itemIds": [
+          231
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.PRAYER_POTION_3; exact unfinished-potion and secondary recipe."
+      }
+    ],
+    "training:super-attack": [
+      {
+        "name": "Irit potion (unf)",
+        "itemIds": [
+          101
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.SUPER_ATTACK_3; exact unfinished-potion and secondary recipe."
+      },
+      {
+        "name": "Eye of newt",
+        "itemIds": [
+          221
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.SUPER_ATTACK_3; exact unfinished-potion and secondary recipe."
+      }
+    ],
+    "training:super-energy": [
+      {
+        "name": "Avantoe potion (unf)",
+        "itemIds": [
+          103
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.SUPER_ENERGY_3; exact unfinished-potion and secondary recipe."
+      },
+      {
+        "name": "Mort myre fungus",
+        "itemIds": [
+          2970
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.SUPER_ENERGY_3; exact unfinished-potion and secondary recipe."
+      }
+    ],
+    "training:super-strength": [
+      {
+        "name": "Kwuarm potion (unf)",
+        "itemIds": [
+          105
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.SUPER_STRENGTH_3; exact unfinished-potion and secondary recipe."
+      },
+      {
+        "name": "Limpwurt root",
+        "itemIds": [
+          225
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.SUPER_STRENGTH_3; exact unfinished-potion and secondary recipe."
+      }
+    ],
+    "training:super-restore": [
+      {
+        "name": "Snapdragon potion (unf)",
+        "itemIds": [
+          3004
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.SUPER_RESTORE_3; exact unfinished-potion and secondary recipe."
+      },
+      {
+        "name": "Red spiders' eggs",
+        "itemIds": [
+          223
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.SUPER_RESTORE_3; exact unfinished-potion and secondary recipe."
+      }
+    ],
+    "training:super-defence": [
+      {
+        "name": "Cadantine potion (unf)",
+        "itemIds": [
+          107
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.SUPER_DEFENCE_3; exact unfinished-potion and secondary recipe."
+      },
+      {
+        "name": "White berries",
+        "itemIds": [
+          239
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.SUPER_DEFENCE_3; exact unfinished-potion and secondary recipe."
+      }
+    ],
+    "training:ranging-potions": [
+      {
+        "name": "Dwarf weed potion (unf)",
+        "itemIds": [
+          109
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.RANGING_POTION_3; exact unfinished-potion and secondary recipe."
+      },
+      {
+        "name": "Wine of zamorak",
+        "itemIds": [
+          245
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.RANGING_POTION_3; exact unfinished-potion and secondary recipe."
+      }
+    ],
+    "training:magic-potions": [
+      {
+        "name": "Lantadyme potion (unf)",
+        "itemIds": [
+          2483
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.MAGIC_POTION_3; exact unfinished-potion and secondary recipe."
+      },
+      {
+        "name": "Potato cactus",
+        "itemIds": [
+          3138
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.MAGIC_POTION_3; exact unfinished-potion and secondary recipe."
+      }
+    ],
+    "training:saradomin-brews": [
+      {
+        "name": "Toadflax potion (unf)",
+        "itemIds": [
+          3002
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.SARADOMIN_BREW_3; exact unfinished-potion and secondary recipe."
+      },
+      {
+        "name": "Crushed nest",
+        "itemIds": [
+          6693
+        ],
+        "evidence": "RuneLite 1.13.2 HerbloreAction.SARADOMIN_BREW_3; exact unfinished-potion and secondary recipe."
+      }
+    ],
+    "training:clean-herbs": [
+      {
+        "name": "Grimy guam leaf",
+        "itemIds": [
+          199
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Grimy marrentill",
+        "itemIds": [
+          201
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Grimy tarromin",
+        "itemIds": [
+          203
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Grimy harralander",
+        "itemIds": [
+          205
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Grimy ranarr weed",
+        "itemIds": [
+          207
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Grimy toadflax",
+        "itemIds": [
+          3049
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Grimy irit leaf",
+        "itemIds": [
+          209
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Grimy avantoe",
+        "itemIds": [
+          211
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Grimy kwuarm",
+        "itemIds": [
+          213
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Grimy huasca",
+        "itemIds": [
+          30094
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Grimy snapdragon",
+        "itemIds": [
+          3051
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Grimy cadantine",
+        "itemIds": [
+          215
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Grimy lantadyme",
+        "itemIds": [
+          2485
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Grimy dwarf weed",
+        "itemIds": [
+          217
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Grimy torstol",
+        "itemIds": [
+          219
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      }
+    ],
+    "minigame:impetuous-impulses": [
+      {
+        "name": "Butterfly net",
+        "itemIds": [
+          10010
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Magic butterfly net",
+        "itemIds": [
+          11259
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Impling jar",
+        "itemIds": [
+          11260
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      }
+    ],
+    "minigame:tai-bwo-wannai-cleanup": [
+      {
+        "name": "Machete",
+        "itemIds": [
+          975
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Opal machete",
+        "itemIds": [
+          6313
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Jade machete",
+        "itemIds": [
+          6315
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Red topaz machete",
+        "itemIds": [
+          6317
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "antipoison(+)(1)",
+        "itemIds": [
+          25762
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "antipoison(+)(2)",
+        "itemIds": [
+          25763
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "antipoison(+)(3)",
+        "itemIds": [
+          25764
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "antipoison(+)(4)",
+        "itemIds": [
+          25765
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "antipoison(-)(1)",
+        "itemIds": [
+          25754
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "antipoison(-)(2)",
+        "itemIds": [
+          25755
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "antipoison(-)(3)",
+        "itemIds": [
+          25756
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "antipoison(-)(4)",
+        "itemIds": [
+          25757
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "antipoison(1)",
+        "itemIds": [
+          179
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "antipoison(2)",
+        "itemIds": [
+          177
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "antipoison(3)",
+        "itemIds": [
+          175
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "antipoison(4)",
+        "itemIds": [
+          2446
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      }
+    ],
+    "training:guardians-rift": [
+      {
+        "name": "3rd age pickaxe",
+        "itemIds": [
+          20014
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "adamant pickaxe",
+        "itemIds": [
+          1271
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "black pickaxe",
+        "itemIds": [
+          12297
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "broken pickaxe",
+        "itemIds": [
+          468,
+          470,
+          472,
+          474,
+          476,
+          478,
+          11923,
+          12594
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "bronze pickaxe",
+        "itemIds": [
+          1265
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "colossal pouch",
+        "itemIds": [
+          26784,
+          26786,
+          26906
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "corrupted pickaxe",
+        "itemIds": [
+          23822
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "crystal pickaxe",
+        "itemIds": [
+          23680,
+          23863
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "dragon pickaxe",
+        "itemIds": [
+          11920,
+          12797
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "echo pickaxe",
+        "itemIds": [
+          25112
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "giant pouch",
+        "itemIds": [
+          5514,
+          5515
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "gilded pickaxe",
+        "itemIds": [
+          23276
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "infernal pickaxe",
+        "itemIds": [
+          13243
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "iron pickaxe",
+        "itemIds": [
+          1267
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "large pouch",
+        "itemIds": [
+          5512,
+          5513,
+          6819
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "medium pouch",
+        "itemIds": [
+          5510,
+          5511
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "mithril pickaxe",
+        "itemIds": [
+          1273
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "rune pickaxe",
+        "itemIds": [
+          1275
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "small pouch",
+        "itemIds": [
+          5509
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "steel pickaxe",
+        "itemIds": [
+          1269
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "Chisel",
+        "itemIds": [
+          1755
+        ],
+        "evidence": "Optional guardian crafting; https://oldschool.runescape.wiki/w/Guardians_of_the_Rift"
+      }
+    ],
+    "training:mastering-mixology": [
+      {
+        "name": "aga paste",
+        "itemIds": [
+          30007
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "avantoe",
+        "itemIds": [
+          261
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "avantoe potion(unf)",
+        "itemIds": [
+          103
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "cadantine",
+        "itemIds": [
+          265
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "cadantine potion(unf)",
+        "itemIds": [
+          107
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "dwarf weed",
+        "itemIds": [
+          267
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "dwarf weed potion(unf)",
+        "itemIds": [
+          109
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "guam leaf",
+        "itemIds": [
+          249
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "guam potion(unf)",
+        "itemIds": [
+          91
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "harralander",
+        "itemIds": [
+          255
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "harralander potion(unf)",
+        "itemIds": [
+          97
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "huasca",
+        "itemIds": [
+          30097
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "irit leaf",
+        "itemIds": [
+          259
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "irit potion(unf)",
+        "itemIds": [
+          101
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "kwuarm",
+        "itemIds": [
+          263
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "kwuarm potion(unf)",
+        "itemIds": [
+          105
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "lantadyme",
+        "itemIds": [
+          2481
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "lantadyme potion(unf)",
+        "itemIds": [
+          2483
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "lye paste",
+        "itemIds": [
+          30009
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "marrentill",
+        "itemIds": [
+          251
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "marrentill potion(unf)",
+        "itemIds": [
+          93
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "mox paste",
+        "itemIds": [
+          30005
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "ranarr potion(unf)",
+        "itemIds": [
+          99
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "ranarr weed",
+        "itemIds": [
+          257
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "snapdragon",
+        "itemIds": [
+          3000
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "snapdragon potion(unf)",
+        "itemIds": [
+          3004
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "tarromin",
+        "itemIds": [
+          253
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "tarromin potion(unf)",
+        "itemIds": [
+          95
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "toadflax",
+        "itemIds": [
+          2998
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "toadflax potion(unf)",
+        "itemIds": [
+          3002
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "torstol",
+        "itemIds": [
+          269
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      },
+      {
+        "name": "torstol potion(unf)",
+        "itemIds": [
+          111
+        ],
+        "evidence": "https://oldschool.runescape.wiki/w/Herblore#Mastering_Mixology: herbs and unfinished potions are refined into paste."
+      }
+    ],
+    "training:stamina-potions": [
+      {
+        "name": "Amylase crystal",
+        "itemIds": [
+          12640
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "super energy(1)",
+        "itemIds": [
+          3022,
+          20551
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "super energy(2)",
+        "itemIds": [
+          3020,
+          20550
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "super energy(3)",
+        "itemIds": [
+          3018,
+          20549
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "super energy(4)",
+        "itemIds": [
+          3016,
+          20548
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      }
+    ],
+    "training:super-combat": [
+      {
+        "name": "Torstol",
+        "itemIds": [
+          269
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "super attack(4)",
+        "itemIds": [
+          2436
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "super defence(4)",
+        "itemIds": [
+          2442
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      },
+      {
+        "name": "super strength(4)",
+        "itemIds": [
+          2440
+        ],
+        "evidence": "Explicit named preparation supplies; see bundled guide and BANK-TOOLS.md source references."
+      }
+    ],
+    "training:feldip-weasels": [
+      {
+        "name": "Noose wand",
+        "itemIds": [
+          10150
+        ],
+        "evidence": "Tracking route; ring of pursuit is a recommended route accelerator."
+      },
+      {
+        "name": "Ring of pursuit",
+        "itemIds": [
+          21126
+        ],
+        "evidence": "Tracking route; ring of pursuit is a recommended route accelerator."
+      }
+    ],
+    "training:ruby-harvests": [
+      {
+        "name": "Butterfly net",
+        "itemIds": [
+          10010,
+          11259
+        ],
+        "evidence": "Butterflies plus bird snares; two ordinary traps are available from20Hunter."
+      },
+      {
+        "name": "Butterfly jar",
+        "itemIds": [
+          10012
+        ],
+        "evidence": "Butterflies plus bird snares; two ordinary traps are available from20Hunter."
+      },
+      {
+        "name": "Bird snare",
+        "itemIds": [
+          10006
+        ],
+        "evidence": "Butterflies plus bird snares; two ordinary traps are available from20Hunter."
+      }
+    ],
+    "training:red-crabs": [
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Hammer, saw, planks, nails and buckets are one-time trap construction supplies; fish offcuts are recurring bait."
+      },
+      {
+        "name": "Saw",
+        "itemIds": [
+          8794
+        ],
+        "evidence": "Hammer, saw, planks, nails and buckets are one-time trap construction supplies; fish offcuts are recurring bait."
+      },
+      {
+        "name": "Plank",
+        "itemIds": [
+          960
+        ],
+        "evidence": "Hammer, saw, planks, nails and buckets are one-time trap construction supplies; fish offcuts are recurring bait."
+      },
+      {
+        "name": "Bucket",
+        "itemIds": [
+          1925
+        ],
+        "evidence": "Hammer, saw, planks, nails and buckets are one-time trap construction supplies; fish offcuts are recurring bait."
+      },
+      {
+        "name": "Fish offcuts",
+        "itemIds": [
+          11334
+        ],
+        "evidence": "Hammer, saw, planks, nails and buckets are one-time trap construction supplies; fish offcuts are recurring bait."
+      }
+    ],
+    "training:embertailed-jerboas": [
+      {
+        "name": "Box trap",
+        "itemIds": [
+          10008
+        ],
+        "evidence": "Box traps unlocked by Eagles' Peak progress; three ordinary traps available from40Hunter."
+      }
+    ],
+    "training:razor-backed-kebbits": [
+      {
+        "name": "Noose wand",
+        "itemIds": [
+          10150
+        ],
+        "evidence": "Spare pursuit rings and run restoration support the reference route; no caught kebbit outputs are inputs."
+      },
+      {
+        "name": "Ring of pursuit",
+        "itemIds": [
+          21126
+        ],
+        "evidence": "Spare pursuit rings and run restoration support the reference route; no caught kebbit outputs are inputs."
+      }
+    ],
+    "training:rainbow-crabs": [
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Permanent trap construction supplies are separate from recurring fine-offcut bait. Crush caught crabs to keep paste stackable."
+      },
+      {
+        "name": "Saw",
+        "itemIds": [
+          8794
+        ],
+        "evidence": "Permanent trap construction supplies are separate from recurring fine-offcut bait. Crush caught crabs to keep paste stackable."
+      },
+      {
+        "name": "Plank",
+        "itemIds": [
+          960
+        ],
+        "evidence": "Permanent trap construction supplies are separate from recurring fine-offcut bait. Crush caught crabs to keep paste stackable."
+      },
+      {
+        "name": "Bucket",
+        "itemIds": [
+          1925
+        ],
+        "evidence": "Permanent trap construction supplies are separate from recurring fine-offcut bait. Crush caught crabs to keep paste stackable."
+      },
+      {
+        "name": "Fine fish offcuts",
+        "itemIds": [
+          32307
+        ],
+        "evidence": "Permanent trap construction supplies are separate from recurring fine-offcut bait. Crush caught crabs to keep paste stackable."
+      },
+      {
+        "name": "Pestle and mortar",
+        "itemIds": [
+          233
+        ],
+        "evidence": "Permanent trap construction supplies are separate from recurring fine-offcut bait. Crush caught crabs to keep paste stackable."
+      }
+    ],
+    "training:moonlight-moths": [
+      {
+        "name": "Butterfly net",
+        "itemIds": [
+          10010,
+          11259
+        ],
+        "evidence": "Net/jar route; release moths to reuse jars. Eligible barehand alternatives can omit these tools."
+      },
+      {
+        "name": "Butterfly jar",
+        "itemIds": [
+          10012
+        ],
+        "evidence": "Net/jar route; release moths to reuse jars. Eligible barehand alternatives can omit these tools."
+      }
+    ],
+    "training:rubium-rocks": [
+      {
+        "name": "Any pickaxe",
+        "itemIds": [
+          1265,
+          1267,
+          1269,
+          1271,
+          1273,
+          1275,
+          11920,
+          12797,
+          13243,
+          23680,
+          20014,
+          23276,
+          12297
+        ],
+        "evidence": "Small rubium rocks require48Mining; rope is needed only for first entry. Do not confuse these with68Mining geode deposits."
+      },
+      {
+        "name": "Rope",
+        "itemIds": [
+          954
+        ],
+        "evidence": "Small rubium rocks require48Mining; rope is needed only for first entry. Do not confuse these with68Mining geode deposits."
+      }
+    ],
+    "training:lead-rocks": [
+      {
+        "name": "Any pickaxe",
+        "itemIds": [
+          1265,
+          1267,
+          1269,
+          1271,
+          1273,
+          1275,
+          11920,
+          12797,
+          13243,
+          23680,
+          20014,
+          23276,
+          12297
+        ],
+        "evidence": "Gloves are alternatives for the efficient route; drop mined lead. Varrock armour and celestial-ring modifiers remain optional gear choices."
+      },
+      {
+        "name": "Superior or expert mining gloves",
+        "itemIds": [
+          21345,
+          21392
+        ],
+        "evidence": "Gloves are alternatives for the efficient route; drop mined lead. Varrock armour and celestial-ring modifiers remain optional gear choices."
+      }
+    ],
+    "training:infernal-shale": [
+      {
+        "name": "Any pickaxe",
+        "itemIds": [
+          1265,
+          1267,
+          1269,
+          1271,
+          1273,
+          1275,
+          11920,
+          12797,
+          13243,
+          23680,
+          20014,
+          23276,
+          12297
+        ],
+        "evidence": "Wet cloth is optional for the manual tick method. Shale and crushed shale are outputs and are excluded from input filtering."
+      },
+      {
+        "name": "Hammer",
+        "itemIds": [
+          2347
+        ],
+        "evidence": "Wet cloth is optional for the manual tick method. Shale and crushed shale are outputs and are excluded from input filtering."
+      },
+      {
+        "name": "Chisel",
+        "itemIds": [
+          1755
+        ],
+        "evidence": "Wet cloth is optional for the manual tick method. Shale and crushed shale are outputs and are excluded from input filtering."
+      },
+      {
+        "name": "Jim's wet cloth",
+        "itemIds": [
+          30808
+        ],
+        "evidence": "Wet cloth is optional for the manual tick method. Shale and crushed shale are outputs and are excluded from input filtering."
+      }
+    ]
+  },
+  "limits": "Exact linked supplies plus explicit named tools; crop/species/tier families supplied separately. No inferred combat gear or arbitrary rune sets. Quantity is not specified here."
+}

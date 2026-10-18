@@ -1,0 +1,2515 @@
+[
+  {
+    "itemId": 39,
+    "name": "Bronze arrowtips",
+    "source": "Smith matching metal bars on an anvil.",
+    "wiki": "https://oldschool.runescape.wiki/w/Bronze_arrowtips"
+  },
+  {
+    "itemId": 40,
+    "name": "Iron arrowtips",
+    "source": "Smith matching metal bars on an anvil.",
+    "wiki": "https://oldschool.runescape.wiki/w/Iron_arrowtips"
+  },
+  {
+    "itemId": 41,
+    "name": "Steel arrowtips",
+    "source": "Smith matching metal bars on an anvil.",
+    "wiki": "https://oldschool.runescape.wiki/w/Steel_arrowtips"
+  },
+  {
+    "itemId": 42,
+    "name": "Mithril arrowtips",
+    "source": "Smith matching metal bars on an anvil.",
+    "wiki": "https://oldschool.runescape.wiki/w/Mithril_arrowtips"
+  },
+  {
+    "itemId": 43,
+    "name": "Adamant arrowtips",
+    "source": "Smith matching metal bars on an anvil.",
+    "wiki": "https://oldschool.runescape.wiki/w/Adamant_arrowtips"
+  },
+  {
+    "itemId": 44,
+    "name": "Rune arrowtips",
+    "source": "Smith matching metal bars on an anvil.",
+    "wiki": "https://oldschool.runescape.wiki/w/Rune_arrowtips"
+  },
+  {
+    "itemId": 48,
+    "name": "Longbow (u)",
+    "source": "Carve the matching logs with a knife.",
+    "wiki": "https://oldschool.runescape.wiki/w/Longbow_(u)"
+  },
+  {
+    "itemId": 52,
+    "name": "Arrow shaft",
+    "source": "Carve logs into arrow shafts with a knife.",
+    "wiki": "https://oldschool.runescape.wiki/w/Arrow_shaft"
+  },
+  {
+    "itemId": 53,
+    "name": "Headless arrow",
+    "source": "Attach feathers to arrow shafts.",
+    "wiki": "https://oldschool.runescape.wiki/w/Headless_arrow"
+  },
+  {
+    "itemId": 56,
+    "name": "Oak longbow (u)",
+    "source": "Carve the matching logs with a knife.",
+    "wiki": "https://oldschool.runescape.wiki/w/Oak_longbow_(u)"
+  },
+  {
+    "itemId": 58,
+    "name": "Willow longbow (u)",
+    "source": "Carve the matching logs with a knife.",
+    "wiki": "https://oldschool.runescape.wiki/w/Willow_longbow_(u)"
+  },
+  {
+    "itemId": 62,
+    "name": "Maple longbow (u)",
+    "source": "Carve the matching logs with a knife.",
+    "wiki": "https://oldschool.runescape.wiki/w/Maple_longbow_(u)"
+  },
+  {
+    "itemId": 66,
+    "name": "Yew longbow (u)",
+    "source": "Carve the matching logs with a knife.",
+    "wiki": "https://oldschool.runescape.wiki/w/Yew_longbow_(u)"
+  },
+  {
+    "itemId": 70,
+    "name": "Magic longbow (u)",
+    "source": "Carve the matching logs with a knife.",
+    "wiki": "https://oldschool.runescape.wiki/w/Magic_longbow_(u)"
+  },
+  {
+    "itemId": 91,
+    "name": "Guam potion (unf)",
+    "source": "Mix the clean herb with a vial of water.",
+    "wiki": "https://oldschool.runescape.wiki/w/Guam_potion_(unf)"
+  },
+  {
+    "itemId": 93,
+    "name": "Marrentill potion (unf)",
+    "source": "Mix the clean herb with a vial of water.",
+    "wiki": "https://oldschool.runescape.wiki/w/Marrentill_potion_(unf)"
+  },
+  {
+    "itemId": 95,
+    "name": "Tarromin potion (unf)",
+    "source": "Mix the clean herb with a vial of water.",
+    "wiki": "https://oldschool.runescape.wiki/w/Tarromin_potion_(unf)"
+  },
+  {
+    "itemId": 97,
+    "name": "Harralander potion (unf)",
+    "source": "Mix the clean herb with a vial of water.",
+    "wiki": "https://oldschool.runescape.wiki/w/Harralander_potion_(unf)"
+  },
+  {
+    "itemId": 99,
+    "name": "Ranarr potion (unf)",
+    "source": "Mix the clean herb with a vial of water.",
+    "wiki": "https://oldschool.runescape.wiki/w/Ranarr_potion_(unf)"
+  },
+  {
+    "itemId": 101,
+    "name": "Irit potion (unf)",
+    "source": "Mix the clean herb with a vial of water.",
+    "wiki": "https://oldschool.runescape.wiki/w/Irit_potion_(unf)"
+  },
+  {
+    "itemId": 103,
+    "name": "Avantoe potion (unf)",
+    "source": "Mix the clean herb with a vial of water.",
+    "wiki": "https://oldschool.runescape.wiki/w/Avantoe_potion_(unf)"
+  },
+  {
+    "itemId": 105,
+    "name": "Kwuarm potion (unf)",
+    "source": "Mix the clean herb with a vial of water.",
+    "wiki": "https://oldschool.runescape.wiki/w/Kwuarm_potion_(unf)"
+  },
+  {
+    "itemId": 107,
+    "name": "Cadantine potion (unf)",
+    "source": "Mix the clean herb with a vial of water.",
+    "wiki": "https://oldschool.runescape.wiki/w/Cadantine_potion_(unf)"
+  },
+  {
+    "itemId": 109,
+    "name": "Dwarf weed potion (unf)",
+    "source": "Mix the clean herb with a vial of water.",
+    "wiki": "https://oldschool.runescape.wiki/w/Dwarf_weed_potion_(unf)"
+  },
+  {
+    "itemId": 111,
+    "name": "Torstol potion (unf)",
+    "source": "Mix the clean herb with a vial of water.",
+    "wiki": "https://oldschool.runescape.wiki/w/Torstol_potion_(unf)"
+  },
+  {
+    "itemId": 199,
+    "name": "Grimy guam leaf",
+    "source": "Grow the herb in a herb patch; herbs are also obtained from monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grimy_guam_leaf"
+  },
+  {
+    "itemId": 201,
+    "name": "Grimy marrentill",
+    "source": "Grow the herb in a herb patch; herbs are also obtained from monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grimy_marrentill"
+  },
+  {
+    "itemId": 203,
+    "name": "Grimy tarromin",
+    "source": "Grow the herb in a herb patch; herbs are also obtained from monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grimy_tarromin"
+  },
+  {
+    "itemId": 205,
+    "name": "Grimy harralander",
+    "source": "Grow the herb in a herb patch; herbs are also obtained from monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grimy_harralander"
+  },
+  {
+    "itemId": 207,
+    "name": "Grimy ranarr weed",
+    "source": "Grow the herb in a herb patch; herbs are also obtained from monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grimy_ranarr_weed"
+  },
+  {
+    "itemId": 209,
+    "name": "Grimy irit leaf",
+    "source": "Grow the herb in a herb patch; herbs are also obtained from monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grimy_irit_leaf"
+  },
+  {
+    "itemId": 211,
+    "name": "Grimy avantoe",
+    "source": "Grow the herb in a herb patch; herbs are also obtained from monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grimy_avantoe"
+  },
+  {
+    "itemId": 213,
+    "name": "Grimy kwuarm",
+    "source": "Grow the herb in a herb patch; herbs are also obtained from monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grimy_kwuarm"
+  },
+  {
+    "itemId": 215,
+    "name": "Grimy cadantine",
+    "source": "Grow the herb in a herb patch; herbs are also obtained from monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grimy_cadantine"
+  },
+  {
+    "itemId": 217,
+    "name": "Grimy dwarf weed",
+    "source": "Grow the herb in a herb patch; herbs are also obtained from monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grimy_dwarf_weed"
+  },
+  {
+    "itemId": 219,
+    "name": "Grimy torstol",
+    "source": "Grow the herb in a herb patch; herbs are also obtained from monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grimy_torstol"
+  },
+  {
+    "itemId": 221,
+    "name": "Eye of newt",
+    "source": "Herblore shops sell eyes of newt.",
+    "wiki": "https://oldschool.runescape.wiki/w/Eye_of_newt"
+  },
+  {
+    "itemId": 223,
+    "name": "Red spiders' eggs",
+    "source": "Red spider egg ground spawns and monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Red_spiders'_eggs"
+  },
+  {
+    "itemId": 225,
+    "name": "Limpwurt root",
+    "source": "Harvest limpwurt flower patches.",
+    "wiki": "https://oldschool.runescape.wiki/w/Limpwurt_root"
+  },
+  {
+    "itemId": 227,
+    "name": "Vial of water",
+    "source": "Fill an empty vial at a water source.",
+    "use": "Combine with a clean herb to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/Vial_of_water"
+  },
+  {
+    "itemId": 231,
+    "name": "Snape grass",
+    "source": "Harvest snape grass allotments or collect ground spawns.",
+    "wiki": "https://oldschool.runescape.wiki/w/Snape_grass"
+  },
+  {
+    "itemId": 235,
+    "name": "Unicorn horn dust",
+    "source": "Crush unicorn horns dropped by unicorns.",
+    "wiki": "https://oldschool.runescape.wiki/w/Unicorn_horn_dust"
+  },
+  {
+    "itemId": 239,
+    "name": "White berries",
+    "source": "Harvest whiteberry bushes or collect ground spawns.",
+    "wiki": "https://oldschool.runescape.wiki/w/White_berries"
+  },
+  {
+    "itemId": 241,
+    "name": "Dragon scale dust",
+    "source": "Grind blue dragon scales collected in dragon areas.",
+    "wiki": "https://oldschool.runescape.wiki/w/Dragon_scale_dust"
+  },
+  {
+    "itemId": 245,
+    "name": "Wine of zamorak",
+    "source": "Cast Telekinetic Grab on wine spawns, grow Zamorak grapes and ferment them, or obtain monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Wine_of_zamorak"
+  },
+  {
+    "itemId": 247,
+    "name": "Jangerberries",
+    "source": "Harvest jangerberry bushes or collect ground spawns.",
+    "wiki": "https://oldschool.runescape.wiki/w/Jangerberries"
+  },
+  {
+    "itemId": 249,
+    "name": "Guam leaf",
+    "source": "Clean grimy guam leaf with Herblore.",
+    "use": "Combine with a vial of water to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/Guam_leaf"
+  },
+  {
+    "itemId": 251,
+    "name": "Marrentill",
+    "source": "Clean grimy marrentill with Herblore.",
+    "use": "Combine with a vial of water to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/Marrentill"
+  },
+  {
+    "itemId": 253,
+    "name": "Tarromin",
+    "source": "Clean grimy tarromin with Herblore.",
+    "use": "Combine with a vial of water to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/Tarromin"
+  },
+  {
+    "itemId": 255,
+    "name": "Harralander",
+    "source": "Clean grimy harralander with Herblore.",
+    "use": "Combine with a vial of water to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/Harralander"
+  },
+  {
+    "itemId": 257,
+    "name": "Ranarr weed",
+    "source": "Clean grimy ranarr weed with Herblore.",
+    "use": "Combine with a vial of water to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/Ranarr_weed"
+  },
+  {
+    "itemId": 259,
+    "name": "Irit leaf",
+    "source": "Clean grimy irit leaf with Herblore.",
+    "use": "Combine with a vial of water to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/Irit_leaf"
+  },
+  {
+    "itemId": 261,
+    "name": "Avantoe",
+    "source": "Clean grimy avantoe with Herblore.",
+    "use": "Combine with a vial of water to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/Avantoe"
+  },
+  {
+    "itemId": 263,
+    "name": "Kwuarm",
+    "source": "Clean grimy kwuarm with Herblore.",
+    "use": "Combine with a vial of water to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/Kwuarm"
+  },
+  {
+    "itemId": 265,
+    "name": "Cadantine",
+    "source": "Clean grimy cadantine with Herblore.",
+    "use": "Combine with a vial of water to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/Cadantine"
+  },
+  {
+    "itemId": 267,
+    "name": "Dwarf weed",
+    "source": "Clean grimy dwarf weed with Herblore.",
+    "use": "Combine with a vial of water to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/Dwarf_weed"
+  },
+  {
+    "itemId": 269,
+    "name": "Torstol",
+    "source": "Clean grimy torstol with Herblore.",
+    "use": "Combine with a vial of water to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/Torstol"
+  },
+  {
+    "itemId": 314,
+    "name": "Feather",
+    "source": "Chickens drop feathers; fishing shops also sell them.",
+    "wiki": "https://oldschool.runescape.wiki/w/Feather"
+  },
+  {
+    "itemId": 317,
+    "name": "Raw shrimps",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_shrimps"
+  },
+  {
+    "itemId": 321,
+    "name": "Raw anchovies",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_anchovies"
+  },
+  {
+    "itemId": 327,
+    "name": "Raw sardine",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_sardine"
+  },
+  {
+    "itemId": 331,
+    "name": "Raw salmon",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_salmon"
+  },
+  {
+    "itemId": 335,
+    "name": "Raw trout",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_trout"
+  },
+  {
+    "itemId": 341,
+    "name": "Raw cod",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_cod"
+  },
+  {
+    "itemId": 345,
+    "name": "Raw herring",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_herring"
+  },
+  {
+    "itemId": 349,
+    "name": "Raw pike",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_pike"
+  },
+  {
+    "itemId": 353,
+    "name": "Raw mackerel",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_mackerel"
+  },
+  {
+    "itemId": 359,
+    "name": "Raw tuna",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_tuna"
+  },
+  {
+    "itemId": 363,
+    "name": "Raw bass",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_bass"
+  },
+  {
+    "itemId": 371,
+    "name": "Raw swordfish",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_swordfish"
+  },
+  {
+    "itemId": 377,
+    "name": "Raw lobster",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_lobster"
+  },
+  {
+    "itemId": 383,
+    "name": "Raw shark",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_shark"
+  },
+  {
+    "itemId": 389,
+    "name": "Raw manta ray",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_manta_ray"
+  },
+  {
+    "itemId": 395,
+    "name": "Raw sea turtle",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_sea_turtle"
+  },
+  {
+    "itemId": 436,
+    "name": "Copper ore",
+    "source": "Mining: mine the corresponding rocks.",
+    "wiki": "https://oldschool.runescape.wiki/w/Copper_ore"
+  },
+  {
+    "itemId": 438,
+    "name": "Tin ore",
+    "source": "Mining: mine the corresponding rocks.",
+    "wiki": "https://oldschool.runescape.wiki/w/Tin_ore"
+  },
+  {
+    "itemId": 440,
+    "name": "Iron ore",
+    "source": "Mining: mine the corresponding rocks.",
+    "wiki": "https://oldschool.runescape.wiki/w/Iron_ore"
+  },
+  {
+    "itemId": 442,
+    "name": "Silver ore",
+    "source": "Mining: mine the corresponding rocks.",
+    "wiki": "https://oldschool.runescape.wiki/w/Silver_ore"
+  },
+  {
+    "itemId": 444,
+    "name": "Gold ore",
+    "source": "Mining: mine the corresponding rocks.",
+    "wiki": "https://oldschool.runescape.wiki/w/Gold_ore"
+  },
+  {
+    "itemId": 447,
+    "name": "Mithril ore",
+    "source": "Mining: mine the corresponding rocks.",
+    "wiki": "https://oldschool.runescape.wiki/w/Mithril_ore"
+  },
+  {
+    "itemId": 449,
+    "name": "Adamantite ore",
+    "source": "Mining: mine the corresponding rocks.",
+    "wiki": "https://oldschool.runescape.wiki/w/Adamantite_ore"
+  },
+  {
+    "itemId": 451,
+    "name": "Runite ore",
+    "source": "Mining: mine the corresponding rocks.",
+    "wiki": "https://oldschool.runescape.wiki/w/Runite_ore"
+  },
+  {
+    "itemId": 453,
+    "name": "Coal",
+    "source": "Mining: mine the corresponding rocks.",
+    "wiki": "https://oldschool.runescape.wiki/w/Coal"
+  },
+  {
+    "itemId": 526,
+    "name": "Bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Bones"
+  },
+  {
+    "itemId": 528,
+    "name": "Burnt bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Burnt_bones"
+  },
+  {
+    "itemId": 530,
+    "name": "Bat bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Bat_bones"
+  },
+  {
+    "itemId": 532,
+    "name": "Big bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Big_bones"
+  },
+  {
+    "itemId": 534,
+    "name": "Babydragon bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Babydragon_bones"
+  },
+  {
+    "itemId": 536,
+    "name": "Dragon bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Dragon_bones"
+  },
+  {
+    "itemId": 569,
+    "name": "Fire orb",
+    "source": "Charge an unpowered orb at the corresponding elemental obelisk.",
+    "wiki": "https://oldschool.runescape.wiki/w/Fire_orb"
+  },
+  {
+    "itemId": 571,
+    "name": "Water orb",
+    "source": "Charge an unpowered orb at the corresponding elemental obelisk.",
+    "wiki": "https://oldschool.runescape.wiki/w/Water_orb"
+  },
+  {
+    "itemId": 573,
+    "name": "Air orb",
+    "source": "Charge an unpowered orb at the corresponding elemental obelisk.",
+    "wiki": "https://oldschool.runescape.wiki/w/Air_orb"
+  },
+  {
+    "itemId": 575,
+    "name": "Earth orb",
+    "source": "Charge an unpowered orb at the corresponding elemental obelisk.",
+    "wiki": "https://oldschool.runescape.wiki/w/Earth_orb"
+  },
+  {
+    "itemId": 819,
+    "name": "Bronze dart tip",
+    "source": "Smith matching metal bars on an anvil; Tourist Trap unlocks dart smithing.",
+    "wiki": "https://oldschool.runescape.wiki/w/Bronze_dart_tip"
+  },
+  {
+    "itemId": 820,
+    "name": "Iron dart tip",
+    "source": "Smith matching metal bars on an anvil; Tourist Trap unlocks dart smithing.",
+    "wiki": "https://oldschool.runescape.wiki/w/Iron_dart_tip"
+  },
+  {
+    "itemId": 821,
+    "name": "Steel dart tip",
+    "source": "Smith matching metal bars on an anvil; Tourist Trap unlocks dart smithing.",
+    "wiki": "https://oldschool.runescape.wiki/w/Steel_dart_tip"
+  },
+  {
+    "itemId": 822,
+    "name": "Mithril dart tip",
+    "source": "Smith matching metal bars on an anvil; Tourist Trap unlocks dart smithing.",
+    "wiki": "https://oldschool.runescape.wiki/w/Mithril_dart_tip"
+  },
+  {
+    "itemId": 823,
+    "name": "Adamant dart tip",
+    "source": "Smith matching metal bars on an anvil; Tourist Trap unlocks dart smithing.",
+    "wiki": "https://oldschool.runescape.wiki/w/Adamant_dart_tip"
+  },
+  {
+    "itemId": 824,
+    "name": "Rune dart tip",
+    "source": "Smith matching metal bars on an anvil; Tourist Trap unlocks dart smithing.",
+    "wiki": "https://oldschool.runescape.wiki/w/Rune_dart_tip"
+  },
+  {
+    "itemId": 1391,
+    "name": "Battlestaff",
+    "source": "Staff shops, Zaff's daily battlestaff stock, and monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Battlestaff"
+  },
+  {
+    "itemId": 1511,
+    "name": "Logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Logs"
+  },
+  {
+    "itemId": 1513,
+    "name": "Magic logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Magic_logs"
+  },
+  {
+    "itemId": 1515,
+    "name": "Yew logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Yew_logs"
+  },
+  {
+    "itemId": 1517,
+    "name": "Maple logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Maple_logs"
+  },
+  {
+    "itemId": 1519,
+    "name": "Willow logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Willow_logs"
+  },
+  {
+    "itemId": 1521,
+    "name": "Oak logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Oak_logs"
+  },
+  {
+    "itemId": 1601,
+    "name": "Diamond",
+    "source": "Cut the matching uncut gem with a chisel.",
+    "wiki": "https://oldschool.runescape.wiki/w/Diamond"
+  },
+  {
+    "itemId": 1603,
+    "name": "Ruby",
+    "source": "Cut the matching uncut gem with a chisel.",
+    "wiki": "https://oldschool.runescape.wiki/w/Ruby"
+  },
+  {
+    "itemId": 1605,
+    "name": "Emerald",
+    "source": "Cut the matching uncut gem with a chisel.",
+    "wiki": "https://oldschool.runescape.wiki/w/Emerald"
+  },
+  {
+    "itemId": 1607,
+    "name": "Sapphire",
+    "source": "Cut the matching uncut gem with a chisel.",
+    "wiki": "https://oldschool.runescape.wiki/w/Sapphire"
+  },
+  {
+    "itemId": 1615,
+    "name": "Dragonstone",
+    "source": "Cut the matching uncut gem with a chisel.",
+    "wiki": "https://oldschool.runescape.wiki/w/Dragonstone"
+  },
+  {
+    "itemId": 1617,
+    "name": "Uncut diamond",
+    "source": "Gem rocks, gem-bearing mining, and monster or chest rewards; sources vary by gem.",
+    "wiki": "https://oldschool.runescape.wiki/w/Uncut_diamond"
+  },
+  {
+    "itemId": 1619,
+    "name": "Uncut ruby",
+    "source": "Gem rocks, gem-bearing mining, and monster or chest rewards; sources vary by gem.",
+    "wiki": "https://oldschool.runescape.wiki/w/Uncut_ruby"
+  },
+  {
+    "itemId": 1621,
+    "name": "Uncut emerald",
+    "source": "Gem rocks, gem-bearing mining, and monster or chest rewards; sources vary by gem.",
+    "wiki": "https://oldschool.runescape.wiki/w/Uncut_emerald"
+  },
+  {
+    "itemId": 1623,
+    "name": "Uncut sapphire",
+    "source": "Gem rocks, gem-bearing mining, and monster or chest rewards; sources vary by gem.",
+    "wiki": "https://oldschool.runescape.wiki/w/Uncut_sapphire"
+  },
+  {
+    "itemId": 1631,
+    "name": "Uncut dragonstone",
+    "source": "Gem rocks, gem-bearing mining, and monster or chest rewards; sources vary by gem.",
+    "wiki": "https://oldschool.runescape.wiki/w/Uncut_dragonstone"
+  },
+  {
+    "itemId": 1745,
+    "name": "Green dragon leather",
+    "source": "Take the matching dragonhide to a tanner.",
+    "wiki": "https://oldschool.runescape.wiki/w/Green_dragon_leather"
+  },
+  {
+    "itemId": 1775,
+    "name": "Molten glass",
+    "source": "Use sand and soda ash at a furnace, or cast Superglass Make.",
+    "wiki": "https://oldschool.runescape.wiki/w/Molten_glass"
+  },
+  {
+    "itemId": 1777,
+    "name": "Bow string",
+    "source": "Spin flax at a spinning wheel or cast Spin Flax.",
+    "wiki": "https://oldschool.runescape.wiki/w/Bow_string"
+  },
+  {
+    "itemId": 1779,
+    "name": "Flax",
+    "source": "Pick flax plants or obtain monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Flax"
+  },
+  {
+    "itemId": 1937,
+    "name": "Jug of water",
+    "source": "Fill a jug at a water source.",
+    "wiki": "https://oldschool.runescape.wiki/w/Jug_of_water"
+  },
+  {
+    "itemId": 1975,
+    "name": "Chocolate dust",
+    "source": "Grind a chocolate bar.",
+    "wiki": "https://oldschool.runescape.wiki/w/Chocolate_dust"
+  },
+  {
+    "itemId": 1987,
+    "name": "Grapes",
+    "source": "Culinaromancer's Chest food shop, Farming grapevines, and monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grapes"
+  },
+  {
+    "itemId": 2152,
+    "name": "Toad's legs",
+    "source": "Remove the legs from swamp toads.",
+    "wiki": "https://oldschool.runescape.wiki/w/Toad's_legs"
+  },
+  {
+    "itemId": 2349,
+    "name": "Bronze bar",
+    "source": "Smelt the matching ores at a furnace; Blast Furnace is another smelting source.",
+    "wiki": "https://oldschool.runescape.wiki/w/Bronze_bar"
+  },
+  {
+    "itemId": 2351,
+    "name": "Iron bar",
+    "source": "Smelt the matching ores at a furnace; Blast Furnace is another smelting source.",
+    "wiki": "https://oldschool.runescape.wiki/w/Iron_bar"
+  },
+  {
+    "itemId": 2353,
+    "name": "Steel bar",
+    "source": "Smelt the matching ores at a furnace; Blast Furnace is another smelting source.",
+    "wiki": "https://oldschool.runescape.wiki/w/Steel_bar"
+  },
+  {
+    "itemId": 2357,
+    "name": "Gold bar",
+    "source": "Smelt the matching ores at a furnace; Blast Furnace is another smelting source.",
+    "wiki": "https://oldschool.runescape.wiki/w/Gold_bar"
+  },
+  {
+    "itemId": 2359,
+    "name": "Mithril bar",
+    "source": "Smelt the matching ores at a furnace; Blast Furnace is another smelting source.",
+    "wiki": "https://oldschool.runescape.wiki/w/Mithril_bar"
+  },
+  {
+    "itemId": 2361,
+    "name": "Adamantite bar",
+    "source": "Smelt the matching ores at a furnace; Blast Furnace is another smelting source.",
+    "wiki": "https://oldschool.runescape.wiki/w/Adamantite_bar"
+  },
+  {
+    "itemId": 2363,
+    "name": "Runite bar",
+    "source": "Smelt the matching ores at a furnace; Blast Furnace is another smelting source.",
+    "wiki": "https://oldschool.runescape.wiki/w/Runite_bar"
+  },
+  {
+    "itemId": 2481,
+    "name": "Lantadyme",
+    "source": "Clean grimy lantadyme with Herblore.",
+    "use": "Combine with a vial of water to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/Lantadyme"
+  },
+  {
+    "itemId": 2483,
+    "name": "Lantadyme potion (unf)",
+    "source": "Mix the clean herb with a vial of water.",
+    "wiki": "https://oldschool.runescape.wiki/w/Lantadyme_potion_(unf)"
+  },
+  {
+    "itemId": 2485,
+    "name": "Grimy lantadyme",
+    "source": "Grow the herb in a herb patch; herbs are also obtained from monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grimy_lantadyme"
+  },
+  {
+    "itemId": 2505,
+    "name": "Blue dragon leather",
+    "source": "Take the matching dragonhide to a tanner.",
+    "wiki": "https://oldschool.runescape.wiki/w/Blue_dragon_leather"
+  },
+  {
+    "itemId": 2507,
+    "name": "Red dragon leather",
+    "source": "Take the matching dragonhide to a tanner.",
+    "wiki": "https://oldschool.runescape.wiki/w/Red_dragon_leather"
+  },
+  {
+    "itemId": 2509,
+    "name": "Black dragon leather",
+    "source": "Take the matching dragonhide to a tanner.",
+    "wiki": "https://oldschool.runescape.wiki/w/Black_dragon_leather"
+  },
+  {
+    "itemId": 2859,
+    "name": "Wolf bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Wolf_bones"
+  },
+  {
+    "itemId": 2862,
+    "name": "Achey tree logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Achey_tree_logs"
+  },
+  {
+    "itemId": 2970,
+    "name": "Mort myre fungus",
+    "source": "Cast Bloom with a blessed silver sickle near dead logs in Mort Myre.",
+    "wiki": "https://oldschool.runescape.wiki/w/Mort_myre_fungus"
+  },
+  {
+    "itemId": 2998,
+    "name": "Toadflax",
+    "source": "Clean grimy toadflax with Herblore.",
+    "use": "Combine with a vial of water to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/Toadflax"
+  },
+  {
+    "itemId": 3000,
+    "name": "Snapdragon",
+    "source": "Clean grimy snapdragon with Herblore.",
+    "use": "Combine with a vial of water to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/Snapdragon"
+  },
+  {
+    "itemId": 3002,
+    "name": "Toadflax potion (unf)",
+    "source": "Mix the clean herb with a vial of water.",
+    "wiki": "https://oldschool.runescape.wiki/w/Toadflax_potion_(unf)"
+  },
+  {
+    "itemId": 3004,
+    "name": "Snapdragon potion (unf)",
+    "source": "Mix the clean herb with a vial of water.",
+    "wiki": "https://oldschool.runescape.wiki/w/Snapdragon_potion_(unf)"
+  },
+  {
+    "itemId": 3049,
+    "name": "Grimy toadflax",
+    "source": "Grow the herb in a herb patch; herbs are also obtained from monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grimy_toadflax"
+  },
+  {
+    "itemId": 3051,
+    "name": "Grimy snapdragon",
+    "source": "Grow the herb in a herb patch; herbs are also obtained from monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grimy_snapdragon"
+  },
+  {
+    "itemId": 3123,
+    "name": "Shaikahan bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Shaikahan_bones"
+  },
+  {
+    "itemId": 3125,
+    "name": "Jogre bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Jogre_bones"
+  },
+  {
+    "itemId": 3138,
+    "name": "Potato cactus",
+    "source": "Harvest potato cactus patches or collect Kalphite Lair spawns.",
+    "wiki": "https://oldschool.runescape.wiki/w/Potato_cactus"
+  },
+  {
+    "itemId": 3142,
+    "name": "Raw karambwan",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_karambwan"
+  },
+  {
+    "itemId": 3183,
+    "name": "Monkey bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Monkey_bones"
+  },
+  {
+    "itemId": 4812,
+    "name": "Zogre bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Zogre_bones"
+  },
+  {
+    "itemId": 4830,
+    "name": "Fayrg bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Fayrg_bones"
+  },
+  {
+    "itemId": 4832,
+    "name": "Raurg bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raurg_bones"
+  },
+  {
+    "itemId": 4834,
+    "name": "Ourg bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Ourg_bones"
+  },
+  {
+    "itemId": 5283,
+    "name": "Apple tree seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot, then plant it in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/Apple_tree_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 27,
+        "xp": 22.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 27,
+        "xp": 1199.5,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 27,
+        "xp": 8.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Apple_tree?oldid=15369803"
+  },
+  {
+    "itemId": 5284,
+    "name": "Banana tree seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot, then plant it in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/Banana_tree_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 33,
+        "xp": 28.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 33,
+        "xp": 1750.5,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 33,
+        "xp": 10.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Banana_tree_(Farming)?oldid=15287185"
+  },
+  {
+    "itemId": 5285,
+    "name": "Orange tree seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot, then plant it in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/Orange_tree_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 39,
+        "xp": 35.5,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 39,
+        "xp": 2470.2,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 39,
+        "xp": 13.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Orange_tree?oldid=15287186"
+  },
+  {
+    "itemId": 5286,
+    "name": "Curry tree seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot, then plant it in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/Curry_tree_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 42,
+        "xp": 40.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 42,
+        "xp": 2906.9,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 42,
+        "xp": 15.0,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Curry_tree?oldid=15287187"
+  },
+  {
+    "itemId": 5287,
+    "name": "Pineapple seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/pineapple_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 51,
+        "xp": 57.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 51,
+        "xp": 4605.0,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 51,
+        "xp": 21.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Pineapple_plant?oldid=15315473"
+  },
+  {
+    "itemId": 5288,
+    "name": "Papaya tree seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot, then plant it in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/Papaya_tree_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 57,
+        "xp": 72.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 57,
+        "xp": 6146.6,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 57,
+        "xp": 27.0,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Papaya_tree?oldid=15287189"
+  },
+  {
+    "itemId": 5289,
+    "name": "Palm tree seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot, then plant it in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/Palm_tree_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 68,
+        "xp": 110.5,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 68,
+        "xp": 10150.1,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 68,
+        "xp": 41.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Palm_tree?oldid=15287190"
+  },
+  {
+    "itemId": 5290,
+    "name": "Calquat tree seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot, then plant it in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/Calquat_tree_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 72,
+        "xp": 129.5,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 72,
+        "xp": 12096.0,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 72,
+        "xp": 48.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Calquat_tree?oldid=15287138"
+  },
+  {
+    "itemId": 5291,
+    "name": "Guam seed",
+    "source": "Master Farmer pickpocketing, seed packs and monster drops.",
+    "use": "Plant in a herb patch to grow herbs.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/guam_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 9,
+        "xp": 11.0,
+        "note": "Planting XP is credited with the first harvest."
+      },
+      {
+        "name": "Harvest crop",
+        "level": 9,
+        "xp": 12.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Guam_leaf_(plant)?oldid=15287213"
+  },
+  {
+    "itemId": 5292,
+    "name": "Marrentill seed",
+    "source": "Master Farmer pickpocketing, seed packs and monster drops.",
+    "use": "Plant in a herb patch to grow herbs.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/marrentill_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 14,
+        "xp": 13.5,
+        "note": "Planting XP is credited with the first harvest."
+      },
+      {
+        "name": "Harvest crop",
+        "level": 14,
+        "xp": 15.0,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Marrentill_(plant)?oldid=15287214"
+  },
+  {
+    "itemId": 5293,
+    "name": "Tarromin seed",
+    "source": "Master Farmer pickpocketing, seed packs and monster drops.",
+    "use": "Plant in a herb patch to grow herbs.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/tarromin_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 19,
+        "xp": 16.0,
+        "note": "Planting XP is credited with the first harvest."
+      },
+      {
+        "name": "Harvest crop",
+        "level": 19,
+        "xp": 18.0,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Tarromin_(plant)?oldid=15287215"
+  },
+  {
+    "itemId": 5294,
+    "name": "Harralander seed",
+    "source": "Master Farmer pickpocketing, seed packs and monster drops.",
+    "use": "Plant in a herb patch to grow herbs.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/harralander_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 26,
+        "xp": 21.5,
+        "note": "Planting XP is credited with the first harvest."
+      },
+      {
+        "name": "Harvest crop",
+        "level": 26,
+        "xp": 24.0,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Harralander_(plant)?oldid=15287216"
+  },
+  {
+    "itemId": 5295,
+    "name": "Ranarr seed",
+    "source": "Master Farmer pickpocketing, seed packs and monster drops.",
+    "use": "Plant in a herb patch to grow herbs.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/ranarr_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 32,
+        "xp": 26.5,
+        "note": "Planting XP is credited with the first harvest."
+      },
+      {
+        "name": "Harvest crop",
+        "level": 32,
+        "xp": 30.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Ranarr_weed_(plant)?oldid=15287217"
+  },
+  {
+    "itemId": 5296,
+    "name": "Toadflax seed",
+    "source": "Master Farmer pickpocketing, seed packs and monster drops.",
+    "use": "Plant in a herb patch to grow herbs.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/toadflax_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 38,
+        "xp": 34.0,
+        "note": "Planting XP is credited with the first harvest."
+      },
+      {
+        "name": "Harvest crop",
+        "level": 38,
+        "xp": 38.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Toadflax_(plant)?oldid=15287218"
+  },
+  {
+    "itemId": 5297,
+    "name": "Irit seed",
+    "source": "Master Farmer pickpocketing, seed packs and monster drops.",
+    "use": "Plant in a herb patch to grow herbs.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/irit_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 44,
+        "xp": 43.0,
+        "note": "Planting XP is credited with the first harvest."
+      },
+      {
+        "name": "Harvest crop",
+        "level": 44,
+        "xp": 48.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Irit_leaf_(plant)?oldid=15287219"
+  },
+  {
+    "itemId": 5298,
+    "name": "Avantoe seed",
+    "source": "Master Farmer pickpocketing, seed packs and monster drops.",
+    "use": "Plant in a herb patch to grow herbs.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/avantoe_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 50,
+        "xp": 54.5,
+        "note": "Planting XP is credited with the first harvest."
+      },
+      {
+        "name": "Harvest crop",
+        "level": 50,
+        "xp": 61.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Avantoe_(plant)?oldid=15287220"
+  },
+  {
+    "itemId": 5299,
+    "name": "Kwuarm seed",
+    "source": "Master Farmer pickpocketing, seed packs and monster drops.",
+    "use": "Plant in a herb patch to grow herbs.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/kwuarm_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 56,
+        "xp": 69.0,
+        "note": "Planting XP is credited with the first harvest."
+      },
+      {
+        "name": "Harvest crop",
+        "level": 56,
+        "xp": 78.0,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Kwuarm_(plant)?oldid=15287221"
+  },
+  {
+    "itemId": 5300,
+    "name": "Snapdragon seed",
+    "source": "Master Farmer pickpocketing, seed packs and monster drops.",
+    "use": "Plant in a herb patch to grow herbs.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/snapdragon_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 62,
+        "xp": 87.5,
+        "note": "Planting XP is credited with the first harvest."
+      },
+      {
+        "name": "Harvest crop",
+        "level": 62,
+        "xp": 98.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Snapdragon_(plant)?oldid=15287222"
+  },
+  {
+    "itemId": 5301,
+    "name": "Cadantine seed",
+    "source": "Master Farmer pickpocketing, seed packs and monster drops.",
+    "use": "Plant in a herb patch to grow herbs.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/cadantine_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 67,
+        "xp": 106.5,
+        "note": "Planting XP is credited with the first harvest."
+      },
+      {
+        "name": "Harvest crop",
+        "level": 67,
+        "xp": 120.0,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Cadantine_(plant)?oldid=15287224"
+  },
+  {
+    "itemId": 5302,
+    "name": "Lantadyme seed",
+    "source": "Master Farmer pickpocketing, seed packs and monster drops.",
+    "use": "Plant in a herb patch to grow herbs.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/lantadyme_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 73,
+        "xp": 134.5,
+        "note": "Planting XP is credited with the first harvest."
+      },
+      {
+        "name": "Harvest crop",
+        "level": 73,
+        "xp": 151.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Lantadyme_(plant)?oldid=15287225"
+  },
+  {
+    "itemId": 5303,
+    "name": "Dwarf weed seed",
+    "source": "Master Farmer pickpocketing, seed packs and monster drops.",
+    "use": "Plant in a herb patch to grow herbs.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/dwarf_weed_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 79,
+        "xp": 170.5,
+        "note": "Planting XP is credited with the first harvest."
+      },
+      {
+        "name": "Harvest crop",
+        "level": 79,
+        "xp": 192.0,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Dwarf_weed_(plant)?oldid=15287226"
+  },
+  {
+    "itemId": 5304,
+    "name": "Torstol seed",
+    "source": "Master Farmer pickpocketing, seed packs and monster drops.",
+    "use": "Plant in a herb patch to grow herbs.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/torstol_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 85,
+        "xp": 199.5,
+        "note": "Planting XP is credited with the first harvest."
+      },
+      {
+        "name": "Harvest crop",
+        "level": 85,
+        "xp": 224.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Torstol_(plant)?oldid=15287227"
+  },
+  {
+    "itemId": 5312,
+    "name": "Acorn",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot, then plant it in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/Acorn",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 15,
+        "xp": 14.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 15,
+        "xp": 467.3,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Oak_tree_(Farming)?oldid=15372640"
+  },
+  {
+    "itemId": 5313,
+    "name": "Willow seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/willow_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 30,
+        "xp": 25.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 30,
+        "xp": 1456.5,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Willow_tree_(Farming)?oldid=15287151"
+  },
+  {
+    "itemId": 5314,
+    "name": "Maple seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/maple_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 45,
+        "xp": 45.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 45,
+        "xp": 3403.4,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Maple_tree_(Farming)?oldid=15315471"
+  },
+  {
+    "itemId": 5315,
+    "name": "Yew seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/yew_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 60,
+        "xp": 81.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 60,
+        "xp": 7069.9,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Yew_tree_(Farming)?oldid=15287156"
+  },
+  {
+    "itemId": 5316,
+    "name": "Magic seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/magic_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 75,
+        "xp": 145.5,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 75,
+        "xp": 13768.3,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Magic_tree_(Farming)?oldid=15315472"
+  },
+  {
+    "itemId": 5317,
+    "name": "Spirit seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/spirit_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 83,
+        "xp": 199.5,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 83,
+        "xp": 19301.0,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Spirit_Tree_(Farming)?oldid=15359147"
+  },
+  {
+    "itemId": 5370,
+    "name": "Oak sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/oak_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 15,
+        "xp": 14.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 15,
+        "xp": 467.3,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Oak_tree_(Farming)?oldid=15372640"
+  },
+  {
+    "itemId": 5371,
+    "name": "Willow sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/willow_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 30,
+        "xp": 25.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 30,
+        "xp": 1456.5,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Willow_tree_(Farming)?oldid=15287151"
+  },
+  {
+    "itemId": 5372,
+    "name": "Maple sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/maple_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 45,
+        "xp": 45.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 45,
+        "xp": 3403.4,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Maple_tree_(Farming)?oldid=15315471"
+  },
+  {
+    "itemId": 5373,
+    "name": "Yew sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/yew_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 60,
+        "xp": 81.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 60,
+        "xp": 7069.9,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Yew_tree_(Farming)?oldid=15287156"
+  },
+  {
+    "itemId": 5374,
+    "name": "Magic sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/magic_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 75,
+        "xp": 145.5,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 75,
+        "xp": 13768.3,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Magic_tree_(Farming)?oldid=15315472"
+  },
+  {
+    "itemId": 5375,
+    "name": "Spirit sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/spirit_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 83,
+        "xp": 199.5,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 83,
+        "xp": 19301.0,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Spirit_Tree_(Farming)?oldid=15359147"
+  },
+  {
+    "itemId": 5496,
+    "name": "Apple sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/apple_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 27,
+        "xp": 22.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 27,
+        "xp": 1199.5,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 27,
+        "xp": 8.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Apple_tree?oldid=15369803"
+  },
+  {
+    "itemId": 5497,
+    "name": "Banana sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/banana_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 33,
+        "xp": 28.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 33,
+        "xp": 1750.5,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 33,
+        "xp": 10.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Banana_tree_(Farming)?oldid=15287185"
+  },
+  {
+    "itemId": 5498,
+    "name": "Orange sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/orange_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 39,
+        "xp": 35.5,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 39,
+        "xp": 2470.2,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 39,
+        "xp": 13.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Orange_tree?oldid=15287186"
+  },
+  {
+    "itemId": 5499,
+    "name": "Curry sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/curry_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 42,
+        "xp": 40.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 42,
+        "xp": 2906.9,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 42,
+        "xp": 15.0,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Curry_tree?oldid=15287187"
+  },
+  {
+    "itemId": 5500,
+    "name": "Pineapple sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/pineapple_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 51,
+        "xp": 57.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 51,
+        "xp": 4605.0,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 51,
+        "xp": 21.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Pineapple_plant?oldid=15315473"
+  },
+  {
+    "itemId": 5501,
+    "name": "Papaya sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/papaya_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 57,
+        "xp": 72.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 57,
+        "xp": 6146.6,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 57,
+        "xp": 27.0,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Papaya_tree?oldid=15287189"
+  },
+  {
+    "itemId": 5502,
+    "name": "Palm sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/palm_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 68,
+        "xp": 110.5,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 68,
+        "xp": 10150.1,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 68,
+        "xp": 41.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Palm_tree?oldid=15287190"
+  },
+  {
+    "itemId": 5503,
+    "name": "Calquat sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/calquat_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 72,
+        "xp": 129.5,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 72,
+        "xp": 12096.0,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 72,
+        "xp": 48.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Calquat_tree?oldid=15287138"
+  },
+  {
+    "itemId": 6332,
+    "name": "Mahogany logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Mahogany_logs"
+  },
+  {
+    "itemId": 6333,
+    "name": "Teak logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Teak_logs"
+  },
+  {
+    "itemId": 6693,
+    "name": "Crushed nest",
+    "source": "Crush empty bird nests.",
+    "wiki": "https://oldschool.runescape.wiki/w/Crushed_nest"
+  },
+  {
+    "itemId": 6729,
+    "name": "Dagannoth bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Dagannoth_bones"
+  },
+  {
+    "itemId": 6812,
+    "name": "Wyvern bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Wyvern_bones"
+  },
+  {
+    "itemId": 7944,
+    "name": "Raw monkfish",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_monkfish"
+  },
+  {
+    "itemId": 8778,
+    "name": "Oak plank",
+    "source": "Convert matching logs at a sawmill or with Plank Make.",
+    "wiki": "https://oldschool.runescape.wiki/w/Oak_plank"
+  },
+  {
+    "itemId": 8780,
+    "name": "Teak plank",
+    "source": "Convert matching logs at a sawmill or with Plank Make.",
+    "wiki": "https://oldschool.runescape.wiki/w/Teak_plank"
+  },
+  {
+    "itemId": 8782,
+    "name": "Mahogany plank",
+    "source": "Convert matching logs at a sawmill or with Plank Make.",
+    "wiki": "https://oldschool.runescape.wiki/w/Mahogany_plank"
+  },
+  {
+    "itemId": 10138,
+    "name": "Raw rainbow fish",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_rainbow_fish"
+  },
+  {
+    "itemId": 10810,
+    "name": "Arctic pine logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Arctic_pine_logs"
+  },
+  {
+    "itemId": 11232,
+    "name": "Dragon dart tip",
+    "source": "Monster drops, including high-level dragons.",
+    "wiki": "https://oldschool.runescape.wiki/w/Dragon_dart_tip"
+  },
+  {
+    "itemId": 11237,
+    "name": "Dragon arrowtips",
+    "source": "Monster drops, including high-level dragons.",
+    "wiki": "https://oldschool.runescape.wiki/w/Dragon_arrowtips"
+  },
+  {
+    "itemId": 11934,
+    "name": "Raw dark crab",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_dark_crab"
+  },
+  {
+    "itemId": 11943,
+    "name": "Lava dragon bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Lava_dragon_bones"
+  },
+  {
+    "itemId": 13439,
+    "name": "Raw anglerfish",
+    "source": "Fishing: catch this fish at its fishing spots.",
+    "wiki": "https://oldschool.runescape.wiki/w/Raw_anglerfish"
+  },
+  {
+    "itemId": 19669,
+    "name": "Redwood logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Redwood_logs"
+  },
+  {
+    "itemId": 21350,
+    "name": "Amethyst arrowtips",
+    "source": "Chisel mined amethyst into ammunition components.",
+    "wiki": "https://oldschool.runescape.wiki/w/Amethyst_arrowtips"
+  },
+  {
+    "itemId": 21477,
+    "name": "Teak sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/teak_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 35,
+        "xp": 35.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 35,
+        "xp": 7290.0,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Teak_tree_(Farming)?oldid=15287237"
+  },
+  {
+    "itemId": 21480,
+    "name": "Mahogany sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/mahogany_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 55,
+        "xp": 63.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 55,
+        "xp": 15720.0,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Mahogany_tree_(Farming)?oldid=15369650"
+  },
+  {
+    "itemId": 21486,
+    "name": "Teak seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/teak_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 35,
+        "xp": 35.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 35,
+        "xp": 7290.0,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Teak_tree_(Farming)?oldid=15287237"
+  },
+  {
+    "itemId": 21488,
+    "name": "Mahogany seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/mahogany_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 55,
+        "xp": 63.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 55,
+        "xp": 15720.0,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Mahogany_tree_(Farming)?oldid=15369650"
+  },
+  {
+    "itemId": 22124,
+    "name": "Superior dragon bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Superior_dragon_bones"
+  },
+  {
+    "itemId": 22780,
+    "name": "Wyrm bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Wyrm_bones"
+  },
+  {
+    "itemId": 22783,
+    "name": "Drake bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Drake_bones"
+  },
+  {
+    "itemId": 22786,
+    "name": "Hydra bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Hydra_bones"
+  },
+  {
+    "itemId": 22856,
+    "name": "Celastrus sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/celastrus_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 85,
+        "xp": 200.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 85,
+        "xp": 14130.0,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 85,
+        "xp": 23.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Celastrus_tree?oldid=15292709"
+  },
+  {
+    "itemId": 22859,
+    "name": "Redwood sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/redwood_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 90,
+        "xp": 230.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 90,
+        "xp": 22450.0,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Redwood_tree_(Farming)?oldid=15370645"
+  },
+  {
+    "itemId": 22866,
+    "name": "Dragonfruit sapling",
+    "source": "Grow the matching seed in a filled plant pot, water it, and wait for a sapling.",
+    "use": "Plant the sapling in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/dragonfruit_sapling",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 81,
+        "xp": 140.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 81,
+        "xp": 17335.0,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 81,
+        "xp": 70.0,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Dragonfruit_tree?oldid=15287191"
+  },
+  {
+    "itemId": 22869,
+    "name": "Celastrus seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/celastrus_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 85,
+        "xp": 200.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 85,
+        "xp": 14130.0,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 85,
+        "xp": 23.5,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Celastrus_tree?oldid=15292709"
+  },
+  {
+    "itemId": 22871,
+    "name": "Redwood tree seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot, then plant it in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/Redwood_tree_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 90,
+        "xp": 230.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 90,
+        "xp": 22450.0,
+        "note": ""
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Redwood_tree_(Farming)?oldid=15370645"
+  },
+  {
+    "itemId": 22877,
+    "name": "Dragonfruit tree seed",
+    "source": "Bird nests, seed packs and monster rewards; exact sources depend on tree type.",
+    "use": "Grow a sapling in a filled plant pot, then plant it in the matching Farming patch.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/Dragonfruit_tree_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 81,
+        "xp": 140.0,
+        "note": ""
+      },
+      {
+        "name": "Check health",
+        "level": 81,
+        "xp": 17335.0,
+        "note": ""
+      },
+      {
+        "name": "Harvest crop",
+        "level": 81,
+        "xp": 70.0,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Dragonfruit_tree?oldid=15287191"
+  },
+  {
+    "itemId": 24691,
+    "name": "Blisterwood logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Blisterwood_logs"
+  },
+  {
+    "itemId": 25766,
+    "name": "Fiendish ashes",
+    "source": "Dropped by demonic creatures; demon type determines the ash.",
+    "wiki": "https://oldschool.runescape.wiki/w/Fiendish_ashes"
+  },
+  {
+    "itemId": 25769,
+    "name": "Vile ashes",
+    "source": "Dropped by demonic creatures; demon type determines the ash.",
+    "wiki": "https://oldschool.runescape.wiki/w/Vile_ashes"
+  },
+  {
+    "itemId": 25772,
+    "name": "Malicious ashes",
+    "source": "Dropped by demonic creatures; demon type determines the ash.",
+    "wiki": "https://oldschool.runescape.wiki/w/Malicious_ashes"
+  },
+  {
+    "itemId": 25775,
+    "name": "Abyssal ashes",
+    "source": "Dropped by demonic creatures; demon type determines the ash.",
+    "wiki": "https://oldschool.runescape.wiki/w/Abyssal_ashes"
+  },
+  {
+    "itemId": 25778,
+    "name": "Infernal ashes",
+    "source": "Dropped by demonic creatures; demon type determines the ash.",
+    "wiki": "https://oldschool.runescape.wiki/w/Infernal_ashes"
+  },
+  {
+    "itemId": 25853,
+    "name": "Amethyst dart tip",
+    "source": "Chisel mined amethyst into ammunition components.",
+    "wiki": "https://oldschool.runescape.wiki/w/Amethyst_dart_tip"
+  },
+  {
+    "itemId": 28899,
+    "name": "Wyrmling bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Wyrmling_bones"
+  },
+  {
+    "itemId": 30088,
+    "name": "Huasca seed",
+    "source": "Master Farmer pickpocketing, seed packs and monster drops.",
+    "use": "Plant in a herb patch to grow herbs.",
+    "note": "Base Farming XP by stage; harvest yield varies.",
+    "wiki": "https://oldschool.runescape.wiki/w/huasca_seed",
+    "farmingActions": [
+      {
+        "name": "Plant crop",
+        "level": 65,
+        "xp": 86.5,
+        "note": "Planting XP is credited with the first harvest."
+      },
+      {
+        "name": "Harvest crop",
+        "level": 65,
+        "xp": 110.0,
+        "note": "Per harvested item; yield varies."
+      }
+    ],
+    "farmingSource": "https://oldschool.runescape.wiki/w/Huasca_(plant)?oldid=15287223"
+  },
+  {
+    "itemId": 30094,
+    "name": "Grimy huasca",
+    "source": "Grow the herb in a herb patch; herbs are also obtained from monster drops.",
+    "wiki": "https://oldschool.runescape.wiki/w/Grimy_huasca"
+  },
+  {
+    "itemId": 30097,
+    "name": "huasca",
+    "source": "Clean grimy huasca with Herblore.",
+    "use": "Combine with a vial of water to make an unfinished potion.",
+    "wiki": "https://oldschool.runescape.wiki/w/huasca"
+  },
+  {
+    "itemId": 31726,
+    "name": "Strykewyrm bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Strykewyrm_bones"
+  },
+  {
+    "itemId": 31729,
+    "name": "Frost dragon bones",
+    "source": "Dropped by the corresponding creature; bones vary by monster.",
+    "wiki": "https://oldschool.runescape.wiki/w/Frost_dragon_bones"
+  },
+  {
+    "itemId": 32902,
+    "name": "Jatoba logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Jatoba_logs"
+  },
+  {
+    "itemId": 32904,
+    "name": "Camphor logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Camphor_logs"
+  },
+  {
+    "itemId": 32907,
+    "name": "Ironwood logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Ironwood_logs"
+  },
+  {
+    "itemId": 32910,
+    "name": "Rosewood logs",
+    "source": "Woodcutting: chop the corresponding tree.",
+    "wiki": "https://oldschool.runescape.wiki/w/Rosewood_logs"
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "repository": "https://github.com/Toofifty/easy-giantsfoundry",
+  "commit": "9324c7f55cba4c0fc5245a7bc85f3db521a8cceb",
+  "license": "BSD-2-Clause",
+  "purpose": "Unchanged primary proof of native mould-state reset, stored/equipped preform, crucible and reward-point semantics.",
+  "files": [
+    {
+      "file": "EasyGiantsFoundryClientIDs.java",
+      "bytes": 1598,
+      "sha256": "8c079f725c529b12a9a223b7a6d4e44af3bbde25951da320b6719456a2f512ca",
+      "source": "https://raw.githubusercontent.com/Toofifty/easy-giantsfoundry/9324c7f55cba4c0fc5245a7bc85f3db521a8cceb/src/main/java/com/toofifty/easygiantsfoundry/EasyGiantsFoundryClientIDs.java"
+    },
+    {
+      "file": "EasyGiantsFoundryPlugin.java",
+      "bytes": 13364,
+      "sha256": "e943723d40e39da1078851121ff3b732e1181582871c94c0704d12eba127ca70",
+      "source": "https://raw.githubusercontent.com/Toofifty/easy-giantsfoundry/9324c7f55cba4c0fc5245a7bc85f3db521a8cceb/src/main/java/com/toofifty/easygiantsfoundry/EasyGiantsFoundryPlugin.java"
+    },
+    {
+      "file": "EasyGiantsFoundryState.java",
+      "bytes": 7921,
+      "sha256": "33973d9f686dd51cbe18b7dc4b9231085bfc4591741c6822b858dded6a34ef19",
+      "source": "https://raw.githubusercontent.com/Toofifty/easy-giantsfoundry/9324c7f55cba4c0fc5245a7bc85f3db521a8cceb/src/main/java/com/toofifty/easygiantsfoundry/EasyGiantsFoundryState.java"
+    },
+    {
+      "file": "FoundryOverlay3D.java",
+      "bytes": 16706,
+      "sha256": "be9d2cfef97d592815a24501cc94b0a64bff0ae7b52a7b62baa72220b8b40904",
+      "source": "https://raw.githubusercontent.com/Toofifty/easy-giantsfoundry/9324c7f55cba4c0fc5245a7bc85f3db521a8cceb/src/main/java/com/toofifty/easygiantsfoundry/FoundryOverlay3D.java"
+    }
+  ]
+}

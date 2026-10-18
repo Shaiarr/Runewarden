@@ -1,0 +1,54 @@
+Runewarden normal combat reference — retrieved 16 October 2026
+
+Data and primary formula reference:
+https://github.com/weirdgloop/osrs-dps-calc
+Calculation/weapon/style/ammo commit: 462054e6c0686ce318a051288ab91b9bfa1e91b5
+Files reviewed: src/lib/PlayerVsNPCCalc.ts, BaseCalc.ts, Equipment.ts,
+constants.ts, src/utils.ts, src/types/PlayerCombatStyle.ts,
+src/enums/EquipmentCategory.ts, src/lib/EquipmentAliases.ts,
+cdn/json/equipment.json. Additional formula review on 17 October 2026:
+src/lib/scaling/DefenceReduction.ts, Phases.ts, Vardorvis.ts and Math.ts
+at the same pinned calculation commit.
+NPC data commit: a27fc3c898eb15accbfa0457c89b6b6a1b132f1f
+NPC data path: cdn/json/monsters.json; see existing mob-knowledge-attribution.txt.
+The bundled dps-reference.json includes input hashes and pin metadata.
+
+Spell level facts:
+https://oldschool.runescape.wiki/w/List_of_spells?oldid=15343816
+Revision retrieved through the Wiki API; only spell names and level facts retained.
+
+Game data originated from the Old School RuneScape Wiki, CC BY-NC-SA 3.0.
+See existing mob-knowledge-CC-BY-NC-SA.txt for the complete data licence.
+The upstream DPS calculator project is GPL-3.0; see existing
+mob-knowledge-upstream-GPL-3.0.txt for that complete licence. Runewarden's
+Java normal-combat arithmetic is an original implementation; its extracted
+reference tables retain the upstream and Wiki source attribution.
+
+Runtime native identifiers/observations are from RuneLite 1.13.2.
+The equipped quiver read follows AmmoPlugin.java and does not depend on the
+Ammo plugin running. Relevant RuneLite upstream notice follows.
+
+/*
+ * Copyright (c) 2019 Hydrox6 <ikada@protonmail.ch>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */

@@ -1,0 +1,43 @@
+{
+  "automatedTests": 1430,
+  "automatedFailures": 0,
+  "automatedSkipped": 0,
+  "liveGatesPending": [
+    "windows-client",
+    "quest-journey",
+    "training-journey",
+    "slayer-journey",
+    "farm-journey",
+    "boss-journey",
+    "profile-lifecycle",
+    "long-session",
+    "plugin-compatibility",
+    "hub-review"
+  ],
+  "publicReleaseReady": false,
+  "pluginVersion": "0.9.1",
+  "measuredOn": "2026-10-17",
+  "fullJavaSuiteRerun": true,
+  "junitSuites": 176,
+  "parserAndAuditTests": 32,
+  "fingerprintedDatasets": 95,
+  "productionClasses": 734,
+  "javaRelease": 11,
+  "runeLiteVersion": "1.13.2",
+  "productionJarVerified": true,
+  "mechanicalHubSurfaceCheck": true,
+  "hubCapabilityAuditFresh": true,
+  "auditedPopularPlugins": 151,
+  "capabilityFindings": 447,
+  "sourceEvidenceFiles": 218,
+  "windowsRuntimePinnedFiles": 316,
+  "windowsCiExecuted": false,
+  "windowsExecutionVerified": false,
+  "inGameVerified": false,
+  "hubApproved": false,
+  "_historicalRecord": {
+    "validForCurrentRenamedSource": false,
+    "pathLabelsUpdatedForCurrentNaming": true,
+    "note": "Earlier verification record. Counts and hashes belong to the original tested revision, not the renamed current source. Use current release evidence."
+  }
+}

@@ -1,0 +1,56 @@
+name: Verify Runewarden plugin
+on: [push, pull_request, workflow_dispatch]
+env:
+  PYTHONUTF8: "1"
+permissions:
+  contents: read
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Ensure Gradle wrapper is executable
+        run: chmod +x gradlew
+      - name: Validate bundled data and capability evidence
+        run: |
+          python tools/validate_bundle.py
+          python tools/build-hub-coverage-audit.py --check-evidence
+          python tools/validate_hub_release.py
+      - name: Python regression checks
+        run: python -m unittest discover -s tools -p 'test_*.py'
+      - name: Build and test only the plugin
+        run: ./gradlew --no-daemon --no-parallel clean check jar --console=plain
+      - name: Verify production JAR and release gates
+        run: |
+          python tools/check_hub_jar.py
+          python tools/release_gate.py --output build/reports/release-gate.json
+      - name: Preserve checks and sidebar evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: plugin-verification-${{ matrix.os }}
+          path: |
+            build/reports/
+            build/test-results/
+          retention-days: 14
+      - name: Preserve the plugin JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: runewarden-plugin-${{ matrix.os }}
+          path: build/libs/runewarden-0.9.6.jar
+          retention-days: 14

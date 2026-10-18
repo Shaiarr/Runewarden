@@ -1,0 +1,13 @@
+Optimal quest order data
+
+quest-order.json adapts the row order and quest titles of the OSRS Wiki Optimal quest guide, by OSRS Wiki contributors, under Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported.
+
+Source: https://oldschool.runescape.wiki/w/Optimal_quest_guide?oldid=15358869
+History and contributors: https://oldschool.runescape.wiki/w/Optimal_quest_guide?action=history
+Revision timestamp: 2026-09-30T12:59:44Z
+Retrieved through the Wiki API: 2026-10-16
+License: https://creativecommons.org/licenses/by-nc-sa/3.0/
+
+Adaptation: extracted row order and titles; added explicit title aliases for matching bundled guides. Supporting training instructions are omitted. Unmatched guides have no assigned route rank. The original authors do not endorse Runewarden.
+
+This data license is separate from the original application code license.

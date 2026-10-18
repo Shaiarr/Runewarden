@@ -1,0 +1,5 @@
+Timing and activity facts: OSRS Wiki contributors, CC BY-NC-SA 3.0.
+https://oldschool.runescape.wiki/w/Stealing_valuables
+https://oldschool.runescape.wiki/w/Wealthy_citizen
+https://creativecommons.org/licenses/by-nc-sa/3.0/
+Raw wikitext retrieved 2026-10-17; retrieval-dated because API revision metadata was unavailable. Derived ranges: distraction84–99s cycles, up to24s active; container50–60s; bonus~7s; house owner return180–190s.

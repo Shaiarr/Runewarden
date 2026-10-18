@@ -1,0 +1,75 @@
+plugins {
+	id 'java'
+}
+
+group = 'com.runewarden'
+version = '0.9.6'
+
+repositories {
+	maven {
+		url = 'https://repo.runelite.net'
+		content { includeGroupByRegex('net\\.runelite.*') }
+	}
+	mavenCentral()
+}
+
+// Pinned local verification. The Plugin Hub uses its own current standard build.
+def runeLiteVersion = '1.13.2'
+dependencyLocking { lockAllConfigurations() }
+
+dependencies {
+	compileOnly "net.runelite:client:${runeLiteVersion}"
+	testImplementation "net.runelite:client:${runeLiteVersion}"
+	testImplementation 'junit:junit:4.13.2'
+	testImplementation 'org.mockito:mockito-core:3.12.4'
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = 'UTF-8'
+	options.release.set(11)
+}
+
+tasks.withType(Test).configureEach {
+	useJUnit()
+	maxHeapSize = '768m'
+	systemProperty 'java.awt.headless', 'true'
+}
+
+tasks.register('releaseMetadata') {
+	doLast {
+		def metadata = new Properties()
+		file('runelite-plugin.properties').withInputStream { metadata.load(it) }
+		if (metadata.getProperty('version') != project.version.toString()
+			|| metadata.getProperty('build') != 'standard'
+			|| !file('src/main/java/com/runewarden/RunewardenVersion.java').text.contains('"' + project.version + '"'))
+			throw new GradleException('Release version or Plugin Hub build metadata differs.')
+	}
+}
+tasks.named('check') { dependsOn tasks.named('releaseMetadata') }
+
+jar {
+	manifest {
+		attributes('Implementation-Title': 'Runewarden', 'Implementation-Version': project.version,
+			'RuneLite-Version': runeLiteVersion)
+	}
+	preserveFileTimestamps = false
+	reproducibleFileOrder = true
+}
+
+// Optional real-companion contracts. No companion source or binary is bundled.
+if (providers.gradleProperty('shortestPathJar').isPresent()) {
+	def companionJar = file(providers.gradleProperty('shortestPathJar').get())
+	if (!companionJar.isFile()) throw new GradleException('shortestPathJar must point to the real upstream JAR.')
+	sourceSets {
+		companionIntegration {
+			java.srcDir 'integration-tests/java'
+			compileClasspath = files(companionJar) + sourceSets.main.output + configurations.testRuntimeClasspath
+			runtimeClasspath = files(companionJar) + output + sourceSets.main.output + configurations.testRuntimeClasspath
+		}
+	}
+	tasks.register('companionIntegrationTest', Test) {
+		testClassesDirs = sourceSets.companionIntegration.output.classesDirs
+		classpath = sourceSets.companionIntegration.runtimeClasspath
+		shouldRunAfter tasks.named('test')
+	}
+}

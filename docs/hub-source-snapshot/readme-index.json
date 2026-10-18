@@ -1,0 +1,1361 @@
+{
+  "tile-packs": {
+    "id": "tile-packs",
+    "repository": "https://github.com/TrevorMDev/tile-packs",
+    "commit": "8091ee842642c34fb88bb79c61e104500e91bd96",
+    "source": "https://raw.githubusercontent.com/TrevorMDev/tile-packs/8091ee842642c34fb88bb79c61e104500e91bd96/README.md",
+    "local": "readmes/tile-packs.md",
+    "sha256": "6e33486ca019c57e97ae51ec95e43ccb171ffb8821998f7edca3607c23575493",
+    "bytes": 4435
+  },
+  "117hd": {
+    "id": "117hd",
+    "repository": "https://github.com/117HD/RLHD",
+    "commit": "c8bff44a84ff903721750295674be48976d30308",
+    "source": "https://raw.githubusercontent.com/117HD/RLHD/c8bff44a84ff903721750295674be48976d30308/README.md",
+    "local": "readmes/117hd.md",
+    "sha256": "162c1345c6437ad823e14c0596943a1f15daaf3e5b0c5ca733f1af6465b4e3bc",
+    "bytes": 1564
+  },
+  "quest-helper": {
+    "id": "quest-helper",
+    "repository": "https://github.com/Zoinkwiz/quest-helper",
+    "commit": "5f791937a99a676f23c02aa48c4e4d5b50e7edad",
+    "source": "https://raw.githubusercontent.com/Zoinkwiz/quest-helper/5f791937a99a676f23c02aa48c4e4d5b50e7edad/README.md",
+    "local": "readmes/quest-helper.md",
+    "sha256": "ae17ee0f31e1eaecac2f2dd90f28b19330e7f91159b974f5aec0ae0ded70644c",
+    "bytes": 2832
+  },
+  "better-npc-highlight": {
+    "id": "better-npc-highlight",
+    "repository": "https://github.com/riktenx/better-npc-highlight",
+    "commit": "8a2b92b35b34ec71aaad1e4c294033d840924cad",
+    "source": "https://raw.githubusercontent.com/riktenx/better-npc-highlight/8a2b92b35b34ec71aaad1e4c294033d840924cad/README.md",
+    "local": "readmes/better-npc-highlight.md",
+    "sha256": "b2c62e9f3aaa68a3d10d79ff765a9abaf523ba5ea0d56280c87f7bace0ca2503",
+    "bytes": 564
+  },
+  "sailing": {
+    "id": "sailing",
+    "repository": "https://github.com/LlemonDuck/sailing",
+    "commit": "af987f3be93bf0ca666af3d1f111cbf91e6a4d0d",
+    "source": "https://raw.githubusercontent.com/LlemonDuck/sailing/af987f3be93bf0ca666af3d1f111cbf91e6a4d0d/README.md",
+    "local": "readmes/sailing.md",
+    "sha256": "7b0832128787a3d12cc4c0c27cd111a511cb7f1ca5c07c015f4ceff414864ed9",
+    "bytes": 2128
+  },
+  "wikisync": {
+    "id": "wikisync",
+    "repository": "https://github.com/weirdgloop/WikiSync",
+    "commit": "1ff4ea0653395b552844d658d3668815d82e0a79",
+    "source": "https://raw.githubusercontent.com/weirdgloop/WikiSync/1ff4ea0653395b552844d658d3668815d82e0a79/README.md",
+    "local": "readmes/wikisync.md",
+    "sha256": "486882645da05e7cba318bb706b1d6ec7c024c232164497791c691dba08671ff",
+    "bytes": 528
+  },
+  "tombs-of-amascut": {
+    "id": "tombs-of-amascut",
+    "repository": "https://github.com/LlemonDuck/tombs-of-amascut",
+    "commit": "831c39b9d60f40965d221fe5ac6b4d19d61c97f4",
+    "source": "https://raw.githubusercontent.com/LlemonDuck/tombs-of-amascut/831c39b9d60f40965d221fe5ac6b4d19d61c97f4/README.md",
+    "local": "readmes/tombs-of-amascut.md",
+    "sha256": "be32e69bf02677ce3ab09d8d560563d5356cdfb065b43b8e9f9df1762ec2a693",
+    "bytes": 8197
+  },
+  "guardians-of-the-rift-helper": {
+    "id": "guardians-of-the-rift-helper",
+    "repository": "https://github.com/DatBear/Guardians-of-the-Rift-Helper",
+    "commit": "cdee9d0d5cf9aa7782bfe8f5c36c20a2b127d11c",
+    "source": "https://raw.githubusercontent.com/DatBear/Guardians-of-the-Rift-Helper/cdee9d0d5cf9aa7782bfe8f5c36c20a2b127d11c/README.md",
+    "local": "readmes/guardians-of-the-rift-helper.md",
+    "sha256": "991aaa16189715f11a5b7e2c684cda6782f854e6980c9ea9ba87d6c06140a367",
+    "bytes": 1195
+  },
+  "banked-experience": {
+    "id": "banked-experience",
+    "repository": "https://github.com/TheStonedTurtle/banked-experience",
+    "commit": "983d5e04220507f3fb63f76ff0b7f83d0ed32e96",
+    "source": "https://raw.githubusercontent.com/TheStonedTurtle/banked-experience/983d5e04220507f3fb63f76ff0b7f83d0ed32e96/README.md",
+    "local": "readmes/banked-experience.md",
+    "sha256": "80c3b0b1382131a9587ced6a88abc1c85b7b99f944750eb2003fb2ab1ee02ea6",
+    "bytes": 6389
+  },
+  "easy-giantsfoundry": {
+    "id": "easy-giantsfoundry",
+    "repository": "https://github.com/Toofifty/easy-giantsfoundry",
+    "commit": "9324c7f55cba4c0fc5245a7bc85f3db521a8cceb",
+    "source": "https://raw.githubusercontent.com/Toofifty/easy-giantsfoundry/9324c7f55cba4c0fc5245a7bc85f3db521a8cceb/README.md",
+    "local": "readmes/easy-giantsfoundry.md",
+    "sha256": "876af329f153e82e7108c006e376b8250f6431d0cece7f0ebe022f6c4ba5108e",
+    "bytes": 3418
+  },
+  "zulrah-helper": {
+    "id": "zulrah-helper",
+    "repository": "https://github.com/while-loop/runelite-plugins",
+    "commit": "d1d24f0a3dbab15a7f0f6fcae1ad9f0c2e6186f4",
+    "source": "https://raw.githubusercontent.com/while-loop/runelite-plugins/d1d24f0a3dbab15a7f0f6fcae1ad9f0c2e6186f4/README.md",
+    "local": "readmes/zulrah-helper.md",
+    "sha256": "6ef7f0e4b7c6eee5027923154934ec5a69e0cb86769fcc3521c659628117aea3",
+    "bytes": 1010
+  },
+  "tempoross": {
+    "id": "tempoross",
+    "repository": "https://github.com/nmlynch94/runelite-external-plugins",
+    "commit": "96ddee1178127c982fd94d59fbc6fdc56ab6a308",
+    "source": "https://raw.githubusercontent.com/nmlynch94/runelite-external-plugins/96ddee1178127c982fd94d59fbc6fdc56ab6a308/README.md",
+    "local": "readmes/tempoross.md",
+    "sha256": "2cfae7fad37432cee9d99da859864e21250bce7fd4b620aba62e0f30c2f69f3b",
+    "bytes": 2262
+  },
+  "the-gauntlet": {
+    "id": "the-gauntlet",
+    "repository": "https://github.com/LlemonDuck/the-gauntlet",
+    "commit": "bf0246abf6dc04ce5541264c10e663536f9864c2",
+    "source": "https://raw.githubusercontent.com/LlemonDuck/the-gauntlet/bf0246abf6dc04ce5541264c10e663536f9864c2/README.md",
+    "local": "readmes/the-gauntlet.md",
+    "sha256": "8217244faecb82f18be723249b98b7b24134ef6373335be192b790a04ee45b58",
+    "bytes": 563
+  },
+  "party-panel": {
+    "id": "party-panel",
+    "repository": "https://github.com/TheStonedTurtle/party-panel",
+    "commit": "3dc0ead669562bbbd05a0999f9c8604f2500683f",
+    "source": "https://raw.githubusercontent.com/TheStonedTurtle/party-panel/3dc0ead669562bbbd05a0999f9c8604f2500683f/README.md",
+    "local": "readmes/party-panel.md",
+    "sha256": "bd0d2fbf1376806650d62b42f5af7a03821c09eba47ee85bbd52d20ad7385d8a",
+    "bytes": 1343
+  },
+  "mastering-mixology": {
+    "id": "mastering-mixology",
+    "repository": "https://github.com/hex-agon/mastering-mixology",
+    "commit": "10f4ceda7fb044f006d0aecc449afcf2339acfa0",
+    "source": "https://raw.githubusercontent.com/hex-agon/mastering-mixology/10f4ceda7fb044f006d0aecc449afcf2339acfa0/README.md",
+    "local": "readmes/mastering-mixology.md",
+    "sha256": "1df0bf272bddd1f8cd64f06ddae9d4ed354aae411e600dfcf5e4ce046782a3d1",
+    "bytes": 3344
+  },
+  "mahogany-homes": {
+    "id": "mahogany-homes",
+    "repository": "https://github.com/TheStonedTurtle/Mahogany-Homes",
+    "commit": "7ec419eed23dbd8f3970c40bbe0b03d5b951a0dd",
+    "source": "https://raw.githubusercontent.com/TheStonedTurtle/Mahogany-Homes/7ec419eed23dbd8f3970c40bbe0b03d5b951a0dd/README.md",
+    "local": "readmes/mahogany-homes.md",
+    "sha256": "cd7808b800ba752b75ef36a51f65a9f56cb4bce7d7463fd71662f800f6d84a95",
+    "bytes": 420
+  },
+  "rogues-den": {
+    "id": "rogues-den",
+    "repository": "https://github.com/nightfirecat/plugin-hub-plugins",
+    "commit": "3ece9e0401f5ebac9da2762015449d5e68bb0bfc",
+    "source": "https://raw.githubusercontent.com/nightfirecat/plugin-hub-plugins/3ece9e0401f5ebac9da2762015449d5e68bb0bfc/README.md",
+    "local": "readmes/rogues-den.md",
+    "sha256": "a848be5245da65d80a41b5ff80ee28fe487c9bbbf01b6c57daaf01aac1f655d2",
+    "bytes": 302
+  },
+  "fight-cave-waves": {
+    "id": "fight-cave-waves",
+    "repository": "https://github.com/nightfirecat/plugin-hub-plugins",
+    "commit": "07d00f695ddf26801e7e989471d404c98770c3a2",
+    "source": "https://raw.githubusercontent.com/nightfirecat/plugin-hub-plugins/07d00f695ddf26801e7e989471d404c98770c3a2/README.md",
+    "local": "readmes/fight-cave-waves.md",
+    "sha256": "49623df2fee894041780317364b03c76d8287280f856a74ccac631fe726b826b",
+    "bytes": 222
+  },
+  "hunter-rumours": {
+    "id": "hunter-rumours",
+    "repository": "https://github.com/geel9/runelite-hunter-rumours",
+    "commit": "91b833b05b30bcb18cae812be5f0686b324d41c2",
+    "source": "https://raw.githubusercontent.com/geel9/runelite-hunter-rumours/91b833b05b30bcb18cae812be5f0686b324d41c2/README.md",
+    "local": "readmes/hunter-rumours.md",
+    "sha256": "a9e55cf751869ecf51ae6014359834fcebe683e002c2c1123d21107477f3e90a",
+    "bytes": 261
+  },
+  "port-tasks": {
+    "id": "port-tasks",
+    "repository": "https://github.com/coopermor/port-tasks",
+    "commit": "0e13530c77b8c599db9d880330022920759d74c1",
+    "source": "https://raw.githubusercontent.com/coopermor/port-tasks/0e13530c77b8c599db9d880330022920759d74c1/README.md",
+    "local": "readmes/port-tasks.md",
+    "sha256": "d2c7f817483765e35e0740fd2f681ecdf4459f61bad9e51aedf014170f92fe43",
+    "bytes": 836
+  },
+  "bank-tag-layouts": {
+    "id": "bank-tag-layouts",
+    "repository": "https://github.com/geheur/bank-tag-custom-layouts",
+    "commit": "d26417d9c6b47f74cdbb685241987ddfd56a7706",
+    "source": "https://raw.githubusercontent.com/geheur/bank-tag-custom-layouts/d26417d9c6b47f74cdbb685241987ddfd56a7706/README.md",
+    "local": "readmes/bank-tag-layouts.md",
+    "sha256": "f34a1bcd8f62bc734d196de70503d3d5a5b75598afc261ef9df81b7f15a9ac52",
+    "bytes": 1878
+  },
+  "inventory-setups": {
+    "id": "inventory-setups",
+    "repository": "https://github.com/dillydill123/inventory-setups",
+    "commit": "16f2c0a319672c2e19738276a17de63aea7216fa",
+    "source": "https://raw.githubusercontent.com/dillydill123/inventory-setups/16f2c0a319672c2e19738276a17de63aea7216fa/README.md",
+    "local": "readmes/inventory-setups.md",
+    "sha256": "93a17b1d807aebbeef5fa90b9b12803a01602524aa6b1db12f862f9dfe5a29f5",
+    "bytes": 32145
+  },
+  "skills-tab-progress-bars": {
+    "id": "skills-tab-progress-bars",
+    "repository": "https://github.com/m0bilebtw/skills-tab-progress-bars",
+    "commit": "c421ff74691c8ccbe35f99e602a32cd94614afbe",
+    "source": "https://raw.githubusercontent.com/m0bilebtw/skills-tab-progress-bars/c421ff74691c8ccbe35f99e602a32cd94614afbe/README.md",
+    "local": "readmes/skills-tab-progress-bars.md",
+    "sha256": "a927559621f161c11ff7b62bc806cad6e836443924194c695491463a33fd5d55",
+    "bytes": 1213
+  },
+  "wilderness-player-alarm": {
+    "id": "wilderness-player-alarm",
+    "repository": "https://github.com/adhansen/plugin-repo",
+    "commit": "cbddd45029e84197c9d485b140d2a16af77cdef2",
+    "source": "https://raw.githubusercontent.com/adhansen/plugin-repo/cbddd45029e84197c9d485b140d2a16af77cdef2/README.md",
+    "local": "readmes/wilderness-player-alarm.md",
+    "sha256": "95103f371088a62df3f35c0273e23c5edf3da227677b4557448fa65caea397b8",
+    "bytes": 457
+  },
+  "varlamore-house-thieving": {
+    "id": "varlamore-house-thieving",
+    "repository": "https://github.com/sololegends/runelite-varlamore-house-thieving",
+    "commit": "ed8c58e1e9dbc73508187c1d88000c61115aee6e",
+    "source": "https://raw.githubusercontent.com/sololegends/runelite-varlamore-house-thieving/ed8c58e1e9dbc73508187c1d88000c61115aee6e/README.md",
+    "local": "readmes/varlamore-house-thieving.md",
+    "sha256": "11d68fcbff6ae5db526e5ebea1e66a4f85cab9b738ee2fb31d282efc7d8b2403",
+    "bytes": 996
+  },
+  "radius-markers": {
+    "id": "radius-markers",
+    "repository": "https://github.com/Skretzo/runelite-plugins",
+    "commit": "02effd4f76fbe8e773da1c604b45bc0be7c9f636",
+    "source": "https://raw.githubusercontent.com/Skretzo/runelite-plugins/02effd4f76fbe8e773da1c604b45bc0be7c9f636/README.md",
+    "local": "readmes/radius-markers.md",
+    "sha256": "d85df57d75fac2cfd1e24e74685639969e1306f371ec838cff48c87121997d51",
+    "bytes": 3242
+  },
+  "spawnpredictor": {
+    "id": "spawnpredictor",
+    "repository": "https://github.com/damencs/spawn-predictor",
+    "commit": "8c5a34d4c88407cda7a6c60d8014018163d97974",
+    "source": "https://raw.githubusercontent.com/damencs/spawn-predictor/8c5a34d4c88407cda7a6c60d8014018163d97974/README.md",
+    "local": "readmes/spawnpredictor.md",
+    "sha256": "90cb5c1e2d9c99c7eb7d2cb8866f7e141802d491c605775ed6059366fd73f80c",
+    "bytes": 5275
+  },
+  "shortest-path": {
+    "id": "shortest-path",
+    "repository": "https://github.com/Skretzo/shortest-path",
+    "commit": "37abff3a3345185fc11fccecae04d8170de25a11",
+    "source": "https://raw.githubusercontent.com/Skretzo/shortest-path/37abff3a3345185fc11fccecae04d8170de25a11/README.md",
+    "local": "readmes/shortest-path.md",
+    "sha256": "6c00db7c2c4a9e6fad9e7a23526987fcde8f3845578c1f4f2cc3dc44b92c19a2",
+    "bytes": 2214
+  },
+  "totem-fletching": {
+    "id": "totem-fletching",
+    "repository": "https://github.com/TheRealGuru/totem-fletching",
+    "commit": "7c3b416a34bc57ef1d32d737acd0059818c0727a",
+    "source": "https://raw.githubusercontent.com/TheRealGuru/totem-fletching/7c3b416a34bc57ef1d32d737acd0059818c0727a/README.md",
+    "local": "readmes/totem-fletching.md",
+    "sha256": "640d6b03d80fcf4bf1277aa1449bd629c8e45cd1cd236752fb0c0daa636d040c",
+    "bytes": 4033
+  },
+  "equipment-inspector": {
+    "id": "equipment-inspector",
+    "repository": "https://github.com/botanicvelious/Equipment-Inspector",
+    "commit": "19f1b077a3c1304754580f071316b908366edc78",
+    "source": "https://raw.githubusercontent.com/botanicvelious/Equipment-Inspector/19f1b077a3c1304754580f071316b908366edc78/README.md",
+    "local": "readmes/equipment-inspector.md",
+    "sha256": "c5700bf6b43576dc49735691122695e137123711dc096672fc880214e6dd27af",
+    "bytes": 146
+  },
+  "barrows-door-highlighter": {
+    "id": "barrows-door-highlighter",
+    "repository": "https://github.com/hansjm10/Barrows-Door-Highlighter",
+    "commit": "a07574bbfc18be74f76d25e5b194048026fd54b2",
+    "source": "https://raw.githubusercontent.com/hansjm10/Barrows-Door-Highlighter/a07574bbfc18be74f76d25e5b194048026fd54b2/README.md",
+    "local": "readmes/barrows-door-highlighter.md",
+    "sha256": "e0fbfeac9889e7a0dc147afe0fb54eb8fa4e5231e073383fc3d6d6cd84ddaa6f",
+    "bytes": 228
+  },
+  "customizable-xp-drops": {
+    "id": "customizable-xp-drops",
+    "repository": "https://github.com/l2-/template-plugin",
+    "commit": "abad441320f001d454ccf67186a0d142c235888a",
+    "source": "https://raw.githubusercontent.com/l2-/template-plugin/abad441320f001d454ccf67186a0d142c235888a/README.md",
+    "local": "readmes/customizable-xp-drops.md",
+    "sha256": "407e5beaabf5a271d18cac2666021edeb405ec305bb025def7aab569ce40b339",
+    "bytes": 17127
+  },
+  "hotkeyable-menu-swaps": {
+    "id": "hotkeyable-menu-swaps",
+    "repository": "https://github.com/geheur/More-menu-entry-swaps",
+    "commit": "720769e96dfcc1d976784ece846a4ab0403ef96d",
+    "source": "https://raw.githubusercontent.com/geheur/More-menu-entry-swaps/720769e96dfcc1d976784ece846a4ab0403ef96d/README.md",
+    "local": "readmes/hotkeyable-menu-swaps.md",
+    "sha256": "fef23745dd07cdd879c2072fafa1050951286fe22b469896c203a19d642a1338",
+    "bytes": 672
+  },
+  "barracuda-trials-pathfinder": {
+    "id": "barracuda-trials-pathfinder",
+    "repository": "https://github.com/NathanVegetable/barracuda-trial",
+    "commit": "b05a9f833d59e6b60db0ed3cc1a9265e6d5573cf",
+    "source": "https://raw.githubusercontent.com/NathanVegetable/barracuda-trial/b05a9f833d59e6b60db0ed3cc1a9265e6d5573cf/README.md",
+    "local": "readmes/barracuda-trials-pathfinder.md",
+    "sha256": "7ed84aab7610f498fe6fcafe2d5f2414d8b896abda4cd9331b384a6065a5ad30",
+    "bytes": 1295
+  },
+  "cox-additions": {
+    "id": "cox-additions",
+    "repository": "https://github.com/dey0/pluginhub-plugins",
+    "commit": "48a8c0a1ecbc40541e2e83d9f8793bf5640a63f5",
+    "source": "https://raw.githubusercontent.com/dey0/pluginhub-plugins/48a8c0a1ecbc40541e2e83d9f8793bf5640a63f5/README.md",
+    "local": "readmes/cox-additions.md",
+    "sha256": "35352bd97597f5c8bbe985b242742b7205dd74d7605a5a9fcf3416dd20fd6c8a",
+    "bytes": 1580
+  },
+  "loot-lookup": {
+    "id": "loot-lookup",
+    "repository": "https://github.com/donth77/loot-lookup-plugin",
+    "commit": "58812e18d0f955d597c4894ece0ae23aff1a3a74",
+    "source": "https://raw.githubusercontent.com/donth77/loot-lookup-plugin/58812e18d0f955d597c4894ece0ae23aff1a3a74/README.md",
+    "local": "readmes/loot-lookup.md",
+    "sha256": "04a35ac03c1576ad325561b4016c6d6497b84392904b924d660a70361e9aa1a7",
+    "bytes": 4864
+  },
+  "wilderness-multi-lines": {
+    "id": "wilderness-multi-lines",
+    "repository": "https://github.com/Nightfirecat/plugin-hub-plugins",
+    "commit": "d81bb4c444c3772b1563be8a8fcc2252c84a0a4f",
+    "source": "https://raw.githubusercontent.com/Nightfirecat/plugin-hub-plugins/d81bb4c444c3772b1563be8a8fcc2252c84a0a4f/README.md",
+    "local": "readmes/wilderness-multi-lines.md",
+    "sha256": "62285cfea4389a28a59065fbd5d2bba3b3df9b30c13e1bf2c58c4986a59a0e20",
+    "bytes": 286
+  },
+  "kitten-tracker": {
+    "id": "kitten-tracker",
+    "repository": "https://github.com/pieterjanbuntinx/kitten-tracker",
+    "commit": "6672c661be2aceb051059961a6a1781334250741",
+    "source": "https://raw.githubusercontent.com/pieterjanbuntinx/kitten-tracker/6672c661be2aceb051059961a6a1781334250741/README.md",
+    "local": "readmes/kitten-tracker.md",
+    "sha256": "6be9abba2b903162e7019c9d32a72c2d180596c695aa35f1304a6394585005ea",
+    "bytes": 5584
+  },
+  "visual-metronome": {
+    "id": "visual-metronome",
+    "repository": "https://github.com/vincent0955/Visual-metronome",
+    "commit": "f2226279d210c1765e876b51f5e1159921695a46",
+    "source": "https://raw.githubusercontent.com/vincent0955/Visual-metronome/f2226279d210c1765e876b51f5e1159921695a46/README.md",
+    "local": "readmes/visual-metronome.md",
+    "sha256": "b87a3960a63b33d5e5a2f2f66aca48fe790a98005403d9a1193b2fd98776d3b2",
+    "bytes": 6934
+  },
+  "thrall-helper": {
+    "id": "thrall-helper",
+    "repository": "https://github.com/PortAGuy/thrall-helper",
+    "commit": "758de245793d09ea3c765b70a3c3e0dfbe9852e3",
+    "source": "https://raw.githubusercontent.com/PortAGuy/thrall-helper/758de245793d09ea3c765b70a3c3e0dfbe9852e3/README.md",
+    "local": "readmes/thrall-helper.md",
+    "sha256": "1da11988b3e9bd65b637b686257f4b6bbd6f087f474eaee2f626bc4338038cc3",
+    "bytes": 2126
+  },
+  "chompy-hunter": {
+    "id": "chompy-hunter",
+    "repository": "https://github.com/PJGJ210/chompy-hunter",
+    "commit": "8539e578510cd737460933b6f75f582f1aec3490",
+    "source": "https://raw.githubusercontent.com/PJGJ210/chompy-hunter/8539e578510cd737460933b6f75f582f1aec3490/README.md",
+    "local": "readmes/chompy-hunter.md",
+    "sha256": "f74464882f216ab92d41f4e60705171173e0426c958698048abcb4b58da9e97d",
+    "bytes": 1094
+  },
+  "tictac7x-charges": {
+    "id": "tictac7x-charges",
+    "repository": "https://github.com/TicTac7x/runelite-plugins",
+    "commit": "85bc2cef4245e6394a0404d8c2f0efd12ef9faa5",
+    "source": "https://raw.githubusercontent.com/TicTac7x/runelite-plugins/85bc2cef4245e6394a0404d8c2f0efd12ef9faa5/README.md",
+    "local": "readmes/tictac7x-charges.md",
+    "sha256": "544704e849cd3d8a094e75d1a41dd85db7b600cefeb77bc2d776504ccc2789d7",
+    "bytes": 2787
+  },
+  "ping-grapher": {
+    "id": "ping-grapher",
+    "repository": "https://github.com/yuh25/Ping-Grapher",
+    "commit": "b0a202f048ecbf1808bc78dfddf9dfa5caee01a4",
+    "source": "https://raw.githubusercontent.com/yuh25/Ping-Grapher/b0a202f048ecbf1808bc78dfddf9dfa5caee01a4/README.md",
+    "local": "readmes/ping-grapher.md",
+    "sha256": "b6cdfc2258865ee26061264b288d35b88694618cb5bd1fe2fe99efbd2b8da060",
+    "bytes": 1575
+  },
+  "easy-empty": {
+    "id": "easy-empty",
+    "repository": "https://github.com/jpeter17/easy-empty",
+    "commit": "3c8a143b79e797f24ff3ca4d01bee4c7fa33bb18",
+    "source": "https://raw.githubusercontent.com/jpeter17/easy-empty/3c8a143b79e797f24ff3ca4d01bee4c7fa33bb18/README.md",
+    "local": "readmes/easy-empty.md",
+    "sha256": "979db3b09e8a6519c7b17cb97b749bde558f3c81732465f6ace0d416be86e705",
+    "bytes": 236
+  },
+  "hunllef-helper": {
+    "id": "hunllef-helper",
+    "repository": "https://github.com/Loze-Put/hunllef-helper",
+    "commit": "7e0730190bf30cc5972273339cf9407b46c46fd6",
+    "source": "https://raw.githubusercontent.com/Loze-Put/hunllef-helper/7e0730190bf30cc5972273339cf9407b46c46fd6/README.md",
+    "local": "readmes/hunllef-helper.md",
+    "sha256": "cf28ac2e765b7be634276159f69eafe172342aa3617b08890dbac2e7885a6596",
+    "bytes": 1945
+  },
+  "resource-packs": {
+    "id": "resource-packs",
+    "repository": "https://github.com/melkypie/resource-packs",
+    "commit": "bd269eda1d4b6f50eba3b8cd84939a20b3b2bd29",
+    "source": "https://raw.githubusercontent.com/melkypie/resource-packs/bd269eda1d4b6f50eba3b8cd84939a20b3b2bd29/README.md",
+    "local": "readmes/resource-packs.md",
+    "sha256": "4e0fa2bbdd620720daa54ecf3a591b7f270213f32c32f2042462a8f92dede9e3",
+    "bytes": 2526
+  },
+  "wasted-bank-space": {
+    "id": "wasted-bank-space",
+    "repository": "https://github.com/mcgeer/WastedBankSpace",
+    "commit": "1cb3b285c995fb7f4229a172033fcb6020d445cf",
+    "source": "https://raw.githubusercontent.com/mcgeer/WastedBankSpace/1cb3b285c995fb7f4229a172033fcb6020d445cf/README.md",
+    "local": "readmes/wasted-bank-space.md",
+    "sha256": "09991f9b92f2b74073652931a8ecfcfa956931d79e2ae34d1df0a1e4fcdba893",
+    "bytes": 2074
+  },
+  "ba-minigame": {
+    "id": "ba-minigame",
+    "repository": "https://github.com/SkylerPIlot/Ba-Minigame",
+    "commit": "9204c0831b02c76eb50e3e9676306b3c15f3ccf3",
+    "source": "https://raw.githubusercontent.com/SkylerPIlot/Ba-Minigame/9204c0831b02c76eb50e3e9676306b3c15f3ccf3/README.md",
+    "local": "readmes/ba-minigame.md",
+    "sha256": "3f8b83b4aefd2e0e700b908c0131a2ef03c20fd600ca95e8e5f0c8db1630b82f",
+    "bytes": 9009
+  },
+  "better-teleport-menu": {
+    "id": "better-teleport-menu",
+    "repository": "https://github.com/abextm/better-teleport-menu",
+    "commit": "f11546c7b0552e3efc4572bef7504ac34c16cfb1",
+    "source": "https://raw.githubusercontent.com/abextm/better-teleport-menu/f11546c7b0552e3efc4572bef7504ac34c16cfb1/README.md",
+    "local": "readmes/better-teleport-menu.md",
+    "sha256": "0048395fc7d2e363ad8d2fe0d3dbf12d7afb93823ef36b2b0dd71b2e0d09efbe",
+    "bytes": 448
+  },
+  "tree-despawn-timer": {
+    "id": "tree-despawn-timer",
+    "repository": "https://github.com/CreativeTechGuy/tree-despawn-timer",
+    "commit": "9f9eb2b35db64cb6032d9d3e713afb2a3bd89176",
+    "source": "https://raw.githubusercontent.com/CreativeTechGuy/tree-despawn-timer/9f9eb2b35db64cb6032d9d3e713afb2a3bd89176/README.md",
+    "local": "readmes/tree-despawn-timer.md",
+    "sha256": "4abe419d833fb0c2eb5ef2c0381a2d7b2ee9345cc747879bb2fbf5adf222363f",
+    "bytes": 2263
+  },
+  "monster-hp-percentage": {
+    "id": "monster-hp-percentage",
+    "repository": "https://github.com/lejeffe/MonsterHP",
+    "commit": "360f0c84d427010578f4e0de51c48366b3a77524",
+    "source": "https://raw.githubusercontent.com/lejeffe/MonsterHP/360f0c84d427010578f4e0de51c48366b3a77524/README.md",
+    "local": "readmes/monster-hp-percentage.md",
+    "sha256": "4f27969b5d86ad8cbeb6be9d64053c62c5069d3aca4e2b921ed0a2e011490fbc",
+    "bytes": 1527
+  },
+  "c-engineer-completed": {
+    "id": "c-engineer-completed",
+    "repository": "https://github.com/m0bilebtw/c-engineer-completed",
+    "commit": "5aba5151ac409e1aabcfaf44f19fc86f7a6ce8be",
+    "source": "https://raw.githubusercontent.com/m0bilebtw/c-engineer-completed/5aba5151ac409e1aabcfaf44f19fc86f7a6ce8be/README.md",
+    "local": "readmes/c-engineer-completed.md",
+    "sha256": "a13059135b23292bea53c56db1027806e0dd8aea3d0fa0ffeb1709fcd13876e6",
+    "bytes": 4114
+  },
+  "crab-stun-timers": {
+    "id": "crab-stun-timers",
+    "repository": "https://github.com/AnkouOSRS/crab-stun-timers",
+    "commit": "84d0186027384e25c0af53684841d4bf699dc731",
+    "source": "https://raw.githubusercontent.com/AnkouOSRS/crab-stun-timers/84d0186027384e25c0af53684841d4bf699dc731/README.md",
+    "local": "readmes/crab-stun-timers.md",
+    "sha256": "1855aa765fedc824292a7acf23c5a8cfae2a87319fed321a99ad8abd018b8fba",
+    "bytes": 746
+  },
+  "fortis-colosseum": {
+    "id": "fortis-colosseum",
+    "repository": "https://github.com/LlemonDuck/fortis-colosseum",
+    "commit": "b86cb48086c83a224eea5cde410bbe06dd4b6dd2",
+    "source": "https://raw.githubusercontent.com/LlemonDuck/fortis-colosseum/b86cb48086c83a224eea5cde410bbe06dd4b6dd2/README.md",
+    "local": "readmes/fortis-colosseum.md",
+    "sha256": "218d68144c7903c6ebd607b70969bf252528366bd53695022f81603bc3244265",
+    "bytes": 3568
+  },
+  "osrs-tcg": {
+    "id": "osrs-tcg",
+    "repository": "https://github.com/Azderi/osrs-tcg",
+    "commit": "4df0a577de077adea47385eaf49ad06bd42d260b",
+    "source": "https://raw.githubusercontent.com/Azderi/osrs-tcg/4df0a577de077adea47385eaf49ad06bd42d260b/README.md",
+    "local": "readmes/osrs-tcg.md",
+    "sha256": "45e5484c1d1a304798e91360eb343ec755151511a75d9839de5710ccefa4baee",
+    "bytes": 977
+  },
+  "large-logout": {
+    "id": "large-logout",
+    "repository": "https://github.com/dekvall/runelite-external-plugins",
+    "commit": "edcd51ca9e865576ccb91fc75a685de0fd4a3556",
+    "source": "https://raw.githubusercontent.com/dekvall/runelite-external-plugins/edcd51ca9e865576ccb91fc75a685de0fd4a3556/README.md",
+    "local": "readmes/large-logout.md",
+    "sha256": "1abfb879d3ef4e5d8993c1dfaaa34f7ef1a147fb2c889ac09b6e4313d501723f",
+    "bytes": 81
+  },
+  "plank-sack": {
+    "id": "plank-sack",
+    "repository": "https://github.com/Talkarcabbage/planksacktracker",
+    "commit": "e13a56ed6cbba3e54701d43924f12df16556fe2e",
+    "source": "https://raw.githubusercontent.com/Talkarcabbage/planksacktracker/e13a56ed6cbba3e54701d43924f12df16556fe2e/README.md",
+    "local": "readmes/plank-sack.md",
+    "sha256": "3dce857ae609dca3e5d7b29891d4912579ba5f4383a56103adb70acc2eec0cf5",
+    "bytes": 540
+  },
+  "cox-qol": {
+    "id": "cox-qol",
+    "repository": "https://github.com/MoreBuchus/buchus-plugins",
+    "commit": "64ee848dda5e3b443e739ada61af04e3d7d29c51",
+    "source": "https://raw.githubusercontent.com/MoreBuchus/buchus-plugins/64ee848dda5e3b443e739ada61af04e3d7d29c51/README.md",
+    "local": "readmes/cox-qol.md",
+    "sha256": "9c265b53db667c8c73825b3f84b0fd01c210d3fea18fca99096a0b2b9991e9f3",
+    "bytes": 1149
+  },
+  "improved-tile-indicators": {
+    "id": "improved-tile-indicators",
+    "repository": "https://github.com/LeikvollE/tileindicators",
+    "commit": "bc2ed6db4d5451b508a47b74976cad4675c097c7",
+    "source": "https://raw.githubusercontent.com/LeikvollE/tileindicators/bc2ed6db4d5451b508a47b74976cad4675c097c7/README.md",
+    "local": "readmes/improved-tile-indicators.md",
+    "sha256": "8790f7be6de831113be6434e0eb9286cb7e2fec821921afbcdab8aff5c498473",
+    "bytes": 455
+  },
+  "crab-solver": {
+    "id": "crab-solver",
+    "repository": "https://github.com/TheStonedTurtle/CrabSolver",
+    "commit": "503de15321ba896d720352fc77190fc9b17ac7aa",
+    "source": "https://raw.githubusercontent.com/TheStonedTurtle/CrabSolver/503de15321ba896d720352fc77190fc9b17ac7aa/README.md",
+    "local": "readmes/crab-solver.md",
+    "sha256": "52580997dc4cd4847b1489b00dd71ced619b90c5b3200dfefb6fb939c820e713",
+    "bytes": 370
+  },
+  "one-click-summer-garden": {
+    "id": "one-click-summer-garden",
+    "repository": "https://github.com/LlemonDuck/one-click-summer-garden",
+    "commit": "c294707f2c3653236b5882d824574ef8d495d879",
+    "source": "https://raw.githubusercontent.com/LlemonDuck/one-click-summer-garden/c294707f2c3653236b5882d824574ef8d495d879/README.md",
+    "local": "readmes/one-click-summer-garden.md",
+    "sha256": "403615107bf0902077021aeee9ede4282408ab428f9c54738e4c6e082c61ad91",
+    "bytes": 2483
+  },
+  "attacktimer": {
+    "id": "attacktimer",
+    "repository": "https://github.com/ngraves95/attacktimer",
+    "commit": "52c321783bc52e5772a51fded4efd7d2523a37ac",
+    "source": "https://raw.githubusercontent.com/ngraves95/attacktimer/52c321783bc52e5772a51fded4efd7d2523a37ac/README.md",
+    "local": "readmes/attacktimer.md",
+    "sha256": "4d67b354f21ad9103fb5860335c4183c5729c4cefe2131bbba7325559829d809",
+    "bytes": 3364
+  },
+  "kph-tracker": {
+    "id": "kph-tracker",
+    "repository": "https://github.com/Mrnice98/BossingInfo",
+    "commit": "c7f4c8ce8b7d36435ae5b5b6e028a8c6ed91bff9",
+    "source": "https://raw.githubusercontent.com/Mrnice98/BossingInfo/c7f4c8ce8b7d36435ae5b5b6e028a8c6ed91bff9/README.md",
+    "local": "readmes/kph-tracker.md",
+    "sha256": "b198b50e45167e500e72461982a0c8e766ad709b4a0677bcb206c8ffb187e6b4",
+    "bytes": 8339
+  },
+  "tobqol": {
+    "id": "tobqol",
+    "repository": "https://github.com/damencs/tob-qol",
+    "commit": "3715d6ae24547fa87dc7ed82665e37b632407ba7",
+    "source": "https://raw.githubusercontent.com/damencs/tob-qol/3715d6ae24547fa87dc7ed82665e37b632407ba7/README.md",
+    "local": "readmes/tobqol.md",
+    "sha256": "45d115c132f652d0857431b21a3229b8697c6d82a6c60bd7bed17bbf2e4f99a2",
+    "bytes": 589
+  },
+  "maxhitplugin": {
+    "id": "maxhitplugin",
+    "repository": "https://github.com/Seebity/max-hit",
+    "commit": "dce258e2d185887de891eec8961c27b5df92a55c",
+    "source": "https://raw.githubusercontent.com/Seebity/max-hit/dce258e2d185887de891eec8961c27b5df92a55c/README.md",
+    "local": "readmes/maxhitplugin.md",
+    "sha256": "3e943be0e5b0257b076dc85f3ee0365d8ea27a9a2b69a5a8051306a5cbc9a0b4",
+    "bytes": 1872
+  },
+  "zalcano": {
+    "id": "zalcano",
+    "repository": "https://github.com/oceijt/Zalcano",
+    "commit": "d517f1fa4685031a78981e8fafb91b517b223fa3",
+    "source": "https://raw.githubusercontent.com/oceijt/Zalcano/d517f1fa4685031a78981e8fafb91b517b223fa3/README.md",
+    "local": "readmes/zalcano.md",
+    "sha256": "2523fbc98e5f68fc2175cf5eceef820fd8f465955253e7d83c631e4b91ca0477",
+    "bytes": 1070
+  },
+  "runeprofile": {
+    "id": "runeprofile",
+    "repository": "https://github.com/ReinhardtR/runeprofile-plugin",
+    "commit": "966f86fb3f0477ef8888cb84f91957891396b9d9",
+    "source": "https://raw.githubusercontent.com/ReinhardtR/runeprofile-plugin/966f86fb3f0477ef8888cb84f91957891396b9d9/README.md",
+    "local": "readmes/runeprofile.md",
+    "sha256": "3dad7deaef1bcd3173a968535580306b95505e8abb12581bead18e3b7a3e1ef8",
+    "bytes": 2404
+  },
+  "demonic-larva-tracker": {
+    "id": "demonic-larva-tracker",
+    "repository": "https://github.com/marknewan/newan-plugins",
+    "commit": "5d25c9dac1ccb80c523ed120fef9b405eb84aa81",
+    "source": "https://raw.githubusercontent.com/marknewan/newan-plugins/5d25c9dac1ccb80c523ed120fef9b405eb84aa81/README.md",
+    "local": "readmes/demonic-larva-tracker.md",
+    "sha256": "695d01ff3e4817d1460a54935103490d1b3c16944c472a1a97232cb88664dd58",
+    "bytes": 696
+  },
+  "dt2-mistake-tracker": {
+    "id": "dt2-mistake-tracker",
+    "repository": "https://github.com/DominickCobb-rs/DT2-Boss-Failure",
+    "commit": "e6792347a8f36bc3e70943f8ba10b478232c5172",
+    "source": "https://raw.githubusercontent.com/DominickCobb-rs/DT2-Boss-Failure/e6792347a8f36bc3e70943f8ba10b478232c5172/README.md",
+    "local": "readmes/dt2-mistake-tracker.md",
+    "sha256": "ea98b45b1efb8e9d75c78fe122e1589e8b32da05906a2eefe431dc587d0dfb57",
+    "bytes": 477
+  },
+  "stealing-artefacts": {
+    "id": "stealing-artefacts",
+    "repository": "https://github.com/pajlads/StealingArtefacts",
+    "commit": "631227f32d7518da6615165c4658bf6e3704dedb",
+    "source": "https://raw.githubusercontent.com/pajlads/StealingArtefacts/631227f32d7518da6615165c4658bf6e3704dedb/README.md",
+    "local": "readmes/stealing-artefacts.md",
+    "sha256": "67cb87406fbff002a1cd7a8522bb3596ca263547380302b8a05124476baf48e4",
+    "bytes": 302
+  },
+  "star-calling-assist": {
+    "id": "star-calling-assist",
+    "repository": "https://github.com/zodaz/star-calling-assist",
+    "commit": "dd42ca20d1e0c97495b580439f9ac2b35dfbabd8",
+    "source": "https://raw.githubusercontent.com/zodaz/star-calling-assist/dd42ca20d1e0c97495b580439f9ac2b35dfbabd8/README.md",
+    "local": "readmes/star-calling-assist.md",
+    "sha256": "3e288e6afaba679c0936f3b134b09d2a8807d71b837b4042842a9efc947565fb",
+    "bytes": 729
+  },
+  "zom-con-qol": {
+    "id": "zom-con-qol",
+    "repository": "https://github.com/JZomDev/zom-external-plugins",
+    "commit": "4b5603d615d88c082520be8ce06b778d2ecb43fa",
+    "source": "https://raw.githubusercontent.com/JZomDev/zom-external-plugins/4b5603d615d88c082520be8ce06b778d2ecb43fa/README.md",
+    "local": "readmes/zom-con-qol.md",
+    "sha256": "5225dd669275a67e7f775551bd2ed3d705b1fd2d9d482060c1f07b1061fbde26",
+    "bytes": 60
+  },
+  "tictac7x-motherlode": {
+    "id": "tictac7x-motherlode",
+    "repository": "https://github.com/TicTac7x/runelite-plugins",
+    "commit": "2909d5622024a4f011d10eea9c513aa6435e393c",
+    "source": "https://raw.githubusercontent.com/TicTac7x/runelite-plugins/2909d5622024a4f011d10eea9c513aa6435e393c/README.md",
+    "local": "readmes/tictac7x-motherlode.md",
+    "sha256": "7ca1b2893398d502b5ec1301752cb61a4fe1c429174ff8529cea2647dd07e7e1",
+    "bytes": 780
+  },
+  "elysiumevents-plugin": {
+    "id": "elysiumevents-plugin",
+    "repository": "https://github.com/cmsu224/clan-events",
+    "commit": "ba691ee1b1d4584e100babf0a45dbc212b3cccae",
+    "source": "https://raw.githubusercontent.com/cmsu224/clan-events/ba691ee1b1d4584e100babf0a45dbc212b3cccae/README.md",
+    "local": "readmes/elysiumevents-plugin.md",
+    "sha256": "e990872415b43d09529ece68b7cfec7c3b8a13bed044aa24f9ef6f15924f22f3",
+    "bytes": 3397
+  },
+  "ba-call-highlight": {
+    "id": "ba-call-highlight",
+    "repository": "https://github.com/rugg0064/ba-call-highlight",
+    "commit": "e98baa812175a8e9e26bc16bb37502282ba8ea07",
+    "source": "https://raw.githubusercontent.com/rugg0064/ba-call-highlight/e98baa812175a8e9e26bc16bb37502282ba8ea07/README.md",
+    "local": "readmes/ba-call-highlight.md",
+    "sha256": "fd9dce3733bd5ee7fb26629c6e76ac2662051beac0673b2219b3045ed9e58724",
+    "bytes": 171
+  },
+  "detached-camera": {
+    "id": "detached-camera",
+    "repository": "https://github.com/Adam-/runelite-plugins",
+    "commit": "225d9fff38ad0f621754c696ea0e919233458da7",
+    "source": "https://raw.githubusercontent.com/Adam-/runelite-plugins/225d9fff38ad0f621754c696ea0e919233458da7/README.md",
+    "local": "readmes/detached-camera.md",
+    "sha256": "119199ef2c6485ce3f0470c861bc34b6f518d1e13ef64469a3c0a21bbc929810",
+    "bytes": 35
+  },
+  "improved-tears-of-guthix-interface": {
+    "id": "improved-tears-of-guthix-interface",
+    "repository": "https://github.com/Cyborger1/improved-tears-of-guthix-interface",
+    "commit": "57e41a21ddd773812caf77f4522d8ae848b93e19",
+    "source": "https://raw.githubusercontent.com/Cyborger1/improved-tears-of-guthix-interface/57e41a21ddd773812caf77f4522d8ae848b93e19/README.md",
+    "local": "readmes/improved-tears-of-guthix-interface.md",
+    "sha256": "7e45ffc63858b01d7fc8796ef8c9241c116dacd4b360dc5faeaf3a7ef2c1459a",
+    "bytes": 405
+  },
+  "fight-cave-helper": {
+    "id": "fight-cave-helper",
+    "repository": "https://github.com/runkev/fight-cave-helper",
+    "commit": "c8c277de866c75bf1ed74598d687b5c048a2901a",
+    "source": "https://raw.githubusercontent.com/runkev/fight-cave-helper/c8c277de866c75bf1ed74598d687b5c048a2901a/README.md",
+    "local": "readmes/fight-cave-helper.md",
+    "sha256": "1b03a91ba33da794e2f4f25c4d3af918285a2e0fdfc0a46fc042bb4905fb5065",
+    "bytes": 911
+  },
+  "gauntlet-minimap": {
+    "id": "gauntlet-minimap",
+    "repository": "https://github.com/VicSegers/gauntlet-minimap",
+    "commit": "4745ea9960dd85ca094e372299ba8025720e7717",
+    "source": "https://raw.githubusercontent.com/VicSegers/gauntlet-minimap/4745ea9960dd85ca094e372299ba8025720e7717/README.md",
+    "local": "readmes/gauntlet-minimap.md",
+    "sha256": "3b136f7b51066cf7118d4e3b3a149c4e7bc13a7a21463af1c680003ab0de7cde",
+    "bytes": 975
+  },
+  "optimal-quest-guide": {
+    "id": "optimal-quest-guide",
+    "repository": "https://github.com/cesoun/optimal-quest-guide",
+    "commit": "b801ca19e0398c08ca997ec52e7c3eb5e44a8aa1",
+    "source": "https://raw.githubusercontent.com/cesoun/optimal-quest-guide/b801ca19e0398c08ca997ec52e7c3eb5e44a8aa1/README.md",
+    "local": "readmes/optimal-quest-guide.md",
+    "sha256": "454fc9153496837db537de4a65a4203a956e3c29bb79f7843e7ba41154a32bfb",
+    "bytes": 2674
+  },
+  "annoyance-mute": {
+    "id": "annoyance-mute",
+    "repository": "https://github.com/Broooklyn/runelite-external-plugins",
+    "commit": "195334815e22ef0dbbc76d74e518c5c0a3ab20cb",
+    "source": "https://raw.githubusercontent.com/Broooklyn/runelite-external-plugins/195334815e22ef0dbbc76d74e518c5c0a3ab20cb/README.md",
+    "local": "readmes/annoyance-mute.md",
+    "sha256": "691b7568a3e936cc1f58bb2d61de7854223b9ceed446df8e8307accdbabad42e",
+    "bytes": 2945
+  },
+  "projectile-override": {
+    "id": "projectile-override",
+    "repository": "https://github.com/Loze-Put/projectile-override",
+    "commit": "efafd9406b6fdd523e15502a2a8e4e74633067e8",
+    "source": "https://raw.githubusercontent.com/Loze-Put/projectile-override/efafd9406b6fdd523e15502a2a8e4e74633067e8/README.md",
+    "local": "readmes/projectile-override.md",
+    "sha256": "96b0c125ecfbe979e9fca90f2438f986868975f59b880c48dc025271455d431d",
+    "bytes": 2182
+  },
+  "collection-log-luck": {
+    "id": "collection-log-luck",
+    "repository": "https://github.com/peanubnutter/collection-log-luck",
+    "commit": "c33916c7216a9c38bc5b2d6580df99630610a319",
+    "source": "https://raw.githubusercontent.com/peanubnutter/collection-log-luck/c33916c7216a9c38bc5b2d6580df99630610a319/README.md",
+    "local": "readmes/collection-log-luck.md",
+    "sha256": "be1034458d9a3c89499eb2eafd8f9625e2d2cdec836edbf6f39da599946d182f",
+    "bytes": 2357
+  },
+  "object-hider": {
+    "id": "object-hider",
+    "repository": "https://github.com/dey0/pluginhub-plugins",
+    "commit": "49ec944000c45bed16f96a6fe0669cf45a924727",
+    "source": "https://raw.githubusercontent.com/dey0/pluginhub-plugins/49ec944000c45bed16f96a6fe0669cf45a924727/README.md",
+    "local": "readmes/object-hider.md",
+    "sha256": "4aa45db7736d8e3d3a6ef7bae77d37543a54aa77f793699e9a0033c321573b66",
+    "bytes": 1315
+  },
+  "wom-utils": {
+    "id": "wom-utils",
+    "repository": "https://github.com/wise-old-man/wiseoldman-runelite-plugin",
+    "commit": "9dc1be0dbfda8a3050a215d6b05dbbcda44e09a2",
+    "source": "https://raw.githubusercontent.com/wise-old-man/wiseoldman-runelite-plugin/9dc1be0dbfda8a3050a215d6b05dbbcda44e09a2/README.md",
+    "local": "readmes/wom-utils.md",
+    "sha256": "3c1b96ea1230bae4060c58dc51f60fb3057062ec0d05b1186cbf3c7d6a7f411e",
+    "bytes": 2924
+  },
+  "target-true-tile": {
+    "id": "target-true-tile",
+    "repository": "https://github.com/Notloc/runelite-target-true-tile",
+    "commit": "c20c412959e8595d3ec785effb2025b072d59a34",
+    "source": "https://raw.githubusercontent.com/Notloc/runelite-target-true-tile/c20c412959e8595d3ec785effb2025b072d59a34/README.md",
+    "local": "readmes/target-true-tile.md",
+    "sha256": "cba5cf35b2aee97ca4975a8fb29e55068bc63c8e4775ed968e1ca33b4d9c966c",
+    "bytes": 426
+  },
+  "runedoku-helper": {
+    "id": "runedoku-helper",
+    "repository": "https://github.com/robmonte/runedoku-plugin",
+    "commit": "f2d3b899048e45af1dfde328106e431dd47bcda7",
+    "source": "https://raw.githubusercontent.com/robmonte/runedoku-plugin/f2d3b899048e45af1dfde328106e431dd47bcda7/README.md",
+    "local": "readmes/runedoku-helper.md",
+    "sha256": "80b6e70f02fb6a6efca12b2ad6d049aa5c79ee7463b97c37ade9109063e8c71e",
+    "bytes": 760
+  },
+  "clue-scroll-juggling": {
+    "id": "clue-scroll-juggling",
+    "repository": "https://github.com/geheur/clue-juggling-timers",
+    "commit": "c099981f9f8f5f2adea72d1706949b4f461a5f81",
+    "source": "https://raw.githubusercontent.com/geheur/clue-juggling-timers/c099981f9f8f5f2adea72d1706949b4f461a5f81/README.md",
+    "local": "readmes/clue-scroll-juggling.md",
+    "sha256": "119199ef2c6485ce3f0470c861bc34b6f518d1e13ef64469a3c0a21bbc929810",
+    "bytes": 35
+  },
+  "one-tick-flick": {
+    "id": "one-tick-flick",
+    "repository": "https://github.com/SuperNerdEric/1-Tick-Flick",
+    "commit": "c1c2877560ac2a3c9b0a1a8c3b0ab5655beb0100",
+    "source": "https://raw.githubusercontent.com/SuperNerdEric/1-Tick-Flick/c1c2877560ac2a3c9b0a1a8c3b0ab5655beb0100/README.md",
+    "local": "readmes/one-tick-flick.md",
+    "sha256": "d56e439d8a416ac89ecfabb58154828910bae702b601555416191d4b6eec6136",
+    "bytes": 1614
+  },
+  "easy-blastfurnace": {
+    "id": "easy-blastfurnace",
+    "repository": "https://github.com/Toofifty/easy-blastfurnace",
+    "commit": "c8eff9d7a4e9b4f73fe7209b936d548e3e043f22",
+    "source": "https://raw.githubusercontent.com/Toofifty/easy-blastfurnace/c8eff9d7a4e9b4f73fe7209b936d548e3e043f22/README.md",
+    "local": "readmes/easy-blastfurnace.md",
+    "sha256": "2445fd093c2ed723ac9ad734c141cfc4084feb9b9f74e550c9e0a5f90b47789b",
+    "bytes": 2527
+  },
+  "vardorvis-projectiles": {
+    "id": "vardorvis-projectiles",
+    "repository": "https://github.com/InfernoStats/vardorvis-projectiles",
+    "commit": "c5571a568c5bce98e9243761ab5df9d89b1473db",
+    "source": "https://raw.githubusercontent.com/InfernoStats/vardorvis-projectiles/c5571a568c5bce98e9243761ab5df9d89b1473db/README.md",
+    "local": "readmes/vardorvis-projectiles.md",
+    "sha256": "a09495f5aa535c52f1962fa2de849ef16cf1abdcc8f499237538b4899f2dfaff",
+    "bytes": 83
+  },
+  "party-defence-tracker": {
+    "id": "party-defence-tracker",
+    "repository": "https://github.com/Hyftar/party-defence-tracker",
+    "commit": "c6c4fdcbc128e3580488fb242c60bd84c2eb1ca2",
+    "source": "https://raw.githubusercontent.com/Hyftar/party-defence-tracker/c6c4fdcbc128e3580488fb242c60bd84c2eb1ca2/README.md",
+    "local": "readmes/party-defence-tracker.md",
+    "sha256": "1c57d32f5288f892ce1ef99657414d19d00c628fb669b9d86945af53b12aa844",
+    "bytes": 294
+  },
+  "flipping-utilities": {
+    "id": "flipping-utilities",
+    "repository": "https://github.com/Flipping-Utilities/rl-plugin",
+    "commit": "9ea3eaa781fc6b310037f16ae84e74886106caa8",
+    "source": "https://raw.githubusercontent.com/Flipping-Utilities/rl-plugin/9ea3eaa781fc6b310037f16ae84e74886106caa8/README.md",
+    "local": "readmes/flipping-utilities.md",
+    "sha256": "f76abab3af5d5b721f5c25d7a900e4c1492ba3db4e6924e486051062f775fa66",
+    "bytes": 13004
+  },
+  "time-tracking-reminder": {
+    "id": "time-tracking-reminder",
+    "repository": "https://github.com/queicherius/runelite-time-tracking-reminder",
+    "commit": "f66b6af1c6dfa2a5180fe6710a1126dcf4ce4e7b",
+    "source": "https://raw.githubusercontent.com/queicherius/runelite-time-tracking-reminder/f66b6af1c6dfa2a5180fe6710a1126dcf4ce4e7b/README.md",
+    "local": "readmes/time-tracking-reminder.md",
+    "sha256": "41bea5cb5bf0a8c5f92919380e4c7bb897e2268f3ed58e7f60f8f83b249a7dea",
+    "bytes": 1170
+  },
+  "herbi-afk": {
+    "id": "herbi-afk",
+    "repository": "https://github.com/Maurits825/herbi-afk",
+    "commit": "a23942dca96df277807bfc82d3a4fb87580741a1",
+    "source": "https://raw.githubusercontent.com/Maurits825/herbi-afk/a23942dca96df277807bfc82d3a4fb87580741a1/README.md",
+    "local": "readmes/herbi-afk.md",
+    "sha256": "59b590b66742b0c80a49b8488522fcc30ff84b71c42d50a6cc8eb90d026dab6c",
+    "bytes": 402
+  },
+  "menuhp": {
+    "id": "menuhp",
+    "repository": "https://github.com/AnkouOSRS/npc-menu-hp",
+    "commit": "aa0eeeafecf14bf851921a119ea2dd0dbd88d5ef",
+    "source": "https://raw.githubusercontent.com/AnkouOSRS/npc-menu-hp/aa0eeeafecf14bf851921a119ea2dd0dbd88d5ef/README.md",
+    "local": "readmes/menuhp.md",
+    "sha256": "c5026ee5b407226a20106b9486f80b93d7512745c0c279154d1713063594e25f",
+    "bytes": 1412
+  },
+  "slayer-assistant": {
+    "id": "slayer-assistant",
+    "repository": "https://github.com/LeeOkeefe/slayer-assistant-plugin",
+    "commit": "f04cb9a5dc9c60c94d5ad1710eeb2d7f9048ee6f",
+    "source": "https://raw.githubusercontent.com/LeeOkeefe/slayer-assistant-plugin/f04cb9a5dc9c60c94d5ad1710eeb2d7f9048ee6f/README.md",
+    "local": "readmes/slayer-assistant.md",
+    "sha256": "92f913bfce78139238efbad1acb924b3e96bdd01e434ea86021a130170d0a2f3",
+    "bytes": 2066
+  },
+  "action-progress": {
+    "id": "action-progress",
+    "repository": "https://github.com/guillaume009/runelite-plugin-action-progress",
+    "commit": "ec2091d59ec74d9856d2190184dc06f335f87976",
+    "source": "https://raw.githubusercontent.com/guillaume009/runelite-plugin-action-progress/ec2091d59ec74d9856d2190184dc06f335f87976/README.md",
+    "local": "readmes/action-progress.md",
+    "sha256": "d1abdb25704afa71a3782d1a24a77f86ab7a3be7b2029c34bdfc8f8ae3faf6b1",
+    "bytes": 1479
+  },
+  "spirit-tree-map": {
+    "id": "spirit-tree-map",
+    "repository": "https://github.com/MJHylkema/spirit-tree-map",
+    "commit": "25382eeebed8d5b88abfb9710d4040f986687caf",
+    "source": "https://raw.githubusercontent.com/MJHylkema/spirit-tree-map/25382eeebed8d5b88abfb9710d4040f986687caf/README.md",
+    "local": "readmes/spirit-tree-map.md",
+    "sha256": "936a6fc9d1097cad5c54ee3435875ae1441d4d93f887b74e92207dec7fbcd8cd",
+    "bytes": 1166
+  },
+  "looting-bag-value": {
+    "id": "looting-bag-value",
+    "repository": "https://github.com/pwatts6060/runelite-plugins",
+    "commit": "b334aa4e3dbce5ebb0036d78b182a1faa5e44a90",
+    "source": "https://raw.githubusercontent.com/pwatts6060/runelite-plugins/b334aa4e3dbce5ebb0036d78b182a1faa5e44a90/README.md",
+    "local": "readmes/looting-bag-value.md",
+    "sha256": "88ed67b0eec6efef7b376c21d790b20ac72cb4a09fc2acb43b3c5412fd43f0cc",
+    "bytes": 997
+  },
+  "zom-leftclick-dropper": {
+    "id": "zom-leftclick-dropper",
+    "repository": "https://github.com/JZomDev/zom-external-plugins",
+    "commit": "4b9cf0c6a0aae967b4580f64ad6e4155e0e12c66",
+    "source": "https://raw.githubusercontent.com/JZomDev/zom-external-plugins/4b9cf0c6a0aae967b4580f64ad6e4155e0e12c66/README.md",
+    "local": "readmes/zom-leftclick-dropper.md",
+    "sha256": "203e7b633b86a1a4fb79f9c85feed648befb90844ae012b8e2439b4c09d1fb8a",
+    "bytes": 227
+  },
+  "razor-kebbit-tracking": {
+    "id": "razor-kebbit-tracking",
+    "repository": "https://github.com/cwjoshuak/razor-backed-kebbits",
+    "commit": "11eccb3eb9f8c992a278ae24717df29c537de3e5",
+    "source": "https://raw.githubusercontent.com/cwjoshuak/razor-backed-kebbits/11eccb3eb9f8c992a278ae24717df29c537de3e5/README.md",
+    "local": "readmes/razor-kebbit-tracking.md",
+    "sha256": "5bfacd14c1e113a21fe8fc3c1e406074cebd41a24f58bc931fc47e80b2555a96",
+    "bytes": 544
+  },
+  "emote-clue-items": {
+    "id": "emote-clue-items",
+    "repository": "https://github.com/larsvansoest/emote-clue-items",
+    "commit": "2ab1220cbccba512c2f6744b217c266524e70be9",
+    "source": "https://raw.githubusercontent.com/larsvansoest/emote-clue-items/2ab1220cbccba512c2f6744b217c266524e70be9/README.md",
+    "local": "readmes/emote-clue-items.md",
+    "sha256": "c53beb0a80222ae27666966e30fee9140133c87939ca05dd5d62a9ce788fe14e",
+    "bytes": 3515
+  },
+  "dink": {
+    "id": "dink",
+    "repository": "https://github.com/pajlads/DinkPlugin",
+    "commit": "7c026d35630e65c3c4e1d25f3ef62f2e6b3c71ac",
+    "source": "https://raw.githubusercontent.com/pajlads/DinkPlugin/7c026d35630e65c3c4e1d25f3ef62f2e6b3c71ac/README.md",
+    "local": "readmes/dink.md",
+    "sha256": "c45308114310944370987bc72af90064dfbd009478c2c76a9ca06c0276a75d5c",
+    "bytes": 24021
+  },
+  "visual-ticks": {
+    "id": "visual-ticks",
+    "repository": "https://github.com/mcscoobe/visual-ticks",
+    "commit": "42f274cf807333b457b7c54542ef6ae78931d3bd",
+    "source": "https://raw.githubusercontent.com/mcscoobe/visual-ticks/42f274cf807333b457b7c54542ef6ae78931d3bd/README.md",
+    "local": "readmes/visual-ticks.md",
+    "sha256": "763a17cdd03da6e1bbbf26ae34492e7479d4aaea8b9ef508d5da50294c35ee88",
+    "bytes": 917
+  },
+  "consumable-cooldowns": {
+    "id": "consumable-cooldowns",
+    "repository": "https://github.com/CopyPastaOSRS/consumable-cooldowns",
+    "commit": "452d4b496f7157092834a8faeea3fba94e6a3273",
+    "source": "https://raw.githubusercontent.com/CopyPastaOSRS/consumable-cooldowns/452d4b496f7157092834a8faeea3fba94e6a3273/README.md",
+    "local": "readmes/consumable-cooldowns.md",
+    "sha256": "d3eea1bc58d09fc0af1bf8ed0fceedadb482008105d8ee8f335dc68536786b74",
+    "bytes": 1808
+  },
+  "loot-logger": {
+    "id": "loot-logger",
+    "repository": "https://github.com/TheStonedTurtle/Loot-Logger",
+    "commit": "f359a7eea8a0021d06beebce296ed04dbaf1af07",
+    "source": "https://raw.githubusercontent.com/TheStonedTurtle/Loot-Logger/f359a7eea8a0021d06beebce296ed04dbaf1af07/README.md",
+    "local": "readmes/loot-logger.md",
+    "sha256": "09b52f502dce2cd0f156967888461dc41a32d892b544b9bc330ef53740e9559f",
+    "bytes": 1095
+  },
+  "raid-reloader": {
+    "id": "raid-reloader",
+    "repository": "https://github.com/Trevor159/runelite-external-plugins",
+    "commit": "41ae01879ba4fb3b60ebd7d912d250622c8fe192",
+    "source": "https://raw.githubusercontent.com/Trevor159/runelite-external-plugins/41ae01879ba4fb3b60ebd7d912d250622c8fe192/README.md",
+    "local": "readmes/raid-reloader.md",
+    "sha256": "3f721e620bda0e76812ab73599b475523b0a05c70201e8a6c5c7fbec04c02792",
+    "bytes": 57
+  },
+  "nyloer": {
+    "id": "nyloer",
+    "repository": "https://github.com/EIKOOT/nyloer",
+    "commit": "9b400ec733fb7d83c261affee4b8edf4feb3fb5f",
+    "source": "https://raw.githubusercontent.com/EIKOOT/nyloer/9b400ec733fb7d83c261affee4b8edf4feb3fb5f/README.md",
+    "local": "readmes/nyloer.md",
+    "sha256": "4ff8e98a1ddf6218d7250cc6a3d689cff1bcb1b84fe5ce02ad02881a337167d6",
+    "bytes": 1115
+  },
+  "mastering-mixology-strategy": {
+    "id": "mastering-mixology-strategy",
+    "repository": "https://github.com/saladuit/Mastering_Mixology_Strategy",
+    "commit": "f5bc535fe5209604d1eceb0d3458f3673e6e1cb2",
+    "source": "https://raw.githubusercontent.com/saladuit/Mastering_Mixology_Strategy/f5bc535fe5209604d1eceb0d3458f3673e6e1cb2/README.md",
+    "local": "readmes/mastering-mixology-strategy.md",
+    "sha256": "0d202179c0716f9e79a3d76f0a62e8993897d0f9803a4327fd2b8546f8fd6eec",
+    "bytes": 4101
+  },
+  "tictac7x-tithe": {
+    "id": "tictac7x-tithe",
+    "repository": "https://github.com/TicTac7x/runelite-plugins",
+    "commit": "4348e193c2ebecad83f9a017a625c6a45eceadba",
+    "source": "https://raw.githubusercontent.com/TicTac7x/runelite-plugins/4348e193c2ebecad83f9a017a625c6a45eceadba/README.md",
+    "local": "readmes/tictac7x-tithe.md",
+    "sha256": "4962941f6c52d1228bd940b43efaf5344d28ff4765c58ce1769c60f4d0399133",
+    "bytes": 738
+  },
+  "pvp-performance-tracker": {
+    "id": "pvp-performance-tracker",
+    "repository": "https://github.com/Matsyir/pvp-performance-tracker",
+    "commit": "3e8c5bac7f3c6357fe6b9ca79428f2f954465ec7",
+    "source": "https://raw.githubusercontent.com/Matsyir/pvp-performance-tracker/3e8c5bac7f3c6357fe6b9ca79428f2f954465ec7/README.md",
+    "local": "readmes/pvp-performance-tracker.md",
+    "sha256": "e3955827a7fe131b9649c04b9e67ca1aa73b79a1d9a2783278df930ed6dfc8f4",
+    "bytes": 10519
+  },
+  "gauntlet-chest-popup": {
+    "id": "gauntlet-chest-popup",
+    "repository": "https://github.com/ldavid432/gauntlet-loot-popup",
+    "commit": "de9152014e052c7253ce0d43d0fc443db7ae4c26",
+    "source": "https://raw.githubusercontent.com/ldavid432/gauntlet-loot-popup/de9152014e052c7253ce0d43d0fc443db7ae4c26/README.md",
+    "local": "readmes/gauntlet-chest-popup.md",
+    "sha256": "6df37c4eb0e31126635c50d85768d1140e8248d4e2f6d631770a3ebb94428c45",
+    "bytes": 3173
+  },
+  "pyramid-plunder-counter": {
+    "id": "pyramid-plunder-counter",
+    "repository": "https://github.com/adnapPanda/pyramid-plunder-counter",
+    "commit": "909f38c13025dc79fda03716834223b0d38d9ceb",
+    "source": "https://raw.githubusercontent.com/adnapPanda/pyramid-plunder-counter/909f38c13025dc79fda03716834223b0d38d9ceb/README.md",
+    "local": "readmes/pyramid-plunder-counter.md",
+    "sha256": "4208e1c273c598c768b8a25c5e9acfd5b87cf246b72306d6032a94b844d9b4f1",
+    "bytes": 1459
+  },
+  "weapon-charges-2": {
+    "id": "weapon-charges-2",
+    "repository": "https://github.com/geheur/weapon-charges",
+    "commit": "8da860f3628cbd4fc72ba09cfdff4b67ad88bac9",
+    "source": "https://raw.githubusercontent.com/geheur/weapon-charges/8da860f3628cbd4fc72ba09cfdff4b67ad88bac9/README.md",
+    "local": "readmes/weapon-charges-2.md",
+    "sha256": "1250d814b0b3741d1676bef97db07973fb32e76f6289392738400cfbf20b1651",
+    "bytes": 1243
+  },
+  "barrows-potential": {
+    "id": "barrows-potential",
+    "repository": "https://github.com/Godofdrakes/barrows-potential",
+    "commit": "a81d09b55b145673487f1507d6d634dc38903997",
+    "source": "https://raw.githubusercontent.com/Godofdrakes/barrows-potential/a81d09b55b145673487f1507d6d634dc38903997/README.md",
+    "local": "readmes/barrows-potential.md",
+    "sha256": "fcddd5f6a83e788055fe57339958e895bef6c2cea33c95180f7220a439d2adee",
+    "bytes": 3535
+  },
+  "forestrycc": {
+    "id": "forestrycc",
+    "repository": "https://github.com/rangdevelopment/root-tracker",
+    "commit": "d6dad2532c233fd0a4ad0b4504c7d8e8ecc8d763",
+    "source": "https://raw.githubusercontent.com/rangdevelopment/root-tracker/d6dad2532c233fd0a4ad0b4504c7d8e8ecc8d763/README.md",
+    "local": "readmes/forestrycc.md",
+    "sha256": "1d5bf976f793edb8acfb64fa4f1deb3bcbad2aac2be3d15d1a5f60c1ac66c427",
+    "bytes": 2483
+  },
+  "runewatch": {
+    "id": "runewatch",
+    "repository": "https://github.com/while-loop/runelite-plugins",
+    "commit": "5f4061692111af1d0a0d00d784ed285de602253c",
+    "source": "https://raw.githubusercontent.com/while-loop/runelite-plugins/5f4061692111af1d0a0d00d784ed285de602253c/README.md",
+    "local": "readmes/runewatch.md",
+    "sha256": "65b474588a38cc285124d8c742685e4e99a2d289a0554fd6b5b84ce7a9ee110d",
+    "bytes": 1086
+  },
+  "door-kicker": {
+    "id": "door-kicker",
+    "repository": "https://github.com/Enriath/external-plugins",
+    "commit": "9d078ca73f670d14b23bbb776ffd75075bec69f3",
+    "source": "https://raw.githubusercontent.com/Enriath/external-plugins/9d078ca73f670d14b23bbb776ffd75075bec69f3/README.md",
+    "local": "readmes/door-kicker.md",
+    "sha256": "5bde645475e8557ecbb8ce1a1d92c5643beb15af5720a209e9652452edf31637",
+    "bytes": 187
+  },
+  "watchdog": {
+    "id": "watchdog",
+    "repository": "https://github.com/adamk33n3r/runelite-watchdog",
+    "commit": "5bdceff5de4346152c52a6e4e8bf3fba88a2a2a7",
+    "source": "https://raw.githubusercontent.com/adamk33n3r/runelite-watchdog/5bdceff5de4346152c52a6e4e8bf3fba88a2a2a7/README.md",
+    "local": "readmes/watchdog.md",
+    "sha256": "20769f35879a84b2098255da5530faa3b035a4cb89bb5e9040c69d6d634bcb81",
+    "bytes": 9500
+  },
+  "tasks-tracker": {
+    "id": "tasks-tracker",
+    "repository": "https://github.com/osrs-reldo/tasks-tracker-plugin",
+    "commit": "dbdfdaddbdc09592e54f90056a5397df63f4e88a",
+    "source": "https://raw.githubusercontent.com/osrs-reldo/tasks-tracker-plugin/dbdfdaddbdc09592e54f90056a5397df63f4e88a/README.md",
+    "local": "readmes/tasks-tracker.md",
+    "sha256": "2e0a59a05422113e7f39cb98826e9473c8e3ede648b77bcf789ebf6be1997375",
+    "bytes": 824
+  },
+  "not-empty": {
+    "id": "not-empty",
+    "repository": "https://github.com/dekvall/runelite-external-plugins",
+    "commit": "0c1c5cf2a8588ac3b017e7026c393d2eee4980c3",
+    "source": "https://raw.githubusercontent.com/dekvall/runelite-external-plugins/0c1c5cf2a8588ac3b017e7026c393d2eee4980c3/README.md",
+    "local": "readmes/not-empty.md",
+    "sha256": "dd3b9a747eee7edf29a1e51190af21d322988fb4c03aed95e552a739e7091022",
+    "bytes": 38
+  },
+  "gauntlet-map": {
+    "id": "gauntlet-map",
+    "repository": "https://github.com/StickySerum/gauntlet-map",
+    "commit": "25d36de0cd6a2cd319bd2721885325b81c6756f4",
+    "source": "https://raw.githubusercontent.com/StickySerum/gauntlet-map/25d36de0cd6a2cd319bd2721885325b81c6756f4/README.md",
+    "local": "readmes/gauntlet-map.md",
+    "sha256": "2e62cac57e878bf5e4d6a60af805d260fc4f08bffb2d0fd2732d1c9c3c0d5a50",
+    "bytes": 444
+  },
+  "gemstone-crab-timer": {
+    "id": "gemstone-crab-timer",
+    "repository": "https://github.com/ShaneeexD/GemstoneCrabTimer",
+    "commit": "4f6a2da963cc60d4347795fb2ea3833b5d9c176a",
+    "source": "https://raw.githubusercontent.com/ShaneeexD/GemstoneCrabTimer/4f6a2da963cc60d4347795fb2ea3833b5d9c176a/README.md",
+    "local": "readmes/gemstone-crab-timer.md",
+    "sha256": "fcc91d0ebcc290d5c7856d07f14f819a321df3e8fbc217811f7389e1e332dcd2",
+    "bytes": 6474
+  },
+  "guardians-of-the-rift-optimizer": {
+    "id": "guardians-of-the-rift-optimizer",
+    "repository": "https://github.com/hawolt/guardian-of-the-rift",
+    "commit": "d804cd5a18246924be74335abe25f7895510608f",
+    "source": "https://raw.githubusercontent.com/hawolt/guardian-of-the-rift/d804cd5a18246924be74335abe25f7895510608f/README.md",
+    "local": "readmes/guardians-of-the-rift-optimizer.md",
+    "sha256": "e4e778769f6f2e69404e0d17f972b71370544561771b23ed6e09f1d8d1086dc8",
+    "bytes": 1500
+  },
+  "menu-swapper-extended": {
+    "id": "menu-swapper-extended",
+    "repository": "https://github.com/raiyni/menu-swapper-extended",
+    "commit": "9a5a9cc3278fd552b948bfc62c2ee1a461f6fde1",
+    "source": "https://raw.githubusercontent.com/raiyni/menu-swapper-extended/9a5a9cc3278fd552b948bfc62c2ee1a461f6fde1/README.md",
+    "local": "readmes/menu-swapper-extended.md",
+    "sha256": "e55b4b886ec96f977a612b6de767b5ffee215f4b638e8e2a1b4c3da02646f369",
+    "bytes": 395
+  },
+  "clue-steps": {
+    "id": "clue-steps",
+    "repository": "https://github.com/SkyBouncer/clue_step_tracker",
+    "commit": "9b366ffa212721b35462fe13bea8d642e6f4abf3",
+    "source": "https://raw.githubusercontent.com/SkyBouncer/clue_step_tracker/9b366ffa212721b35462fe13bea8d642e6f4abf3/README.md",
+    "local": "readmes/clue-steps.md",
+    "sha256": "6a4a3994ca78208a4a15e9a6b8cfda3999b903d446479346c31920bf51b8412c",
+    "bytes": 66
+  },
+  "treecount": {
+    "id": "treecount",
+    "repository": "https://github.com/Infinitay/tree-count-plugin",
+    "commit": "9e4d26f772b82cabab8fc2883392116ba95b22a7",
+    "source": "https://raw.githubusercontent.com/Infinitay/tree-count-plugin/9e4d26f772b82cabab8fc2883392116ba95b22a7/README.md",
+    "local": "readmes/treecount.md",
+    "sha256": "c1ce030000567c6f67d7a42537a42e6e147aa3a26daa10ee769e72ff75761316",
+    "bytes": 1280
+  },
+  "pickpocket-helper": {
+    "id": "pickpocket-helper",
+    "repository": "https://github.com/pajlads/runelite-pickpocket-helper",
+    "commit": "15840d787ca06b705677465b01f19a8d4b11a8b7",
+    "source": "https://raw.githubusercontent.com/pajlads/runelite-pickpocket-helper/15840d787ca06b705677465b01f19a8d4b11a8b7/README.md",
+    "local": "readmes/pickpocket-helper.md",
+    "sha256": "153ebe1d6d6d0b89c2c0054f7507c697b248264eb101c8290eff800c3619c326",
+    "bytes": 3698
+  },
+  "cox-light-colors": {
+    "id": "cox-light-colors",
+    "repository": "https://github.com/AnkouOSRS/cox-light-colors",
+    "commit": "01d10d1ec55a8b6d379e77085659d5d5f8e49210",
+    "source": "https://raw.githubusercontent.com/AnkouOSRS/cox-light-colors/01d10d1ec55a8b6d379e77085659d5d5f8e49210/README.md",
+    "local": "readmes/cox-light-colors.md",
+    "sha256": "e3054144a339c8fba6acdfe145fc54b84a151374255619ec46b848fc664ca97c",
+    "bytes": 2720
+  },
+  "odablock": {
+    "id": "odablock",
+    "repository": "https://github.com/DapperMickie/odablock-sounds",
+    "commit": "92023b148ecf7641b475034cf1f0636d60d46737",
+    "source": "https://raw.githubusercontent.com/DapperMickie/odablock-sounds/92023b148ecf7641b475034cf1f0636d60d46737/README.md",
+    "local": "readmes/odablock.md",
+    "sha256": "1cca94795dff5875132a32d0bc1ccb35c2a96674a882d71bfa53df5e5c9bcf92",
+    "bytes": 5782
+  },
+  "fish-barrel": {
+    "id": "fish-barrel",
+    "repository": "https://github.com/molo-pl/runelite-plugins",
+    "commit": "6aaa5993260cce2d2f46d74325071050f2382b2b",
+    "source": "https://raw.githubusercontent.com/molo-pl/runelite-plugins/6aaa5993260cce2d2f46d74325071050f2382b2b/README.md",
+    "local": "readmes/fish-barrel.md",
+    "sha256": "5722ae2ffe029c46e24b43e1e255caa6af65779790a675d49d6eb9aa47bc3c76",
+    "bytes": 417
+  },
+  "bank-memory": {
+    "id": "bank-memory",
+    "repository": "https://github.com/Lazyfaith/runelite-bank-memory-plugin",
+    "commit": "036fc3b672aeae93d73ec4bbcd713587d86eea32",
+    "source": "https://raw.githubusercontent.com/Lazyfaith/runelite-bank-memory-plugin/036fc3b672aeae93d73ec4bbcd713587d86eea32/README.md",
+    "local": "readmes/bank-memory.md",
+    "sha256": "d6c7e232c535da1faaa33672790771dd04617ef69ec364812b3b26db4d3a8b7c",
+    "bytes": 1980
+  },
+  "player-outline": {
+    "id": "player-outline",
+    "repository": "https://github.com/Adam-/runelite-plugins",
+    "commit": "2effa2c2d2900696679488294cb453af94149d22",
+    "source": "https://raw.githubusercontent.com/Adam-/runelite-plugins/2effa2c2d2900696679488294cb453af94149d22/README.md",
+    "local": "readmes/player-outline.md",
+    "sha256": "3369de93df8a97e47062d9179ad3ce9cc2a19aaaec3d8ec5d9fb2b4de223f256",
+    "bytes": 1328
+  },
+  "delve-calculator": {
+    "id": "delve-calculator",
+    "repository": "https://github.com/Speaax/Delve-calculator",
+    "commit": "91b874df7470728e8ae71e7870e90c667e95a66d",
+    "source": "https://raw.githubusercontent.com/Speaax/Delve-calculator/91b874df7470728e8ae71e7870e90c667e95a66d/README.md",
+    "local": "readmes/delve-calculator.md",
+    "sha256": "5ec1002fc9ae80e2035ad19660ec4a0a4c4e1e9239cc7e72e3363a4a1a569d80",
+    "bytes": 477
+  },
+  "corner-tile-indicators": {
+    "id": "corner-tile-indicators",
+    "repository": "https://github.com/geheur/Corner-Tile-Indicators",
+    "commit": "05b27f1847aeca9ce690675710b4e87710dca447",
+    "source": "https://raw.githubusercontent.com/geheur/Corner-Tile-Indicators/05b27f1847aeca9ce690675710b4e87710dca447/README.md",
+    "local": "readmes/corner-tile-indicators.md",
+    "sha256": "119199ef2c6485ce3f0470c861bc34b6f518d1e13ef64469a3c0a21bbc929810",
+    "bytes": 35
+  },
+  "tzhaar-hp-tracker": {
+    "id": "tzhaar-hp-tracker",
+    "repository": "https://github.com/bopsec/buchus-plugins",
+    "commit": "464672cf74f767febb8762296fc93cf250d3605a",
+    "source": "https://raw.githubusercontent.com/bopsec/buchus-plugins/464672cf74f767febb8762296fc93cf250d3605a/README.md",
+    "local": "readmes/tzhaar-hp-tracker.md",
+    "sha256": "a3ef972015f51a29abdf23b372415d769c1346fc803ff413ca4d6fdc8e3dda4b",
+    "bytes": 1145
+  },
+  "startierindicator": {
+    "id": "startierindicator",
+    "repository": "https://github.com/pwatts6060/runelite-plugins",
+    "commit": "38fc77770ad0a5c07e74e7491975a90e40e62173",
+    "source": "https://raw.githubusercontent.com/pwatts6060/runelite-plugins/38fc77770ad0a5c07e74e7491975a90e40e62173/README.md",
+    "local": "readmes/startierindicator.md",
+    "sha256": "fe67d1da38e51a49a8d0c695dc55bb1e77edc26585a6adb53dd397bf7dd8a9e5",
+    "bytes": 1218
+  },
+  "wintertodt-notifications": {
+    "id": "wintertodt-notifications",
+    "repository": "https://github.com/erwinvc/runelite-plugins",
+    "commit": "7d2add3dd74a6d6f7e9c2883b3049c80443eee8e",
+    "source": "https://raw.githubusercontent.com/erwinvc/runelite-plugins/7d2add3dd74a6d6f7e9c2883b3049c80443eee8e/README.md",
+    "local": "readmes/wintertodt-notifications.md",
+    "sha256": "687b1c5d1a1219c858679db78951fe913c84287e97061db4d9735f4db548d64c",
+    "bytes": 804
+  },
+  "did-i-compost": {
+    "id": "did-i-compost",
+    "repository": "https://github.com/AbusiveTuna/DidICompost",
+    "commit": "d88c635e42951be266253079a4ba6df51757a390",
+    "source": "https://raw.githubusercontent.com/AbusiveTuna/DidICompost/d88c635e42951be266253079a4ba6df51757a390/README.md",
+    "local": "readmes/did-i-compost.md",
+    "sha256": "076505c6d914d156ad263aef0083c17d2eb9e63a78777a678603c4ee8933a6ee",
+    "bytes": 68
+  },
+  "raid-data-tracker": {
+    "id": "raid-data-tracker",
+    "repository": "https://github.com/Raitab/raid-data-tracker",
+    "commit": "963f3c4f6ccbc6a8342d51a321165336bc39cd36",
+    "source": "https://raw.githubusercontent.com/Raitab/raid-data-tracker/963f3c4f6ccbc6a8342d51a321165336bc39cd36/README.md",
+    "local": "readmes/raid-data-tracker.md",
+    "sha256": "1594221d4fa8b200429ef58dc00c2398d7abacd109b505eb0c68b8cf702e8985",
+    "bytes": 8600
+  },
+  "instant-inventory": {
+    "id": "instant-inventory",
+    "repository": "https://github.com/elgbar/instant-inventory",
+    "commit": "0fa9175dc799fc69f02d8bc35217300968e956e8",
+    "source": "https://raw.githubusercontent.com/elgbar/instant-inventory/0fa9175dc799fc69f02d8bc35217300968e956e8/README.md",
+    "local": "readmes/instant-inventory.md",
+    "sha256": "bc34f1dd21d1ffa7986c78353db5fbf0460bc50b904c1f28d34646751b967366",
+    "bytes": 2379
+  },
+  "camera-smoothing": {
+    "id": "camera-smoothing",
+    "repository": "https://github.com/ArtsicleOfficial/camera-smoothing",
+    "commit": "8212cde2b946665d44582969075f6827c5374c36",
+    "source": "https://raw.githubusercontent.com/ArtsicleOfficial/camera-smoothing/8212cde2b946665d44582969075f6827c5374c36/README.md",
+    "local": "readmes/camera-smoothing.md",
+    "sha256": "278de137d1181ea5d8916149de4267f6888e923b96ff8e8ae10838e8aef92b06",
+    "bytes": 856
+  },
+  "fashionscape": {
+    "id": "fashionscape",
+    "repository": "https://github.com/equirs/fashionscape-plugin",
+    "commit": "6646061a26ac74ede28f353c49a640ecf0fc171b",
+    "source": "https://raw.githubusercontent.com/equirs/fashionscape-plugin/6646061a26ac74ede28f353c49a640ecf0fc171b/README.md",
+    "local": "readmes/fashionscape.md",
+    "sha256": "78145093bbe2cc586c58956ef50fa6ddab193ef4a612374b9aad65de2b2e65b6",
+    "bytes": 11425
+  },
+  "damage-counter": {
+    "id": "damage-counter",
+    "repository": "https://github.com/0anth/damage-counter",
+    "commit": "d69450bf84a738c696fa71591cd3a9700562f236",
+    "source": "https://raw.githubusercontent.com/0anth/damage-counter/d69450bf84a738c696fa71591cd3a9700562f236/README.md",
+    "local": "readmes/damage-counter.md",
+    "sha256": "14be7d18ef681afb8f4c08ad9603fe93b74e3e85421907f1704e7adefdd382ca",
+    "bytes": 3076
+  },
+  "companion-pet": {
+    "id": "companion-pet",
+    "repository": "https://github.com/Mrnice98/Companion-Pets-Plugin",
+    "commit": "19abee1616aa78f5c5402f5f9badd06b81cd3c38",
+    "source": "https://raw.githubusercontent.com/Mrnice98/Companion-Pets-Plugin/19abee1616aa78f5c5402f5f9badd06b81cd3c38/README.md",
+    "local": "readmes/companion-pet.md",
+    "sha256": "7d1762b710feb4a4ab5c9281ebf3dd886df0e566611d8d78952b7f43bbeb9d8d",
+    "bytes": 416
+  },
+  "fishing-notifier": {
+    "id": "fishing-notifier",
+    "repository": "https://github.com/Bram91/fishing-notifier",
+    "commit": "957a15e80268bbfd249adc987e24108c395ce0cc",
+    "source": "https://raw.githubusercontent.com/Bram91/fishing-notifier/957a15e80268bbfd249adc987e24108c395ce0cc/README.md",
+    "local": "readmes/fishing-notifier.md",
+    "sha256": "f30f8342c230b50a93ea3fe7bd1d395610307b89082df9b70fb58257e528131d",
+    "bytes": 55
+  },
+  "vineyard-helper": {
+    "id": "vineyard-helper",
+    "repository": "https://github.com/SurfaceCode/vineyard-helper",
+    "commit": "4aa71651b13003133ff9792642acf5f2815acc04",
+    "source": "https://raw.githubusercontent.com/SurfaceCode/vineyard-helper/4aa71651b13003133ff9792642acf5f2815acc04/README.md",
+    "local": "readmes/vineyard-helper.md",
+    "sha256": "5068c02cc23399cd758bf8de54882741e102699eb80a57908d2a7d508b94f3bc",
+    "bytes": 170
+  },
+  "gnome-restaurant": {
+    "id": "gnome-restaurant",
+    "repository": "https://github.com/hex-agon/gnome-restaurant",
+    "commit": "0f7d86f89bbc9b8790ace110d425c2c043fcfe6a",
+    "source": "https://raw.githubusercontent.com/hex-agon/gnome-restaurant/0f7d86f89bbc9b8790ace110d425c2c043fcfe6a/README.md",
+    "local": "readmes/gnome-restaurant.md",
+    "sha256": "bacf64d8b1c9f676d6920e7b4a3a61b806fd577ef2f04d41a7fddf2931e4799c",
+    "bytes": 1388
+  },
+  "deepseatrawling": {
+    "id": "deepseatrawling",
+    "repository": "https://github.com/CarelessEsper/deepSeaTrawling",
+    "commit": "5841a0abd8629e5237bcf718f7f2501fb3366752",
+    "source": "https://raw.githubusercontent.com/CarelessEsper/deepSeaTrawling/5841a0abd8629e5237bcf718f7f2501fb3366752/README.md",
+    "local": "readmes/deepseatrawling.md",
+    "sha256": "e05ea324c9a135560c7cbeb6aea29e104e309019d9feda2f7673e2091fdc0919",
+    "bytes": 4458
+  },
+  "ticktracker": {
+    "id": "ticktracker",
+    "repository": "https://github.com/Tatters654/tick-tracker",
+    "commit": "a1c5d170529f54e78d52f67874458c27329f88a6",
+    "source": "https://raw.githubusercontent.com/Tatters654/tick-tracker/a1c5d170529f54e78d52f67874458c27329f88a6/README.MD",
+    "local": "readmes/ticktracker.md",
+    "sha256": "ecc732dbba908224a75a97a29b7907400443aef48f78ee9360eb79ea30aa3321",
+    "bytes": 2952
+  }
+}

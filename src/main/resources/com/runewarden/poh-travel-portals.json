@@ -1,0 +1,1538 @@
+{
+  "version": 1,
+  "source": "shortest-path 1.21.3 @ 37abff3a3345185fc11fccecae04d8170de25a11: transport/PohNexusPortal.java + transports/teleportation_portals_poh.tsv",
+  "portals": [
+    {
+      "key": "APE_ATOLL_DUNGEON",
+      "label": "Ape Atoll Dungeon",
+      "names": [
+        "Ape Atoll Dungeon Portal"
+      ],
+      "objectIds": [
+        37592,
+        37604,
+        37616
+      ]
+    },
+    {
+      "key": "ANNAKARL",
+      "label": "Annakarl",
+      "names": [
+        "Annakarl Portal"
+      ],
+      "objectIds": [
+        29341,
+        29349,
+        29357
+      ]
+    },
+    {
+      "key": "ARCEUUS_LIBRARY",
+      "label": "Arceuus Library",
+      "names": [
+        "Arceuus Library Portal"
+      ],
+      "objectIds": [
+        41416,
+        41417,
+        41418
+      ]
+    },
+    {
+      "key": "ARDOUGNE",
+      "label": "Ardougne",
+      "names": [
+        "Ardougne Portal"
+      ],
+      "objectIds": [
+        13619,
+        13626,
+        13633
+      ]
+    },
+    {
+      "key": "BARBARIAN_OUTPOST",
+      "label": "Barbarian Outpost",
+      "names": [
+        "Barbarian Outpost Portal"
+      ],
+      "objectIds": [
+        60795,
+        60805,
+        60815
+      ]
+    },
+    {
+      "key": "BARROWS",
+      "label": "Barrows",
+      "names": [
+        "Barrows Portal"
+      ],
+      "objectIds": [
+        37591,
+        37603,
+        37615
+      ]
+    },
+    {
+      "key": "BATTLEFRONT",
+      "label": "Battlefront",
+      "names": [
+        "Battlefront Portal"
+      ],
+      "objectIds": [
+        37584,
+        37596,
+        37608
+      ]
+    },
+    {
+      "key": "CAMELOT",
+      "label": "Camelot / Seers' Village",
+      "names": [
+        "Camelot Portal",
+        "Seers' Village Portal"
+      ],
+      "objectIds": [
+        33094,
+        33100,
+        33106,
+        33095,
+        33101,
+        33107
+      ]
+    },
+    {
+      "key": "CARRALLANGER",
+      "label": "Carrallanger",
+      "names": [
+        "Carrallanger Portal"
+      ],
+      "objectIds": [
+        33434,
+        33437,
+        33440
+      ]
+    },
+    {
+      "key": "CATHERBY",
+      "label": "Catherby",
+      "names": [
+        "Catherby Portal"
+      ],
+      "objectIds": [
+        33432,
+        33435,
+        33438
+      ]
+    },
+    {
+      "key": "CEMETERY",
+      "label": "Cemetery",
+      "names": [
+        "Cemetery Portal"
+      ],
+      "objectIds": [
+        37590,
+        37602,
+        37614
+      ]
+    },
+    {
+      "key": "CIVITAS_ILLA_FORTIS",
+      "label": "Civitas illa Fortis",
+      "names": [
+        "Civitas illa Fortis Portal"
+      ],
+      "objectIds": [
+        50713,
+        50714,
+        50715
+      ]
+    },
+    {
+      "key": "DAREEYAK",
+      "label": "Dareeyak",
+      "names": [
+        "Dareeyak Portal"
+      ],
+      "objectIds": [
+        60793,
+        60803,
+        60813
+      ]
+    },
+    {
+      "key": "DRAYNOR_MANOR",
+      "label": "Draynor Manor",
+      "names": [
+        "Draynor Manor Portal"
+      ],
+      "objectIds": [
+        37583,
+        37595,
+        37607
+      ]
+    },
+    {
+      "key": "FALADOR",
+      "label": "Falador",
+      "names": [
+        "Falador Portal"
+      ],
+      "objectIds": [
+        13617,
+        13624,
+        13631
+      ]
+    },
+    {
+      "key": "FENKENSTRAINS_CASTLE",
+      "label": "Fenkenstrain's Castle",
+      "names": [
+        "Fenkenstrain's Castle Portal"
+      ],
+      "objectIds": [
+        37587,
+        37599,
+        37611
+      ]
+    },
+    {
+      "key": "FISHING_GUILD",
+      "label": "Fishing Guild",
+      "names": [
+        "Fishing Guild Portal"
+      ],
+      "objectIds": [
+        29343,
+        29351,
+        29359
+      ]
+    },
+    {
+      "key": "GHORROCK",
+      "label": "Ghorrock",
+      "names": [
+        "Ghorrock Portal"
+      ],
+      "objectIds": [
+        33433,
+        33436,
+        33439
+      ]
+    },
+    {
+      "key": "HARMONY_ISLAND",
+      "label": "Harmony Island",
+      "names": [
+        "Harmony Island Portal"
+      ],
+      "objectIds": [
+        37589,
+        37601,
+        37613
+      ]
+    },
+    {
+      "key": "ICE_PLATEAU",
+      "label": "Ice Plateau",
+      "names": [
+        "Ice Plateau Portal"
+      ],
+      "objectIds": [
+        60797,
+        60807,
+        60817
+      ]
+    },
+    {
+      "key": "KHARYRLL",
+      "label": "Kharyrll",
+      "names": [
+        "Kharyrll Portal"
+      ],
+      "objectIds": [
+        29338,
+        29346,
+        29354
+      ]
+    },
+    {
+      "key": "KOUREND",
+      "label": "Kourend",
+      "names": [
+        "Kourend Portal"
+      ],
+      "objectIds": [
+        29345,
+        29353,
+        29361
+      ]
+    },
+    {
+      "key": "LASSAR",
+      "label": "Lassar",
+      "names": [
+        "Lassar Portal"
+      ],
+      "objectIds": [
+        60792,
+        60802,
+        60812
+      ]
+    },
+    {
+      "key": "LUMBRIDGE",
+      "label": "Lumbridge",
+      "names": [
+        "Lumbridge Portal"
+      ],
+      "objectIds": [
+        13616,
+        13623,
+        13630
+      ]
+    },
+    {
+      "key": "LUNAR_ISLE",
+      "label": "Lunar Isle",
+      "names": [
+        "Lunar Isle Portal"
+      ],
+      "objectIds": [
+        29339,
+        29347,
+        29355
+      ]
+    },
+    {
+      "key": "MARIM",
+      "label": "Marim",
+      "names": [
+        "Marim Portal"
+      ],
+      "objectIds": [
+        29344,
+        29352,
+        29360
+      ]
+    },
+    {
+      "key": "MIND_ALTAR",
+      "label": "Mind Altar",
+      "names": [
+        "Mind Altar Portal"
+      ],
+      "objectIds": [
+        37585,
+        37597,
+        37609
+      ]
+    },
+    {
+      "key": "OURANIA",
+      "label": "Ourania",
+      "names": [
+        "Ourania Portal"
+      ],
+      "objectIds": [
+        60794,
+        60804,
+        60814
+      ]
+    },
+    {
+      "key": "PADDEWWA",
+      "label": "Paddewwa",
+      "names": [
+        "Paddewwa Portal"
+      ],
+      "objectIds": [
+        60791,
+        60801,
+        60811
+      ]
+    },
+    {
+      "key": "PORT_KHAZARD",
+      "label": "Port Khazard",
+      "names": [
+        "Port Khazard Portal"
+      ],
+      "objectIds": [
+        60796,
+        60806,
+        60816
+      ]
+    },
+    {
+      "key": "RESPAWN",
+      "label": "Respawn",
+      "names": [
+        "Respawn Portal (Lumbridge)",
+        "Respawn Portal (Falador)",
+        "Respawn Portal (Camelot)",
+        "Respawn Portal (Edgeville)",
+        "Respawn Portal (Prifddinas)",
+        "Respawn Portal (Ferox Enclave)",
+        "Respawn Portal (Kourend Castle)",
+        "Respawn Portal (Civitas illa Fortis)"
+      ],
+      "objectIds": [
+        60798,
+        60798,
+        60798,
+        60798,
+        60798,
+        60798,
+        60798,
+        60798
+      ]
+    },
+    {
+      "key": "SALVE_GRAVEYARD",
+      "label": "Salve Graveyard",
+      "names": [
+        "Salve Graveyard Portal"
+      ],
+      "objectIds": [
+        37586,
+        37598,
+        37610
+      ]
+    },
+    {
+      "key": "SENNTISTEN",
+      "label": "Senntisten",
+      "names": [
+        "Senntisten Portal"
+      ],
+      "objectIds": [
+        29340,
+        29348,
+        29356
+      ]
+    },
+    {
+      "key": "TROLLHEIM",
+      "label": "Trollheim",
+      "names": [
+        "Trollheim Portal"
+      ],
+      "objectIds": [
+        60790,
+        60800,
+        60810
+      ]
+    },
+    {
+      "key": "TROLL_STRONGHOLD",
+      "label": "Troll Stronghold",
+      "names": [
+        "Troll Stronghold Portal"
+      ],
+      "objectIds": [
+        33179,
+        33180,
+        33181,
+        33179,
+        33180,
+        33181
+      ]
+    },
+    {
+      "key": "VARROCK",
+      "label": "Varrock / Grand Exchange",
+      "names": [
+        "Varrock Portal",
+        "Grand Exchange Portal"
+      ],
+      "objectIds": [
+        33093,
+        33099,
+        33105,
+        33092,
+        33098,
+        33104
+      ]
+    },
+    {
+      "key": "WATERBIRTH_ISLAND",
+      "label": "Waterbirth Island",
+      "names": [
+        "Waterbirth Island Portal"
+      ],
+      "objectIds": [
+        29342,
+        29350,
+        29358
+      ]
+    },
+    {
+      "key": "WATCHTOWER",
+      "label": "Watchtower / Yanille",
+      "names": [
+        "Watchtower Portal",
+        "Yanille Portal"
+      ],
+      "objectIds": [
+        33096,
+        33108,
+        33102,
+        33097,
+        33103,
+        33109
+      ]
+    },
+    {
+      "key": "WEISS",
+      "label": "Weiss",
+      "names": [
+        "Weiss Portal"
+      ],
+      "objectIds": [
+        37581,
+        37593,
+        37605
+      ]
+    },
+    {
+      "key": "WEST_ARDOUGNE",
+      "label": "West Ardougne",
+      "names": [
+        "West Ardougne Portal"
+      ],
+      "objectIds": [
+        37588,
+        37600,
+        37612
+      ]
+    }
+  ],
+  "revisionItemIds": [
+    35,
+    298,
+    554,
+    555,
+    556,
+    557,
+    558,
+    561,
+    563,
+    565,
+    566,
+    621,
+    667,
+    746,
+    747,
+    767,
+    772,
+    837,
+    863,
+    864,
+    865,
+    866,
+    867,
+    868,
+    869,
+    870,
+    871,
+    872,
+    873,
+    874,
+    875,
+    876,
+    946,
+    952,
+    954,
+    975,
+    995,
+    1203,
+    1205,
+    1207,
+    1209,
+    1211,
+    1213,
+    1215,
+    1217,
+    1219,
+    1221,
+    1223,
+    1225,
+    1227,
+    1229,
+    1231,
+    1233,
+    1235,
+    1237,
+    1239,
+    1241,
+    1243,
+    1245,
+    1247,
+    1249,
+    1251,
+    1253,
+    1255,
+    1257,
+    1259,
+    1261,
+    1263,
+    1265,
+    1267,
+    1269,
+    1271,
+    1273,
+    1275,
+    1277,
+    1279,
+    1281,
+    1283,
+    1285,
+    1287,
+    1289,
+    1291,
+    1293,
+    1295,
+    1297,
+    1299,
+    1301,
+    1303,
+    1305,
+    1307,
+    1309,
+    1311,
+    1313,
+    1315,
+    1317,
+    1319,
+    1321,
+    1323,
+    1325,
+    1327,
+    1329,
+    1331,
+    1333,
+    1349,
+    1351,
+    1353,
+    1355,
+    1357,
+    1359,
+    1361,
+    1363,
+    1365,
+    1367,
+    1369,
+    1371,
+    1373,
+    1375,
+    1377,
+    1381,
+    1383,
+    1385,
+    1387,
+    1393,
+    1395,
+    1397,
+    1399,
+    1401,
+    1403,
+    1405,
+    1407,
+    1413,
+    1419,
+    1523,
+    1542,
+    1543,
+    1590,
+    1706,
+    1708,
+    1710,
+    1712,
+    1757,
+    1854,
+    1949,
+    1963,
+    2376,
+    2402,
+    2552,
+    2554,
+    2556,
+    2558,
+    2560,
+    2562,
+    2564,
+    2566,
+    2887,
+    2952,
+    3053,
+    3054,
+    3095,
+    3096,
+    3097,
+    3098,
+    3099,
+    3100,
+    3101,
+    3105,
+    3170,
+    3171,
+    3172,
+    3173,
+    3174,
+    3175,
+    3176,
+    3190,
+    3192,
+    3194,
+    3196,
+    3198,
+    3200,
+    3202,
+    3204,
+    3691,
+    3757,
+    3853,
+    3855,
+    3857,
+    3859,
+    3861,
+    3863,
+    3865,
+    3867,
+    4037,
+    4039,
+    4068,
+    4075,
+    4084,
+    4151,
+    4158,
+    4251,
+    4252,
+    4278,
+    4446,
+    4503,
+    4508,
+    4513,
+    4514,
+    4515,
+    4516,
+    4567,
+    4580,
+    4582,
+    4584,
+    4587,
+    4657,
+    4694,
+    4695,
+    4696,
+    4697,
+    4698,
+    4699,
+    4718,
+    4726,
+    4734,
+    4886,
+    4887,
+    4888,
+    4889,
+    4890,
+    4910,
+    4911,
+    4912,
+    4913,
+    4914,
+    4934,
+    4935,
+    4936,
+    4937,
+    4938,
+    5016,
+    5057,
+    5059,
+    5605,
+    5654,
+    5655,
+    5656,
+    5657,
+    5658,
+    5659,
+    5660,
+    5661,
+    5662,
+    5663,
+    5664,
+    5665,
+    5666,
+    5667,
+    5668,
+    5670,
+    5672,
+    5674,
+    5676,
+    5678,
+    5680,
+    5682,
+    5684,
+    5686,
+    5688,
+    5690,
+    5692,
+    5694,
+    5696,
+    5698,
+    5700,
+    5702,
+    5704,
+    5706,
+    5708,
+    5710,
+    5712,
+    5714,
+    5716,
+    5718,
+    5720,
+    5722,
+    5724,
+    5726,
+    5728,
+    5730,
+    5734,
+    5736,
+    6099,
+    6100,
+    6101,
+    6102,
+    6125,
+    6126,
+    6127,
+    6306,
+    6313,
+    6315,
+    6317,
+    6523,
+    6525,
+    6562,
+    6563,
+    6570,
+    6587,
+    6589,
+    6591,
+    6593,
+    6595,
+    6597,
+    6599,
+    6605,
+    6607,
+    6609,
+    6611,
+    6707,
+    6721,
+    6739,
+    6745,
+    6746,
+    6817,
+    6818,
+    6897,
+    7140,
+    7141,
+    7142,
+    7158,
+    7447,
+    7451,
+    7534,
+    7535,
+    8007,
+    8008,
+    8009,
+    8010,
+    8011,
+    8012,
+    8013,
+    8851,
+    8872,
+    8874,
+    8876,
+    8878,
+    8880,
+    8929,
+    9013,
+    9016,
+    9075,
+    9084,
+    9091,
+    9092,
+    9093,
+    9174,
+    9177,
+    9179,
+    9181,
+    9183,
+    9185,
+    9419,
+    9469,
+    9750,
+    9751,
+    9780,
+    9781,
+    9782,
+    9789,
+    9790,
+    9798,
+    9799,
+    9801,
+    9802,
+    9810,
+    9811,
+    9813,
+    9948,
+    9949,
+    10146,
+    10147,
+    10148,
+    10149,
+    10156,
+    10354,
+    10356,
+    10358,
+    10360,
+    10491,
+    10581,
+    10582,
+    10583,
+    10584,
+    10972,
+    11037,
+    11060,
+    11105,
+    11107,
+    11109,
+    11111,
+    11118,
+    11120,
+    11122,
+    11124,
+    11140,
+    11190,
+    11191,
+    11192,
+    11193,
+    11194,
+    11367,
+    11369,
+    11371,
+    11373,
+    11375,
+    11377,
+    11379,
+    11381,
+    11382,
+    11384,
+    11386,
+    11388,
+    11389,
+    11391,
+    11393,
+    11395,
+    11396,
+    11398,
+    11400,
+    11402,
+    11403,
+    11405,
+    11407,
+    11409,
+    11410,
+    11412,
+    11414,
+    11416,
+    11417,
+    11419,
+    11741,
+    11742,
+    11743,
+    11744,
+    11745,
+    11746,
+    11747,
+    11785,
+    11787,
+    11789,
+    11802,
+    11804,
+    11806,
+    11808,
+    11824,
+    11838,
+    11866,
+    11867,
+    11868,
+    11869,
+    11870,
+    11871,
+    11872,
+    11873,
+    11889,
+    11891,
+    11892,
+    11902,
+    11920,
+    11964,
+    11966,
+    11968,
+    11970,
+    11972,
+    11974,
+    11976,
+    11978,
+    11980,
+    11982,
+    11984,
+    11986,
+    11988,
+    11998,
+    12000,
+    12004,
+    12006,
+    12297,
+    12389,
+    12402,
+    12403,
+    12404,
+    12405,
+    12406,
+    12407,
+    12408,
+    12409,
+    12410,
+    12411,
+    12426,
+    12642,
+    12773,
+    12774,
+    12775,
+    12776,
+    12777,
+    12778,
+    12779,
+    12780,
+    12781,
+    12782,
+    12791,
+    12797,
+    12808,
+    12809,
+    12938,
+    13068,
+    13069,
+    13079,
+    13091,
+    13092,
+    13093,
+    13094,
+    13095,
+    13096,
+    13097,
+    13098,
+    13099,
+    13100,
+    13101,
+    13102,
+    13103,
+    13106,
+    13107,
+    13108,
+    13109,
+    13110,
+    13111,
+    13112,
+    13113,
+    13114,
+    13115,
+    13121,
+    13122,
+    13123,
+    13124,
+    13126,
+    13127,
+    13128,
+    13129,
+    13130,
+    13131,
+    13132,
+    13134,
+    13135,
+    13136,
+    13139,
+    13140,
+    13141,
+    13142,
+    13143,
+    13144,
+    13188,
+    13221,
+    13222,
+    13241,
+    13242,
+    13243,
+    13249,
+    13265,
+    13267,
+    13269,
+    13271,
+    13280,
+    13281,
+    13328,
+    13329,
+    13330,
+    13331,
+    13332,
+    13333,
+    13334,
+    13335,
+    13336,
+    13337,
+    13338,
+    13342,
+    13393,
+    13652,
+    13660,
+    19476,
+    19564,
+    19613,
+    19615,
+    19617,
+    19619,
+    19621,
+    19623,
+    19625,
+    19627,
+    19629,
+    19631,
+    19651,
+    19675,
+    19707,
+    20000,
+    20011,
+    20014,
+    20155,
+    20158,
+    20161,
+    20205,
+    20208,
+    20251,
+    20254,
+    20257,
+    20260,
+    20263,
+    20368,
+    20370,
+    20372,
+    20374,
+    20397,
+    20398,
+    20400,
+    20402,
+    20405,
+    20406,
+    20407,
+    20483,
+    20552,
+    20554,
+    20593,
+    20714,
+    20727,
+    20730,
+    20733,
+    20736,
+    20739,
+    20760,
+    20764,
+    20779,
+    20784,
+    20786,
+    20787,
+    20788,
+    20789,
+    20790,
+    21012,
+    21146,
+    21149,
+    21151,
+    21153,
+    21155,
+    21166,
+    21169,
+    21171,
+    21173,
+    21175,
+    21186,
+    21206,
+    21268,
+    21276,
+    21282,
+    21284,
+    21285,
+    21389,
+    21541,
+    21646,
+    21760,
+    21776,
+    21778,
+    21780,
+    21782,
+    21784,
+    21786,
+    21802,
+    21898,
+    21900,
+    21902,
+    21913,
+    22114,
+    22324,
+    22325,
+    22331,
+    22370,
+    22400,
+    22486,
+    22599,
+    22601,
+    22610,
+    22613,
+    22664,
+    22731,
+    22734,
+    22737,
+    22740,
+    22743,
+    22804,
+    22806,
+    22808,
+    22810,
+    22941,
+    22943,
+    22945,
+    22947,
+    22949,
+    23276,
+    23279,
+    23330,
+    23332,
+    23334,
+    23387,
+    23413,
+    23458,
+    23615,
+    23628,
+    23673,
+    23675,
+    23677,
+    23680,
+    23771,
+    23821,
+    23862,
+    23946,
+    23987,
+    23989,
+    23995,
+    23997,
+    24125,
+    24133,
+    24134,
+    24135,
+    24157,
+    24219,
+    24223,
+    24232,
+    24233,
+    24234,
+    24251,
+    24413,
+    24416,
+    24537,
+    24539,
+    24551,
+    24617,
+    24619,
+    24709,
+    24855,
+    24857,
+    24949,
+    24951,
+    24953,
+    24955,
+    24957,
+    24959,
+    24961,
+    24963,
+    25056,
+    25066,
+    25102,
+    25110,
+    25371,
+    25376,
+    25378,
+    25574,
+    25734,
+    25736,
+    25738,
+    25739,
+    25741,
+    25818,
+    25822,
+    25870,
+    25872,
+    25874,
+    25876,
+    25878,
+    25880,
+    25882,
+    25979,
+    25981,
+    26219,
+    26233,
+    26262,
+    26374,
+    26424,
+    26482,
+    26484,
+    26577,
+    26708,
+    26818,
+    26914,
+    26948,
+    27021,
+    27157,
+    27184,
+    27246,
+    27281,
+    27287,
+    27291,
+    27363,
+    27365,
+    27366,
+    27509,
+    27667,
+    27859,
+    27861,
+    27863,
+    27865,
+    27867,
+    27871,
+    27900,
+    27902,
+    27904,
+    27906,
+    28019,
+    28021,
+    28023,
+    28025,
+    28031,
+    28033,
+    28037,
+    28039,
+    28041,
+    28043,
+    28045,
+    28047,
+    28049,
+    28051,
+    28196,
+    28199,
+    28202,
+    28205,
+    28208,
+    28211,
+    28214,
+    28217,
+    28220,
+    28223,
+    28226,
+    28327,
+    28329,
+    28338,
+    28534,
+    28537,
+    28543,
+    28545,
+    28559,
+    28564,
+    28702,
+    28810,
+    28834,
+    28902,
+    28904,
+    28906,
+    28988,
+    29271,
+    29273,
+    29275,
+    29305,
+    29574,
+    29577,
+    29589,
+    29605,
+    29796,
+    29849,
+    29893,
+    30064,
+    30149,
+    30305,
+    30320,
+    30340,
+    30347,
+    30348,
+    30351,
+    30352,
+    30361,
+    30367,
+    30430,
+    30634,
+    30638,
+    30891,
+    30955,
+    31043,
+    31957,
+    32386,
+    32399,
+    33038,
+    33104,
+    33120,
+    33174,
+    33178,
+    33200,
+    33227,
+    33233,
+    33253,
+    33299,
+    33335,
+    33655,
+    33722,
+    33757,
+    33758,
+    33759,
+    33762
+  ],
+  "revisionItemSource": "All native transport TSV Items columns, ItemVariations.java aliases and PathfinderConfig.java item requirements; resolved against pinned RuneLite 1.13.2 gameval ItemID.",
+  "sourcePin": {
+    "project": "shortest-path",
+    "version": "1.21.3",
+    "commit": "37abff3a3345185fc11fccecae04d8170de25a11",
+    "files": [
+      {
+        "path": "vendor/shortest-path/src/main/java/shortestpath/transport/PohNexusPortal.java",
+        "sha256": "6fe0d0f7319c017227c60df60ce904e81498354b7f49b158361179812b527076"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/java/shortestpath/ItemVariations.java",
+        "sha256": "071d35a54f6173017eac0f9fcb9748e5cf4eb99038c09488c9ec714f9e28c97b"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/java/shortestpath/pathfinder/PathfinderConfig.java",
+        "sha256": "71316c3492ccffb21438bbe65536d7a7a35b57921545933812eb25b45cab54bd"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/agility_shortcuts.tsv",
+        "sha256": "c28d72dd15e06b84d675a565d4d09cf2da0ce030ef949c9318b1d09cfa8439a6"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/boats.tsv",
+        "sha256": "4ff8e1ce2c227be931a54134872a155f7811c87af39c6fe33726b38e20d3a567"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/canoes.tsv",
+        "sha256": "84ec7236dab059b5e123b149b7b170165b8e3c317f16d2026e5eb269e57af287"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/charter_ships.tsv",
+        "sha256": "90d77f9216f14051b36ddaa716450e960b550893a129cf546e50826224acf0c9"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/fairy_rings.tsv",
+        "sha256": "c6c928e3687baab5be719adb048a04b46d0d285cd927182b5414c09895aa9a2f"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/gnome_gliders.tsv",
+        "sha256": "765d231dad846c2a6640fa8bb2ed4405128ed09f5283f6f517a72bdff22cc0c4"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/hot_air_balloons.tsv",
+        "sha256": "2c0e45bd850d727af86224740fc143de48bc7c4a3d47c1bf54e4d58cfbe3b590"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/magic_carpets.tsv",
+        "sha256": "861a4e5f334f4902481c7c3d15497afe18c15f11e45945c807258cc38e9a33ac"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/magic_mushtrees.tsv",
+        "sha256": "fe2cd5a985f91467ae442b029fd7af02ef128e2bddfa0617f8096f5fe10381ee"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/minecarts.tsv",
+        "sha256": "9cb9c9317a9a95ce2d7c4e13b642e52db77a4baf493673c223a5e79b7352f083"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/quetzal_whistle.tsv",
+        "sha256": "f8c37d34b844458554923a73cd114f4091a25694dd59825cf5e12e6b52fd9745"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/quetzals.tsv",
+        "sha256": "d4dad0c889e133437dac97af2b89b27ff58d1a29d51112293f0cdc2dd2833540"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/seasonal_transports.tsv",
+        "sha256": "8b6d7023655b83fc4f31db7c004b53de5f254a90e18c0cac0b7178c0124ba1bf"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/ships.tsv",
+        "sha256": "c220ae1334c11645feafa4b847263a543142b4161b2985a354c9e832047eb69a"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/spirit_trees.tsv",
+        "sha256": "637db0f5ad6aa7bcc9305742ed69dfce64b7892098548b8a8809bff86c318e17"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/teleportation_boxes.tsv",
+        "sha256": "8b649f4db9bd1270896ed464bb9d2d3f0ec4e868cea5ac3fcb7010af7762f1d9"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/teleportation_items.tsv",
+        "sha256": "752051e64ea39c52f12ba1f13f0fbec8bce5fe2ab1cb1cb497ef7f40b0010309"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/teleportation_levers.tsv",
+        "sha256": "48cefbc4dca113631e1dbc7a1b319d5fdf989682955f0fdb70042b81e70ace2d"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/teleportation_minigames.tsv",
+        "sha256": "5162e50b89410a19777a3381ee3726e0d9b1050cd0bcfe7b54acc53261a2bda3"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/teleportation_portals.tsv",
+        "sha256": "1b741a462e3912544945856c6dc40da63cc87ff08654b868377e8579048000da"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/teleportation_portals_poh.tsv",
+        "sha256": "d50f79b7be52ee4c950b00bf11e0de812e505dd61d5689648192a8212fbf01a0"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/teleportation_spells.tsv",
+        "sha256": "0a932ec7a2663063adda9a3a2eff7ae44fcbe177fa5d5d48553851546207883e"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/teleportation_spells_home.tsv",
+        "sha256": "a88da24af9de03d8c0b47cc9014323f8fc5940526fe4a1884fe61ca24954b073"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/transports.tsv",
+        "sha256": "e3419d6893722ba1f33b17e912c6df8c2ccd58e4e760f454452f627036d4d882"
+      },
+      {
+        "path": "vendor/shortest-path/src/main/resources/transports/wilderness_obelisks.tsv",
+        "sha256": "22bde87a66f1962181660b87209c090d5b03b71f2a1399cce5d6d661b040e456"
+      }
+    ]
+  }
+}

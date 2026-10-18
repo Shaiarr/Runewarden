@@ -1,0 +1,3701 @@
+{
+  "name": "Quest Helper",
+  "version": "4.18.0",
+  "repository": "https://github.com/Zoinkwiz/quest-helper.git",
+  "commit": "5f791937a99a676f23c02aa48c4e4d5b50e7edad",
+  "license": "BSD-2-Clause",
+  "hubMarkerSnapshot": "Official Plugin Hub marker snapshot retained in docs/hub-source-snapshot, retrieved2026-10-17.",
+  "purpose": "Unchanged, separately compiled quest companion for the development client. Not included in the Runewarden Plugin Hub JAR.",
+  "files": [
+    {
+      "name": "LICENSE",
+      "bytes": 1318,
+      "sha256": "a0b6a3d34fd44d5bdad3fd6f238bb0603fac2de950a2a535dae204f89a075d8c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/QuestHelperConfig.java",
+      "bytes": 19144,
+      "sha256": "2b75a1aff1758d9338e3058d9ee03e89d9f0714bfc26fb1c6d6d7ca4908d0941"
+    },
+    {
+      "name": "src/main/java/com/questhelper/QuestHelperPlugin.java",
+      "bytes": 20019,
+      "sha256": "95d7a06995380d67be7aadc1d09c347c3573d16957371b261975ec3b110c2033"
+    },
+    {
+      "name": "src/main/java/com/questhelper/bank/GroupBank.java",
+      "bytes": 3715,
+      "sha256": "ddd5202078771fd1836ae026699221fadbc8c3bdc64df9b6788877b7f75e679d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/bank/QuestBank.java",
+      "bytes": 4859,
+      "sha256": "ef7cc86a30410230a1f97d90fcca8202d9c21294a3f086776efacb92c4c5010d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/bank/QuestBankData.java",
+      "bytes": 2318,
+      "sha256": "54c543b883ced1301d2bee6807fea2fdd68411a0a423cd440c7ab39cea077dc2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/bank/banktab/BankSlotIcons.java",
+      "bytes": 1943,
+      "sha256": "02bbdf9cecf17d8480d640ebeacead12b94150dfcfa5241a3296b8ebbef91616"
+    },
+    {
+      "name": "src/main/java/com/questhelper/bank/banktab/BankTabItem.java",
+      "bytes": 2453,
+      "sha256": "2a1d80f5e3574232525484ed60480ffef1b12af1fb4f9c859870321a47b4a314"
+    },
+    {
+      "name": "src/main/java/com/questhelper/bank/banktab/BankTabItems.java",
+      "bytes": 2513,
+      "sha256": "7f97a5f0197579606d7b8285f31f8b529c27b5561181f93b6275b136ca1b061b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/bank/banktab/BankText.java",
+      "bytes": 1855,
+      "sha256": "b257d79eb1b768136ebde37eadfb3a15d2905d248a5bff2b9336fffc732ec87d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/bank/banktab/BankWidget.java",
+      "bytes": 2514,
+      "sha256": "8004d501df6a0fb1118ea711054193189aa31642112fe560492d13249906e692"
+    },
+    {
+      "name": "src/main/java/com/questhelper/bank/banktab/PotionStorage.java",
+      "bytes": 9233,
+      "sha256": "881aaf68d961432ffe7aaae5707757c0effe6c080467a8a96d124506e84b353d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/bank/banktab/QuestBankTab.java",
+      "bytes": 25829,
+      "sha256": "580a83ab24024d9088863d8381ffd231b5f3c15d7441de72b44b97e8e75df59a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/bank/banktab/QuestBankTabInterface.java",
+      "bytes": 8543,
+      "sha256": "40f350488c7aed707da6c97fff554e0060474d9402d3db9421848960fd0e0c4b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/bank/banktab/QuestGrandExchangeInterface.java",
+      "bytes": 8616,
+      "sha256": "26c5782c9d7877f6059bf395a4ebca6b558d8ede5eede26be65f55744af0a17b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/bank/banktab/QuestHelperBankTagService.java",
+      "bytes": 9418,
+      "sha256": "27499410d4c35c652e9104aa57c3ac5f1bbdbb3543b39bab636bbdea3dd30a21"
+    },
+    {
+      "name": "src/main/java/com/questhelper/collections/ItemCollections.java",
+      "bytes": 68850,
+      "sha256": "283032a9bd72cdf3a9d7eac2a64e1ee427e6df8391aaad8c00b38acbf98bc0f6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/collections/ItemWithCharge.java",
+      "bytes": 5976,
+      "sha256": "ba5526181994c3c63180a8c72cf3b1fbaa3edcad2f93a3b91aea17471b6f35f3"
+    },
+    {
+      "name": "src/main/java/com/questhelper/collections/KeyringCollection.java",
+      "bytes": 2935,
+      "sha256": "a602579105ad70164ed7f07f7461c70c46fbf3867064c2eda14fdb5d1d50224c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/collections/NpcCollections.java",
+      "bytes": 4205,
+      "sha256": "a37395c342160cdb446c1c843330ab36d517fe2e76c79bd632c85c5b1accbb3d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/collections/TeleportCollections.java",
+      "bytes": 3210,
+      "sha256": "7c55bc79e2c414ba60fbb013f296226c71d8d6af70b7b5777b795b1538d6e06d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/config/AssistanceLevel.java",
+      "bytes": 6574,
+      "sha256": "e1517a9db72c448a5b955c8e5b9a368333d7ce861da4bd54287819a189b1739f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/config/LeagueFiltering.java",
+      "bytes": 2271,
+      "sha256": "4e3df7bdd0b0bec9f03704a60737dc227ae318ca1d03aba08cfe4b1dde651564"
+    },
+    {
+      "name": "src/main/java/com/questhelper/config/SkillFiltering.java",
+      "bytes": 3650,
+      "sha256": "7ebc9939412286a224aa013d526c6b59b04826fae9ff73a30140d609f4660ee5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/domain/AccountType.java",
+      "bytes": 2300,
+      "sha256": "f1685f359f70c4a4b3a76491426dfd260559b9db911f92ce8d11accd999d6c61"
+    },
+    {
+      "name": "src/main/java/com/questhelper/domain/QuetzalDestination.java",
+      "bytes": 1884,
+      "sha256": "1b39a123c40daae7d7a7cba7cb31cf62881ff290e395ea0fb23c13e46c5ed7b5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/ardougne/ArdougneEasy.java",
+      "bytes": 12367,
+      "sha256": "14a38ac12d67327e7cdf9092f997d84e82ca553b97f65d6ef4ec96b588e7d4e2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/ardougne/ArdougneElite.java",
+      "bytes": 19487,
+      "sha256": "ae704306ab45bd6b527cf0f1b129031b330883d95dd96fc21e307ef31b28d875"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/ardougne/ArdougneHard.java",
+      "bytes": 24588,
+      "sha256": "46326633b3e609f3c7b5c932ace4a08004ed5f818c1c4d2bb662fbbf677f0e43"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/ardougne/ArdougneMedium.java",
+      "bytes": 23058,
+      "sha256": "53be5105836dd49c8a4b84d921ee3e6234c4fd72e8ae217e64a1c838c569a1a9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/desert/DesertEasy.java",
+      "bytes": 17947,
+      "sha256": "4a670c51d79e82c59bb6ee7abdf2fcbeb2cca47c0dc23f3828efbe5c9db97dfc"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/desert/DesertElite.java",
+      "bytes": 15639,
+      "sha256": "5e064bee0ada94ca65dd7c611c39e67cdc27a6a674f7bfbe75e24b151b175d0e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/desert/DesertHard.java",
+      "bytes": 19454,
+      "sha256": "0e515cfa6936167c71e69154d2875bef38711ab61c5cd437b0e44c291a2e18cf"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/desert/DesertMedium.java",
+      "bytes": 19268,
+      "sha256": "feda16ce2089c6b53b63829751cd370fe2d7be39628f4ec91f936542fae0ad7c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/falador/FaladorEasy.java",
+      "bytes": 20327,
+      "sha256": "0dfe7d6728684f7b6696dbbdc17e907d54ca2693401cb824b3e64100f1224e3c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/falador/FaladorElite.java",
+      "bytes": 17395,
+      "sha256": "edb384762ae6bb680db1414110cf1c5653614a267a487dfa777168235cecd8f7"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/falador/FaladorHard.java",
+      "bytes": 23556,
+      "sha256": "d0aad1e8a78a355a73c9c1ad051a49644a1b72aa0e0c979090a238c60a9671b6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/falador/FaladorMedium.java",
+      "bytes": 29487,
+      "sha256": "a233dd12951f6985389082743b28bca1c50b50cdb82c89e44f3bda7b190b2c49"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/fremennik/DagRoute.java",
+      "bytes": 11889,
+      "sha256": "b1d5d332c167781748453aeb623ac88ba99177e956fc167d94f19fd1fed93e86"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/fremennik/DagRouteHelper.java",
+      "bytes": 4343,
+      "sha256": "ba981b57c5cc25c327d25d583e86fb7538f61ae7ae41c068aa63c5fdf08a3d2b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/fremennik/FremennikEasy.java",
+      "bytes": 20213,
+      "sha256": "d48a5631d2381b931c3b37debe5cd85baddc0e883f2a3eee22a0b90e97a3adbe"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/fremennik/FremennikElite.java",
+      "bytes": 26265,
+      "sha256": "59d254e30a7c078f54ad4afa38838d61efdb10209fcd874d550b3cb430d0c12b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/fremennik/FremennikHard.java",
+      "bytes": 20822,
+      "sha256": "e7423defbc367adf59051e985214b992c5d76a52e0fb32760f67a4b6b335971c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/fremennik/FremennikMedium.java",
+      "bytes": 30121,
+      "sha256": "4b82bd8817113a2d6e9012dbef9463fb9c791d4aad3264ad17c12c4eb466f5d8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/kandarin/KandarinEasy.java",
+      "bytes": 18404,
+      "sha256": "d087d3d01169b3cae01ab564a916db2eccc2615e49b7fe9f346c3975ac8692ce"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/kandarin/KandarinElite.java",
+      "bytes": 17679,
+      "sha256": "9b68cd9c38b4dea0380c28275c63bdb42afb54d8286597564979cc7148edd4b8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/kandarin/KandarinHard.java",
+      "bytes": 23553,
+      "sha256": "afbfc6adedb14fc8dbd70a9d23217df1d2c75b779f3b3021dd9299af1c17be3d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/kandarin/KandarinMedium.java",
+      "bytes": 25346,
+      "sha256": "7ea58d6cff098ade09d3fd1258d44e6e1d66f170e971b88f9054b8f6d571ddd6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/karamja/KaramjaEasy.java",
+      "bytes": 13806,
+      "sha256": "e1f243e0c7a066c95911baf6376b894e17870da4126cec44787cf9ceb34582fb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/karamja/KaramjaElite.java",
+      "bytes": 11433,
+      "sha256": "adc1d481275b042c0a7e557db8340c6c4de0e97c6a3c52cbe515e72b47709a7d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/karamja/KaramjaHard.java",
+      "bytes": 22878,
+      "sha256": "f048227a91a4f73ef6938fe7f8d31753c4bfc0bac6764c79d32c0961f3e0d954"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/karamja/KaramjaMedium.java",
+      "bytes": 29239,
+      "sha256": "5d622cdd5ce6544038fdc2677222e8419c331045bc6738e2f0257931bedb6e88"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/kourend/KourendEasy.java",
+      "bytes": 18130,
+      "sha256": "0632fed1eaca7f1e4548ece182a48cfd56675f8d1dbc18dc191a4d16479a15cb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/kourend/KourendElite.java",
+      "bytes": 23687,
+      "sha256": "746b5af2d96eeab9f952c27863d49d286abfc37be27d13bf7bb3ad3a536af7fc"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/kourend/KourendHard.java",
+      "bytes": 22487,
+      "sha256": "6605147d1e5a0e558aab85967fdfe0293ddd934fd067dc17fed70da60bfa54de"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/kourend/KourendMedium.java",
+      "bytes": 23429,
+      "sha256": "579fee2532b02cb5b82941923da3e88258f3b7422fcf666981dddca6021c0c50"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/lumbridgeanddraynor/LumbridgeEasy.java",
+      "bytes": 18600,
+      "sha256": "4183b597f33577f882366bd9d2a3edde443e9e2e4f50f96d65a275d488c17882"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/lumbridgeanddraynor/LumbridgeElite.java",
+      "bytes": 17767,
+      "sha256": "c1effffe1e37bb42507fa893353b9ba559bd7acbc00e5ee600961c304c37b76e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/lumbridgeanddraynor/LumbridgeHard.java",
+      "bytes": 25007,
+      "sha256": "31df1cff8ab84805645d4012f6fb90e252612b951ac78477ee4300902baa73d7"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/lumbridgeanddraynor/LumbridgeMedium.java",
+      "bytes": 20495,
+      "sha256": "bc1b41e6878ecc196408f1ec281a7b9438fcc19369a324b560e78c91a5e47636"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/morytania/MorytaniaEasy.java",
+      "bytes": 20080,
+      "sha256": "5dd7d1746258bce9faa91960d538efef907aa0b706d47b197f5e3cfccba84cad"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/morytania/MorytaniaElite.java",
+      "bytes": 18641,
+      "sha256": "72cebd6c3d9a2789a5ddd548d1479155fa68a0ad70b6f7b6a67b28510bba93d3"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/morytania/MorytaniaHard.java",
+      "bytes": 24858,
+      "sha256": "8d999d88040fcb3cdb1e375af0cc39281ffb688bdf17785c0e2a96ba7ead0e89"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/morytania/MorytaniaMedium.java",
+      "bytes": 23485,
+      "sha256": "e7d6114c4eb0bb013fc47dadadcf38dc524f19abf08a5d7f538798082ac0b2fe"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/varrock/VarrockEasy.java",
+      "bytes": 17996,
+      "sha256": "7a31732b05a1392d52e66fee60960c119ed7416af0f571b564fd87232d9e6ca4"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/varrock/VarrockElite.java",
+      "bytes": 14799,
+      "sha256": "5d7abf44b4e176772f06dde1e9346d47f433279a62bad8d0be2ee65f041eb934"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/varrock/VarrockHard.java",
+      "bytes": 26874,
+      "sha256": "b3ce2af16fd1fdad6d8280a45734611ca3476bddbedcca4019267c29d248e3d0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/varrock/VarrockMedium.java",
+      "bytes": 22051,
+      "sha256": "6e2a5e5dc8b96871022a52443c9db07a8a1ddce4afb31607357c491911020270"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/westernprovinces/WesternEasy.java",
+      "bytes": 15757,
+      "sha256": "77694eb5833982059841cfba63e5db76b76518b6b417397ddbd6789f8c54ce58"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/westernprovinces/WesternElite.java",
+      "bytes": 15385,
+      "sha256": "0fddacbc736cf742768d0461aecdf3ab61f2cf7b8f7b3a91f191ae90747dcd97"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/westernprovinces/WesternHard.java",
+      "bytes": 23944,
+      "sha256": "aa94ac9e174accb4c839f59e09d6ef59e9b3eba1b48bed84ad4444723904d2b0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/westernprovinces/WesternMedium.java",
+      "bytes": 24135,
+      "sha256": "3594aea230a3b5f7f66fe2b7a74e091276a9a5fc281512bcc8c0736bbe69da81"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/wilderness/WildernessEasy.java",
+      "bytes": 16946,
+      "sha256": "9c7df749ce188a5aa6bf5f23b37480340057a7e3f696e14aadde96c330e8f963"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/wilderness/WildernessElite.java",
+      "bytes": 18266,
+      "sha256": "837564054234122418b38a1b75196944dc5a0c6eae9ea35c3df7fdd43adf1a45"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/wilderness/WildernessHard.java",
+      "bytes": 19308,
+      "sha256": "25a3f5555ac96cc7bb44251b4d9265e71760fa2f8fc27bdaa170bde94628d5da"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/achievementdiaries/wilderness/WildernessMedium.java",
+      "bytes": 19886,
+      "sha256": "2c24f777251a549c005c524de680a8474d078f6bcd167d428948fb6ed5d7e893"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/ChartingConditionalStep.java",
+      "bytes": 4718,
+      "sha256": "2db63726eba5815ab3fc283c4421e4956aab32a4e40c7fa0a14063c5bc49fce3"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/ChartingHelper.java",
+      "bytes": 8020,
+      "sha256": "5d375cbd2d913d10729f210b2a25feb07a5738430263bf042035eec38ae1e71e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/ChartingSeaSection.java",
+      "bytes": 1790,
+      "sha256": "fbea0fc05ae77a74e77a48f603300e90db99e6d1d4097d09dd6ff96e641a4c39"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/ChartingTaskDefinition.java",
+      "bytes": 4428,
+      "sha256": "4db4b2cb7656f0955cf6f73a32e0e1bc9c85ba5e3e8108b1dd4f647798eb7942"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/ChartingTaskInterface.java",
+      "bytes": 1688,
+      "sha256": "331e3a0a9d78387ce512669c830f0d66157b24f1a83e0fe41e60a447e41d7757"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/ChartingTasksData.java",
+      "bytes": 114650,
+      "sha256": "e9ee1476c3e1807cd97d99fd0ae3403e37dc4b8f157653e991a2306149ab7c50"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/ChartingType.java",
+      "bytes": 1742,
+      "sha256": "7905ce11fd2fc4eba8c941506ffd50d5ba3b82d9f33d09ce69b2d9add034a60d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/steps/ChartingCaveTelescopeStep.java",
+      "bytes": 4036,
+      "sha256": "0cdbcb8c044f87bfa763e37db24c08b48f208ebbcfc708035e4d83ea48e3d33c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/steps/ChartingCrateStep.java",
+      "bytes": 3526,
+      "sha256": "1816c61aa72a1732a1221e4babf74d27f2a494f3f447ee3e7ed220c6d08dd52b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/steps/ChartingCurrentStep.java",
+      "bytes": 2951,
+      "sha256": "5361acb7e9d8f6cff023188153f7a4adf60131f6021768da1f21ca91ea572f0a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/steps/ChartingDivingStep.java",
+      "bytes": 3050,
+      "sha256": "ba48680a7c1337724a9486912b12ddda5f852469fc09a62552a1f2e1ef714a5b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/steps/ChartingGenericObjectStep.java",
+      "bytes": 2336,
+      "sha256": "8b2745144badc52a23063642c16a991a812be8d4a1957512626cb4f3709abb13"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/steps/ChartingPuzzleWrapStep.java",
+      "bytes": 3178,
+      "sha256": "dc51447847b22dfe0e3cec4acf7615fcc1935bd1136ea1d30a589f8caf94f1c5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/steps/ChartingTaskNpcStep.java",
+      "bytes": 4332,
+      "sha256": "595c2fa36582b0647bf63c37f66ee336c1e79b2f8d27e600b68ccab791fb89de"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/steps/ChartingTaskObjectStep.java",
+      "bytes": 3884,
+      "sha256": "53506a56bbf6f10d78bac57124bbc0aeaf3cf8f1d9ae6774d28c299fa088fcac"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/steps/ChartingTaskStep.java",
+      "bytes": 3768,
+      "sha256": "71e201f56c601103a1561a8cb7ca4df0ca0081e127622f8ca5a54cd6e929c8fb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/steps/ChartingTelescopeStep.java",
+      "bytes": 2171,
+      "sha256": "4af2bc4fabfacc87682dc2ddc2bbb5abbd8b0e3dfddee6f509c794ca585f2baf"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/activities/charting/steps/ChartingWeatherStep.java",
+      "bytes": 5639,
+      "sha256": "cc089fe7b699da43f7db03fb1c6a2bbece7fa56dc988e7f3f9f7e5c6de8122b2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/combattasks/EasyCombatTasks.java",
+      "bytes": 158,
+      "sha256": "4b4333fe3c7617220319844e08fa0485aa69ade47a348e5fe2f0c5482791ef98"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/alfredgrimhandsbarcrawl/AlfredGrimhandsBarcrawl.java",
+      "bytes": 12088,
+      "sha256": "5c90009aac808b57ed41817d5f3c147a445223e0b28da815765d6e418e318414"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/barbariantraining/BarbarianTraining.java",
+      "bytes": 28641,
+      "sha256": "3adb256c2c2ff558ffd6256aba8bd5acbaa0fb5302b0d40a33429dd954105679"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/curseoftheemptylord/CurseOfTheEmptyLord.java",
+      "bytes": 13541,
+      "sha256": "cca4d31287f70d3b6fe1d353484a97d50eb897d3ed5f4acf2b8361546821df60"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/daddyshome/DaddysHome.java",
+      "bytes": 15416,
+      "sha256": "2278fe1a9ac6865261e7f9320f1b031fa0f5128aab60179c3d64c83047d01912"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/enchantedkey/EnchantedKey.java",
+      "bytes": 4474,
+      "sha256": "a842d172f4e598e4b9fcd1a7d59cab719b5c162372e61c0feab49009c5350cfe"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/enchantedkey/EnchantedKeyDigLocation.java",
+      "bytes": 2808,
+      "sha256": "947f5f47d80d450fde931305249a67bb3c44af9cf8159d72b81c734d683d1c49"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/enchantedkey/EnchantedKeyDigStep.java",
+      "bytes": 7063,
+      "sha256": "3cbd3c512532fc07c4d937083f8955d51bab55fc1932735376860e7ca8e7c756"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/enchantedkey/EnchantedKeySolver.java",
+      "bytes": 8016,
+      "sha256": "9aafff06e322885115804417b84fbb48b726cc3439972680da55bd2261a4bccc"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/enchantedkey/EnchantedKeyTemperature.java",
+      "bytes": 2483,
+      "sha256": "fa9ce166d7acb9a3103ecc848f93027216ca20d3460a1f07a964d80c369f7c3b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/enchantedkey/EnchantedKeyTemperatureChange.java",
+      "bytes": 2068,
+      "sha256": "05efaad29bee67940b1e8872ee0cc94f13ed3797d248543f71207b0af8634b88"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/familypest/FamilyPest.java",
+      "bytes": 6608,
+      "sha256": "15f50cd3912b1fe17686fca620d5d4b9ccec8047745ebe332ae543f6b53f4b76"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/hisfaithfulservants/BarrowsDoors.java",
+      "bytes": 4070,
+      "sha256": "0d37b685e94c7614e6b7510cfaace221214bd0c45860d63300d23efd94b3af96"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/hisfaithfulservants/BarrowsHelper.java",
+      "bytes": 22855,
+      "sha256": "26262a78788aa425369101a25c98519e5898b28d78d50ab8dfe654b08d4dac7a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/hisfaithfulservants/BarrowsRooms.java",
+      "bytes": 4549,
+      "sha256": "64897309e4f3adae44353bc85ce9e8c103df367430080332df94b98cf587f64c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/hisfaithfulservants/BarrowsRouteCalculator.java",
+      "bytes": 4436,
+      "sha256": "d8deacba1d14f1b7f2a0699669ccf3defa37788b969f5d6f6658c45ea5a9bb26"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/hisfaithfulservants/HisFaithfulServants.java",
+      "bytes": 23062,
+      "sha256": "45a5c0af380f7b5a6f4707b70f9a57cabdb45c68cd83fcd099c23d3ee075245b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/hopespearswill/HopespearsWill.java",
+      "bytes": 19558,
+      "sha256": "1200682e9b53696a095703f3b44319ccd50632563b8f20e1d8ed25aefb9cc18a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/lairoftarnrazorlor/LairOfTarnRazorlor.java",
+      "bytes": 6060,
+      "sha256": "2cf840ad0f70b2940b5d9badd10f41b13a6ce3fbce45b33dd2158bed55d55dc6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/lairoftarnrazorlor/TarnRoute.java",
+      "bytes": 15760,
+      "sha256": "fbe7482642c91145407cf2b7b7b09178df6f38281f5175e42aa90f880ec36dbd"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/skippyandthemogres/SkippyAndTheMogres.java",
+      "bytes": 5748,
+      "sha256": "bc62119438faef711dcb3dd5b2826cedd941f90f35d5c4cb156ee744f3c54ad7"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/thegeneralsshadow/TheGeneralsShadow.java",
+      "bytes": 13560,
+      "sha256": "3f293b7250317d2e92e0e4581cd3f37d2fcd19627c9036387c45ea251f8b4ccd"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/themagearenai/TheMageArenaI.java",
+      "bytes": 7338,
+      "sha256": "ceb52ab4cbb26d4aa18b30772720275e3ea6e91a9625a5db1f26d81709edddb0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/themagearenaii/MA2Locator.java",
+      "bytes": 6995,
+      "sha256": "cd424725b4655d870d8591ec3f081de0e061ae287706ef287dfaf10bacaa8399"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/themagearenaii/MageArenaBossStep.java",
+      "bytes": 17454,
+      "sha256": "fbd6ff1083a04385a7986d7a042d656a298db0751b5d0dec037337499a23f159"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/themagearenaii/MageArenaSolver.java",
+      "bytes": 8012,
+      "sha256": "954212a50fec40a0bd8713f0f2dd79a74ae31747d46b005417655b9efcdb4397"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/themagearenaii/MageArenaSpawnLocation.java",
+      "bytes": 3677,
+      "sha256": "bd5d7ea06b29ff7e22c7220c258dcfd48290e03ae7c9dbb046b5ce07e9b3271b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/themagearenaii/MageArenaTemperature.java",
+      "bytes": 2440,
+      "sha256": "34afe32a117dda883d617a3765dcddf92f82d5ecadd057e63d63f67696c31e40"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/themagearenaii/MageArenaTemperatureChange.java",
+      "bytes": 2052,
+      "sha256": "7cb513497be82f2237cd981dc202392ea41c0139b89b7d7df9f9c29bebc295b2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/themagearenaii/TheMageArenaII.java",
+      "bytes": 13962,
+      "sha256": "207cd334e5f8e3645408afdd77875c2837f076d8295eb867fd8a5071f490bdb1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/miniquests/valetotems/ValeTotems.java",
+      "bytes": 15866,
+      "sha256": "c3a7ee3d6ac1348a7ec976247076715d60649a01e12ce9ee23fd9b079d73bf67"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/allneededitems/AllNeededItems.java",
+      "bytes": 6648,
+      "sha256": "ca7272977be9417f6e9b229598442ac1952bbb63f1d421842dca98d6c7432822"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/farmruns/CropState.java",
+      "bytes": 1679,
+      "sha256": "e076206092f31f077c77cfab6d07dd3f55037f62d10f425c0c6e11e2e35d284d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/farmruns/FarmingConfigChangeHandler.java",
+      "bytes": 2337,
+      "sha256": "226a1e9ac4839f4ab1ec7ead2cba824a29b5182c45ba035ef78d2b982cece646"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/farmruns/FarmingHandler.java",
+      "bytes": 4880,
+      "sha256": "63e0d184f7b5dd11de67e58f4899f26389d60b2ee3e078870ca50a065b30cc8a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/farmruns/FarmingPatch.java",
+      "bytes": 2551,
+      "sha256": "3a3ba58e919f7860003e4ddc4a015db76c91b674b6b3634e1f32aaad48ab294c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/farmruns/FarmingRegion.java",
+      "bytes": 2044,
+      "sha256": "320eae6cf5e480154c7c0ccffad6c3b94b805c57adb1b9475b3c225b389da8cf"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/farmruns/FarmingUtils.java",
+      "bytes": 10881,
+      "sha256": "a9692cac78c9ba42309975ae3e3b8cedb7ac6fec3bebb37f4106cd246a8808d9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/farmruns/FarmingWorld.java",
+      "bytes": 19227,
+      "sha256": "02b637329fe9df31d8ee2ff482802a48167aadf5eb6994706437a2a1a627c86f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/farmruns/HerbRun.java",
+      "bytes": 27473,
+      "sha256": "25bcf61124f8b538c436772b31d7f2412da9ae3433dfea1d071e4c1867b921ec"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/farmruns/PatchImplementation.java",
+      "bytes": 119002,
+      "sha256": "66c41f3f9ef7ea51515c043ddc1b338ed9c95ad7932a41c135e6399a4a40069a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/farmruns/PatchPrediction.java",
+      "bytes": 1705,
+      "sha256": "d82c5bf646aad051a56bc0870762acac1629d92c7879cf626edc931d6b803da7"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/farmruns/PatchState.java",
+      "bytes": 1941,
+      "sha256": "8b44312bd0cf1683c8705ae056597da9b9f5ad01e2425693d1d8fb28577edba7"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/farmruns/PatchStates.java",
+      "bytes": 2746,
+      "sha256": "deefe07e775516f77be969e020f95612aebf0f288422dd3b8d9d83f099ad1156"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/farmruns/PaymentTracker.java",
+      "bytes": 2216,
+      "sha256": "06316e08d0fb71652cfee3518495357572efce02d180197fc0ee6f7f784eb275"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/farmruns/TreeRun.java",
+      "bytes": 107472,
+      "sha256": "567d085468d16bb0154f384c423bd61b8534de29178d5f50a747a6c57752f546"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/knightswaves/KnightWaves.java",
+      "bytes": 7733,
+      "sha256": "3445a9bd92f75d7b709e53f3e3f2bfc7a72e970ed9e57b3e7c40dfcece4173c6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/mischelpers/strongholdofsecurity/StrongholdOfSecurity.java",
+      "bytes": 15477,
+      "sha256": "1f6a267b3b2d06acae784ddb843739528c76fd9567391e6b5c3010a0ec544f02"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/akingdomdivided/AKingdomDivided.java",
+      "bytes": 68653,
+      "sha256": "448d2b7f54e9f13c6d925fe1ec2b5f00c3c014d7686397951d6dedd8b6397dfb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/akingdomdivided/StatuePuzzle.java",
+      "bytes": 8386,
+      "sha256": "0b62f6b098121ad7705ebcba81dee1883c3388d0df9c8f5a9944ffccff65d885"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/akingdomdivided/StonePuzzleStep.java",
+      "bytes": 6297,
+      "sha256": "1dd0281f86ac7e16c3b9e9b0b9b53f54c926b0cc54870b454ce55597177f47f6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/akingdomdivided/XericsLookoutStepper.java",
+      "bytes": 7022,
+      "sha256": "5ca1bedf0c00a8a87a227e4b7d682c77a9ba53193a943b85ff312b6cc6b65e9c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/anightatthetheatre/ANightAtTheTheatre.java",
+      "bytes": 26719,
+      "sha256": "0516cc95cf4e79091b8436aa11b477486b3d60efee59f41d60ca793ab9d76c09"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/animalmagnetism/AnimalMagnetism.java",
+      "bytes": 14557,
+      "sha256": "bd79a63a6e2c99c51f5abdea446b9a8fab81c54c8f8283676312e1afe45ac181"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/animalmagnetism/PuzzleSolver.java",
+      "bytes": 709,
+      "sha256": "1ae74f6bcc8913420008d5fa26677c4c9caa2e8e146f8678031fa33b0469bf67"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/anothersliceofham/AnotherSliceOfHam.java",
+      "bytes": 24385,
+      "sha256": "4edaf18d146562fd8c9fa1105dc062662c90ec972ac9daa9ba87de35203c2887"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/aporcineofinterest/APorcineOfInterest.java",
+      "bytes": 9566,
+      "sha256": "8acd4fc09403b11da8dd9a326a816ac311b34815d16aeef2b6a5367be4f571ef"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/aruffsituation/ARuffSituation.java",
+      "bytes": 17849,
+      "sha256": "21b91837d128802bc5f5765479579939f287c760de9b967291fd8083791ec3e6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/asoulsbane/ASoulsBane.java",
+      "bytes": 14534,
+      "sha256": "f84495b244ae5e0ef7b1064d96c91f7e3b865b7850004e44dc30c55b110ca63b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/atailoftwocats/ATailOfTwoCats.java",
+      "bytes": 15376,
+      "sha256": "706362af25de69212e8b6fb263cd8239d504cd04264258a2a24f1796169d040d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/atasteofhope/ATasteOfHope.java",
+      "bytes": 36980,
+      "sha256": "e4073870cff2a4a127f7c56aa62f54ba881089d09ea0758beedee06c6b1f2244"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/atfirstlight/AtFirstLight.java",
+      "bytes": 16758,
+      "sha256": "9fb330aee40b41a81db636941f8c3d9b87c74aa4a38b3c9f38e5257bab6d9851"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/bearyoursoul/BearYourSoul.java",
+      "bytes": 6156,
+      "sha256": "0002ed8f4dd5dd394d0709da5fd4644294495af2e0e8dee7f1a91223158e0fb7"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/belowicemountain/BelowIceMountain.java",
+      "bytes": 13186,
+      "sha256": "7c1b27bc52a30ab9fa00418aa00211911c85c797468a513a6b74bd220c94bb11"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/beneathcursedsands/BeneathCursedSands.java",
+      "bytes": 41296,
+      "sha256": "e61da0b1a5637ad3ee776839bfb4ab7b73dd05020e02587b1d8e7cf6520688f2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/beneathcursedsands/TombRiddle.java",
+      "bytes": 7740,
+      "sha256": "5798daa01533f23289615fc5cc23f4b97ad41f19c02f632d4978eed673b4e891"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/betweenarock/BetweenARock.java",
+      "bytes": 27552,
+      "sha256": "dc7f33eca44d3e9f190091ed750d9e621fe7414cd93e32379a9a38954c15fa4a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/betweenarock/PuzzleStep.java",
+      "bytes": 7243,
+      "sha256": "0d3c62e41cb8698858b79ed0cbe5850731aba65002b9ec8147f9f1c4f441dff0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/bigchompybirdhunting/BigChompyBirdHunting.java",
+      "bytes": 19035,
+      "sha256": "565d8accd23c905d08c17436a10120fd55ff927ac4981198675d74ebff3ea59e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/biohazard/Biohazard.java",
+      "bytes": 21345,
+      "sha256": "3ede6722efbe885fe706271d5ea5e78cb344554cfe136457f66b9b26c4154cf2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/biohazard/GiveIngredientsToHelpersStep.java",
+      "bytes": 5376,
+      "sha256": "ade5b43c0d7ce40ec2992ae3d69465b2804d213c6df62606f52de8911715d8f6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/blackknightfortress/BlackKnightFortress.java",
+      "bytes": 20182,
+      "sha256": "b4eaa12c8052f31619e4aff980791cf809f8349fdd5cda5da9de0777a9721c24"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/bonevoyage/BoneVoyage.java",
+      "bytes": 15761,
+      "sha256": "11acfcc217c5fb81d1e2dac4d402598e9ce41085d90633510f71dc9b81ad1dc6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/cabinfever/CabinFever.java",
+      "bytes": 43869,
+      "sha256": "125b745eb78a09e12e208fceee1278c3b889b53b0474e5b1a02fc06c3a4d2e5c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/childrenofthesun/ChildrenOfTheSun.java",
+      "bytes": 14333,
+      "sha256": "cc4575a44423c07827554fc65a4245826aa7c4ce91fd403112cfb3c6a55872d6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/clientofkourend/ClientOfKourend.java",
+      "bytes": 10725,
+      "sha256": "4579e3ef873c8c1e0664713cefe4dd0a48947aea720cf1e4870069cc196aa47c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/clocktower/ClockTower.java",
+      "bytes": 21533,
+      "sha256": "40ccac94f97e5a13215df40ffb06e7bfcb8801ed27859cbfe4d5cff928fba402"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/coldwar/ColdWar.java",
+      "bytes": 28187,
+      "sha256": "237e87a0888dbeecee826c2b25159e6683f76e0d67cb7b18963fe895098f74d1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/coldwar/PenguinEmote.java",
+      "bytes": 2680,
+      "sha256": "30a1c03102d23894ee7c861d0a0fbc57185ee593fe38c0e5f0df677c8af81faa"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/contact/Contact.java",
+      "bytes": 14371,
+      "sha256": "592058cca4cb6aa5f299fb7bf11cd9e77a908cca0606eec9aea422286d008368"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/cooksassistant/CooksAssistant.java",
+      "bytes": 10653,
+      "sha256": "4475ff0ec682274223f036b6745a0f1ce40c18a935dbff8366cfc44315f1f956"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/crabquest/CrabQuest.java",
+      "bytes": 26014,
+      "sha256": "cbdb0648fac3c167a60355abdf6ff06beb81b439b296c4e22fa5e010570abf0f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/creatureoffenkenstrain/CreatureOfFenkenstrain.java",
+      "bytes": 23289,
+      "sha256": "109f9a801a2690971ab3e1de9007e90dd7192c969e9c86c1c83e3399ddb9cef2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/currentaffairs/CurrentAffairs.java",
+      "bytes": 19805,
+      "sha256": "5baf48f1efb5fea220f7daf700f4c2e94f3b26dac351b8996cda0ea6c645d00d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/darknessofhallowvale/DarknessOfHallowvale.java",
+      "bytes": 44679,
+      "sha256": "3f4c30bec4f8e9d0b4b301e6f5793de419ccb52d7929dc1877b1358e67425fa6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/deathontheisle/DeathOnTheIsle.java",
+      "bytes": 42498,
+      "sha256": "004f8a2dfb6f18fe341f8fce1ed447edc89d9349efd18dad288fdd48ce597c18"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/deathplateau/DeathPlateau.java",
+      "bytes": 22052,
+      "sha256": "c9c5bf727fced4a2f31895c113af223e1a6f69e3cd2d14aaae8dc5c08a69ec36"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/deathtothedorgeshuun/DeathToTheDorgeshuun.java",
+      "bytes": 34903,
+      "sha256": "27958f51587acbeab9ec6dec7b8e4725716d270a281d1e32d3d9f61dd2195384"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/defenderofvarrock/DefenderOfVarrock.java",
+      "bytes": 29230,
+      "sha256": "287e12eacf90f6f1e878f401626b4284aa2c02258a9cac622b0afbe1d0c9a46e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/demonslayer/DemonSlayer.java",
+      "bytes": 16077,
+      "sha256": "899280f30ee51dfde78503abcd8b3aedb90f62e57bf964f737c4e3e1d29498c6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/demonslayer/IncantationStep.java",
+      "bytes": 4910,
+      "sha256": "03142951ea82e9f7052a292635a4134893733186090f67b7d2950e4059b3e9fb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/deserttreasure/DesertTreasure.java",
+      "bytes": 45295,
+      "sha256": "f84e8329e1c23a17a51324eddef33daab0864f6968e5a6a1a7052d31d834b80f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/deserttreasure/GiveItems.java",
+      "bytes": 2575,
+      "sha256": "b698fd4208a66fa6f65a456462ec77c8db8dba9d8645df670e2d1d689827e54b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/deserttreasureii/ChestCodeStep.java",
+      "bytes": 5739,
+      "sha256": "44cedbc13fad445039c49a0a56ae7b948ad94e43f65f1a41b4e8490a7c2b7368"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/deserttreasureii/DesertTreasureII.java",
+      "bytes": 47896,
+      "sha256": "c0b3caef2a0c11ef23ba4013967ca1bbf7da66762e4f4334d6c84483d6841cb4"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/deserttreasureii/GolemPuzzleStep.java",
+      "bytes": 5103,
+      "sha256": "13622851c447b51fd4a2244687ed9f124db72461ada46d46c9c8dbc2b478d905"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/deserttreasureii/GrowthPuzzleStep.java",
+      "bytes": 3633,
+      "sha256": "b551951ffc27c6dc0e15eea1f9935456d210bca482e7261e07d032cbec798ff8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/deserttreasureii/MemoryPuzzle.java",
+      "bytes": 3820,
+      "sha256": "ea69cab9a97be12d9baf7d3784835a782523be4c61c6a2e40d3554c5947fe30b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/deserttreasureii/PerseriyaSteps.java",
+      "bytes": 63677,
+      "sha256": "782adf9a21a3184dfd0c100052c6fbfd782c4596e9536bdd9a83fcc2f55db579"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/deserttreasureii/SucellusSteps.java",
+      "bytes": 34900,
+      "sha256": "2ab48c792007aa6b6c826ed207628d30bf2544f5ed8f1ceaa84b0623957c5962"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/deserttreasureii/VardorvisSteps.java",
+      "bytes": 26990,
+      "sha256": "8816fedf89d99cb9ff71c83e36fee6ff872956827ade91f8e5631fe407e09eed"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/deserttreasureii/WhispererSteps.java",
+      "bytes": 84938,
+      "sha256": "3421dac40cad65fd89322a2dd7d9fa4843b842af188f9bf00017d2ed694310b4"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/deviousminds/DeviousMinds.java",
+      "bytes": 12535,
+      "sha256": "3c9307b6263e2775da914fb63b6253f1b4a231c1e9c9d671ffd9344c4f6041ed"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/doricsquest/DoricsQuest.java",
+      "bytes": 4349,
+      "sha256": "c92c29257556fa0ab2ef5421a1fe307ffe693f0a502c40b7ceef3321d983df97"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/dragonslayer/DragonSlayer.java",
+      "bytes": 36683,
+      "sha256": "b53dcf8e4d4ac7a5ed0050165a4acb0c22ba0dd80866a566a0f08035a76c3563"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/dragonslayerii/CryptPuzzle.java",
+      "bytes": 10635,
+      "sha256": "56b392c77164a7788defb35bfd1a98647f13cdd37932841572d12d6678e3fd9a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/dragonslayerii/DragonSlayerII.java",
+      "bytes": 81075,
+      "sha256": "d9f46543733c0e73b45f2ad86ba2b63e0e9cd781bdbf24b7aebcc3461a5f13f5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/dragonslayerii/MapPuzzle.java",
+      "bytes": 7183,
+      "sha256": "0ab178721c9e4a0ec8f8ffdeeaa17422fb6ff654430cb3eb866eaa8eefe4d3f1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/dreammentor/CyrisusArmourSet.java",
+      "bytes": 3803,
+      "sha256": "9b6af39c4929157414fc1a25bfd539de7d6ddfc51e461a124207f9329fb7052e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/dreammentor/CyrisusBankConditional.java",
+      "bytes": 1700,
+      "sha256": "f481b1ce09031aafc148212cab74a342936c0ee3d9ec42fe04d66a8ddc816c50"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/dreammentor/CyrisusBankItem.java",
+      "bytes": 2383,
+      "sha256": "925150150819bdc56bf2815aa30565108e062393e19b0eb74f89364f9e5f3d0f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/dreammentor/DreamMentor.java",
+      "bytes": 26910,
+      "sha256": "0923109448fc73b83929c29b7b08e6fedfba456985b4775811568fceba0dff7a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/dreammentor/SelectingCombatGear.java",
+      "bytes": 3351,
+      "sha256": "b40cbe4cfdb779e5172baccccb88ae060a3bb3aed769372c7dcbc5645033cac4"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/druidicritual/DruidicRitual.java",
+      "bytes": 11077,
+      "sha256": "2552f776a30353ea42a5e23cdfe742aab29ab49256df6658f773d6448efbda5a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/dwarfcannon/DwarfCannon.java",
+      "bytes": 16284,
+      "sha256": "252fd5772e51eba0638a852b12635289f2f66d9647f1d232b2b9a8f5e91b1379"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/eadgarsruse/EadgarsRuse.java",
+      "bytes": 37907,
+      "sha256": "2b897fe84fb0a07add17aa4515a998eec7ca1671d5e36806dca35cbe74fae47d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/eaglespeak/EaglesPeak.java",
+      "bytes": 33212,
+      "sha256": "b106a4d9edaedcc311f345b9afa612315f8371e8b317975149847d2f59eef309"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/elementalworkshopi/ElementalWorkshopI.java",
+      "bytes": 16385,
+      "sha256": "b4a0329f8219d44baa3f36bd1e2bdcc315250dfa0a23b5e726ea71e37e47e8ec"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/elementalworkshopii/ConnectPipes.java",
+      "bytes": 3501,
+      "sha256": "319a6424bd57dc098866ad2ffce7f41cb3b748d542100812f3bb5b2c8d97759a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/elementalworkshopii/ElementalWorkshopII.java",
+      "bytes": 38583,
+      "sha256": "ab5b8fc221c2701f8387e052de0cc3df20cb2b64c287f2558d5374e963049799"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/enakhraslament/EnakhrasLament.java",
+      "bytes": 34099,
+      "sha256": "b7820a84de9df314d768cd601300778cc01b66919b3ec81d94b5a38e36600240"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/enlightenedjourney/BalloonFlightStep.java",
+      "bytes": 4532,
+      "sha256": "1be76570d9f3dbafdb13777282da10de76357f834cb5cafa9b63bbaddb5f58df"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/enlightenedjourney/CastleWarsBalloonFlight.java",
+      "bytes": 3984,
+      "sha256": "1f1ed6f7553c0965c7982e45d4ff0b0e764327e12c8467c3a8e234391adfd52b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/enlightenedjourney/CraftingGuildBalloonFlight.java",
+      "bytes": 4011,
+      "sha256": "253ff09304c3e51519a6bd40b6af0aba89d483c4a43dd2c1dac89fd1e34a07fa"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/enlightenedjourney/EnlightenedJourney.java",
+      "bytes": 11438,
+      "sha256": "60a01221af878adb397256ce9a6ccb4474d1ba0a2db4c26d8cf926e3535978c9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/enlightenedjourney/GiveAugusteItems.java",
+      "bytes": 3780,
+      "sha256": "34c8a3e965965672eee8ce18fb4a1827551171de4c529c2b3239cf6cc7ada1cc"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/enlightenedjourney/GrandTreeBalloonFlight.java",
+      "bytes": 4013,
+      "sha256": "89002e020d984680a147e4f1f609c7a443f23f5fca0fe27c018ebc71076255e1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/enlightenedjourney/TaverleyBalloonFlight.java",
+      "bytes": 5280,
+      "sha256": "376c960d9c07db137045016db7215c6b33c67dc16caf4ca1dbdb78d6af1a08a9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/enlightenedjourney/VarrockBalloonFlight.java",
+      "bytes": 4007,
+      "sha256": "ee373c1b5cfdc62234ff2099c6516c4a3b1f4703d732a6057c74e64c9ce211f3"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/entertheabyss/EnterTheAbyss.java",
+      "bytes": 9569,
+      "sha256": "80f6990593f3c1c5b7a3e7915c58ec08d7fa62c3334670df529d3dddbed89ab4"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/ernestthechicken/ErnestTheChicken.java",
+      "bytes": 17779,
+      "sha256": "73ff1165ab6ce7fe59772b88683ed0fa61f54912991878b6c94b5bb43ebda838"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/ethicallyacquiredantiquities/EthicallyAcquiredAntiquities.java",
+      "bytes": 22505,
+      "sha256": "f866c0163c85cbdf24f418c713a345a1060903f1fd1da3ecd0a66c8897bedecf"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/fairytalei/FairytaleI.java",
+      "bytes": 16073,
+      "sha256": "73187957498dbfec52cd062fbe7354376cacf4e661ba7a12ef79386e1aaedd55"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/fairytaleii/FairytaleII.java",
+      "bytes": 20330,
+      "sha256": "57c1c6b207eda46ca61e1036fbf0a50d4cfe9babf31f52eda6acacf7aa1c65ac"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/fallenfromgrace/FallenFromGrace.java",
+      "bytes": 18903,
+      "sha256": "6e375dd5d010124dd07766dde13efbb6c252970eb3f8ca45b0efe703d43d9b9a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/familycrest/FamilyCrest.java",
+      "bytes": 18893,
+      "sha256": "06cd4557b9b460915698e9357f52eb1a2fd6e2438d465b3221adcb439ef8140a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/fightarena/FightArena.java",
+      "bytes": 12102,
+      "sha256": "4379762a5482561072252285c7af63fd0cb620d2d0fc996e46ae0b7c79e44224"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/fishingcontest/FishingContest.java",
+      "bytes": 14316,
+      "sha256": "6765781f808514761c539097f78c4bc2f4b5c0c03b5ee8275c829bc5779b9d94"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/forgettabletale/ForgettableTale.java",
+      "bytes": 54595,
+      "sha256": "e154caf1556c46c1d35e77fe3631fabc2573d2064823b9f8a517df3be784d4f7"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/gardenoftranquility/GardenOfTranquillity.java",
+      "bytes": 41016,
+      "sha256": "068126c47369547d069aa7a8ceff83d4519d7a546d054ab2d32e5aa010a9396e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/gertrudescat/GertrudesCat.java",
+      "bytes": 10784,
+      "sha256": "0576520978081baa32b2c13ca89a0056ebfdc46d22825cd4501a08a6c27ec1f6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/gettingahead/GettingAhead.java",
+      "bytes": 17122,
+      "sha256": "bebb0229476d3029fa5e2e9d00740320d475065a145031fcd38ec487c5b6dccc"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/ghostsahoy/DyeShipSteps.java",
+      "bytes": 10054,
+      "sha256": "e06c37a4dee18752f39592db8c468c23cbf67fe8f0253a8d30f3e5fc0e727737"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/ghostsahoy/GhostsAhoy.java",
+      "bytes": 31671,
+      "sha256": "53293a4fba3b907cb7d011e528e58178bb5fbdf54358a283ad552a08eb5716c8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/goblindiplomacy/GoblinDiplomacy.java",
+      "bytes": 10267,
+      "sha256": "2db48d306bb860a8a0c3ad8cb5ed135b5b682a682c528d4ff06e6be70bbd5d49"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/grimtales/GrimTales.java",
+      "bytes": 24989,
+      "sha256": "80b4cfcb35f576cd0260681f55db5b0b623fd44a986e61311912ab94eaf79f2d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/hauntedmine/HauntedMine.java",
+      "bytes": 24952,
+      "sha256": "dc0959df8543a505b1c32a6d0787cee08a857582bb68da8a4d6faad1d558de74"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/hazeelcult/HazeelCult.java",
+      "bytes": 23119,
+      "sha256": "87accf49c5db6e1451dcb4ecc264a0de75ede5601c8ea75678f7327753430f63"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/hazeelcult/HazeelValves.java",
+      "bytes": 9691,
+      "sha256": "90aa0f40819ceefcdd3c8325e17ee593ec478d894a4c869db94b883b7e86f457"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/heroesquest/HeroesQuest.java",
+      "bytes": 34704,
+      "sha256": "4eb01372f7d145e9099cd67f0cf7f32ad19a4148b52f266fac30fe38a97aa8b9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/holygrail/HolyGrail.java",
+      "bytes": 24577,
+      "sha256": "b3dde1aefcc5d192f40da2ddc8c405e99e885bfe199248f8aa96000e382c30cf"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/horrorfromthedeep/HorrorFromTheDeep.java",
+      "bytes": 18660,
+      "sha256": "4179565d70e8a42589b8ac044980ec57cffcdde17db5d237fa028f690c649321"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/icthlarinslittlehelper/DoorPuzzleStep.java",
+      "bytes": 6390,
+      "sha256": "78fcb8b1102960003ad7025832f71973da15c77dc2b7d5494540df201c68cf53"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/icthlarinslittlehelper/IcthlarinsLittleHelper.java",
+      "bytes": 28176,
+      "sha256": "6d44a4f03389337fbcba02046cf573aad77b3d6309318b01de91c33aca3948b5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/impcatcher/ImpCatcher.java",
+      "bytes": 6116,
+      "sha256": "bf784172a45b7ca850b7cf8653a78bcb9745044c6e6404803ef5e45385f9b86a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/inaidofthemyreque/FillBurghCrate.java",
+      "bytes": 4093,
+      "sha256": "a5645d48ad4442d95eabd67799c2163034b451824028a73c7b132204a87fe97b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/inaidofthemyreque/InAidOfTheMyreque.java",
+      "bytes": 34421,
+      "sha256": "131a94222930c9df10d82f4edba30650e3b722e1132b005ac28515fb543ea832"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/insearchofknowledge/FeedingAimeri.java",
+      "bytes": 2671,
+      "sha256": "397f07bcea6c1791d1462f0cabfe4a4e8398d92d500672ebc4100c73e3735161"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/insearchofknowledge/InSearchOfKnowledge.java",
+      "bytes": 11111,
+      "sha256": "0f84734dd002b13b18ea6cd24342a5027a63220f799dc3925cb1adf1e01f4fb5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/insearchofthemyreque/InSearchOfTheMyreque.java",
+      "bytes": 23033,
+      "sha256": "9fede9a5353628ea6abd486f004047b501fb39518ed171c790384e70ed91c4e9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/junglepotion/JunglePotion.java",
+      "bytes": 10868,
+      "sha256": "37245689d92b5e612f04077d922de96f37888fdb151a98c21bce5a1f440312ff"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/kingsransom/KingsRansom.java",
+      "bytes": 26667,
+      "sha256": "2116fe212e742ca5375a4654c698eb3c083b78945b305d6aa71e19562a78b3b4"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/kingsransom/LockpickPuzzle.java",
+      "bytes": 4897,
+      "sha256": "c4faedb850227466a79dc1947805cc90af1d8622d913a5b139a87e7f826ec905"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/landofthegoblins/LandOfTheGoblins.java",
+      "bytes": 53337,
+      "sha256": "51cfd97a68dfa633022bf630afc2d9e3a660877527727f916518162cab545d66"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/legendsquest/LegendsQuest.java",
+      "bytes": 76824,
+      "sha256": "3787ab8acf65e2fc83778b140597086c94e271aa968beeb934e269df2c8e35cf"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/lostcity/LostCity.java",
+      "bytes": 11553,
+      "sha256": "2e19caec7466f5074524e24037835eea81c500a7f8e05c64cc530df350389ccc"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/lunardiplomacy/BringLunarItems.java",
+      "bytes": 3317,
+      "sha256": "ea08023dee7a9d62a2c459945dfd70864ad4024bb2a7713a13abf5a161b570bd"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/lunardiplomacy/ChanceChallenge.java",
+      "bytes": 4929,
+      "sha256": "ccfd71c10563074cd61df8a459faa9f1ca537bc301617e839c74779ad4255782"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/lunardiplomacy/LunarDiplomacy.java",
+      "bytes": 62521,
+      "sha256": "63e447055cbdf5241694a6b3fc40e08179fa1f359e8a2862635a160d74d30353"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/lunardiplomacy/MemoryChallenge.java",
+      "bytes": 6267,
+      "sha256": "65ea76aa395c477628d3e30d9b7bbd4481be49244424ed5c97185a5fa8ec1157"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/lunardiplomacy/MimicChallenge.java",
+      "bytes": 3900,
+      "sha256": "51c93ceb2042b6964ade8d08cc2ce9e1c6a2f20bba726cc189e9bf92ef903a3e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/lunardiplomacy/NumberChallenge.java",
+      "bytes": 3969,
+      "sha256": "74fe45b61a49dd9a3bb81f136d7fc9602e5dfe593aec582dcbcc4d930b056628"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/makingfriendswithmyarm/MakingFriendsWithMyArm.java",
+      "bytes": 37441,
+      "sha256": "26c9ae9ead0b045ffa8153b8069786fd955e1022f8a7781c39a4f5bbe9ba9a08"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/makinghistory/MakingHistory.java",
+      "bytes": 16187,
+      "sha256": "4c445d0aae5fc09c4e2b28583e7667879e109a2ded92d728eaa102fcdaad9885"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/meatandgreet/MeatAndGreet.java",
+      "bytes": 24529,
+      "sha256": "b7f7e93a9b668cca9b806e9a2b5ee7cde06c0ede23b6a276c8523aa8ac309540"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/merlinscrystal/MerlinsCrystal.java",
+      "bytes": 20924,
+      "sha256": "47d127217200945fae16952ac9901d258310467ad853aa35d6b6f0db91e5431a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/misthalinmystery/MisthalinMystery.java",
+      "bytes": 25828,
+      "sha256": "51e042b1deeb836c1dfec2561252faeaeb953f86d14ba5f07ace57b81373640d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/monkeymadnessi/MonkeyMadnessI.java",
+      "bytes": 60597,
+      "sha256": "7255ace281835726f6eac80353edc093a2a404ce1b106d7d5738861d78e0da58"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/monkeymadnessii/AgilityDungeonSteps.java",
+      "bytes": 33788,
+      "sha256": "ad0e8462b5552345ed93d5c327b13ee9b8dcb8de4a6fd5efb163511880ee53c1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/monkeymadnessii/MM2AgilityNodes.java",
+      "bytes": 2392,
+      "sha256": "42a54a714fd5fcc12a12cb39ee8e6c2f4ffb82afd29ada3d9a9982f8e98a33dd"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/monkeymadnessii/MM2Route.java",
+      "bytes": 12401,
+      "sha256": "ad4781edf81392a92f2f8e3179de23e77beb872ca31126df0c9372bd1938b77b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/monkeymadnessii/MM2Sabotage.java",
+      "bytes": 45290,
+      "sha256": "24b8074afbe0bfa75398187c2cbc67bdf18158ae56d936459a2d49dfad08cc99"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/monkeymadnessii/MonkeyMadnessII.java",
+      "bytes": 44946,
+      "sha256": "5c6c8a816e70c4374d4dc8d4c2e5d9d91859b9a4e9221817b759d1825515d72e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/monksfriend/MonksFriend.java",
+      "bytes": 7652,
+      "sha256": "314fe5ceb55d68b298c8fc0f459d0b2500c606d37256d9b2d7d4e23470dfbab3"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/mountaindaughter/MountainDaughter.java",
+      "bytes": 22821,
+      "sha256": "2ca09de55b67ae22853d3d4f59b48c52f45ecc9704f99fdc511c4ab670ae17ca"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/mourningsendparti/MourningsEndPartI.java",
+      "bytes": 37052,
+      "sha256": "7b98d03f0ef57ade348080414bb00bee4192f6a45b92eacf89affa32357ad854"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/mourningsendpartii/MourningsEndPartII.java",
+      "bytes": 84075,
+      "sha256": "b868524c781a00e4bc4bbce23d2dfd3037760b074f0b163f6c474c6fc0aa61b1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/murdermystery/MurderMystery.java",
+      "bytes": 33664,
+      "sha256": "42df481d18d106cb044286a084dac0ae981a67f972c952cc10985a8a3012ef6a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/myarmsbigadventure/AddCompost.java",
+      "bytes": 2698,
+      "sha256": "a7a05103b14885887c39664f72dcfa0025870987399fb32cbe97cf2b52de0f50"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/myarmsbigadventure/AddDung.java",
+      "bytes": 1438,
+      "sha256": "9ad6c9e5930cb97e030e9080e884b506505887105a86551a80291b1077fe4db9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/myarmsbigadventure/MyArmsBigAdventure.java",
+      "bytes": 25861,
+      "sha256": "75bed10754823631e7161005375e0b2263ef14da245ea2b11128d7cedf2737f2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/naturespirit/NatureSpirit.java",
+      "bytes": 20014,
+      "sha256": "4e8dbe6489aa15a45cc634bc23aa1b4e2395b0290becb09833bcade5dfd98d67"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/observatoryquest/ObservatoryQuest.java",
+      "bytes": 17189,
+      "sha256": "1f9a5ca6cfc0eb8a145d52e124ee53926ae65edef98f8a846184b5a8e4e4f247"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/olafsquest/OlafsQuest.java",
+      "bytes": 16052,
+      "sha256": "899ea48dd72ef3ba41d1c97130e06c553d001415b4c730cc1e5f107013bf9e7e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/olafsquest/PaintingWall.java",
+      "bytes": 2507,
+      "sha256": "c8758a19f6c8721007e63649b35586f7e8ff6791a7ffd0160ff9bce6378f19cb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/onesmallfavour/OneSmallFavour.java",
+      "bytes": 60971,
+      "sha256": "499a3dca5a94abdef6fefc5b5b0b9f351fee30c8d0aed3185121b052918405ff"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/pandemonium/Pandemonium.java",
+      "bytes": 22300,
+      "sha256": "4cf6bb2e1a73def9d2b098b81ed9e5ca896e71bf55483eb753111e1b0beafe82"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/perilousmoon/PerilousMoon.java",
+      "bytes": 37364,
+      "sha256": "aa02c907968ee5ced913050e76348f6701da7b2902c9e911239a02da141fed1e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/piratestreasure/PiratesTreasure.java",
+      "bytes": 7009,
+      "sha256": "6ab114e767e3db045e29396793a7df3de12e6bdaff9843cfe42f844e2d8bafe0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/piratestreasure/RumSmugglingStep.java",
+      "bytes": 14570,
+      "sha256": "cb9302551392ac222cbd95a8524c32fa345632594179b851c00eb05c30d5b1ab"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/plaguecity/PlagueCity.java",
+      "bytes": 21974,
+      "sha256": "e0ce4c7c0303a55dd568212bc5aa53b5155b3847c0d4274a327aa3de477291f6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/priestinperil/BringDrezelPureEssenceStep.java",
+      "bytes": 1275,
+      "sha256": "51b62ba9e109c62011607e35e703699c7a479f02c05576c145f27aafbec7f13a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/priestinperil/PriestInPeril.java",
+      "bytes": 20298,
+      "sha256": "6de7b982142f6dbfe40b4358a17f7a69423a524165f2eb0b3f53155f91ac23c9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/princealirescue/PrinceAliRescue.java",
+      "bytes": 14071,
+      "sha256": "490bf2da131eae123795582550281a7b1d54b5c0f12ff7c2b1211574abeca5e0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/pryingtimes/PryingTimes.java",
+      "bytes": 11881,
+      "sha256": "6721dc13d2d97808ff4d51eccb71f926b75fb7401c013a48c7e20494f8bcae5d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/ragandboneman/RagAndBoneManI.java",
+      "bytes": 17754,
+      "sha256": "c6c56ab21f55f1fd5f72bdf1109f654faa5d1f65ca3932487882d7d48cdd3431"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/ragandboneman/RagAndBoneManII.java",
+      "bytes": 50445,
+      "sha256": "af3c31657f8f793905b3e8fe92584ff1a4d95894aeb0303f7f26daadb81833ac"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/ragandboneman/RagBoneGroups.java",
+      "bytes": 6261,
+      "sha256": "ce612c3662d78a31d17371c38cb6cc9354a59383e1179ad7227a91d8571f12e7"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/ragandboneman/RagBoneState.java",
+      "bytes": 5404,
+      "sha256": "fcf69417ff4df0e0f00631fe7a1f090e1a366446371578d2266f236be5528c91"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/ratcatchers/RatCatchers.java",
+      "bytes": 27480,
+      "sha256": "fea3e5e2d2610bd651d6c9dd07bdb661a1ef391217c9d3b4dfe803b2dd5efdb2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/ratcatchers/RatCharming.java",
+      "bytes": 6449,
+      "sha256": "415e3a351b45b6eceec5bd60e676d2671b996c7130148076b140d82c81960b2a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recipefordisaster/AskAboutFishCake.java",
+      "bytes": 2946,
+      "sha256": "1f295e77fa2ecfbad55716965c7ac0aa9c097b57c01a9b5e5ebfb0235d57233b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recipefordisaster/GetRohakDrunk.java",
+      "bytes": 2689,
+      "sha256": "29997fa5b72666493b95fd724310accac031c5d168de202dbb6a18199c689b48"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recipefordisaster/MakeEvilStew.java",
+      "bytes": 6226,
+      "sha256": "3e862abede91c7d44c9509f8b732bb51add7793754c3c90f1d585324bba80d7d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recipefordisaster/QuizSteps.java",
+      "bytes": 5358,
+      "sha256": "a8b99e96ab01d608919d6980b8f4620307aecc2c73c4fd8a2b32997a8d561150"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recipefordisaster/RFDAwowogei.java",
+      "bytes": 19144,
+      "sha256": "645ee557e2e09984d39bb6d553a57a0afbb2cde464c8ebd96fc957895c0033ca"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recipefordisaster/RFDDwarf.java",
+      "bytes": 13001,
+      "sha256": "329bd397f49db5b967f1797e80648b419fd2d0435884d9c375d3351a60e8ca3e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recipefordisaster/RFDEvilDave.java",
+      "bytes": 9279,
+      "sha256": "3d86ea2fe4f6c0fc98ccf39c20c0e2ea6b1fb0d89d7eae064d812dccf666a0ac"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recipefordisaster/RFDFinal.java",
+      "bytes": 11106,
+      "sha256": "45fc3c95a4c25e72cd1e5202afcbc1a016b26e1cd54c9462791f1f1960939e12"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recipefordisaster/RFDGoblins.java",
+      "bytes": 12080,
+      "sha256": "e1ff3a717ce466bd02e80a6a12c7634803114335d650502434b3ca6b58724266"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recipefordisaster/RFDLumbridgeGuide.java",
+      "bytes": 10231,
+      "sha256": "630753b118da9483296a95966588e1cf8f5fa398ad9755880accae43a76da5bd"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recipefordisaster/RFDPiratePete.java",
+      "bytes": 20265,
+      "sha256": "8732b6291cbb2aadd5cf5ef1cff6363271c193aba61b4d9557f47b9274194f26"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recipefordisaster/RFDSirAmikVarze.java",
+      "bytes": 19197,
+      "sha256": "a18bc40c1c066a634bdf30ffef3d88533387e5b537dbdd036efffa75277e674c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recipefordisaster/RFDSkrachUglogwee.java",
+      "bytes": 16405,
+      "sha256": "d7d1f75e60b4b8a4bde1205fbc4d6ba261c2804fccc2b715873e2a88bbd14dd3"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recipefordisaster/RFDStart.java",
+      "bytes": 6324,
+      "sha256": "4725b0c45f6dd2f85a23d9da3828adb31dbd93a6645f03721a61bcdcc1c19cae"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recruitmentdrive/DoorPuzzle.java",
+      "bytes": 6630,
+      "sha256": "32090f04389b62afc6560efb688fcd8ea9849da85311918d4404d9f14c9b5f90"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recruitmentdrive/LadyTableStep.java",
+      "bytes": 3979,
+      "sha256": "f8b2045f807014b17eb1710a9df7c6c3b6783e7ec5e29d271c9fb996f1ea9941"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recruitmentdrive/MissCheeversStep.java",
+      "bytes": 18830,
+      "sha256": "037a43ffa916252e591dde83c33f0d8b099e3a4c6edd90824ba53e867ffdaad1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recruitmentdrive/MsHynnAnswerDialogQuizStep.java",
+      "bytes": 2880,
+      "sha256": "ca482b244ddc70ccc269d513ab037d5ab22ba58cc49da51cbe342a63788cab44"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recruitmentdrive/RecruitmentDrive.java",
+      "bytes": 24628,
+      "sha256": "f82a364674acdcf9617a182f4a81b8641d36e26b8ea609bc618b7b85f4d975cf"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/recruitmentdrive/SirRenItchoodStep.java",
+      "bytes": 4159,
+      "sha256": "c7b21ca6f98dc29b457f33845a06c50ed5bcd091d3aea890018c6ec8a75acd69"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/regicide/Regicide.java",
+      "bytes": 54898,
+      "sha256": "f240c02cc9eb1d5a7a8bc5bdf85eefde4bc765ff540317ae59696fe1ff2baa09"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/romeoandjuliet/RomeoAndJuliet.java",
+      "bytes": 7444,
+      "sha256": "8af25cb263fa92e512ed414043e73b4fd0a3146c67ba34de1b0fa068eceefa47"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/rovingelves/RovingElves.java",
+      "bytes": 12512,
+      "sha256": "c80b9450f30385823273d712dc19e531b25611afebabea11207a73f38992b64f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/royaltrouble/RoyalTrouble.java",
+      "bytes": 43422,
+      "sha256": "6482325f43ac9bf896663a07a7ff6665055770ece0d7e742545c779b67688957"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/rumdeal/RumDeal.java",
+      "bytes": 25628,
+      "sha256": "9ebfe9781f70eda2f753b08e1f44aa0411f6473aa095903433a91cc3fb1c0586"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/rumdeal/SlugSteps.java",
+      "bytes": 7350,
+      "sha256": "d627ad36110b90d587f053aba63e38ce739732208b196ac07148ca86cd20e41d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/runemysteries/RuneMysteries.java",
+      "bytes": 10760,
+      "sha256": "3d4e53c98e776da5693b0ed4578131a820a9aff3c841058f653ba2aba53ce0e8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/scorpioncatcher/ScorpionCatcher.java",
+      "bytes": 15304,
+      "sha256": "d1b9aea4c0bc7030d58d81fc81c2624634feab0f5fdfadcdc3b4f9622713c6cb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/scrambled/EggSolver.java",
+      "bytes": 7540,
+      "sha256": "e60dfff0b9989f750b05d7b5e1a8a93c29114bf7c9c106511b1940cfe45da3ee"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/scrambled/Scrambled.java",
+      "bytes": 27937,
+      "sha256": "1671e0872a628b52fcef098d6be0ab621ddff1e5475f00401971dd60c36ea8df"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/seaslug/SeaSlug.java",
+      "bytes": 13011,
+      "sha256": "e38197c5eed04118630492ca2b291b11bf3e8fb5037d8de1c585bed66f30b6d4"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/secretsofthenorth/ArrowChestPuzzleStep.java",
+      "bytes": 4586,
+      "sha256": "c299611c1802a80127a842d9665136466bbbc4bfc2f7d3b81a540de1795a2eb8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/secretsofthenorth/AskAboutRitual.java",
+      "bytes": 2560,
+      "sha256": "c4f5df5933ebf72168b51500a3200464f23da84e70230feded33edd1bb77bebe"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/secretsofthenorth/SecretsOfTheNorth.java",
+      "bytes": 39029,
+      "sha256": "4a3a9f7d49ab2aa9adec486d2b279a01e65952a14fde304259937eecdc68c3e5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/secretsofthenorth/SolveChestCode.java",
+      "bytes": 6667,
+      "sha256": "bf89a2068851a3b331259addd45a0cd0cdba2ad4efb9a7e57f8e41cec0fd7179"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/secretsofthenorth/SolveDoorCode.java",
+      "bytes": 7128,
+      "sha256": "05e23ff9070832fc670954efa8f268254c2b032fb01c05561391d13befd27778"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/secretsofthenorth/TellAboutMurder.java",
+      "bytes": 2708,
+      "sha256": "5768b6c8581cc4b49fd08706e4ea31594dac62e601156b518d6d22fde081ae00"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/shadesofmortton/ShadesOfMortton.java",
+      "bytes": 20347,
+      "sha256": "481ae265a7b8fe705fa4e3247ca191b420126a0ac97cc6690c28a286d6a92230"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/shadowofthestorm/IncantationStep.java",
+      "bytes": 7208,
+      "sha256": "4734a9b7fb0214c4e67fe14e5ec729f25ed6c6eb84b39d058397df6d1efdc34e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/shadowofthestorm/ShadowOfTheStorm.java",
+      "bytes": 26905,
+      "sha256": "9a20fc2996a94db4aa6a0aa59b7c3687c44258c7845a3031df626a9194c6727c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/shadowsofcustodia/ShadowsOfCustodia.java",
+      "bytes": 16123,
+      "sha256": "521454a58a9cb644f42737fbe002a15e0cc0bae12ab5a1581add811317bfff2a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/sheepherder/SheepHerder.java",
+      "bytes": 12457,
+      "sha256": "b6f66bdb2aa1dfbbd4a3f9b8e31f13a77f5bd0d94b28777a63d77a0b502fcfd6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/sheepshearer/SheepShearer.java",
+      "bytes": 8847,
+      "sha256": "4fd3d13afbe8283a81b104f5cc3ee3977b00e2c4ffdacd5fe55f5d57b88f735c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/shieldofarrav/ShieldOfArravBlackArmGang.java",
+      "bytes": 12396,
+      "sha256": "f73b85047820e371120aab1a8e00aee963a60a8981e43d1601a12ea0ea001a2d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/shieldofarrav/ShieldOfArravPhoenixGang.java",
+      "bytes": 10952,
+      "sha256": "c4208a79d3b37e9ba842f7d98e948bb9fd4e042975e89d9a4a52ef844fe3bdca"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/shilovillage/ShiloVillage.java",
+      "bytes": 21639,
+      "sha256": "bcf928d92b530717d7291896a24b33e0e577e2eae26cea979bd48457c789d04c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/sinsofthefather/DoorPuzzleStep.java",
+      "bytes": 14883,
+      "sha256": "51879f853c5aa285e2974d46e3c5cbae4c57db1680dd2ae2e5a4f5205f8f3043"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/sinsofthefather/SinsOfTheFather.java",
+      "bytes": 49287,
+      "sha256": "b94dda0360cdab1c258078f7dff8af21a741d4c60f077ff707ba00f562cafc47"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/sinsofthefather/ValveStep.java",
+      "bytes": 9060,
+      "sha256": "b5e38650f9f8e505954d1ad7a00914c90ceb98efd48cab2c35cb31f76674f099"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/sleepinggiants/SleepingGiants.java",
+      "bytes": 23580,
+      "sha256": "d791ed9e75fd873800cdb2f87d0de5f4b122d6df8900542a508d45d0ad0167b5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/songoftheelves/AmloddLightPuzzle.java",
+      "bytes": 15181,
+      "sha256": "e7c3c4fb580673733dcadfc0ed22327b943d469c586f5b2aa41d451f2050166d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/songoftheelves/BaxtorianPillar.java",
+      "bytes": 2751,
+      "sha256": "f1da756f745dc97df698e1ee971f6d28afaeae0a0e56d01f959342c4f5573f21"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/songoftheelves/BaxtorianPuzzle.java",
+      "bytes": 11836,
+      "sha256": "4ec07bbc284b7bef61a94347a8878aff7ac189e87aaffb487b568c073a91418d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/songoftheelves/CadarnLightPuzzle.java",
+      "bytes": 7632,
+      "sha256": "354804944e61a6cc74fcf8867d798da4c2c202f2d3ee8da491a116747b7d9202"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/songoftheelves/CrwysLightPuzzle.java",
+      "bytes": 12231,
+      "sha256": "430b786624692f0a11ebdbeec8b757dc1ebce2abd6740aa9d30d59fa784cb899"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/songoftheelves/HefinLightPuzzle.java",
+      "bytes": 18426,
+      "sha256": "dfa058c38a180964b69c153db6064b9c181dc0f5fc6dcc8fd23aa32f48718002"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/songoftheelves/IorwerthLightPuzzle.java",
+      "bytes": 26884,
+      "sha256": "575fc91f84f14422b0a580c1c37740011d9126f0079e6a0fab030942666f9e19"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/songoftheelves/MeilyrLightPuzzle.java",
+      "bytes": 18544,
+      "sha256": "22e4739c51c71e1f23319d4f8503f417d12f4609fd2bb4aef5ac5473c4b9a84e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/songoftheelves/SongOfTheElves.java",
+      "bytes": 91215,
+      "sha256": "d9517d38a9639772b5577fe299dac97bfca3c5b22778b5b8623383eb622b2cb2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/songoftheelves/TrahaearnLightPuzzle.java",
+      "bytes": 20713,
+      "sha256": "4281df770ba9fc96970f62daa6e24622cc822ab766bfd613b3153885f26a415f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/spiritsoftheelid/SpiritsOfTheElid.java",
+      "bytes": 19940,
+      "sha256": "be1518eeb10e7792ae9a3f6e6d04c0a273eb92248ea88c4ae4ec070d3ab1a621"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/swansong/FishMonkfish.java",
+      "bytes": 4346,
+      "sha256": "36edf9a276ebf25cb6fa15ccf99b783bbef29941eadf984a4554831c6828f899"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/swansong/FixWall.java",
+      "bytes": 5276,
+      "sha256": "eb2747964543ce60c4aee08105f7eae67fe3ba6ccd2721045bb86e3fb0d1c264"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/swansong/SwanSong.java",
+      "bytes": 19475,
+      "sha256": "eaad1c3683eacb005cc64b82a2671b9a0e04e1bd1d1230ed84a6c309f4908495"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/taibwowannaitrio/TaiBwoWannaiTrio.java",
+      "bytes": 34040,
+      "sha256": "257f8f6acad8d681c7073fbf106162e341547e8f61580cb8451597142d8f2d2d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/taleoftherighteous/TaleOfTheRighteous.java",
+      "bytes": 17866,
+      "sha256": "77a2dcc55e82a0b5e6f9f09103425b0b6a8ba59577bcd0740d08e0d0f8307a8b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/tearsofguthix/TearsOfGuthix.java",
+      "bytes": 8897,
+      "sha256": "83aacf352fa3e375ef5751bd29455c44bd2f404ef16f606b53f0f52a04d11aed"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/templeofikov/TempleOfIkov.java",
+      "bytes": 23214,
+      "sha256": "fb984bfa69816b182fc08da7fcea501f5e8678bfafd35c3bd1cf5aa3f4b062c3"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/templeoftheeye/RuneEnergyStep.java",
+      "bytes": 4236,
+      "sha256": "5aedf1293f4ccfec28556c74b97930757744b8885fe4c6c5f3710537eef0a25a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/templeoftheeye/RunicEnergy.java",
+      "bytes": 1677,
+      "sha256": "4c2f063134abd760cf5512025a861c971a3cfeccc4f0020a69f7fdda1040c13a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/templeoftheeye/TempleOfTheEye.java",
+      "bytes": 23913,
+      "sha256": "3857fa53e5da16a0681e5558c542f1ff89035f77d2cd988d8db3c820a10d13d8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theascentofarceuus/TheAscentOfArceuus.java",
+      "bytes": 13981,
+      "sha256": "2f01bc36cb4428a34149312ae523eab0de1c17d3b80f23f07e7ce7cb1648b52e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/CastleDrakan.java",
+      "bytes": 118284,
+      "sha256": "478655050b21467523889c1186fde18a134db08ecb5a94e963e6ca9ae8f6e250"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/CastleDrakanActionStep.java",
+      "bytes": 2937,
+      "sha256": "cd3000f1e801dff4732a7d85d0a54847f5c79447564ecca653e20a884a1207d6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/CastleDrakanGoalStep.java",
+      "bytes": 2035,
+      "sha256": "2829043032b0ba32d224ad8ccce322e9448e78b09d6a73304fbb79eda2576613"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/CastleDrakanRoomNetwork.java",
+      "bytes": 8625,
+      "sha256": "19fbe67e188e88042a6cadb20975a6bff52452a9dcfd5d2f9da16bee4bad1945"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/CastleDrakanRoomStep.java",
+      "bytes": 4652,
+      "sha256": "c6ff1266c8d11e740da97fe7fb2ad29ab63790fe2337d6f401b7ab382ed7092d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/DrakanClockSolver.java",
+      "bytes": 5244,
+      "sha256": "c1e74ff295c32c3daae386cacd5f5d6df785c7f111394693db08824ce57e59e4"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/GildedBookPuzzle.java",
+      "bytes": 5975,
+      "sha256": "477aecad0e1f257b742be24bf40b0ea939133a2193027221abdc8b6718afb91e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/TheBloodMoonRises.java",
+      "bytes": 138174,
+      "sha256": "99d672c13013e286d2b3c539b9374c38247743b2fd76a8ebb69ce927eb0770b2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/treesolvers/TreeSolver.java",
+      "bytes": 5048,
+      "sha256": "dc7e2e7c8b40b8903ec7b6e04df1350708328b672f50e7febf3be9a6b73a1859"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/treesolvers/TreeSolver1.java",
+      "bytes": 714,
+      "sha256": "be31563497cb09f80e2cc92a833ac155cdf2d2770baf12832978aa7f93bd3739"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/treesolvers/TreeSolver2.java",
+      "bytes": 713,
+      "sha256": "6b5f88f84339842c9cabad32910636afefcca477eb443b0ca7cc7e95618a71e0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/treesolvers/TreeSolver3.java",
+      "bytes": 714,
+      "sha256": "20421561991cd2284107b6a50832b75dffcbdbcdba08f67f11f6b71dfe54bf34"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/treesolvers/TreeSolver4.java",
+      "bytes": 713,
+      "sha256": "0d459b397fe68107a4f6b27ddef88affd792da57d0c99a6f04e5ef6e5c24d6bb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/treesolvers/TreeSolver5.java",
+      "bytes": 713,
+      "sha256": "31b32b0d5f7f4cbe2e37e2e2ffd651bb0ef12998c619caae7e18d7be15b23ef6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/treesolvers/TreeSolver6.java",
+      "bytes": 713,
+      "sha256": "6d8bfbb3dd29af12ed6ecc88aaac06d0b199109c28fee66bc392ba81027a5a8b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thebloodmoonrises/treesolvers/TreeType.java",
+      "bytes": 1166,
+      "sha256": "5d3071190056a7a5a85c71f1ded2253012cdf7e2f8e392531e99a9d17c963082"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thecorsaircurse/TheCorsairCurse.java",
+      "bytes": 22467,
+      "sha256": "2476d3e766ec01588f01500471df8f276acef84117b5e1de689d2913f5e85ffa"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thecurseofarrav/MetalDoorSolver.java",
+      "bytes": 17140,
+      "sha256": "a6bf3349a3d7f050228f143a24507d25bc2a9af8a2d4783ac66c5f35afb18715"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thecurseofarrav/TheCurseOfArrav.java",
+      "bytes": 44273,
+      "sha256": "50c0aef7c016adafaeef2147f91bd60b061258a2cad279936c0516a806e91158"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thecurseofarrav/TilePuzzleSolver.java",
+      "bytes": 10179,
+      "sha256": "7dd4e01e44f063aa7eee99e3e33e1565fd2883393aa0e9d9cfc7d7f189c8eb84"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thecurseofarrav/rubblesolvers/RubbleSolver.java",
+      "bytes": 6286,
+      "sha256": "13f6c2006c3795c42e28c2170ee8accfd563237e890242e40fcd148576d4f261"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thecurseofarrav/rubblesolvers/RubbleSolverFour.java",
+      "bytes": 3665,
+      "sha256": "74b5df0f5a60f2eff5da8c400446c368391f6b504fe6015c8b84519f48388bab"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thecurseofarrav/rubblesolvers/RubbleSolverOne.java",
+      "bytes": 2237,
+      "sha256": "423da5d15dd1d5b9914df47be955146424e97a71ee109bc6c112038030ff06e2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thecurseofarrav/rubblesolvers/RubbleSolverThree.java",
+      "bytes": 3617,
+      "sha256": "c765f3dbc171ca58a2df4196ba80a5668873e445fc618ce38b17b9e16b608863"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thecurseofarrav/rubblesolvers/RubbleSolverTwo.java",
+      "bytes": 3220,
+      "sha256": "53f98da94433c342110328d1156bab5218d2b2576a606371e0330d305b6e12f1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thecurseofarrav/rubblesolvers/RubbleType.java",
+      "bytes": 2284,
+      "sha256": "6871a350012b402382ee2b6f2c379c06169109bae12871e35ea6ad6bf83ea9d7"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thedepthsofdespair/TheDepthsOfDespair.java",
+      "bytes": 11548,
+      "sha256": "3a0f2956a1ae2b9e9b48952a077b791a658684141083269128be2226db4b0db9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thedigsite/TheDigSite.java",
+      "bytes": 39054,
+      "sha256": "ce27a6af83bd5eca744b8caab4fa26fe143e51fe94b7d2d42b3f6b15ebbf4e40"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theeyesofglouphrie/PuzzleStep.java",
+      "bytes": 22611,
+      "sha256": "dcbf3ee85394e8e52ee6ccf45d0a71741a0c49df63367edf936977a49938f1c1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theeyesofglouphrie/TheEyesOfGlouphrie.java",
+      "bytes": 17269,
+      "sha256": "71286fce02c9cf87e50698df741c7950b861a272e6a4452c9455a4892529880f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thefeud/TheFeud.java",
+      "bytes": 27663,
+      "sha256": "75390d38a2195804b69887c03dc9175a91732626175f1ab30917134f24a9822b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thefinaldawn/TheFinalDawn.java",
+      "bytes": 82195,
+      "sha256": "120fa0c7d9718aa0a72a58cb9bb9898b38c28c257ed0945fb03bc143c5a230a5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theforsakentower/AltarPuzzle.java",
+      "bytes": 12615,
+      "sha256": "58dcff8ebd188348f8ffd4593ec7aa83b68fceaea88ddc48c3db0cb401a5740e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theforsakentower/JugPuzzle.java",
+      "bytes": 12632,
+      "sha256": "47957c24fd636226f0248f97eecbbffe59fed29592a75b59d6d064a87e41b696"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theforsakentower/PotionPuzzle.java",
+      "bytes": 10285,
+      "sha256": "3c0d0da2b5f33c4db173ee491864ac03655da385654226a67c384ac6219be39e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theforsakentower/PowerPuzzle.java",
+      "bytes": 3695,
+      "sha256": "ff448b6b51f41c22d7a62df35b66423aa265ebb45fb13177e70b83655412f799"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theforsakentower/TheForsakenTower.java",
+      "bytes": 11841,
+      "sha256": "28330cc31cb24c02edbdb6b7557802d9f32b2520ff750ce9ac642b9936a85441"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thefremennikexiles/TheFremennikExiles.java",
+      "bytes": 30099,
+      "sha256": "9dad04eb22f41b8559b29a7588a57e992554dabaa258b7ef425a0a3ec8d9f439"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thefremennikisles/KillTrolls.java",
+      "bytes": 948,
+      "sha256": "f4c6badc26fac34bbbcd1ccdc485fb1ff9b9a9fbe29ad85aaf614e4921657a8d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thefremennikisles/TheFremennikIsles.java",
+      "bytes": 38768,
+      "sha256": "86870eee130eba996b54eb39526a82ee337a3110b7f78ffc8794afe6c27221d6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thefremenniktrials/CombinationPuzzle.java",
+      "bytes": 6606,
+      "sha256": "3f5a09d60ebb2c2adccacb791832e5c0a6a80dcf71abcab4f1e2592a8a61b9cb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thefremenniktrials/TheFremennikTrials.java",
+      "bytes": 75454,
+      "sha256": "4bc71d1691f5aeaa9410c0e557fd745764ad797d6f4993b63d08a379d26e5945"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thegardenofdeath/TheGardenOfDeath.java",
+      "bytes": 17633,
+      "sha256": "0ea17d04004012f7151a84cee683684a7aae83185918b382fee5b84f13e9715d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thegiantdwarf/TheGiantDwarf.java",
+      "bytes": 33089,
+      "sha256": "ce8e20d9cc26135888ab2ff169adf91f9066185fe35db011900da29a4d85d8cf"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thegolem/TheGolem.java",
+      "bytes": 21799,
+      "sha256": "d4bafac0eb84eac0e31ba41ea94225de56ba842eef68f69d1e55cf87c228d078"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thegrandtree/TheGrandTree.java",
+      "bytes": 25613,
+      "sha256": "f079f765b16e3afaf2b55414378d038d8e05ffa34844fb082569f4a48771dfd9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thegreatbrainrobbery/TheGreatBrainRobbery.java",
+      "bytes": 37335,
+      "sha256": "4d85f407b2425f95702c80b796e56df719faca8f52d0d581c3442ad90d167416"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thehandinthesand/TheHandInTheSand.java",
+      "bytes": 17336,
+      "sha256": "1d3a6259834f149110451885f403c49c140ebafad4c2d718fe87d53dc1cc8ac4"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theheartofdarkness/ChestCodeStep.java",
+      "bytes": 6542,
+      "sha256": "5319fd8a809e0bd41170230da09986bc02b7c300e741ef9714fe6f3aa91a0517"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theheartofdarkness/LockedChestPuzzle.java",
+      "bytes": 6635,
+      "sha256": "63a244e432aae2a0b70d7e1341206d09d6748c9d06f0185377c6964b831016f8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theheartofdarkness/StatueDetails.java",
+      "bytes": 2084,
+      "sha256": "400f29f1cf127e3eed7c1234bbc2e087f3fa0d6fb56ee9e11df53c029b926947"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theheartofdarkness/TheHeartOfDarkness.java",
+      "bytes": 72089,
+      "sha256": "b39042e1c3f3bd6476036a1710395eab8beeaac2c0d4fa9eeda8fb741aae3120"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theidesofmilk/TheIdesOfMilk.java",
+      "bytes": 10867,
+      "sha256": "f0a6e22efda31acb043454f07d506f3042b0306308a5d4e07f776e55b2e0bf5a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theknightssword/TheKnightsSword.java",
+      "bytes": 11438,
+      "sha256": "d593c2b26d18006e02e029050a3430fb45e1c7eda882a036ae65dff7b3325de9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thelosttribe/TheLostTribe.java",
+      "bytes": 21128,
+      "sha256": "afa9f956ae9034cfec3877a7ad412f4a8165c76a4cb5c504dca376821ddc9b37"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thepathofglouphrie/DiscInsertionStep.java",
+      "bytes": 2125,
+      "sha256": "9bd5ffb698531a48dff7be75004230677386331772a39be555f08bdb31dd66de"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thepathofglouphrie/MonolithPuzzle.java",
+      "bytes": 14387,
+      "sha256": "53ef2bf2aad04b88b0dc4167d154916d5a4fb631041f55779e661057693ce25f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thepathofglouphrie/Solution.java",
+      "bytes": 9299,
+      "sha256": "363c4675291628d9348ce5c226525e829f2f615271e8c063426bbc7eb375bc6d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thepathofglouphrie/ThePathOfGlouphrie.java",
+      "bytes": 16143,
+      "sha256": "921eb9c05d7fec33970db824a2fe45608d3ef462f54aeae9ce73eb0d8a8d920f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thepathofglouphrie/YewnocksPuzzle.java",
+      "bytes": 65618,
+      "sha256": "760b34780fbd41d92f5ecd06609081ff4d08060b5b6b94618ef6dd4455a45fe6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thepathofglouphrie/sections/FindLongramble.java",
+      "bytes": 4288,
+      "sha256": "5182a5e5552b6c8521ff12de181e230acd5ac7e1c194f1e0437e7867b2e24aa5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thepathofglouphrie/sections/InformKingBolren.java",
+      "bytes": 5338,
+      "sha256": "ff36bb1d01c0f3b385a92a83488600c7e8cfc25b876ededa2ec9f67671dc45c4"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thepathofglouphrie/sections/StartingOff.java",
+      "bytes": 4634,
+      "sha256": "4016acde8293601519f4ba39d845df400a53221a290c48ff059ac34297c2ba33"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thepathofglouphrie/sections/TheWarpedDepths.java",
+      "bytes": 7268,
+      "sha256": "bb17fcac67c275ad15bf934e9be9f61ce105ebe7a805b8466720bcb9151f32e2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thepathofglouphrie/sections/UnveilEvil.java",
+      "bytes": 6723,
+      "sha256": "db55de44ea3909ce7956908e897dcac2bdf96d1af3e13cb94d4332037a250fa4"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thequeenofthieves/TheQueenOfThieves.java",
+      "bytes": 11016,
+      "sha256": "e704cebced860cfbea738864bf569f976a75f2d206187fa879e0014bbd6c4616"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theredreef/TheRedReef.java",
+      "bytes": 22435,
+      "sha256": "bde44ebf1c11cb0a85c4f437ca12e0c92d4ce98a30697c3f7137e553dc4b7f18"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/therestlessghost/TheRestlessGhost.java",
+      "bytes": 9018,
+      "sha256": "7a998666b66543972a2c9be05343551fac8edd9be4c0b78b4c4bc3ec5313ff7c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theribbitingtaleofalilypadlabourdispute/TheRibbitingTaleOfALilyPadLabourDispute.java",
+      "bytes": 9322,
+      "sha256": "58aba4f3438548dcc54feced70538eae3f11d474b3d1d1b6b96e124cef579646"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theslugmenace/PuzzleStep.java",
+      "bytes": 7950,
+      "sha256": "06f60ad211931bbac6b1efe31f71686266c78bd2541c73ad1bda0a3bfd215fe3"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/theslugmenace/TheSlugMenace.java",
+      "bytes": 24711,
+      "sha256": "a89df88f9b7bc15970b9cd6ac4401d92b4369e794edc8c843ee625bb8948f398"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/thetouristtrap/TheTouristTrap.java",
+      "bytes": 28209,
+      "sha256": "3d6e3e1bc3b54e88a64eb02fac23bf3a0bfd47a307525b655716300747a71f60"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/throneofmiscellania/ThroneOfMiscellania.java",
+      "bytes": 30549,
+      "sha256": "d2c58c976bc7f3ad950650ba434e8bab1036139804abdbd5ab2f9a2cba1bc81c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/toweroflife/PuzzleSolver.java",
+      "bytes": 16454,
+      "sha256": "f69bc82d3e9d467d28605af86f33aa3ede243984b30d2e81a58ecc4722ce1a1c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/toweroflife/TowerOfLife.java",
+      "bytes": 25765,
+      "sha256": "1d03c35d34627c97fff21a04d298e90b4b7b543e228da4feac6ef2f0e0c9b9a1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/treegnomevillage/TreeGnomeVillage.java",
+      "bytes": 16010,
+      "sha256": "9efcf2695aed8978682bbfde93ddf85986c6cbebd6d26690d095e177c39a9d0d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/tribaltotem/PuzzleStep.java",
+      "bytes": 6374,
+      "sha256": "b01bceba2db995807f2db74948ab173f17fad9ae6d08eb116c0e93cb28535abb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/tribaltotem/TribalTotem.java",
+      "bytes": 9803,
+      "sha256": "f81416ebcf28d882f14597a7e181bd4a209e981342635252b6ec144da22b4c03"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/trollromance/TrollRomance.java",
+      "bytes": 15949,
+      "sha256": "a747730591ec066cad3172c7afc554d7cd558dbd842ba82779282e3a51003e66"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/trollstronghold/TrollStronghold.java",
+      "bytes": 17236,
+      "sha256": "21b6bbaed75e138995cf568847a8a11b62d8be64a4cbc94c30d0131a02f5a096"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/troubledtortugans/RepairTown.java",
+      "bytes": 11285,
+      "sha256": "8de75816900807c3157416d12f4e1c534aeb6a565d2f4c74e41103052c975d63"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/troubledtortugans/TroubledTortugans.java",
+      "bytes": 18874,
+      "sha256": "7e1d1a0fdd33f818af1ed6631b4af456e2d8b96353704781e2527efc9050c965"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/twilightspromise/TwilightsPromise.java",
+      "bytes": 20336,
+      "sha256": "1d00fa82730866635d02e97e95fe761ba08a9ef92dd6a24a20334d60731a1fdb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/undergroundpass/UndergroundPass.java",
+      "bytes": 51792,
+      "sha256": "e9dee746cfe4e989e0455c7c242fddac95939fe47f44e9571d9f3f6eb6d19e93"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/vampyreslayer/VampyreSlayer.java",
+      "bytes": 10301,
+      "sha256": "a0154a7999f18e379d4d15c0de3fdf6e78820896800fd7907146c235c7d570ba"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/wanted/Wanted.java",
+      "bytes": 36308,
+      "sha256": "5629c22914add52f0a3288c16e18f714b0beac44ec579bcfe37956aadb7155bf"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/watchtower/SkavidChoice.java",
+      "bytes": 2684,
+      "sha256": "ffe839912494b7ec0fd31cf8e57229e58814d48c3054c8ff0f5b77dbc748810f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/watchtower/Watchtower.java",
+      "bytes": 44351,
+      "sha256": "dd5c5f29c2c114f9b717255bbcc9b0458f14ad8fa80e0d5de2c6c76d405db03d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/waterfallquest/WaterfallQuest.java",
+      "bytes": 19197,
+      "sha256": "a3d3c94bae80f618b75ecafbb8e8a158abd9dd692526c01c5818cc3440aed18a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/whatliesbelow/WhatLiesBelow.java",
+      "bytes": 12410,
+      "sha256": "a02727e7642ef87ae5c640543310bbb3051d808d6b7837b32866c97708c47e43"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/whileguthixsleeps/DolmenType.java",
+      "bytes": 4707,
+      "sha256": "b48edd6afc862b9e81360e3114684baa8935e01fe810d32c53df053e8e63aaf6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/whileguthixsleeps/HerblorePuzzle.java",
+      "bytes": 5795,
+      "sha256": "d78c3f4cb9a5adcbd6386d8f3cf807549d4bec9029bc0d11bd7dacf112a25958"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/whileguthixsleeps/StatueLocation.java",
+      "bytes": 4509,
+      "sha256": "cfbcae839de43ae9c1afa3f1627115e711a896a906c1473938ec23ffcef44ace"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/whileguthixsleeps/WeightStep.java",
+      "bytes": 8528,
+      "sha256": "baa542d6829b5ea7850d8893be9afc9bb7687b61f2b5f59767f599448900e2e5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/whileguthixsleeps/WhileGuthixSleeps.java",
+      "bytes": 117281,
+      "sha256": "b09911be433e2c204aa902a80d40f445c843f6513b23dc4fe8119add9a66785e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/witchshouse/WitchsHouse.java",
+      "bytes": 14667,
+      "sha256": "1bbe3bf5bc1ea9fa31b61a557a1ea985c45a7a83efdcd8e2636871d00a3c84fa"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/witchspotion/WitchsPotion.java",
+      "bytes": 4962,
+      "sha256": "a2ad8d32ad1a4ecdfb53a34c7ae8f39bd1403baa37a9a493fed0736539268a30"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/xmarksthespot/XMarksTheSpot.java",
+      "bytes": 7107,
+      "sha256": "202717636b34b306b0a46ca0883ad8d708c527f9ad46e43f90c786d579e4bd80"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/quests/zogreflesheaters/ZogreFleshEaters.java",
+      "bytes": 24429,
+      "sha256": "631fe62d94df80559470335c03759416752194877899efb43973173b8e3628b2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/skills/agility/Agility.java",
+      "bytes": 7748,
+      "sha256": "dcbffab154c01e5cdd79bb671e425f78ade184e28de1b01c9a8e097f56d9371b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/skills/agility/AgilityCourse.java",
+      "bytes": 2215,
+      "sha256": "4c4c11e4e764a6344786cc7ee5b5a823109f6772f751d9362aaf841c520e7f91"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/skills/agility/AlKharid.java",
+      "bytes": 6426,
+      "sha256": "816f80cf91dab40ef75048513aa5c2c86ff53b4cd8c6a89a9dd850be0626bf50"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/skills/agility/Ardougne.java",
+      "bytes": 6303,
+      "sha256": "4374cc74d42c9129930d86bfe949cfdddbbeb0814e66c8c6f77e20a7db77ebdc"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/skills/agility/Canifis.java",
+      "bytes": 6860,
+      "sha256": "e8c273b19f9aa19fa136231a43f7814b1f30076391f4e3041daea5c059697151"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/skills/agility/DraynorVillage.java",
+      "bytes": 6105,
+      "sha256": "c87c2d437679b34161801b0ac4198157eaf2075bf04fe458b05dec1e54cd5187"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/skills/agility/Falador.java",
+      "bytes": 9147,
+      "sha256": "0dccfbb357f61c777e6ed7e0ed406ce4c958ddb8d507a7431125aad3210913eb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/skills/agility/Pollnivneach.java",
+      "bytes": 7389,
+      "sha256": "45af711c50f76a89eb97f8380dc2b2b9d284ed14dc1660b76b1de1fa9d829bfd"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/skills/agility/Rellekka.java",
+      "bytes": 6340,
+      "sha256": "4adb13b7feed5eb6ce9eff360171278bb6ff054c27eb713203aa6236ad62e1f4"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/skills/agility/SeersVillage.java",
+      "bytes": 5964,
+      "sha256": "76737f4bb5a77480ac06e2a74e7912a44a0a96277fdd7f5b27bc03b2533d1e06"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/skills/agility/Varrock.java",
+      "bytes": 6957,
+      "sha256": "464bfdbbc71a23b0f471ee8cafd4da1ac869dbb23916a4b48b41ef16f3e7cae8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/skills/mining/Mining.java",
+      "bytes": 8064,
+      "sha256": "f23e298f8489fe338e7dac85388e60256d2b3650ff6490684533470b0711bdf5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/skills/woodcutting/Woodcutting.java",
+      "bytes": 6443,
+      "sha256": "423f6ad231da34aaab41abfba2c9053f69374990b20ea1b44cb88d419f4deb06"
+    },
+    {
+      "name": "src/main/java/com/questhelper/helpers/skills/woodcutting/WoodcuttingMember.java",
+      "bytes": 7665,
+      "sha256": "6b2437be128411c60bc6bc37d4ce5ed03f023ced2d9a9905ad6f7f81d9d749b1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/managers/ItemAndLastUpdated.java",
+      "bytes": 3819,
+      "sha256": "6413254fca86a965716f7c607561789c4b3572b809bd16eac1eac4b0624139c1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/managers/NewVersionManager.java",
+      "bytes": 2804,
+      "sha256": "dd62ab6a4a811b0171da399457bf4b72da62008d9cfe247df27f231489bccd36"
+    },
+    {
+      "name": "src/main/java/com/questhelper/managers/QuestBankManager.java",
+      "bytes": 4450,
+      "sha256": "688396f30241b1a2032928f4e8f280a0ebae336b7682f7a484d410817268af3c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/managers/QuestContainerManager.java",
+      "bytes": 6232,
+      "sha256": "4bead367b79fec8bdb65cb9c531e909d140f1325f72839d6622de6dae207ddc0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/managers/QuestManager.java",
+      "bytes": 14578,
+      "sha256": "4aa63d0e84c2173a69f927f14f43f033caf11e1ba704becca05a4cca3caeae42"
+    },
+    {
+      "name": "src/main/java/com/questhelper/managers/QuestMenuHandler.java",
+      "bytes": 12129,
+      "sha256": "a7a78786ef84ea753307b2c486e8d1d27b70e635fc7f9b6d52acf435f3f3543d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/managers/QuestOverlayManager.java",
+      "bytes": 3308,
+      "sha256": "dc197356349ac085d26d1287845eab24f07cd361e212742128f25d9f9dd83749"
+    },
+    {
+      "name": "src/main/java/com/questhelper/overlays/QuestHelperDebugOverlay.java",
+      "bytes": 2941,
+      "sha256": "c24d106b8fba922fc77b7dc406eeec70057666022331837ad74a72b913efe84d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/overlays/QuestHelperMinimapOverlay.java",
+      "bytes": 1083,
+      "sha256": "1121e51320de27437c0cd0afd1697a461bc381440656a989001dc6e3ed7a1ac9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/overlays/QuestHelperOverlay.java",
+      "bytes": 3026,
+      "sha256": "36406b4340868cc932925021f365408be424a3fd1b5f1f6aee465c45ca214c24"
+    },
+    {
+      "name": "src/main/java/com/questhelper/overlays/QuestHelperTooltipOverlay.java",
+      "bytes": 2702,
+      "sha256": "59457abb3bc65ee1cf65a3c915dde15e935284b3f1037fa7d7d7a6140083a78f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/overlays/QuestHelperWidgetOverlay.java",
+      "bytes": 2597,
+      "sha256": "d5ec026e97efa58152d89a816b41e4f0dc9c36452a6e0bc3b4954b90f89bfca9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/overlays/QuestHelperWorldArrowOverlay.java",
+      "bytes": 2383,
+      "sha256": "cdc36bdd6a4259146bebab1f5df3f6cc7192882d8f85e14de0e1e33713e3cdf3"
+    },
+    {
+      "name": "src/main/java/com/questhelper/overlays/QuestHelperWorldLineOverlay.java",
+      "bytes": 2449,
+      "sha256": "86b39c39405a04ce0b44baba2b9d388c69547257d4fb995ecc1d618f5500f385"
+    },
+    {
+      "name": "src/main/java/com/questhelper/overlays/QuestHelperWorldOverlay.java",
+      "bytes": 3188,
+      "sha256": "e244138b8523510865114830ddb1c2e9d24f96eb00ddc32a0bdaef18852a6bd7"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/AssistLevelPanel.java",
+      "bytes": 8687,
+      "sha256": "02c320835131aaa8eecacf2b5e5539a8e207940c9e234157ec9cc11916525f49"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/DropdownRenderer.java",
+      "bytes": 2168,
+      "sha256": "5fae48cfcba19e40f69e1597143dc3560934ac05b0d9c126047d05c02d64a7c3"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/DynamicPaddedGridLayout.java",
+      "bytes": 6515,
+      "sha256": "1b4b545e11ef0076f0c0e85ec2309f30cc20ebb747bca2ea286fd078585eb091"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/FixedWidthPanel.java",
+      "bytes": 1683,
+      "sha256": "49756dc296a9fe32d7bb7711a68336fb3e8b5ae6ad0baaa6405f533d8ecbcd2a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/JGenerator.java",
+      "bytes": 3361,
+      "sha256": "7ea310333167db0d42ba30b38ace6a3712f06a70e02b4f858b9ec14266a003b8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/ManualStepSkipStore.java",
+      "bytes": 2949,
+      "sha256": "a5a0fb6dbb5a52a972e58fa8667ddb9f33883ba2e33eba95237a8e6544abce2e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/PanelDetails.java",
+      "bytes": 4528,
+      "sha256": "bddb375bc34acd6037a55a0b9d7db333f2fa1cd0d54d2248effc20fc2583786b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/QuestHelperPanel.java",
+      "bytes": 30657,
+      "sha256": "9de24bb4b8f8e8ef58fa2cbebac7bf48261cbacc794cdfd7f569234d9ef141f3"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/QuestOverviewPanel.java",
+      "bytes": 22545,
+      "sha256": "51a1cf7fcce087c5daedbf0b3e451d9e436d2a29e54adada698f1720073e8179"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/QuestRequirementsPanel.java",
+      "bytes": 10421,
+      "sha256": "09e1b948c71550eacd7c9b3ca86835ce3e013c112291cc73adccb81ee3354a21"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/QuestRewardsPanel.java",
+      "bytes": 3481,
+      "sha256": "1d571418ab1b16fd094c699f7fd346c23c8a02e4b0f8ecb1e698742596fc594a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/QuestSelectPanel.java",
+      "bytes": 3296,
+      "sha256": "2b90c8699ab5d286b39b713feb9275fc36332435719bf6e16e02e8c46441fd87"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/TopLevelPanelDetails.java",
+      "bytes": 2259,
+      "sha256": "7917c17d272947f75585af8efbc2bfeaa9c12b40200629c0b910db38290fae87"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/questorders/IronmanOptimalQuestGuide.java",
+      "bytes": 11870,
+      "sha256": "f7c2d8f051c36307600413dd3c2118fdc733b96b0939acf311072037daacb77d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/questorders/OptimalQuestGuide.java",
+      "bytes": 11919,
+      "sha256": "4094cca609600b5f5f1046cd7bd09ab0543755f8f1d0e497bfa330b0950c5dcd"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/questorders/QuestOrders.java",
+      "bytes": 3123,
+      "sha256": "b7f5ea27eeca88592650c5341c127f11f76b29d68f67dca5ed2c47a055006e23"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/questorders/ReleaseDate.java",
+      "bytes": 9972,
+      "sha256": "2ce79b18444eb43ed306091447c1958f0bbde3a1d6348f0c03f75993ec9508fa"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/queststepsection/AbstractQuestSection.java",
+      "bytes": 2869,
+      "sha256": "7d24db34495bc1cf8b1715b02d19563a29d7a8397093a203b63c8dda4015c8e9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/queststepsection/QuestSectionSection.java",
+      "bytes": 15173,
+      "sha256": "a26fae8299a4259ac47b7d8d401479fc6d187c6edf033b7a248de9211a69055a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/queststepsection/QuestStepPanel.java",
+      "bytes": 19286,
+      "sha256": "8207598701386634e9b33de2cbccccb714715a203d39f05f53fed21f7d23d0f0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/regionfiltering/RegionFilterPanel.java",
+      "bytes": 5622,
+      "sha256": "90e5641a5fed9812c4caf5ec327b87824ab1a102d0e232d79673679c5a6fcf02"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/skillfiltering/SkillFilterPanel.java",
+      "bytes": 2730,
+      "sha256": "4d0efd22da840c9e9f18e0364f590a4b7a9d0991b82101fdeb93baf4a6d71125"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/skillfiltering/SkillIconButton.java",
+      "bytes": 3885,
+      "sha256": "b11ee5d92f3f9e825e7cc58ba286c62291178cc9b90869247a160803b7b56f8b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/panel/skillfiltering/SkillTabGroup.java",
+      "bytes": 2164,
+      "sha256": "f60b7530a4cb250e6194a53bf3342ef66368e35398465041aadd37ede0ba2754"
+    },
+    {
+      "name": "src/main/java/com/questhelper/playerquests/bikeshedder/BikeShedder.java",
+      "bytes": 20936,
+      "sha256": "029a42aa2896d9fa9ee61ec65af40370800d6cdb63e9f29d07113ac4fa30356a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/questhelpers/BasicQuestHelper.java",
+      "bytes": 3346,
+      "sha256": "0d6104186bed7471b6aa2cf69d86bb2407108bd8878d6dd5ff19a49c45087c82"
+    },
+    {
+      "name": "src/main/java/com/questhelper/questhelpers/ComplexStateQuestHelper.java",
+      "bytes": 2364,
+      "sha256": "11fec7ae77eb079b1dbc1254ab8a05e03137ac8f861060d49c51f2ac776f75b4"
+    },
+    {
+      "name": "src/main/java/com/questhelper/questhelpers/PlayerMadeQuestHelper.java",
+      "bytes": 2344,
+      "sha256": "fd94ef6378fcd8f71d5c4d1016d11e1519b17476a6947dd8b75c719706843f54"
+    },
+    {
+      "name": "src/main/java/com/questhelper/questhelpers/QuestDebugRenderer.java",
+      "bytes": 2212,
+      "sha256": "c350584986492532cefcd138c4fd7aba1033fabd52e612e8e13f4771b08629d0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/questhelpers/QuestDetails.java",
+      "bytes": 2647,
+      "sha256": "4a903195bcba42cf5d266f809fc4a497b5ea6b094bcd61d30b5bb73259a3d5ca"
+    },
+    {
+      "name": "src/main/java/com/questhelper/questhelpers/QuestHelper.java",
+      "bytes": 11337,
+      "sha256": "ae95326bc1db2f0a7505292933a812641a14f94f62c44acea5daf1790ea7db3c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/questhelpers/QuestUtil.java",
+      "bytes": 1925,
+      "sha256": "877fb58e682763fe895fd9cb8931db2f82644f19652de05e2a9d30352f9aa61c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/questinfo/ExternalQuestResources.java",
+      "bytes": 21094,
+      "sha256": "89d4c178a5ba505b77b89baba019cbfc7269c728ff4217bc6914b75239822d17"
+    },
+    {
+      "name": "src/main/java/com/questhelper/questinfo/HelperConfig.java",
+      "bytes": 515,
+      "sha256": "2c0f8eaf10537a633a5992b7a81c888e4e37d6e6a33853b459e98ad897e5b823"
+    },
+    {
+      "name": "src/main/java/com/questhelper/questinfo/LeagueQuestRegions.java",
+      "bytes": 11098,
+      "sha256": "e5b62b284911ef48b73b806f48743182ce253204023e4afe6277b2b3232131db"
+    },
+    {
+      "name": "src/main/java/com/questhelper/questinfo/LeagueRegion.java",
+      "bytes": 2471,
+      "sha256": "1f73d57c756d30d0a1278833d2ed47b5494a94fa082e6b405a26a06fd010ebe5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/questinfo/PlayerQuests.java",
+      "bytes": 1602,
+      "sha256": "5cd0abc79bc8132ecd9495bb6b4bdf66a9ab43da570f578392feb34e7057d8f6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/questinfo/QuestHelperQuest.java",
+      "bytes": 75270,
+      "sha256": "e2201bd961c766996c9b526aa8bc4ebaec4d9c09da0ce6e639cd375eb75f73c7"
+    },
+    {
+      "name": "src/main/java/com/questhelper/questinfo/QuestVarPlayer.java",
+      "bytes": 3124,
+      "sha256": "4ebb865754855d9f3021a4ea9a18ec1895f1eafcce20b45d1fd7361a6271fcac"
+    },
+    {
+      "name": "src/main/java/com/questhelper/questinfo/QuestVarbits.java",
+      "bytes": 10835,
+      "sha256": "a7045ee085e35313e3d4982aaa3784e6f1340a906ad577036fe239c23d68a032"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/AbstractRequirement.java",
+      "bytes": 3556,
+      "sha256": "83884a9c42a768fd21bc363dfcb656908d7230e561f8bf56e62ca68f77881b9d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/ChatMessageRequirement.java",
+      "bytes": 3233,
+      "sha256": "d4011f04754709e7d1b3e558d5115abc7bb0aad74819f7578309a93f7a45d99d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/ComplexRequirement.java",
+      "bytes": 3367,
+      "sha256": "c1af9032a612f95858e3b48508329b2b2c20b7967f35b34781016ae150b82e30"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/ConfigRequirement.java",
+      "bytes": 1863,
+      "sha256": "9981dada6b35f92972c1730dfa5e0bcdb18a29278d19c742af33d3c0b1007f42"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/ManualRequirement.java",
+      "bytes": 1655,
+      "sha256": "1e7746572d1c5ba769e0d11dfd6526f528adc5726174f89e0e94ad5ab15ef90f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/MesBoxRequirement.java",
+      "bytes": 2456,
+      "sha256": "e857a0ed9fdc0bda7ec637156b46924da542d28d94b4cfa658426a90a7361bc2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/MultiChatMessageRequirement.java",
+      "bytes": 3219,
+      "sha256": "1bc767bffb13ce9cd757b171410b7ce9ca2cc0873e3f27e633370b3a6e6576cd"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/Requirement.java",
+      "bytes": 5071,
+      "sha256": "405ffdadf149e4a027a2ae0c08ee73f49f67d6ade3f335dab0f58b83070a9e86"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/RequirementValidator.java",
+      "bytes": 7141,
+      "sha256": "64c43dcc1de5116f423128ab3a6c5706e9d0b5f648ccc1adb8aac9e81f8a14bf"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/SimpleRequirement.java",
+      "bytes": 1946,
+      "sha256": "d097bb26596d77dad6c8c98dc62c34553ca839edfcd38377c6947ea0701414c2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/StepIsActiveRequirement.java",
+      "bytes": 1963,
+      "sha256": "02482655ab124a7717494f9c532e94206433509ed6969f11d12ae1c7f4dda8e8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/conditional/ConditionForStep.java",
+      "bytes": 2563,
+      "sha256": "d6f539d9bb08eaed274e100c58548cd7cbd94280d12142ab13b232cc1d465a4c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/conditional/Conditions.java",
+      "bytes": 5394,
+      "sha256": "3713ade1b500be112df238e2ac927a9d4208c60aa5c25acbfcd098bfd9fa152a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/conditional/InitializableRequirement.java",
+      "bytes": 2472,
+      "sha256": "50d1e324b68f206d14b9563fabdac63727fafef4a7647f2c274f26e19dc6adf1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/conditional/NpcCondition.java",
+      "bytes": 3808,
+      "sha256": "fb56589a94d5e8e32ee79ce195b7003d8243eefdb0ee366746c48360b818fcbd"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/conditional/ObjectCondition.java",
+      "bytes": 4269,
+      "sha256": "cb593c009d6f18d72eb02381540216c71d2242a65c47ceaefea3e767856b87c2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/item/ContainerStateForRequirement.java",
+      "bytes": 1755,
+      "sha256": "9e978ac9f24e833dccf7f146c8ffe360d235f3bf59e33901a9254332621b3260"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/item/FollowerItemRequirement.java",
+      "bytes": 2913,
+      "sha256": "bffe1fe4f8b64fa0aca5561d60f6cc320a16a977b3e8c8383295fdb3947f8519"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/item/ItemOnTileConsideringSceneLoadRequirement.java",
+      "bytes": 4301,
+      "sha256": "e5224a72a56f6c445e671fda540107870e577897da2f4408ca4b89fe4e27f370"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/item/ItemOnTileRequirement.java",
+      "bytes": 4366,
+      "sha256": "c9550969ab48be11a3ef34ef339f1ac67b49bdae34e87310c8c69720a0424b50"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/item/ItemRequirement.java",
+      "bytes": 34546,
+      "sha256": "d8fce920fa6d31cc4cd634b3e462c53c86ea08ac17996d989965c828c93ed585"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/item/ItemRequirements.java",
+      "bytes": 15569,
+      "sha256": "544950259a52c4ae2724b7f6db7ce3f458a0a98ff367a385c7fa137b74e7cde0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/item/KeyringRequirement.java",
+      "bytes": 2060,
+      "sha256": "e61f8a09192f307dacc502b23cefb5b270816ef0f905015f15e4f89190110c2a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/item/NoItemRequirement.java",
+      "bytes": 3118,
+      "sha256": "b931dfae6a528fcec8c01c3c5bb56e6802ca6a133c7fb92658cca387eb390591"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/item/TeleportItemRequirement.java",
+      "bytes": 2567,
+      "sha256": "4fd06893d86f6c526d0d9cf55f1f54d1da67ea4d0ceae84fca9c64bca27af6d9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/item/TrackedContainers.java",
+      "bytes": 1591,
+      "sha256": "fe6bc1cfd72c58d7cdc525a97c3283f39d1cc3f5da1753e435555a1e1bf3d73b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/location/TileIsLoadedRequirement.java",
+      "bytes": 2901,
+      "sha256": "16c06ff9e9f20d20b87e1ac06af07b553ec761c3f7b2e2a9f199fa3f6940912a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/npc/DialogRequirement.java",
+      "bytes": 3848,
+      "sha256": "e9974e4d468490ead2d093164dadb340e34e0ada2e2c28bc0b72a5c2bc35acf0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/npc/FollowerRequirement.java",
+      "bytes": 2702,
+      "sha256": "75028afb1c7fd8c80fa2d5ed466ddecc19aed3ecb20e5a68d128b8832e19b4a5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/npc/NoFollowerRequirement.java",
+      "bytes": 2020,
+      "sha256": "7358f5d76ffc5df31c5189d1991e4ce81864f945eb59806942f39cb0f3b1c5f2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/npc/NpcHintArrowRequirement.java",
+      "bytes": 2817,
+      "sha256": "c7c6361d432f629a4f8dc6b6be13e4cdb3e8a7eba81e777d28b9ccf938de89d0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/npc/NpcInteractingRequirement.java",
+      "bytes": 2192,
+      "sha256": "7b43f39f326bb17c6aab9f6719c5339d2d23e24af93a91f469dd46c38547125e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/npc/NpcInteractingWithNpcRequirement.java",
+      "bytes": 2210,
+      "sha256": "9404b238fea2e7178639744bc8e965c1ecee02aebe19eb4ac9df26f5ab6a1ded"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/npc/NpcRequirement.java",
+      "bytes": 5256,
+      "sha256": "3740f96fd32e6a87564bd1ee2b116a5509c7aa625b4e91c378ea10c89a64b028"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/player/Boosts.java",
+      "bytes": 2679,
+      "sha256": "7bd5b9ede3c42c7a0c1fed55295f1fc6b8a6a3ab6c24531e8e14fc341bfbcf9a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/player/CombatLevelRequirement.java",
+      "bytes": 2872,
+      "sha256": "7752fb59cd5e4a5f9805e5f1c386c5c6ca14223c4c00cf4cbaf4f99327b23cb9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/player/FreeInventorySlotRequirement.java",
+      "bytes": 2935,
+      "sha256": "3ee15e517771e0417c4636f0cbd1730abcd5fa4b838ce8124a6422ab8fd6bf85"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/player/FreePortTaskSlotsRequirement.java",
+      "bytes": 3062,
+      "sha256": "5660a2e0933977985573fd0a2c4aaa537e598be3b0713186cf6cc4529427f47c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/player/InInstanceRequirement.java",
+      "bytes": 1759,
+      "sha256": "774ee5b95363480270e5555cfc69860f8151bbe7e35431b7f6ad3a606e627ad5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/player/IronmanRequirement.java",
+      "bytes": 2151,
+      "sha256": "4d5d6181b634051d2e0a2c86f4883157c8e83a6e8425b2826e6c8eb236738259"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/player/PrayerPointRequirement.java",
+      "bytes": 577,
+      "sha256": "2a0b75e7969c9daa65dfa01bc9e9f16c20ac6ee1b3adfd89bc9956e6ce4fb331"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/player/PrayerRequirement.java",
+      "bytes": 2366,
+      "sha256": "87bb37399ce6d4c64b9708a19085136c5d796f43e4d1a96c9266261b69ad24cb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/player/ShipInPortRequirement.java",
+      "bytes": 3601,
+      "sha256": "5690aa5f121538d53effcf8828e295862db2c9361687d6b418ea7557e9f0e7d2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/player/SkillRequirement.java",
+      "bytes": 6130,
+      "sha256": "f53c6f294ec8cdedc0b494bce4d96dca611adf806184226e4221711a86e74bd0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/player/SpecialAttackRequirement.java",
+      "bytes": 2285,
+      "sha256": "7d590fab4584815ae6e7c4453371c7da26adc8e3dcca46b889679fa0ad29ec10"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/player/SpellbookRequirement.java",
+      "bytes": 2187,
+      "sha256": "424a29ee6ba0fbeee64a34c9e258b1611bae005bd356b19f8d28cf9264052e74"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/player/WarriorsGuildAccessRequirement.java",
+      "bytes": 2137,
+      "sha256": "698db08969b039639d7f337e156f3bf6a67075d75097cbb6510a6244caa6884c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/player/WeightRequirement.java",
+      "bytes": 2703,
+      "sha256": "a376303846fc8bd06b51b2511d5cfcc435968289eef1a8986aacd66ac6e5ffda"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/quest/QuestPointRequirement.java",
+      "bytes": 2987,
+      "sha256": "0b2f61c70805dc93fd77b21ab9b27c5293d85b91291a3cdbf33eb5a787fa6555"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/quest/QuestRequirement.java",
+      "bytes": 4518,
+      "sha256": "355d1ea94a21e98c6d49f9ed89e1be8efda3b5302f98a5e29803b0eabdefbd1c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/runelite/PlayerQuestStateRequirement.java",
+      "bytes": 3293,
+      "sha256": "f60d0cfe1128f4301e987fdd76f284c56922869008010627a98ff96f80117fa8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/runelite/RuneliteRequirement.java",
+      "bytes": 6137,
+      "sha256": "162059aa9b7e97b2db6a1543cca8705be543261b7198b619e24aac4f714b092a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/sailing/BoatResistanceType.java",
+      "bytes": 8039,
+      "sha256": "c9b66f19f9276ba2985cca4c9c9a1c0141dcbb29c620f06e151cc118f37c4d84"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/sailing/HasBoatResistanceRequirement.java",
+      "bytes": 3522,
+      "sha256": "b6325aa396cee5d9bcb5adc7e87fc66345c12a75673e2fcd5b39068052bff290"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/util/ComplexRequirementBuilder.java",
+      "bytes": 5234,
+      "sha256": "0db40946f8bcab43e9f0ee37b5e179e383361bb2da2d49a4ea6d0a5f1c6a537f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/util/InventorySlots.java",
+      "bytes": 3474,
+      "sha256": "2cebf621c7973c62b699a622d23c1019c3517b9777bc314c253b496563969c81"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/util/ItemSlots.java",
+      "bytes": 4545,
+      "sha256": "32f53ed5ebf5c4b183d6df0f21e0da506d6344642dd5f7681245b88ec456d6ac"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/util/LogicHelper.java",
+      "bytes": 2113,
+      "sha256": "6e6a363c0b83cc75bcf0c74ab1cc23187dd45ff009d79352076e21c1c5b327bb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/util/LogicType.java",
+      "bytes": 3115,
+      "sha256": "433094d8c9a34440421f6e078d00fb6839ce1e1c222a63bddc0f0c9eba78454a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/util/Operation.java",
+      "bytes": 2163,
+      "sha256": "981ce2c7bb12f867cc561c89b975e85b9f653e2ea04d6fea69598f826b4b2d05"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/util/Port.java",
+      "bytes": 12817,
+      "sha256": "8c7e0a0dd88a7f205de9cd9a24cb5ac615d2eee5e36196dd5b8b61e58ab5ad04"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/util/RequirementBuilder.java",
+      "bytes": 3665,
+      "sha256": "dd76d50b7cfaabf5be035afc561a39bc13872430a5347444f8f6586be6b9ce82"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/util/SpecialAttack.java",
+      "bytes": 1869,
+      "sha256": "cb93faa47a95759c228ed2895428ef4cdcc3bd06cb1e2b517a243ff7fd3d570e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/util/Spellbook.java",
+      "bytes": 1876,
+      "sha256": "8e33cbbc565b9028ac04a2aa33ba80c6f5a4fba2c4c426c7173b8cc7f9b57794"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/var/VarComparisonRequirement.java",
+      "bytes": 4157,
+      "sha256": "8b502c76e65dba9544e5a20475ecbdd5cc4a76155509deb1d3391d59498a80fd"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/var/VarType.java",
+      "bytes": 1867,
+      "sha256": "63e615729e17ca196543430a1c2d285244d35938a1f343331a4a9c9811e36fbf"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/var/VarbitBuilder.java",
+      "bytes": 2182,
+      "sha256": "68311e2515e705b9e2db64cfa74b6e3bf67914433cf28cdf738c7a333f001340"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/var/VarbitRequirement.java",
+      "bytes": 6137,
+      "sha256": "300b4c351a04da9a4578f6f849717419f05f4ea0c33ed86c95222d8355dcee5c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/var/VarplayerRequirement.java",
+      "bytes": 5472,
+      "sha256": "63c9d08df2656f3dbcb0139a8a433e41f1e9ad97307572ba4f75170741920fa6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/widget/WidgetModelRequirement.java",
+      "bytes": 2209,
+      "sha256": "85b6308de5e0d7ee81433083d4b374f6c39852851cd6ded20e1d42266cea40ad"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/widget/WidgetPresenceRequirement.java",
+      "bytes": 2936,
+      "sha256": "f5eaa41ff6cb290bfaa12c886e48c864a3847113056eeb095a05ba74c0f05650"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/widget/WidgetSpriteRequirement.java",
+      "bytes": 2188,
+      "sha256": "062d6ad99dd84ff340e83d89e5b930ccc0f8c2e4a691017ed5350041af37601a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/widget/WidgetTextRequirement.java",
+      "bytes": 6042,
+      "sha256": "5983aa371c432471fa484b59f5b8de5b0f9d5c8e42e8eef9d3ab7c4e1a0cc4c3"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/zone/PolyZone.java",
+      "bytes": 1455,
+      "sha256": "a2e1e81670db5f0fa28ebb842fb632c5332150797ec9911676ccb2955e6b8fba"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/zone/Zone.java",
+      "bytes": 4289,
+      "sha256": "db4c7d96593723e60beee9c7b4be149d93bad542d6546c9cac50214118cad8c6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/requirements/zone/ZoneRequirement.java",
+      "bytes": 4508,
+      "sha256": "172c2a0a5b5f284a0d6a2f02445c0cca41f5646c72bff91044fea320effd5475"
+    },
+    {
+      "name": "src/main/java/com/questhelper/rewards/ExperienceReward.java",
+      "bytes": 2650,
+      "sha256": "3f8fff3a5bce2c47480d0d218c94a8ff48e7836360977068471a1c57c29dc5a8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/rewards/ItemReward.java",
+      "bytes": 2121,
+      "sha256": "d290a59e13ff4f690d63b676bdbabc9dc66afce0722a90e93d1056e15b5131c2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/rewards/QuestPointReward.java",
+      "bytes": 1940,
+      "sha256": "db9e72a77d1d4a41d70abf26ec31201631d048480e5fd53b9fb91a6461dfdebc"
+    },
+    {
+      "name": "src/main/java/com/questhelper/rewards/Reward.java",
+      "bytes": 1544,
+      "sha256": "5bf1af655edd064da7087372f2f29425876c67466c3ada09a70df88ded1cd069"
+    },
+    {
+      "name": "src/main/java/com/questhelper/rewards/RewardType.java",
+      "bytes": 1478,
+      "sha256": "d9353db0ea9f64541cf40e55e76b2e19122f0863085affcd66f78cf9005f5460"
+    },
+    {
+      "name": "src/main/java/com/questhelper/rewards/UnlockReward.java",
+      "bytes": 1801,
+      "sha256": "000ad505af99953ea99e2683b859c991728d57563b8e44c0c349d1f910b5ed0e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/Cheerer.java",
+      "bytes": 5742,
+      "sha256": "785cde2a6101fd518cbdcf6503a0471ca8b86cba8c26fd755279607733c327d8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/GlobalFakeObjects.java",
+      "bytes": 2737,
+      "sha256": "54de8dac84ac1d3dcfa513c0a9c72fd8aa729c8abf88748a9005fd7b3992cea0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/RuneliteConfigSetter.java",
+      "bytes": 2384,
+      "sha256": "9ab0df73cbf93f8a653f2e2d94fa8b9069decfe2d40620120ccfc6310108ecd2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/dialog/RuneliteDialogStep.java",
+      "bytes": 3030,
+      "sha256": "91f91af4da0f27963a3f55b136df1600c0011018f5c25b0fa522ed2c812858a5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/dialog/RuneliteObjectDialogStep.java",
+      "bytes": 2605,
+      "sha256": "d16e58df8568188df34322ee9e270e7cc3a507c1218db9a48306943d8316db24"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/dialog/RunelitePlayerDialogStep.java",
+      "bytes": 2402,
+      "sha256": "bfc41b7afccf0dc65becb41fc48fd713c2a1bd211a6b1bd7357bf7f87929d848"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/ChatBox.java",
+      "bytes": 8599,
+      "sha256": "116ad99c7822f6281cd5fd533b1e6d668a7c4537dfaa71dd8697b2dd963f7602"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/ExtendedRuneliteObject.java",
+      "bytes": 17885,
+      "sha256": "0b6e73a5bce1217e90e0d85849fabcacf8ea6aa1cc9a948779db66d36bf10b67"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/ExtendedRuneliteObjects.java",
+      "bytes": 2169,
+      "sha256": "99aa794d8b0e5000ebdec5f881b83d915f6af8d49594cb78e8e99eaa829f9bd1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/FaceAnimationIDs.java",
+      "bytes": 1862,
+      "sha256": "86803947a3d25377b4a1cfa1d43d82bbce459b702ecbd089a3c3afad9fd550c5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/FakeGraphicsObject.java",
+      "bytes": 2694,
+      "sha256": "c77063a291d7e1c071b0fbb7ad2278d46f773ef86402cd8d6b35c3b848e7758d"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/FakeItem.java",
+      "bytes": 2794,
+      "sha256": "bb004848958a63c540493ffdadd2e701cdfa34af4ce551b124e59cc50e1d67b5"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/FakeNpc.java",
+      "bytes": 3456,
+      "sha256": "99095aa8ee6418074427f40ede34a435317c7ba70324d98f523f995360567cf0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/FakeObject.java",
+      "bytes": 1894,
+      "sha256": "e118ee1513b22b0cab6f46f1429162fba58a7d7e12b2f7c4199ad939ad91b635"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/MenuEntryWrapper.java",
+      "bytes": 1921,
+      "sha256": "6b7bcb3fa01623158119a8902f0ec757e5c821f40e60592d5013fe787d4954b7"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/NpcChatBox.java",
+      "bytes": 1747,
+      "sha256": "d1803e3ff8f3eecc2ae625873439f8215080d1dedf041bdc653f112fc5f37fd3"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/PlayerChatBox.java",
+      "bytes": 2777,
+      "sha256": "ae97aa1afca9898800f80b40b0c253bb0f78d275e597be4c73f1c284fb7ed572"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/QuestCompletedWidget.java",
+      "bytes": 7997,
+      "sha256": "7e2ddb4630b89566c9dc8cee56b69e0e9121b7838bbaa1606d116d66818aca2c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/ReplacedNpc.java",
+      "bytes": 3551,
+      "sha256": "4da588ea83f968f02b87de5226cd1254f74dd00400db821de5f4dfd12b72eeaf"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/ReplacedObject.java",
+      "bytes": 1678,
+      "sha256": "5250e6049a7494108f88fe7b532afdf45f36a66a10c7fb84a57c12983d4553a8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/RuneliteObjectManager.java",
+      "bytes": 32447,
+      "sha256": "93e3179ac2acdc4ea70e29201ccc5f3470d7c4a9a269efbdc76ed0ffab453e1b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/RuneliteObjectTypes.java",
+      "bytes": 164,
+      "sha256": "e8e4469732bf2f41d0ea4d6b299e00344458a2b26684de8450527f852dd5aa79"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/WidgetReplacement.java",
+      "bytes": 1971,
+      "sha256": "7a998ea5e6beb06f6a5fe13c48ae272bc038cdb0c6ab7dd3fecf6d6b9d94fbf1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/actions/Action.java",
+      "bytes": 2178,
+      "sha256": "191d8deb2f62636e50ab4a17f1f5b32bac79107aee27c9349db98b7acb9ab7cd"
+    },
+    {
+      "name": "src/main/java/com/questhelper/runeliteobjects/extendedruneliteobjects/actions/LoopedAction.java",
+      "bytes": 1930,
+      "sha256": "74cedb96f33b3dee2e521fac3ff613fdcc58965c4c4d84c290aa6ef687844d0e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/statemanagement/AchievementDiaryStepManager.java",
+      "bytes": 3747,
+      "sha256": "997998b2913d6a0779fd7ca41178a3e6a56537a69b08b528a0a2ebf0f12bb6c7"
+    },
+    {
+      "name": "src/main/java/com/questhelper/statemanagement/PlayerStateManager.java",
+      "bytes": 6161,
+      "sha256": "4516a89036ca8af4bf721df05e91a060725d768dcae4e25f5acf3d8968cd0ca1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/BoardShipStep.java",
+      "bytes": 1696,
+      "sha256": "0849d882f947c70a4fe02cc94a8509d6ba76caf3197d694568fb8af3f0f1f618"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/ConditionalStep.java",
+      "bytes": 17825,
+      "sha256": "057922cb9e65997f0232bcf9f63d293656b84f5e304da0828534166c37b4fcb1"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/DetailedOwnerStep.java",
+      "bytes": 5078,
+      "sha256": "f8567ac4ef647359f9bedecb5f454ce08f83c51d843daf93488a5bb7e2a17167"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/DetailedQuestStep.java",
+      "bytes": 26828,
+      "sha256": "2a370907864aaa990a418cb438c48c5a3aed22f26d8ae932218511518134011c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/DigStep.java",
+      "bytes": 4420,
+      "sha256": "ae758cf177e6e42e2b0c470dd34b419b721f5cefcbfdab814f4f4432773284bf"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/EmoteStep.java",
+      "bytes": 4429,
+      "sha256": "442c745c730526d36bce3334e1155e38315ed3788713dbe968995ebd0e97f005"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/ItemStep.java",
+      "bytes": 1287,
+      "sha256": "42b337e845ffb98e9021faf4b93c463a38c2faee1a1f2012789989d78190bc26"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/MultiNpcStep.java",
+      "bytes": 5162,
+      "sha256": "7619a5ebd9d797da646f2ae3ffbf0aa36a2a530e4c58589f4429173aff8f4d27"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/NpcEmoteStep.java",
+      "bytes": 4063,
+      "sha256": "bea63b8fafc1b2aa90be0472c6b06a034486a223661b9059e75282f365b27f56"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/NpcFollowerStep.java",
+      "bytes": 2030,
+      "sha256": "a494c3ad10ac7ddf93782ce752bdd2b2a6742845dcfce5e54104e7b1dcbcdbfe"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/NpcStep.java",
+      "bytes": 13981,
+      "sha256": "ed350c7c63e11c604063055c7113191d4788018b9fab03609f5274f1da171435"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/ObjectStep.java",
+      "bytes": 15253,
+      "sha256": "4202483bca053dadaf57708d593d35d6f1903e0768b42e865183afaed8242f07"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/OwnerStep.java",
+      "bytes": 1518,
+      "sha256": "8df6df291e6ea6e2ceb4678c1348576f19408c0f0c14f513268bd6d5e1f9aab6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/PortTaskStep.java",
+      "bytes": 4830,
+      "sha256": "ba85195a43a767bc291e338ab57bc059ad5bfd8c015caaa83c0e72af385b393f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/PuzzleStep.java",
+      "bytes": 2142,
+      "sha256": "d4cc5abdda9a01a69356f8d07a925ae5076d1df0558413e9fd74b15631a6542b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/PuzzleWrapperStep.java",
+      "bytes": 7865,
+      "sha256": "8f4f5a4e3c1026062764fa75935a2c6d7034042e2a6f69b0bff0c961891d500b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/QuestStep.java",
+      "bytes": 21268,
+      "sha256": "2b0c438a3169ea52d530dc0dbdc32fd693e50a67a6e9a4598be25d26fb790bea"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/QuestSyncStep.java",
+      "bytes": 3762,
+      "sha256": "3cc3647adc5bb450ff512d3310e2a8277de4d8eff8052b5a5277633237c3fb25"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/ReorderableConditionalStep.java",
+      "bytes": 3972,
+      "sha256": "938fe6be8856560d20988c4b8cc001318a3de3481c5e8a3e5a21d642283d5b5c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/SailStep.java",
+      "bytes": 1862,
+      "sha256": "d70ba85cd423b31791fefdc9f21a0103654c1ea5d71a887fec173a49120a5fd7"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/TileStep.java",
+      "bytes": 1109,
+      "sha256": "6df62113671c39324410308e937c85126fd8ea7f257ea8aeea3c0bcc08dab88b"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/UnreachableStep.java",
+      "bytes": 671,
+      "sha256": "93f5d471ccebde917e148af418bc84a503c0885aedacda965b3d1d800f25fdc2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/WidgetStep.java",
+      "bytes": 3701,
+      "sha256": "60e164b67a1eac92c7e11f57272a0f11fa55d563f43f56bc83304fa6017aef12"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/WorldEntityStep.java",
+      "bytes": 5035,
+      "sha256": "7170be7649480821b92cafea6c2b6e70573cbaa037097292fb49f8388767bf39"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/choice/DialogChoiceChange.java",
+      "bytes": 1982,
+      "sha256": "841434693ab5e7651142f21b4a2031222e21ae14df59d82c248295d2551f2edc"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/choice/DialogChoiceStep.java",
+      "bytes": 1176,
+      "sha256": "f3a8a9e6e23ca4feebf23a45fc80592ee1efc494fc12215b9da586e0fe66ace9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/choice/DialogChoiceSteps.java",
+      "bytes": 2644,
+      "sha256": "94534be26a0de753afecdd388b248044ff1fc7b094c37e448b82b47cac1d0ecb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/choice/WidgetChoiceStep.java",
+      "bytes": 7548,
+      "sha256": "104310bc38f54fbfd4443d918f3feec48801df2c5ad105433c72b3079c2d1c74"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/choice/WidgetChoiceSteps.java",
+      "bytes": 2012,
+      "sha256": "aa846562ef3311e6a6cfbdcc5f3c48be0a5148f212e4aa7de4685a6e34d8431c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/choice/WidgetTextChange.java",
+      "bytes": 2563,
+      "sha256": "211cbaf40be05c2a6caefa1802087e7b90c6f1bb0cc211e0a38b9a812875ae38"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/emote/QuestEmote.java",
+      "bytes": 2356,
+      "sha256": "9676ffd91b666918ad1a1d2a1fbdc4c051890454a4a142f61fc736567bc9746c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/overlay/DirectionArrow.java",
+      "bytes": 10320,
+      "sha256": "b87d27e5ec75d6220936963dc8b578508afc8d905c731f5e2f885eb29af9999f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/overlay/IconOverlay.java",
+      "bytes": 2569,
+      "sha256": "c4cb247ad3548bc1d029d241bf6c508a697be1b7109c6eac5d0573acc8d397c2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/overlay/WorldLines.java",
+      "bytes": 9601,
+      "sha256": "cdc1383601c8bcac053a2f8b0977bd166946852a1d321afc8e7b3a1d1d67a375"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/playermadesteps/RuneliteObjectStep.java",
+      "bytes": 4858,
+      "sha256": "f253f465b6230c9763b801a07286787cf2d2acce583ec8960f82896df279e6a9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/tools/DefinedPoint.java",
+      "bytes": 3779,
+      "sha256": "6f21731ac4b01049069175d05dbb1b2700a4ebd9679e5c66b924077416b45f90"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/tools/QuestPerspective.java",
+      "bytes": 17587,
+      "sha256": "bff29a4149fa3c6403ce9657bcb5585af8426d20ebf959c1bf928db3f18f2d03"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/widget/AbstractWidgetHighlight.java",
+      "bytes": 2236,
+      "sha256": "b81dc7374b9a70f2a73cfe4b12a9a6606a7a2b0b66d5d46c1c5ec51f9aaa9cf8"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/widget/AncientSpells.java",
+      "bytes": 2553,
+      "sha256": "6293b76250ad9b7fbb8b6c3c286a75ab114c4e04bb17aa71b91ec01d64cc3976"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/widget/ArceuusSpells.java",
+      "bytes": 3592,
+      "sha256": "63420cb82359bcd4f6f4959c5a5075eb5b641c4d6310cec56568f9c717c55664"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/widget/LunarSpells.java",
+      "bytes": 3272,
+      "sha256": "e0251ec0f6f85c82abcad5eb3e5e8bb603393c0fcf38ad11c3f8c2377a8461c0"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/widget/NormalSpells.java",
+      "bytes": 4009,
+      "sha256": "b9da9584b395dcd31e74bddc89ccbad4dd40ab92b9d7c310894ab24c6777496c"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/widget/Spell.java",
+      "bytes": 1489,
+      "sha256": "ce3f5f2bb29d4cca927ad24f871fc20701277e2b4c5678fe8ee9e6a4e89e15a6"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/widget/SpellWidgetHighlight.java",
+      "bytes": 3785,
+      "sha256": "1a2f12c84b051bb5849ec37c75b7adcdcc88b356b4e60338608958d32a676969"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/widget/WidgetDetails.java",
+      "bytes": 2011,
+      "sha256": "edf514ca0922d88492f30a601643f2db466f0d586f8141c760942f7e4fab99ad"
+    },
+    {
+      "name": "src/main/java/com/questhelper/steps/widget/WidgetHighlight.java",
+      "bytes": 7208,
+      "sha256": "10ef595cc8c3dabc40edeb0956ba3c606773c9f2461dbaef4afa67ab6991004a"
+    },
+    {
+      "name": "src/main/java/com/questhelper/tools/Icon.java",
+      "bytes": 3440,
+      "sha256": "8ad443f7a4014b9945278f21afe7136e11da8584d1b83e9716f5aecbb3f08c79"
+    },
+    {
+      "name": "src/main/java/com/questhelper/tools/QuestHelperWorldMapPoint.java",
+      "bytes": 4590,
+      "sha256": "d0d75e8d54d611303a425824afa64627a880cfa102fd3f642efd571e7750b0f3"
+    },
+    {
+      "name": "src/main/java/com/questhelper/tools/QuestTile.java",
+      "bytes": 1900,
+      "sha256": "137934b9c2f6bb7768e5d139e7aa9ca3a3a36cf9b55fb36d3f4fdf5ca4540d12"
+    },
+    {
+      "name": "src/main/java/com/questhelper/tools/QuestWidgets.java",
+      "bytes": 2138,
+      "sha256": "82446c77a50b4d9ca5e1cfbb61d33ecd4fb9eb17acbd3e9d41414664d58bb715"
+    },
+    {
+      "name": "src/main/java/com/questhelper/tools/VisibilityHelper.java",
+      "bytes": 2652,
+      "sha256": "97a65a22e3a6125a3c517213e56378a06336f8f3c5b6fb51d6b6d4d68ae8efa2"
+    },
+    {
+      "name": "src/main/java/com/questhelper/util/Fonts.java",
+      "bytes": 1997,
+      "sha256": "0ea3cd02c9bb336c451a00c70589cec2f715e7444d30b44646836947c49a1bda"
+    },
+    {
+      "name": "src/main/java/com/questhelper/util/QHObjectID.java",
+      "bytes": 2423,
+      "sha256": "36fb0f678ff66c1c170ff97a1a5e0d3810b569aed6626e15dc04ce1b27434f22"
+    },
+    {
+      "name": "src/main/java/com/questhelper/util/QuestStepIcon.java",
+      "bytes": 2431,
+      "sha256": "a82604496c8f45afb34f2e1b685b1583fb89e5b0c7181e01562661b89ac6c02f"
+    },
+    {
+      "name": "src/main/java/com/questhelper/util/Utils.java",
+      "bytes": 3458,
+      "sha256": "95d6630d193367eaa70f6584d5b1459d2df02912e9bc39a3b15c35ea72768d26"
+    },
+    {
+      "name": "src/main/java/com/questhelper/util/worldmap/WorldMapArea.java",
+      "bytes": 3942,
+      "sha256": "2db0f12dc235447449c5c285da489cebeb0ede8bf0e17a80b80692ddbdc918ea"
+    },
+    {
+      "name": "src/main/java/com/questhelper/util/worldmap/WorldMapAreaChanged.java",
+      "bytes": 1528,
+      "sha256": "9f36046124f68bc7affef0a62857cd55dfec9290664b3447edfa66f879d6edcb"
+    },
+    {
+      "name": "src/main/java/com/questhelper/util/worldmap/WorldMapAreaManager.java",
+      "bytes": 2964,
+      "sha256": "d875e466bbd192bca281f57cdb68148c8b23e6ca1924ca99d7a245f9104c4709"
+    },
+    {
+      "name": "src/main/java/com/questhelper/util/worldmap/WorldMapPointMapping.java",
+      "bytes": 18140,
+      "sha256": "23125a59d6a90b624b6b2e0fbd0c2e554621fe7a4e6f49fa381da04a033d4fa9"
+    },
+    {
+      "name": "src/main/java/com/questhelper/util/worldmap/WorldPointMapper.java",
+      "bytes": 7302,
+      "sha256": "1aa0f215055c162ec1df65cf144474498c023c6d459e433fe52ec8fd5a9e184e"
+    },
+    {
+      "name": "src/main/java/com/questhelper/util/worldmap/WorldPointWithWorldMapArea.java",
+      "bytes": 1744,
+      "sha256": "49f03654ab6921dcba3d4d4845a8c7ad1d4c2f57749ffd43049886e1d0e910c2"
+    },
+    {
+      "name": "src/main/resources/blueHitsplat.png",
+      "bytes": 268,
+      "sha256": "1d7b28743a4f08558ea86f1dea844fdda3c3e040ab6e268f1a4d28c5c97831c4"
+    },
+    {
+      "name": "src/main/resources/close.png",
+      "bytes": 208,
+      "sha256": "2f7169717787729410f48427e10533ba8132d50c16b93caefecde43d3e9d03a4"
+    },
+    {
+      "name": "src/main/resources/collapsed.png",
+      "bytes": 4213,
+      "sha256": "08f47da8994245e8eba7d2b2279aef210a4738a190b9bb0ace2f896425e09edc"
+    },
+    {
+      "name": "src/main/resources/discord.png",
+      "bytes": 1370,
+      "sha256": "a6a4e6e23c070f6f2b931f128c334fc46f0b37e14ea44a7147fee10e148f4716"
+    },
+    {
+      "name": "src/main/resources/expanded.png",
+      "bytes": 4242,
+      "sha256": "dc0b8f0c2299ea8c2b55ad8579ae61d895209e81e1649f3f82ff3b4de464f8bc"
+    },
+    {
+      "name": "src/main/resources/github.png",
+      "bytes": 1571,
+      "sha256": "6b4582ced3c5b039423243207f470dcba7288918131657f89e9bdcada6fa8a40"
+    },
+    {
+      "name": "src/main/resources/hamburger.png",
+      "bytes": 838,
+      "sha256": "576df48fa14d6dc4eb755d895eaa28777bee13b9e95c6f2e95dab9440f2fb381"
+    },
+    {
+      "name": "src/main/resources/icon_background.png",
+      "bytes": 660,
+      "sha256": "58673b2a9761d4f45716e89ce1e7e59b53b0cb597ef0c5d624ef2a4b36115440"
+    },
+    {
+      "name": "src/main/resources/info_icon.png",
+      "bytes": 253,
+      "sha256": "d60483a829ef26f41cf6d4211af97edebb40a5c136771c3d0c42a7c99113fca7"
+    },
+    {
+      "name": "src/main/resources/maxHitsplat.png",
+      "bytes": 497,
+      "sha256": "ca0b759264ceb47ca161c98c6a111ed4e3f6ccff0485b7dd2cf2d093a69da0ff"
+    },
+    {
+      "name": "src/main/resources/patreon.png",
+      "bytes": 8776,
+      "sha256": "4ca4c174b4ad05d8df2abde5e71720ff5cefe0cd9851cc5ac3358e8b48924044"
+    },
+    {
+      "name": "src/main/resources/quest_icon.png",
+      "bytes": 478,
+      "sha256": "4447de0103f0a7babf07fc3f43872b26c0fecbe35f1638f30f85f7dcae103307"
+    },
+    {
+      "name": "src/main/resources/quest_step_arrow.png",
+      "bytes": 585,
+      "sha256": "174efefa0e5ff54513d78a0d86daf991c9803696f5408bfe596934d55970aea8"
+    },
+    {
+      "name": "src/main/resources/quest_step_arrow_135.png",
+      "bytes": 601,
+      "sha256": "eb50fcb34126aaddda24fb91ca4014fd0073a9a2cafd54a2f3d1528f8d929c45"
+    },
+    {
+      "name": "src/main/resources/quest_step_arrow_180.png",
+      "bytes": 586,
+      "sha256": "5aa0be43957bfdc1b99bbf4e2810498317fa05b6758e512136e54332802ede5c"
+    },
+    {
+      "name": "src/main/resources/quest_step_arrow_225.png",
+      "bytes": 650,
+      "sha256": "b2cbfaeee0bbc8caf4d2f29e679f85db7802503b60279533f02eefa9f84c7a3b"
+    },
+    {
+      "name": "src/main/resources/quest_step_arrow_270.png",
+      "bytes": 495,
+      "sha256": "34edee4bc6ebc0ea6333288bbb4836d716265c2fc1106e22d9a874e80cd0b229"
+    },
+    {
+      "name": "src/main/resources/quest_step_arrow_315.png",
+      "bytes": 644,
+      "sha256": "9e0268447b973a89b14979fccf35f95928456902aa949cbb1d30bc3c57815933"
+    },
+    {
+      "name": "src/main/resources/quest_step_arrow_45.png",
+      "bytes": 661,
+      "sha256": "8b1cabdd4db337457ec2290542cbdb078834f5da831f19e08d9d3f79ffb5752c"
+    },
+    {
+      "name": "src/main/resources/quest_step_arrow_90.png",
+      "bytes": 555,
+      "sha256": "de14ba8d7cdb0af7f831fad2a4c33abeedf632b6a0f09a37baea99a50e18e689"
+    },
+    {
+      "name": "src/main/resources/redHitsplat.png",
+      "bytes": 259,
+      "sha256": "e7ea56bcd51a90cafbeb11a10f5077680e65fd6e0ed38ac6f7a0e50137384eab"
+    },
+    {
+      "name": "src/main/resources/settings_icon.png",
+      "bytes": 248,
+      "sha256": "a5409115db4aca6c37689f11fd3e25da2ead7368f7c4b58d9c320fba5cc15bab"
+    },
+    {
+      "name": "src/main/resources/start.png",
+      "bytes": 131,
+      "sha256": "bb805a21541e2774efcfa9dde43b4344b04ad465329128af3e86972ab4b3a73a"
+    }
+  ]
+}

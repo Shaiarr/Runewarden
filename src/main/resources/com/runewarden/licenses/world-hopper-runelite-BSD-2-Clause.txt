@@ -1,0 +1,53 @@
+Runewarden World Hopper — RuneLite native source attribution
+
+Native compatibility references: RuneLite 1.13.2, World Hopper plugin and UI.
+Public TCPInfo/RetransmitCalculator helpers are consumed unchanged from the RuneLite runtime.
+Source: https://github.com/runelite/runelite/tree/runelite-parent-1.13.2/runelite-client/src/main/java/net/runelite/client/plugins/worldhopper
+Source artifact: client-1.13.2-sources.jar
+SHA-256: 86d51d6cb3428af7e9bae3c85b0d82f80b1360609f2bc2cacc37b45cd93d6b47
+
+The following native BSD-2-Clause copyright notices and license are retained for source and binary distributions.
+
+Copyright (c) 2017, Adam <Adam@sigterm.info>
+Copyright (c) 2018, Lotto <https://github.com/devLotto>
+Copyright (c) 2019, gregg1494 <https://github.com/gregg1494>
+Copyright (c) 2018, Psikoi <https://github.com/Psikoi>
+Copyright (c) 2019, Liam Edwards <http://github.com/Spedwards>
+Copyright (c) 2019, Shawn <http://github.com/DrRobosnarfen>
+Copyright (c) 2022, Adam <Adam@sigterm.info>
+Copyright (c) 2026, Adam <Adam@sigterm.info>
+Copyright (c) 2026 Abex
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Native source files reviewed (paths relative to the World Hopper source directory):
+WorldHopperPlugin.java  SHA-256 6ee55545333ce29e620fc710e8171050c60b9600666977bce47a842cb296caea
+WorldHopperConfig.java  SHA-256 bf28b10395d8052db0ad2e03c64655e18c190dbb537991789b91fa7ed1d79ce3
+WorldSwitcherPanel.java  SHA-256 695cc7cdd683b2d3434837749e808f71a866f1f111183c83deb96245c5530708
+WorldTableHeader.java  SHA-256 e78dcb1e5ab7495a614d5a4eb99940c9fe070deaaaee898cfd56ba61dcc0a6ec
+WorldTableRow.java  SHA-256 b736fc332c5f7e8f83af7e20752accd8f7058b1a9abcbf936559d6c3168cf8bd
+RegionFilterMode.java  SHA-256 b9b49f340dd4384532ae6d5a6bb8aaf0f643919c5097d99864ec52d9eaef0d89
+SubscriptionFilterMode.java  SHA-256 82067e716070c3d82fac72a4bc4af6a6bc1317d92ce6399d0337f51aa2ff1874
+WorldTypeFilter.java  SHA-256 815a72569384011952f3652194a0327cd414cf618a0415924bbbf59509cbfcec
+WorldHopperPingOverlay.java  SHA-256 6c421b6052ece002a189bf750c722d9f768965e2838b302d02e381198a5731ae
+ping/TCPInfo.java  SHA-256 d705449f463bb603a7d34abaf298d7b60f74a55ddf7125367c47d8c8275c9cff
+ping/RetransmitCalculator.java  SHA-256 9350b8cf3fe48294884dded94c964f5987d89fd28a8ae1dff2add1505a352b85

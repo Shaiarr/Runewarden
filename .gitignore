@@ -1,0 +1,17 @@
+.gradle/
+build/
+*.iml
+.idea/
+__pycache__/
+*.pyc
+*.log
+*.jfr
+*.hprof
+*.heapdump
+.DS_Store
+Thumbs.db
+.vscode/
+.env
+.env.*
+*.key
+*.pem

@@ -1,0 +1,21 @@
+Runewarden
+Publisher: Shai-arr
+
+Original Runewarden code and original guide/checklist arrangements are licensed
+under the GNU General Public License, version 3 only (GPL-3.0-only).
+The complete license is in LICENSE and, in the plugin resources, in
+com/runewarden/licenses/runewarden-GPL-3.0.txt.
+
+This license does not replace the terms of third-party code, data or assets.
+Retain the copyright, license and source notices in individual source files,
+GUIDE-DATA.md and com/runewarden/licenses/. In the source repository those
+resource notices are under src/main/resources/.
+
+In particular, BSD- and MIT-licensed source/data keep their original notices;
+OSRS Wiki datasets keep their Creative Commons Attribution-NonCommercial-
+ShareAlike 3.0 terms; and upstream GPL material retains its own license.
+The six original synthesized reward sounds remain CC0 1.0 Universal.
+The project code license does not relicense any of these materials.
+
+Runewarden is a community source release. Forks and contributions are welcome.
+No maintenance schedule, support response time or future update is guaranteed.

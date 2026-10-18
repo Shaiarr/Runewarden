@@ -1,0 +1,17 @@
+Combat Achievement task reference and strategies
+
+Original authors: Old School RuneScape Wiki contributors.
+Data source: https://oldschool.runescape.wiki/api.php?action=bucket&format=json
+Bucket: combat_achievement, selecting id, name, task, tier, monster and type.
+Task articles: every task's source URL and exact revision are retained in combat-achievements.json.
+Overview: https://oldschool.runescape.wiki/w/Combat_Achievements?oldid=15372533
+Reward target values: Wiki Globals template expansion retrieved 16 October 2026.
+Retrieved: 16 October 2026.
+License: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported.
+https://creativecommons.org/licenses/by-nc-sa/3.0/
+
+Adaptation: converted factual task metadata to a local JSON index; preserved task-specific preparation/restrictions and Strategy/Method paragraphs as plain text with Wiki presentation templates, images, citations, link markup and navigation removed. Source revision URLs preserve access to the original context and contributors/history. Typed skill and quest requirements were extracted only from explicit introductory requirement wording. Referenced item links were matched to the bundled item-name snapshot, using a representative item ID for browser navigation; they are not asserted to be mandatory equipment. Linked boss guides and suggested task ordering are Runewarden additions.
+
+655 native task IDs and all six difficulties are represented. Numeric points are 1–6 per task according to difficulty. Regular-account reward targets retain their declared scope; Group Ironman adjustments are not inferred.
+
+The original contributors do not endorse Runewarden. This data license is separate from the original Java/application code license. No implementation from the referenced Goal Planner plugin is copied.

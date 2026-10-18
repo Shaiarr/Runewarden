@@ -1,0 +1,3 @@
+# Preserve exact reference-data/source fingerprints on Windows and Unix.
+# Do not let core.autocrlf rewrite these verified bytes during add/checkout.
+* -text

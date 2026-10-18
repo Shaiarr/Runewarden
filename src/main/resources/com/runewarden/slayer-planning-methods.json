@@ -1,0 +1,718 @@
+{
+  "version": 1,
+  "checked": "2026-10-17",
+  "sourcePolicy": "Method facts checked against the OSRS Wiki search index and existing pinned native task/monster data. No XP/hour or GP/hour defaults. Area names are choices, not permission for a restricted assignment.",
+  "sources": [
+    "https://oldschool.runescape.wiki/w/Slayer_training",
+    "https://oldschool.runescape.wiki/w/Pay-to-play_Magic_training",
+    "https://oldschool.runescape.wiki/w/Metal_dragons/Strategies",
+    "https://oldschool.runescape.wiki/w/Slayer_task/Iron_dragon",
+    "https://oldschool.runescape.wiki/w/Pay-to-play_melee_training",
+    "https://oldschool.runescape.wiki/w/Pay-to-play_Magic_training#Slayer",
+    "https://oldschool.runescape.wiki/w/Pay-to-play_melee_training#Gargoyles",
+    "https://oldschool.runescape.wiki/w/Slayer_task/Bloodveld",
+    "https://oldschool.runescape.wiki/w/Slayer_task/Abyssal_demons",
+    "https://oldschool.runescape.wiki/w/Abyssal_Sire/Strategies",
+    "https://oldschool.runescape.wiki/w/Demonic_gorilla",
+    "https://oldschool.runescape.wiki/w/Slayer_task/Black_demons",
+    "https://oldschool.runescape.wiki/w/Tormented_Demon",
+    "https://oldschool.runescape.wiki/w/Slayer_task/Greater_demons",
+    "https://oldschool.runescape.wiki/w/Slayer_task/Dagannoth",
+    "https://oldschool.runescape.wiki/w/Slayer_task/Kalphites",
+    "https://oldschool.runescape.wiki/w/Slayer_task/Suqah",
+    "https://oldschool.runescape.wiki/w/Slayer_task/Blue_dragons",
+    "https://oldschool.runescape.wiki/w/Slayer_task/Black_dragons",
+    "https://oldschool.runescape.wiki/w/Cerberus/Strategies",
+    "https://oldschool.runescape.wiki/w/Kraken/Strategies",
+    "https://oldschool.runescape.wiki/w/Grotesque_Guardians/Strategies",
+    "https://oldschool.runescape.wiki/w/Thermonuclear_smoke_devil/Strategies",
+    "https://oldschool.runescape.wiki/w/Alchemical_Hydra/Strategies",
+    "https://oldschool.runescape.wiki/w/Slayer_task/Nechryael"
+  ],
+  "methods": [
+    {
+      "id": "dust-devils-burst",
+      "title": "Burst / barrage",
+      "tasks": [
+        "Dust devils"
+      ],
+      "effort": "Intensive",
+      "purpose": "XP",
+      "area": "Multi-combat variant / area",
+      "note": "Stack suitable variants for multi-target Ancient spells. Ice Burst needs 70 Magic; Ice Barrage needs 94. Match the assigned location before choosing a spot.",
+      "source": "https://oldschool.runescape.wiki/w/Pay-to-play_Magic_training#Slayer",
+      "items": [
+        560,
+        562,
+        555
+      ],
+      "magic": 70,
+      "quest": "DESERT_TREASURE_I"
+    },
+    {
+      "id": "nechryael-burst",
+      "title": "Burst / barrage",
+      "tasks": [
+        "Nechryael"
+      ],
+      "effort": "Intensive",
+      "purpose": "XP",
+      "area": "Multi-combat variant / area",
+      "note": "Stack suitable variants for multi-target Ancient spells. Ice Burst needs 70 Magic; Ice Barrage needs 94. Match the assigned location before choosing a spot.",
+      "source": "https://oldschool.runescape.wiki/w/Pay-to-play_Magic_training#Slayer",
+      "items": [
+        560,
+        562,
+        555
+      ],
+      "magic": 70,
+      "quest": "DESERT_TREASURE_I"
+    },
+    {
+      "id": "jellies-burst",
+      "title": "Burst / barrage",
+      "tasks": [
+        "Jellies"
+      ],
+      "effort": "Intensive",
+      "purpose": "XP",
+      "area": "Multi-combat variant / area",
+      "note": "Stack suitable variants for multi-target Ancient spells. Ice Burst needs 70 Magic; Ice Barrage needs 94. Match the assigned location before choosing a spot.",
+      "source": "https://oldschool.runescape.wiki/w/Pay-to-play_Magic_training#Slayer",
+      "items": [
+        560,
+        562,
+        555
+      ],
+      "magic": 70,
+      "quest": "DESERT_TREASURE_I"
+    },
+    {
+      "id": "smoke-devils-burst",
+      "title": "Burst / barrage",
+      "tasks": [
+        "Smoke devils"
+      ],
+      "effort": "Intensive",
+      "purpose": "XP",
+      "area": "Multi-combat variant / area",
+      "note": "Stack suitable variants for multi-target Ancient spells. Ice Burst needs 70 Magic; Ice Barrage needs 94. Match the assigned location before choosing a spot.",
+      "source": "https://oldschool.runescape.wiki/w/Pay-to-play_Magic_training#Slayer",
+      "items": [
+        560,
+        562,
+        555
+      ],
+      "magic": 70,
+      "quest": "DESERT_TREASURE_I"
+    },
+    {
+      "id": "iron-dragons-dragonbane",
+      "title": "Dragonbane / stab",
+      "tasks": [
+        "Iron dragons"
+      ],
+      "effort": "Normal",
+      "purpose": "Balanced",
+      "area": "Choose an allowed dragon location",
+      "note": "Strong stab or dragonbane equipment can make this a worthwhile task. Check dragonfire protection, supplies and your own measured kill rate before deciding to skip.",
+      "source": "https://oldschool.runescape.wiki/w/Metal_dragons/Strategies",
+      "items": [
+        22978,
+        21012
+      ],
+      "magic": 0,
+      "quest": null
+    },
+    {
+      "id": "steel-dragons-dragonbane",
+      "title": "Dragonbane / stab",
+      "tasks": [
+        "Steel dragons"
+      ],
+      "effort": "Normal",
+      "purpose": "Balanced",
+      "area": "Choose an allowed dragon location",
+      "note": "Strong stab or dragonbane equipment can make this a worthwhile task. Check dragonfire protection, supplies and your own measured kill rate before deciding to skip.",
+      "source": "https://oldschool.runescape.wiki/w/Metal_dragons/Strategies",
+      "items": [
+        22978,
+        21012
+      ],
+      "magic": 0,
+      "quest": null
+    },
+    {
+      "id": "bronze-dragons-dragonbane",
+      "title": "Dragonbane / stab",
+      "tasks": [
+        "Bronze dragons"
+      ],
+      "effort": "Normal",
+      "purpose": "Balanced",
+      "area": "Choose an allowed dragon location",
+      "note": "Strong stab or dragonbane equipment can make this a worthwhile task. Check dragonfire protection, supplies and your own measured kill rate before deciding to skip.",
+      "source": "https://oldschool.runescape.wiki/w/Metal_dragons/Strategies",
+      "items": [
+        22978,
+        21012
+      ],
+      "magic": 0,
+      "quest": null
+    },
+    {
+      "id": "metal-dragons-dragonbane",
+      "title": "Dragonbane / stab",
+      "tasks": [
+        "Metal dragons"
+      ],
+      "effort": "Normal",
+      "purpose": "Balanced",
+      "area": "Choose an allowed dragon location",
+      "note": "Strong stab or dragonbane equipment can make this a worthwhile task. Check dragonfire protection, supplies and your own measured kill rate before deciding to skip.",
+      "source": "https://oldschool.runescape.wiki/w/Metal_dragons/Strategies",
+      "items": [
+        22978,
+        21012
+      ],
+      "magic": 0,
+      "quest": null
+    },
+    {
+      "id": "iron-dragons-catacombs",
+      "title": "Catacombs prayer setup",
+      "tasks": [
+        "Iron dragons"
+      ],
+      "effort": "Relaxed",
+      "purpose": "AFK",
+      "area": "Catacombs of Kourend",
+      "note": "A multi-combat option with fewer returns to controls. Keep prayer and dragonfire protection covered; other assigned locations may not permit this choice.",
+      "source": "https://oldschool.runescape.wiki/w/Slayer_task/Iron_dragon",
+      "items": [],
+      "magic": 0,
+      "quest": null
+    },
+    {
+      "id": "gargoyles-sustain",
+      "title": "Sustain melee",
+      "tasks": [
+        "Gargoyles"
+      ],
+      "effort": "Relaxed",
+      "purpose": "AFK",
+      "area": "Slayer Tower",
+      "note": "Sustain from food or healing gear supports longer trips. Carry a finishing item; the Gargoyle smasher reward reduces finishing inputs.",
+      "source": "https://oldschool.runescape.wiki/w/Pay-to-play_melee_training#Gargoyles",
+      "items": [
+        4162
+      ],
+      "magic": 0,
+      "quest": null
+    },
+    {
+      "id": "dark-beasts-short",
+      "title": "Short unextended task",
+      "tasks": [
+        "Dark beasts"
+      ],
+      "effort": "Relaxed",
+      "purpose": "Balanced",
+      "area": "Allowed dark beast area",
+      "note": "An unextended assignment can be a short, low-effort way to preserve the task streak. Compare your actual supplies and clear time.",
+      "source": "https://oldschool.runescape.wiki/w/Slayer_training",
+      "items": [],
+      "magic": 0,
+      "quest": null
+    },
+    {
+      "id": "drakes-low-effort",
+      "title": "High-stat sustained combat",
+      "tasks": [
+        "Drakes"
+      ],
+      "effort": "Relaxed",
+      "purpose": "AFK",
+      "area": "Karuulm Slayer Dungeon",
+      "note": "A low-effort option at high combat stats. Larger assignments may take longer, so use your own measured rate and supply cost to judge it.",
+      "source": "https://oldschool.runescape.wiki/w/Slayer_training",
+      "items": [],
+      "magic": 0,
+      "quest": null
+    },
+    {
+      "id": "bloodveld-cannon",
+      "title": "Cannon and melee",
+      "tasks": [
+        "Bloodveld",
+        "Bloodvelds"
+      ],
+      "effort": "Intensive",
+      "purpose": "XP",
+      "area": "Meiyerditch Laboratories",
+      "note": "Use the multi-combat laboratory for cannon-supported mutated bloodveld. Count cannonballs in your net supply cost.",
+      "source": "https://oldschool.runescape.wiki/w/Slayer_task/Bloodveld",
+      "items": [
+        6,
+        8,
+        10,
+        12,
+        2
+      ],
+      "magic": 0,
+      "quest": "SINS_OF_THE_FATHER",
+      "slayer": 50,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "bloodveld-melee",
+      "title": "Single-target melee",
+      "tasks": [
+        "Bloodveld",
+        "Bloodvelds"
+      ],
+      "effort": "Relaxed",
+      "purpose": "Balanced",
+      "area": "Slayer Tower",
+      "note": "A simpler alternative when you prefer fewer supply costs over cannon throughput.",
+      "source": "https://oldschool.runescape.wiki/w/Slayer_task/Bloodveld",
+      "items": [],
+      "magic": 0,
+      "quest": "PRIEST_IN_PERIL",
+      "slayer": 50,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "abyssal-demons-multi",
+      "title": "Multi-target demons",
+      "tasks": [
+        "Abyssal demons"
+      ],
+      "effort": "Intensive",
+      "purpose": "XP",
+      "area": "Catacombs of Kourend",
+      "note": "Ancient spells or a Venator bow suit grouped small targets. Compare ammunition or rune spend with your own measured rate.",
+      "source": "https://oldschool.runescape.wiki/w/Slayer_task/Abyssal_demons",
+      "items": [],
+      "magic": 0,
+      "quest": null,
+      "slayer": 85,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "abyssal-sire",
+      "title": "Abyssal Sire alternative",
+      "tasks": [
+        "Abyssal demons"
+      ],
+      "effort": "Normal",
+      "purpose": "Boss",
+      "area": "Abyssal Nexus",
+      "note": "Choose Sire for boss practice and its unique table. This takes longer per assignment credit than ordinary demons.",
+      "source": "https://oldschool.runescape.wiki/w/Abyssal_Sire/Strategies",
+      "items": [],
+      "magic": 0,
+      "quest": null,
+      "slayer": 85,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "black-demons-gorillas",
+      "title": "Demonic gorillas",
+      "tasks": [
+        "Black demons"
+      ],
+      "effort": "Intensive",
+      "purpose": "Profit",
+      "area": "Crash Site Cavern",
+      "note": "Gorillas count for black demon assignments. Prepare two attack styles and use your boss guide between attempts.",
+      "source": "https://oldschool.runescape.wiki/w/Demonic_gorilla",
+      "items": [],
+      "magic": 0,
+      "quest": "MONKEY_MADNESS_II",
+      "slayer": 0,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "black-demons-melee",
+      "title": "Sustained ordinary demons",
+      "tasks": [
+        "Black demons"
+      ],
+      "effort": "Relaxed",
+      "purpose": "Balanced",
+      "area": "Choose an allowed demon area",
+      "note": "Ordinary black demons offer a simpler task when gorilla mechanics are unwanted. Base the decision on supplies and your rate.",
+      "source": "https://oldschool.runescape.wiki/w/Slayer_task/Black_demons",
+      "items": [],
+      "magic": 0,
+      "quest": null,
+      "slayer": 0,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "greater-demons-tormented",
+      "title": "Tormented demon alternative",
+      "tasks": [
+        "Greater demons"
+      ],
+      "effort": "Intensive",
+      "purpose": "Profit",
+      "area": "Ancient Guthixian Temple",
+      "note": "Tormented demons count as greater demons. Carry multiple attack styles; Konar location restrictions can rule this out.",
+      "source": "https://oldschool.runescape.wiki/w/Tormented_Demon",
+      "items": [],
+      "magic": 0,
+      "quest": "WHILE_GUTHIX_SLEEPS",
+      "slayer": 0,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "greater-demons-ordinary",
+      "title": "Ordinary demon task",
+      "tasks": [
+        "Greater demons"
+      ],
+      "effort": "Relaxed",
+      "purpose": "Balanced",
+      "area": "Choose an allowed greater demon area",
+      "note": "Complete ordinary demons when you want the assignment streak without a longer boss-style trip.",
+      "source": "https://oldschool.runescape.wiki/w/Slayer_task/Greater_demons",
+      "items": [],
+      "magic": 0,
+      "quest": null,
+      "slayer": 0,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "dagannoth-cannon",
+      "title": "Lighthouse cannon",
+      "tasks": [
+        "Dagannoth",
+        "Dagannoths"
+      ],
+      "effort": "Intensive",
+      "purpose": "XP",
+      "area": "Lighthouse basement",
+      "note": "A multi-combat cannon option. Pack all cannon parts and ammunition; use the assigned area if restricted.",
+      "source": "https://oldschool.runescape.wiki/w/Slayer_task/Dagannoth",
+      "items": [
+        6,
+        8,
+        10,
+        12,
+        2
+      ],
+      "magic": 0,
+      "quest": "HORROR_FROM_THE_DEEP",
+      "slayer": 0,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "kalphite-cannon",
+      "title": "Cannon-supported task",
+      "tasks": [
+        "Kalphites"
+      ],
+      "effort": "Intensive",
+      "purpose": "XP",
+      "area": "Kalphite Cave",
+      "note": "A cannon-supported alternative to a slow single-target clear. Pack antipoison appropriate to your chosen variant.",
+      "source": "https://oldschool.runescape.wiki/w/Slayer_task/Kalphites",
+      "items": [
+        6,
+        8,
+        10,
+        12,
+        2
+      ],
+      "magic": 0,
+      "quest": null,
+      "slayer": 0,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "suqah-cannon",
+      "title": "Cannon and melee",
+      "tasks": [
+        "Suqah"
+      ],
+      "effort": "Intensive",
+      "purpose": "XP",
+      "area": "Lunar Isle",
+      "note": "Cannon-supported combat trades ammunition for a faster clear. Include travel and banking in your sample.",
+      "source": "https://oldschool.runescape.wiki/w/Slayer_task/Suqah",
+      "items": [
+        6,
+        8,
+        10,
+        12,
+        2
+      ],
+      "magic": 0,
+      "quest": "LUNAR_DIPLOMACY",
+      "slayer": 0,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "blue-dragons-vorkath",
+      "title": "Vorkath alternative",
+      "tasks": [
+        "Blue dragons"
+      ],
+      "effort": "Normal",
+      "purpose": "Boss",
+      "area": "Ungael",
+      "note": "Vorkath counts as a blue dragon. Prepare a complete boss loadout and dragonfire protection rather than a normal dragon inventory.",
+      "source": "https://oldschool.runescape.wiki/w/Slayer_task/Blue_dragons",
+      "items": [],
+      "magic": 0,
+      "quest": "DRAGON_SLAYER_II",
+      "slayer": 0,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "black-dragons-babies",
+      "title": "Short baby-dragon task",
+      "tasks": [
+        "Black dragons"
+      ],
+      "effort": "Normal",
+      "purpose": "Balanced",
+      "area": "Taverley Dungeon",
+      "note": "Baby black dragons can turn an unextended assignment into a short streak-preserving task. Match the assigned area.",
+      "source": "https://oldschool.runescape.wiki/w/Slayer_task/Black_dragons",
+      "items": [],
+      "magic": 0,
+      "quest": null,
+      "slayer": 0,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "black-dragons-brutal",
+      "title": "Brutal black dragons",
+      "tasks": [
+        "Black dragons"
+      ],
+      "effort": "Normal",
+      "purpose": "Profit",
+      "area": "Catacombs of Kourend",
+      "note": "A higher-level alternative with stronger incoming attacks. Prepare the full dragonfire and combat setup before entering.",
+      "source": "https://oldschool.runescape.wiki/w/Slayer_task/Black_dragons",
+      "items": [],
+      "magic": 0,
+      "quest": null,
+      "slayer": 77,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "hellhounds-cerberus",
+      "title": "Cerberus alternative",
+      "tasks": [
+        "Hellhounds"
+      ],
+      "effort": "Intensive",
+      "purpose": "Boss",
+      "area": "Cerberus Lair",
+      "note": "Use the hellhound assignment for Cerberus practice. Plan prayer supplies and the trip cost separately from ordinary hellhounds.",
+      "source": "https://oldschool.runescape.wiki/w/Cerberus/Strategies",
+      "items": [],
+      "magic": 0,
+      "quest": null,
+      "slayer": 91,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "kraken-boss",
+      "title": "Kraken boss alternative",
+      "tasks": [
+        "Cave kraken",
+        "Cave krakens"
+      ],
+      "effort": "Relaxed",
+      "purpose": "Boss",
+      "area": "Kraken Cove",
+      "note": "Prepare Magic equipment and food for the boss rather than the smaller cave kraken.",
+      "source": "https://oldschool.runescape.wiki/w/Kraken/Strategies",
+      "items": [],
+      "magic": 0,
+      "quest": null,
+      "slayer": 87,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "gargoyles-guardians",
+      "title": "Grotesque Guardians",
+      "tasks": [
+        "Gargoyles"
+      ],
+      "effort": "Intensive",
+      "purpose": "Boss",
+      "area": "Slayer Tower rooftop",
+      "note": "A boss alternative to sustained normal gargoyles. Unlock the rooftop entrance with a brittle key first.",
+      "source": "https://oldschool.runescape.wiki/w/Grotesque_Guardians/Strategies",
+      "items": [
+        4162
+      ],
+      "magic": 0,
+      "quest": "PRIEST_IN_PERIL",
+      "slayer": 75,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "smoke-devils-thermy",
+      "title": "Thermonuclear smoke devil",
+      "tasks": [
+        "Smoke devils"
+      ],
+      "effort": "Normal",
+      "purpose": "Boss",
+      "area": "Smoke Devil Dungeon",
+      "note": "Choose the boss for its unique table instead of the grouped normal smoke devils. Keep the task requirement and finishing trip supplies covered.",
+      "source": "https://oldschool.runescape.wiki/w/Thermonuclear_smoke_devil/Strategies",
+      "items": [],
+      "magic": 0,
+      "quest": null,
+      "slayer": 93,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "hydra-boss",
+      "title": "Alchemical Hydra",
+      "tasks": [
+        "Hydra",
+        "Hydras"
+      ],
+      "effort": "Intensive",
+      "purpose": "Boss",
+      "area": "Karuulm Slayer Dungeon",
+      "note": "A boss method for a hydra assignment. Use the complete phase guide and verify heat protection for dungeon travel.",
+      "source": "https://oldschool.runescape.wiki/w/Alchemical_Hydra/Strategies",
+      "items": [],
+      "magic": 0,
+      "quest": null,
+      "slayer": 95,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    },
+    {
+      "id": "nechryael-tower",
+      "title": "Single-target melee",
+      "tasks": [
+        "Nechryael"
+      ],
+      "effort": "Normal",
+      "purpose": "Balanced",
+      "area": "Slayer Tower",
+      "note": "An alternative when multi-target spell training is unwanted. Keep the Tower location matched to restricted assignments.",
+      "source": "https://oldschool.runescape.wiki/w/Slayer_task/Nechryael",
+      "items": [],
+      "magic": 0,
+      "quest": "PRIEST_IN_PERIL",
+      "slayer": 80,
+      "milestones": [
+        "Confirm the assignment permits this creature and location.",
+        "Choose the creature variant, loadout and trip supplies.",
+        "Complete a measured sample including travel and banking.",
+        "Save credits per hour and net supply cost; compare with your other methods."
+      ]
+    }
+  ],
+  "source": "https://oldschool.runescape.wiki/w/Slayer_training",
+  "retrieved": "2026-10-17",
+  "license": "CC-BY-NC-SA-3.0"
+}

@@ -1,0 +1,8 @@
+OSRS Wiki music unlock facts
+
+853 listed music tracks and factual unlock instructions were extracted from the OSRS Wiki Music table via expandtemplates on 16 October 2026. Every track records its exact Wiki article URL. Music page revision: 15341564. Music table module revision: 15168435. Bucket-backed table contents are dynamic; the expanded snapshot SHA-256 is 16783c03307af84b6abb99cb26591bb09e96216e7dfa51314224592a56f57a29.
+
+Copyright the respective OSRS Wiki contributors. Data licensed under Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported: https://creativecommons.org/licenses/by-nc-sa/3.0/
+
+Source: https://oldschool.runescape.wiki/w/Music
+Changes: numerical/factual extraction, Wiki markup removal, merge with separately BSD-licensed region and route metadata, native client track-name matching. No music audio files are included. Java implementation remains GPL-3.0-only.

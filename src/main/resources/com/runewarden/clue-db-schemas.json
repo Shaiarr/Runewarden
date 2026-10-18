@@ -1,0 +1,53 @@
+{
+  "source": "RuneLite API1.13.2 gameval/DBTableID.java",
+  "tables": [
+    {
+      "name": "CluehelperClueAnagram",
+      "id": 4,
+      "text": 2,
+      "requirements": 6
+    },
+    {
+      "name": "CluehelperClueCipher",
+      "id": 6,
+      "text": 2,
+      "requirements": 5
+    },
+    {
+      "name": "CluehelperClueCoordinate",
+      "id": 7,
+      "text": 2,
+      "requirements": 4
+    },
+    {
+      "name": "CluehelperClueCryptic",
+      "id": 8,
+      "text": 2,
+      "requirements": 4
+    },
+    {
+      "name": "CluehelperClueEmote",
+      "id": 9,
+      "text": 2,
+      "requirements": 10
+    },
+    {
+      "name": "CluehelperClueFairyring",
+      "id": 10,
+      "text": 2,
+      "requirements": 6
+    },
+    {
+      "name": "CluehelperClueFalobard",
+      "id": 11,
+      "text": 2,
+      "requirements": 4
+    },
+    {
+      "name": "CluehelperClueSkillchallenge",
+      "id": 14,
+      "text": 2,
+      "requirements": 3
+    }
+  ]
+}

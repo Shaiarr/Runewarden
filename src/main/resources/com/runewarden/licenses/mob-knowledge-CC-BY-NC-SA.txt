@@ -1,0 +1,17 @@
+Monster reference data
+
+mob-knowledge.json contains a reduced factual snapshot of the OSRS Wiki DPS calculator monster data, by OSRS Wiki contributors and the weirdgloop/osrs-dps-calc contributors.
+
+Source: https://github.com/weirdgloop/osrs-dps-calc/blob/a27fc3c898eb15accbfa0457c89b6b6a1b132f1f/cdn/json/monsters.json
+Data generator: https://github.com/weirdgloop/osrs-dps-calc/blob/a27fc3c898eb15accbfa0457c89b6b6a1b132f1f/scripts/generateMonsters.py
+Upstream data commit: a27fc3c898eb15accbfa0457c89b6b6a1b132f1f (2026-09-02)
+Retrieved: 2026-10-16
+Original monster articles, contributors and history: https://oldschool.runescape.wiki/
+Wiki data license: https://creativecommons.org/licenses/by-nc-sa/3.0/
+Upstream repository license: GPL-3.0; see mob-knowledge-upstream-GPL-3.0.txt.
+
+Adaptation: retained NPC IDs, variant names, attack-style descriptions, size, magic level, magic attack bonus, defensive bonuses, elemental vulnerability and monster attributes. Images, descriptive prose and calculator implementation are omitted. Duplicate NPC-ID variants remain separate in this data; the application merges reference descriptions conservatively and rejects inconsistent calculator stats.
+
+The fixed usual-protection reference maps documented single attack types to the corresponding protection prayer; this is an application inference from the source attack types, not a current-attack read. Supplementary exceptions and rules were verified from revision-pinned OSRS Wiki pages on 16 October 2026. Full page titles, revision IDs and URLs are listed in mob-knowledge.json under protectionReferenceSources. These include Protection prayers, Bloodveld, Jelly, Kraken, Enormous Tentacle, Verzik Vitur, Zulrah/Strategies, Phantom Muspah, Vardorvis and Tombs of Amascut/Strategies. Mixed attackers retain the complete documented combination. No source walkthrough text or images are copied.
+
+The original authors do not endorse Runewarden. This data license is separate from the original application code license.

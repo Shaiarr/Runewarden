@@ -1,0 +1,31 @@
+Runewarden rarity reference data
+
+OSRS Wiki contributors: numeric source drop probabilities, item identity and
+collection-log completion facts. Wiki content attribution: CC BY-NC-SA 3.0;
+https://oldschool.runescape.wiki/w/RuneScape:Copyrights
+
+Ownership snapshot copied from CollectionLogPopupEnhanced, Copyright (c) 2026,
+SnakeSteak, BSD-2-Clause (full notice: rarity-source-BSD-2-Clause.txt):
+https://github.com/TimHeessels/collection-log-popup-enhanced/blob/99ce2f01b1a0c56af75f39e2afbc8f226cf8a94e/src/main/resources/data/collection-log.json
+That file's last data-changing commit is19584497696bce99dee576964ebf17b953caf0aa,
+2026-09-26. The snapshot is explicitly labelled historical. Its unchanged copy
+on the publisher's October15 data branch is not represented as fresh ownership.
+Four records without item names were omitted; ownership is a WikiSync sample,
+not the ownership rate of every OSRS player.
+
+Source drop probabilities:
+https://github.com/TimHeessels/osrs-collection-log-data/blob/0452ad13e77b29618ab1b6d22e3a728c5e396510/drop-rates.json
+Snapshot commit2026-10-15T11:28:46Z. That publisher documents its facts as obtained
+from OSRS Wiki's canonical collection log Lua data and dropsline bucket. Fixed
+multiple rolls are combined upstream as1-(1-p)^rolls. The facts retain source
+names; Runewarden separately flags conditional rewards, scaling ranges, skilling
+pets, component progression and unsupported non-NPC activity conditions. No
+probability is inferred from ownership. No upstream Java implementation is copied.
+
+Population documentation:
+https://oldschool.runescape.wiki/w/Collection_log/Table?oldid=15341154
+Retrieved2026-10-16. The page describes manual WikiSync collection log uploads.
+
+Reproducible transformation: tools/build-rarity-catalog.py. The three source
+snapshots are its explicit local inputs; neither generation nor runtime polls
+another service. Runtime colouring thresholds remain Runewarden preferences.

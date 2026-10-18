@@ -1,0 +1,46 @@
+Activity XP data attribution
+
+The separately bundled activity-xp-methods.json data was compiled from factual
+tables and formulae contributed by the Old School RuneScape Wiki community.
+Retrieved 16 October 2026. Each curated method records a revision-specific source
+URL. Source pages and revisions:
+
+Giants' Foundry: 15372384 (14 October 2026)
+Giants' Foundry/Strategies: 15348854 (17 September 2026)
+Mastering Mixology: 15372260 (14 October 2026)
+Mahogany Homes: 15358339 (29 September 2026)
+Mahogany Homes/Mechanics: 15141725 (3 March 2026; corroboration)
+Wintertodt/Strategies: 15358528 (29 September 2026)
+Guardians of the Rift: 15351348 (19 September 2026)
+Tempoross/Strategies: 15372130 (13 October 2026)
+Hunters' Rumours/Strategies: 15368319 (8 October 2026)
+Agility training: 15369875 (10 October 2026)
+Sailing training: 15372745 (15 October 2026; rates marked obsolete/provisional and not imported)
+Courier tasks: 15357675 (28 September 2026)
+Bounty tasks: 15369567 (9 October 2026)
+Sea charting: 15352656 (21 September 2026)
+Shipwreck salvaging: 15355548 (25 September 2026)
+The Tempor Tantrum: 15370527 (11 October 2026)
+The Jubbly Jive: 15371932 (13 October 2026)
+The Gwenith Glide: 15370529 (11 October 2026)
+Deep sea trawling: 15355412 (24 September 2026)
+
+https://oldschool.runescape.wiki/
+Copyright the respective OSRS Wiki contributors.
+Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 3.0
+Unported (CC BY-NC-SA 3.0):
+https://creativecommons.org/licenses/by-nc-sa/3.0/
+
+Changes: extracted and normalised numerical facts, explicit level bands,
+equipment material equivalents, paste recipes and source references. Descriptive
+interface summaries are newly written. No quest walkthrough prose was copied.
+Data share-alike/noncommercial conditions apply to this separately attributed
+dataset. Java implementation remains under the repository's GPL-3.0-only licence.
+
+Training-plan expansion (17 October 2026): additional hourly reference facts
+from the current primary OSRS Wiki training pages. Exact page revisions are
+retained in activity-xp-methods.json planSources.revisions and each method's
+rateBasis URL. Conditions and throughput assumptions accompany the rates.
+Preparation, workflows and practice milestones are Runewarden-authored;
+shared guide text is licensed GPL-3.0-only. Exact recipe XP/action
+continues to use the pinned RuneLite 1.13.2 banked-XP recipe source attribution.

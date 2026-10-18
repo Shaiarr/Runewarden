@@ -1,0 +1,17 @@
+Action timing reference facts
+
+OSRS Wiki contributors, High Level Alchemy, revision 15362543:
+https://oldschool.runescape.wiki/w/High_Level_Alchemy?oldid=15362543
+OSRS Wiki contributors, Game tick/Action lengths, revision 15319478:
+https://oldschool.runescape.wiki/w/Game_tick/Action_lengths?oldid=15319478
+
+Wiki reference material is licensed CC BY-NC-SA 3.0:
+https://creativecommons.org/licenses/by-nc-sa/3.0/
+Runewarden is distributed without charge. Timing facts were selected, normalised
+and implemented as local observation rules. The UI and implementation are original;
+this file identifies the factual sources, their revisions and the changes made.
+No prose walkthrough or combat attack-speed table is reproduced.
+
+Native animation identifiers/durations use RuneLite 1.13.2 public APIs and the
+already attributed RuneLite API dependency. Existing banked recipe provenance is
+retained in banked-xp-recipes.json.

@@ -1,0 +1,6417 @@
+{
+  "boss:sarachnis": {
+    "kind": "loadout",
+    "styles": [
+      "melee"
+    ],
+    "itemIds": [
+      8013,
+      23685,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "melee": [
+        26382,
+        30302,
+        34617,
+        24271,
+        10828,
+        23591,
+        3751,
+        27169,
+        21295,
+        21297,
+        23622,
+        6570,
+        10566,
+        21913,
+        22114,
+        6568,
+        29801,
+        19553,
+        27173,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        26384,
+        30303,
+        11832,
+        34611,
+        10551,
+        34613,
+        1127,
+        20421,
+        22322,
+        12954,
+        23597,
+        8850,
+        27185,
+        26386,
+        30304,
+        33194,
+        11834,
+        23646,
+        29025,
+        29045,
+        29847,
+        21304,
+        1079,
+        20422,
+        22981,
+        7462,
+        23593,
+        7461,
+        11126,
+        29806,
+        33202,
+        13239,
+        11840,
+        34621,
+        3105,
+        20578,
+        28307,
+        33182,
+        11773,
+        23595,
+        25264,
+        26770,
+        6737,
+        22975,
+        19710,
+        25246,
+        26761,
+        24417,
+        27198,
+        28338,
+        13263,
+        23528,
+        28810,
+        1434
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Sarachnis%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "boss:vorkath-ranged": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      8013,
+      23733,
+      22209,
+      12913,
+      12791,
+      23650,
+      27086,
+      30692,
+      27281,
+      557,
+      6426,
+      9695,
+      11689,
+      556,
+      6422,
+      7558,
+      9693,
+      11688,
+      562,
+      6430,
+      7560,
+      11694,
+      4696,
+      563,
+      6434,
+      11695,
+      21946,
+      4170,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        12018,
+        25278,
+        26782,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        21012,
+        11785,
+        23611,
+        21902,
+        33460,
+        9185,
+        23601,
+        22002,
+        22003,
+        1540,
+        8282,
+        21944,
+        9242
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Vorkath%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "boss:vorkath-melee": {
+    "kind": "loadout",
+    "styles": [
+      "melee"
+    ],
+    "itemIds": [
+      8013,
+      23685,
+      22209,
+      12913,
+      12791,
+      23650,
+      27086,
+      30692,
+      27281,
+      557,
+      6426,
+      9695,
+      11689,
+      556,
+      6422,
+      7558,
+      9693,
+      11688,
+      562,
+      6430,
+      7560,
+      11694,
+      4696,
+      563,
+      6434,
+      11695,
+      4170,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "melee": [
+        26382,
+        30302,
+        34617,
+        24271,
+        10828,
+        23591,
+        3751,
+        27169,
+        21295,
+        21297,
+        23622,
+        6570,
+        10566,
+        21913,
+        22114,
+        6568,
+        12018,
+        25278,
+        26782,
+        10588,
+        29801,
+        19553,
+        27173,
+        6585,
+        23640,
+        26384,
+        30303,
+        11832,
+        34611,
+        10551,
+        34613,
+        1127,
+        20421,
+        22322,
+        12954,
+        23597,
+        8850,
+        27185,
+        26386,
+        30304,
+        33194,
+        11834,
+        23646,
+        29025,
+        29045,
+        29847,
+        21304,
+        1079,
+        20422,
+        22981,
+        7462,
+        23593,
+        7461,
+        11126,
+        13239,
+        11840,
+        34621,
+        4131,
+        3105,
+        20578,
+        28307,
+        33182,
+        11773,
+        23595,
+        25264,
+        26770,
+        6737,
+        22975,
+        19710,
+        25246,
+        26761,
+        22978,
+        26219,
+        33174,
+        11889,
+        21009,
+        21206
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Vorkath%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "boss:zulrah": {
+    "kind": "loadout",
+    "styles": [
+      "magic",
+      "ranged"
+    ],
+    "itemIds": [
+      8013,
+      23745,
+      12913,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "magic": [
+        21018,
+        25518,
+        26241,
+        4708,
+        4089,
+        20562,
+        21793,
+        23603,
+        2413,
+        12002,
+        23654,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        21021,
+        27193,
+        26243,
+        33196,
+        4712,
+        20598,
+        4091,
+        20425,
+        21024,
+        27194,
+        26245,
+        33198,
+        4714,
+        20599,
+        4093,
+        20426,
+        19544,
+        27171,
+        7462,
+        23593,
+        4095,
+        13235,
+        23644,
+        6920,
+        27170,
+        4097,
+        20579,
+        20657,
+        25248,
+        26762,
+        19710,
+        25246,
+        26761,
+        2550,
+        27251,
+        33176,
+        25985,
+        12612,
+        27275,
+        22323,
+        12899,
+        11907,
+        28585
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Zulrah%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "boss:muspah": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      8013,
+      23733,
+      12625,
+      23583,
+      21012,
+      11785,
+      23611,
+      21902,
+      33460,
+      9185,
+      23601,
+      9240,
+      21940,
+      12791,
+      23650,
+      27086,
+      30692,
+      27281,
+      25818,
+      556,
+      6422,
+      7558,
+      9693,
+      11688,
+      557,
+      6426,
+      9695,
+      11689,
+      554,
+      6428,
+      7554,
+      9699,
+      11686,
+      564,
+      11696,
+      565,
+      11697,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        21012,
+        11785,
+        23611,
+        21902,
+        33460,
+        9185,
+        23601,
+        21000,
+        33188,
+        22002,
+        22003,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Phantom_Muspah%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "boss:kbd": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      8013,
+      2444,
+      23551,
+      11951,
+      5952,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        21012,
+        11785,
+        23611,
+        21902,
+        33460,
+        9185,
+        23601,
+        22002,
+        22003,
+        1540,
+        8282,
+        21946,
+        9243,
+        23649,
+        11875
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/King_Black_Dragon%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "boss:scurrius": {
+    "kind": "loadout",
+    "styles": [
+      "melee"
+    ],
+    "itemIds": [
+      8013,
+      12695,
+      23543,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "melee": [
+        26382,
+        30302,
+        34617,
+        24271,
+        10828,
+        23591,
+        3751,
+        27169,
+        21295,
+        21297,
+        23622,
+        6570,
+        10566,
+        21913,
+        22114,
+        6568,
+        29801,
+        19553,
+        27173,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        26384,
+        30303,
+        11832,
+        34611,
+        10551,
+        34613,
+        1127,
+        20421,
+        22322,
+        12954,
+        23597,
+        8850,
+        27185,
+        26386,
+        30304,
+        33194,
+        11834,
+        23646,
+        29025,
+        29045,
+        29847,
+        21304,
+        1079,
+        20422,
+        22981,
+        7462,
+        23593,
+        7461,
+        11126,
+        13239,
+        11840,
+        34621,
+        4131,
+        3105,
+        20578,
+        28307,
+        33182,
+        11773,
+        23595,
+        25264,
+        26770,
+        6737,
+        22975,
+        19710,
+        25246,
+        26761,
+        28792,
+        24417,
+        27198,
+        13263,
+        4151,
+        4178,
+        20405,
+        28810,
+        4587,
+        20406
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Scurrius%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "boss:fight-caves": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "boss:kraken": {
+    "kind": "loadout",
+    "styles": [
+      "magic"
+    ],
+    "itemIds": [
+      8013,
+      23745,
+      6660,
+      6664,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "magic": [
+        21018,
+        25518,
+        26241,
+        4708,
+        4089,
+        20562,
+        21793,
+        23603,
+        2413,
+        12002,
+        23654,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        21021,
+        27193,
+        26243,
+        33196,
+        4712,
+        20598,
+        4091,
+        20425,
+        21024,
+        27194,
+        26245,
+        33198,
+        4714,
+        20599,
+        4093,
+        20426,
+        19544,
+        27171,
+        7462,
+        23593,
+        4095,
+        13235,
+        23644,
+        6920,
+        27170,
+        4097,
+        20579,
+        28313,
+        33180,
+        11770,
+        23624,
+        25258,
+        26767,
+        22975,
+        19710,
+        25246,
+        26761,
+        27251,
+        33176,
+        25985,
+        12612,
+        27275,
+        22323,
+        12899,
+        11907,
+        28585
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Kraken%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "boss:cerberus": {
+    "kind": "loadout",
+    "styles": [
+      "melee"
+    ],
+    "itemIds": [
+      8013,
+      23685,
+      12821,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "melee": [
+        26382,
+        30302,
+        34617,
+        24271,
+        10828,
+        23591,
+        3751,
+        27169,
+        21295,
+        21297,
+        23622,
+        6570,
+        10566,
+        21913,
+        22114,
+        6568,
+        29801,
+        19553,
+        27173,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        26384,
+        30303,
+        11832,
+        34611,
+        10551,
+        34613,
+        1127,
+        20421,
+        22322,
+        12954,
+        23597,
+        8850,
+        27185,
+        26386,
+        30304,
+        33194,
+        11834,
+        23646,
+        29025,
+        29045,
+        29847,
+        21304,
+        1079,
+        20422,
+        22981,
+        7462,
+        23593,
+        7461,
+        11126,
+        13239,
+        11840,
+        34621,
+        4131,
+        3105,
+        20578,
+        28307,
+        33182,
+        11773,
+        23595,
+        25264,
+        26770,
+        6737,
+        22975,
+        19710,
+        25246,
+        26761,
+        29589,
+        19675,
+        24417,
+        27198,
+        13263,
+        11889,
+        23528
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Cerberus%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "boss:mole": {
+    "kind": "loadout",
+    "styles": [
+      "melee"
+    ],
+    "itemIds": [
+      8013,
+      12695,
+      23543,
+      952,
+      20720,
+      6450,
+      13137,
+      13138,
+      13139,
+      13140,
+      9804,
+      9805,
+      4548,
+      4550,
+      4537,
+      4539,
+      36,
+      595,
+      8987,
+      9665,
+      12625,
+      23583,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "melee": [
+        26382,
+        30302,
+        34617,
+        24271,
+        10828,
+        23591,
+        3751,
+        27169,
+        21295,
+        21297,
+        23622,
+        6570,
+        10566,
+        21913,
+        22114,
+        6568,
+        29801,
+        19553,
+        27173,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        26384,
+        30303,
+        11832,
+        34611,
+        10551,
+        34613,
+        1127,
+        20421,
+        22322,
+        12954,
+        23597,
+        8850,
+        27185,
+        26386,
+        30304,
+        33194,
+        11834,
+        23646,
+        29025,
+        29045,
+        29847,
+        21304,
+        1079,
+        20422,
+        22981,
+        7462,
+        23593,
+        7461,
+        11126,
+        13239,
+        11840,
+        34621,
+        4131,
+        3105,
+        20578,
+        28307,
+        33182,
+        11773,
+        23595,
+        25264,
+        26770,
+        6737,
+        22975,
+        19710,
+        25246,
+        26761,
+        26219,
+        33174,
+        4151,
+        4178,
+        20405,
+        28810,
+        4587,
+        20406
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Giant_Mole%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "boss:barrows": {
+    "kind": "loadout",
+    "styles": [
+      "magic",
+      "ranged"
+    ],
+    "itemIds": [
+      8013,
+      3040,
+      952,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "magic": [
+        21018,
+        25518,
+        26241,
+        4708,
+        4089,
+        20562,
+        21793,
+        23603,
+        2413,
+        12002,
+        23654,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        21021,
+        27193,
+        26243,
+        33196,
+        4712,
+        20598,
+        4091,
+        20425,
+        21024,
+        27194,
+        26245,
+        33198,
+        4714,
+        20599,
+        4093,
+        20426,
+        19544,
+        27171,
+        7462,
+        23593,
+        4095,
+        13235,
+        23644,
+        6920,
+        27170,
+        4097,
+        20579,
+        28313,
+        33180,
+        11770,
+        23624,
+        25258,
+        26767,
+        22975,
+        19710,
+        25246,
+        26761,
+        27251,
+        33176,
+        25985,
+        12612,
+        12899,
+        11907,
+        28585,
+        12658
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Barrows%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "boss:hueycoatl": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/The_Hueycoatl/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "waves:inferno": {
+    "kind": "loadout",
+    "styles": [
+      "ranged",
+      "magic",
+      "melee"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Inferno/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "waves:colosseum": {
+    "kind": "loadout",
+    "styles": [
+      "ranged",
+      "magic",
+      "melee"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Fortis_Colosseum/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "waves:fight-caves:1": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "waves:fight-caves:2": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "waves:fight-caves:3": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "waves:fight-caves:4": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "waves:fight-caves:5": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "waves:fight-caves:6": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "waves:fight-caves:7": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "waves:fight-caves:8": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "waves:fight-caves:9": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "waves:fight-caves:10": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "waves:fight-caves:11": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "waves:fight-caves:12": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "waves:fight-caves:13": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "waves:fight-caves:14": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "waves:fight-caves:15": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "encounter:abyssal-sire": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Abyssal_Sire/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:agrith-naar": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Shadow_of_the_Storm/Quick_guide"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:ahrim-the-blighted": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Barrows/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:akkha": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Tombs_of_Amascut/Akkha"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:alchemical-hydra": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Alchemical_Hydra/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:amoxliatl": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Amoxliatl/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:araxxor": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Araxxor/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:artio": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Artio/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:ba-ba": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Tombs_of_Amascut/Ba-Ba"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:barrows-chests": {
+    "kind": "loadout",
+    "styles": [
+      "magic",
+      "ranged"
+    ],
+    "itemIds": [
+      8013,
+      3040,
+      952,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "magic": [
+        21018,
+        25518,
+        26241,
+        4708,
+        4089,
+        20562,
+        21793,
+        23603,
+        2413,
+        12002,
+        23654,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        21021,
+        27193,
+        26243,
+        33196,
+        4712,
+        20598,
+        4091,
+        20425,
+        21024,
+        27194,
+        26245,
+        33198,
+        4714,
+        20599,
+        4093,
+        20426,
+        19544,
+        27171,
+        7462,
+        23593,
+        4095,
+        13235,
+        23644,
+        6920,
+        27170,
+        4097,
+        20579,
+        28313,
+        33180,
+        11770,
+        23624,
+        25258,
+        26767,
+        22975,
+        19710,
+        25246,
+        26761,
+        27251,
+        33176,
+        25985,
+        12612,
+        12899,
+        11907,
+        28585,
+        12658
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Barrows%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "encounter:blood-moon": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Moons_of_Peril/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:blue-moon": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Moons_of_Peril/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:branda-the-fire-queen": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/The_Royal_Titans/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:brutus": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Brutus/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:bryophyta": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Bryophyta/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:callisto": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Callisto/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:calvar-ion": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Calvar'ion/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:cerberus": {
+    "kind": "loadout",
+    "styles": [
+      "melee"
+    ],
+    "itemIds": [
+      8013,
+      23685,
+      12821,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "melee": [
+        26382,
+        30302,
+        34617,
+        24271,
+        10828,
+        23591,
+        3751,
+        27169,
+        21295,
+        21297,
+        23622,
+        6570,
+        10566,
+        21913,
+        22114,
+        6568,
+        29801,
+        19553,
+        27173,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        26384,
+        30303,
+        11832,
+        34611,
+        10551,
+        34613,
+        1127,
+        20421,
+        22322,
+        12954,
+        23597,
+        8850,
+        27185,
+        26386,
+        30304,
+        33194,
+        11834,
+        23646,
+        29025,
+        29045,
+        29847,
+        21304,
+        1079,
+        20422,
+        22981,
+        7462,
+        23593,
+        7461,
+        11126,
+        13239,
+        11840,
+        34621,
+        4131,
+        3105,
+        20578,
+        28307,
+        33182,
+        11773,
+        23595,
+        25264,
+        26770,
+        6737,
+        22975,
+        19710,
+        25246,
+        26761,
+        29589,
+        19675,
+        24417,
+        27198,
+        13263,
+        11889,
+        23528
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Cerberus%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "encounter:chambers-of-xeric": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Chambers_of_Xeric/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:chambers-of-xeric-challenge-mode": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Chambers_of_Xeric/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:chaos-elemental": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Chaos_Elemental/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:chaos-fanatic": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Chaos_Fanatic/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:commander-zilyana": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Commander_Zilyana/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:corporeal-beast": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Corporeal_Beast/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:corrupted-hunllef": {
+    "kind": "none",
+    "itemIds": [],
+    "families": [],
+    "source": [
+      "https://oldschool.runescape.wiki/w/The_Gauntlet/Strategies"
+    ],
+    "notes": "Equipment and supplies are gathered inside the Gauntlet. No outside bank items are carried into the encounter."
+  },
+  "encounter:crazy-archaeologist": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Crazy_Archaeologist/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:crystalline-hunllef": {
+    "kind": "none",
+    "itemIds": [],
+    "families": [],
+    "source": [
+      "https://oldschool.runescape.wiki/w/The_Gauntlet/Strategies"
+    ],
+    "notes": "Equipment and supplies are gathered inside the Gauntlet. No outside bank items are carried into the encounter."
+  },
+  "encounter:culinaromancer": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Defeating_the_Culinaromancer/Quick_guide"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:dagannoth-prime": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Dagannoth_Prime/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:dagannoth-rex": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Dagannoth_Rex/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:dagannoth-supreme": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Dagannoth_Supreme/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:demonic-brutus": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Brutus/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:deranged-archaeologist": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Deranged_Archaeologist/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:dharok-the-wretched": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Barrows/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:doom-of-mokhaiotl": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Doom_of_Mokhaiotl/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:duke-sucellus": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Duke_Sucellus/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:eclipse-moon": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Moons_of_Peril/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:eldric-the-ice-king": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/The_Royal_Titans/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:elidinis-warden": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Tombs_of_Amascut/Wardens"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:elvarg": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Dragon_Slayer_I/Quick_guide"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:fight-caves": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      2444,
+      23551,
+      6685,
+      23575,
+      3024,
+      23567,
+      12625,
+      23583,
+      8013
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        12926,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        11785,
+        23611,
+        9185,
+        23601,
+        21000,
+        33188,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzHaar_Fight_Cave%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "encounter:fortis-colosseum": {
+    "kind": "loadout",
+    "styles": [
+      "ranged",
+      "magic",
+      "melee"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Fortis_Colosseum/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:galvek": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Dragon_Slayer_II/Quick_guide"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:general-graardor": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/General_Graardor/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:giant-mole": {
+    "kind": "loadout",
+    "styles": [
+      "melee"
+    ],
+    "itemIds": [
+      8013,
+      12695,
+      23543,
+      952,
+      20720,
+      6450,
+      13137,
+      13138,
+      13139,
+      13140,
+      9804,
+      9805,
+      4548,
+      4550,
+      4537,
+      4539,
+      36,
+      595,
+      8987,
+      9665,
+      12625,
+      23583,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "melee": [
+        26382,
+        30302,
+        34617,
+        24271,
+        10828,
+        23591,
+        3751,
+        27169,
+        21295,
+        21297,
+        23622,
+        6570,
+        10566,
+        21913,
+        22114,
+        6568,
+        29801,
+        19553,
+        27173,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        26384,
+        30303,
+        11832,
+        34611,
+        10551,
+        34613,
+        1127,
+        20421,
+        22322,
+        12954,
+        23597,
+        8850,
+        27185,
+        26386,
+        30304,
+        33194,
+        11834,
+        23646,
+        29025,
+        29045,
+        29847,
+        21304,
+        1079,
+        20422,
+        22981,
+        7462,
+        23593,
+        7461,
+        11126,
+        13239,
+        11840,
+        34621,
+        4131,
+        3105,
+        20578,
+        28307,
+        33182,
+        11773,
+        23595,
+        25264,
+        26770,
+        6737,
+        22975,
+        19710,
+        25246,
+        26761,
+        26219,
+        33174,
+        4151,
+        4178,
+        20405,
+        28810,
+        4587,
+        20406
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Giant_Mole%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "encounter:glough": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Monkey_Madness_II/Quick_guide"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:great-olm": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Chambers_of_Xeric/Great_Olm"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:grotesque-guardians": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Grotesque_Guardians/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:guthan-the-infested": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Barrows/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:hespori": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Hespori/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:ice-demon": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Chambers_of_Xeric/Ice_Demon"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:inferno": {
+    "kind": "loadout",
+    "styles": [
+      "ranged",
+      "magic",
+      "melee"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Inferno/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:k-ril-tsutsaroth": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/K'ril_Tsutsaroth/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:kalphite-queen": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Kalphite_Queen/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:karil-the-tainted": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Barrows/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:kephri": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Tombs_of_Amascut/Kephri"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:king-black-dragon": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      8013,
+      2444,
+      23551,
+      11951,
+      5952,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        21012,
+        11785,
+        23611,
+        21902,
+        33460,
+        9185,
+        23601,
+        22002,
+        22003,
+        1540,
+        8282,
+        21946,
+        9243,
+        23649,
+        11875
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/King_Black_Dragon%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "encounter:kraken": {
+    "kind": "loadout",
+    "styles": [
+      "magic"
+    ],
+    "itemIds": [
+      8013,
+      23745,
+      6660,
+      6664,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "magic": [
+        21018,
+        25518,
+        26241,
+        4708,
+        4089,
+        20562,
+        21793,
+        23603,
+        2413,
+        12002,
+        23654,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        21021,
+        27193,
+        26243,
+        33196,
+        4712,
+        20598,
+        4091,
+        20425,
+        21024,
+        27194,
+        26245,
+        33198,
+        4714,
+        20599,
+        4093,
+        20426,
+        19544,
+        27171,
+        7462,
+        23593,
+        4095,
+        13235,
+        23644,
+        6920,
+        27170,
+        4097,
+        20579,
+        28313,
+        33180,
+        11770,
+        23624,
+        25258,
+        26767,
+        22975,
+        19710,
+        25246,
+        26761,
+        27251,
+        33176,
+        25985,
+        12612,
+        27275,
+        22323,
+        12899,
+        11907,
+        28585
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Kraken%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "encounter:kree-arra": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Kree'Arra/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:lizardman-shamans": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Chambers_of_Xeric/Lizardman_shamans"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:lunar-chests": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Moons_of_Peril/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:mad-angel": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Mad_Angel/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:maggot-king": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Maggot_King/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:mimic": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Mimic/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:muttadiles": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Chambers_of_Xeric/Muttadiles"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:nex": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Nex/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:nightmare": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Nightmare/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:nylocas-vasilias": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Theatre_of_Blood/Nylocas_Vasilias"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:obor": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Obor/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:pestilent-bloat": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Theatre_of_Blood/Pestilent_Bloat"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:phantom-muspah": {
+    "kind": "loadout",
+    "styles": [
+      "ranged"
+    ],
+    "itemIds": [
+      8013,
+      23733,
+      12625,
+      23583,
+      21012,
+      11785,
+      23611,
+      21902,
+      33460,
+      9185,
+      23601,
+      9240,
+      21940,
+      12791,
+      23650,
+      27086,
+      30692,
+      27281,
+      25818,
+      556,
+      6422,
+      7558,
+      9693,
+      11688,
+      557,
+      6426,
+      9695,
+      11689,
+      554,
+      6428,
+      7554,
+      9699,
+      11686,
+      564,
+      11696,
+      565,
+      11697,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        20997,
+        25867,
+        25869,
+        25884,
+        25886,
+        25888,
+        25890,
+        25892,
+        25894,
+        25896,
+        27187,
+        33021,
+        21012,
+        11785,
+        23611,
+        21902,
+        33460,
+        9185,
+        23601,
+        21000,
+        33188,
+        22002,
+        22003,
+        12610
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Phantom_Muspah%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "encounter:phosani-s-nightmare": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Phosani's_Nightmare/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:sarachnis": {
+    "kind": "loadout",
+    "styles": [
+      "melee"
+    ],
+    "itemIds": [
+      8013,
+      23685,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "melee": [
+        26382,
+        30302,
+        34617,
+        24271,
+        10828,
+        23591,
+        3751,
+        27169,
+        21295,
+        21297,
+        23622,
+        6570,
+        10566,
+        21913,
+        22114,
+        6568,
+        29801,
+        19553,
+        27173,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        26384,
+        30303,
+        11832,
+        34611,
+        10551,
+        34613,
+        1127,
+        20421,
+        22322,
+        12954,
+        23597,
+        8850,
+        27185,
+        26386,
+        30304,
+        33194,
+        11834,
+        23646,
+        29025,
+        29045,
+        29847,
+        21304,
+        1079,
+        20422,
+        22981,
+        7462,
+        23593,
+        7461,
+        11126,
+        29806,
+        33202,
+        13239,
+        11840,
+        34621,
+        3105,
+        20578,
+        28307,
+        33182,
+        11773,
+        23595,
+        25264,
+        26770,
+        6737,
+        22975,
+        19710,
+        25246,
+        26761,
+        24417,
+        27198,
+        28338,
+        13263,
+        23528,
+        28810,
+        1434
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Sarachnis%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "encounter:scorpia": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Scorpia/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:scurrius": {
+    "kind": "loadout",
+    "styles": [
+      "melee"
+    ],
+    "itemIds": [
+      8013,
+      12695,
+      23543,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "melee": [
+        26382,
+        30302,
+        34617,
+        24271,
+        10828,
+        23591,
+        3751,
+        27169,
+        21295,
+        21297,
+        23622,
+        6570,
+        10566,
+        21913,
+        22114,
+        6568,
+        29801,
+        19553,
+        27173,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        26384,
+        30303,
+        11832,
+        34611,
+        10551,
+        34613,
+        1127,
+        20421,
+        22322,
+        12954,
+        23597,
+        8850,
+        27185,
+        26386,
+        30304,
+        33194,
+        11834,
+        23646,
+        29025,
+        29045,
+        29847,
+        21304,
+        1079,
+        20422,
+        22981,
+        7462,
+        23593,
+        7461,
+        11126,
+        13239,
+        11840,
+        34621,
+        4131,
+        3105,
+        20578,
+        28307,
+        33182,
+        11773,
+        23595,
+        25264,
+        26770,
+        6737,
+        22975,
+        19710,
+        25246,
+        26761,
+        28792,
+        24417,
+        27198,
+        13263,
+        4151,
+        4178,
+        20405,
+        28810,
+        4587,
+        20406
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Scurrius%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "encounter:seren": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Fragment_of_Seren/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:shellbane-gryphon": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Shellbane_gryphon/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:skeletal-mystics": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Chambers_of_Xeric/Skeletal_Mystics"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:skotizo": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Skotizo/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:sol-heredit": {
+    "kind": "loadout",
+    "styles": [
+      "ranged",
+      "magic",
+      "melee"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Sol_Heredit/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:sotetseg": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Theatre_of_Blood/Sotetseg"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:spindel": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Spindel/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:tekton": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Chambers_of_Xeric/Tekton"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:tempoross": {
+    "kind": "items",
+    "itemNames": [
+      "Harpoon",
+      "Barb-tail harpoon",
+      "Dragon harpoon",
+      "Infernal harpoon",
+      "Crystal harpoon",
+      "Rope",
+      "Hammer",
+      "Imcando hammer",
+      "Bucket",
+      "Bucket of water",
+      "Spirit angler headband",
+      "Spirit angler top",
+      "Spirit angler waders",
+      "Spirit angler boots"
+    ],
+    "families": [],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Transcript:Captain_Dudi",
+      "https://oldschool.runescape.wiki/w/Spirit_angler_top"
+    ],
+    "notes": "Owned tool alternatives; basics are also available on the ship. Full Spirit angler replaces the rope requirement."
+  },
+  "encounter:the-corrupted-gauntlet": {
+    "kind": "none",
+    "itemIds": [],
+    "families": [],
+    "source": [
+      "https://oldschool.runescape.wiki/w/The_Gauntlet/Strategies"
+    ],
+    "notes": "Equipment and supplies are gathered inside the Gauntlet. No outside bank items are carried into the encounter."
+  },
+  "encounter:the-gauntlet": {
+    "kind": "none",
+    "itemIds": [],
+    "families": [],
+    "source": [
+      "https://oldschool.runescape.wiki/w/The_Gauntlet/Strategies"
+    ],
+    "notes": "Equipment and supplies are gathered inside the Gauntlet. No outside bank items are carried into the encounter."
+  },
+  "encounter:the-hueycoatl": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/The_Hueycoatl/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:the-inadequacy": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Dream_Mentor/Quick_guide"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:the-leviathan": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/The_Leviathan/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:the-maiden-of-sugadinti": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Theatre_of_Blood/The_Maiden_of_Sugadinti"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:the-royal-titans": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/The_Royal_Titans/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:the-whisperer": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/The_Whisperer/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:theatre-of-blood": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Theatre_of_Blood/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:theatre-of-blood-hard-mode": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Theatre_of_Blood/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:thermonuclear-smoke-devil": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Thermonuclear_Smoke_Devil/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:tombs-of-amascut": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Tombs_of_Amascut/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:tombs-of-amascut-expert-mode": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Tombs_of_Amascut/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:torag-the-corrupted": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Barrows/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:tumeken-s-warden": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Tombs_of_Amascut/Wardens"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:tzkal-zuk": {
+    "kind": "loadout",
+    "styles": [
+      "ranged",
+      "magic",
+      "melee"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzKal-Zuk/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:tztok-jad": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/TzTok-Jad/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:vanguards": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Chambers_of_Xeric/Vanguards"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:vanstrom-klause": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Sins_of_the_Father/Quick_guide"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:vardorvis": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Vardorvis/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:vasa-nistirio": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Chambers_of_Xeric/Vasa_Nistirio"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:venenatis": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Venenatis/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:verac-the-defiled": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Barrows/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:verzik-vitur": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Theatre_of_Blood/Verzik_Vitur"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:vespula": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Chambers_of_Xeric/Vespula"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:vet-ion": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Vet'ion/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:vorkath": {
+    "kind": "loadout",
+    "styles": [
+      "ranged",
+      "melee"
+    ],
+    "itemIds": [
+      8013,
+      23733,
+      22209,
+      12913,
+      12791,
+      23650,
+      27086,
+      30692,
+      27281,
+      557,
+      6426,
+      9695,
+      11689,
+      556,
+      6422,
+      7558,
+      9693,
+      11688,
+      562,
+      6430,
+      7560,
+      11694,
+      4696,
+      563,
+      6434,
+      11695,
+      21946,
+      4170,
+      3024,
+      23567,
+      385,
+      6969,
+      20390,
+      23685
+    ],
+    "styleItemIds": {
+      "ranged": [
+        27235,
+        27226,
+        11826,
+        10382,
+        4732,
+        22109,
+        10499,
+        23609,
+        10498,
+        12018,
+        25278,
+        26782,
+        19547,
+        27172,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        27238,
+        33190,
+        27229,
+        11828,
+        10378,
+        2503,
+        20423,
+        4736,
+        23632,
+        27241,
+        33192,
+        27232,
+        11830,
+        10380,
+        27180,
+        2497,
+        20424,
+        4738,
+        34609,
+        26235,
+        7462,
+        23593,
+        2491,
+        13237,
+        2577,
+        19927,
+        6328,
+        20580,
+        28310,
+        11771,
+        25260,
+        26768,
+        19710,
+        25246,
+        26761,
+        22975,
+        21012,
+        11785,
+        23611,
+        21902,
+        33460,
+        9185,
+        23601,
+        22002,
+        22003,
+        1540,
+        8282,
+        21944,
+        9242
+      ],
+      "melee": [
+        26382,
+        30302,
+        34617,
+        24271,
+        10828,
+        23591,
+        3751,
+        27169,
+        21295,
+        21297,
+        23622,
+        6570,
+        10566,
+        21913,
+        22114,
+        6568,
+        12018,
+        25278,
+        26782,
+        10588,
+        29801,
+        19553,
+        27173,
+        6585,
+        23640,
+        26384,
+        30303,
+        11832,
+        34611,
+        10551,
+        34613,
+        1127,
+        20421,
+        22322,
+        12954,
+        23597,
+        8850,
+        27185,
+        26386,
+        30304,
+        33194,
+        11834,
+        23646,
+        29025,
+        29045,
+        29847,
+        21304,
+        1079,
+        20422,
+        22981,
+        7462,
+        23593,
+        7461,
+        11126,
+        13239,
+        11840,
+        34621,
+        4131,
+        3105,
+        20578,
+        28307,
+        33182,
+        11773,
+        23595,
+        25264,
+        26770,
+        6737,
+        22975,
+        19710,
+        25246,
+        26761,
+        22978,
+        26219,
+        33174,
+        11889,
+        21009,
+        21206
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Vorkath%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  },
+  "encounter:wintertodt": {
+    "kind": "items",
+    "itemNames": [
+      "Any axe",
+      "Tinderbox",
+      "Bruma torch",
+      "Hammer",
+      "Imcando hammer",
+      "Knife",
+      "Pyromancer hood",
+      "Pyromancer garb",
+      "Pyromancer robe",
+      "Pyromancer boots",
+      "Warm gloves"
+    ],
+    "families": [],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Wintertodt_combat_achievements"
+    ],
+    "notes": "Tools and warm-clothing alternatives. Basic tools are also supplied at the encounter; rejuvenation potions are made inside."
+  },
+  "encounter:xarpus": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Theatre_of_Blood/Xarpus"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:yama": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Yama/Strategies"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:zalcano": {
+    "kind": "items",
+    "itemNames": [
+      "Any pickaxe"
+    ],
+    "families": [
+      "food",
+      "run-energy"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Transcript:Rhiannon"
+    ],
+    "notes": "Pickaxe alternatives, with optional food and run-energy supplies."
+  },
+  "encounter:zebak": {
+    "kind": "loadout",
+    "styles": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "itemIds": [],
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "run-energy",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Tombs_of_Amascut/Zebak"
+    ],
+    "notes": "Equipment and supply choices for this encounter. Choose your combat style; these alternatives are not a prescribed optimal loadout."
+  },
+  "encounter:zulrah": {
+    "kind": "loadout",
+    "styles": [
+      "magic",
+      "ranged"
+    ],
+    "itemIds": [
+      8013,
+      23745,
+      12913,
+      3024,
+      23567,
+      385,
+      6969,
+      20390
+    ],
+    "styleItemIds": {
+      "magic": [
+        21018,
+        25518,
+        26241,
+        4708,
+        4089,
+        20562,
+        21793,
+        23603,
+        2413,
+        12002,
+        23654,
+        6585,
+        23640,
+        1704,
+        8283,
+        20586,
+        21021,
+        27193,
+        26243,
+        33196,
+        4712,
+        20598,
+        4091,
+        20425,
+        21024,
+        27194,
+        26245,
+        33198,
+        4714,
+        20599,
+        4093,
+        20426,
+        19544,
+        27171,
+        7462,
+        23593,
+        4095,
+        13235,
+        23644,
+        6920,
+        27170,
+        4097,
+        20579,
+        20657,
+        25248,
+        26762,
+        19710,
+        25246,
+        26761,
+        2550,
+        27251,
+        33176,
+        25985,
+        12612,
+        27275,
+        22323,
+        12899,
+        11907,
+        28585
+      ]
+    },
+    "families": [
+      "food",
+      "healing-potions",
+      "prayer-restoration",
+      "combat-potions",
+      "teleports"
+    ],
+    "source": [
+      "https://oldschool.runescape.wiki/w/Zulrah%2FStrategies"
+    ],
+    "notes": "Equipment alternatives and supplies from the selected method; quantities remain in the guide."
+  }
+}

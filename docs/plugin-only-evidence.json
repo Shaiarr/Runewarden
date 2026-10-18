@@ -1,0 +1,116 @@
+{
+  "automatedTests": 1603,
+  "automatedFailures": 0,
+  "automatedSkipped": 0,
+  "liveGatesPending": [
+    "windows-client",
+    "quest-journey",
+    "training-journey",
+    "slayer-journey",
+    "farm-journey",
+    "boss-journey",
+    "profile-lifecycle",
+    "long-session",
+    "plugin-compatibility",
+    "hub-review"
+  ],
+  "publicReleaseReady": false,
+  "pluginVersion": "0.9.6",
+  "format": "runewarden-plugin-only-evidence",
+  "recordedDateUtc": "2026-10-18",
+  "entrypoint": "com.runewarden.RunewardenPlugin",
+  "configurationGroup": "runewarden",
+  "previousPrimarySettingsAutomaticallyMigrated": false,
+  "preRenameBaselineCommit": "5c53d5e40b6304b3e9d672b96d5d9beb49b6cf42",
+  "productionSourceMatchesCurrentDevelopmentTree": true,
+  "productionSourceFiles": 217,
+  "productionResourceFiles": 154,
+  "changesSinceBaseline": [
+    "Java package and class prefix renamed to Runewarden.",
+    "Configuration namespace, bundled resource paths and data format labels renamed.",
+    "Build metadata, documentation, tools and source evidence refreshed for0.9.6.",
+    "Original project code and guide arrangement license changed to GPL-3.0-only; third-party licenses retained.",
+    "Publisher metadata set to Shai-arr and community maintenance terms recorded."
+  ],
+  "javaSuites": {
+    "test": {
+      "suites": 191,
+      "tests": 1603,
+      "failures": 0,
+      "skipped": 0
+    },
+    "companionIntegrationTest": {
+      "suites": 2,
+      "tests": 11,
+      "failures": 0,
+      "skipped": 0
+    }
+  },
+  "pythonTests": 32,
+  "optionalCompanion": {
+    "version": "1.21.3",
+    "upstreamCommit": "37abff3a3345185fc11fccecae04d8170de25a11",
+    "suppliedExternally": true,
+    "binaryBundled": false
+  },
+  "historicalLauncherTestsExcluded": 6,
+  "bundledDatasetsVerified": 96,
+  "productionJar": {
+    "file": "runewarden-0.9.6.jar",
+    "sha256": "79eaa9b483e25b25b4f24ca122e3320ccd8f06e8af02dcd29e0e24264a627d45",
+    "bytes": 4059056,
+    "javaRelease": 11,
+    "classes": 771,
+    "onlyCurrentProjectNamespace": true,
+    "noUnexpectedResources": true
+  },
+  "officialStandardTemplate": {
+    "compilePassed": true,
+    "toolingCommit": "034eaffd5bce7bb678d35287b547874f3dba6b3b",
+    "apiVersion": "1.13.2",
+    "templateFilesUnchanged": true,
+    "versionProvidedBySeparateInitConstraint": true,
+    "classNamesAndAllResourcesMatch": true,
+    "byteIdenticalClasses": 767,
+    "debugMetadataDifferences": [
+      "com/runewarden/RunewardenPlugin$1.class",
+      "com/runewarden/RunewardenPlugin$2.class",
+      "com/runewarden/WorldHopperTool$1.class",
+      "com/runewarden/WorldHopperTool$2.class"
+    ],
+    "scope": "Local compilation with pinned native API and unchanged official templates; not remote Hub CI or approval."
+  },
+  "projectBrandReferencesRemaining": 0,
+  "thirdPartyGameActionLabelsRetained": 6,
+  "liveLoginVerified": false,
+  "nativeWindowsExecutionVerified": false,
+  "hubApproved": false,
+  "gitHubCiExecuted": false,
+  "ciConfiguredFor": [
+    "ubuntu-24.04",
+    "windows-2022"
+  ],
+  "runtimeOrClientDistributionIncluded": false,
+  "hubIcon": {
+    "file": "icon.png",
+    "format": "PNG",
+    "width": 32,
+    "height": 32,
+    "bytes": 198,
+    "sha256": "b462cee7b67a66a0f381790b8992cc59a023bfc60c2b63ca413371700ed6b7c9",
+    "source": "Exported unchanged from the existing native navigation icon drawing method",
+    "includedInProductionJar": false
+  },
+  "publisher": "Shai-arr",
+  "originalCodeLicense": "GPL-3.0-only",
+  "licenseUpdateVerification": {
+    "productionClassesByteIdenticalToPreviousPackage": 771,
+    "thirdPartyCodeAndLicenseTermsPreserved": true,
+    "dataChangesLimitedToOriginalLicenseFields": true,
+    "cc0RewardAudioUnchanged": true,
+    "ownGplTextMatchesRetainedUpstreamGplText": true,
+    "javaAndCompanionTestsRerun": true,
+    "pythonTestsRerun": true,
+    "pluginHubApprovalImplied": false
+  }
+}

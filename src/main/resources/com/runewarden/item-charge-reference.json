@@ -1,0 +1,3242 @@
+{
+  "runeLiteVersion": "1.13.2",
+  "source": "https://github.com/runelite/runelite/blob/runelite-parent-1.13.2/runelite-client/src/main/java/net/runelite/client/plugins/itemcharges/ItemWithCharge.java",
+  "license": "BSD-2-Clause",
+  "items": [
+    {
+      "itemId": 11103,
+      "type": "ABYSSAL_BRACELET",
+      "charges": 1
+    },
+    {
+      "itemId": 11101,
+      "type": "ABYSSAL_BRACELET",
+      "charges": 2
+    },
+    {
+      "itemId": 11099,
+      "type": "ABYSSAL_BRACELET",
+      "charges": 3
+    },
+    {
+      "itemId": 11097,
+      "type": "ABYSSAL_BRACELET",
+      "charges": 4
+    },
+    {
+      "itemId": 11095,
+      "type": "ABYSSAL_BRACELET",
+      "charges": 5
+    },
+    {
+      "itemId": 11737,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11736,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 11735,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 11734,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 3038,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 3036,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 3034,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 3032,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11463,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11461,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 179,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 177,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 175,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 2446,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11435,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11433,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 5949,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 5947,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 5945,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 5943,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11503,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11501,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 5958,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 5956,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 5954,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 5952,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 26346,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 26344,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 26342,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 26340,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 26353,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 26350,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 2458,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 2456,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 2454,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 2452,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11507,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11505,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 12911,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 12909,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 12907,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 12905,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 12919,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 12917,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 12915,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 12913,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 125,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 123,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 121,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 2428,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11431,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11429,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 5378,
+      "type": "FRUIT_BASKET",
+      "charges": 1
+    },
+    {
+      "itemId": 5380,
+      "type": "FRUIT_BASKET",
+      "charges": 2
+    },
+    {
+      "itemId": 5382,
+      "type": "FRUIT_BASKET",
+      "charges": 3
+    },
+    {
+      "itemId": 5384,
+      "type": "FRUIT_BASKET",
+      "charges": 4
+    },
+    {
+      "itemId": 5386,
+      "type": "FRUIT_BASKET",
+      "charges": 5
+    },
+    {
+      "itemId": 5408,
+      "type": "FRUIT_BASKET",
+      "charges": 1
+    },
+    {
+      "itemId": 5410,
+      "type": "FRUIT_BASKET",
+      "charges": 2
+    },
+    {
+      "itemId": 5412,
+      "type": "FRUIT_BASKET",
+      "charges": 3
+    },
+    {
+      "itemId": 5414,
+      "type": "FRUIT_BASKET",
+      "charges": 4
+    },
+    {
+      "itemId": 5416,
+      "type": "FRUIT_BASKET",
+      "charges": 5
+    },
+    {
+      "itemId": 5388,
+      "type": "FRUIT_BASKET",
+      "charges": 1
+    },
+    {
+      "itemId": 5390,
+      "type": "FRUIT_BASKET",
+      "charges": 2
+    },
+    {
+      "itemId": 5392,
+      "type": "FRUIT_BASKET",
+      "charges": 3
+    },
+    {
+      "itemId": 5394,
+      "type": "FRUIT_BASKET",
+      "charges": 4
+    },
+    {
+      "itemId": 5396,
+      "type": "FRUIT_BASKET",
+      "charges": 5
+    },
+    {
+      "itemId": 5398,
+      "type": "FRUIT_BASKET",
+      "charges": 1
+    },
+    {
+      "itemId": 5400,
+      "type": "FRUIT_BASKET",
+      "charges": 2
+    },
+    {
+      "itemId": 5402,
+      "type": "FRUIT_BASKET",
+      "charges": 3
+    },
+    {
+      "itemId": 5404,
+      "type": "FRUIT_BASKET",
+      "charges": 4
+    },
+    {
+      "itemId": 5406,
+      "type": "FRUIT_BASKET",
+      "charges": 5
+    },
+    {
+      "itemId": 5960,
+      "type": "FRUIT_BASKET",
+      "charges": 1
+    },
+    {
+      "itemId": 5962,
+      "type": "FRUIT_BASKET",
+      "charges": 2
+    },
+    {
+      "itemId": 5964,
+      "type": "FRUIT_BASKET",
+      "charges": 3
+    },
+    {
+      "itemId": 5966,
+      "type": "FRUIT_BASKET",
+      "charges": 4
+    },
+    {
+      "itemId": 5968,
+      "type": "FRUIT_BASKET",
+      "charges": 5
+    },
+    {
+      "itemId": 22470,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 22467,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 22464,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 22461,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 22458,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 22455,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 22452,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 22449,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 2871,
+      "type": "BELLOWS",
+      "charges": 0
+    },
+    {
+      "itemId": 2874,
+      "type": "BELLOWS",
+      "charges": 1
+    },
+    {
+      "itemId": 2873,
+      "type": "BELLOWS",
+      "charges": 2
+    },
+    {
+      "itemId": 2872,
+      "type": "BELLOWS",
+      "charges": 3
+    },
+    {
+      "itemId": 29207,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 29189,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 29640,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 29637,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 29634,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 29631,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 24605,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 24603,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 24601,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 24598,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 21175,
+      "type": "TELEPORT",
+      "charges": 1
+    },
+    {
+      "itemId": 21173,
+      "type": "TELEPORT",
+      "charges": 2
+    },
+    {
+      "itemId": 21171,
+      "type": "TELEPORT",
+      "charges": 3
+    },
+    {
+      "itemId": 21169,
+      "type": "TELEPORT",
+      "charges": 4
+    },
+    {
+      "itemId": 21166,
+      "type": "TELEPORT",
+      "charges": 5
+    },
+    {
+      "itemId": 11124,
+      "type": "TELEPORT",
+      "charges": 1
+    },
+    {
+      "itemId": 11122,
+      "type": "TELEPORT",
+      "charges": 2
+    },
+    {
+      "itemId": 11120,
+      "type": "TELEPORT",
+      "charges": 3
+    },
+    {
+      "itemId": 11118,
+      "type": "TELEPORT",
+      "charges": 4
+    },
+    {
+      "itemId": 11974,
+      "type": "TELEPORT",
+      "charges": 5
+    },
+    {
+      "itemId": 11972,
+      "type": "TELEPORT",
+      "charges": 6
+    },
+    {
+      "itemId": 9745,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 9743,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 9741,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 9739,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11447,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11445,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 6476,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 6474,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 6472,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 6470,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 137,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 135,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 133,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 2432,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11459,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11457,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 11190,
+      "type": "TELEPORT",
+      "charges": 1
+    },
+    {
+      "itemId": 11191,
+      "type": "TELEPORT",
+      "charges": 2
+    },
+    {
+      "itemId": 11192,
+      "type": "TELEPORT",
+      "charges": 3
+    },
+    {
+      "itemId": 11193,
+      "type": "TELEPORT",
+      "charges": 4
+    },
+    {
+      "itemId": 11194,
+      "type": "TELEPORT",
+      "charges": 5
+    },
+    {
+      "itemId": 24644,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 24641,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 24638,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 24635,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 24632,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 24629,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 24626,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 24623,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 23754,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 23751,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 23748,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 23745,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 23742,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 23739,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 23736,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 23733,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 23706,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 23703,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 23700,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 23697,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 23694,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 23691,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 23688,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 23685,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 23730,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 23727,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 23724,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 23721,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 23718,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 23715,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 23712,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 23709,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 23882,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 23883,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 23884,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 23885,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 3691,
+      "type": "TELEPORT",
+      "charges": 1
+    },
+    {
+      "itemId": 6125,
+      "type": "TELEPORT",
+      "charges": 2
+    },
+    {
+      "itemId": 6126,
+      "type": "TELEPORT",
+      "charges": 3
+    },
+    {
+      "itemId": 6127,
+      "type": "TELEPORT",
+      "charges": 4
+    },
+    {
+      "itemId": 13079,
+      "type": "TELEPORT",
+      "charges": 5
+    },
+    {
+      "itemId": 3014,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 3012,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 3010,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 3008,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11455,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11453,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 11957,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11955,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 11953,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 11951,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11962,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11960,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 22218,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 22215,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 22212,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 22209,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 22224,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 22221,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 155,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 153,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 151,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 2438,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11479,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11477,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 33810,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 33809,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 33808,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 33807,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 7431,
+      "type": "FUNGICIDE_SPRAY",
+      "charges": 0
+    },
+    {
+      "itemId": 7430,
+      "type": "FUNGICIDE_SPRAY",
+      "charges": 1
+    },
+    {
+      "itemId": 7429,
+      "type": "FUNGICIDE_SPRAY",
+      "charges": 2
+    },
+    {
+      "itemId": 7428,
+      "type": "FUNGICIDE_SPRAY",
+      "charges": 3
+    },
+    {
+      "itemId": 7427,
+      "type": "FUNGICIDE_SPRAY",
+      "charges": 4
+    },
+    {
+      "itemId": 7426,
+      "type": "FUNGICIDE_SPRAY",
+      "charges": 5
+    },
+    {
+      "itemId": 7425,
+      "type": "FUNGICIDE_SPRAY",
+      "charges": 6
+    },
+    {
+      "itemId": 7424,
+      "type": "FUNGICIDE_SPRAY",
+      "charges": 7
+    },
+    {
+      "itemId": 7423,
+      "type": "FUNGICIDE_SPRAY",
+      "charges": 8
+    },
+    {
+      "itemId": 7422,
+      "type": "FUNGICIDE_SPRAY",
+      "charges": 9
+    },
+    {
+      "itemId": 7421,
+      "type": "FUNGICIDE_SPRAY",
+      "charges": 10
+    },
+    {
+      "itemId": 3867,
+      "type": "TELEPORT",
+      "charges": 1
+    },
+    {
+      "itemId": 3865,
+      "type": "TELEPORT",
+      "charges": 2
+    },
+    {
+      "itemId": 3863,
+      "type": "TELEPORT",
+      "charges": 3
+    },
+    {
+      "itemId": 3861,
+      "type": "TELEPORT",
+      "charges": 4
+    },
+    {
+      "itemId": 3859,
+      "type": "TELEPORT",
+      "charges": 5
+    },
+    {
+      "itemId": 3857,
+      "type": "TELEPORT",
+      "charges": 6
+    },
+    {
+      "itemId": 3855,
+      "type": "TELEPORT",
+      "charges": 7
+    },
+    {
+      "itemId": 3853,
+      "type": "TELEPORT",
+      "charges": 8
+    },
+    {
+      "itemId": 1706,
+      "type": "TELEPORT",
+      "charges": 1
+    },
+    {
+      "itemId": 1708,
+      "type": "TELEPORT",
+      "charges": 2
+    },
+    {
+      "itemId": 1710,
+      "type": "TELEPORT",
+      "charges": 3
+    },
+    {
+      "itemId": 1712,
+      "type": "TELEPORT",
+      "charges": 4
+    },
+    {
+      "itemId": 11976,
+      "type": "TELEPORT",
+      "charges": 5
+    },
+    {
+      "itemId": 11978,
+      "type": "TELEPORT",
+      "charges": 6
+    },
+    {
+      "itemId": 10360,
+      "type": "TELEPORT",
+      "charges": 1
+    },
+    {
+      "itemId": 10358,
+      "type": "TELEPORT",
+      "charges": 2
+    },
+    {
+      "itemId": 10356,
+      "type": "TELEPORT",
+      "charges": 3
+    },
+    {
+      "itemId": 10354,
+      "type": "TELEPORT",
+      "charges": 4
+    },
+    {
+      "itemId": 11966,
+      "type": "TELEPORT",
+      "charges": 5
+    },
+    {
+      "itemId": 11964,
+      "type": "TELEPORT",
+      "charges": 6
+    },
+    {
+      "itemId": 4423,
+      "type": "GUTHIX_REST",
+      "charges": 1
+    },
+    {
+      "itemId": 4421,
+      "type": "GUTHIX_REST",
+      "charges": 2
+    },
+    {
+      "itemId": 4419,
+      "type": "GUTHIX_REST",
+      "charges": 3
+    },
+    {
+      "itemId": 4417,
+      "type": "GUTHIX_REST",
+      "charges": 4
+    },
+    {
+      "itemId": 7666,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 7664,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 7662,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 7660,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 10004,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 10002,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 10000,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 9998,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11519,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11517,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 10028,
+      "type": "IMPBOX",
+      "charges": 1
+    },
+    {
+      "itemId": 10027,
+      "type": "IMPBOX",
+      "charges": 2
+    },
+    {
+      "itemId": 3046,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 3044,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 3042,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 3040,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11515,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11513,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 9024,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 9023,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 9022,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 9021,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11491,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11489,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 29083,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 29082,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 29081,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 29080,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 29213,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 29195,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 11733,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11732,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 11731,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 11730,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 21155,
+      "type": "TELEPORT",
+      "charges": 1
+    },
+    {
+      "itemId": 21153,
+      "type": "TELEPORT",
+      "charges": 2
+    },
+    {
+      "itemId": 21151,
+      "type": "TELEPORT",
+      "charges": 3
+    },
+    {
+      "itemId": 21149,
+      "type": "TELEPORT",
+      "charges": 4
+    },
+    {
+      "itemId": 21146,
+      "type": "TELEPORT",
+      "charges": 5
+    },
+    {
+      "itemId": 143,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 141,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 139,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 2434,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11467,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11465,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 33806,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 33805,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 33804,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 33803,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 33814,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 33813,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 33812,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 33811,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 173,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 171,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 169,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 2444,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11511,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11509,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 33818,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 33817,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 33816,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 33815,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 4848,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 4846,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 4844,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 4842,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11439,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11437,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 131,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 129,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 127,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 2430,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11451,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11449,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 21138,
+      "type": "TELEPORT",
+      "charges": 1
+    },
+    {
+      "itemId": 21136,
+      "type": "TELEPORT",
+      "charges": 2
+    },
+    {
+      "itemId": 21134,
+      "type": "TELEPORT",
+      "charges": 3
+    },
+    {
+      "itemId": 21132,
+      "type": "TELEPORT",
+      "charges": 4
+    },
+    {
+      "itemId": 21129,
+      "type": "TELEPORT",
+      "charges": 5
+    },
+    {
+      "itemId": 2566,
+      "type": "TELEPORT",
+      "charges": 1
+    },
+    {
+      "itemId": 2564,
+      "type": "TELEPORT",
+      "charges": 2
+    },
+    {
+      "itemId": 2562,
+      "type": "TELEPORT",
+      "charges": 3
+    },
+    {
+      "itemId": 2560,
+      "type": "TELEPORT",
+      "charges": 4
+    },
+    {
+      "itemId": 2558,
+      "type": "TELEPORT",
+      "charges": 5
+    },
+    {
+      "itemId": 2556,
+      "type": "TELEPORT",
+      "charges": 6
+    },
+    {
+      "itemId": 2554,
+      "type": "TELEPORT",
+      "charges": 7
+    },
+    {
+      "itemId": 2552,
+      "type": "TELEPORT",
+      "charges": 8
+    },
+    {
+      "itemId": 11873,
+      "type": "TELEPORT",
+      "charges": 1
+    },
+    {
+      "itemId": 11872,
+      "type": "TELEPORT",
+      "charges": 2
+    },
+    {
+      "itemId": 11871,
+      "type": "TELEPORT",
+      "charges": 3
+    },
+    {
+      "itemId": 11870,
+      "type": "TELEPORT",
+      "charges": 4
+    },
+    {
+      "itemId": 11869,
+      "type": "TELEPORT",
+      "charges": 5
+    },
+    {
+      "itemId": 11868,
+      "type": "TELEPORT",
+      "charges": 6
+    },
+    {
+      "itemId": 11867,
+      "type": "TELEPORT",
+      "charges": 7
+    },
+    {
+      "itemId": 11866,
+      "type": "TELEPORT",
+      "charges": 8
+    },
+    {
+      "itemId": 11988,
+      "type": "TELEPORT",
+      "charges": 1
+    },
+    {
+      "itemId": 11986,
+      "type": "TELEPORT",
+      "charges": 2
+    },
+    {
+      "itemId": 11984,
+      "type": "TELEPORT",
+      "charges": 3
+    },
+    {
+      "itemId": 11982,
+      "type": "TELEPORT",
+      "charges": 4
+    },
+    {
+      "itemId": 11980,
+      "type": "TELEPORT",
+      "charges": 5
+    },
+    {
+      "itemId": 20790,
+      "type": "TELEPORT",
+      "charges": 1
+    },
+    {
+      "itemId": 20789,
+      "type": "TELEPORT",
+      "charges": 2
+    },
+    {
+      "itemId": 20788,
+      "type": "TELEPORT",
+      "charges": 3
+    },
+    {
+      "itemId": 20787,
+      "type": "TELEPORT",
+      "charges": 4
+    },
+    {
+      "itemId": 20786,
+      "type": "TELEPORT",
+      "charges": 5
+    },
+    {
+      "itemId": 29204,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 29186,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 5460,
+      "type": "SACK",
+      "charges": 1
+    },
+    {
+      "itemId": 5462,
+      "type": "SACK",
+      "charges": 2
+    },
+    {
+      "itemId": 5464,
+      "type": "SACK",
+      "charges": 3
+    },
+    {
+      "itemId": 5466,
+      "type": "SACK",
+      "charges": 4
+    },
+    {
+      "itemId": 5468,
+      "type": "SACK",
+      "charges": 5
+    },
+    {
+      "itemId": 5470,
+      "type": "SACK",
+      "charges": 6
+    },
+    {
+      "itemId": 5472,
+      "type": "SACK",
+      "charges": 7
+    },
+    {
+      "itemId": 5474,
+      "type": "SACK",
+      "charges": 8
+    },
+    {
+      "itemId": 5476,
+      "type": "SACK",
+      "charges": 9
+    },
+    {
+      "itemId": 5478,
+      "type": "SACK",
+      "charges": 10
+    },
+    {
+      "itemId": 5440,
+      "type": "SACK",
+      "charges": 1
+    },
+    {
+      "itemId": 5442,
+      "type": "SACK",
+      "charges": 2
+    },
+    {
+      "itemId": 5444,
+      "type": "SACK",
+      "charges": 3
+    },
+    {
+      "itemId": 5446,
+      "type": "SACK",
+      "charges": 4
+    },
+    {
+      "itemId": 5448,
+      "type": "SACK",
+      "charges": 5
+    },
+    {
+      "itemId": 5450,
+      "type": "SACK",
+      "charges": 6
+    },
+    {
+      "itemId": 5452,
+      "type": "SACK",
+      "charges": 7
+    },
+    {
+      "itemId": 5454,
+      "type": "SACK",
+      "charges": 8
+    },
+    {
+      "itemId": 5456,
+      "type": "SACK",
+      "charges": 9
+    },
+    {
+      "itemId": 5458,
+      "type": "SACK",
+      "charges": 10
+    },
+    {
+      "itemId": 5420,
+      "type": "SACK",
+      "charges": 1
+    },
+    {
+      "itemId": 5422,
+      "type": "SACK",
+      "charges": 2
+    },
+    {
+      "itemId": 5424,
+      "type": "SACK",
+      "charges": 3
+    },
+    {
+      "itemId": 5426,
+      "type": "SACK",
+      "charges": 4
+    },
+    {
+      "itemId": 5428,
+      "type": "SACK",
+      "charges": 5
+    },
+    {
+      "itemId": 5430,
+      "type": "SACK",
+      "charges": 6
+    },
+    {
+      "itemId": 5432,
+      "type": "SACK",
+      "charges": 7
+    },
+    {
+      "itemId": 5434,
+      "type": "SACK",
+      "charges": 8
+    },
+    {
+      "itemId": 5436,
+      "type": "SACK",
+      "charges": 9
+    },
+    {
+      "itemId": 5438,
+      "type": "SACK",
+      "charges": 10
+    },
+    {
+      "itemId": 10931,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 10929,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 10927,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 10925,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 29198,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 29180,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 6691,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 6689,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 6687,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 6685,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 3414,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 3412,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 3410,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 3408,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 3419,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 3418,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 3417,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 3416,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11111,
+      "type": "TELEPORT",
+      "charges": 1
+    },
+    {
+      "itemId": 11109,
+      "type": "TELEPORT",
+      "charges": 2
+    },
+    {
+      "itemId": 11107,
+      "type": "TELEPORT",
+      "charges": 3
+    },
+    {
+      "itemId": 11105,
+      "type": "TELEPORT",
+      "charges": 4
+    },
+    {
+      "itemId": 11970,
+      "type": "TELEPORT",
+      "charges": 5
+    },
+    {
+      "itemId": 11968,
+      "type": "TELEPORT",
+      "charges": 6
+    },
+    {
+      "itemId": 29201,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 29183,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 12631,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 12629,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 12627,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 12625,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 12635,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 12633,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 119,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 117,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 115,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 113,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11441,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11443,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 29210,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 29192,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 185,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 183,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 181,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 2448,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11475,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11473,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 21987,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 21984,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 21981,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 21978,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 21997,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 21994,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 149,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 147,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 145,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 2436,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11471,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11469,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 12701,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 12699,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 12697,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 12695,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 167,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 165,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 163,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 2442,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11499,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11497,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 3022,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 3020,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 3018,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 3016,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11483,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11481,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 11729,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11728,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 11727,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 11726,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11725,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11724,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 11723,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 11722,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 3030,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 3028,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 3026,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 3024,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11495,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11493,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 161,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 159,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 157,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 2440,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11487,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11485,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 30884,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 30881,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 30878,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 30875,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 6102,
+      "type": "TELEPORT",
+      "charges": 1
+    },
+    {
+      "itemId": 6101,
+      "type": "TELEPORT",
+      "charges": 2
+    },
+    {
+      "itemId": 6100,
+      "type": "TELEPORT",
+      "charges": 3
+    },
+    {
+      "itemId": 6099,
+      "type": "TELEPORT",
+      "charges": 4
+    },
+    {
+      "itemId": 13102,
+      "type": "TELEPORT",
+      "charges": 5
+    },
+    {
+      "itemId": 5331,
+      "type": "WATERCAN",
+      "charges": 0
+    },
+    {
+      "itemId": 5333,
+      "type": "WATERCAN",
+      "charges": 1
+    },
+    {
+      "itemId": 5334,
+      "type": "WATERCAN",
+      "charges": 2
+    },
+    {
+      "itemId": 5335,
+      "type": "WATERCAN",
+      "charges": 3
+    },
+    {
+      "itemId": 5336,
+      "type": "WATERCAN",
+      "charges": 4
+    },
+    {
+      "itemId": 5337,
+      "type": "WATERCAN",
+      "charges": 5
+    },
+    {
+      "itemId": 5338,
+      "type": "WATERCAN",
+      "charges": 6
+    },
+    {
+      "itemId": 5339,
+      "type": "WATERCAN",
+      "charges": 7
+    },
+    {
+      "itemId": 5340,
+      "type": "WATERCAN",
+      "charges": 8
+    },
+    {
+      "itemId": 1831,
+      "type": "WATERSKIN",
+      "charges": 0
+    },
+    {
+      "itemId": 1829,
+      "type": "WATERSKIN",
+      "charges": 1
+    },
+    {
+      "itemId": 1827,
+      "type": "WATERSKIN",
+      "charges": 2
+    },
+    {
+      "itemId": 1825,
+      "type": "WATERSKIN",
+      "charges": 3
+    },
+    {
+      "itemId": 1823,
+      "type": "WATERSKIN",
+      "charges": 4
+    },
+    {
+      "itemId": 193,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 191,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 189,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 2450,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 11523,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 11521,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20913,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20914,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20915,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20916,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20917,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20918,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20919,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20920,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20921,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20922,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20923,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20924,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20937,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20938,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20939,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20940,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20941,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20942,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20943,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20944,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20945,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20946,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20947,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20948,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20925,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20926,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20927,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20928,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20929,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20930,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20931,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20932,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20933,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20934,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20935,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20936,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20949,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20950,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20951,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20952,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20953,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20954,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20955,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20956,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20957,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20958,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20959,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20960,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20973,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20974,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20975,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20976,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20977,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20978,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20979,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20980,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20981,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20982,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20983,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20984,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20961,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20962,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20963,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20964,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20965,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20966,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20967,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20968,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20969,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20970,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20971,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20972,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20985,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20986,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20987,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20988,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20989,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20990,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20991,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20992,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 20993,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 20994,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 20995,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 20996,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 27321,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 27319,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 27317,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 27315,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 27333,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 27331,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 27329,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 27327,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 27341,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 27339,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 27349,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 27347,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 27337,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 27335,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 27325,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 27323,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 27345,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 27343,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 27638,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 27635,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 27632,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 27629,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 27211,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 27208,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 27205,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 27202,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 29833,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 29830,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 29827,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 29824,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 30146,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 30143,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 30140,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 30137,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 30134,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 30131,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 30128,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 30125,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 31659,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 31656,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 31653,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 31650,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 31647,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 31644,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 31641,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 31638,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 31623,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 31620,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 31617,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 31614,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 31599,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 31596,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 31593,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 31590,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 31611,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 31608,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 31605,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 31602,
+      "type": "POTION",
+      "charges": 4
+    },
+    {
+      "itemId": 31635,
+      "type": "POTION",
+      "charges": 1
+    },
+    {
+      "itemId": 31632,
+      "type": "POTION",
+      "charges": 2
+    },
+    {
+      "itemId": 31629,
+      "type": "POTION",
+      "charges": 3
+    },
+    {
+      "itemId": 31626,
+      "type": "POTION",
+      "charges": 4
+    }
+  ]
+}
