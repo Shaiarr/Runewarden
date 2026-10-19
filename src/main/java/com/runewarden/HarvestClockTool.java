@@ -10,8 +10,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -79,6 +81,8 @@ final class HarvestClockTool
     private JLabel summary, dashboardSummary, dashboardContract;
     private Timer panelTimer;
     private final List<GroupControl> controls = new ArrayList<>();
+    private Reading indexedReading;
+    private final Map<String, Harvest> indexedGroups = new HashMap<>();
     private static final class GroupControl
     {
         final Harvest group; final JCheckBox choice; final JLabel status;
@@ -118,7 +122,8 @@ final class HarvestClockTool
         {
             if (!started) return;
             if (panelTimer != null) panelTimer.stop();
-            panelTimer = new Timer(1000, event -> refreshPanel());
+            panelTimer = new Timer(1000, event ->
+            { if (panel != null && panel.isShowing() || dashboard != null && dashboard.isShowing()) refreshPanel(); });
             panelTimer.start();
         });
     }
@@ -278,6 +283,8 @@ final class HarvestClockTool
         { observation = new Observation(windows.observe(captured,now), expected,birds); }
     }
     static String groupId(Tab tab) { return tab.name().toLowerCase(Locale.ROOT).replace('_', '-'); }
+    private static final List<Harvest> GROUP_CATALOG = groupCatalog();
+    private static final Map<String, Integer> ICON_IDS = iconIds();
     private static List<Harvest> groupCatalog()
     {
         List<Harvest> result = new ArrayList<>();
@@ -286,15 +293,20 @@ final class HarvestClockTool
             result.add(new Harvest(groupId(tab), tab.getName().replace(" Patches", ""), SummaryState.UNKNOWN, -1, true));
         for(FarmHarvestTimers.Group group:FarmHarvestTimers.GROUPS)
             result.add(new Harvest(group.id,group.name,SummaryState.UNKNOWN,-1,true));
-        return result;
+        return Collections.unmodifiableList(result);
+    }
+    private static Map<String, Integer> iconIds()
+    {
+        Map<String, Integer> result = new HashMap<>();
+        result.put("bird-house", Tab.BIRD_HOUSE.getItemID());
+        for (Tab tab : PURE_TABS) result.put(groupId(tab), tab.getItemID());
+        for (FarmHarvestTimers.Group group : FarmHarvestTimers.GROUPS) result.put(group.id, group.iconId);
+        return Collections.unmodifiableMap(result);
     }
     BufferedImage icon(String group)
     {
-        if (items == null) return null;
-        if ("bird-house".equals(group)) return items.getImage(Tab.BIRD_HOUSE.getItemID());
-        for (Tab tab : PURE_TABS) if (groupId(tab).equals(group)) return items.getImage(tab.getItemID());
-        for(FarmHarvestTimers.Group category:FarmHarvestTimers.GROUPS)if(category.id.equals(group))return items.getImage(category.iconId);
-        return null;
+        Integer id = ICON_IDS.get(group);
+        return items == null || id == null ? null : items.getImage(id);
     }
     static Reading readTrackers(FarmingTracker farming, BirdHouseTracker birds)
     {
@@ -328,7 +340,11 @@ final class HarvestClockTool
     }
     private void addGroupControls(JPanel parent)
     {
-        for (Harvest harvest : groupCatalog())
+        parent.addHierarchyListener(event ->
+        {
+            if ((event.getChangeFlags() & java.awt.event.HierarchyEvent.SHOWING_CHANGED) != 0 && parent.isShowing()) refreshPanel();
+        });
+        for (Harvest harvest : GROUP_CATALOG)
         {
             JPanel card = new JPanel(new BorderLayout(4, 2)); card.setOpaque(false);
             card.setBorder(BorderFactory.createEmptyBorder(7, 0, 7, 0));
@@ -380,15 +396,24 @@ final class HarvestClockTool
     {
         if (panel == null && dashboard == null) return;
         Reading current = reading(); long now = Instant.now().getEpochSecond();
+        if (indexedReading != current)
+        {
+            indexedGroups.clear();
+            for (Harvest harvest : current.harvests) indexedGroups.putIfAbsent(harvest.id, harvest);
+            indexedReading = current;
+        }
         Set<String> selected = selectedGroupIds(); List<Harvest> visible = displayHarvests(now);
         long due = visible.stream().filter(harvest -> harvest.due(now)).count();
         if (summary != null) summary.setText(html(current.active ? selected.size() + " selected · " + due + " due" : current.message));
         HarvestSelections.Session session = selections.session();
+        boolean sessionCurrent = selections.isCurrent(session);
         for (GroupControl control : controls)
         {
-            Harvest harvest = current.harvests.stream().filter(item -> item.id.equals(control.group.id)).findFirst().orElse(control.group);
+            Harvest harvest = indexedGroups.getOrDefault(control.group.id, control.group);
             JCheckBox choice = control.choice; choice.setSelected(selected.contains(harvest.id));
-            choice.setEnabled(selections.isCurrent(session)); choice.putClientProperty("harvestSession", session);
+            choice.setEnabled(sessionCurrent);
+            HarvestSelections.Session previous = (HarvestSelections.Session) choice.getClientProperty("harvestSession");
+            if (previous == null || previous.epoch != session.epoch) choice.putClientProperty("harvestSession", session);
             control.status.setText(harvest.status(now));
             control.status.setForeground(harvest.due(now) && selected.contains(harvest.id) ? GOLD : MUTED);
         }

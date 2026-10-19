@@ -13,6 +13,7 @@ import net.runelite.api.Client;
 import net.runelite.api.Constants;
 import net.runelite.api.GameObject;
 import net.runelite.api.ObjectComposition;
+import net.runelite.api.Scene;
 import net.runelite.api.Tile;
 import net.runelite.api.WorldView;
 import net.runelite.api.coords.WorldPoint;
@@ -28,24 +29,27 @@ final class FarmPatchScene
     static final class Snapshot
     {
         static final Snapshot EMPTY = new Snapshot(null,null,List.of(),0,0,0);
-        final WorldView view; final net.runelite.api.Scene scene; final List<Anchor> anchors; final int baseX,baseY,plane;
-        Snapshot(WorldView view, net.runelite.api.Scene scene, List<Anchor> anchors,int baseX,int baseY,int plane)
+        final WorldView view; final Scene scene; final List<Anchor> anchors; final int baseX,baseY,plane;
+        Snapshot(WorldView view, Scene scene, List<Anchor> anchors,int baseX,int baseY,int plane)
         { this.view=view; this.scene=scene; this.anchors=Collections.unmodifiableList(new ArrayList<>(anchors));this.baseX=baseX;this.baseY=baseY;this.plane=plane; }
         boolean matches(WorldView current)
         { return current != null && current == view && !current.isInstance() && current.getScene() == scene && current.getBaseX()==baseX && current.getBaseY()==baseY && current.getPlane()==plane; }
     }
     static Snapshot scan(Client client, WorldView view, WorldPoint player, List<FarmPatchCatalog.Patch> patches)
     {
-        if (view==null || view.isInstance() || view.getScene()==null || player==null || patches.isEmpty()) return Snapshot.EMPTY;
-        Tile[][][] tiles=view.getScene().getTiles();int plane=view.getPlane();
-        if(tiles==null || plane<0 || plane>=tiles.length || tiles[plane]==null) return Snapshot.EMPTY;
+        if (view==null || view.isInstance() || player==null) return Snapshot.EMPTY;
+        Scene scene=view.getScene();if(scene==null)return Snapshot.EMPTY;
+        int baseX=view.getBaseX(),baseY=view.getBaseY(),plane=view.getPlane();
         Set<Integer> loadedRegions=new HashSet<>();
-        for(int x=view.getBaseX()>>6;x<=(view.getBaseX()+Constants.SCENE_SIZE-1)>>6;x++)
-            for(int y=view.getBaseY()>>6;y<=(view.getBaseY()+Constants.SCENE_SIZE-1)>>6;y++)loadedRegions.add((x<<8)|y);
+        for(int x=baseX>>6;x<=(baseX+Constants.SCENE_SIZE-1)>>6;x++)
+            for(int y=baseY>>6;y<=(baseY+Constants.SCENE_SIZE-1)>>6;y++)loadedRegions.add((x<<8)|y);
         Map<Integer,List<FarmPatchCatalog.Patch>> byVarbit=new LinkedHashMap<>();
         for(FarmPatchCatalog.Patch patch:patches) if(!patch.type.contains("COMPOST") && patch.sentRegions!=null && !Collections.disjoint(patch.sentRegions,loadedRegions))
             byVarbit.computeIfAbsent(patch.varbit,key->new ArrayList<>()).add(patch);
-        if(byVarbit.isEmpty())return Snapshot.EMPTY;
+        // An empty loaded scene is cacheable too; it must not trigger repeated discovery.
+        if(byVarbit.isEmpty())return new Snapshot(view,scene,List.of(),baseX,baseY,plane);
+        Tile[][][] tiles=scene.getTiles();
+        if(tiles==null || plane<0 || plane>=tiles.length || tiles[plane]==null) return Snapshot.EMPTY;
         Map<Integer,ObjectComposition> definitions=new LinkedHashMap<>();
         List<Anchor> anchors=new ArrayList<>();Set<GameObject> seen=Collections.newSetFromMap(new IdentityHashMap<>());Set<String> found=new HashSet<>();
         // Discovery covers the loaded native plane, independently of the player's distance.
@@ -71,6 +75,6 @@ final class FarmPatchScene
             }
             if(anchors.size()>=24)break;
         }
-        return new Snapshot(view,view.getScene(),anchors,view.getBaseX(),view.getBaseY(),plane);
+        return new Snapshot(view,scene,anchors,baseX,baseY,plane);
     }
 }

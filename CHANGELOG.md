@@ -1,5 +1,12 @@
 # Changes
 
+## 0.10.6 — Less repeated runtime work
+
+- Reuse unchanged action HUD snapshots and icon lookups while preserving per-frame animation sampling, expiry and missing-image retries.
+- Cache full loaded-scene farming discovery until relevant object or scene changes; continue observing crop state every settled game tick. Explicitly invalidate on loading and world hops.
+- Coalesce effects sidebar refreshes and update existing text components. Skip hidden harvest-panel polling and share immutable category/icon lookups without hiding any tracking controls.
+- Retain all existing functionality, configuration, account isolation and Java 11 production compatibility. Operation-count regression tests measure repeated work; live FPS/RAM performance has not been measured.
+
 ## 0.10.5 — Smaller implementation and persistent tracking controls
 
 - Share repeated animation facts, exact recipe evidence checks, HUD text/frame helpers, sidebar construction, loot bookkeeping and preference parsing without removing supported behavior or reference entries.

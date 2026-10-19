@@ -331,6 +331,63 @@ public class ActionProgressTest
         f.inventory(inputs(herb,5));f.inventoryEvent();f.choose("Clean",herb.ingredients.get(0).itemId);
         assertTrue(f.tool.snapshot().batch());assertEquals(0,f.tool.snapshot().completed);assertEquals(5,f.tool.snapshot().batchTotal);
     }
+    @Test public void idleClientFramesReuseOneSnapshotAndOneEmptyReading()
+    {
+        Fixture f=new Fixture();ActionProgressTool.Snapshot idle=f.tool.snapshot();
+        for(int i=0;i<1000;i++){f.f.now.addAndGet(20);f.tool.onClientTick();assertSame(idle,f.tool.snapshot());}
+        assertFalse(idle.cycle());assertFalse(idle.batch());verifyNoInteractions(f.items,f.sprites,f.skillIcons);
+        f.tool.stop();ActionProgressTool.Snapshot empty=f.tool.snapshot();
+        for(int i=0;i<100;i++){f.tool.onClientTick();assertSame(empty,f.tool.snapshot());}
+    }
+    @Test public void unchangedCastFramesReusePayloadWhileCountdownAdvancesAndExpires()
+    {
+        Fixture f=new Fixture();BufferedImage icon=solid(24,24,0xffe0b040);
+        when(f.sprites.getSprite(SpriteID.Magicon.HIGH_LEVEL_ALCHEMY,0)).thenReturn(icon);
+        f.setAnimation(AnimationID.HUMAN_CASTHIGHLVLALCHEMY);f.event();ActionProgressTool.Snapshot cast=f.tool.snapshot();
+        for(int i=0;i<100;i++){f.f.now.addAndGet(20);f.tool.onClientTick();assertSame(cast,f.tool.snapshot());}
+        assertEquals(1000,cast.observedAt);assertEquals(1000,cast.cycleEnd-f.tool.now());
+        assertEquals(1d/3,RadialTimer.fraction(f.tool.now(),cast.cycleStart,cast.cycleEnd),0.00001);
+        verify(f.sprites,times(1)).getSprite(SpriteID.Magicon.HIGH_LEVEL_ALCHEMY,0);
+        f.f.now.set(cast.cycleEnd);f.tool.onClientTick();assertNotSame(cast,f.tool.snapshot());assertFalse(f.tool.snapshot().cycle());
+        ActionProgressTool.Snapshot expired=f.tool.snapshot();f.f.now.addAndGet(20);f.tool.onClientTick();assertSame(expired,f.tool.snapshot());
+    }
+    @Test public void missingIconsRetryAtTheirDeadlineWithoutRepublishingTheSamePayload()
+    {
+        Fixture f=new Fixture();BufferedImage icon=solid(24,24,0xffe0b040);
+        when(f.sprites.getSprite(SpriteID.Magicon.HIGH_LEVEL_ALCHEMY,0)).thenReturn(null,null,icon);
+        f.setAnimation(AnimationID.HUMAN_CASTHIGHLVLALCHEMY);f.event();ActionProgressTool.Snapshot pending=f.tool.snapshot();
+        for(int i=0;i<49;i++){f.f.now.addAndGet(20);f.tool.onClientTick();assertSame(pending,f.tool.snapshot());}
+        verify(f.sprites,times(1)).getSprite(SpriteID.Magicon.HIGH_LEVEL_ALCHEMY,0);
+        f.f.now.addAndGet(20);f.tool.onClientTick();assertSame(pending,f.tool.snapshot());
+        verify(f.sprites,times(2)).getSprite(SpriteID.Magicon.HIGH_LEVEL_ALCHEMY,0);
+        f.f.now.addAndGet(999);f.tool.onClientTick();assertSame(pending,f.tool.snapshot());
+        f.f.now.addAndGet(1);f.tool.onClientTick();assertNotSame(pending,f.tool.snapshot());assertSame(icon,f.tool.snapshot().cycleIcon);
+        verify(f.sprites,times(3)).getSprite(SpriteID.Magicon.HIGH_LEVEL_ALCHEMY,0);
+    }
+    @Test public void unchangedBatchExpiresOnClientFramesWithoutWaitingForAnotherInventoryEvent()
+    {
+        Fixture f=new Fixture();ActionRecipeCatalog.Recipe herb=recipe("herblore:toadflax");f.inventory(inputs(herb,8));f.tool.onGameTick();
+        when(f.items.getImage(herb.icon)).thenReturn(itemImage(0xff50af48));f.choose("Clean",herb.ingredients.get(0).itemId);
+        ActionProgressTool.Snapshot batch=f.tool.snapshot();assertTrue(batch.batch());
+        for(int i=0;i<500;i++){f.f.now.addAndGet(20);f.tool.onClientTick();assertSame(batch,f.tool.snapshot());}
+        f.f.now.incrementAndGet();f.tool.onClientTick();assertNotSame(batch,f.tool.snapshot());assertFalse(f.tool.snapshot().batch());
+        verify(f.items,times(1)).getImage(herb.icon);
+    }
+    @Test public void clientFrameReuseStillRespondsToPreferencesBankCombatAndProfileChanges()
+    {
+        Fixture f=new Fixture();when(f.sprites.getSprite(SpriteID.Magicon.HIGH_LEVEL_ALCHEMY,0)).thenReturn(solid(24,24,0xffe0b040));
+        f.setAnimation(AnimationID.HUMAN_CASTHIGHLVLALCHEMY);f.event();ActionProgressTool.Snapshot cast=f.tool.snapshot();
+        f.tool.preferences().animation=false;f.tool.onClientTick();assertNotSame(cast,f.tool.snapshot());assertFalse(f.tool.snapshot().cycle());
+        f.tool.preferences().animation=true;f.tool.onClientTick();assertTrue(f.tool.snapshot().cycle());
+        Widget bank=mock(Widget.class);when(f.f.client.getWidget(InterfaceID.Bankmain.ITEMS_CONTAINER)).thenReturn(bank);
+        f.tool.onClientTick();assertFalse(f.tool.snapshot().cycle());
+        when(f.f.client.getWidget(InterfaceID.Bankmain.ITEMS_CONTAINER)).thenReturn(null);f.event();assertTrue(f.tool.snapshot().cycle());
+        NPC enemy=mock(NPC.class);when(enemy.getCombatLevel()).thenReturn(100);when(f.f.player.getInteracting()).thenReturn(enemy);
+        f.tool.onClientTick();assertFalse(f.tool.snapshot().cycle());
+        when(f.f.player.getInteracting()).thenReturn(null);f.event();assertTrue(f.tool.snapshot().cycle());
+        f.f.profile.set("rsprofile.other");assertFalse(f.tool.snapshot().cycle());f.tool.onClientTick();assertEquals("rsprofile.other",f.tool.snapshot().profile);
+        verify(f.sprites,times(2)).getSprite(SpriteID.Magicon.HIGH_LEVEL_ALCHEMY,0);
+    }
     private static BufferedImage solid(int width,int height,int color)
     {BufferedImage image=new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);Graphics2D g=image.createGraphics();try{g.setColor(new java.awt.Color(color,true));g.fillRect(0,0,width,height);}finally{g.dispose();}return image;}
     private static AsyncBufferedImage itemImage(int color)

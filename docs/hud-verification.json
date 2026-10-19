@@ -1,7 +1,7 @@
 {
-  "version": "0.10.5",
+  "version": "0.10.6",
   "scope": "hud-core",
-  "unitTests": 451,
+  "unitTests": 465,
   "realShortestPathIntegrationTests": 12,
   "pythonGuardTests": 13,
   "failures": 0,
@@ -29,7 +29,8 @@
       "hudFramePixelParity": true,
       "all24OverviewControlsAndStaleAccountActionsTested": true,
       "liveGameplayTested": false
-    }
+    },
+    "version": "0.10.5"
   },
   "codeBudget": {
     "format": "runewarden-local-token-budget",
@@ -37,17 +38,17 @@
     "scope": "Production Java only, comments excluded; strings retained. Resources, tests and development launcher excluded.",
     "tokenizerVersion": "0.14.0",
     "files": 69,
-    "sourceBytes": 646060,
+    "sourceBytes": 651453,
     "tokens": {
-      "cl100k_base": 143534,
-      "o200k_base": 146158
+      "cl100k_base": 144652,
+      "o200k_base": 147291
     },
     "largestFiles": [
       {
         "file": "src/main/java/com/runewarden/FarmPatchPlanner.java",
-        "bytes": 43182,
-        "cl100k_base": 9964,
-        "o200k_base": 10251
+        "bytes": 44164,
+        "cl100k_base": 10172,
+        "o200k_base": 10464
       },
       {
         "file": "src/main/java/com/runewarden/RunLootTool.java",
@@ -63,9 +64,9 @@
       },
       {
         "file": "src/main/java/com/runewarden/HarvestClockTool.java",
-        "bytes": 25753,
-        "cl100k_base": 5435,
-        "o200k_base": 5487
+        "bytes": 26935,
+        "cl100k_base": 5672,
+        "o200k_base": 5721
       },
       {
         "file": "src/main/java/com/runewarden/HudSettingsTool.java",
@@ -75,9 +76,9 @@
       },
       {
         "file": "src/main/java/com/runewarden/ActionProgressTool.java",
-        "bytes": 22577,
-        "cl100k_base": 4831,
-        "o200k_base": 4968
+        "bytes": 23885,
+        "cl100k_base": 5102,
+        "o200k_base": 5247
       },
       {
         "file": "src/main/java/com/runewarden/SlayerTaskHud.java",
@@ -86,16 +87,16 @@
         "o200k_base": 4539
       },
       {
+        "file": "src/main/java/com/runewarden/FarmRunsTool.java",
+        "bytes": 20140,
+        "cl100k_base": 4294,
+        "o200k_base": 4431
+      },
+      {
         "file": "src/main/java/com/runewarden/CurrentMaxHit.java",
         "bytes": 18302,
         "cl100k_base": 4377,
         "o200k_base": 4421
-      },
-      {
-        "file": "src/main/java/com/runewarden/FarmRunsTool.java",
-        "bytes": 19933,
-        "cl100k_base": 4249,
-        "o200k_base": 4383
       },
       {
         "file": "src/main/java/com/runewarden/SkillingCoach.java",
@@ -162,21 +163,42 @@
     "java2dOpenGl": false,
     "launcherGuard": true
   },
+  "runtimeOptimization": {
+    "version": "0.10.6",
+    "baseline": "0.10.5",
+    "deterministicRegressionTests": 14,
+    "stableIdleFrames": 1000,
+    "stableActiveFrames": 100,
+    "stableBatchFrames": 500,
+    "stableFrameSnapshotAndIconKeyAllocations": 0,
+    "staticFarmingTicks": 40,
+    "staticFarmingSceneTileRereads": 0,
+    "nativeCropVarbitsRemainFresh": true,
+    "relevantObjectsAndSceneLifecycleInvalidate": true,
+    "loadingWithoutGameTickTested": true,
+    "pendingEffectRefreshes": 100,
+    "appliedEffectRefreshes": 1,
+    "unchangedEffectTextWrites": 0,
+    "hiddenHarvestTimerCallbacks": 100,
+    "hiddenHarvestAccountConfigCalls": 0,
+    "all24ControlsOnBothScreensRemainAvailable": true,
+    "livePerformanceProfiled": false
+  },
   "artifacts": [
     {
-      "file": "runewarden-0.10.5.jar",
-      "bytes": 565598,
-      "sha256": "e104f2fd6ca165ace480d548ae26277e33cd027ad0b0f448b356e314c1ed41af"
+      "file": "runewarden-0.10.6.jar",
+      "bytes": 567740,
+      "sha256": "30e89eebddcaf2ce0e39935694f18784e3bc61be76c92fae0ef6d3bad6f6cc97"
     },
     {
-      "file": "runewarden-hud-0.10.5-windows-x64.zip",
-      "bytes": 73981263,
-      "sha256": "9fd2e36046b2dafd066646f2b92c004038969285df88fa817beb4aa9b03fe6c9"
+      "file": "runewarden-hud-0.10.6-windows-x64.zip",
+      "bytes": 73983690,
+      "sha256": "72813c2f216015bb2b3836892fb28000e1b388b2b9dc3f1c0029c363be4ded90"
     },
     {
-      "file": "runewarden-java-runtime-sources-0.10.5.zip",
+      "file": "runewarden-java-runtime-sources-0.10.6.zip",
       "bytes": 105582670,
-      "sha256": "64e9ea02c08bdca8a2b13bd867536c0dde64ddfe688efb82675e46ef55db128c"
+      "sha256": "6cc7248c0a69d29f0ecd04d1488da991c0f7c20236b0f09b98b99a523aebf6ab"
     }
   ]
 }

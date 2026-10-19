@@ -192,7 +192,7 @@ public final class RunewardenPlugin extends Plugin
         gathering.onGameStateChanged(event); thieving.onGameStateChanged(event); effects.onGameStateChanged(event);
         travel.onGameStateChanged(event.getGameState()); actions.clear();
         if (event.getGameState() != GameState.LOGGED_IN)
-        { inventory.clear(); dashboard.clear(); hover.clear(); session.suspend(); loot.suspend(); slayer.clear(); }
+        { farms.onSceneLoading(); inventory.clear(); dashboard.clear(); hover.clear(); session.suspend(); loot.suspend(); slayer.clear(); }
     }
     @Subscribe public void onRuneScapeProfileChanged(RuneScapeProfileChanged event)
     {
@@ -245,9 +245,9 @@ public final class RunewardenPlugin extends Plugin
     @Subscribe public void onChatMessage(ChatMessage event)
     { if (running) { thieving.onChatMessage(event); farms.onChatMessage(event); } }
     @Subscribe public void onGameObjectSpawned(GameObjectSpawned event)
-    { if (running) { gathering.onGameObjectSpawned(event); thieving.onGameObjectSpawned(event); } }
+    { if (running) { gathering.onGameObjectSpawned(event); thieving.onGameObjectSpawned(event); farms.onGameObjectChanged(event.getGameObject()); } }
     @Subscribe public void onGameObjectDespawned(GameObjectDespawned event)
-    { if (running) { gathering.onGameObjectDespawned(event); thieving.onGameObjectDespawned(event); } }
+    { if (running) { gathering.onGameObjectDespawned(event); thieving.onGameObjectDespawned(event); farms.onGameObjectChanged(event.getGameObject()); } }
     @Subscribe public void onWallObjectSpawned(WallObjectSpawned event)
     { if (running) thieving.onWallObjectSpawned(event); }
     @Subscribe public void onWallObjectDespawned(WallObjectDespawned event)

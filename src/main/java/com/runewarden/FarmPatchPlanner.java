@@ -335,11 +335,27 @@ public final class FarmPatchPlanner
     }
     private static Patch birdhouse(String id,String name)
     {Patch patch=new Patch();patch.id=id;patch.name=name;patch.region="Fossil Island";patch.type="BIRDHOUSE";return patch;}
+    public void onSceneLoading()
+    {settled=0;scene=FarmPatchScene.Snapshot.EMPTY;pendingCompost=null;}
+    public void onGameObjectChanged(GameObject object)
+    {
+        if(!validProfile() || object==null)return;
+        WorldView view=client.getTopLevelWorldView();
+        if(view==null || object.getWorldView()!=view || object.getPlane()!=view.getPlane() || !scene.matches(view))return;
+        for(FarmPatchScene.Anchor anchor:scene.anchors)if(anchor.object==object){scene=FarmPatchScene.Snapshot.EMPTY;return;}
+        ObjectComposition definition=null;WorldPoint point=object.getWorldLocation();
+        for(Patch patch:catalog.patches())if(!patch.type.contains("COMPOST") && patch.sentAt(point))
+        {
+            if(definition==null)definition=client.getObjectDefinition(object.getId());
+            if(definition==null)return;
+            if(definition.getVarbitId()==patch.varbit){scene=FarmPatchScene.Snapshot.EMPTY;return;}
+        }
+    }
     public void onGameTick()
     {
         if(!started)return;
         if(client.getGameState()==GameState.LOADING)
-        {settled=0;scene=FarmPatchScene.Snapshot.EMPTY;pendingCompost=null;return;}
+        {onSceneLoading();return;}
         if(client.getGameState()!=GameState.LOGGED_IN||client.getLocalPlayer()==null)
         {if(activeSession)clear();return;}
         String owner=config.getRSProfileKey();
@@ -375,7 +391,9 @@ public final class FarmPatchPlanner
                 }
             }
         }
-        if(ticks%5==1)scene=settled>=3?FarmPatchScene.scan(client,client.getTopLevelWorldView(),location,catalog.patches()):FarmPatchScene.Snapshot.EMPTY;
+        if(settled<3)scene=FarmPatchScene.Snapshot.EMPTY;
+        else if(!scene.matches(client.getTopLevelWorldView()))
+            scene=FarmPatchScene.scan(client,client.getTopLevelWorldView(),location,catalog.patches());
         completePlanted();if(settled>=3)observeBirdRefill(location);updateAutomaticRoute();publish();
         if(ticks%10==0)save();
     }

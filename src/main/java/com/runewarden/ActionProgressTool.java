@@ -48,6 +48,7 @@ public final class ActionProgressTool
     }
     static final class Snapshot
     {
+        private static final Snapshot EMPTY=new Snapshot(null,"","",0,0,0,false,null,0,0,-1);
         final String profile,title,basis,batchTitle;final long cycleStart,cycleEnd,observedAt,completed,remaining,batchTotal,batchEta;
         final boolean exactCycle;
         final int cycleItemId,cycleSpriteId,batchItemId;final Skill cycleSkill;final BufferedImage cycleIcon,batchIcon;
@@ -62,13 +63,14 @@ public final class ActionProgressTool
         boolean cycle(){return cycleEnd>cycleStart;}
         boolean batch(){return batchTitle!=null&&(completed>0||remaining>0);}
         double batchFraction(){return batchTotal<=0?0:completed/(double)batchTotal;}
-        static Snapshot empty(){return new Snapshot(null,"","",0,0,0,false,null,0,0,-1);}
+        static Snapshot empty(){return EMPTY;}
     }
     private final Client client;private final ConfigManager config;private final RunewardenDataStore store;private final SharedActivitySession session;
     private final ActionProgressOverlay overlay;private final LongSupplier clock;
     private final ItemManager items;private final SpriteManager sprites;private final SkillIconManager skillIcons;
     private static final class ImageLookup { final BufferedImage image;final long retryAt;ImageLookup(BufferedImage image,long retryAt){this.image=image;this.retryAt=retryAt;} }
     private final Map<String,ImageLookup> images=boundedCache();
+    private long imageRetryAt;
     private final ActionBatchProgress batch=new ActionBatchProgress();
     private final ActionRecipeDetector detector=new ActionRecipeDetector();
     private final Map<Skill,Integer> experience=new EnumMap<>(Skill.class);
@@ -87,7 +89,7 @@ public final class ActionProgressTool
     {this.client=client;this.config=config;this.store=store;this.session=session;this.clock=clock;this.items=items;this.sprites=sprites;this.skillIcons=skillIcons;overlay=new ActionProgressOverlay(this,hud);}
     public void start(){preferences=store.read(GROUP,null,"preferencesV1",1,Preferences.class,Preferences::valid,Preferences::new);started=true;clear();}
     public void stop(){started=false;clear();}
-    public void clear(){profile=contextMethod=null;animation=lastFrame=-1;cycleStart=cycleEnd=lastActivity=0;cycleTitle=cycleBasis="";exactCycle=false;batch.select(null);detector.clear();experience.clear();timings.clear();images.clear();menuItemId=cycleItemId=cycleSpriteId=0;menuSkill=cycleSkill=null;menuAt=confirmedAt=0;menuRecipe=confirmedRecipe=null;cleanOperation=false;snapshot=Snapshot.empty();}
+    public void clear(){profile=contextMethod=null;animation=lastFrame=-1;cycleStart=cycleEnd=lastActivity=0;cycleTitle=cycleBasis="";exactCycle=false;batch.select(null);detector.clear();experience.clear();timings.clear();images.clear();imageRetryAt=0;menuItemId=cycleItemId=cycleSpriteId=0;menuSkill=cycleSkill=null;menuAt=confirmedAt=0;menuRecipe=confirmedRecipe=null;cleanOperation=false;snapshot=Snapshot.empty();}
     public Overlay overlay(){return overlay;}
     public void setHudLocked(boolean locked){overlay.setHudLocked(locked);}
     boolean enabled(){return started&&preferences.enabled;}
@@ -249,20 +251,34 @@ public final class ActionProgressTool
         boolean showBatch=preferences.batch&&batch.visible()&&batch.remaining()>0&&(now-lastActivity<=10_000||cycleEnd>now);
         int sprite=cycleSpriteId;Skill skill=cycleSkill;int item=cycleItemId;
         int batchItem=showBatch?batch.recipe().icon:0;
-        snapshot=new Snapshot(profile,cycleTitle,cycleBasis,preferences.animation?cycleStart:0,preferences.animation?cycleEnd:0,now,exactCycle,
-            showBatch?batch.recipe().name:null,showBatch?batch.completed():0,showBatch?batch.remaining():0,showBatch?batch.total():0,showBatch?batch.estimatedMillis():-1,
-            item,sprite,skill,image(item,sprite,skill,now),batchItem,showBatch?image(batchItem,0,null,now):null);
+        long start=preferences.animation?cycleStart:0,end=preferences.animation?cycleEnd:0;
+        String batchTitle=showBatch?batch.recipe().name:null;
+        long done=showBatch?batch.completed():0,left=showBatch?batch.remaining():0,total=showBatch?batch.total():0,eta=showBatch?batch.estimatedMillis():-1;
+        Snapshot previous=snapshot;
+        boolean unchanged=Objects.equals(previous.profile,profile)&&Objects.equals(previous.title,cycleTitle)&&Objects.equals(previous.basis,cycleBasis)
+            &&previous.cycleStart==start&&previous.cycleEnd==end&&previous.exactCycle==exactCycle
+            &&Objects.equals(previous.batchTitle,batchTitle)&&previous.completed==done&&previous.remaining==left&&previous.batchTotal==total&&previous.batchEta==eta
+            &&previous.cycleItemId==item&&previous.cycleSpriteId==sprite&&previous.cycleSkill==skill&&previous.batchItemId==batchItem;
+        // Rendering advances from the clock; observedAt records a payload change, not every frame.
+        if(unchanged&&now<imageRetryAt)return;
+        imageRetryAt=Long.MAX_VALUE;
+        BufferedImage cycleIcon=image(item,sprite,skill,now),batchIcon=showBatch?image(batchItem,0,null,now):null;
+        if(unchanged&&previous.cycleIcon==cycleIcon&&previous.batchIcon==batchIcon)return;
+        snapshot=new Snapshot(profile,cycleTitle,cycleBasis,start,end,now,exactCycle,batchTitle,done,left,total,eta,
+            item,sprite,skill,cycleIcon,batchItem,batchIcon);
     }
     /** Called from native client events, never from render. Null sprite loads retry at most once per second. */
     private BufferedImage image(int item,int sprite,Skill skill,long now)
     {
         String key=item>0?"item:"+item:sprite>0?"sprite:"+sprite:skill!=null?"skill:"+skill.name():null;if(key==null)return null;
-        ImageLookup cached=images.get(key);if(cached!=null&&(cached.image!=null||now<cached.retryAt))return cached.image;
+        ImageLookup cached=images.get(key);if(cached!=null&&(cached.image!=null||now<cached.retryAt))
+        {if(cached.image==null)imageRetryAt=Math.min(imageRetryAt,cached.retryAt);return cached.image;}
         BufferedImage image=null;
         if(item>0&&items!=null)image=items.getImage(item);
         else if(sprite>0&&sprites!=null)image=sprites.getSprite(sprite,0);
         else if(item==0&&sprite==0&&skill!=null&&skillIcons!=null)image=skillIcons.getSkillImage(skill);
-        images.put(key,new ImageLookup(image,now+1000));return image;
+        long retryAt=now+1000;if(image==null)imageRetryAt=Math.min(imageRetryAt,retryAt);
+        images.put(key,new ImageLookup(image,retryAt));return image;
     }
     public JPanel createPanel()
     {

@@ -22,6 +22,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+import net.runelite.api.GameObject;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.client.game.ItemManager;
@@ -100,6 +101,8 @@ final class FarmRunsTool
     void onMenuOptionClicked(MenuOptionClicked event) { if (started) planner.onMenuOptionClicked(event); }
     void onChatMessage(ChatMessage event) { if (started) planner.onChatMessage(event); }
     void onGameTick() { if (started) planner.onGameTick(); }
+    void onSceneLoading() { if (started) planner.onSceneLoading(); }
+    void onGameObjectChanged(GameObject object) { if (started) planner.onGameObjectChanged(object); }
     void clear() { planner.clear(); SwingUtilities.invokeLater(this::refresh); }
     void start()
     {

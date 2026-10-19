@@ -6,9 +6,9 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Supplier;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -52,6 +52,10 @@ public final class FieldCoach
     private volatile long epoch;
     private int baselineTick;
     private JPanel panel, values;
+    private volatile boolean panelShowing;
+    private final AtomicBoolean refreshQueued = new AtomicBoolean();
+    private Reading rendered;
+    private int renderedState = -1;
 
     static final class Spec
     {
@@ -83,6 +87,14 @@ public final class FieldCoach
         new Spec("heart", "Heart cooldown", VarbitID.IMBUED_HEART_TIMER, 10),
         new Spec("surge", "Surge cooldown", VarbitID.SURGE_POTION_TIMER, 10)
     };
+    private static final Set<String> EFFECT_KEYS;
+    static
+    {
+        Set<String> keys = new LinkedHashSet<>();
+        for (Spec spec : SPECS) keys.add(spec.key);
+        keys.add("antipoison"); keys.add("antivenom");
+        EFFECT_KEYS = Collections.unmodifiableSet(keys);
+    }
 
     public static final class Row
     {
@@ -122,7 +134,7 @@ public final class FieldCoach
     public Reading snapshot() { return scoped() ? reading : Reading.EMPTY; }
     public void setAdditionalRows(Supplier<List<Row>> rows) { additionalRows=rows==null?Collections::emptyList:rows; }
     public Set<String> activeEffectKeys() { return enabled&&scoped()?activeEffectKeys:Collections.emptySet(); }
-    public Set<String> knownEffectKeys() { if(!enabled||!scoped())return Collections.emptySet();Set<String> keys=new LinkedHashSet<>();for(Spec s:SPECS)keys.add(s.key);keys.add("antipoison");keys.add("antivenom");return Collections.unmodifiableSet(keys); }
+    public Set<String> knownEffectKeys() { return enabled && scoped() ? EFFECT_KEYS : Collections.emptySet(); }
     public boolean enabled() { return enabled; }
     public boolean previewsEnabled() { return running && previews; }
     public List<Overlay> overlays() { return List.of(overlay, consumables); }
@@ -226,7 +238,7 @@ public final class FieldCoach
         }
     }
     static String duration(long ticks)
-    { long seconds = (Math.max(0, ticks) * 600 + 999) / 1000; return seconds / 60 + ":" + String.format(Locale.ROOT, "%02d", seconds % 60); }
+    { long seconds = (Math.max(0, ticks) * 600 + 999) / 1000; return seconds / 60 + ":" + (seconds % 60 < 10 ? "0" : "") + seconds % 60; }
 
     private void reload()
     {
@@ -248,37 +260,62 @@ public final class FieldCoach
     public JPanel createPanel()
     {
         panel = SidebarUi.column(); panel.add(SidebarUi.heading("Effects & supplies"));
-        values = SidebarUi.column(); panel.add(values);
+        values = SidebarUi.column(); panel.add(values); rendered = null; renderedState = -1;
         JPanel settings = SidebarUi.column();
         settings.add(toggle("Effects HUD", "effects", enabled)); settings.add(toggle("Show stat changes", "boosts", boosts));
         settings.add(toggle("Food & potion previews", "previews", previews)); settings.add(toggle("Expiry alerts", "alerts", alerts));
         JSpinner seconds = new JSpinner(new SpinnerNumberModel(warningSeconds, 3, 120, 1));
         seconds.addChangeListener(event -> { configs.setConfiguration(GROUP, "warningSeconds", seconds.getValue()); reload(); });
         settings.add(SidebarUi.field("Warn below (seconds)", seconds)); panel.add(SidebarUi.disclosure("Display & alerts", settings));
-        panel.addHierarchyListener(event -> { if ((event.getChangeFlags() & java.awt.event.HierarchyEvent.SHOWING_CHANGED) != 0 && panel.isShowing()) refresh(); });
+        panel.addHierarchyListener(event ->
+        {
+            if ((event.getChangeFlags() & java.awt.event.HierarchyEvent.SHOWING_CHANGED) != 0)
+            { panelShowing = panel.isShowing(); if (panelShowing) refresh(); }
+        });
         render(reading); return panel;
     }
     private void refresh()
     {
-        if (values == null || panel == null || !panel.isShowing()) return;
-        Reading captured = snapshot(); long generation = epoch;
+        if (!panelShowing || !refreshQueued.compareAndSet(false, true)) return;
         SwingUtilities.invokeLater(() ->
         {
-            if (values == null || generation != epoch) return;
-            render(captured);
+            refreshQueued.set(false);
+            if (values == null || !panelShowing) return;
+            long generation = epoch; Reading current = snapshot();
+            if (generation == epoch) render(current);
         });
     }
     private void render(Reading captured)
     {
-        values.removeAll();
-        if (!scoped()) values.add(SidebarUi.label("Log in to view effects."));
-        else if (captured.effects.isEmpty() && captured.boosts.isEmpty()) values.add(SidebarUi.label("No active effects or stat changes."));
-        else
+        int state = !scoped() ? 0 : captured.effects.isEmpty() && captured.boosts.isEmpty() ? 1 : 2;
+        boolean rebuild = renderedState != state || rendered == null
+            || rendered.effects.size() != captured.effects.size() || rendered.boosts.size() != captured.boosts.size();
+        if (rebuild)
         {
-            for (Row row : captured.effects) values.add(SidebarUi.label(row.label + " · " + row.value));
-            if (!captured.boosts.isEmpty())
-            { values.add(SidebarUi.heading("Stats")); for (Row row : captured.boosts) values.add(SidebarUi.label(row.label + " · " + row.value)); }
+            values.removeAll();
+            if (state < 2) values.add(SidebarUi.label(state == 0 ? "Log in to view effects." : "No active effects or stat changes."));
+            else
+            {
+                for (Row row : captured.effects) values.add(SidebarUi.label(row.label + " · " + row.value));
+                if (!captured.boosts.isEmpty())
+                { values.add(SidebarUi.heading("Stats")); for (Row row : captured.boosts) values.add(SidebarUi.label(row.label + " · " + row.value)); }
+            }
+            values.revalidate(); values.repaint();
         }
-        values.revalidate(); values.repaint();
+        else if (state == 2)
+        {
+            updateLabels(captured.effects, rendered.effects, 0);
+            updateLabels(captured.boosts, rendered.boosts, captured.effects.size() + 1);
+        }
+        rendered = captured; renderedState = state;
+    }
+    private void updateLabels(List<Row> current, List<Row> previous, int offset)
+    {
+        for (int i = 0; i < current.size(); i++)
+        {
+            Row row = current.get(i), before = previous.get(i);
+            if (!row.label.equals(before.label) || !row.value.equals(before.value))
+                ((GuideText) values.getComponent(offset + i)).setText(row.label + " · " + row.value);
+        }
     }
 }

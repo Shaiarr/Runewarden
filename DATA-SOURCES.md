@@ -1,6 +1,6 @@
 # HUD data sources
 
-Runewarden HUD 0.10.5 contains six account-independent JSON reference resources. It reads supported live observations through RuneLite's public APIs. The original Java/UI implementation is BSD-2-Clause; third-party source and data keep their own notices and terms. See [NOTICE](NOTICE) and [`src/main/resources/com/runewarden/licenses/`](src/main/resources/com/runewarden/licenses/).
+Runewarden HUD 0.10.6 contains six account-independent JSON reference resources. It reads supported live observations through RuneLite's public APIs. The original Java/UI implementation is BSD-2-Clause; third-party source and data keep their own notices and terms. See [NOTICE](NOTICE) and [`src/main/resources/com/runewarden/licenses/`](src/main/resources/com/runewarden/licenses/).
 
 | Retained material | Primary source | Attribution and scope |
 | --- | --- | --- |

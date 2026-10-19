@@ -1,6 +1,6 @@
 # Runewarden HUD testen en indienen
 
-Versie **0.10.5** staat op de ontwikkelingstak **hud-core**. Deze versie beperkt zich tot de HUD, timers en compacte sessietracking in de README. Uitgever: **Shai-arr**. Oorspronkelijke code is **BSD-2-Clause**; bronvermeldingen en licenties van derden blijven behouden.
+Versie **0.10.6** staat op de ontwikkelingstak **hud-core**. Deze versie beperkt zich tot de HUD, timers en compacte sessietracking in de README. Uitgever: **Shai-arr**. Oorspronkelijke code is **BSD-2-Clause**; bronvermeldingen en licenties van derden blijven behouden.
 
 ## De Windows-testdownload starten
 
@@ -26,7 +26,7 @@ python -m unittest discover -s tools -p 'test_*.py'
 python tools/check_hub_jar.py
 ```
 
-Op Windows gebruik je `gradlew.bat` en desgewenst `python -X utf8`. `devTestZip` bouwt het aparte testpakket; de optionele runtime- en routingparameters staan in `CONTRIBUTING.md`. De echte Hub-plugin is `build/libs/runewarden-0.10.5.jar`, zonder de starter, client of runtime.
+Op Windows gebruik je `gradlew.bat` en desgewenst `python -X utf8`. `devTestZip` bouwt het aparte testpakket; de optionele runtime- en routingparameters staan in `CONTRIBUTING.md`. De echte Hub-plugin is `build/libs/runewarden-0.10.6.jar`, zonder de starter, client of runtime.
 
 ## Een mogelijke latere HUD-inzending
 
