@@ -6,7 +6,7 @@ Runewarden is a free, local OSRS activity companion for RuneLite. It connects ac
 
 Published by **Shai-arr**.
 
-**0.9.6 is an experimental source release, targeting RuneLite 1.13.2.** This repository contains the plugin and its development checks. It does not include a custom client, launcher, Java runtime or bundled Quest Helper/Shortest Path plugins. Plugin Hub review and logged-in acceptance remain pending.
+**0.9.6 is an experimental source release, targeting RuneLite 1.13.2.** This repository contains the plugin and its development checks. Plugin Hub review and logged-in acceptance remain pending.
 
 ## What it does
 
@@ -18,7 +18,7 @@ Published by **Shai-arr**.
 
 Hold **Alt** to move supported HUD cards and **Ctrl** to resize them. Settings are saved per character under the **runewarden** configuration namespace. Earlier test settings are not imported automatically. Keep an exported backup if you want to attempt a manual migration; compatibility with older backups is not guaranteed. Unsupported observations and estimates remain distinct from confirmed account state.
 
-Navigation requires **Shortest Path**, installed and enabled separately. Runewarden supplies supported destinations and account-aware options; the external plugin computes the route. Quest status, requirements and ordering remain available here; use the separately installed **Quest Helper** for walkthroughs. This export does not include the former launcher-only Quest Helper handoff adapter.
+Navigation requires **Shortest Path**, installed and enabled separately. Runewarden supplies supported destinations and account-aware options; the external plugin computes the route. Quest status, requirements and ordering remain available here; use the separately installed **Quest Helper** for walkthroughs.
 
 ## Build and check
 
@@ -36,7 +36,7 @@ On Windows, use `gradlew.bat` instead of `./gradlew` and run Python checks as `p
 
 ## Status and evidence
 
-[Plugin-only verification](docs/plugin-only-evidence.json) records checks for this exported repository. Earlier readiness reports, benchmark records and `automated-evidence-0.9.5.json` describe the original development harness: its 1,620-test result must not be attributed to this smaller export. Historical client-package instructions do not describe artifacts included here.
+[Plugin-only verification](docs/plugin-only-evidence.json) records checks for this exported repository. Earlier readiness reports, benchmark records and `automated-evidence-0.9.5.json` describe the original development harness: its 1,620-test result must not be attributed to this smaller export.
 
 The retained [capability comparison](docs/hub-utility-audit.md) documents implemented, partial and missing specialist features. Runewarden does not replace every plugin. Long-session stability, live interoperability and Hub acceptance remain unverified; no comparative RAM/FPS advantage is established.
 
